@@ -1,6 +1,8 @@
 import axios from 'axios';
-// import { VIDEOTEK_API } from '@env';
+import getEnvVars from '../../config';
+
+const { VIDEOTEK_API } = getEnvVars();
 
 export default axios.create({
-  baseURL: 'http://localhost:3610/api/v1/',
+  baseURL: VIDEOTEK_API,
 });
