@@ -4,230 +4,147 @@ import {
   Text,
   TextInput,
   StyleSheet,
-  Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import http from '../../services/axios';
 import {useDispatch} from 'react-redux';
-import Toast from 'react-native-toast-message';
-
 import {
   forgetPassword,
   checkForgetPasswordCode,
   resetPassword,
 } from '../../redux/actions/auth/password';
+import button from '../../styles/components/button';
+import { ToastSuccess, ToastError } from '../../utils/Toast';
+import ToastConfig from '../../utils/ToastConfig';
 
 const PasswordScreen = () => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('')
   const [code, setCode] = useState('');
-  const [newPassword, setNewPassword] = useState('');
+  const [password, setPassword] = useState({password: '', confirmPassword: ''})
   const [step, setStep] = useState(1);
   const dispatch = useDispatch();
 
   const handleForgetPassword = async () => {
     try {
-      if (!emailRegex.test(email)) {
-        throw new Error('Please enter a valid email address.');
-      }
-      await http.post('auth/forget-password-mobile', {email});
-      dispatch(forgetPassword(email));
-      setStep(2);
-      Toast.show({
-        type: 'success',
-        test1: 'success',
-        text2: 'A verification code has been sent to your email address.',
-        topOffset: Dimensions.get('window').height / 2 - 25,
-      });
+      await dispatch(forgetPassword({email}));
+      ToastSuccess('success', 'Un code de vérification vous a été envoyé par email.', true)
+      setStep(2)
     } catch (error) {
-      console.log(error);
-      Toast.show({
-        type: 'error',
-        text1: 'Error',
-        text2: error.message,
-        topOffset: Dimensions.get('window').height / 2 - 25,
-      });
+      console.log(error.response.data.errMsg);
+      ToastError('error', error.response.data.errMsg, false)
     }
   };
 
   const handleCheckForgetPasswordCode = async () => {
     try {
-      if (!emailRegex.test(email)) {
-        throw new Error('Please enter a valid email address.');
-      }
-      if (!code) {
-        throw new Error('Please enter a verification code.');
-      }
-      await http.post('auth/check-forget-password-code', {
-        email,
-        code,
-      });
-      dispatch(checkForgetPasswordCode(email, code));
-      setStep(3);
-      Toast.show({
-        type: 'success',
-        text1: 'Success',
-        text2: 'Your verification code has been verified successfully.',
-        topOffset: Dimensions.get('window').height / 2 - 25,
-      });
+      await dispatch(checkForgetPasswordCode({email, code}));
+      ToastSuccess('success', 'Votre code de vérification a bien été validé.', true)
+      setStep(3)
     } catch (error) {
-      console.log(error);
-      Toast.show({
-        type: 'error',
-        text1: 'Error',
-        text2: error.message,
-        topOffset: Dimensions.get('window').height / 2 - 25,
-      });
+      console.log(error.response.data.errMsg);
+      ToastError('error', error.response.data.errMsg, false)
     }
   };
 
+
   const handleResetPassword = async () => {
     try {
-      if (!emailRegex.test(email)) {
-        throw new Error('Please enter a valid email address.');
-      }
-      if (!code) {
-        throw new Error('Please enter a verification code.');
-      }
-      if (!passwordRegex.test(newPassword)) {
-        throw new Error(
-          'Password must be at least 8 characters long, and include at least one uppercase letter, one lowercase letter, and one number.',
-        );
-      }
-      await http.post('auth/reset-password-mobile', {
-        email,
-        forgetPassword: code,
-        passwordHash: newPassword,
-      });
-      dispatch(resetPassword(email));
-      setStep(4);
-      Toast.show({
-        type: 'success',
-        text1: 'Success',
-        text2: 'Your password has been reset successfully.',
-        topOffset: Dimensions.get('window').height / 2 - 25,
-      });
+      await dispatch(resetPassword({email, password: password.password, confirmPassword: password.confirmPassword}));
+      ToastSuccess('success', 'Votre mot de passe à été rénitialisé avec succès.', false)
+      setStep(4)
     } catch (error) {
-      console.log(error);
-      Toast.show({
-        type: 'error',
-        text1: 'Error',
-        text2: error.message,
-        topOffset: Dimensions.get('window').height / 2 - 25,
-      });
+      console.log(error.response.data.errMsg);
+      ToastError('error', error.response.data.errMsg, false)
     }
   };
 
   return (
     <View>
-      <Toast ref={ref => Toast.setRef(ref)} />
-
       <View>
         {step === 1 && (
           <View style={styles.formContainer}>
             <Text style={styles.formLabel}>
-              Enter your email address to reset your password:
+              Entrez votre adresse mail
             </Text>
             <TextInput
               style={styles.formInput}
               placeholder="Email"
               value={email}
-              onChangeText={setEmail}
+              onChangeText={text => setEmail(text)}
             />
             <TouchableOpacity
               style={styles.formButton}
               onPress={handleForgetPassword}>
-              <Text style={styles.buttonText}>Submit</Text>
+              <Text style={styles.buttonText}>Envoyer</Text>
+              <ToastConfig />
             </TouchableOpacity>
           </View>
         )}
         {step === 2 && (
-          <View style={styles.formContainer}>
-            <Text style={styles.formLabel}>
-              A verification code has been sent to your email address.
+        <View style={styles.formContainer}>
+          <Text style={styles.formLabel}>
+              Entrez votre code de vérification
             </Text>
-            <TextInput
-              style={styles.formInput}
-              placeholder="Verification Code"
-              value={code}
-              onChangeText={setCode}
-            />
-            <TouchableOpacity
-              style={styles.formButton}
-              onPress={handleCheckForgetPasswordCode}>
-              <Text style={styles.buttonText}>Submit</Text>{' '}
-            </TouchableOpacity>
-          </View>
-        )}
+          <TextInput
+            placeholder="Code de vérification"
+            style={styles.formInput}
+            value={code}
+            onChangeText={text => setCode(text)}
+          />
+          <TouchableOpacity
+            style={styles.formButton}
+            onPress={handleCheckForgetPasswordCode}
+          >
+            <Text style={styles.buttonText}>Valider</Text>
+            <ToastConfig />
+          </TouchableOpacity>
+        </View>
+      )}
+
         {step === 3 && (
           <View style={styles.formContainer}>
-            <Text style={styles.formLabel}>Enter your new password:</Text>
+            <Text style={styles.formLabel}>Entrez votre nouveau mot de passe</Text>
             <TextInput
               style={styles.formInput}
-              placeholder="New Password"
+              placeholder="Mot de passe"
               secureTextEntry={true}
-              value={newPassword}
-              onChangeText={setNewPassword}
+              value={password.password}
+              onChangeText={text => setPassword({...password, password: text})}
+            />
+            <TextInput
+              style={styles.formInput}
+              placeholder="Confirmez mot de passe"
+              secureTextEntry={true}
+              value={password.confirmPassword}
+              onChangeText={text => setPassword({...password, confirmPassword: text})}
             />
             <TouchableOpacity
               style={styles.formButton}
               onPress={handleResetPassword}>
-              {' '}
-              <Text style={styles.buttonText}>Submit</Text>{' '}
+
+              <Text style={styles.buttonText}>Envoyer</Text>
+              <ToastConfig />
             </TouchableOpacity>
           </View>
         )}
         {step === 4 && (
-          <View>
+          <View style={styles.formContainer}>
             <Text style={styles.formLabel}>
-              Your password has been reset successfully.
+              Votre mot de passe a bien été rénitialisé.
             </Text>
+            <ToastConfig />
           </View>
         )}
       </View>
     </View>
   );
 };
+
 const styles = StyleSheet.create({
-  formContainer: {
-    backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 10,
-    margin: 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  formLabel: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  formInput: {
-    backgroundColor: '#f2f2f2',
-    padding: 10,
-    borderRadius: 5,
-    marginBottom: 10,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-  formButton: {
-    backgroundColor: '#22C55E',
-    borderRadius: 5,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    alignItems: 'center',
-    marginRight: 10,
-  },
+  formContainer: button.formContainer,
+  formLabel: button.formLabel,
+  formInput: button.formInput,
+  buttonText: button.buttonText,
+  formButton: button.formButton,
 });
 
 export default PasswordScreen;

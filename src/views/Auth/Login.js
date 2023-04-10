@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -6,153 +6,70 @@ import {
   TouchableOpacity,
   Text,
 } from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {loginUser} from '../../redux/actions/auth/auth';
 import {useNavigation} from '@react-navigation/native';
-import Toast from 'react-native-toast-message';
+import button from '../../styles/components/button';
+import { ToastSuccess, ToastError } from '../../utils/Toast';
+import ToastConfig from '../../utils/ToastConfig';
 
 const LoginScreen = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const emailInputRef = useRef(null);
-  const passwordInputRef = useRef(null);
+  const [data, setData] = useState({email: '', password: ''})
 
-  const authState = useSelector(state => state.auth);
-
-  const handleSignUp = () => {
-    navigation.navigate('Register');
+  const handleLogin = async () => {
+    try {
+      await dispatch(loginUser(data));
+      ToastSuccess('success', 'Connexion réussie', true)
+    } catch(error) {
+      console.log(error.response.data.errMsg);
+      ToastError('error', error.response.data.errMsg, false)
+    }
   };
-  const handleLogin = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    if (!emailRegex.test(email)) {
-      Toast.show({
-        type: 'error',
-        text1: 'Invalid email',
-        visibilityTime: 3000,
-        autoHide: true,
-      });
-      emailInputRef.current.focus();
-      return;
-    }
-    if (!passwordRegex.test(password)) {
-      Toast.show({
-        type: 'error',
-        text1: 'Invalid Password ',
-        visibilityTime: 3000,
-        autoHide: true,
-      });
-      passwordInputRef.current.focus();
-      return;
-    }
-    dispatch(loginUser(email, password));
-  };
-
-  useEffect(() => {
-    if (authState.error) {
-      Toast.show({
-        type: 'error',
-        text1: 'Login failed',
-        text2: authState.error,
-        visibilityTime: 3000,
-        autoHide: true,
-      });
-    }
-  }, [authState.error]);
 
   const handleForgetPassword = () => {
-    navigation.navigate('Password');
+    navigation.navigate('Mot de passe oublié');
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.formContainer}>
+      <Text style={styles.formLabel}>Votre email</Text>
       <TextInput
-        style={styles.input}
+        style={styles.formInput}
         placeholder="Email"
-        onChangeText={setEmail}
-        value={email}
-        keyboardType="email-address"
-        ref={emailInputRef}
+        onChangeText={text => setData({...data, email: text})}
+        value={data.email}
       />
+      <Text style={styles.formLabel}>Votre mot de passe</Text>
       <TextInput
-        style={styles.input}
-        placeholder="Password"
-        onChangeText={setPassword}
-        value={password}
+        style={styles.formInput}
+        placeholder="Mot de passe"
+        onChangeText={text => setData({...data, password: text})}
+        value={data.password}
         secureTextEntry={true}
-        ref={passwordInputRef}
       />
-      <View style={styles.container1}>
-        <TouchableOpacity style={styles.button1} onPress={handleLogin}>
-          <Text style={styles.buttonText}>Login</Text>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.formButtonLogin} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Connexion</Text>
         </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button2} onPress={handleSignUp}>
-          <Text style={styles.buttonText}>Register</Text>
+        <TouchableOpacity style={styles.formButtonForgetPassword} onPress={handleForgetPassword}>
+          <Text style={styles.buttonText}>Mot de passe oublié</Text>
         </TouchableOpacity>
+        <ToastConfig />
       </View>
-      <TouchableOpacity style={styles.button3} onPress={handleForgetPassword}>
-        <Text style={styles.buttonText1}>Forget Password</Text>
-      </TouchableOpacity>
-      <Toast />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#fff',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  input: {
-    width: '80%',
-    height: 50,
-    margin: 10,
-    padding: 10,
-    borderWidth: 1,
-    borderRadius: 5,
-    borderColor: '#ccc',
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-  },
-  button1: {
-    backgroundColor: '#22C55E',
-    borderRadius: 5,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    alignItems: 'center',
-    marginRight: 10,
-  },
-  button2: {
-    backgroundColor: '#3B82F6',
-    borderRadius: 5,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    alignItems: 'center',
-  },
-  button3: {
-    alignItems: 'center',
-  },
-
-  buttonText1: {
-    color: '#EF4444',
-    fontSize: 13,
-  },
-  container1: {
-    justifyContent: 'center',
-    flexDirection: 'row',
-    padding: 5,
-  },
+  formContainer: button.formContainer,
+  formLabel: button.formLabel,
+  formInput: button.formInput,
+  buttonText: button.buttonText,
+  formButtonRegister: button.formButtonRegister,
+  buttonContainer: button.buttonContainer,
+  formButtonLogin: button.formButtonLogin,
+  formButtonForgetPassword: button.formButtonForgetPassword
 });
 export default LoginScreen;

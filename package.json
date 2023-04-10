@@ -17,6 +17,7 @@
     "expo": "~48.0.10",
     "expo-constants": "^14.2.1",
     "expo-status-bar": "~1.4.4",
+    "fs": "^0.0.1-security",
     "react": "18.2.0",
     "react-native": "0.71.6",
     "react-native-dotenv": "^3.4.8",
@@ -25,10 +26,15 @@
     "react-native-toast-message": "^2.1.6",
     "react-native-vector-icons": "^9.2.0",
     "react-redux": "^8.0.5",
-    "redux": "^4.2.1"
+    "redux": "^4.2.1",
+    "react-native-web": "~0.18.10",
+    "react-dom": "18.2.0",
+    "@expo/webpack-config": "^18.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "eslint": "^8.37.0",
+    "eslint-plugin-react": "^7.32.2"
   },
   "private": true
 }

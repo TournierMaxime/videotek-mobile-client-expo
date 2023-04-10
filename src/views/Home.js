@@ -1,22 +1,28 @@
 import React from 'react';
 import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native';
+import button from '../styles/components/button'
 
 const HomeScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Videotek</Text>
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}
-          source={require('../assets/image/logo.png')}
+          source={require('../assets/image/videotek_logo.webp')}
         />
-        <Text style={styles.message}>Application d'envoi de notification</Text>
       </View>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('Login')}>
-        <Text style={styles.buttonText}>Se connecter</Text>
-      </TouchableOpacity>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={() => navigation.navigate('Connexion')}>
+          <Text style={styles.buttonText}>Se connecter</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.registerButton}
+          onPress={() => navigation.navigate('Inscription')}>
+          <Text style={styles.buttonText}>S'inscrire</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -34,31 +40,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    width: 180,
+    width: 300,
     height: 150,
+    resizeMode: 'contain'
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
     color: 'grey',
   },
-  message: {
-    fontSize: 18,
-    textAlign: 'center',
-    marginVertical: 40,
-  },
-  button: {
-    backgroundColor: '#22C55E',
-    borderRadius: 5,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
+  buttonContainer: button.buttonContainer,
+  loginButton: button.loginButton,
+  registerButton: button.registerButton,
+  buttonText: button.buttonText,
 });
 
 export default HomeScreen;

@@ -1,43 +1,45 @@
-import axios from 'axios';
 import {
-  CHECK_FORGET_PASSWORD_CODE_FAILURE,
-  CHECK_FORGET_PASSWORD_CODE_SUCCESS,
   FORGET_PASSWORD_FAILURE,
   FORGET_PASSWORD_SUCCESS,
+  CHECK_FORGET_PASSWORD_CODE_SUCCESS,
+  CHECK_FORGET_PASSWORD_CODE_FAILURE,
   RESET_PASSWORD_FAILURE,
   RESET_PASSWORD_SUCCESS,
 } from '../types/auth';
+import { ForgetPasswordMobile, CheckForgetPasswordCodeMobile, ResetPasswordMobile } from '../../../services/auth'
 
-export const forgetPassword = email => async dispatch => {
+export const forgetPassword = (email) => async (dispatch) => {
   try {
-    const response = await axios.post('/forgetPasswordMobile', {email});
-    dispatch({type: FORGET_PASSWORD_SUCCESS});
+    const response = await ForgetPasswordMobile(email)
+    dispatch({type: FORGET_PASSWORD_SUCCESS, payload: response.data});
+    return response.data
   } catch (error) {
-    dispatch({type: FORGET_PASSWORD_FAILURE, payload: error});
+    dispatch({type: FORGET_PASSWORD_FAILURE, payload: error.message});
+    console.log(error)
+    throw error
   }
 };
 
-export const checkForgetPasswordCode = (email, code) => async dispatch => {
+export const checkForgetPasswordCode = (code) => async dispatch => {
   try {
-    const response = await axios.post('/checkForgetPasswordCode', {
-      email,
-      code,
-    });
-    dispatch({type: CHECK_FORGET_PASSWORD_CODE_SUCCESS});
+    const response = await CheckForgetPasswordCodeMobile(code)
+    dispatch({type: CHECK_FORGET_PASSWORD_CODE_SUCCESS, payload: response.data});
+    return response.data
   } catch (error) {
-    dispatch({type: CHECK_FORGET_PASSWORD_CODE_FAILURE, payload: error});
+    dispatch({type: CHECK_FORGET_PASSWORD_CODE_FAILURE, payload: error.message});
+    console.log(error)
+    throw error
   }
 };
 
-export const resetPassword = (email, code, passwordHash) => async dispatch => {
+
+export const resetPassword = (data) => async (dispatch) => {
   try {
-    const response = await axios.post('/resetPasswordMobile', {
-      email,
-      forgetPassword: code,
-      passwordHash,
-    });
-    dispatch({type: RESET_PASSWORD_SUCCESS});
+    const response = await ResetPasswordMobile(data)
+    dispatch({type: RESET_PASSWORD_SUCCESS, payload: response.data});
+    return response.data
   } catch (error) {
-    dispatch({type: RESET_PASSWORD_FAILURE, payload: error});
+    dispatch({type: RESET_PASSWORD_FAILURE, payload: error.message});
+    throw error
   }
 };

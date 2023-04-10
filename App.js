@@ -19,10 +19,10 @@ const MainStack = createNativeStackNavigator();
 function AuthStackNavigator() {
   return (
     <AuthStack.Navigator>
-      <AuthStack.Screen name="Home" component={HomeScreen} />
-      <AuthStack.Screen name="Login" component={LoginScreen} />
-      <AuthStack.Screen name="Register" component={RegisterScreen} />
-      <AuthStack.Screen name="Password" component={PasswordScreen} />
+      <AuthStack.Screen name="Accueil" component={HomeScreen} />
+      <AuthStack.Screen name="Connexion" component={LoginScreen} />
+      <AuthStack.Screen name="Inscription" component={RegisterScreen} />
+      <AuthStack.Screen name="Mot de passe oublié" component={PasswordScreen} />
     </AuthStack.Navigator>
   );
 }
