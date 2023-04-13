@@ -1,54 +1,45 @@
-// import des dépendances
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {connect, Provider} from 'react-redux';
-import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import HomeScreen from './src/views/Home';
-import LoginScreen from './src/views/Auth/Login';
-import PasswordScreen from './src/views/Auth/Password';
-import RegisterScreen from './src/views/Auth/Register';
-import Navbar from './src/components/Navbar';
-import store from './src/redux/store';
+import { connect, Provider } from "react-redux";
+import React, { Fragment } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import AuthScreen from "./src/views/Auth/Auth";
+import LoginScreen from "./src/views/Auth/Login";
+import ForgetPasswordScreen from "./src/views/Auth/ForgetPassword";
+import RegisterScreen from "./src/views/Auth/Register";
+import Navbar from "./src/components/Layout/Navbar";
+import store from "./src/redux/store";
+import Header from "./src/components/Layout/Header";
 
-// création des stacks de navigation
-const AuthStack = createNativeStackNavigator();
-const MainStack = createNativeStackNavigator();
+const RootStack = createNativeStackNavigator();
 
-// composant pour la navigation de l'authentification
-function AuthStackNavigator() {
+function App({ isAuthenticated }) {
   return (
-    <AuthStack.Navigator>
-      <AuthStack.Screen name="Accueil" component={HomeScreen} />
-      <AuthStack.Screen name="Connexion" component={LoginScreen} />
-      <AuthStack.Screen name="Inscription" component={RegisterScreen} />
-      <AuthStack.Screen name="Mot de passe oublié" component={PasswordScreen} />
-    </AuthStack.Navigator>
+    <NavigationContainer>
+      <RootStack.Navigator>
+        {!isAuthenticated ? (
+          <Fragment>
+            <RootStack.Screen
+              name="Main"
+              component={Navbar}
+              options={{ header: () => <Header /> }}
+            />
+          </Fragment>
+        ) : (
+          <Fragment>
+            <RootStack.Screen name="Auth" component={AuthScreen} />
+            <RootStack.Screen name="Login" component={LoginScreen} />
+            <RootStack.Screen name="Register" component={RegisterScreen} />
+            <RootStack.Screen name="ForgetPassword" component={ForgetPasswordScreen} />
+          </Fragment>
+        )}
+      </RootStack.Navigator>
+    </NavigationContainer>
   );
 }
 
-// composant pour la navigation principale
-function MainStackNavigator() {
-  return (
-    <MainStack.Navigator>
-      <MainStack.Screen name="Navbar" component={Navbar} />
-    </MainStack.Navigator>
-  );
-}
-
-// composant principal connecté à Redux
-const App = ({isAuthenticated}) => {
-  return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        {isAuthenticated ? <MainStackNavigator /> : <AuthStackNavigator />}
-      </NavigationContainer>
-    </SafeAreaProvider>
-  );
-};
-
-// fonction pour mapper l'état Redux au composant
-const mapStateToProps = (state) => state;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
 
 const ConnectedApp = connect(mapStateToProps)(App);
 
@@ -59,4 +50,3 @@ const AppWithRedux = () => (
 );
 
 export default AppWithRedux;
-

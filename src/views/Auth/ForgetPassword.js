@@ -16,7 +16,7 @@ import button from '../../styles/components/button';
 import { ToastSuccess, ToastError } from '../../utils/Toast';
 import ToastConfig from '../../utils/ToastConfig';
 
-const PasswordScreen = () => {
+const ForgetPasswordScreen = () => {
   const [email, setEmail] = useState('')
   const [code, setCode] = useState('');
   const [password, setPassword] = useState({password: '', confirmPassword: ''})
@@ -147,4 +147,4 @@ const styles = StyleSheet.create({
   formButton: button.formButton,
 });
 
-export default PasswordScreen;
+export default ForgetPasswordScreen;
