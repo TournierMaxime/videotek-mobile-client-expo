@@ -10,7 +10,11 @@ import Navbar from "./src/components/Layout/Navbar";
 import store from "./src/redux/store";
 import Header from "./src/components/Layout/Header";
 import NowPlaying from "./src/views/Tmdb/Movies/NowPlaying";
+import Upcoming from "./src/views/Tmdb/Movies/Upcoming";
 import DetailsMovie from "./src/views/Tmdb/Movies/DetailsMovie";
+import OnTheAir from "./src/views/Tmdb/Series/OnTheAir";
+import Popular from "./src/views/Tmdb/Series/Popular";
+import DetailsSerie from "./src/views/Tmdb/Series/DetailsSerie";
 
 const RootStack = createNativeStackNavigator();
 
@@ -30,8 +34,27 @@ function App({ isAuthenticated }) {
               component={NowPlaying}
             />
             <RootStack.Screen
+              name="A Venir"
+              component={Upcoming}
+            />
+            <RootStack.Screen
               name="Details Movie"
               component={DetailsMovie}
+              options={({ route }) => ({
+                title: route.params.title,
+              })}
+            />
+            <RootStack.Screen
+              name="Série en cours de diffusion"
+              component={OnTheAir}
+            />
+            <RootStack.Screen
+              name="Séries populaires"
+              component={Popular}
+            />
+            <RootStack.Screen
+              name="Details Serie"
+              component={DetailsSerie}
               options={({ route }) => ({
                 title: route.params.title,
               })}

@@ -89,6 +89,15 @@ const PeopleDetails = (id) => {
   });
 };
 
+const MovieCrew = (id) => {
+  return http.get(`/movie/${id}/credits`, {
+    params: {
+      api_key: EXPO_TMDB_API_KEY,
+      language: 'fr-FR'
+    },
+  });
+};
+
 
 export { 
   NowPlaying,
@@ -99,5 +108,6 @@ export {
   Search,
   MovieDetails,
   SerieDetails,
-  PeopleDetails
+  PeopleDetails,
+  MovieCrew
 };

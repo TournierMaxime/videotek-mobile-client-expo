@@ -58,7 +58,9 @@ const HomeScreen = () => {
 
       <View style={{justifyContent: 'space-between', flexDirection: 'row', marginRight: 15}}>
         <Text style={styles.title}>A Venir</Text>
-        <Text style={styles.title}>Tout</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('A Venir')}>
+          <Text style={styles.title}>Tout</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.container}>
         <FlatList 
@@ -68,7 +70,9 @@ const HomeScreen = () => {
           renderItem={({item, index}) => {
             return (
               <View style={{flexDirection: 'column', justifyContent: 'space-between'}}>
-                <Image style={[styles.image, { marginRight: index === upcomingResults?.slice(0,8).length - 1 ? 15 : 0 }]} source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}} />
+                <TouchableOpacity onPress={() => navigation.navigate('Details Movie', {id: item.id, title: item.original_title})}>
+                  <Image style={[styles.image, { marginRight: index === upcomingResults?.slice(0,8).length - 1 ? 15 : 0 }]} source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}} />
+                </TouchableOpacity>
                 <Text style={{textAlign: 'center', fontSize: 12}}>{item.original_title}</Text>
               </View>
             )
@@ -78,7 +82,9 @@ const HomeScreen = () => {
 
       <View style={{justifyContent: 'space-between', flexDirection: 'row', marginRight: 15}}>
         <Text style={styles.title}>Série en cours de diffusion</Text>
-        <Text style={styles.title}>Tout</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Série en cours de diffusion')}>
+          <Text style={styles.title}>Tout</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.container}>
         <FlatList 
@@ -88,7 +94,9 @@ const HomeScreen = () => {
           renderItem={({item, index}) => {
             return (
               <View style={{flexDirection: 'column', justifyContent: 'space-between'}}>
-                <Image style={[styles.image, { marginRight: index === onTheAirResults?.slice(0,8).length - 1 ? 15 : 0 }]} source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}} />
+                <TouchableOpacity onPress={() => navigation.navigate('Details Serie', {id: item.id, title: item.original_name})}>
+                  <Image style={[styles.image, { marginRight: index === onTheAirResults?.slice(0,8).length - 1 ? 15 : 0 }]} source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}} />
+                </TouchableOpacity>
                 <Text style={{textAlign: 'center', fontSize: 12}}>{item.original_name}</Text>
               </View>
             )
@@ -98,7 +106,9 @@ const HomeScreen = () => {
 
       <View style={{justifyContent: 'space-between', flexDirection: 'row', marginRight: 15}}>
         <Text style={styles.title}>Séries populaires</Text>
-        <Text style={styles.title}>Tout</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Séries populaires')}>
+          <Text style={styles.title}>Tout</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.container}>
         <FlatList 
@@ -108,7 +118,9 @@ const HomeScreen = () => {
           renderItem={({item, index}) => {
             return (
               <View style={{flexDirection: 'column', justifyContent: 'space-between'}}>
-                <Image style={[styles.image, { marginRight: index === popularResults?.slice(0,8).length - 1 ? 15 : 0 }]} source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}} />
+                <TouchableOpacity onPress={() => navigation.navigate('Details Serie', {id: item.id, title: item.original_name})}>
+                  <Image style={[styles.image, { marginRight: index === popularResults?.slice(0,8).length - 1 ? 15 : 0 }]} source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}} />
+                </TouchableOpacity>
                 <Text style={{textAlign: 'center', fontSize: 12}}>{item.original_name}</Text>
               </View>
             )
