@@ -9,6 +9,8 @@ import RegisterScreen from "./src/views/Auth/Register";
 import Navbar from "./src/components/Layout/Navbar";
 import store from "./src/redux/store";
 import Header from "./src/components/Layout/Header";
+import NowPlaying from "./src/views/Tmdb/Movies/NowPlaying";
+import DetailsMovie from "./src/views/Tmdb/Movies/DetailsMovie";
 
 const RootStack = createNativeStackNavigator();
 
@@ -22,6 +24,17 @@ function App({ isAuthenticated }) {
               name="Main"
               component={Navbar}
               options={{ header: () => <Header /> }}
+            />
+            <RootStack.Screen
+              name="En ce moment"
+              component={NowPlaying}
+            />
+            <RootStack.Screen
+              name="Details Movie"
+              component={DetailsMovie}
+              options={({ route }) => ({
+                title: route.params.title,
+              })}
             />
           </Fragment>
         ) : (

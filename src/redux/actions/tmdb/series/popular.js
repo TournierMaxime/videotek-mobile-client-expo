@@ -1,5 +1,5 @@
 
-import { Popular } from '../../../services/tmdb'
+import { Popular } from '../../../../services/tmdb'
   
 export const popular = (page) => async (dispatch) => {
   try {

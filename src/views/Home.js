@@ -1,88 +1,115 @@
 import React, { useEffect } from 'react';
-import {StyleSheet, View, Text, FlatList, Image, ScrollView} from 'react-native';
+import {StyleSheet, View, Text, FlatList, Image, ScrollView, TouchableOpacity} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { nowPlaying } from '../redux/actions/tmdb/nowPlaying'
-import { upcoming } from '../redux/actions/tmdb/upcoming'
-import { onTheAir } from '../redux/actions/tmdb/onTheAir'
-import { popular } from '../redux/actions/tmdb/popular'
+import { nowPlaying } from '../redux/actions/tmdb/movies/nowPlaying'
+import { upcoming } from '../redux/actions/tmdb/movies/upcoming'
+import { onTheAir } from '../redux/actions/tmdb/series/onTheAir'
+import { popular } from '../redux/actions/tmdb/series/popular'
+import {useNavigation} from '@react-navigation/native';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.nowPlaying.data)
+  const navigation = useNavigation();
+  const nowPlayingData = useSelector((state) => state.nowPlaying.data)
+  const upcomingData = useSelector((state) => state.upcoming.data)
+  const onTheAirData = useSelector((state) => state.onTheAir.data)
+  const popularData = useSelector((state) => state.popular.data)
   const nowPlayingResults = useSelector((state) => state.nowPlaying.data.results)
   const upcomingResults = useSelector((state) => state.upcoming.data.results)
   const onTheAirResults = useSelector((state) => state.onTheAir.data.results)
   const popularResults = useSelector((state) => state.popular.data.results)
 
   useEffect(() => {
-    dispatch(nowPlaying(data.page))
-    dispatch(upcoming(data.page))
-    dispatch(onTheAir(data.page))
-    dispatch(popular(data.page))
+    dispatch(nowPlaying(nowPlayingData.page))
+    dispatch(upcoming(upcomingData.page))
+    dispatch(onTheAir(onTheAirData.page))
+    dispatch(popular(popularData.page))
   }, [dispatch])
 
 
   return (
     <ScrollView>
-      <Text style={{fontSize: 24, marginLeft: 15, marginTop: 15, fontWeight: 'bold'}}>En ce moment</Text>
+      <View style={{justifyContent: 'space-between', flexDirection: 'row', marginRight: 15}}>
+        <Text style={styles.title}>En ce moment</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('En ce moment')}>
+          <Text style={styles.title}>Tout</Text>
+        </TouchableOpacity>
+      </View>
       <View style={styles.container}>
         <FlatList 
           data={nowPlayingResults?.slice(0,8)}
           keyExtractor={item => item.id}
           horizontal={true}
-          renderItem={({item}) => {
+          renderItem={({item, index}) => {
             return (
               <View style={{flexDirection: 'column', justifyContent: 'space-between'}}>
-                <Image style={{width: 160, height: 260, resizeMode: 'contain', borderRadius: 15, margin: 15}} source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}} />
-                <Text style={{textAlign: 'center', fontSize: 12}}>{item.original_title}</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('Details Movie', {id: item.id, title: item.original_title})}>
+                  <Image 
+                    style={[styles.image, { marginRight: index === nowPlayingResults?.slice(0,8).length - 1 ? 15 : 0 }]}
+                    source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}}
+                  />
+                  <Text style={{textAlign: 'center', fontSize: 12}}>{item.original_title}</Text>
+                </TouchableOpacity>
               </View>
             )
           }}
         />
       </View>
-      <Text style={{fontSize: 24, marginLeft: 15, marginTop: 15, fontWeight: 'bold'}}>A venir</Text>
+
+      <View style={{justifyContent: 'space-between', flexDirection: 'row', marginRight: 15}}>
+        <Text style={styles.title}>A Venir</Text>
+        <Text style={styles.title}>Tout</Text>
+      </View>
       <View style={styles.container}>
         <FlatList 
           data={upcomingResults?.slice(0,8)}
           keyExtractor={item => item.id}
           horizontal={true}
-          renderItem={({item}) => {
+          renderItem={({item, index}) => {
             return (
               <View style={{flexDirection: 'column', justifyContent: 'space-between'}}>
-                <Image style={{width: 160, height: 260, resizeMode: 'contain', borderRadius: 15, margin: 15}} source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}} />
+                <Image style={[styles.image, { marginRight: index === upcomingResults?.slice(0,8).length - 1 ? 15 : 0 }]} source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}} />
                 <Text style={{textAlign: 'center', fontSize: 12}}>{item.original_title}</Text>
               </View>
             )
           }}
         />
       </View>
-      <Text style={{fontSize: 24, marginLeft: 15, marginTop: 15, fontWeight: 'bold'}}>Série en cours de diffusion</Text>
+
+      <View style={{justifyContent: 'space-between', flexDirection: 'row', marginRight: 15}}>
+        <Text style={styles.title}>Série en cours de diffusion</Text>
+        <Text style={styles.title}>Tout</Text>
+      </View>
       <View style={styles.container}>
         <FlatList 
           data={onTheAirResults?.slice(0,8)}
           keyExtractor={item => item.id}
           horizontal={true}
-          renderItem={({item}) => {
+          renderItem={({item, index}) => {
             return (
               <View style={{flexDirection: 'column', justifyContent: 'space-between'}}>
-                <Image style={{width: 160, height: 260, resizeMode: 'contain', borderRadius: 15, margin: 15}} source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}} />
-                <Text style={{textAlign: 'center', fontSize: 12}}>{item.original_title}</Text>
+                <Image style={[styles.image, { marginRight: index === onTheAirResults?.slice(0,8).length - 1 ? 15 : 0 }]} source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}} />
+                <Text style={{textAlign: 'center', fontSize: 12}}>{item.original_name}</Text>
               </View>
             )
           }}
         />
       </View>
-      <Text style={{fontSize: 24, marginLeft: 15, marginTop: 15, fontWeight: 'bold'}}>Séries populaires</Text>
+
+      <View style={{justifyContent: 'space-between', flexDirection: 'row', marginRight: 15}}>
+        <Text style={styles.title}>Séries populaires</Text>
+        <Text style={styles.title}>Tout</Text>
+      </View>
       <View style={styles.container}>
         <FlatList 
           data={popularResults?.slice(0,8)}
           keyExtractor={item => item.id}
           horizontal={true}
-          renderItem={({item}) => {
+          renderItem={({item, index}) => {
             return (
               <View style={{flexDirection: 'column', justifyContent: 'space-between'}}>
-                <Image style={{width: 160, height: 260, resizeMode: 'contain', borderRadius: 15, margin: 15}} source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}} />
-                <Text style={{textAlign: 'center', fontSize: 12}}>{item.original_title}</Text>
+                <Image style={[styles.image, { marginRight: index === popularResults?.slice(0,8).length - 1 ? 15 : 0 }]} source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}} />
+                <Text style={{textAlign: 'center', fontSize: 12}}>{item.original_name}</Text>
               </View>
             )
           }}
@@ -97,6 +124,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#efefef',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  title: {
+    fontSize: 24,
+    marginLeft: 15,
+    marginTop: 15,
+    fontWeight: 'bold'
+  }, 
+  image: {
+    width: 160,
+    height: 260,
+    resizeMode: 'contain',
+    borderRadius: 15,
+    marginTop: 15,
+    marginLeft: 15,
+    marginBottom: 15
   }
 });
 

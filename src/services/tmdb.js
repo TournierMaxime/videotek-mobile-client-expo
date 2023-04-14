@@ -62,5 +62,42 @@ const Search = (page, query) => {
   });
 };
 
+const MovieDetails = (id) => {
+  return http.get(`/movie/${id}`, {
+    params: {
+      api_key: EXPO_TMDB_API_KEY,
+      language: 'fr-FR'
+    },
+  });
+};
 
-export { NowPlaying, Upcoming, OnTheAir, Popular, People, Search };
+const SerieDetails = (id) => {
+  return http.get(`/tv/${id}`, {
+    params: {
+      api_key: EXPO_TMDB_API_KEY,
+      language: 'fr-FR'
+    },
+  });
+};
+
+const PeopleDetails = (id) => {
+  return http.get(`/person/${id}`, {
+    params: {
+      api_key: EXPO_TMDB_API_KEY,
+      language: 'fr-FR'
+    },
+  });
+};
+
+
+export { 
+  NowPlaying,
+  Upcoming,
+  OnTheAir,
+  Popular,
+  People,
+  Search,
+  MovieDetails,
+  SerieDetails,
+  PeopleDetails
+};

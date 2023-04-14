@@ -1,5 +1,5 @@
 
-import { Upcoming } from '../../../services/tmdb'
+import { Upcoming } from '../../../../services/tmdb'
   
 export const upcoming = (page) => async (dispatch) => {
   try {

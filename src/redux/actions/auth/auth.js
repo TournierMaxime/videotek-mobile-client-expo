@@ -1,22 +1,16 @@
 import { Login, Logout } from '../../../services/auth'
-import {
-  LOGIN_USER_FAILURE,
-  LOGIN_USER_SUCCESS,
-  LOGOUT_USER_SUCCESS,
-  LOGOUT_USER_FAILURE
-} from '../types/auth';
 
 export const loginUser = (data) => async (dispatch) => {
     try {
       const response = await Login(data)
       dispatch({
-        type: LOGIN_USER_SUCCESS,
+        type: 'LOGIN_USER_SUCCESS',
         payload: response.data,
       });
       return response.data
     } catch (error) {
       dispatch({
-        type: LOGIN_USER_FAILURE,
+        type: 'LOGIN_USER_FAILURE',
         payload: error.message,
       });
       throw error
@@ -27,13 +21,13 @@ export const logoutUser = () => async (dispatch) => {
   try {
     const response = await Logout()
     dispatch({
-      type: LOGOUT_USER_SUCCESS,
+      type: 'LOGOUT_USER_SUCCESS',
       payload: response.data,
     });
     return response.data
   } catch (error) {
     dispatch({
-      type: LOGOUT_USER_FAILURE,
+      type: 'LOGOUT_USER_FAILURE',
       payload: error.message,
     });
     throw error

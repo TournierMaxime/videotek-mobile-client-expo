@@ -1,5 +1,5 @@
 
-import { OnTheAir } from '../../../services/tmdb'
+import { OnTheAir } from '../../../../services/tmdb'
   
 export const onTheAir = (page) => async (dispatch) => {
   try {
