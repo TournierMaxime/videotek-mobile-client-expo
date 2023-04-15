@@ -10,11 +10,10 @@ const Cast = ({cast}) => {
     <View>
         <Text style={styles.castTitle}>Distribution</Text>
         <FlatList 
-          data={cast?.cast?.slice(0, 8)}
-          keyExtractor={item => item.id}
+          data={cast?.cast}
+          keyExtractor={item => item.id.toString()}
           horizontal={true}
           renderItem={({item}) => {
-            console.log(item.id)
             return (
               <View style={styles.flatListViewContainer}>
                 {item.original_title ?

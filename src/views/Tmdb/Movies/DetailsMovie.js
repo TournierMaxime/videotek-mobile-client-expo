@@ -22,7 +22,7 @@ const DetailsMovie = ({route}) => {
     useEffect(() => {
         dispatch(movieDetails(id))
         dispatch(movieCrew(id))
-      }, [dispatch])
+      }, [dispatch, id])
 
   return (
     <ScrollView style={styles.scrollView}>

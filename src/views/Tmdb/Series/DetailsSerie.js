@@ -21,7 +21,7 @@ const DetailsSerie = ({route}) => {
     useEffect(() => {
         dispatch(serieDetails(id))
         dispatch(serieCrew(id))
-      }, [dispatch])
+      }, [dispatch, id])
 
   return (
     <ScrollView style={styles.scrollView}>

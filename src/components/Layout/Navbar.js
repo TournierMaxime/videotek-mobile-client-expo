@@ -16,7 +16,7 @@ const Navbar = () => {
         component={HomeScreen}
         options={{
           tabBarIcon: () => <Ionicons name="home" size={25} />,
-        headerShown:false
+          headerShown: false
         }}
       />
     </Tab.Navigator>

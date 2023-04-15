@@ -5,21 +5,21 @@ const initialState = {
     error: null,
     };
     
-    export default function peopleCastReducer(state = initialState, action) {
+    export default function detailsPeopleReducer(state = initialState, action) {
       switch (action.type) {
-        case 'PEOPLE_CAST_REQUEST':
+        case 'PEOPLE_DETAILS_REQUEST':
           return {
             ...state,
             loading: true,
             error: null
           };
-        case 'PEOPLE_CAST_SUCCESS':
+        case 'PEOPLE_DETAILS_SUCCESS':
           return {
             ...state,
             data: action.payload,
             loading: false,
           };
-        case 'PEOPLE_CAST_FAILURE':
+        case 'PEOPLE_DETAILS_FAILURE':
           return {
             ...state,
             error: action.payload,
