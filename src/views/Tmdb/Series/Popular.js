@@ -5,6 +5,7 @@ import { popular } from '../../../redux/actions/tmdb/series/popular'
 import useLoadMore from '../../../utils/LoadMore';
 import { truncateTitle } from '../../../utils/Truncate'
 import {useNavigation} from '@react-navigation/native';
+import list from '../../../styles/components/list';
 
 const Popular = () => {
     const dispatch = useDispatch();
@@ -38,10 +39,10 @@ const Popular = () => {
           onEndReachedThreshold={0.5}
           renderItem={({item}) => {
             return (
-              <View style={{flexDirection: 'column', justifyContent: 'space-between'}}>
+              <View style={styles.flatListViewContainer}>
                 <TouchableOpacity onPress={() => navigation.navigate('Details Serie', {id: item.id, title: item.original_name})}>
                   <Image style={styles.image} source={{uri: `https://image.tmdb.org/t/p/original${item.poster_path}`}} />
-                  <Text style={{textAlign: 'center', fontSize: 12}}>{truncateTitle(item.original_name, 15)}</Text>
+                  <Text style={styles.originalTitle}>{truncateTitle(item.original_name, 15)}</Text>
                 </TouchableOpacity>
               </View>
             )
@@ -52,24 +53,11 @@ const Popular = () => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-      backgroundColor: '#efefef',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-    },
-    title: {
-      fontSize: 24,
-      marginLeft: 15,
-      marginTop: 15,
-      fontWeight: 'bold'
-    }, 
-    image: {
-      width: 160,
-      height: 260,
-      resizeMode: 'contain',
-      borderRadius: 15,
-      margin: 15
-    }
-  });
+  container: list.container,
+  title: list.title, 
+  image: list.image,
+  flatListViewContainer: list.flatListViewContainer,
+  originalTitle: list.originalTitle
+});
 
 export default Popular;

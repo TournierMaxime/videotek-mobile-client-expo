@@ -5,9 +5,11 @@ import form from '../styles/components/form';
 import { Ionicons } from 'react-native-vector-icons'
 import { useDispatch, useSelector } from 'react-redux';
 import { search } from '../redux/actions/tmdb/search'
+import { useNavigation } from '@react-navigation/native';
 
 const SearchModal = ({ visible, setVisible }) => {
     const dispatch = useDispatch();
+    const navigation = useNavigation();
     const data = useSelector((state) => state.search.data)
     const searchResults = useSelector((state) => state.search.data.results)
     const [query, setQuery] = useState('')
@@ -23,13 +25,25 @@ const SearchModal = ({ visible, setVisible }) => {
 
       const renderItemContent = (item) => {
         if (item.original_title && item.media_type === 'movie') {
-          return `${item.original_title} / Film`;
+          return (
+            <TouchableOpacity onPress={() => navigation.navigate('Details Movie', {id: item.id, title: item.original_title})}>
+              <Text>{`${item.original_title} / Film`}</Text>
+            </TouchableOpacity>
+          )
         } else if (item.name) {
           if (item.media_type === 'tv') {
-            return `${item.name} / Série`;
+            return (
+              <TouchableOpacity onPress={() => navigation.navigate('Details Serie', {id: item.id, title: item.original_name})}>
+                <Text>{`${item.name} / Série`}</Text>
+              </TouchableOpacity>
+            );
           }
           if (item.media_type === 'person') {
-            return `${item.name} / Célébrité`;
+            return (
+              <TouchableOpacity onPress={() => navigation.navigate('Details People', {id: item.id, name: item.original_name})}>
+                <Text>{`${item.name} / Célébrité`}</Text>
+              </TouchableOpacity>
+            );
           }
         }
         return null;

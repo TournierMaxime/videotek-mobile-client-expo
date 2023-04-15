@@ -12,6 +12,10 @@ import peopleReducer from './reducers/tmdb/people/people'
 import searchReducer from './reducers/tmdb/search'
 import serieDetailsReducer from './reducers/tmdb/series/detailsSerie'
 import movieCrewReducer from './reducers/tmdb/movies/movieCrew'
+import movieTrailerReducer from './reducers/tmdb/movies/trailer'
+import serieCrewReducer from './reducers/tmdb/series/serieCrew'
+import serieTrailerReducer from './reducers/tmdb/series/trailer'
+import peopleCastReducer from './reducers/tmdb/people/detailsPeople';
 
 const rootReducer = {
   auth: auth,
@@ -21,16 +25,20 @@ const rootReducer = {
   upcoming: upcomingReducer,
   onTheAir: onTheAirReducer,
   popular: popularReducer,
-  people: peopleReducer,
+  peopleDetails: peopleReducer,
   search: searchReducer,
   movieDetails: movieDetailsReducer,
   serieDetails: serieDetailsReducer,
-  movieCrew: movieCrewReducer
+  movieCrew: movieCrewReducer,
+  movieTrailer: movieTrailerReducer,
+  serieCrew: serieCrewReducer,
+  serieTrailer: serieTrailerReducer,
+  peopleCast: peopleCastReducer
 };
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({immutableCheck: false}).concat(thunkMiddleware)
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunkMiddleware)
 });
 //immutableCheck: false désactiver pendant le dev
 export default store;

@@ -15,6 +15,7 @@ import DetailsMovie from "./src/views/Tmdb/Movies/DetailsMovie";
 import OnTheAir from "./src/views/Tmdb/Series/OnTheAir";
 import Popular from "./src/views/Tmdb/Series/Popular";
 import DetailsSerie from "./src/views/Tmdb/Series/DetailsSerie";
+import DetailsPeople from "./src/views/Tmdb/People/DetailsPeople";
 
 const RootStack = createNativeStackNavigator();
 
@@ -57,6 +58,13 @@ function App({ isAuthenticated }) {
               component={DetailsSerie}
               options={({ route }) => ({
                 title: route.params.title,
+              })}
+            />
+            <RootStack.Screen
+              name="Details Person"
+              component={DetailsPeople}
+              options={({ route }) => ({
+                name: route.params.name,
               })}
             />
           </Fragment>

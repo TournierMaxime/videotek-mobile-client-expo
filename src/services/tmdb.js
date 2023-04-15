@@ -98,6 +98,42 @@ const MovieCrew = (id) => {
   });
 };
 
+const MovieTrailer = (id) => {
+  return http.get(`/movie/${id}/videos`, {
+    params: {
+      api_key: EXPO_TMDB_API_KEY,
+      language: 'fr-FR'
+    },
+  });
+};
+
+const SerieCrew = (id) => {
+  return http.get(`/tv/${id}/credits`, {
+    params: {
+      api_key: EXPO_TMDB_API_KEY,
+      language: 'fr-FR'
+    },
+  });
+};
+
+const SerieTrailer = (id) => {
+  return http.get(`/tv/${id}/videos`, {
+    params: {
+      api_key: EXPO_TMDB_API_KEY,
+      language: 'fr-FR'
+    },
+  });
+};
+
+const PeopleCast = (id) => {
+  return http.get(`/person/${id}/combined_credits`, {
+    params: {
+      api_key: EXPO_TMDB_API_KEY,
+      language: 'fr-FR'
+    },
+  });
+};
+
 
 export { 
   NowPlaying,
@@ -109,5 +145,9 @@ export {
   MovieDetails,
   SerieDetails,
   PeopleDetails,
-  MovieCrew
+  MovieCrew,
+  MovieTrailer,
+  SerieCrew,
+  SerieTrailer,
+  PeopleCast
 };

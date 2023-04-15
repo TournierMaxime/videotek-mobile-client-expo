@@ -1,7 +1,7 @@
 
 import { People } from '../../../../services/tmdb'
   
-export const people = (id) => async (dispatch) => {
+export const peopleDetails = (id) => async (dispatch) => {
   try {
     const response = await People(id)
     dispatch({type: 'PEOPLE_SUCCESS', payload: response.data});
