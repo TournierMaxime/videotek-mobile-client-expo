@@ -22,7 +22,6 @@ const Cast = ({cast}) => {
                             style={styles.image}
                             source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}}
                         />
-                        <Text style={styles.originalName}>{item.original_title}</Text>
                     </TouchableOpacity>
                  : 
                     <TouchableOpacity onPress={() => navigation.navigate('Details Serie', {id: item.id, title: item.original_name})}>
@@ -30,7 +29,6 @@ const Cast = ({cast}) => {
                             style={styles.image}
                             source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}}
                         />
-                        <Text style={styles.originalName}>{item.original_name}</Text>
                     </TouchableOpacity>
                  }
               </View>

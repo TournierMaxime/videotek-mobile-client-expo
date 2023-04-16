@@ -1,6 +1,6 @@
 const image = {
-    width: 160,
-    height: 260,
+    width: 80,
+    height: 130,
     resizeMode: 'contain',
     borderRadius: 15,
     marginLeft: 15,

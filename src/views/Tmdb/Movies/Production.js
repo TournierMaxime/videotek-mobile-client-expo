@@ -7,7 +7,7 @@ const Production = ({ movie }) => {
   
   const productionCompanies = (data) => {
       return (
-        <Fragment>
+        <View style={styles.mainContainer}>
           <Text style={styles.subTitle}>Producteurs</Text>
           <FlatList 
           data={data}
@@ -26,13 +26,13 @@ const Production = ({ movie }) => {
             )
           }}
         />
-        </Fragment>
+        </View>
       )
   }
 
   const productionCountries = (data) => {
     return (
-      <Fragment>
+      <View style={styles.mainContainer}>
         <Text style={styles.subTitle}>Pays d&apos;origine</Text>
         <FlatList 
           data={data}
@@ -46,7 +46,7 @@ const Production = ({ movie }) => {
             )
           }}
         />
-      </Fragment>
+      </View>
     )
   }
 
@@ -71,7 +71,8 @@ const styles = StyleSheet.create({
     subTitle: details.subTitle,
     flatListViewContainer: details.flatListViewContainer,
     tags: details.tags,
-    productionViewContainer: details.productionViewContainer
+    productionViewContainer: details.productionViewContainer,
+    mainContainer: details.mainContainer
   });
 
 export default Production;

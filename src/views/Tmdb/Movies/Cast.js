@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, FlatList, TouchableOpacity , Image, StyleSheet} from 'react-native';
+import {View, Text, FlatList, TouchableHighlight, Image, StyleSheet} from 'react-native';
 import cast from '../../../styles/components/cast';
 import { useNavigation } from '@react-navigation/native';
 
@@ -16,7 +16,7 @@ const Cast = ({crew}) => {
           renderItem={({item}) => {
             return (
               <View style={styles.flatListViewContainer}>
-                <TouchableOpacity onPress={() => navigation.navigate('Details Person', {id: item.id, name: item.name})}>
+                <TouchableHighlight underlayColor={'transparent'} onPress={() => navigation.navigate('Details Person', {id: item.id, name: item.name})}>
                   <View>
                   <Image 
                     style={styles.image}
@@ -24,7 +24,7 @@ const Cast = ({crew}) => {
                   />
                   <Text style={styles.originalName}>{item.original_name}</Text>
                   </View>
-                </TouchableOpacity>
+                </TouchableHighlight>
               </View>
             )
           }}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, TouchableOpacity, View, StyleSheet, TextInput, FlatList, Text } from 'react-native';
 import modal from '../styles/components/modal';
 import form from '../styles/components/form';
@@ -14,13 +14,12 @@ const SearchModal = ({ visible, setVisible }) => {
     const searchResults = useSelector((state) => state.search.data.results)
     const [query, setQuery] = useState('')
 
-    const handleSearch = async () => {
+    const handleSearch = () => {
         try {
-          await dispatch(search(data.page, query));
+          dispatch(search(data.page, query))
         } catch(error) {
           console.log(error);
         }
-        setQuery('')
       };
 
       const renderItemContent = (item) => {
@@ -49,15 +48,28 @@ const SearchModal = ({ visible, setVisible }) => {
         return null;
       };
 
+      const handleModalClose = () => {
+        setVisible(false);
+        setQuery('');
+        dispatch({ type: 'SEARCH_RESET_REQUEST' });
+      };
+
+  
+  useEffect(() => {
+    if (query === '') {
+        dispatch({ type: 'SEARCH_RESET_REQUEST' });
+    } else {
+        dispatch(search(data.page, query));
+    }
+  }, [query, dispatch]);
+  
     return (
         <View style={styles.container}>
           <Modal
             animationType="slide"
             transparent={true}
             visible={visible}
-            onRequestClose={() => {
-              setVisible(false);
-            }}>
+            onRequestClose={handleModalClose}>
             <View style={styles.modalView}>
                 <View style={styles.closeContainer}>
                     <TouchableOpacity onPress={() => { setVisible(!visible) }}>

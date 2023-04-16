@@ -11,21 +11,13 @@ import details from '../../../styles/pages/details';
 const DetailsPeople = ({ route }) => {
   const dispatch = useDispatch();
   const { id } = route.params;
-  const { data: people, loading: peopleLoading, error: peopleError } = useSelector((state) => state.peopleDetails);
-  const { data: cast, loading: castLoading, error: castError } = useSelector((state) => state.peopleCareer);
+  const people = useSelector((state) => state.peopleDetails.data);
+  const cast = useSelector((state) => state.peopleCareer.data);
 
   useEffect(() => {
     dispatch(peopleCareer(id));
     dispatch(peopleDetails(id));
   }, [dispatch, id]);
-
-  if (peopleLoading || castLoading) {
-    return <Text>Loading...</Text>
-  }
-
-  if (peopleError || castError) {
-    return <Text>Error</Text>
-  }
 
   return (
     <ScrollView style={styles.scrollView}>
@@ -47,7 +39,7 @@ const DetailsPeople = ({ route }) => {
           <Text style={styles.textOverview}>{truncateOverview(people.biography, 400)}</Text>
         </View>
       </View>
-      <Cast cast={cast} />
+       <Cast cast={cast} />
     </ScrollView>
   );
 };
