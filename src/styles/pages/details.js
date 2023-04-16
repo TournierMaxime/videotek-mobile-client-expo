@@ -162,6 +162,10 @@ const directorTitle = {
     marginTop: 15
 }
 
+const productionViewContainer = {
+    marginVertical: 25
+}
+
 export default { 
     title,
     subTitle,
@@ -184,10 +188,6 @@ export default {
     genreText,
     directorsViewContainer,
     directorText,
-    directorTitle
-
-
-
-
-
+    directorTitle,
+    productionViewContainer
  }

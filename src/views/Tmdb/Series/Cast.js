@@ -11,7 +11,7 @@ const Cast = ({crew}) => {
         <Text style={styles.castTitle}>Distribution</Text>
         <FlatList 
           data={crew?.cast}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.id.toString()}
           horizontal={true}
           renderItem={({item}) => {
             return (

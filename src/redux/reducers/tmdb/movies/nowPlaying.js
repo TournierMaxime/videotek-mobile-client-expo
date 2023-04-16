@@ -38,31 +38,31 @@ export default function nowPlayingReducer(state = initialState, action) {
         };
       }
       break;
-      case 'NOW_PLAYING_SUCCESS':
-        if (action.target === 'nowPlaying') {
-          return {
-            ...state,
-            data: {
-              ...state.data,
-              results: action.payload.results,
-              page: action.payload.page,
-              total_pages: action.payload.total_pages,
-              loading: false,
-            },
-          };
-        } else if (action.target === 'nowPlayingPagination') {
-          return {
-            ...state,
-            paginationData: {
-              ...state.paginationData,
-              results: action.payload.results,
-              page: action.payload.page,
-              total_pages: action.payload.total_pages,
-              loading: false,
-            },
-          };
-        }
-        break;
+    case 'NOW_PLAYING_SUCCESS':
+      if (action.target === 'nowPlaying') {
+        return {
+          ...state,
+          data: {
+            ...state.data,
+            results: action.payload.results,
+            page: action.payload.page,
+            total_pages: action.payload.total_pages,
+            loading: false,
+          },
+        };
+      } else if (action.target === 'nowPlayingPagination') {
+        return {
+          ...state,
+          paginationData: {
+            ...state.paginationData,
+            results: action.payload.results,
+            page: action.payload.page,
+            total_pages: action.payload.total_pages,
+            loading: false,
+          },
+        };
+      }
+      break;
     case 'NOW_PLAYING_FAILURE':
       if (action.target === 'nowPlaying') {
         return {

@@ -22,4 +22,14 @@ const flatListViewContainer = {
     justifyContent: 'space-between'
 }
 
-export default { image, castTitle, originalName, flatListViewContainer }
+const castViewContainer = {
+    marginVertical: 25
+}
+
+export default {
+    image,
+    castTitle,
+    originalName,
+    flatListViewContainer,
+    castViewContainer
+}

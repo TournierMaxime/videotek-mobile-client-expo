@@ -16,7 +16,7 @@ const DetailsSerie = ({route}) => {
     const dispatch = useDispatch();
     const serie = useSelector((state) => state.serieDetails.data)
     const crew = useSelector((state) => state.serieCrew.data)
-    const { id } = route.params;
+  const { id } = route.params;
 
     useEffect(() => {
         dispatch(serieDetails(id))
