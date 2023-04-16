@@ -8,7 +8,7 @@ const Cast = ({cast}) => {
 
   return (
     <View>
-        <Text style={styles.castTitle}>Distribution</Text>
+        <Text style={styles.castTitle}>Filmographie</Text>
         <FlatList 
           data={cast?.cast}
           keyExtractor={item => item.id.toString()}

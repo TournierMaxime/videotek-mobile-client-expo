@@ -28,7 +28,7 @@ const Production = ({ serie }) => {
     )
   }
 
-/*   const productionCompanies = (data) => {
+  const productionCompanies = (data) => {
     if (!data || data.length === 0) return null;
     return (
       <Fragment>
@@ -71,15 +71,15 @@ const Production = ({ serie }) => {
         />
       </Fragment>
     )
-  } */
+  }
 
   return (
     <View>
         <Text style={styles.title}>Fiche Technique</Text>
         <Text style={styles.subTitle}>Status: {serie.status}</Text>
         <View>{networks(serie?.networks)}</View>
-        {/* <View>{serie?.production_companies ? productionCompanies(serie?.production_companies) : null}</View> */}
-        {/* <View>{serie?.production_countries ? productionCountries(serie?.production_countries) : null}</View>  */}
+        <View>{serie?.production_companies ? productionCompanies(serie?.production_companies) : null}</View>
+        <View>{serie?.production_countries ? productionCountries(serie?.production_countries) : null}</View> 
         <Text style={styles.subTitle}>Premier épisode: {moment(serie.first_air_date).format('DD/MM/YYYY')}</Text>
         <Text style={styles.subTitle}>Saisons: {serie.number_of_seasons}</Text>
         <Text style={styles.subTitle}>Episodes: {serie.number_of_episodes}</Text>

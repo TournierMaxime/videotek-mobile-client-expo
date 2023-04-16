@@ -16,24 +16,33 @@ const NowPlaying = () => {
   const [allResults, setAllResults] = useState([])
   const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
-        setIsLoading(true);
-        dispatch(nowPlaying(currentPage, 'nowPlayingPagination')).then(() => {
-            setIsLoading(false);
-        }).catch(() => {
-            setIsLoading(false);
-        });
-    }, [dispatch, currentPage])
+useEffect(() => {
+  const fetchData = async () => {
+    setIsLoading(true);
+    try {
+      await dispatch(nowPlaying(currentPage, 'nowPlayingPagination'));
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+    }
+  };
 
-      useEffect(() => {
-        if (nowPlayingResults?.length > 0) {
-          if (currentPage > 1) {
-            setAllResults((prevResults) => [...prevResults, ...nowPlayingResults]);
-          } else {
-            setAllResults(nowPlayingResults);
-          }
-        }
-      }, [nowPlayingResults]);
+  fetchData();
+}, [dispatch, currentPage]);
+
+useEffect(() => {
+  const updateResults = async () => {
+    if (nowPlayingResults?.length > 0) {
+      if (currentPage > 1) {
+        setAllResults((prevResults) => [...prevResults, ...nowPlayingResults]);
+      } else {
+        setAllResults(nowPlayingResults);
+      }
+    }
+  };
+
+  updateResults();
+}, [nowPlayingResults]);
 
 return (
         <View style={styles.container}>

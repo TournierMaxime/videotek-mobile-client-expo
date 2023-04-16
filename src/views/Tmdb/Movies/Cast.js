@@ -13,16 +13,13 @@ const Cast = ({crew}) => {
           data={crew?.cast}
           keyExtractor={item => item.id.toString()}
           horizontal={true}
-          renderItem={({item}) => {
+        renderItem={({ item }) => {
+            const profilePath = item.profile_path ? `https://image.tmdb.org/t/p/original/${item.profile_path}` : null
             return (
               <View style={styles.flatListViewContainer}>
                 <TouchableHighlight underlayColor={'transparent'} onPress={() => navigation.navigate('Details Person', {id: item.id, name: item.name})}>
                   <View>
-                  <Image 
-                    style={styles.image}
-                    source={{uri: `https://image.tmdb.org/t/p/original/${item.profile_path}`}}
-                  />
-                  <Text style={styles.originalName}>{item.original_name}</Text>
+                    {profilePath ? <Image style={styles.image} source={{uri: profilePath}} /> : null}
                   </View>
                 </TouchableHighlight>
               </View>
