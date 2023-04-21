@@ -1,6 +1,6 @@
 const image = {
-    width: 160,
-    height: 260,
+    width: 80,
+    height: 130,
     resizeMode: 'contain',
     borderRadius: 15,
     marginLeft: 15,
@@ -22,4 +22,14 @@ const flatListViewContainer = {
     justifyContent: 'space-between'
 }
 
-export default { image, castTitle, originalName, flatListViewContainer }
+const castViewContainer = {
+    marginVertical: 25
+}
+
+export default {
+    image,
+    castTitle,
+    originalName,
+    flatListViewContainer,
+    castViewContainer
+}

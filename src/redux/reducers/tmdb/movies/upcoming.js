@@ -15,7 +15,7 @@ const initialState = {
   },
 };
 
-export default function upcomingReducer(state = initialState, action) {
+export default function nowPlayingReducer(state = initialState, action) {
   switch (action.type) {
     case 'UPCOMING_REQUEST':
       if (action.target === 'upcoming') {
@@ -38,31 +38,31 @@ export default function upcomingReducer(state = initialState, action) {
         };
       }
       break;
-      case 'UPCOMING_SUCCESS':
-        if (action.target === 'upcoming') {
-          return {
-            ...state,
-            data: {
-              ...state.data,
-              results: action.payload.results,
-              page: action.payload.page,
-              total_pages: action.payload.total_pages,
-              loading: false,
-            },
-          };
-        } else if (action.target === 'upcomingPagination') {
-          return {
-            ...state,
-            paginationData: {
-              ...state.paginationData,
-              results: action.payload.results,
-              page: action.payload.page,
-              total_pages: action.payload.total_pages,
-              loading: false,
-            },
-          };
-        }
-        break;
+    case 'UPCOMING_SUCCESS':
+      if (action.target === 'upcoming') {
+        return {
+          ...state,
+          data: {
+            ...state.data,
+            results: action.payload.results,
+            page: action.payload.page,
+            total_pages: action.payload.total_pages,
+            loading: false,
+          },
+        };
+      } else if (action.target === 'upcomingPagination') {
+        return {
+          ...state,
+          paginationData: {
+            ...state.paginationData,
+            results: action.payload.results,
+            page: action.payload.page,
+            total_pages: action.payload.total_pages,
+            loading: false,
+          },
+        };
+      }
+      break;
     case 'UPCOMING_FAILURE':
       if (action.target === 'upcoming') {
         return {

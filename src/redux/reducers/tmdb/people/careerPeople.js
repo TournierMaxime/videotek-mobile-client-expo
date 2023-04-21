@@ -5,21 +5,21 @@ const initialState = {
     error: null,
     };
     
-    export default function peopleReducer(state = initialState, action) {
+    export default function peopleCareerReducer(state = initialState, action) {
       switch (action.type) {
-        case 'PEOPLE_REQUEST':
+        case 'PEOPLE_CAREER_REQUEST':
           return {
             ...state,
             loading: true,
             error: null
           };
-        case 'PEOPLE_SUCCESS':
+        case 'PEOPLE_CAREER_SUCCESS':
           return {
             ...state,
             data: action.payload,
             loading: false,
           };
-        case 'PEOPLE_FAILURE':
+        case 'PEOPLE_CAREER_FAILURE':
           return {
             ...state,
             error: action.payload,

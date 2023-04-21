@@ -64,7 +64,7 @@ function App({ isAuthenticated }) {
               name="Details Person"
               component={DetailsPeople}
               options={({ route }) => ({
-                name: route.params.name,
+                title: route.params.name,
               })}
             />
           </Fragment>

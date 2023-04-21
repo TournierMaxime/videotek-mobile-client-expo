@@ -8,13 +8,12 @@ const Cast = ({cast}) => {
 
   return (
     <View>
-        <Text style={styles.castTitle}>Distribution</Text>
+        <Text style={styles.castTitle}>Filmographie</Text>
         <FlatList 
-          data={cast?.cast?.slice(0, 8)}
-          keyExtractor={item => item.id}
+          data={cast?.cast}
+          keyExtractor={item => item.id.toString()}
           horizontal={true}
           renderItem={({item}) => {
-            console.log(item.id)
             return (
               <View style={styles.flatListViewContainer}>
                 {item.original_title ?
@@ -23,7 +22,6 @@ const Cast = ({cast}) => {
                             style={styles.image}
                             source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}}
                         />
-                        <Text style={styles.originalName}>{item.original_title}</Text>
                     </TouchableOpacity>
                  : 
                     <TouchableOpacity onPress={() => navigation.navigate('Details Serie', {id: item.id, title: item.original_name})}>
@@ -31,7 +29,6 @@ const Cast = ({cast}) => {
                             style={styles.image}
                             source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}}
                         />
-                        <Text style={styles.originalName}>{item.original_name}</Text>
                     </TouchableOpacity>
                  }
               </View>

@@ -1,21 +1,19 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {View, Text, FlatList, Image, StyleSheet} from 'react-native';
 import details from '../../../styles/pages/details';
 import moment from 'moment';
 
-const Production = ({serie}) => {
-
-  return (
-    <View>
-        <Text style={styles.title}>Fiche Technique</Text>
-        <Text style={styles.subTitle}>Status: {serie.status}</Text>
-
+const Production = ({ serie }) => {
+  
+  const networks = (data) => {
+    return (
+      <Fragment>
         <Text style={styles.subTitle}>Diffuseurs</Text>
         <FlatList 
-          data={serie?.networks}
+          data={data}
           keyExtractor={item => item.id}
           horizontal={true}
-          renderItem={({item}) => {
+          renderItem={({ item }) => {
             return (
               <View style={styles.flatListViewContainer}>
                 <Image 
@@ -26,9 +24,17 @@ const Production = ({serie}) => {
             )
           }}
         />
+      </Fragment>
+    )
+  }
+
+  const productionCompanies = (data) => {
+    if (!data || data.length === 0) return null;
+    return (
+      <Fragment>
         <Text style={styles.subTitle}>Producteurs</Text>
         <FlatList 
-          data={serie?.production_companies}
+          data={data}
           keyExtractor={item => item.id}
           horizontal={true}
           renderItem={({item}) => {
@@ -42,9 +48,17 @@ const Production = ({serie}) => {
             )
           }}
         />
+      </Fragment>
+    )
+  }
+
+  const productionCountries = (data) => {
+    if (!data || data.length === 0) return null;
+    return (
+      <Fragment>
         <Text style={styles.subTitle}>Pays d&apos;origine</Text>
         <FlatList 
-          data={serie?.production_countries}
+          data={data}
           keyExtractor={item => item.iso_3166_1}
           horizontal={true}
           renderItem={({item}) => {
@@ -55,6 +69,17 @@ const Production = ({serie}) => {
             )
           }}
         />
+      </Fragment>
+    )
+  }
+
+  return (
+    <View>
+        <Text style={styles.title}>Fiche Technique</Text>
+        <Text style={styles.subTitle}>Status: {serie.status}</Text>
+        <View>{networks(serie?.networks)}</View>
+        <View>{serie?.production_companies ? productionCompanies(serie?.production_companies) : null}</View>
+        <View>{serie?.production_countries ? productionCountries(serie?.production_countries) : null}</View> 
         <Text style={styles.subTitle}>Premier épisode: {moment(serie.first_air_date).format('DD/MM/YYYY')}</Text>
         <Text style={styles.subTitle}>Saisons: {serie.number_of_seasons}</Text>
         <Text style={styles.subTitle}>Episodes: {serie.number_of_episodes}</Text>

@@ -1,9 +1,14 @@
 
 const initialState = {
-    data: [],
+    data: {
+        page: 1,
+        results: [],
+        total_pages: 0,
+        total_results: 0
+    },
     loading: false,
     error: null,
-    };
+};
     
     export default function searchReducer(state = initialState, action) {
       switch (action.type) {
@@ -24,6 +29,14 @@ const initialState = {
             ...state,
             error: action.payload,
             loading: false,
+          };
+        case 'SEARCH_RESET_REQUEST':
+          return {
+            ...state,
+            data: {
+              ...state.data,
+              results: []
+            }
           };
         default:
           return state;

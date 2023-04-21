@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { movieTrailer } from '../../../redux/actions/tmdb/movies/trailer';
 import { useDispatch, useSelector } from 'react-redux';
-import YoutubeIframe from '../../../utils/YouTubeIframe';
+//import YoutubeIframe from '../../../utils/YouTubeIframe';
+import { Button, Linking } from 'react-native';
 
 const extractFirstTrailerResult = (trailer) => {
     if (!trailer || !trailer.results || trailer.results.length === 0) {
@@ -16,6 +17,11 @@ const extractFirstTrailerResult = (trailer) => {
     const trailer = useSelector((state) => state.movieTrailer.data);
     const firstTrailerResult = extractFirstTrailerResult(trailer);
     const videoId = firstTrailerResult?.key;
+
+  const handleLinkTo = () => {
+    const url = `https://youtu.be/${videoId}`;
+    Linking.openURL(url);
+  }
   
     useEffect(() => {
       dispatch(movieTrailer(id))
@@ -25,7 +31,7 @@ const extractFirstTrailerResult = (trailer) => {
       return null;
     }
   
-    return <YoutubeIframe videoId={videoId} />
+    return <Button title='Trailer' onPress={handleLinkTo} />
   };
 
 

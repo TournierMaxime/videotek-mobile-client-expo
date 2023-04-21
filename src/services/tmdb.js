@@ -41,15 +41,6 @@ const Popular = (page) => {
   });
 };
 
-const People = (id) => {
-  return http.get(`/person/${id}`, {
-    params: {
-      api_key: EXPO_TMDB_API_KEY,
-      language: 'fr-FR'
-    },
-  });
-};
-
 const Search = (page, query) => {
   return http.get("/search/multi", {
     params: {
@@ -125,7 +116,7 @@ const SerieTrailer = (id) => {
   });
 };
 
-const PeopleCast = (id) => {
+const PeopleCareer = (id) => {
   return http.get(`/person/${id}/combined_credits`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
@@ -140,7 +131,6 @@ export {
   Upcoming,
   OnTheAir,
   Popular,
-  People,
   Search,
   MovieDetails,
   SerieDetails,
@@ -149,5 +139,5 @@ export {
   MovieTrailer,
   SerieCrew,
   SerieTrailer,
-  PeopleCast
+  PeopleCareer
 };

@@ -1,3 +1,8 @@
+const mainContainer = {
+    display: 'flex',
+    flexDirection: 'column'
+}
+
 const title = {
     fontSize: 18,
     margin: 5
@@ -14,8 +19,8 @@ const flatListViewContainer = {
 }
 
 const image = {
-    width: 100,
-    height: 100,
+    width: 50,
+    height: 50,
     resizeMode: 'contain',
     borderRadius: 15,
     marginLeft: 15,
@@ -162,7 +167,12 @@ const directorTitle = {
     marginTop: 15
 }
 
+const productionViewContainer = {
+    marginVertical: 25
+}
+
 export default { 
+    mainContainer,
     title,
     subTitle,
     flatListViewContainer,
@@ -184,10 +194,6 @@ export default {
     genreText,
     directorsViewContainer,
     directorText,
-    directorTitle
-
-
-
-
-
+    directorTitle,
+    productionViewContainer
  }
