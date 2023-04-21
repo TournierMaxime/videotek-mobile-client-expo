@@ -22,7 +22,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.hoggy.videotekclientexpo"
+      "package": "com.hoggy.videotekclientexpo",
+      "versionCode": 2
     },
     "web": {
       "favicon": "./assets/favicon.png"
