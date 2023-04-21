@@ -17,6 +17,10 @@
       }
     },
     "production": {
+      "env": {
+        "EXPO_TMDB_API": "https://api.themoviedb.org/3",
+        "EXPO_TMDB_API_KEY": "dfd4790495383fbc1628e14d450b9464"
+      },
       "ios": {
         "resourceClass": "m-medium"
       }
