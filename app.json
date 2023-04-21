@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "videotek-client-expo",
-    "slug": "videotek-client-expo",
-    "version": "1.0.0",
+    "name": "videotek",
+    "slug": "videotek",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
