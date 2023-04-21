@@ -13,15 +13,15 @@ const Cast = ({crew}) => {
           data={crew?.cast}
           keyExtractor={item => item.id.toString()}
           horizontal={true}
+          showsHorizontalScrollIndicator={false}
           renderItem={({item}) => {
             return (
               <View style={styles.flatListViewContainer}>
-                <TouchableOpacity onPress={() => navigation.navigate('Details Person', {id: item.id, name: item.name})}>
+                <TouchableOpacity onPress={() => navigation.navigate('DetailsPeople', {id: item.id, name: item.name})}>
                   <Image 
                     style={styles.image}
                     source={{uri: `https://image.tmdb.org/t/p/original/${item.profile_path}`}}
                   />
-                  <Text style={styles.originalName}>{item.original_name}</Text>
                 </TouchableOpacity>
               </View>
             )

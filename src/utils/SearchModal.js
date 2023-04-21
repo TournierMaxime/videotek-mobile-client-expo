@@ -40,7 +40,7 @@ const SearchModal = ({ visible, setVisible }) => {
       return (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('Details Movie', {
+            navigation.navigate('DetailsMovie', {
               id: item.id,
               title: item.original_title,
             }),
@@ -55,7 +55,7 @@ const SearchModal = ({ visible, setVisible }) => {
         return (
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('Details Serie', {
+              navigation.navigate('DetailsSerie', {
                 id: item.id,
                 title: item.original_name,
               }),
@@ -70,7 +70,7 @@ const SearchModal = ({ visible, setVisible }) => {
         return (
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('Details Person', {
+              navigation.navigate('DetailsPeople', {
                 id: item.id,
                 name: item.name,
               }),

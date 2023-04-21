@@ -4,7 +4,6 @@ import {
   Text,
   ImageBackground,
   Image,
-  ScrollView,
   StyleSheet,
   ActivityIndicator,
 } from 'react-native'
@@ -20,6 +19,7 @@ import Trailer from './Trailer'
 import Cast from './Cast'
 import Production from './Production'
 import details from '../../../styles/pages/details'
+import Refresh from '../../../utils/Refresh'
 
 const DetailsMovie = ({ route }) => {
   const dispatch = useDispatch()
@@ -27,6 +27,10 @@ const DetailsMovie = ({ route }) => {
   const crew = useSelector((state) => state.movieCrew.data)
   const { id } = route.params
   const [loading, setLoading] = useState(false)
+
+  const onRefresh = async () => {
+    await Promise.all([dispatch(movieDetails(id)), dispatch(movieCrew(id))])
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,7 +43,7 @@ const DetailsMovie = ({ route }) => {
   }, [dispatch, id])
 
   return (
-    <ScrollView style={styles.scrollView}>
+    <Refresh styles={styles.scrollView} onRefresh={onRefresh}>
       {loading ? (
         <ActivityIndicator size='large' color='#0000ff' />
       ) : (
@@ -110,7 +114,7 @@ const DetailsMovie = ({ route }) => {
       <Trailer id={id} />
       <Cast crew={crew} />
       <Production movie={movie} />
-    </ScrollView>
+    </Refresh>
   )
 }
 

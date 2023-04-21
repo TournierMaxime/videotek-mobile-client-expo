@@ -10,7 +10,8 @@ const title = {
 
 const subTitle = {
     fontSize: 16,
-    margin: 15
+    marginHorizontal: 15,
+    fontWeight: 'bold'
 }
 
 const flatListViewContainer = {
@@ -171,7 +172,14 @@ const productionViewContainer = {
     marginVertical: 25
 }
 
+const technicalSheetViewContainer = {
+    display: 'flex',
+    flexDirection: 'row',
+    marginVertical: 5
+}
+
 export default { 
+    technicalSheetViewContainer,
     mainContainer,
     title,
     subTitle,

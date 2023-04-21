@@ -13,22 +13,27 @@ const Cast = ({cast}) => {
           data={cast?.cast}
           keyExtractor={item => item.id.toString()}
           horizontal={true}
+          showsHorizontalScrollIndicator={false}
           renderItem={({item}) => {
             return (
               <View style={styles.flatListViewContainer}>
                 {item.original_title ?
-                    <TouchableOpacity onPress={() => navigation.navigate('Details Movie', {id: item.id, title: item.original_title})}>
+                    <TouchableOpacity onPress={() => navigation.navigate('DetailsMovie', {id: item.id, title: item.original_title})}>
+                      {item.poster_path ? 
                         <Image 
-                            style={styles.image}
-                            source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}}
+                          style={styles.image}
+                          source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}}
                         />
+                      : null}
                     </TouchableOpacity>
                  : 
-                    <TouchableOpacity onPress={() => navigation.navigate('Details Serie', {id: item.id, title: item.original_name})}>
+                    <TouchableOpacity onPress={() => navigation.navigate('DetailsSerie', {id: item.id, title: item.original_name})}>
+                      {item.poster_path ?
                         <Image 
-                            style={styles.image}
-                            source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}}
+                          style={styles.image}
+                          source={{uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`}}
                         />
+                       : null}
                     </TouchableOpacity>
                  }
               </View>

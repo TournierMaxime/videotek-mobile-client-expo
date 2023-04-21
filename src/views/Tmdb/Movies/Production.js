@@ -8,7 +8,9 @@ const Production = ({ movie }) => {
   const productionCompanies = (data) => {
       return (
         <View style={styles.mainContainer}>
-          <Text style={styles.subTitle}>Producteurs</Text>
+          <View style={styles.technicalSheetViewContainer}>
+            <Text style={styles.subTitle}>Producteurs</Text>
+          </View>
           <FlatList 
           data={data}
           keyExtractor={item => item.id}
@@ -33,7 +35,9 @@ const Production = ({ movie }) => {
   const productionCountries = (data) => {
     return (
       <View style={styles.mainContainer}>
-        <Text style={styles.subTitle}>Pays d&apos;origine</Text>
+        <View style={styles.technicalSheetViewContainer}>
+         <Text style={styles.subTitle}>Pays d&apos;origine</Text>
+        </View>
         <FlatList 
           data={data}
           keyExtractor={item => item.iso_3166_1}
@@ -52,15 +56,25 @@ const Production = ({ movie }) => {
 
   return (
     <View style={styles.productionViewContainer}>
-      <Text style={styles.title}>Fiche Technique</Text>  
-      <Text style={styles.subTitle}>{productionCompanies(movie?.production_companies)}</Text>
-      <Text style={styles.subTitle}>{productionCountries(movie?.production_countries)}</Text>
+      <View style={styles.technicalSheetViewContainer}>
+        <Text style={styles.title}>Fiche Technique</Text> 
+      </View> 
       <Fragment>
-        {movie.budget ? <Text style={styles.subTitle}>Budget: {numberWithCommas(movie.budget)}$</Text> : null}
+        {movie.budget ? 
+          <View style={styles.technicalSheetViewContainer}>
+            <Text style={styles.subTitle}>Budget {numberWithCommas(movie.budget)}$</Text>
+          </View>
+        : null}
       </Fragment>
       <Fragment>
-        {movie.revenue ? <Text style={styles.subTitle}>Recette: {numberWithCommas(movie.revenue)}$</Text> : null}
+        {movie.revenue ? 
+          <View style={styles.technicalSheetViewContainer}>
+            <Text style={styles.subTitle}>Recette {numberWithCommas(movie.revenue)}$</Text>
+          </View>
+          : null}
       </Fragment>
+      {productionCompanies(movie?.production_companies)}
+      {productionCountries(movie?.production_countries)}
     </View>
   );
 };
@@ -72,7 +86,8 @@ const styles = StyleSheet.create({
     flatListViewContainer: details.flatListViewContainer,
     tags: details.tags,
     productionViewContainer: details.productionViewContainer,
-    mainContainer: details.mainContainer
+    mainContainer: details.mainContainer,
+    technicalSheetViewContainer: details.technicalSheetViewContainer
   });
 
 export default Production;

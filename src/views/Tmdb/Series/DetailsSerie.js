@@ -4,7 +4,6 @@ import {
   Text,
   ImageBackground,
   Image,
-  ScrollView,
   StyleSheet,
   ActivityIndicator,
 } from 'react-native'
@@ -19,6 +18,7 @@ import details from '../../../styles/pages/details'
 import Trailer from './Trailer'
 import Cast from './Cast'
 import Production from './Production'
+import Refresh from '../../../utils/Refresh'
 
 const DetailsSerie = ({ route }) => {
   const dispatch = useDispatch()
@@ -26,6 +26,10 @@ const DetailsSerie = ({ route }) => {
   const crew = useSelector((state) => state.serieCrew.data)
   const { id } = route.params
   const [loading, setLoading] = useState(false)
+
+  const onRefresh = async () => {
+    await Promise.all([dispatch(serieDetails(id)), dispatch(serieCrew(id))])
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +42,7 @@ const DetailsSerie = ({ route }) => {
   }, [dispatch, id])
 
   return (
-    <ScrollView style={styles.scrollView}>
+    <Refresh styles={styles.scrollView} onRefresh={onRefresh}>
       {loading ? (
         <ActivityIndicator size='large' color='#0000ff' />
       ) : (
@@ -105,7 +109,7 @@ const DetailsSerie = ({ route }) => {
           </Fragment>
         )
       )}
-    </ScrollView>
+    </Refresh>
   )
 }
 

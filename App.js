@@ -6,7 +6,6 @@ import AuthScreen from "./src/views/Auth/Auth";
 import LoginScreen from "./src/views/Auth/Login";
 import ForgetPasswordScreen from "./src/views/Auth/ForgetPassword";
 import RegisterScreen from "./src/views/Auth/Register";
-import Navbar from "./src/components/Layout/Navbar";
 import store from "./src/redux/store";
 import Header from "./src/components/Layout/Header";
 import NowPlaying from "./src/views/Tmdb/Movies/NowPlaying";
@@ -16,6 +15,7 @@ import OnTheAir from "./src/views/Tmdb/Series/OnTheAir";
 import Popular from "./src/views/Tmdb/Series/Popular";
 import DetailsSerie from "./src/views/Tmdb/Series/DetailsSerie";
 import DetailsPeople from "./src/views/Tmdb/People/DetailsPeople";
+import Home from "./src/views/Home";
 
 const RootStack = createNativeStackNavigator();
 
@@ -26,45 +26,52 @@ function App({ isAuthenticated }) {
         {!isAuthenticated ? (
           <Fragment>
             <RootStack.Screen
-              name="Main"
-              component={Navbar}
-              options={{ header: () => <Header /> }}
+              name="Home"
+              component={Home}
+              options={{ header: () => <Header backButton={false} /> }}
             />
             <RootStack.Screen
-              name="En ce moment"
+              name="NowPlaying"
               component={NowPlaying}
+              options={{ header: () => <Header backButton={true} /> }}
             />
             <RootStack.Screen
-              name="A Venir"
+              name="Upcoming"
               component={Upcoming}
+              options={{ header: () => <Header backButton={true} /> }}
             />
             <RootStack.Screen
-              name="Details Movie"
+              name="DetailsMovie"
               component={DetailsMovie}
               options={({ route }) => ({
                 title: route.params.title,
+                header: () => <Header backButton={true} />
               })}
             />
             <RootStack.Screen
-              name="Série en cours de diffusion"
+              name="OnTheAir"
               component={OnTheAir}
+              options={{ header: () => <Header backButton={true} /> }}
             />
             <RootStack.Screen
-              name="Séries populaires"
+              name="Popular"
               component={Popular}
+              options={{ header: () => <Header backButton={true} /> }}
             />
             <RootStack.Screen
-              name="Details Serie"
+              name="DetailsSerie"
               component={DetailsSerie}
               options={({ route }) => ({
                 title: route.params.title,
+                header: () => <Header backButton={true} />
               })}
             />
             <RootStack.Screen
-              name="Details Person"
+              name="DetailsPeople"
               component={DetailsPeople}
               options={({ route }) => ({
                 title: route.params.name,
+                header: () => <Header backButton={true} />
               })}
             />
           </Fragment>

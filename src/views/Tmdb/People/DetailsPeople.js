@@ -3,7 +3,6 @@ import {
   View,
   Text,
   Image,
-  ScrollView,
   StyleSheet,
   ActivityIndicator,
 } from 'react-native'
@@ -14,6 +13,7 @@ import { LinearGradient } from 'expo-linear-gradient'
 import { truncateOverview } from '../../../utils/Truncate'
 import Cast from './Cast'
 import details from '../../../styles/pages/details'
+import Refresh from '../../../utils/Refresh'
 
 const DetailsPeople = ({ route }) => {
   const dispatch = useDispatch()
@@ -21,6 +21,13 @@ const DetailsPeople = ({ route }) => {
   const people = useSelector((state) => state.peopleDetails.data)
   const cast = useSelector((state) => state.peopleCareer.data)
   const [loading, setLoading] = useState(false)
+
+  const onRefresh = async () => {
+    await Promise.all([
+      dispatch(peopleCareer(id)),
+      dispatch(peopleDetails(id)),
+    ])
+  }
 
   const biography = (data) => {
     if (data == '') return null
@@ -46,7 +53,7 @@ const DetailsPeople = ({ route }) => {
   }, [dispatch, id])
 
   return (
-    <ScrollView style={styles.scrollView}>
+    <Refresh styles={styles.scrollView} onRefresh={onRefresh}>
       {loading ? (
         <ActivityIndicator size='large' color='#0000ff' />
       ) : (
@@ -76,7 +83,7 @@ const DetailsPeople = ({ route }) => {
           <Cast cast={cast} />
         </Fragment>
       )}
-    </ScrollView>
+    </Refresh>
   )
 }
 
