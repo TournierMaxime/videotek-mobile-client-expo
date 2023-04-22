@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect } from "react"
-import AuthScreen from "../Auth/Auth"
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native"
 import button from "../../styles/components/button"
 import { useDispatch, useSelector } from "react-redux"
@@ -7,7 +6,7 @@ import { getUser } from "../../redux/actions/users/oneUser"
 import { logoutUser } from "../../redux/actions/auth/auth"
 import { useNavigation } from "@react-navigation/native"
 import { checkAccess } from "../../utils/CheckAccess"
-import { Entypo, FontAwesome5, Feather, MaterialIcons } from 'react-native-vector-icons';
+import { Entypo, FontAwesome5, MaterialIcons } from 'react-native-vector-icons';
 import profil from "../../styles/components/profil"
 
 const UserProfile = ({ route }) => {
@@ -33,7 +32,7 @@ const UserProfile = ({ route }) => {
   return (
     <View style={styles.container}>
       {accessDenied ? (
-        <AuthScreen />
+        accessDenied
       ) : (
         <Fragment>
             {oneUser && (
@@ -46,15 +45,6 @@ const UserProfile = ({ route }) => {
                     </View>
                     <Entypo name="chevron-small-right" size={25} color="black" /> 
                   </View>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('Order')}>
-                <View style={styles.profileSectionContainer}>
-                  <View style={styles.textIconContainer}>
-                    <Feather style={styles.icon} name="shopping-cart" size={25} color="black" />
-                    <Text>Mes Commandes</Text>
-                  </View>
-                  <Entypo name="chevron-small-right" size={25} color="black" />
-                </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => handleLogout()}>
                 <View style={styles.profileSectionContainer}>

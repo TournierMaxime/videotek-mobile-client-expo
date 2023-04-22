@@ -21,12 +21,40 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import Login from './src/views/Auth/Login'
 import Register from './src/views/Auth/Register'
 import ForgetPassword from './src/views/Auth/ForgetPassword'
-import AuthScreen from './src/views/Auth/Auth'
 
 const MainStack = createNativeStackNavigator()
+const AuthStack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
 
-function MainStackNavigator() {
+const AuthStackNavigator = () => {
+  return (
+    <AuthStack.Navigator>
+      <AuthStack.Screen
+        name='Login'
+        component={Login}
+        options={() => ({
+          header: () => <Header backButton={true} />,
+        })}
+      />
+      <AuthStack.Screen
+        name='Register'
+        component={Register}
+        options={() => ({
+          header: () => <Header backButton={true} />,
+        })}
+      />
+      <AuthStack.Screen
+        name='ForgetPassword'
+        component={ForgetPassword}
+        options={() => ({
+          header: () => <Header backButton={true} />,
+        })}
+      />
+    </AuthStack.Navigator>
+  )
+}
+
+const MainStackNavigator = () => {
   const userId = useSelector((state) => state.auth.data.user.userId)
   return (
     <MainStack.Navigator>
@@ -85,34 +113,6 @@ function MainStackNavigator() {
         })}
       />
       <MainStack.Screen
-        name='Login'
-        component={Login}
-        options={() => ({
-          header: () => <Header backButton={true} />,
-        })}
-      />
-      <MainStack.Screen
-        name='Register'
-        component={Register}
-        options={() => ({
-          header: () => <Header backButton={true} />,
-        })}
-      />
-      <MainStack.Screen
-        name='ForgetPassword'
-        component={ForgetPassword}
-        options={() => ({
-          header: () => <Header backButton={true} />,
-        })}
-      />
-      <MainStack.Screen
-        name='Auth'
-        component={AuthScreen}
-        options={() => ({
-          header: () => <Header backButton={true} />,
-        })}
-      />
-      <MainStack.Screen
         name='UserProfile'
         component={UserProfile}
         initialParams={{ userId }}
@@ -124,7 +124,7 @@ function MainStackNavigator() {
   )
 }
 
-function App({ isAuthenticated, onLoginSuccess }) {
+const  App = ({ isAuthenticated, onLoginSuccess }) => {
   const userId = useSelector((state) => state.auth.data.user.userId)
 
   useEffect(() => {
@@ -174,14 +174,13 @@ function App({ isAuthenticated, onLoginSuccess }) {
               tabBarIcon: ({ color }) => (
                 <FontAwesome name='user' size={25} color={color} />
               ),
-              headerShown: false,
               tabBarLabel: '',
             })}
           />
         ) : (
           <Tab.Screen
-            name='Auth'
-            component={AuthScreen}
+            name='AuthStackNavigator'
+            component={AuthStackNavigator}
             options={() => ({
               header: () => <Header backButton={true} />,
               tabBarIcon: ({ color }) => (

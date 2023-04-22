@@ -23,13 +23,13 @@ const SearchModal = ({ visible, setVisible }) => {
   const [query, setQuery] = useState('')
 
   const resetSearch = () => {
-    setQuery('')
-    dispatch(search())
-  }
+    setQuery('');
+    dispatch({ type: 'SEARCH_RESET_REQUEST' });
+  };
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     try {
-      dispatch(search(data.page, query))
+      await dispatch(search(data.page, query))
     } catch (error) {
       console.log(error)
     }
@@ -45,6 +45,7 @@ const SearchModal = ({ visible, setVisible }) => {
               title: item.original_title,
             }),
               resetSearch()
+              setVisible(false)
           }}
         >
           <Text>{`${item.original_title} / Film`}</Text>
@@ -60,6 +61,7 @@ const SearchModal = ({ visible, setVisible }) => {
                 title: item.original_name,
               }),
                 resetSearch()
+                setVisible(false)
             }}
           >
             <Text>{`${item.name} / Série`}</Text>
@@ -75,6 +77,7 @@ const SearchModal = ({ visible, setVisible }) => {
                 name: item.name,
               }),
                 resetSearch()
+                setVisible(false)
             }}
           >
             <Text>{`${item.name} / Célébrité`}</Text>
@@ -86,25 +89,16 @@ const SearchModal = ({ visible, setVisible }) => {
   }
 
   const handleModalClose = () => {
-    setVisible(false)
-    setQuery('')
-    dispatch({ type: 'SEARCH_RESET_REQUEST' })
-    resetSearch()
-  }
+    setVisible(false);
+    setQuery('');
+    resetSearch();
+  };
 
   useEffect(() => {
     if (!visible) {
       resetSearch()
     }
   }, [visible])
-
-  useEffect(() => {
-    if (query === '') {
-      dispatch({ type: 'SEARCH_RESET_REQUEST' })
-    } else {
-      dispatch(search(data.page, query))
-    }
-  }, [query, dispatch])
 
   return (
     <View style={styles.container}>
