@@ -6,6 +6,7 @@ import StatusSeries from '../../../utils/StatusSeries'
 
 const Production = ({ serie }) => {
   const networks = (data) => {
+    if (!data || data.length === 0) return null
     return (
       <Fragment>
         <View style={styles.technicalSheetViewContainer}>

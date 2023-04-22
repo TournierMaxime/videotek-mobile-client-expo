@@ -13,13 +13,12 @@ import { movieCrew } from '../../../redux/actions/tmdb/movies/movieCrew'
 import { LinearGradient } from 'expo-linear-gradient'
 import Runtime from '../../../utils/RunTime'
 import Rate from '../../../utils/Rate'
-import { truncateOverview } from '../../../utils/Truncate'
-import moment from 'moment/moment'
 import Trailer from './Trailer'
 import Cast from './Cast'
 import Production from './Production'
 import details from '../../../styles/pages/details'
 import Refresh from '../../../utils/Refresh'
+import OverView from '../../../utils/OverView'
 
 const DetailsMovie = ({ route }) => {
   const dispatch = useDispatch()
@@ -68,9 +67,7 @@ const DetailsMovie = ({ route }) => {
                     uri: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
                   }}
                 />
-                <Text style={styles.releaseDate}>
-                  Sortie : {moment(movie.release_date).format('DD/MM/YYYY')}
-                </Text>
+                <Rate rate={movie.vote_average} />
               </View>
 
               <View style={styles.infoViewContainer}>
@@ -85,11 +82,11 @@ const DetailsMovie = ({ route }) => {
                   ))}
                 </View>
 
-                <Rate rate={movie.vote_average} />
                 <Text style={styles.directorTitle}>Réalisation</Text>
 
                 <View style={styles.directorsViewContainer}>
                   {crew?.crew?.map((crew) => {
+                    if (!crew.job === 'Director') return null
                     if (crew.job === 'Director') {
                       return (
                         <Text key={crew.id} style={styles.directorText}>
@@ -102,12 +99,8 @@ const DetailsMovie = ({ route }) => {
               </View>
             </View>
 
-            <View style={styles.viewOverviewContainer}>
-              <Text style={styles.headerTitle}>Synopsis</Text>
-              <Text style={styles.textOverview}>
-                {truncateOverview(movie.overview, 400)}
-              </Text>
-            </View>
+            <OverView content={movie.overview} />
+
           </View>
         )
       )}
@@ -128,9 +121,7 @@ const styles = StyleSheet.create({
   mainViewContainer: details.mainViewContainer,
   linearGradient: details.linearGradient,
   imageBackground: details.imageBackground,
-  viewOverviewContainer: details.viewOverviewContainer,
   headerTitle: details.headerTitle,
-  textOverview: details.textOverview,
   headerViewContainer: details.headerViewContainer,
   posterViewContainer: details.posterViewContainer,
   posterPath: details.posterPath,

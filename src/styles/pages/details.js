@@ -1,3 +1,5 @@
+import { verticalScale, horizontalScale, moderateScale } from '../../utils/Responsive'
+
 const mainContainer = {
     display: 'flex',
     flexDirection: 'column'
@@ -48,7 +50,7 @@ const mainViewContainer = {
     display: 'flex',
     position: 'relative',
     width: '100%',
-    height: 500
+    height: horizontalScale(500)
 }
 
 const linearGradient = {

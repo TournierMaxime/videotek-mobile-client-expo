@@ -13,12 +13,12 @@ import { serieCrew } from '../../../redux/actions/tmdb/series/serieCrew'
 import { LinearGradient } from 'expo-linear-gradient'
 import Runtime from '../../../utils/RunTime'
 import Rate from '../../../utils/Rate'
-import { truncateOverview } from '../../../utils/Truncate'
 import details from '../../../styles/pages/details'
 import Trailer from './Trailer'
 import Cast from './Cast'
 import Production from './Production'
 import Refresh from '../../../utils/Refresh'
+import OverView from '../../../utils/OverView'
 
 const DetailsSerie = ({ route }) => {
   const dispatch = useDispatch()
@@ -68,7 +68,7 @@ const DetailsSerie = ({ route }) => {
                       uri: `https://image.tmdb.org/t/p/original${serie?.poster_path}`,
                     }}
                   />
-                  <Text style={styles.releaseDate}>Critique</Text>
+                  <Rate rate={serie.vote_average} />
                 </View>
 
                 <View style={styles.infoViewContainer}>
@@ -83,25 +83,22 @@ const DetailsSerie = ({ route }) => {
                     ))}
                   </View>
 
-                  <Rate rate={serie.vote_average} />
                   <Text style={styles.directorTitle}>Réalisation</Text>
 
                   <View style={styles.directorsViewContainer}>
-                    {serie?.created_by?.map((crew) => (
-                      <Text key={crew.id} style={styles.directorText}>
-                        {crew.name}
-                      </Text>
-                    ))}
+                    {serie?.created_by?.map((crew) => {
+                      if (!crew.name) return null
+                      return (
+                        <Text key={crew.id} style={styles.directorText}>
+                          {crew.name}
+                        </Text>
+                      )
+                    })}
                   </View>
                 </View>
               </View>
 
-              <View style={styles.viewOverviewContainer}>
-                <Text style={styles.headerTitle}>Synopsis</Text>
-                <Text style={styles.textOverview}>
-                  {truncateOverview(serie.overview, 400)}
-                </Text>
-              </View>
+              <OverView content={serie.overview} />
             </View>
             <Trailer id={id} />
             <Cast crew={crew} />
@@ -123,9 +120,7 @@ const styles = StyleSheet.create({
   mainViewContainer: details.mainViewContainer,
   linearGradient: details.linearGradient,
   imageBackground: details.imageBackground,
-  viewOverviewContainer: details.viewOverviewContainer,
   headerTitle: details.headerTitle,
-  textOverview: details.textOverview,
   headerViewContainer: details.headerViewContainer,
   posterViewContainer: details.posterViewContainer,
   posterPath: details.posterPath,
