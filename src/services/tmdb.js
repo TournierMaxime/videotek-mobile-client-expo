@@ -125,6 +125,16 @@ const PeopleCareer = (id) => {
   });
 };
 
+const Trending = (page) => {
+  return http.get(`/trending/all/day`, {
+    params: {
+      api_key: EXPO_TMDB_API_KEY,
+      language: 'fr-FR',
+      page
+    },
+  });
+};
+
 
 export { 
   NowPlaying,
@@ -139,5 +149,6 @@ export {
   MovieTrailer,
   SerieCrew,
   SerieTrailer,
-  PeopleCareer
+  PeopleCareer,
+  Trending
 };

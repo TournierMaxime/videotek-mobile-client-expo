@@ -6,7 +6,7 @@ const Register = async (data) => {
 };
 
 const Login = (data) => {
-  return http.post("/auth/login", data);
+  return http.post("/auth/login", data, { withCredentials: true });
 };
 
 const ForgetPasswordReq = async (data) => {
@@ -21,7 +21,9 @@ const ResetPasswordReq = async (data, token) => {
 
 const Logout = async () => {
   await http.post("/auth/logout", {}, { withCredentials: true });
+  return {};
 };
+
 
 const ConfirmEmail = (verificationCode) => {
   return http.post(`/auth/verify/${verificationCode}`);

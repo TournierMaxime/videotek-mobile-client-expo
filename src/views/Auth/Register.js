@@ -11,6 +11,7 @@ import {
 import {createUser} from '../../redux/actions/auth/register';
 //import {useNavigation} from '@react-navigation/native';
 import button from '../../styles/components/button';
+import form from '../../styles/components/form';
 import { ToastSuccess, ToastError } from '../../utils/Toast';
 import ToastConfig from '../../utils/ToastConfig';
 
@@ -63,9 +64,9 @@ const RegisterScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  formContainer: button.formContainer,
-  formLabel: button.formLabel,
-  formInput: button.formInput,
+  formContainer: form.formContainer,
+  formLabel: form.formLabel,
+  formInput: form.formInput,
   buttonText: button.buttonText,
   formButtonRegister: button.formButtonRegister,
   buttonContainer: button.buttonContainer,

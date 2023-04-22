@@ -1,5 +1,6 @@
 const initialState = {
   data: {
+    dates: {},
     results: [],
     page: null,
     total_pages: null,
@@ -7,6 +8,7 @@ const initialState = {
     error: null,
   },
   paginationData: {
+    dates: {},
     results: [],
     page: null,
     total_pages: null,
@@ -15,7 +17,7 @@ const initialState = {
   },
 };
 
-export default function nowPlayingReducer(state = initialState, action) {
+export default function upcomingReducer(state = initialState, action) {
   switch (action.type) {
     case 'UPCOMING_REQUEST':
       if (action.target === 'upcoming') {
@@ -44,6 +46,7 @@ export default function nowPlayingReducer(state = initialState, action) {
           ...state,
           data: {
             ...state.data,
+            dates: action.payload.dates,
             results: action.payload.results,
             page: action.payload.page,
             total_pages: action.payload.total_pages,
@@ -55,6 +58,7 @@ export default function nowPlayingReducer(state = initialState, action) {
           ...state,
           paginationData: {
             ...state.paginationData,
+            dates: action.payload.dates,
             results: action.payload.results,
             page: action.payload.page,
             total_pages: action.payload.total_pages,

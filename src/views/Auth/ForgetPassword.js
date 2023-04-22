@@ -13,6 +13,7 @@ import {
   resetPassword,
 } from '../../redux/actions/auth/password';
 import button from '../../styles/components/button';
+import form from '../../styles/components/form';
 import { ToastSuccess, ToastError } from '../../utils/Toast';
 import ToastConfig from '../../utils/ToastConfig';
 
@@ -140,9 +141,9 @@ const ForgetPasswordScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  formContainer: button.formContainer,
-  formLabel: button.formLabel,
-  formInput: button.formInput,
+  formContainer: form.formContainer,
+  formLabel: form.formLabel,
+  formInput: form.formInput,
   buttonText: button.buttonText,
   formButton: button.formButton,
 });

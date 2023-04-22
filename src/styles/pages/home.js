@@ -28,9 +28,9 @@ const title = {
 }
 
 const image = {
-    width: 160,
-    height: 260,
-    resizeMode: 'contain',
+    width: 133,
+    height: 216,
+    resizeMode: 'cover',
     borderRadius: 15,
     marginTop: 15,
     marginLeft: 15,

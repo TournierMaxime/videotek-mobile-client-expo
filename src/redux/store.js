@@ -16,7 +16,9 @@ import movieCrewReducer from './reducers/tmdb/movies/movieCrew'
 import movieTrailerReducer from './reducers/tmdb/movies/trailer'
 import serieCrewReducer from './reducers/tmdb/series/serieCrew'
 import serieTrailerReducer from './reducers/tmdb/series/trailer'
-import peopleCareerReducer from './reducers/tmdb/people/careerPeople';
+import peopleCareerReducer from './reducers/tmdb/people/careerPeople'
+import trendingReducer from './reducers/tmdb/movies/trending'
+import oneUserReducer from './reducers/users/oneUser'
 
 const rootReducer = {
   auth: auth,
@@ -34,7 +36,9 @@ const rootReducer = {
   movieTrailer: movieTrailerReducer,
   serieCrew: serieCrewReducer,
   serieTrailer: serieTrailerReducer,
-  peopleCareer: peopleCareerReducer
+  peopleCareer: peopleCareerReducer,
+  trending: trendingReducer,
+  oneUser: oneUserReducer
 };
 
 const store = configureStore({

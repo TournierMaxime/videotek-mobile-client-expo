@@ -6,10 +6,11 @@ import {
   TouchableOpacity,
   Text,
 } from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {loginUser} from '../../redux/actions/auth/auth';
 import {useNavigation} from '@react-navigation/native';
 import button from '../../styles/components/button';
+import form from '../../styles/components/form';
 import { ToastSuccess, ToastError } from '../../utils/Toast';
 import ToastConfig from '../../utils/ToastConfig';
 
@@ -17,11 +18,18 @@ const LoginScreen = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [data, setData] = useState({email: '', password: ''})
+  const userId = useSelector((state) => state.auth.data.user.userId)
 
   const handleLogin = async () => {
     try {
       await dispatch(loginUser(data));
       ToastSuccess('success', 'Connexion réussie', true)
+      navigation.navigate('UserProfile', {
+        screen: 'UserProfile',
+        params: {
+          id: userId
+        }
+      })
     } catch(error) {
       console.log(error.response.data.errMsg);
       ToastError('error', error.response.data.errMsg, false)
@@ -29,7 +37,7 @@ const LoginScreen = () => {
   };
 
   const handleForgetPassword = () => {
-    navigation.navigate('Mot de passe oublié');
+    navigation.navigate('ForgetPassword');
   };
 
   return (
@@ -63,9 +71,9 @@ const LoginScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  formContainer: button.formContainer,
-  formLabel: button.formLabel,
-  formInput: button.formInput,
+  formContainer: form.formContainer,
+  formLabel: form.formLabel,
+  formInput: form.formInput,
   buttonText: button.buttonText,
   formButtonRegister: button.formButtonRegister,
   buttonContainer: button.buttonContainer,

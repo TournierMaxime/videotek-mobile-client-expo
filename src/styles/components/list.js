@@ -14,7 +14,7 @@ const title = {
 const image = {
     width: 160,
     height: 260,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     borderRadius: 15,
     margin: 15
 }

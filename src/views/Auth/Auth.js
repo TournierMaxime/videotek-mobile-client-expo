@@ -1,21 +1,25 @@
 import React from 'react';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import button from '../../styles/components/button'
+import { useNavigation } from '@react-navigation/native';
+import { Image } from 'react-native';
 
-const AuthScreen = ({navigation}) => {
+const AuthScreen = () => {
+const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
+        <Image style={styles.logo} source={require('../../assets/image/videotek_logo.webp')} />
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.loginButton}
-          onPress={() => navigation.navigate('Connexion')}>
+          onPress={() => navigation.navigate('Login')}>
           <Text style={styles.buttonText}>Se connecter</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.registerButton}
-          onPress={() => navigation.navigate('Inscription')}>
+          onPress={() => navigation.navigate('Register')}>
           <Text style={styles.buttonText}>S&apos;inscrire</Text>
         </TouchableOpacity>
       </View>

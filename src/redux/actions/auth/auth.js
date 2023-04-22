@@ -19,7 +19,7 @@ export const loginUser = (data) => async (dispatch) => {
 
 export const logoutUser = () => async (dispatch) => {
   try {
-    const response = await Logout()
+    const response = Logout()
     dispatch({
       type: 'LOGOUT_USER_SUCCESS',
       payload: response.data,

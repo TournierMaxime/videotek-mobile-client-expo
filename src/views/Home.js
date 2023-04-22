@@ -10,34 +10,31 @@ import {
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { nowPlaying } from '../redux/actions/tmdb/movies/nowPlaying'
-import { upcoming } from '../redux/actions/tmdb/movies/upcoming'
+import { trending } from '../redux/actions/tmdb/movies/trending'
 import { onTheAir } from '../redux/actions/tmdb/series/onTheAir'
-import { popular } from '../redux/actions/tmdb/series/popular'
 import { useNavigation } from '@react-navigation/native'
 import home from '../styles/pages/home'
 import Refresh from '../utils/Refresh'
+import { truncateTitle } from '../utils/Truncate'
 
 const Home = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation()
   const nowPlayingData = useSelector((state) => state.nowPlaying.data)
-  const upcomingData = useSelector((state) => state.upcoming.data)
+  const trendingData = useSelector((state) => state.trending.data)
   const onTheAirData = useSelector((state) => state.onTheAir.data)
-  const popularData = useSelector((state) => state.popular.data)
   const nowPlayingResults = useSelector(
     (state) => state.nowPlaying.data.results
   )
-  const upcomingResults = useSelector((state) => state.upcoming.data.results)
+  const trendingResults = useSelector((state) => state.trending.data.results)
   const onTheAirResults = useSelector((state) => state.onTheAir.data.results)
-  const popularResults = useSelector((state) => state.popular.data.results)
   const [loading, setLoading] = useState(false)
 
   const onRefresh = async () => {
     await Promise.all([
       dispatch(nowPlaying(nowPlayingData.page)),
-      dispatch(upcoming(upcomingData.page)),
+      dispatch(trending(trendingData.page)),
       dispatch(onTheAir(onTheAirData.page)),
-      dispatch(popular(popularData.page)),
     ])
   }
 
@@ -46,9 +43,8 @@ const Home = () => {
       setLoading(true)
       await Promise.all([
         dispatch(nowPlaying(nowPlayingData.page)),
-        dispatch(upcoming(upcomingData.page)),
+        dispatch(trending(trendingData.page)),
         dispatch(onTheAir(onTheAirData.page)),
-        dispatch(popular(popularData.page)),
       ])
       setLoading(false)
     }
@@ -64,6 +60,91 @@ const Home = () => {
         <Fragment>
           <View style={styles.categoryViewContainer}>
             <Text style={styles.title}>En ce moment</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('MainStackNavigator', { screen: 'Trending' })}>
+              <Text style={styles.title}>Tout</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.container}>
+            <FlatList
+              data={trendingResults?.slice(0, 8)}
+              keyExtractor={(item) => item.id}
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              renderItem={({ item, index }) => {
+                return (
+                  <Fragment>
+                    {item.media_type == 'movie' ? (
+                      <View style={styles.listViewContainer}>
+                        <TouchableOpacity
+                          onPress={() =>
+                            navigation.navigate('MainStackNavigator', {
+                              screen: 'DetailsMovie',
+                              params: {
+                                id: item.id,
+                                title: item.original_title,
+                              }
+                            })
+                          }
+                        >
+                          <Image
+                            style={[
+                              styles.image,
+                              {
+                                marginRight:
+                                  index ===
+                                  trendingResults?.slice(0, 8).length - 1
+                                    ? 15
+                                    : 0,
+                              },
+                            ]}
+                            source={{
+                              uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
+                            }}
+                          />
+                          <Text style={styles.originalTitle}>
+                            {truncateTitle(item.original_title, 15)}
+                          </Text>
+                        </TouchableOpacity>
+                      </View>
+                    ) : (
+                      <View style={styles.listViewContainer}>
+                        <TouchableOpacity
+                          onPress={() =>
+                            navigation.navigate('DetailsSerie', {
+                              id: item.id,
+                              title: item.original_name,
+                            })
+                          }
+                        >
+                          <Image
+                            style={[
+                              styles.image,
+                              {
+                                marginRight:
+                                  index ===
+                                  trendingResults?.slice(0, 8).length - 1
+                                    ? 15
+                                    : 0,
+                              },
+                            ]}
+                            source={{
+                              uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
+                            }}
+                          />
+                          <Text style={styles.originalTitle}>
+                          {truncateTitle(item.original_name, 15)}
+                          </Text>
+                        </TouchableOpacity>
+                      </View>
+                    )}
+                  </Fragment>
+                )
+              }}
+            />
+          </View>
+
+          <View style={styles.categoryViewContainer}>
+            <Text style={styles.title}>Films</Text>
             <TouchableOpacity onPress={() => navigation.navigate('NowPlaying')}>
               <Text style={styles.title}>Tout</Text>
             </TouchableOpacity>
@@ -101,7 +182,7 @@ const Home = () => {
                         }}
                       />
                       <Text style={styles.originalTitle}>
-                        {item.original_title}
+                      {truncateTitle(item.original_title, 15)}
                       </Text>
                     </TouchableOpacity>
                   </View>
@@ -111,54 +192,7 @@ const Home = () => {
           </View>
 
           <View style={styles.categoryViewContainer}>
-            <Text style={styles.title}>A Venir</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Upcoming')}>
-              <Text style={styles.title}>Tout</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.container}>
-            <FlatList
-              data={upcomingResults?.slice(0, 8)}
-              keyExtractor={(item) => item.id}
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-              renderItem={({ item, index }) => {
-                return (
-                  <View style={styles.listViewContainer}>
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.navigate('DetailsMovie', {
-                          id: item.id,
-                          title: item.original_title,
-                        })
-                      }
-                    >
-                      <Image
-                        style={[
-                          styles.image,
-                          {
-                            marginRight:
-                              index === upcomingResults?.slice(0, 8).length - 1
-                                ? 15
-                                : 0,
-                          },
-                        ]}
-                        source={{
-                          uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
-                        }}
-                      />
-                    </TouchableOpacity>
-                    <Text style={styles.originalTitle}>
-                      {item.original_title}
-                    </Text>
-                  </View>
-                )
-              }}
-            />
-          </View>
-
-          <View style={styles.categoryViewContainer}>
-            <Text style={styles.title}>Série en cours de diffusion</Text>
+            <Text style={styles.title}>Séries</Text>
             <TouchableOpacity onPress={() => navigation.navigate('OnTheAir')}>
               <Text style={styles.title}>Tout</Text>
             </TouchableOpacity>
@@ -196,54 +230,7 @@ const Home = () => {
                       />
                     </TouchableOpacity>
                     <Text style={styles.originalTitle}>
-                      {item.original_name}
-                    </Text>
-                  </View>
-                )
-              }}
-            />
-          </View>
-
-          <View style={styles.categoryViewContainer}>
-            <Text style={styles.title}>Séries populaires</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Popular')}>
-              <Text style={styles.title}>Tout</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.container}>
-            <FlatList
-              data={popularResults?.slice(0, 8)}
-              keyExtractor={(item) => item.id}
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-              renderItem={({ item, index }) => {
-                return (
-                  <View style={styles.listViewContainer}>
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.navigate('DetailsSerie', {
-                          id: item.id,
-                          title: item.original_name,
-                        })
-                      }
-                    >
-                      <Image
-                        style={[
-                          styles.image,
-                          {
-                            marginRight:
-                              index === popularResults?.slice(0, 8).length - 1
-                                ? 15
-                                : 0,
-                          },
-                        ]}
-                        source={{
-                          uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
-                        }}
-                      />
-                    </TouchableOpacity>
-                    <Text style={styles.originalTitle}>
-                      {item.original_name}
+                    {truncateTitle(item.original_name, 15)}
                     </Text>
                   </View>
                 )

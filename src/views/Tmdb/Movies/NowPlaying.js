@@ -55,7 +55,7 @@ return (
                     renderItem={({item}) => {
                         return (
                             <View style={styles.flatListViewContainer}>
-                                <TouchableOpacity onPress={() => navigation.navigate('Details Movie', {id: item.id, title: item.original_title})}>
+                                <TouchableOpacity onPress={() => navigation.navigate('DetailsMovie', {id: item.id, title: item.original_title})}>
                                     <Image style={styles.image} source={{uri: `https://image.tmdb.org/t/p/original${item.poster_path}`}} />
                                     <Text style={styles.originalTitle}>{truncateTitle(item.original_title, 15)}</Text>
                                 </TouchableOpacity>
