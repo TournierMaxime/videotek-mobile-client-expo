@@ -10,4 +10,4 @@ const AppWithRedux = () => (
   </Provider>
 );
 
-AppRegistry.registerComponent("videotek", () => AppWithRedux);
+AppRegistry.registerComponent("VideoTek", () => AppWithRedux);
