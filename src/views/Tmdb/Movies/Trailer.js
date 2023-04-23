@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { movieTrailer } from '../../../redux/actions/tmdb/movies/trailer';
 import { useDispatch, useSelector } from 'react-redux';
-//import YoutubeIframe from '../../../utils/YouTubeIframe';
 import { Button, Linking } from 'react-native';
 
 const extractFirstTrailerResult = (trailer) => {

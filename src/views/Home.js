@@ -16,6 +16,7 @@ import { useNavigation } from '@react-navigation/native'
 import home from '../styles/pages/home'
 import Refresh from '../utils/Refresh'
 import { truncateTitle } from '../utils/Truncate'
+import { Ionicons } from 'react-native-vector-icons'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -53,193 +54,212 @@ const Home = () => {
   }, [dispatch])
 
   return (
-    <Refresh onRefresh={onRefresh}>
+    <Fragment>
       {loading ? (
         <ActivityIndicator size='large' color='#0000ff' />
       ) : (
         <Fragment>
-          <View style={styles.categoryViewContainer}>
-            <Text style={styles.title}>En ce moment</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('MainStackNavigator', { screen: 'Trending' })}>
-              <Text style={styles.title}>Tout</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.container}>
-            <FlatList
-              data={trendingResults?.slice(0, 8)}
-              keyExtractor={(item) => item.id}
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-              renderItem={({ item, index }) => {
-                return (
-                  <Fragment>
-                    {item.media_type == 'movie' ? (
-                      <View style={styles.listViewContainer}>
-                        <TouchableOpacity
-                          onPress={() =>
-                            navigation.navigate('MainStackNavigator', {
-                              screen: 'DetailsMovie',
-                              params: {
+          <Refresh onRefresh={onRefresh}>
+            <View style={styles.categoryViewContainer}>
+              <Text style={styles.title}>En ce moment</Text>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('MainStackNavigator', {
+                    screen: 'Trending',
+                  })
+                }
+              >
+                <Ionicons
+                  name='arrow-forward-outline'
+                  size={25}
+                  color='black'
+                />
+              </TouchableOpacity>
+            </View>
+            <View style={styles.container}>
+              <FlatList
+                data={trendingResults?.slice(0, 8)}
+                keyExtractor={(item) => item.id}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                renderItem={({ item, index }) => {
+                  return (
+                    <Fragment>
+                      {item.media_type == 'movie' ? (
+                        <View style={styles.listViewContainer}>
+                          <TouchableOpacity
+                            onPress={() =>
+                              navigation.navigate('MainStackNavigator', {
+                                screen: 'DetailsMovie',
+                                params: {
+                                  id: item.id,
+                                  title: item.original_title,
+                                },
+                              })
+                            }
+                          >
+                            <Image
+                              style={[
+                                styles.image,
+                                {
+                                  marginRight:
+                                    index ===
+                                    trendingResults?.slice(0, 8).length - 1
+                                      ? 15
+                                      : 0,
+                                },
+                              ]}
+                              source={{
+                                uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
+                              }}
+                            />
+                            <Text style={styles.originalTitle}>
+                              {truncateTitle(item.original_title, 15)}
+                            </Text>
+                          </TouchableOpacity>
+                        </View>
+                      ) : (
+                        <View style={styles.listViewContainer}>
+                          <TouchableOpacity
+                            onPress={() =>
+                              navigation.navigate('DetailsSerie', {
                                 id: item.id,
-                                title: item.original_title,
-                              }
-                            })
-                          }
-                        >
-                          <Image
-                            style={[
-                              styles.image,
-                              {
-                                marginRight:
-                                  index ===
-                                  trendingResults?.slice(0, 8).length - 1
-                                    ? 15
-                                    : 0,
-                              },
-                            ]}
-                            source={{
-                              uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
-                            }}
-                          />
-                          <Text style={styles.originalTitle}>
-                            {truncateTitle(item.original_title, 15)}
-                          </Text>
-                        </TouchableOpacity>
-                      </View>
-                    ) : (
-                      <View style={styles.listViewContainer}>
-                        <TouchableOpacity
-                          onPress={() =>
-                            navigation.navigate('DetailsSerie', {
-                              id: item.id,
-                              title: item.original_name,
-                            })
-                          }
-                        >
-                          <Image
-                            style={[
-                              styles.image,
-                              {
-                                marginRight:
-                                  index ===
-                                  trendingResults?.slice(0, 8).length - 1
-                                    ? 15
-                                    : 0,
-                              },
-                            ]}
-                            source={{
-                              uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
-                            }}
-                          />
-                          <Text style={styles.originalTitle}>
-                          {truncateTitle(item.original_name, 15)}
-                          </Text>
-                        </TouchableOpacity>
-                      </View>
-                    )}
-                  </Fragment>
-                )
-              }}
-            />
-          </View>
+                                title: item.original_name,
+                              })
+                            }
+                          >
+                            <Image
+                              style={[
+                                styles.image,
+                                {
+                                  marginRight:
+                                    index ===
+                                    trendingResults?.slice(0, 8).length - 1
+                                      ? 15
+                                      : 0,
+                                },
+                              ]}
+                              source={{
+                                uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
+                              }}
+                            />
+                            <Text style={styles.originalTitle}>
+                              {truncateTitle(item.original_name, 15)}
+                            </Text>
+                          </TouchableOpacity>
+                        </View>
+                      )}
+                    </Fragment>
+                  )
+                }}
+              />
+            </View>
 
-          <View style={styles.categoryViewContainer}>
-            <Text style={styles.title}>Films</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('NowPlaying')}>
-              <Text style={styles.title}>Tout</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.container}>
-            <FlatList
-              data={nowPlayingResults?.slice(0, 8)}
-              keyExtractor={(item) => item.id}
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-              renderItem={({ item, index }) => {
-                return (
-                  <View style={styles.listViewContainer}>
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.navigate('DetailsMovie', {
-                          id: item.id,
-                          title: item.original_title,
-                        })
-                      }
-                    >
-                      <Image
-                        style={[
-                          styles.image,
-                          {
-                            marginRight:
-                              index ===
-                              nowPlayingResults?.slice(0, 8).length - 1
-                                ? 15
-                                : 0,
-                          },
-                        ]}
-                        source={{
-                          uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
-                        }}
-                      />
+            <View style={styles.categoryViewContainer}>
+              <Text style={styles.title}>Films</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('NowPlaying')}
+              >
+                <Ionicons
+                  name='arrow-forward-outline'
+                  size={25}
+                  color='black'
+                />
+              </TouchableOpacity>
+            </View>
+            <View style={styles.container}>
+              <FlatList
+                data={nowPlayingResults?.slice(0, 8)}
+                keyExtractor={(item) => item.id}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                renderItem={({ item, index }) => {
+                  return (
+                    <View style={styles.listViewContainer}>
+                      <TouchableOpacity
+                        onPress={() =>
+                          navigation.navigate('DetailsMovie', {
+                            id: item.id,
+                            title: item.original_title,
+                          })
+                        }
+                      >
+                        <Image
+                          style={[
+                            styles.image,
+                            {
+                              marginRight:
+                                index ===
+                                nowPlayingResults?.slice(0, 8).length - 1
+                                  ? 15
+                                  : 0,
+                            },
+                          ]}
+                          source={{
+                            uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
+                          }}
+                        />
+                        <Text style={styles.originalTitle}>
+                          {truncateTitle(item.original_title, 15)}
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
+                  )
+                }}
+              />
+            </View>
+
+            <View style={styles.categoryViewContainer}>
+              <Text style={styles.title}>Séries</Text>
+              <TouchableOpacity onPress={() => navigation.navigate('OnTheAir')}>
+                <Ionicons name='arrow-forward-outline' size={25} color='black' />
+              </TouchableOpacity>
+            </View>
+            <View style={styles.container}>
+              <FlatList
+                data={onTheAirResults?.slice(0, 8)}
+                keyExtractor={(item) => item.id}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                renderItem={({ item, index }) => {
+                  return (
+                    <View style={styles.listViewContainer}>
+                      <TouchableOpacity
+                        onPress={() =>
+                          navigation.navigate('DetailsSerie', {
+                            id: item.id,
+                            title: item.original_name,
+                          })
+                        }
+                      >
+                        <Image
+                          style={[
+                            styles.image,
+                            {
+                              marginRight:
+                                index ===
+                                onTheAirResults?.slice(0, 8).length - 1
+                                  ? 15
+                                  : 0,
+                            },
+                          ]}
+                          source={{
+                            uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
+                          }}
+                        />
+                      </TouchableOpacity>
                       <Text style={styles.originalTitle}>
-                      {truncateTitle(item.original_title, 15)}
+                        {truncateTitle(item.original_name, 15)}
                       </Text>
-                    </TouchableOpacity>
-                  </View>
-                )
-              }}
-            />
-          </View>
-
-          <View style={styles.categoryViewContainer}>
-            <Text style={styles.title}>Séries</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('OnTheAir')}>
-              <Text style={styles.title}>Tout</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.container}>
-            <FlatList
-              data={onTheAirResults?.slice(0, 8)}
-              keyExtractor={(item) => item.id}
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-              renderItem={({ item, index }) => {
-                return (
-                  <View style={styles.listViewContainer}>
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.navigate('DetailsSerie', {
-                          id: item.id,
-                          title: item.original_name,
-                        })
-                      }
-                    >
-                      <Image
-                        style={[
-                          styles.image,
-                          {
-                            marginRight:
-                              index === onTheAirResults?.slice(0, 8).length - 1
-                                ? 15
-                                : 0,
-                          },
-                        ]}
-                        source={{
-                          uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
-                        }}
-                      />
-                    </TouchableOpacity>
-                    <Text style={styles.originalTitle}>
-                    {truncateTitle(item.original_name, 15)}
-                    </Text>
-                  </View>
-                )
-              }}
-            />
-          </View>
+                    </View>
+                  )
+                }}
+              />
+            </View>
+          </Refresh>
         </Fragment>
       )}
-    </Refresh>
+    </Fragment>
   )
 }
 

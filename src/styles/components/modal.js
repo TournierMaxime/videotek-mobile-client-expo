@@ -23,9 +23,16 @@ const modalView = {
     backgroundColor: 'white',
 }
 
+const modalTitle = {
+    margin: 15,
+    fontSize: 20,
+}
+
 const modalText = {
-    marginBottom: 15,
-    textAlign: 'center',
+    margin: 15,
+    textAlign: 'justify',
+    fontSize: 18,
+    lineHeight: 30
 }
 
 const closeIcons = {
@@ -47,4 +54,14 @@ const formContainer = {
     position: 'relative'
 }
 
-export default { formContainer, closeContainer, container, openButton, textStyle, modalView, modalText, closeIcons }
+export default {
+    formContainer,
+    closeContainer,
+    container, 
+    openButton,
+    textStyle,
+    modalView,
+    modalText,
+    closeIcons,
+    modalTitle
+}

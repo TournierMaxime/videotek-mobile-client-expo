@@ -1,5 +1,6 @@
 const categoryViewContainer = {
     justifyContent: 'space-between',
+    alignItems: 'baseline',
     flexDirection: 'row',
     marginRight: 15
 }

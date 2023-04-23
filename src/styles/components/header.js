@@ -4,7 +4,7 @@ const headerContainer = {
     justifyContent: 'space-between',
     paddingHorizontal: 20,
     height: 100,
-    paddingTop: 30,
+    backgroundColor: '#fff'
 }
 
 const logo = {

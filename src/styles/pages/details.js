@@ -88,7 +88,8 @@ const viewOverviewContainer = {
 }
 
 const headerTitle = {
-    color: 'white'
+    color: 'white',
+    marginVertical: 5
 }
 
 const textOverview = {
@@ -105,7 +106,7 @@ const headerViewContainer = {
     right: 0,
     bottom: 0,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'flex-start',
     display: 'flex'
 }
@@ -117,9 +118,10 @@ const posterViewContainer = {
 }
 
 const posterPath = {
-    width: 200,
+    width: 140,
     height: 200,
-    resizeMode: 'contain'
+    resizeMode: 'cover',
+    borderRadius: 5
 }
 
 const releaseDate  ={
@@ -167,7 +169,7 @@ const directorText = {
 
 const directorTitle = {
     color: 'white',
-    marginTop: 15
+    marginTop: 5
 }
 
 const productionViewContainer = {
@@ -178,6 +180,13 @@ const technicalSheetViewContainer = {
     display: 'flex',
     flexDirection: 'row',
     marginVertical: 5
+}
+
+const imdb = {
+    fill: '#fff',
+    stroke: '#f09f09',
+    strokeWidth: 0.4,
+    background: 'none',
 }
 
 export default { 
@@ -205,5 +214,6 @@ export default {
     directorsViewContainer,
     directorText,
     directorTitle,
-    productionViewContainer
+    productionViewContainer,
+    imdb
  }
