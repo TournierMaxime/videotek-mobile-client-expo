@@ -25,14 +25,12 @@ const LoginScreen = () => {
     try {
       await dispatch(loginUser(data))
       ToastSuccess('success', 'Connexion réussie', true)
-      setTimeout(() => {
         navigation.navigate('UserProfile', {
           screen: 'UserProfile',
           params: {
             id: userId,
           },
         })
-      }, 3000)
     } catch (error) {
       console.log(error.response.data.errMsg)
       ToastError('error', error.response.data.errMsg, true)
