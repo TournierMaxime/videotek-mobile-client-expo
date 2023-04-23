@@ -19,6 +19,7 @@ import serieTrailerReducer from './reducers/tmdb/series/trailer'
 import peopleCareerReducer from './reducers/tmdb/people/careerPeople'
 import trendingReducer from './reducers/tmdb/movies/trending'
 import oneUserReducer from './reducers/users/oneUser'
+import confirmEmailReducer from './reducers/auth/confirmEmail'
 
 const rootReducer = {
   auth: auth,
@@ -38,7 +39,8 @@ const rootReducer = {
   serieTrailer: serieTrailerReducer,
   peopleCareer: peopleCareerReducer,
   trending: trendingReducer,
-  oneUser: oneUserReducer
+  oneUser: oneUserReducer,
+  confirmEmail: confirmEmailReducer
 };
 
 const store = configureStore({

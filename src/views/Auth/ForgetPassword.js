@@ -33,6 +33,7 @@ const ForgetPasswordScreen = () => {
       console.log(error.response.data.errMsg);
       ToastError('error', error.response.data.errMsg, false)
     }
+    setEmail('')
   };
 
   const handleCheckForgetPasswordCode = async () => {
@@ -44,6 +45,8 @@ const ForgetPasswordScreen = () => {
       console.log(error.response.data.errMsg);
       ToastError('error', error.response.data.errMsg, false)
     }
+    setEmail('')
+    setCode('')
   };
 
 
@@ -56,6 +59,7 @@ const ForgetPasswordScreen = () => {
       console.log(error.response.data.errMsg);
       ToastError('error', error.response.data.errMsg, false)
     }
+    setPassword({})
   };
 
   return (

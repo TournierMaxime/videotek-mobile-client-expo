@@ -24,9 +24,9 @@ const Logout = async () => {
   return {};
 };
 
-
-const ConfirmEmail = (verificationCode) => {
-  return http.post(`/auth/verify/${verificationCode}`);
+const ConfirmEmail = async (userId, data) => {
+  const response = await http.post(`/auth/verify/${userId}`, data);
+  return response
 };
 
 const ForgetPasswordMobile = async (data) => {

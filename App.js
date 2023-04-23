@@ -21,6 +21,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import Login from './src/views/Auth/Login'
 import Register from './src/views/Auth/Register'
 import ForgetPassword from './src/views/Auth/ForgetPassword'
+import ConfirmEmail from './src/views/Auth/ConfirmEmail'
 
 const MainStack = createNativeStackNavigator()
 const AuthStack = createNativeStackNavigator()
@@ -48,6 +49,13 @@ const AuthStackNavigator = () => {
         component={ForgetPassword}
         options={() => ({
           header: () => <Header backButton={true} />,
+        })}
+      />
+      <AuthStack.Screen
+        name='ConfirmEmail'
+        component={ConfirmEmail}
+        options={() => ({
+          header: () => <Header backButton={false} />,
         })}
       />
     </AuthStack.Navigator>
@@ -124,7 +132,7 @@ const MainStackNavigator = () => {
   )
 }
 
-const  App = ({ isAuthenticated, onLoginSuccess }) => {
+const App = ({ isAuthenticated, onLoginSuccess }) => {
   const userId = useSelector((state) => state.auth.data.user.userId)
 
   useEffect(() => {

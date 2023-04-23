@@ -25,16 +25,19 @@ const LoginScreen = () => {
     try {
       await dispatch(loginUser(data))
       ToastSuccess('success', 'Connexion réussie', true)
-      navigation.navigate('UserProfile', {
-        screen: 'UserProfile',
-        params: {
-          id: userId,
-        },
-      })
+      setTimeout(() => {
+        navigation.navigate('UserProfile', {
+          screen: 'UserProfile',
+          params: {
+            id: userId,
+          },
+        })
+      }, 3000)
     } catch (error) {
       console.log(error.response.data.errMsg)
-      ToastError('error', error.response.data.errMsg, false)
+      ToastError('error', error.response.data.errMsg, true)
     }
+    setData({})
   }
 
   const handleForgetPassword = () => {
@@ -75,7 +78,7 @@ const LoginScreen = () => {
           <ToastConfig />
         </View>
       </View>
-      <View style={styles.formContainer}>
+      <View style={[styles.formContainer, { marginTop: 100 }]}>
         <Text style={styles.formLabel}>Pas encore inscrit ?</Text>
         <View style={styles.buttonContainer}>
           <TouchableOpacity

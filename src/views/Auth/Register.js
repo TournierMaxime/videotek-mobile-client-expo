@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import {createUser} from '../../redux/actions/auth/register';
-//import {useNavigation} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import button from '../../styles/components/button';
 import form from '../../styles/components/form';
 import { ToastSuccess, ToastError } from '../../utils/Toast';
@@ -18,17 +18,20 @@ import ToastConfig from '../../utils/ToastConfig';
 const RegisterScreen = () => {
   const [data, setData] = useState({userName: '', email: '', password: ''});
   const dispatch = useDispatch();
-  //const navigation = useNavigation();
+  const navigation = useNavigation();
 
   const handleRegister = async () => {
     try {
-      await dispatch(createUser(data));
+      const response = await dispatch(createUser(data));
       ToastSuccess('success', 'Votre compte a bien été créé', true)
-      //navigation.navigate('Connexion');
+      setTimeout(() => {
+        navigation.navigate('ConfirmEmail', { userId: response.user.userId });
+      }, 3000)
     } catch (error) {
       console.log(error.response.data.errMsg);
-      ToastError('error', error.response.data.errMsg, false)
+      ToastError('error', error.response.data.errMsg, true)
     }
+    setData({})
   };
 
   return (
