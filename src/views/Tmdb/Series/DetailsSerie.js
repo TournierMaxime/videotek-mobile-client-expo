@@ -19,6 +19,7 @@ import Cast from './Cast'
 import Production from './Production'
 import Refresh from '../../../utils/Refresh'
 import OverView from '../../../utils/OverView'
+import button from '../../../styles/components/button'
 
 const DetailsSerie = ({ route }) => {
   const dispatch = useDispatch()
@@ -73,7 +74,7 @@ const DetailsSerie = ({ route }) => {
 
                 <View style={styles.infoViewContainer}>
                   <Text style={styles.headerTitle}>{serie.original_name}</Text>
-                  <Runtime time={serie.episode_run_time} />
+                  <Runtime time={serie.episode_run_time} isMovie={false} />
 
                   <View style={styles.genresViewContainer}>
                     {serie?.genres?.map((genre) => (
@@ -131,6 +132,8 @@ const styles = StyleSheet.create({
   directorsViewContainer: details.directorsViewContainer,
   directorText: details.directorText,
   directorTitle: details.directorTitle,
+  criticButton: button.criticButton,
+  buttonText: button.buttonText,
 })
 
 export default DetailsSerie

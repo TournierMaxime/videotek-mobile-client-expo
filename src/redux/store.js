@@ -19,6 +19,8 @@ import serieTrailerReducer from './reducers/tmdb/series/trailer'
 import peopleCareerReducer from './reducers/tmdb/people/careerPeople'
 import trendingReducer from './reducers/tmdb/movies/trending'
 import oneUserReducer from './reducers/users/oneUser'
+import createCriticReducer from './reducers/critics/createCritic'
+import searchCriticReducer from './reducers/critics/searchCritic'
 
 const rootReducer = {
   auth: auth,
@@ -38,7 +40,9 @@ const rootReducer = {
   serieTrailer: serieTrailerReducer,
   peopleCareer: peopleCareerReducer,
   trending: trendingReducer,
-  oneUser: oneUserReducer
+  oneUser: oneUserReducer,
+  createCritic: createCriticReducer,
+  searchCritic: searchCriticReducer
 };
 
 const store = configureStore({

@@ -84,4 +84,25 @@ const orderButton = {
     backgroundColor: '#476EFF'
 }
 
-export default { orderButton, formButtonForgetPassword, formButtonLogin, formButtonRegister, formButton, loginButton, registerButton, forgetPasswordButton, buttonText, buttonContainer }
+const criticButton = {
+    borderRadius: 5,
+    padding: 5,
+    alignItems: 'center',
+    margin: 10,
+    backgroundColor: '#476EFF',
+    width: 'auto'
+}
+
+export default {
+    orderButton,
+    formButtonForgetPassword,
+    formButtonLogin,
+    formButtonRegister,
+    formButton,
+    loginButton,
+    registerButton,
+    forgetPasswordButton,
+    buttonText,
+    buttonContainer,
+    criticButton
+}

@@ -1,86 +1,143 @@
 import React, { Fragment } from 'react'
-import { View, Text, FlatList, Image, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import details from '../../../styles/pages/details'
 import moment from 'moment'
-import StatusSeries from '../../../utils/StatusSeries'
+import RedirectToCritic from '../../../utils/RedirectToCritic'
 
 const Production = ({ serie }) => {
+
+  const status = (data) => {
+    if (!data) return null
+
+    const statusSerie = () => {
+      switch (data) {
+        case 'Returning Series':
+          return <Text style={styles.tags}>Série renouvelée</Text>
+        case 'Ended':
+          return <Text style={styles.tags}>Série terminée</Text>
+      }
+    }
+
+    return (
+      <View style={styles.mainContainer}>
+        <View style={styles.technicalSheetViewContainer}>
+          <Text style={styles.subTitle}>Status</Text>
+        </View>
+        <View style={styles.flatListViewContainer}>{statusSerie()}</View>
+      </View>
+    )
+  }
+
+  const nbSeasons = (data) => {
+    if (!data) return null
+    return (
+      <View style={styles.mainContainer}>
+        <View style={styles.technicalSheetViewContainer}>
+          <Text style={styles.subTitle}>Saisons</Text>
+        </View>
+        <View style={styles.flatListViewContainer}>
+          <Text style={styles.tags}>{data}</Text>
+        </View>
+      </View>
+    )
+  }
+
+  const nbEpisodes = (data) => {
+    if (!data) return null
+    return (
+      <View style={styles.mainContainer}>
+        <View style={styles.technicalSheetViewContainer}>
+          <Text style={styles.subTitle}>Episodes</Text>
+        </View>
+        <View style={styles.flatListViewContainer}>
+          <Text style={styles.tags}>{data}</Text>
+        </View>
+      </View>
+    )
+  }
+
   const networks = (data) => {
-    if (!data || data.length === 0) return null
+    if (!data) return null
+
     return (
       <Fragment>
         <View style={styles.technicalSheetViewContainer}>
           <Text style={styles.subTitle}>Diffuseurs</Text>
         </View>
-        <FlatList
-          data={data}
-          keyExtractor={(item) => item.id}
-          horizontal={true}
-          renderItem={({ item }) => {
-            return (
-              <View style={styles.flatListViewContainer}>
-                <Image
-                  style={styles.image}
-                  source={{
-                    uri: `https://image.tmdb.org/t/p/original/${item.logo_path}`,
-                  }}
-                />
-              </View>
-            )
-          }}
-        />
+        {data?.map((item, index) => {
+          return (
+            <View key={index} style={styles.flatListViewContainer}>
+              <Text style={styles.tags}>{item.name}</Text>
+            </View>
+          )
+        })}
       </Fragment>
     )
   }
 
   const productionCompanies = (data) => {
-    if (!data || data.length === 0) return null
+    if (!data) return null
+
     return (
       <Fragment>
         <View style={styles.technicalSheetViewContainer}>
           <Text style={styles.subTitle}>Producteurs</Text>
         </View>
-        <FlatList
-          data={data}
-          keyExtractor={(item) => item.id}
-          horizontal={true}
-          renderItem={({ item }) => {
-            return (
-              <View style={styles.flatListViewContainer}>
-                <Image
-                  style={styles.image}
-                  source={{
-                    uri: `https://image.tmdb.org/t/p/original/${item.logo_path}`,
-                  }}
-                />
-              </View>
-            )
-          }}
-        />
+        {data?.map((item, index) => {
+          return (
+            <View key={index} style={styles.flatListViewContainer}>
+              <Text style={styles.tags}>{item.name}</Text>
+            </View>
+          )
+        })}
       </Fragment>
     )
   }
 
   const productionCountries = (data) => {
-    if (!data || data.length === 0) return null
+    if (!data) return null
+
     return (
       <Fragment>
         <View style={styles.technicalSheetViewContainer}>
           <Text style={styles.subTitle}>Pays d&apos;origine</Text>
         </View>
-        <FlatList
-          data={data}
-          keyExtractor={(item) => item.iso_3166_1}
-          horizontal={true}
-          renderItem={({ item }) => {
-            return (
-              <View style={styles.flatListViewContainer}>
-                <Text style={styles.tags}>{item.name}</Text>
-              </View>
-            )
-          }}
-        />
+        {data?.map((item, index) => {
+          return (
+            <View key={index} style={styles.flatListViewContainer}>
+              <Text style={styles.tags}>{item.name}</Text>
+            </View>
+          )
+        })}
       </Fragment>
+    )
+  }
+
+  const firstEpisode = (data) => {
+    if (!data) return null
+    return (
+      <View style={styles.mainContainer}>
+        <View style={styles.technicalSheetViewContainer}>
+          <Text style={styles.subTitle}>Premier épisode</Text>
+        </View>
+        <View style={styles.flatListViewContainer}>
+          <Text style={styles.tags}>{moment(data).format('DD/MM/YYYY')}</Text>
+        </View>
+      </View>
+    )
+  }
+
+  const lastEpisode = (data) => {
+    if (!data) return null
+    return (
+      <View style={styles.mainContainer}>
+        <View style={styles.technicalSheetViewContainer}>
+          <Text style={styles.subTitle}>Dernier épisode</Text>
+        </View>
+        <View style={styles.flatListViewContainer}>
+          <Text style={styles.tags}>{moment(data).format('DD/MM/YYYY')}</Text>
+        </View>
+      </View>
     )
   }
 
@@ -89,36 +146,18 @@ const Production = ({ serie }) => {
       <View style={styles.technicalSheetViewContainer}>
         <Text style={styles.title}>Fiche Technique</Text>
       </View>
-      <View style={styles.technicalSheetViewContainer}>
-        <StatusSeries status={serie.status} />
-      </View>
-      <View style={styles.technicalSheetViewContainer}>
-        <Text style={styles.subTitle}>Saisons {serie.number_of_seasons}</Text>
-      </View>
-      <View style={styles.technicalSheetViewContainer}>
-        <Text style={styles.subTitle}>Episodes {serie.number_of_episodes}</Text>
-      </View>
-      <View>{networks(serie?.networks)}</View>
-      <View>
-        {serie?.production_companies
-          ? productionCompanies(serie?.production_companies)
-          : null}
-      </View>
-      <View>
-        {serie?.production_countries
-          ? productionCountries(serie?.production_countries)
-          : null}
-      </View>
-      <View style={styles.technicalSheetViewContainer}>
-        <Text style={styles.subTitle}>
-          Premier épisode {moment(serie.first_air_date).format('DD/MM/YYYY')}
-        </Text>
-      </View>
-      <View style={styles.technicalSheetViewContainer}>
-        <Text style={styles.subTitle}>
-          Dernier épisode {moment(serie.last_air_date).format('DD/MM/YYYY')}
-        </Text>
-      </View>
+      {status(serie.status)}
+      {nbSeasons(serie.number_of_seasons)}
+      {nbEpisodes(serie.number_of_episodes)}
+      {networks(serie.networks)}
+      {productionCompanies(serie.production_companies)}
+      {productionCountries(serie.production_countries)}
+      {firstEpisode(serie.first_air_date)}
+      {lastEpisode(serie.last_air_date)}
+
+      <RedirectToCritic serie={serie} />
+
+     
     </View>
   )
 }
@@ -129,7 +168,7 @@ const styles = StyleSheet.create({
   subTitle: details.subTitle,
   flatListViewContainer: details.flatListViewContainer,
   tags: details.tags,
-  technicalSheetViewContainer: details.technicalSheetViewContainer,
+  technicalSheetViewContainer: details.technicalSheetViewContainer
 })
 
 export default Production

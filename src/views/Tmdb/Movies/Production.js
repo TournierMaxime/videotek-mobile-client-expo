@@ -1,57 +1,86 @@
-import React, { Fragment } from 'react'
-import { View, Text, FlatList, Image, StyleSheet } from 'react-native'
+import React from 'react'
+import { View, Text, StyleSheet } from 'react-native'
 import { numberWithCommas } from '../../../utils/NumberWithCommas'
 import details from '../../../styles/pages/details'
 import moment from 'moment/moment'
+import RedirectToCritic from '../../../utils/RedirectToCritic'
 
 const Production = ({ movie }) => {
   const productionCompanies = (data) => {
+    if (!data) return null
     return (
       <View style={styles.mainContainer}>
         <View style={styles.technicalSheetViewContainer}>
           <Text style={styles.subTitle}>Producteurs</Text>
         </View>
-        <FlatList
-          data={data}
-          keyExtractor={(item) => item.id}
-          horizontal={true}
-          renderItem={({ item }) => {
-            const logo_path = item.logo_path
-              ? `https://image.tmdb.org/t/p/original/${item.logo_path}`
-              : null
-            return (
-              <View style={styles.flatListViewContainer}>
-                {logo_path ? (
-                  <Image style={styles.image} source={{ uri: logo_path }} />
-                ) : (
-                  <Text>{item.name}</Text>
-                )}
-              </View>
-            )
-          }}
-        />
+        {data?.map((item, index) => {
+        return (
+          <View key={index} style={styles.flatListViewContainer}>
+            <Text style={styles.tags}>{item.name}</Text>
+          </View>
+        )
+      })}
       </View>
     )
   }
 
   const productionCountries = (data) => {
+    if (!data) return null
     return (
       <View style={styles.mainContainer}>
         <View style={styles.technicalSheetViewContainer}>
           <Text style={styles.subTitle}>Pays d&apos;origine</Text>
         </View>
-        <FlatList
-          data={data}
-          keyExtractor={(item) => item.iso_3166_1}
-          horizontal={true}
-          renderItem={({ item }) => {
-            return (
-              <View style={styles.flatListViewContainer}>
-                <Text style={styles.tags}>{item.name}</Text>
-              </View>
-            )
-          }}
-        />
+        {data?.map((item, index) => {
+        return (
+          <View key={index} style={styles.flatListViewContainer}>
+            <Text style={styles.tags}>{item.name}</Text>
+          </View>
+        )
+      })}
+      </View>
+    )
+  }
+
+  const release = (data) => {
+    if (!data) return null
+    return (
+      <View style={styles.mainContainer}>
+        <View style={styles.technicalSheetViewContainer}>
+          <Text style={styles.subTitle}>Sortie</Text>
+        </View>
+        <View style={styles.flatListViewContainer}>
+          <Text style={styles.tags}>{moment(data).format('DD/MM/YYYY')}</Text>
+        </View>
+      </View>
+    )
+  }
+
+  const budget = (data) => {
+    if (!data) return null
+    return (
+      <View style={styles.mainContainer}>
+        <View style={styles.technicalSheetViewContainer}>
+          <Text style={styles.subTitle}>Budget</Text>
+        </View>
+        <View style={styles.flatListViewContainer}>
+          <Text style={styles.tags}>{numberWithCommas(data)}$</Text>
+        </View>
+      </View>
+    )
+  }
+
+  const revenue = (data) => {
+    if (!data) return null
+
+    return (
+      <View style={styles.mainContainer}>
+        <View style={styles.technicalSheetViewContainer}>
+          <Text style={styles.subTitle}>Recette</Text>
+        </View>
+        <View style={styles.flatListViewContainer}>
+          <Text style={styles.tags}>{numberWithCommas(data)}$</Text>
+        </View>
       </View>
     )
   }
@@ -61,31 +90,12 @@ const Production = ({ movie }) => {
       <View style={styles.technicalSheetViewContainer}>
         <Text style={styles.title}>Fiche Technique</Text>
       </View>
-      <View style={styles.technicalSheetViewContainer}>
-        <Text style={styles.subTitle}>
-          Sortie : {moment(movie.release_date).format('DD/MM/YYYY')}
-        </Text>
-      </View>
-      <Fragment>
-        {movie.budget ? (
-          <View style={styles.technicalSheetViewContainer}>
-            <Text style={styles.subTitle}>
-              Budget {numberWithCommas(movie.budget)}$
-            </Text>
-          </View>
-        ) : null}
-      </Fragment>
-      <Fragment>
-        {movie.revenue ? (
-          <View style={styles.technicalSheetViewContainer}>
-            <Text style={styles.subTitle}>
-              Recette {numberWithCommas(movie.revenue)}$
-            </Text>
-          </View>
-        ) : null}
-      </Fragment>
+      {release(movie.release_date)}
+      {budget(movie.budget)}
+      {revenue(movie.revenue)}
       {productionCompanies(movie?.production_companies)}
       {productionCountries(movie?.production_countries)}
+      <RedirectToCritic movie={movie} />
     </View>
   )
 }

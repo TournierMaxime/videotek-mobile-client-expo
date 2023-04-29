@@ -19,6 +19,7 @@ import Production from './Production'
 import details from '../../../styles/pages/details'
 import Refresh from '../../../utils/Refresh'
 import OverView from '../../../utils/OverView'
+import AllCritics from '../../Critics/AllCritics'
 
 const DetailsMovie = ({ route }) => {
   const dispatch = useDispatch()
@@ -72,7 +73,7 @@ const DetailsMovie = ({ route }) => {
 
               <View style={styles.infoViewContainer}>
                 <Text style={styles.headerTitle}>{movie.original_title}</Text>
-                <Runtime time={movie.runtime} />
+                <Runtime time={movie.runtime} isMovie={true} />
 
                 <View style={styles.genresViewContainer}>
                   {movie?.genres?.map((genre) => (
@@ -107,6 +108,7 @@ const DetailsMovie = ({ route }) => {
       <Trailer id={id} />
       <Cast crew={crew} />
       <Production movie={movie} />
+      <AllCritics id={movie.id} />
     </Refresh>
   )
 }

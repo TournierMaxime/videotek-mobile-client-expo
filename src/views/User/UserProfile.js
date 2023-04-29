@@ -37,7 +37,7 @@ const UserProfile = ({ route }) => {
         <Fragment>
             {oneUser && (
               <View style={styles.profilViewContainer}>
-                <TouchableOpacity onPress={() => navigation.navigate('DetailsUser')}>
+                <TouchableOpacity onPress={() => navigation.navigate('DetailsUser', { userId })}>
                   <View style={styles.profileSectionContainer}>
                     <View style={styles.textIconContainer}>
                       <FontAwesome5 style={styles.icon} name="user" size={25} color="black" />

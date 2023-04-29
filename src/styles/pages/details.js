@@ -18,7 +18,7 @@ const subTitle = {
 
 const flatListViewContainer = {
     flexDirection: 'column',
-    justifyContent: 'space-between'
+    alignItems: 'flex-start'
 }
 
 const image = {
@@ -33,8 +33,10 @@ const image = {
 const tags = {
     fontSize: 16,
     borderRadius: 8,
-    marginHorizontal: 15,
-    paddingHorizontal: 5,
+    marginLeft: 15,
+    marginVertical: 5,
+    width: 'auto',
+    padding: 5,
     textAlign: 'center',
     color: '#495057',
     backgroundColor: '#dee2e6'

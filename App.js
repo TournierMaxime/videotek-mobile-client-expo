@@ -21,6 +21,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import Login from './src/views/Auth/Login'
 import Register from './src/views/Auth/Register'
 import ForgetPassword from './src/views/Auth/ForgetPassword'
+import NewCritic from './src/views/Critics/NewCritic'
+import DetailsUser from './src/views/User/DetailsUser'
+import AllCritics from './src/views/Critics/AllCritics'
 
 const MainStack = createNativeStackNavigator()
 const AuthStack = createNativeStackNavigator()
@@ -113,9 +116,31 @@ const MainStackNavigator = () => {
         })}
       />
       <MainStack.Screen
+        name='DetailsUser'
+        component={DetailsUser}
+        options={({ route }) => ({
+          title: route.params.userId,
+          header: () => <Header backButton={true} />,
+        })}
+      />
+      <MainStack.Screen
         name='UserProfile'
         component={UserProfile}
         initialParams={{ userId }}
+        options={() => ({
+          header: () => <Header backButton={true} />,
+        })}
+      />
+      <MainStack.Screen
+        name='NewCritic'
+        component={NewCritic}
+        options={() => ({
+          header: () => <Header backButton={true} />,
+        })}
+      />
+      <MainStack.Screen
+        name='AllCritics'
+        component={AllCritics}
         options={() => ({
           header: () => <Header backButton={true} />,
         })}
