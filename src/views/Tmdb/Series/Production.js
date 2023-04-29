@@ -2,7 +2,6 @@ import React, { Fragment } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import details from '../../../styles/pages/details'
 import moment from 'moment'
-import RedirectToCritic from '../../../utils/RedirectToCritic'
 
 const Production = ({ serie }) => {
 
@@ -153,11 +152,7 @@ const Production = ({ serie }) => {
       {productionCompanies(serie.production_companies)}
       {productionCountries(serie.production_countries)}
       {firstEpisode(serie.first_air_date)}
-      {lastEpisode(serie.last_air_date)}
-
-      <RedirectToCritic serie={serie} />
-
-     
+      {lastEpisode(serie.last_air_date)}     
     </View>
   )
 }
@@ -168,7 +163,8 @@ const styles = StyleSheet.create({
   subTitle: details.subTitle,
   flatListViewContainer: details.flatListViewContainer,
   tags: details.tags,
-  technicalSheetViewContainer: details.technicalSheetViewContainer
+  technicalSheetViewContainer: details.technicalSheetViewContainer,
+  mainContainer: details.mainContainer
 })
 
 export default Production

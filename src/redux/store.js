@@ -42,12 +42,9 @@ const rootReducer = {
   peopleCareer: peopleCareerReducer,
   trending: trendingReducer,
   oneUser: oneUserReducer,
-<<<<<<< HEAD
   createCritic: createCriticReducer,
-  searchCritic: searchCriticReducer
-=======
+  searchCritic: searchCriticReducer,
   confirmEmail: confirmEmailReducer
->>>>>>> e6ddff619bd9963780c8fe0b99d6673954d82240
 };
 
 const store = configureStore({

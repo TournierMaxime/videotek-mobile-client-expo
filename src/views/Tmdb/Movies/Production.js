@@ -3,7 +3,6 @@ import { View, Text, StyleSheet } from 'react-native'
 import { numberWithCommas } from '../../../utils/NumberWithCommas'
 import details from '../../../styles/pages/details'
 import moment from 'moment/moment'
-import RedirectToCritic from '../../../utils/RedirectToCritic'
 
 const Production = ({ movie }) => {
   const productionCompanies = (data) => {
@@ -95,7 +94,6 @@ const Production = ({ movie }) => {
       {revenue(movie.revenue)}
       {productionCompanies(movie?.production_companies)}
       {productionCountries(movie?.production_countries)}
-      <RedirectToCritic movie={movie} />
     </View>
   )
 }

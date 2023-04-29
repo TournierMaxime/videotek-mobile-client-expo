@@ -16,9 +16,9 @@ const OverView = ({ content, isBiography }) => {
     <Fragment>
       <View style={styles.viewOverviewContainer}>
         <Text style={styles.headerTitle}>{ isBiography === true ? "Biographie" : "Synopsis"}</Text>
-        <TouchableOpacity onPress={handleModal}>
+        <TouchableOpacity onPress={() => handleModal()}>
           <Text style={styles.textOverview}>
-            {truncateOverview(content, 400)}
+            {truncateOverview(content, 300)}
           </Text>
         </TouchableOpacity>
       </View>

@@ -15,26 +15,26 @@ const OverViewModal = ({ visible, setVisible, content }) => {
     setVisible(false)
   }
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <Modal
-          animationType='slide'
-          transparent={true}
-          visible={visible}
-          onRequestClose={handleModalClose}
-        >
-          <View style={styles.modalView}>
-            <View style={styles.closeContainer}>
-              <TouchableOpacity onPress={() => setVisible(!visible)}>
-                <Ionicons style={styles.closeIcons} name='close' size={40} />
-              </TouchableOpacity>
-            </View>
+    <View style={styles.container}>
+      <Modal
+        animationType='slide'
+        transparent={true}
+        visible={visible}
+        onRequestClose={handleModalClose}
+      >
+        <View style={styles.modalView}>
+          <View style={styles.closeContainer}>
+            <TouchableOpacity onPress={() => setVisible(!visible)}>
+              <Ionicons style={styles.closeIcons} name='close' size={40} />
+            </TouchableOpacity>
+          </View>
+          <ScrollView>
             <Text style={styles.modalTitle}>Synopsis</Text>
             <Text style={styles.modalText}>{content}</Text>
-          </View>
-        </Modal>
-      </View>
-    </ScrollView>
+          </ScrollView>
+        </View>
+      </Modal>
+    </View>
   )
 }
 

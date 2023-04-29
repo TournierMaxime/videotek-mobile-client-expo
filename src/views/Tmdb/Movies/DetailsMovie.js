@@ -6,6 +6,7 @@ import {
   Image,
   StyleSheet,
   ActivityIndicator,
+  TouchableOpacity,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { movieDetails } from '../../../redux/actions/tmdb/movies/detailsMovie'
@@ -20,6 +21,8 @@ import details from '../../../styles/pages/details'
 import Refresh from '../../../utils/Refresh'
 import OverView from '../../../utils/OverView'
 import AllCritics from '../../Critics/AllCritics'
+import RedirectToCritic from '../../../utils/RedirectToCritic'
+import button from '../../../styles/components/button'
 
 const DetailsMovie = ({ route }) => {
   const dispatch = useDispatch()
@@ -27,6 +30,12 @@ const DetailsMovie = ({ route }) => {
   const crew = useSelector((state) => state.movieCrew.data)
   const { id } = route.params
   const [loading, setLoading] = useState(false)
+
+  const [modalVisible, setModalVisible] = useState(false)
+
+  const handleModal = () => {
+    setModalVisible(!modalVisible)
+  }
 
   const onRefresh = async () => {
     await Promise.all([dispatch(movieDetails(id)), dispatch(movieCrew(id))])
@@ -97,18 +106,26 @@ const DetailsMovie = ({ route }) => {
                     }
                   })}
                 </View>
+
+                <RedirectToCritic movie={movie} />
               </View>
             </View>
 
             <OverView content={movie.overview} />
-
           </View>
         )
       )}
       <Trailer id={id} />
       <Cast crew={crew} />
       <Production movie={movie} />
-      <AllCritics id={movie.id} />
+      <TouchableOpacity
+          style={styles.criticButton}
+          onPress={() => handleModal()}
+          
+        >
+          <Text style={styles.buttonText}>Lire les critiques</Text>
+        </TouchableOpacity>
+      <AllCritics id={movie.id} visible={modalVisible} setVisible={setModalVisible} />
     </Refresh>
   )
 }
@@ -134,6 +151,8 @@ const styles = StyleSheet.create({
   directorsViewContainer: details.directorsViewContainer,
   directorText: details.directorText,
   directorTitle: details.directorTitle,
+  criticButton: button.criticButton,
+  buttonText: button.buttonText,
 })
 
 export default DetailsMovie

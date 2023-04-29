@@ -118,7 +118,6 @@ const DetailsPeople = ({ route }) => {
                 </TouchableOpacity>
               </View>
             </View>
-
             <OverView isBiography={true} content={people.biography} />
           </View>
           <Cast cast={cast} />

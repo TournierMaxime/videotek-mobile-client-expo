@@ -20,6 +20,8 @@ import Production from './Production'
 import Refresh from '../../../utils/Refresh'
 import OverView from '../../../utils/OverView'
 import button from '../../../styles/components/button'
+import AllCritics from '../../Critics/AllCritics'
+import RedirectToCritic from '../../../utils/RedirectToCritic'
 
 const DetailsSerie = ({ route }) => {
   const dispatch = useDispatch()
@@ -96,6 +98,7 @@ const DetailsSerie = ({ route }) => {
                       )
                     })}
                   </View>
+                  <RedirectToCritic serie={serie} />
                 </View>
               </View>
 
@@ -104,6 +107,7 @@ const DetailsSerie = ({ route }) => {
             <Trailer id={id} />
             <Cast crew={crew} />
             <Production serie={serie} />
+            <AllCritics id={serie.id} />
           </Fragment>
         )
       )}

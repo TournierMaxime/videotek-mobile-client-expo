@@ -20,7 +20,7 @@ const modalView = {
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'stretch',
-    backgroundColor: 'white',
+    backgroundColor: 'white'
 }
 
 const modalTitle = {

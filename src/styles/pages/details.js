@@ -18,7 +18,7 @@ const subTitle = {
 
 const flatListViewContainer = {
     flexDirection: 'column',
-    alignItems: 'flex-start'
+    justifyContent: 'space-between'
 }
 
 const image = {
@@ -34,9 +34,10 @@ const tags = {
     fontSize: 16,
     borderRadius: 8,
     marginLeft: 15,
+    marginRight: 'auto',
     marginVertical: 5,
     width: 'auto',
-    padding: 5,
+    paddingHorizontal: 5,
     textAlign: 'center',
     color: '#495057',
     backgroundColor: '#dee2e6'
@@ -80,11 +81,11 @@ const viewOverviewContainer = {
     flexDirection: 'column',
     display: 'flex',
     position: 'absolute',
-    top: '-10%',
+    top: '55%',
     left: 0,
     right: 0,
     bottom: 0,
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
     alignItems: 'flex-start',
     margin: 15
 }
