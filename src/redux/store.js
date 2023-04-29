@@ -21,6 +21,7 @@ import trendingReducer from './reducers/tmdb/movies/trending'
 import oneUserReducer from './reducers/users/oneUser'
 import createCriticReducer from './reducers/critics/createCritic'
 import searchCriticReducer from './reducers/critics/searchCritic'
+import confirmEmailReducer from './reducers/auth/confirmEmail'
 
 const rootReducer = {
   auth: auth,
@@ -41,8 +42,12 @@ const rootReducer = {
   peopleCareer: peopleCareerReducer,
   trending: trendingReducer,
   oneUser: oneUserReducer,
+<<<<<<< HEAD
   createCritic: createCriticReducer,
   searchCritic: searchCriticReducer
+=======
+  confirmEmail: confirmEmailReducer
+>>>>>>> e6ddff619bd9963780c8fe0b99d6673954d82240
 };
 
 const store = configureStore({

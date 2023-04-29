@@ -24,6 +24,7 @@ import ForgetPassword from './src/views/Auth/ForgetPassword'
 import NewCritic from './src/views/Critics/NewCritic'
 import DetailsUser from './src/views/User/DetailsUser'
 import AllCritics from './src/views/Critics/AllCritics'
+import ConfirmEmail from './src/views/Auth/ConfirmEmail'
 
 const MainStack = createNativeStackNavigator()
 const AuthStack = createNativeStackNavigator()
@@ -51,6 +52,13 @@ const AuthStackNavigator = () => {
         component={ForgetPassword}
         options={() => ({
           header: () => <Header backButton={true} />,
+        })}
+      />
+      <AuthStack.Screen
+        name='ConfirmEmail'
+        component={ConfirmEmail}
+        options={() => ({
+          header: () => <Header backButton={false} />,
         })}
       />
     </AuthStack.Navigator>
@@ -149,7 +157,7 @@ const MainStackNavigator = () => {
   )
 }
 
-const  App = ({ isAuthenticated, onLoginSuccess }) => {
+const App = ({ isAuthenticated, onLoginSuccess }) => {
   const userId = useSelector((state) => state.auth.data.user.userId)
 
   useEffect(() => {
