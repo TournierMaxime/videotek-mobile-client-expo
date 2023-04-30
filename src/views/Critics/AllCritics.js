@@ -7,32 +7,38 @@ import {
   StyleSheet,
   Modal,
   TouchableOpacity,
+  FlatList,
   ActivityIndicator,
-  FlatList
+  Pressable,
 } from 'react-native'
-import { Ionicons } from 'react-native-vector-icons'
+import { Ionicons, Feather } from 'react-native-vector-icons'
 import modal from '../../styles/components/modal'
 import useLoadMore from '../../utils/LoadMore'
+import card from '../../styles/components/card'
+import moment from 'moment'
+import button from '../../styles/components/button'
+import { deleteCritic } from '../../redux/actions/critics/deleteCritic'
 
 const AllCritics = ({ id, visible, setVisible }) => {
   const dispatch = useDispatch()
-  const criticsData = useSelector((state) => state.searchCritic.paginationData)
-  const criticsResults = useSelector((state) => state.searchCritic.paginationData.critics)
-  const { currentPage, loadMore  } = useLoadMore(
-    criticsData.currentPage,
+  const criticsData = useSelector((state) => state.searchCritic.data)
+  const criticsResults = useSelector((state) => state.searchCritic.data.critics)
+  const userId = useSelector((state) => state.auth.data.user.userId)
+
+  const { currentPage, loadMore } = useLoadMore(
+    criticsData.page,
     criticsData.totalPages
   )
   const [allResults, setAllResults] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-  
 
   const handleModalClose = () => {
     setVisible(false)
   }
 
   useEffect(() => {
-    setIsLoading(true);
-    dispatch(searchCritic({ currentPage, idMovieOrSerie: id }, 'searchCriticPagination'))
+    setIsLoading(true)
+    dispatch(searchCritic(id, currentPage))
       .then(() => {
         setIsLoading(false)
       })
@@ -51,12 +57,6 @@ const AllCritics = ({ id, visible, setVisible }) => {
     }
   }, [criticsResults])
 
-  const filteredCritics = allResults?.filter(
-    (critic) => critic.idMovieOrSerie === id
-  )
-
-  console.log(criticsData.currentPage)
-
   return (
     <View style={styles.container}>
       <Modal
@@ -71,31 +71,49 @@ const AllCritics = ({ id, visible, setVisible }) => {
               <Ionicons style={styles.closeIcons} name='close' size={40} />
             </TouchableOpacity>
           </View>
-            <Text style={styles.modalTitle}>Critiques</Text>
-            <FlatList
-              data={filteredCritics}
-              keyExtractor={(item, index) => `${index}`}
-              onEndReached={
-                isLoading === true ? (
-                  <ActivityIndicator
-                    style={styles.loader}
-                    size='large'
-                    color='#0000ff'
-                  />
-                ) : (
-                  loadMore
-                )
-              }
-              onEndReachedThreshold={0.5}
-              renderItem={({ item, index }) => {
-                return (
-                  <View key={index}>
-                    <Text style={styles.modalText}>{item.title}</Text>
-                  </View>
-                )
+          <Text style={styles.modalTitle}>Critiques</Text>
+          <FlatList
+            data={allResults}
+            keyExtractor={(item, index) => `${index}`}
+            onEndReached={
+              isLoading === true ? (
+                <ActivityIndicator
+                  style={styles.loader}
+                  size='large'
+                  color='#0000ff'
+                />
+              ) : (
+                loadMore
+              )
+            }
+            onEndReachedThreshold={0.5}
+            renderItem={({ item, index }) => {
 
-              }}
-            />
+              const handleDelete = async () => {
+                await dispatch(deleteCritic(item.criticId))
+                setAllResults((prevResults) => prevResults.filter((critic) => critic.criticId !== item.criticId))
+                await dispatch(searchCritic(id, 1))
+              }
+
+              return (
+                <View style={styles.criticCardContainer} key={index}>
+                  <View style={styles.criticHeaderContainer}>
+                    <Text style={styles.criticTitle}>{item.title}</Text>
+                    <Text style={styles.criticTitle}>{item.User.userName}</Text>
+                  </View>
+                  <Text style={styles.criticContent}>{item.content}</Text>
+                  <Text>
+                    Le {moment(item.created).format('DD/MM/YYYY à HH:mm:ss')}
+                  </Text>
+                  {item.userId === userId ? (
+                    <Pressable style={styles.deleteButton} onPress={() => handleDelete()}>
+                      <Feather name="trash-2" size={25} color="white" />
+                    </Pressable>
+                  ) : null}
+                </View>
+              )
+            }}
+          />
         </View>
       </Modal>
     </View>
@@ -109,6 +127,12 @@ const styles = StyleSheet.create({
   closeIcons: modal.closeIcons,
   closeContainer: modal.closeContainer,
   modalTitle: modal.modalTitle,
+  criticCardContainer: card.criticCardContainer,
+  criticTitle: card.criticTitle,
+  criticContent: card.criticContent,
+  criticHeaderContainer: card.criticHeaderContainer,
+  deleteButton: button.deleteButton,
+  buttonText: button.buttonText
 })
 
 export default AllCritics

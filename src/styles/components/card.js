@@ -59,4 +59,53 @@ const svgTrashButton = {
     background: 'none',
 }
 
-export default { cardContainer, cardTitle, cardInfo, textInfo, buttonIncDec, svgButtonIncDec, svgTrashButton, svgTrashContainer }
+const criticCardContainer = {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 10,
+    margin: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    position: 'relative'
+}
+
+const criticTitle = {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 20
+}
+
+const criticContent = {
+    textAlign: 'justify',
+    lineHeight: 25,
+    fontSize: 16,
+    marginBottom: 20
+}
+
+const criticHeaderContainer = {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'stretch'
+}
+
+export default {
+    criticHeaderContainer,
+    criticContent,
+    criticTitle,
+    criticCardContainer,
+    cardContainer,
+    cardTitle,
+    cardInfo,
+    textInfo,
+    buttonIncDec,
+    svgButtonIncDec,
+    svgTrashButton,
+    svgTrashContainer
+}

@@ -22,6 +22,8 @@ import oneUserReducer from './reducers/users/oneUser'
 import createCriticReducer from './reducers/critics/createCritic'
 import searchCriticReducer from './reducers/critics/searchCritic'
 import confirmEmailReducer from './reducers/auth/confirmEmail'
+import deleteCriticReducer from './reducers/critics/deleteCritic'
+import updateUserReducer from './reducers/users/updateUser'
 
 const rootReducer = {
   auth: auth,
@@ -44,7 +46,9 @@ const rootReducer = {
   oneUser: oneUserReducer,
   createCritic: createCriticReducer,
   searchCritic: searchCriticReducer,
-  confirmEmail: confirmEmailReducer
+  confirmEmail: confirmEmailReducer,
+  deleteCritic: deleteCriticReducer,
+  updateUser: updateUserReducer
 };
 
 const store = configureStore({

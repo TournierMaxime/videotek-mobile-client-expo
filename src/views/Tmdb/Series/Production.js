@@ -141,7 +141,7 @@ const Production = ({ serie }) => {
   }
 
   return (
-    <View>
+    <View style={styles.productionViewContainer}>
       <View style={styles.technicalSheetViewContainer}>
         <Text style={styles.title}>Fiche Technique</Text>
       </View>
@@ -164,7 +164,8 @@ const styles = StyleSheet.create({
   flatListViewContainer: details.flatListViewContainer,
   tags: details.tags,
   technicalSheetViewContainer: details.technicalSheetViewContainer,
-  mainContainer: details.mainContainer
+  mainContainer: details.mainContainer,
+  productionViewContainer: details.productionViewContainer
 })
 
 export default Production

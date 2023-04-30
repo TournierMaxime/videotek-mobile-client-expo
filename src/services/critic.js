@@ -1,23 +1,27 @@
-import { videotekApi as http } from "./axios.js";
+import { videotekApi as http } from './axios.js'
 
-const SearchCritic = (filters) => {
-  return http.post(
-    "/critics/search",
-    {
-      params: filters,
+const SearchCritic = (id, page) => {
+  return http.get(`/critics/search/${id}`, {
+    params: {
+      page
     }
-  );
-};
+  })
+}
 
 const CreateCritic = (data) => {
-  return http.post(
-    "/critics/new",
-    data,
-    {
-      withCredentials: true
-    }
-  );
-};
+  return http.post('/critics/new', data, {
+    withCredentials: true,
+  })
+}
 
+const DeleteCritic = (id) => {
+  return http.delete(`/critics/${id}`, {
+    withCredentials: true,
+  })
+}
 
-export { SearchCritic, CreateCritic };
+export {
+  SearchCritic,
+  CreateCritic,
+  DeleteCritic
+}

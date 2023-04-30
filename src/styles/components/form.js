@@ -11,7 +11,6 @@ const formContainer = {
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    position: 'relative'
 }
 
 const formInput = {

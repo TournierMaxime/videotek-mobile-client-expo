@@ -28,6 +28,7 @@ const DetailsMovie = ({ route }) => {
   const dispatch = useDispatch()
   const movie = useSelector((state) => state.movieDetails.data)
   const crew = useSelector((state) => state.movieCrew.data)
+  const nbOfCritics = useSelector((state) => state.searchCritic.data.results)
   const { id } = route.params
   const [loading, setLoading] = useState(false)
 
@@ -50,6 +51,18 @@ const DetailsMovie = ({ route }) => {
 
     fetchData()
   }, [dispatch, id])
+
+  const critics = (data) => {
+    if (!data || data.length === 0) return null
+    return (
+            <TouchableOpacity
+        style={styles.criticButton}
+        onPress={() => handleModal()}
+      >
+        <Text style={styles.buttonText}>Lire les critiques ({data})</Text>
+      </TouchableOpacity>
+    )
+  }
 
   return (
     <Refresh styles={styles.scrollView} onRefresh={onRefresh}>
@@ -118,13 +131,7 @@ const DetailsMovie = ({ route }) => {
       <Trailer id={id} />
       <Cast crew={crew} />
       <Production movie={movie} />
-      <TouchableOpacity
-          style={styles.criticButton}
-          onPress={() => handleModal()}
-          
-        >
-          <Text style={styles.buttonText}>Lire les critiques</Text>
-        </TouchableOpacity>
+      {critics(nbOfCritics)}
       <AllCritics id={movie.id} visible={modalVisible} setVisible={setModalVisible} />
     </Refresh>
   )

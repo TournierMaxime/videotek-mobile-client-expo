@@ -93,7 +93,33 @@ const criticButton = {
     width: 'auto'
 }
 
+const deleteButton = {
+    borderRadius: 5,
+    padding: 5,
+    width: 'auto',
+    backgroundColor: 'red',
+    marginLeft: 'auto',
+    marginTop: 20
+}
+
+const deleteAccount = {
+    borderRadius: 5,
+    padding: 5,
+    width: 'auto',
+    marginRight: 'auto',
+    backgroundColor: 'red',
+    marginLeft: 20,
+}
+
+const deleteAccountContainer = {
+    display: 'flex',
+    justifyContent: 'flex-end'
+}
+
 export default {
+    deleteAccountContainer,
+    deleteAccount,
+    deleteButton,
     orderButton,
     formButtonForgetPassword,
     formButtonLogin,
