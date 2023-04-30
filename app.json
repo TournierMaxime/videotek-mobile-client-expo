@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "videotek-mobile-client-expo",
-    "slug": "videotek-mobile-client-expo",
+    "name": "VideoTek",
+    "slug": "videotek-client-expo",
     "version": "1.0.7",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
