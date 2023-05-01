@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { searchCritic } from '../../redux/actions/critics/searchCritic'
+import { searchCriticByUser } from '../../redux/actions/critics/searchCritic'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   Text,
   View,
   StyleSheet,
-  Modal,
-  TouchableOpacity,
   FlatList,
   ActivityIndicator,
   Pressable,
+  TouchableOpacity
 } from 'react-native'
-import { Ionicons, Feather } from 'react-native-vector-icons'
+import { Feather } from 'react-native-vector-icons'
 import modal from '../../styles/components/modal'
 import useLoadMore from '../../utils/LoadMore'
 import card from '../../styles/components/card'
@@ -20,9 +19,11 @@ import button from '../../styles/components/button'
 import { deleteCritic } from '../../redux/actions/critics/deleteCritic'
 import AlertModal from '../../utils/AlertModal'
 import { Fragment } from 'react'
+import { useNavigation } from '@react-navigation/native'
 
-const AllCritics = ({ id, visible, setVisible }) => {
+const UserCritics = () => {
   const dispatch = useDispatch()
+  const navigation = useNavigation()
   const criticsData = useSelector((state) => state.searchCritic.data)
   const criticsResults = useSelector((state) => state.searchCritic.data.critics)
   const userId = useSelector((state) => state.auth.data.user.userId)
@@ -42,20 +43,16 @@ const AllCritics = ({ id, visible, setVisible }) => {
   const [allResults, setAllResults] = useState([])
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleModalClose = () => {
-    setVisible(false)
-  }
-
   useEffect(() => {
     setIsLoading(true)
-    dispatch(searchCritic(id, currentPage))
+    dispatch(searchCriticByUser(userId, currentPage))
       .then(() => {
         setIsLoading(false)
       })
       .catch(() => {
         setIsLoading(false)
       })
-  }, [dispatch, id, currentPage])
+  }, [dispatch, userId, currentPage])
 
   useEffect(() => {
     if (criticsResults?.length > 0) {
@@ -68,52 +65,42 @@ const AllCritics = ({ id, visible, setVisible }) => {
   }, [criticsResults])
 
   return (
-    <View style={styles.container}>
-      <Modal
-        animationType='slide'
-        transparent={true}
-        visible={visible}
-        onRequestClose={handleModalClose}
-      >
-        <View style={styles.modalView}>
-          <View style={styles.closeContainer}>
-            <TouchableOpacity onPress={() => setVisible(!visible)}>
-              <Ionicons style={styles.closeIcons} name='close' size={40} />
-            </TouchableOpacity>
-          </View>
-          <Text style={styles.modalTitle}>Critiques</Text>
-          <FlatList
-            data={allResults}
-            keyExtractor={(item, index) => `${index}`}
-            onEndReached={
-              isLoading === true ? (
-                <ActivityIndicator
-                  style={styles.loader}
-                  size='large'
-                  color='#0000ff'
-                />
-              ) : (
-                loadMore
+    <Fragment>
+      <Text style={styles.modalTitle}>Critiques</Text>
+      <FlatList
+        data={allResults}
+        keyExtractor={(item, index) => `${index}`}
+        onEndReached={
+          isLoading === true ? (
+            <ActivityIndicator
+              style={styles.loader}
+              size='large'
+              color='#0000ff'
+            />
+          ) : (
+            loadMore
+          )
+        }
+        onEndReachedThreshold={0.5}
+        renderItem={({ item, index }) => {
+          const handleDelete = async () => {
+            if (selectedCriticId) {
+              await dispatch(deleteCritic(selectedCriticId)).then(() =>
+                setModalVisible(false)
               )
+              setAllResults((prevResults) =>
+                prevResults.filter(
+                  (critic) => critic.criticId !== selectedCriticId
+                )
+              )
+              await dispatch(searchCriticByUser(userId, 1))
+              setSelectedCriticId(null)
             }
-            onEndReachedThreshold={0.5}
-            renderItem={({ item, index }) => {
-              const handleDelete = async () => {
-                if (selectedCriticId) {
-                  await dispatch(deleteCritic(selectedCriticId)).then(() =>
-                    setModalVisible(false)
-                  )
-                  setAllResults((prevResults) =>
-                    prevResults.filter(
-                      (critic) => critic.criticId !== selectedCriticId
-                    )
-                  )
-                  await dispatch(searchCritic(id, 1))
-                  setSelectedCriticId(null)
-                }
-              }
+          }
 
-              return (
+          return (
+            <Fragment>
+              <TouchableOpacity onPress={() => navigation.navigate('UpdateCritic', { criticId: item.criticId, userId })}>
                 <View style={styles.criticCardContainer} key={index}>
                   <View style={styles.criticHeaderContainer}>
                     <Text style={styles.criticTitle}>{item.title}</Text>
@@ -142,12 +129,12 @@ const AllCritics = ({ id, visible, setVisible }) => {
                     </Fragment>
                   ) : null}
                 </View>
-              )
-            }}
-          />
-        </View>
-      </Modal>
-    </View>
+              </TouchableOpacity>
+            </Fragment>
+          )
+        }}
+      />
+    </Fragment>
   )
 }
 
@@ -167,4 +154,4 @@ const styles = StyleSheet.create({
   trashButton: button.trashButton,
 })
 
-export default AllCritics
+export default UserCritics

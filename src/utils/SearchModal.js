@@ -14,6 +14,7 @@ import { Ionicons } from 'react-native-vector-icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { search } from '../redux/actions/tmdb/search'
 import { useNavigation } from '@react-navigation/native'
+import moment from 'moment'
 
 const SearchModal = ({ visible, setVisible }) => {
   const dispatch = useDispatch()
@@ -48,7 +49,7 @@ const SearchModal = ({ visible, setVisible }) => {
               setVisible(false)
           }}
         >
-          <Text>{`${item.original_title} / Film`}</Text>
+          <Text>{`${item.original_title} (${moment(item.release_date).format('YYYY')}) / Film`}</Text>
         </TouchableOpacity>
       )
     } else if (item.name) {
@@ -64,7 +65,7 @@ const SearchModal = ({ visible, setVisible }) => {
                 setVisible(false)
             }}
           >
-            <Text>{`${item.name} / Série`}</Text>
+            <Text>{`${item.name} (${moment(item.first_air_date).format('YYYY')}) / Série`}</Text>
           </TouchableOpacity>
         )
       }
@@ -127,9 +128,11 @@ const SearchModal = ({ visible, setVisible }) => {
               keyExtractor={(item) => item.id}
               renderItem={({ item }) => {
                 return (
-                  <Text style={{ fontSize: 18, margin: 10 }}>
+                  <View style={{ flexWrap: 'wrap' }}>
+                  <Text style={{ fontSize: 18, marginVertical: 10 }}>
                     {renderItemContent(item)}
                   </Text>
+                  </View>
                 )
               }}
             />

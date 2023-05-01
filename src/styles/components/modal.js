@@ -51,7 +51,51 @@ const closeContainer = {
 const formContainer = {
     padding: 20,
     margin: 20,
-    position: 'relative'
+    position: 'relative',
+}
+
+const alertModalContainer = {
+    alignItems: "center",
+    justifyContent: "center",
+}
+
+const alertModalView = {
+    width: '80%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    position: 'absolute',
+    height: "auto",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    padding: 20,
+    borderRadius: 10,
+    top: '25%',
+    left: '10%',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+}
+
+const alertModalText = {
+
+}
+
+const alertModalActions = {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+}
+
+const alertModalMessage = {
+    marginBottom: 20
 }
 
 export default {
@@ -63,5 +107,10 @@ export default {
     modalView,
     modalText,
     closeIcons,
-    modalTitle
+    modalTitle,
+    alertModalContainer,
+    alertModalView,
+    alertModalText,
+    alertModalActions,
+    alertModalMessage
 }
