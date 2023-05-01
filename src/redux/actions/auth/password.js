@@ -12,9 +12,9 @@ export const forgetPassword = (email) => async (dispatch) => {
   }
 };
 
-export const checkForgetPasswordCode = (code) => async dispatch => {
+export const checkForgetPasswordCode = (data) => async dispatch => {
   try {
-    const response = await CheckForgetPasswordCodeMobile(code)
+    const response = await CheckForgetPasswordCodeMobile(data)
     dispatch({type: 'CHECK_FORGET_PASSWORD_CODE_SUCCESS', payload: response.data});
     return response.data
   } catch (error) {
