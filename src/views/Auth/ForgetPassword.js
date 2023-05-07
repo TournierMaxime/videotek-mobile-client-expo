@@ -33,11 +33,11 @@ const ForgetPasswordScreen = () => {
       console.log(error.response.data.errMsg);
       ToastError('error', error.response.data.errMsg, false)
     }
-    setEmail('')
   };
 
   const handleCheckForgetPasswordCode = async () => {
     try {
+      console.log(email)
       await dispatch(checkForgetPasswordCode({email, code}));
       ToastSuccess('success', 'Votre code de vérification a bien été validé.', true)
       setStep(3)
@@ -45,7 +45,6 @@ const ForgetPasswordScreen = () => {
       console.log(error.response.data.errMsg);
       ToastError('error', error.response.data.errMsg, false)
     }
-    setEmail('')
     setCode('')
   };
 

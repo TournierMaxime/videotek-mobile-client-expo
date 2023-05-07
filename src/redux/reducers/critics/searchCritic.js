@@ -26,6 +26,26 @@ export default function searchCriticReducer(state = initialState, action) {
           error: action.payload,
           loading: false,
       };
+      case 'SEARCH_CRITIC_BY_USER_REQUEST':
+        return {
+          ...state,
+            loading: true,
+            error: null,
+        };
+      case 'SEARCH_CRITIC_BY_USER_SUCCESS':
+        return {
+          ...state,
+            data: action.payload,
+            loading: false,
+            error: null,
+        };
+      case 'SEARCH_CRITIC_BY_USER_FAILURE':
+        return {
+          ...state,
+            data: {},
+            error: action.payload,
+            loading: false,
+        };
     default:
       return state;
   }

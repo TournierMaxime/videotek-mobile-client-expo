@@ -7,19 +7,45 @@ import { ToastSuccess, ToastError } from '../../utils/Toast'
 import ToastConfig from '../../utils/ToastConfig'
 import button from '../../styles/components/button'
 import form from '../../styles/components/form'
+import { deleteUser } from '../../redux/actions/users/deleteUser'
+import { logoutUser } from "../../redux/actions/auth/auth"
+import { useNavigation } from "@react-navigation/native"
+import AlertModal from "../../utils/AlertModal"
 
 const DetailsUser = ({ route }) => {
   const { userId } = route.params
   const dispatch = useDispatch()
+  const navigation = useNavigation()
   const user = useSelector((state) => state.oneUser.data.user)
-
   const [data, setData] = useState({userName: user.userName, email: user.email})
+
+  const [modalVisible, setModalVisible] = useState(false)
+
+  const handleModal = () => {
+    setModalVisible(!modalVisible)
+  }
 
   const handleUpdate = async () => {
     try {    
       await dispatch(updateUser(data, userId))
       ToastSuccess('success', 'Profil mis à jour', true)
       await dispatch(getUser(userId))
+    } catch (error) {
+      console.log(error.response.data.errMsg)
+      ToastError('error', error.response.data.errMsg, true)
+    }
+  }
+
+  const handleDelete = async () => {
+    try {
+      await dispatch(deleteUser(userId))
+      ToastSuccess('success', 'Compte supprimé avec succès', true)
+      
+      setTimeout(async () => {
+        await dispatch(logoutUser())
+        navigation.navigate('Home')
+      }, 3000)
+
     } catch (error) {
       console.log(error.response.data.errMsg)
       ToastError('error', error.response.data.errMsg, true)
@@ -58,10 +84,12 @@ const DetailsUser = ({ route }) => {
           <ToastConfig />
         </View>
       </View>
+      
+      <AlertModal message={'Etes vous sur de vouloir supprimer votre compte ?'} action={handleDelete} visible={modalVisible} setVisible={setModalVisible} />
       <View style={styles.deleteAccountContainer}>
           <TouchableOpacity
             style={styles.deleteAccount}
-            onPress={() => handleUpdate()
+            onPress={() => handleModal()
             }
           >
             <Text style={styles.buttonText}>Supprimer compte</Text>

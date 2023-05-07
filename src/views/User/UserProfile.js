@@ -1,13 +1,13 @@
-import React, { Fragment, useEffect } from "react"
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native"
-import button from "../../styles/components/button"
-import { useDispatch, useSelector } from "react-redux"
-import { getUser } from "../../redux/actions/users/oneUser"
-import { logoutUser } from "../../redux/actions/auth/auth"
-import { useNavigation } from "@react-navigation/native"
-import { checkAccess } from "../../utils/CheckAccess"
-import { Entypo, FontAwesome5, MaterialIcons } from 'react-native-vector-icons';
-import profil from "../../styles/components/profil"
+import React, { Fragment, useEffect } from 'react'
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import button from '../../styles/components/button'
+import { useDispatch, useSelector } from 'react-redux'
+import { getUser } from '../../redux/actions/users/oneUser'
+import { logoutUser } from '../../redux/actions/auth/auth'
+import { useNavigation } from '@react-navigation/native'
+import { checkAccess } from '../../utils/CheckAccess'
+import { Entypo, FontAwesome5, MaterialIcons } from 'react-native-vector-icons'
+import profil from '../../styles/components/profil'
 
 const UserProfile = ({ route }) => {
   const { userId } = route.params
@@ -19,7 +19,7 @@ const UserProfile = ({ route }) => {
 
   const handleLogout = async () => {
     await dispatch(logoutUser())
-    navigation.navigate("Home")
+    navigation.navigate('Home')
   }
 
   useEffect(() => {
@@ -35,27 +35,52 @@ const UserProfile = ({ route }) => {
         accessDenied
       ) : (
         <Fragment>
-            {oneUser && (
-              <View style={styles.profilViewContainer}>
-                <TouchableOpacity onPress={() => navigation.navigate('DetailsUser', { userId })}>
-                  <View style={styles.profileSectionContainer}>
-                    <View style={styles.textIconContainer}>
-                      <FontAwesome5 style={styles.icon} name="user" size={25} color="black" />
-                      <Text>{userName}</Text>
-                    </View>
-                    <Entypo name="chevron-small-right" size={25} color="black" /> 
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleLogout()}>
+          {oneUser && (
+            <View style={styles.profilViewContainer}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('DetailsUser', { userId })}
+              >
                 <View style={styles.profileSectionContainer}>
                   <View style={styles.textIconContainer}>
-                    <MaterialIcons style={styles.icon} name="logout" size={25} color="black" />
+                    <FontAwesome5
+                      style={styles.icon}
+                      name='user'
+                      size={25}
+                      color='black'
+                    />
+                    <Text>{userName}</Text>
+                  </View>
+                  <Entypo name='chevron-small-right' size={25} color='black' />
+                </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => navigation.navigate('UserCritics', { userId })}
+              >
+                <View style={styles.profileSectionContainer}>
+                  <View style={styles.textIconContainer}>
+                    <Entypo style={styles.icon} name="new-message" size={25} color="black" />
+                    <Text>Critiques</Text>
+                  </View>
+                  <Entypo name='chevron-small-right' size={25} color='black' />
+                </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={() => handleLogout()}>
+                <View style={styles.profileSectionContainer}>
+                  <View style={styles.textIconContainer}>
+                    <MaterialIcons
+                      style={styles.icon}
+                      name='logout'
+                      size={25}
+                      color='black'
+                    />
                     <Text>Déconnexion</Text>
                   </View>
-                  <Entypo name="chevron-small-right" size={25} color="black" />
+                  <Entypo name='chevron-small-right' size={25} color='black' />
                 </View>
-                </TouchableOpacity>
-              </View>
+              </TouchableOpacity>
+            </View>
           )}
         </Fragment>
       )}
@@ -66,17 +91,15 @@ const UserProfile = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#efefef",
-    alignItems: "center",
-    justifyContent: "space-between",
+    backgroundColor: '#efefef',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   logoutButton: button.logoutButton,
   profileSectionContainer: profil.profileSectionContainer,
   icon: profil.icon,
   textIconContainer: profil.textIconContainer,
-  profilViewContainer: profil.profilViewContainer
+  profilViewContainer: profil.profilViewContainer,
 })
-
-
 
 export default UserProfile

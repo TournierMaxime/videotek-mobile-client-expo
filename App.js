@@ -25,6 +25,8 @@ import NewCritic from './src/views/Critics/NewCritic'
 import DetailsUser from './src/views/User/DetailsUser'
 import AllCritics from './src/views/Critics/AllCritics'
 import ConfirmEmail from './src/views/Auth/ConfirmEmail'
+import UserCritics from './src/views/User/UserCritics'
+import UpdateCritic from './src/views/User/UpdateCritic'
 
 const MainStack = createNativeStackNavigator()
 const AuthStack = createNativeStackNavigator()
@@ -149,6 +151,20 @@ const MainStackNavigator = () => {
       <MainStack.Screen
         name='AllCritics'
         component={AllCritics}
+        options={() => ({
+          header: () => <Header backButton={true} />,
+        })}
+      />
+      <MainStack.Screen
+        name='UserCritics'
+        component={UserCritics}
+        options={() => ({
+          header: () => <Header backButton={true} />,
+        })}
+      />
+      <MainStack.Screen
+        name='UpdateCritic'
+        component={UpdateCritic}
         options={() => ({
           header: () => <Header backButton={true} />,
         })}
