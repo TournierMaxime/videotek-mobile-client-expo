@@ -40,7 +40,7 @@ const OnTheAir = () => {
           renderItem={({item}) => {
             return (
               <View style={styles.flatListViewContainer}>
-                <TouchableOpacity onPress={() => navigation.navigate('Details Serie', {id: item.id, title: item.original_name})}>
+                <TouchableOpacity onPress={() => navigation.navigate('DetailsSerie', {id: item.id, title: item.original_name})}>
                   <Image style={styles.image} source={{uri: `https://image.tmdb.org/t/p/original${item.poster_path}`}} />
                   <Text style={styles.originalTitle}>{truncateTitle(item.original_name, 15)}</Text>
                 </TouchableOpacity>
