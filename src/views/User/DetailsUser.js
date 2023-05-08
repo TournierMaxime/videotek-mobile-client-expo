@@ -17,7 +17,7 @@ const DetailsUser = ({ route }) => {
   const dispatch = useDispatch()
   const navigation = useNavigation()
   const user = useSelector((state) => state.oneUser.data.user)
-  const [data, setData] = useState({userName: user.userName, email: user.email})
+  const [data, setData] = useState({userName: user?.userName, email: user?.email})
 
   const [modalVisible, setModalVisible] = useState(false)
 
@@ -64,7 +64,7 @@ const DetailsUser = ({ route }) => {
           style={styles.formInput}
           placeholder='Pseudo'
           onChangeText={(text) => setData({ ...data, userName: text })}
-          defaultValue={user.userName}
+          defaultValue={user?.userName}
         />
         <Text style={styles.formLabel}>Votre email</Text>
         <TextInput

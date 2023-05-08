@@ -26,9 +26,11 @@ const ConfirmEmail = ({ route }) => {
       await dispatch(confirmEmail(userId, data))
       ToastSuccess('success', 'Votre compte a bien été vérifié.', false)
       await dispatch(loginWithUserId({ userId }))
-      setTimeout(() => {
-        navigation.navigate('MainStackNavigator', { screen: 'Home' })
-      }, 3000)
+
+      navigation.navigate('MainStackNavigator', {
+        screen: 'UserProfile',
+        userId,
+      })
     } catch (error) {
       console.log(error.response.data.errMsg)
       ToastError('error', error.response.data.errMsg, false)

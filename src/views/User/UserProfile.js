@@ -29,6 +29,8 @@ const UserProfile = ({ route }) => {
   const accessDenied = checkAccess(isLogged, userId, currentUserId)
   const userName = `${oneUser?.user?.userName}`
 
+  console.log(userName)
+
   return (
     <View style={styles.container}>
       {accessDenied ? (
