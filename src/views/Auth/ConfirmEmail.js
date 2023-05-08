@@ -13,6 +13,7 @@ import form from '../../styles/components/form'
 import button from '../../styles/components/button'
 import { useDispatch } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
+import { loginWithUserId } from '../../redux/actions/auth/auth'
 
 const ConfirmEmail = ({ route }) => {
   const dispatch = useDispatch()
@@ -24,8 +25,9 @@ const ConfirmEmail = ({ route }) => {
     try {
       await dispatch(confirmEmail(userId, data))
       ToastSuccess('success', 'Votre compte a bien été vérifié.', false)
+      await dispatch(loginWithUserId({ userId }))
       setTimeout(() => {
-        navigation.navigate('Login')
+        navigation.navigate('MainStackNavigator', { screen: 'Home' })
       }, 3000)
     } catch (error) {
       console.log(error.response.data.errMsg)

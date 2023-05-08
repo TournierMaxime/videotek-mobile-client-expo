@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import details from '../../../styles/pages/details'
 import moment from 'moment'
+import Accordion from '../../../components/Accordion'
 
 const Production = ({ serie }) => {
-
   const status = (data) => {
     if (!data) return null
 
@@ -18,40 +18,37 @@ const Production = ({ serie }) => {
     }
 
     return (
-      <View style={styles.mainContainer}>
-        <View style={styles.technicalSheetViewContainer}>
-          <Text style={styles.subTitle}>Status</Text>
+      <Accordion title={'Status'}>
+        <View style={styles.mainContainer}>
+          <View style={styles.flatListViewContainer}>{statusSerie()}</View>
         </View>
-        <View style={styles.flatListViewContainer}>{statusSerie()}</View>
-      </View>
+      </Accordion>
     )
   }
 
   const nbSeasons = (data) => {
     if (!data) return null
     return (
-      <View style={styles.mainContainer}>
-        <View style={styles.technicalSheetViewContainer}>
-          <Text style={styles.subTitle}>Saisons</Text>
+      <Accordion title={'Saisons'}>
+        <View style={styles.mainContainer}>
+          <View style={styles.flatListViewContainer}>
+            <Text style={styles.tags}>{data}</Text>
+          </View>
         </View>
-        <View style={styles.flatListViewContainer}>
-          <Text style={styles.tags}>{data}</Text>
-        </View>
-      </View>
+      </Accordion>
     )
   }
 
   const nbEpisodes = (data) => {
     if (!data) return null
     return (
-      <View style={styles.mainContainer}>
-        <View style={styles.technicalSheetViewContainer}>
-          <Text style={styles.subTitle}>Episodes</Text>
+      <Accordion title={'Episodes'}>
+        <View style={styles.mainContainer}>
+          <View style={styles.flatListViewContainer}>
+            <Text style={styles.tags}>{data}</Text>
+          </View>
         </View>
-        <View style={styles.flatListViewContainer}>
-          <Text style={styles.tags}>{data}</Text>
-        </View>
-      </View>
+      </Accordion>
     )
   }
 
@@ -59,10 +56,7 @@ const Production = ({ serie }) => {
     if (!data) return null
 
     return (
-      <Fragment>
-        <View style={styles.technicalSheetViewContainer}>
-          <Text style={styles.subTitle}>Diffuseurs</Text>
-        </View>
+      <Accordion title={'Diffuseurs'}>
         {data?.map((item, index) => {
           return (
             <View key={index} style={styles.flatListViewContainer}>
@@ -70,7 +64,7 @@ const Production = ({ serie }) => {
             </View>
           )
         })}
-      </Fragment>
+      </Accordion>
     )
   }
 
@@ -78,10 +72,7 @@ const Production = ({ serie }) => {
     if (!data) return null
 
     return (
-      <Fragment>
-        <View style={styles.technicalSheetViewContainer}>
-          <Text style={styles.subTitle}>Producteurs</Text>
-        </View>
+      <Accordion title={'Producteurs'}>
         {data?.map((item, index) => {
           return (
             <View key={index} style={styles.flatListViewContainer}>
@@ -89,7 +80,7 @@ const Production = ({ serie }) => {
             </View>
           )
         })}
-      </Fragment>
+      </Accordion>
     )
   }
 
@@ -97,10 +88,7 @@ const Production = ({ serie }) => {
     if (!data) return null
 
     return (
-      <Fragment>
-        <View style={styles.technicalSheetViewContainer}>
-          <Text style={styles.subTitle}>Pays d&apos;origine</Text>
-        </View>
+      <Accordion title={"Pays d'origine"}>
         {data?.map((item, index) => {
           return (
             <View key={index} style={styles.flatListViewContainer}>
@@ -108,35 +96,33 @@ const Production = ({ serie }) => {
             </View>
           )
         })}
-      </Fragment>
+      </Accordion>
     )
   }
 
   const firstEpisode = (data) => {
     if (!data) return null
     return (
-      <View style={styles.mainContainer}>
-        <View style={styles.technicalSheetViewContainer}>
-          <Text style={styles.subTitle}>Premier épisode</Text>
+      <Accordion title={'Premier épisode'}>
+        <View style={styles.mainContainer}>
+          <View style={styles.flatListViewContainer}>
+            <Text style={styles.tags}>{moment(data).format('DD/MM/YYYY')}</Text>
+          </View>
         </View>
-        <View style={styles.flatListViewContainer}>
-          <Text style={styles.tags}>{moment(data).format('DD/MM/YYYY')}</Text>
-        </View>
-      </View>
+      </Accordion>
     )
   }
 
   const lastEpisode = (data) => {
     if (!data) return null
     return (
-      <View style={styles.mainContainer}>
-        <View style={styles.technicalSheetViewContainer}>
-          <Text style={styles.subTitle}>Dernier épisode</Text>
+      <Accordion title={'Dernier épisode'}>
+        <View style={styles.mainContainer}>
+          <View style={styles.flatListViewContainer}>
+            <Text style={styles.tags}>{moment(data).format('DD/MM/YYYY')}</Text>
+          </View>
         </View>
-        <View style={styles.flatListViewContainer}>
-          <Text style={styles.tags}>{moment(data).format('DD/MM/YYYY')}</Text>
-        </View>
-      </View>
+      </Accordion>
     )
   }
 
@@ -152,7 +138,7 @@ const Production = ({ serie }) => {
       {productionCompanies(serie.production_companies)}
       {productionCountries(serie.production_countries)}
       {firstEpisode(serie.first_air_date)}
-      {lastEpisode(serie.last_air_date)}     
+      {lastEpisode(serie.last_air_date)}
     </View>
   )
 }
@@ -165,7 +151,7 @@ const styles = StyleSheet.create({
   tags: details.tags,
   technicalSheetViewContainer: details.technicalSheetViewContainer,
   mainContainer: details.mainContainer,
-  productionViewContainer: details.productionViewContainer
+  productionViewContainer: details.productionViewContainer,
 })
 
 export default Production

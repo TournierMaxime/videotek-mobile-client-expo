@@ -3,69 +3,66 @@ import { View, Text, StyleSheet } from 'react-native'
 import { numberWithCommas } from '../../../utils/NumberWithCommas'
 import details from '../../../styles/pages/details'
 import moment from 'moment/moment'
+import Accordion from '../../../components/Accordion'
 
 const Production = ({ movie }) => {
   const productionCompanies = (data) => {
     if (!data) return null
     return (
-      <View style={styles.mainContainer}>
-        <View style={styles.technicalSheetViewContainer}>
-          <Text style={styles.subTitle}>Producteurs</Text>
+      <Accordion title={'Producteurs'}>
+        <View style={styles.mainContainer}>
+          {data?.map((item, index) => {
+            return (
+              <View key={index} style={styles.flatListViewContainer}>
+                <Text style={styles.tags}>{item.name}</Text>
+              </View>
+            )
+          })}
         </View>
-        {data?.map((item, index) => {
-        return (
-          <View key={index} style={styles.flatListViewContainer}>
-            <Text style={styles.tags}>{item.name}</Text>
-          </View>
-        )
-      })}
-      </View>
+      </Accordion>
     )
   }
 
   const productionCountries = (data) => {
     if (!data) return null
     return (
-      <View style={styles.mainContainer}>
-        <View style={styles.technicalSheetViewContainer}>
-          <Text style={styles.subTitle}>Pays d&apos;origine</Text>
+      <Accordion title={"Pays d'origine"}>
+        <View style={styles.mainContainer}>
+          {data?.map((item, index) => {
+            return (
+              <View key={index} style={styles.flatListViewContainer}>
+                <Text style={styles.tags}>{item.name}</Text>
+              </View>
+            )
+          })}
         </View>
-        {data?.map((item, index) => {
-        return (
-          <View key={index} style={styles.flatListViewContainer}>
-            <Text style={styles.tags}>{item.name}</Text>
-          </View>
-        )
-      })}
-      </View>
+      </Accordion>
     )
   }
 
   const release = (data) => {
     if (!data) return null
     return (
-      <View style={styles.mainContainer}>
-        <View style={styles.technicalSheetViewContainer}>
-          <Text style={styles.subTitle}>Sortie</Text>
+      <Accordion title={'Sortie'}>
+        <View style={styles.mainContainer}>
+          <View style={styles.flatListViewContainer}>
+            <Text style={styles.tags}>{moment(data).format('DD/MM/YYYY')}</Text>
+          </View>
         </View>
-        <View style={styles.flatListViewContainer}>
-          <Text style={styles.tags}>{moment(data).format('DD/MM/YYYY')}</Text>
-        </View>
-      </View>
+      </Accordion>
     )
   }
 
   const budget = (data) => {
     if (!data) return null
     return (
-      <View style={styles.mainContainer}>
-        <View style={styles.technicalSheetViewContainer}>
-          <Text style={styles.subTitle}>Budget</Text>
+      <Accordion title={'Budget'}>
+        <View style={styles.mainContainer}>
+          <View style={styles.flatListViewContainer}>
+            <Text style={styles.tags}>{numberWithCommas(data)}$</Text>
+          </View>
         </View>
-        <View style={styles.flatListViewContainer}>
-          <Text style={styles.tags}>{numberWithCommas(data)}$</Text>
-        </View>
-      </View>
+      </Accordion>
     )
   }
 
@@ -73,14 +70,13 @@ const Production = ({ movie }) => {
     if (!data) return null
 
     return (
-      <View style={styles.mainContainer}>
-        <View style={styles.technicalSheetViewContainer}>
-          <Text style={styles.subTitle}>Recette</Text>
+      <Accordion title={'Recette'}>
+        <View style={styles.mainContainer}>
+          <View style={styles.flatListViewContainer}>
+            <Text style={styles.tags}>{numberWithCommas(data)}$</Text>
+          </View>
         </View>
-        <View style={styles.flatListViewContainer}>
-          <Text style={styles.tags}>{numberWithCommas(data)}$</Text>
-        </View>
-      </View>
+      </Accordion>
     )
   }
 
