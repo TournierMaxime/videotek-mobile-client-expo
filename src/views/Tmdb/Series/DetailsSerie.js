@@ -39,13 +39,15 @@ const DetailsSerie = ({ route }) => {
   }
 
   const onRefresh = async () => {
-    await Promise.all([dispatch(serieDetails(id)), dispatch(serieCrew(id))])
+    await dispatch(serieDetails(id))
+    await dispatch(serieCrew(id))
   }
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true)
-      await Promise.all([dispatch(serieDetails(id)), dispatch(serieCrew(id))])
+      await dispatch(serieDetails(id))
+      await dispatch(serieCrew(id))
       setLoading(false)
     }
 

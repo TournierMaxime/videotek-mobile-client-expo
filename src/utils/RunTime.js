@@ -1,7 +1,7 @@
 import React from 'react'
-import { Text } from 'react-native'
+import { Text, StyleSheet } from 'react-native'
 
-export default function Runtime({ time, isMovie }) {
+const Runtime = ({ time, isMovie }) => {
   if (!time) return null
 
   let hours, minutes
@@ -15,17 +15,30 @@ export default function Runtime({ time, isMovie }) {
 
   const hasHours = hours > 0
 
-  const runtime = () => (
+  const runtime = () => { 
+    if (time.length === 0) {
+      return
+    }
+    return (
     <Text style={{ color: 'white' }}>
       {isMovie ? 
-      <Text>Durée {hasHours ? hours + 'H' : ''}
+      <Text style={styles.duration}>Durée {hasHours ? hours + 'H' : ''}
       {minutes}Min</Text> : 
-      <Text>Durée {hasHours ? hours + 'H' : ''}
-      {minutes}Min / épisodes</Text>
+      <Text style={styles.duration}>Durée {hasHours ? hours + 'H' : ''}
+      {minutes}Min / ep</Text>
       
       }
     </Text>
-  )
+    )
+  }
 
   return runtime()
 }
+
+const styles = StyleSheet.create({
+  duration: {
+    fontSize: 18
+  }
+})
+
+export default Runtime

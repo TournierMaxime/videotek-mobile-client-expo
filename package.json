@@ -8,7 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "build": "eas build",
-    "submit": "eas submit"
+    "submit": "eas submit",
+    "clear": "expo start --clear"
   },
   "dependencies": {
     "@expo/webpack-config": "^18.0.1",
@@ -27,7 +28,7 @@
     "moment": "^2.29.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-native": "0.71.7",
+    "react-native": "0.71.8",
     "react-native-dotenv": "^3.4.8",
     "react-native-image-picker": "^5.3.1",
     "react-native-safe-area-context": "^4.5.0",

@@ -10,7 +10,7 @@ import {
 import { Ionicons } from 'react-native-vector-icons'
 import modal from '../styles/components/modal'
 
-const OverViewModal = ({ visible, setVisible, content }) => {
+const ModalComponent = ({ visible, setVisible, title, content }) => {
   const handleModalClose = () => {
     setVisible(false)
   }
@@ -29,8 +29,10 @@ const OverViewModal = ({ visible, setVisible, content }) => {
             </TouchableOpacity>
           </View>
           <ScrollView>
-            <Text style={styles.modalTitle}>Synopsis</Text>
-            <Text style={styles.modalText}>{content}</Text>
+            <Text style={styles.modalTitle}>{title}</Text>
+                      <View>{typeof content === 'string' ? <Text style={styles.modalText}>{content}</Text> : 
+                          <View>{ content }</View>
+            }</View>
           </ScrollView>
         </View>
       </Modal>
@@ -47,4 +49,4 @@ const styles = StyleSheet.create({
   modalTitle: modal.modalTitle,
 })
 
-export default OverViewModal
+export default ModalComponent

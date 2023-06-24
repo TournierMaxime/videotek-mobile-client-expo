@@ -39,13 +39,15 @@ const DetailsMovie = ({ route }) => {
   }
 
   const onRefresh = async () => {
-    await Promise.all([dispatch(movieDetails(id)), dispatch(movieCrew(id))])
+    await dispatch(movieDetails(id))
+    await dispatch(movieCrew(id))
   }
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true)
-      await Promise.all([dispatch(movieDetails(id)), dispatch(movieCrew(id))])
+      await dispatch(movieDetails(id))
+      await dispatch(movieCrew(id))
       setLoading(false)
     }
 

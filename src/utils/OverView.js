@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { truncateOverview } from './Truncate'
 import details from '../styles/pages/details'
-import OverViewModal from './OverViewModal'
+import ModalComponent from './ModalComponent'
 
 const OverView = ({ content, isBiography }) => {
   const [modalVisible, setModalVisible] = useState(false)
@@ -22,7 +22,7 @@ const OverView = ({ content, isBiography }) => {
           </Text>
         </TouchableOpacity>
       </View>
-      <OverViewModal content={content} visible={modalVisible} setVisible={setModalVisible} />
+      <ModalComponent title={'Synopsis'} content={content} visible={modalVisible} setVisible={setModalVisible} />
     </Fragment>
   )
 }

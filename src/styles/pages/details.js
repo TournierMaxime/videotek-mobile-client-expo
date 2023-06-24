@@ -91,6 +91,7 @@ const viewOverviewContainer = {
 }
 
 const headerTitle = {
+    fontSize: 20,
     color: 'white',
     marginVertical: 5
 }
@@ -99,7 +100,8 @@ const textOverview = {
     color: 'white',
     textAlign: 'justify',
     marginTop: 5,
-    lineHeight: 20
+    lineHeight: 20,
+    fontSize: 16
 }
 
 const headerViewContainer = {
@@ -145,7 +147,7 @@ const genresViewContainer = {
 }
 
 const genreText = {
-    fontSize: 12,
+    fontSize: 16,
     borderRadius: 8,
     margin: 5,
     paddingHorizontal: 5,
@@ -161,7 +163,7 @@ const directorsViewContainer = {
 } 
 
 const directorText = {
-    fontSize: 12,
+    fontSize: 16,
     borderRadius: 8,
     margin: 5,
     paddingHorizontal: 5,
@@ -171,6 +173,7 @@ const directorText = {
 }
 
 const directorTitle = {
+    fontSize: 18,
     color: 'white',
     marginTop: 5
 }

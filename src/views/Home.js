@@ -32,11 +32,9 @@ const Home = () => {
   const [loading, setLoading] = useState(false)
 
   const onRefresh = async () => {
-    await Promise.all([
-      dispatch(nowPlaying(nowPlayingData.page)),
-      dispatch(trending(trendingData.page)),
-      dispatch(onTheAir(onTheAirData.page)),
-    ])
+      await dispatch(nowPlaying(nowPlayingData.page))
+      await dispatch(trending(trendingData.page))
+      await dispatch(onTheAir(onTheAirData.page))
   }
 
   useEffect(() => {
