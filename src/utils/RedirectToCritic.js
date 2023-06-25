@@ -1,10 +1,9 @@
 import React, { Fragment } from 'react'
-import { Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector } from 'react-redux'
-import button from '../styles/components/button'
 
-const RedirectToCritic = ({ serie, movie }) => {
+const RedirectToCritic = ({ serie, movie, children, onPress }) => {
   const navigation = useNavigation()
   const isLogged = useSelector((state) => state.auth.isAuthenticated)
 
@@ -12,7 +11,6 @@ const RedirectToCritic = ({ serie, movie }) => {
     <Fragment>
       {isLogged ? (
         <TouchableOpacity
-          style={styles.criticButton}
           onPress={() =>
             navigation.navigate('NewCritic', {
               title: serie ? serie.original_name : movie.original_title,
@@ -20,16 +18,11 @@ const RedirectToCritic = ({ serie, movie }) => {
             })
           }
         >
-          <Text style={styles.buttonText}>Emettre une critique</Text>
+          {children}
         </TouchableOpacity>
       ) : null}
     </Fragment>
   )
 }
-
-const styles = StyleSheet.create({
-  criticButton: button.criticButton,
-  buttonText: button.buttonText,
-})
 
 export default RedirectToCritic

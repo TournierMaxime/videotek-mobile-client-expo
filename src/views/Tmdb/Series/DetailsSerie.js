@@ -15,14 +15,15 @@ import { LinearGradient } from 'expo-linear-gradient'
 import Runtime from '../../../utils/RunTime'
 import Rate from '../../../utils/Rate'
 import details from '../../../styles/pages/details'
-import Trailer from './Trailer'
 import Cast from './Cast'
 import Production from './Production'
 import Refresh from '../../../utils/Refresh'
 import OverView from '../../../utils/OverView'
 import button from '../../../styles/components/button'
 import AllCritics from '../../Critics/AllCritics'
-import RedirectToCritic from '../../../utils/RedirectToCritic'
+import { Entypo } from '@expo/vector-icons'
+import ModalComponent from '../../../utils/ModalComponent'
+import DotDetails from '../../../utils/DotDetails'
 
 const DetailsSerie = ({ route }) => {
   const dispatch = useDispatch()
@@ -32,10 +33,15 @@ const DetailsSerie = ({ route }) => {
   const { id } = route.params
   const [loading, setLoading] = useState(false)
 
-  const [modalVisible, setModalVisible] = useState(false)
+  const [modalCritic, setModalCritic] = useState(false)
+  const [modalDot, setModalDot] = useState(false)
 
-  const handleModal = () => {
-    setModalVisible(!modalVisible)
+  const handleModalCritic = () => {
+    setModalCritic(!modalCritic)
+  }
+
+  const handleModalDot = () => {
+    setModalDot(!modalDot)
   }
 
   const onRefresh = async () => {
@@ -57,9 +63,9 @@ const DetailsSerie = ({ route }) => {
   const critics = (data) => {
     if (!data || data.length === 0) return null
     return (
-            <TouchableOpacity
+      <TouchableOpacity
         style={styles.criticButton}
-        onPress={() => handleModal()}
+        onPress={() => handleModalCritic()}
       >
         <Text style={styles.buttonText}>Lire les critiques ({data})</Text>
       </TouchableOpacity>
@@ -84,6 +90,35 @@ const DetailsSerie = ({ route }) => {
               }}
             />
 
+            <View style={styles.titleAndDot}>
+              <View>
+                <Text
+                  style={[
+                    styles.headerTitle,
+                    { marginLeft: 15, marginTop: 15 },
+                  ]}
+                >
+                  {serie.original_name}
+                </Text>
+              </View>
+
+              <TouchableOpacity onPress={() => handleModalDot()}>
+                <Entypo
+                  style={{ marginRight: 15, marginTop: 15 }}
+                  name='dots-three-vertical'
+                  size={24}
+                  color='white'
+                />
+              </TouchableOpacity>
+            </View>
+
+            <ModalComponent
+              visible={modalDot}
+              setVisible={setModalDot}
+              title={'Details'}
+              content={<DotDetails id={id} serie={serie} />}
+            />
+
             <View style={styles.headerViewContainer}>
               <View style={styles.posterViewContainer}>
                 <Image
@@ -96,7 +131,6 @@ const DetailsSerie = ({ route }) => {
               </View>
 
               <View style={styles.infoViewContainer}>
-                <Text style={styles.headerTitle}>{serie.original_name}</Text>
                 <Runtime time={serie.episode_run_time} isMovie={false} />
 
                 <View style={styles.genresViewContainer}>
@@ -119,7 +153,6 @@ const DetailsSerie = ({ route }) => {
                     )
                   })}
                 </View>
-                <RedirectToCritic serie={serie} />
               </View>
             </View>
 
@@ -127,14 +160,13 @@ const DetailsSerie = ({ route }) => {
           </View>
         )
       )}
-      <Trailer id={id} />
       <Cast crew={crew} />
       <Production serie={serie} />
       {critics(nbOfCritics)}
       <AllCritics
         id={serie.id}
-        visible={modalVisible}
-        setVisible={setModalVisible}
+        visible={modalCritic}
+        setVisible={setModalCritic}
       />
     </Refresh>
   )
@@ -150,6 +182,7 @@ const styles = StyleSheet.create({
   mainViewContainer: details.mainViewContainer,
   linearGradient: details.linearGradient,
   imageBackground: details.imageBackground,
+  titleAndDot: details.titleAndDot,
   headerTitle: details.headerTitle,
   headerViewContainer: details.headerViewContainer,
   posterViewContainer: details.posterViewContainer,

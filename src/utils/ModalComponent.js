@@ -30,9 +30,13 @@ const ModalComponent = ({ visible, setVisible, title, content }) => {
           </View>
           <ScrollView>
             <Text style={styles.modalTitle}>{title}</Text>
-                      <View>{typeof content === 'string' ? <Text style={styles.modalText}>{content}</Text> : 
-                          <View>{ content }</View>
-            }</View>
+            <View>
+              {typeof content === 'string' ? (
+                <Text style={styles.modalText}>{content}</Text>
+              ) : (
+                <View>{content}</View>
+              )}
+            </View>
           </ScrollView>
         </View>
       </Modal>
