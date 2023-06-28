@@ -1,10 +1,11 @@
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
-import { Entypo, Ionicons } from 'react-native-vector-icons'
+import { Entypo, Ionicons, FontAwesome } from 'react-native-vector-icons'
 import profil from '../styles/components/profil'
 import button from '../styles/components/button'
 import Trailer from '../views/Tmdb/Movies/Trailer'
 import RedirectToCritic from './RedirectToCritic'
+import Seasons from './Seasons'
 
 const DotDetails = ({ id, movie, serie }) => {
   return (
@@ -33,11 +34,25 @@ const DotDetails = ({ id, movie, serie }) => {
                 size={25}
                 color='black'
               />
-              <Text>Emettre une critique</Text>
+              <Text>Ecrire une critique</Text>
             </View>
             <Entypo name='chevron-small-right' size={25} color='black' />
           </View>
         </RedirectToCritic>
+        <Seasons serie={serie}>
+          <View style={styles.profileSectionContainer}>
+            <View style={styles.textIconContainer}>
+              <FontAwesome
+                style={styles.icon}
+                name='tv'
+                size={25}
+                color='black'
+              />
+              <Text>Saisons</Text>
+            </View>
+            <Entypo name='chevron-small-right' size={25} color='black' />
+          </View>
+        </Seasons>
       </View>
     </View>
   )

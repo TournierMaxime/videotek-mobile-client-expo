@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import details from '../../../styles/pages/details'
-import moment from 'moment'
+// import moment from 'moment'
 import Accordion from '../../../components/Accordion'
 
 const Production = ({ serie }) => {
@@ -26,7 +26,7 @@ const Production = ({ serie }) => {
     )
   }
 
-  const nbSeasons = (data) => {
+/*   const nbSeasons = (data) => {
     if (!data) return null
     return (
       <Accordion title={'Saisons'}>
@@ -50,7 +50,7 @@ const Production = ({ serie }) => {
         </View>
       </Accordion>
     )
-  }
+  } */
 
   const networks = (data) => {
     if (!data) return null
@@ -100,7 +100,7 @@ const Production = ({ serie }) => {
     )
   }
 
-  const firstEpisode = (data) => {
+/*   const firstEpisode = (data) => {
     if (!data) return null
     return (
       <Accordion title={'Premier épisode'}>
@@ -124,21 +124,21 @@ const Production = ({ serie }) => {
         </View>
       </Accordion>
     )
-  }
+  } */
 
   return (
     <View style={styles.productionViewContainer}>
       <View style={styles.technicalSheetViewContainer}>
-        <Text style={styles.title}>Fiche Technique</Text>
+        <Text style={styles.title}>Production</Text>
       </View>
       {status(serie.status)}
-      {nbSeasons(serie.number_of_seasons)}
-      {nbEpisodes(serie.number_of_episodes)}
+{/*       {nbSeasons(serie.number_of_seasons)}
+      {nbEpisodes(serie.number_of_episodes)} */}
       {networks(serie.networks)}
       {productionCompanies(serie.production_companies)}
       {productionCountries(serie.production_countries)}
-      {firstEpisode(serie.first_air_date)}
-      {lastEpisode(serie.last_air_date)}
+{/*       {firstEpisode(serie.first_air_date)}
+      {lastEpisode(serie.last_air_date)} */}
     </View>
   )
 }

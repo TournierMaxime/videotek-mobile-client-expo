@@ -27,6 +27,7 @@ import updateUserReducer from './reducers/users/updateUser'
 import deleteUserReducer from './reducers/users/deleteUser'
 import getOneCriticReducer from './reducers/critics/getOneCritic'
 import updateCriticReducer from './reducers/critics/updateCritic'
+import detailsSeasonReducer from './reducers/tmdb/series/detailsSeason';
 
 const rootReducer = {
   auth: auth,
@@ -54,7 +55,8 @@ const rootReducer = {
   updateUser: updateUserReducer,
   deleteUser: deleteUserReducer,
   getOneCritic: getOneCriticReducer,
-  updateCritic: updateCriticReducer
+  updateCritic: updateCriticReducer,
+  seasonDetails: detailsSeasonReducer
 };
 
 const store = configureStore({

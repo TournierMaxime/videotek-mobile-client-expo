@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import {
   View,
   Text,
@@ -72,102 +72,114 @@ const DetailsSerie = ({ route }) => {
     )
   }
 
+  const CastMemoized = React.memo(Cast)
+  const ProductionMemoized = React.memo(Production)
+  const AllCriticsMemoized = React.memo(AllCritics, (prevProps, nextProps) => {
+    return (
+      prevProps.id === nextProps.id && prevProps.visible === nextProps.visible
+    )
+  })
+
   return (
     <Refresh styles={styles.scrollView} onRefresh={onRefresh}>
       {loading ? (
         <ActivityIndicator size='large' color='#0000ff' />
       ) : (
         serie && (
-          <View style={styles.mainViewContainer}>
-            <LinearGradient
-              colors={['rgba(0,0,0,0.8)', 'rgba(0,0,0,0.8)']}
-              style={styles.linearGradient}
-            />
-            <ImageBackground
-              style={styles.imageBackground}
-              source={{
-                uri: `https://image.tmdb.org/t/p/original${serie?.backdrop_path}`,
-              }}
-            />
+          <Fragment>
+            <View style={styles.mainViewContainer}>
+              <LinearGradient
+                colors={['rgba(0,0,0,0.8)', 'rgba(0,0,0,0.8)']}
+                style={styles.linearGradient}
+              />
+              <ImageBackground
+                style={styles.imageBackground}
+                source={{
+                  uri: `https://image.tmdb.org/t/p/original${serie?.backdrop_path}`,
+                }}
+              />
 
-            <View style={styles.titleAndDot}>
-              <View>
-                <Text
-                  style={[
-                    styles.headerTitle,
-                    { marginLeft: 15, marginTop: 15 },
-                  ]}
-                >
-                  {serie.original_name}
-                </Text>
-              </View>
-
-              <TouchableOpacity onPress={() => handleModalDot()}>
-                <Entypo
-                  style={{ marginRight: 15, marginTop: 15 }}
-                  name='dots-three-vertical'
-                  size={24}
-                  color='white'
-                />
-              </TouchableOpacity>
-            </View>
-
-            <ModalComponent
-              visible={modalDot}
-              setVisible={setModalDot}
-              title={'Details'}
-              content={<DotDetails id={id} serie={serie} />}
-            />
-
-            <View style={styles.headerViewContainer}>
-              <View style={styles.posterViewContainer}>
-                <Image
-                  style={styles.posterPath}
-                  source={{
-                    uri: `https://image.tmdb.org/t/p/original${serie?.poster_path}`,
-                  }}
-                />
-                <Rate rate={serie.vote_average} />
-              </View>
-
-              <View style={styles.infoViewContainer}>
-                <Runtime time={serie.episode_run_time} isMovie={false} />
-
-                <View style={styles.genresViewContainer}>
-                  {serie?.genres?.map((genre) => (
-                    <Text key={genre.id} style={styles.genreText}>
-                      {genre.name}
-                    </Text>
-                  ))}
+              <View style={styles.titleAndDot}>
+                <View>
+                  <Text
+                    style={[
+                      styles.headerTitle,
+                      { marginLeft: 15, marginTop: 15 },
+                    ]}
+                  >
+                    {serie.original_name}
+                  </Text>
                 </View>
 
-                <Text style={styles.directorTitle}>Réalisation</Text>
+                <TouchableOpacity onPress={() => handleModalDot()}>
+                  <Entypo
+                    style={{ marginRight: 15, marginTop: 15 }}
+                    name='dots-three-vertical'
+                    size={24}
+                    color='white'
+                  />
+                </TouchableOpacity>
+              </View>
 
-                <View style={styles.directorsViewContainer}>
-                  {serie?.created_by?.map((crew) => {
-                    if (!crew.name) return null
-                    return (
-                      <Text key={crew.id} style={styles.directorText}>
-                        {crew.name}
+              <ModalComponent
+                visible={modalDot}
+                setVisible={setModalDot}
+                title={'Details'}
+                content={<DotDetails id={id} serie={serie} />}
+              />
+
+              <View style={styles.headerViewContainer}>
+                <View style={styles.posterViewContainer}>
+                  <Image
+                    style={styles.posterPath}
+                    source={{
+                      uri: `https://image.tmdb.org/t/p/original${serie?.poster_path}`,
+                    }}
+                  />
+                  <Rate rate={serie.vote_average} />
+                </View>
+
+                <View style={styles.infoViewContainer}>
+                    <Runtime time={serie.episode_run_time} isMovie={false} />
+                    
+                    <Text style={styles.directorTitle}>Genres</Text>
+                    
+                  <View style={styles.genresViewContainer}>
+                    {serie?.genres?.map((genre) => (
+                      <Text key={genre.id} style={styles.genreText}>
+                        {genre.name}
                       </Text>
-                    )
-                  })}
+                    ))}
+                  </View>
+
+                  <Text style={styles.directorTitle}>Réalisation</Text>
+
+                  <View style={styles.directorsViewContainer}>
+                    {serie?.created_by?.map((crew) => {
+                      if (!crew.name) return null
+                      return (
+                        <Text key={crew.id} style={styles.directorText}>
+                          {crew.name}
+                        </Text>
+                      )
+                    })}
+                  </View>
                 </View>
               </View>
-            </View>
 
-            <OverView content={serie.overview} />
-          </View>
+              <OverView content={serie.overview} />
+            </View>
+            <CastMemoized crew={crew} />
+            <ProductionMemoized serie={serie} />
+            {critics(nbOfCritics)}
+            <AllCriticsMemoized
+              id={serie.id}
+              visible={modalCritic}
+              setVisible={setModalCritic}
+            />
+          </Fragment>
         )
       )}
-      <Cast crew={crew} />
-      <Production serie={serie} />
-      {critics(nbOfCritics)}
-      <AllCritics
-        id={serie.id}
-        visible={modalCritic}
-        setVisible={setModalCritic}
-      />
     </Refresh>
   )
 }
