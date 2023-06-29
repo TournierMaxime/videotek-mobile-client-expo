@@ -2,20 +2,34 @@ import React, { Fragment } from 'react'
 import { TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-const Crew = ({ children, serie }) => {
+const Crew = ({ children, serie, movie, id }) => {
   const navigation = useNavigation()
   return (
     <Fragment>
-      <TouchableOpacity
-        onPress={() => {
-            navigation.navigate('Crew', {
+      {serie.id === id ? (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('CrewSerie', {
               title: serie.original_name,
               id: serie.id,
             })
-        }}
-      >
-        {children}
-      </TouchableOpacity>
+          }}
+        >
+          {children}
+        </TouchableOpacity>
+      ) : null}
+      {movie.id === id ? (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('CrewMovie', {
+              title: movie.original_title,
+              id: movie.id,
+            })
+          }}
+        >
+          {children}
+        </TouchableOpacity>
+      ) : null}
     </Fragment>
   )
 }

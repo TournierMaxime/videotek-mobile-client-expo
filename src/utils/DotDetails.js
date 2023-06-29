@@ -17,21 +17,35 @@ import Crew from './Crew'
 import Critics from './Critics'
 import { useDispatch, useSelector } from 'react-redux'
 import { searchCritic } from '../redux/actions/critics/searchCritic'
+import { movieDetails } from '../redux/actions/tmdb/movies/detailsMovie'
+import { serieDetails } from '../redux/actions/tmdb/series/detailsSerie'
+import { peopleDetails } from '../redux/actions/tmdb/people/detailsPeople'
 
-const DotDetails = ({ id, title }) => {
+const DotDetails = ({ route }) => {
+  const { id, title } = route.params
   const dispatch = useDispatch()
   const serie = useSelector((state) => state.serieDetails.data)
   const movie = useSelector((state) => state.movieDetails.data)
-  const critics = useSelector((state) => state.searchCritic.data.critics)
+  const people = useSelector((state) => state.peopleDetails.data)
+  const critics = useSelector((state) => state.searchCritic?.data?.critics)
 
   useEffect(() => {
     dispatch(searchCritic(id))
+    if (id === movie.id) {
+      dispatch(movieDetails(id))
+    }
+    if (id === serie.id) {
+      dispatch(serieDetails(id))
+    }
+    if (id === people.id) {
+      dispatch(peopleDetails(id))
+    }
   }, [dispatch, id])
 
   return (
     <View style={styles.container}>
       <View style={styles.profilViewContainer}>
-        <Cast serie={serie}>
+        <Cast id={id} movie={movie} serie={serie} people={people}>
           <View style={styles.profileSectionContainer}>
             <View style={styles.textIconContainer}>
               <SimpleLineIcons
@@ -40,81 +54,93 @@ const DotDetails = ({ id, title }) => {
                 size={25}
                 color='black'
               />
-              <Text>Distribution</Text>
+              <Text>{(movie && movie.id === id) || (serie && serie.id === id) ? 'Distribution' : 'Filmographie'}</Text>
             </View>
             <Entypo name='chevron-small-right' size={25} color='black' />
           </View>
         </Cast>
-        <Crew serie={serie}>
-          <View style={styles.profileSectionContainer}>
-            <View style={styles.textIconContainer}>
-              <SimpleLineIcons
-                style={styles.icon}
-                name='people'
-                size={25}
-                color='black'
-              />
-              <Text>Equipe Technique</Text>
+        {(movie && movie.id === id) || (serie && serie.id === id) ? (
+          <Crew id={id} movie={movie} serie={serie}>
+            <View style={styles.profileSectionContainer}>
+              <View style={styles.textIconContainer}>
+                <SimpleLineIcons
+                  style={styles.icon}
+                  name='people'
+                  size={25}
+                  color='black'
+                />
+                <Text>Equipe Technique</Text>
+              </View>
+              <Entypo name='chevron-small-right' size={25} color='black' />
             </View>
-            <Entypo name='chevron-small-right' size={25} color='black' />
-          </View>
-        </Crew>
-        <Seasons serie={serie}>
-          <View style={styles.profileSectionContainer}>
-            <View style={styles.textIconContainer}>
-              <FontAwesome
-                style={styles.icon}
-                name='tv'
-                size={25}
-                color='black'
-              />
-              <Text>Saisons</Text>
+          </Crew>
+        ) : null}
+        {serie.id === id ? (
+          <Seasons serie={serie}>
+            <View style={styles.profileSectionContainer}>
+              <View style={styles.textIconContainer}>
+                <FontAwesome
+                  style={styles.icon}
+                  name='tv'
+                  size={25}
+                  color='black'
+                />
+                <Text>Saisons</Text>
+              </View>
+              <Entypo name='chevron-small-right' size={25} color='black' />
             </View>
-            <Entypo name='chevron-small-right' size={25} color='black' />
-          </View>
-        </Seasons>
-        <Trailer movie={movie} serie={serie} id={id}>
-          <View style={styles.profileSectionContainer}>
-            <View style={styles.textIconContainer}>
-              <Ionicons
-                style={styles.icon}
-                name='videocam-outline'
-                size={25}
-                color='black'
-              />
-              <Text>Trailer</Text>
+          </Seasons>
+        ) : null}
+        {(movie && movie.id === id) || (serie && serie.id === id) ? (
+          <Trailer movie={movie} serie={serie} id={id}>
+            <View style={styles.profileSectionContainer}>
+              <View style={styles.textIconContainer}>
+                <Ionicons
+                  style={styles.icon}
+                  name='videocam-outline'
+                  size={25}
+                  color='black'
+                />
+                <Text>Trailer</Text>
+              </View>
+              <Entypo name='chevron-small-right' size={25} color='black' />
             </View>
-            <Entypo name='chevron-small-right' size={25} color='black' />
-          </View>
-        </Trailer>
-        <RedirectToCritic movie={movie} serie={serie}>
-          <View style={styles.profileSectionContainer}>
-            <View style={styles.textIconContainer}>
-              <Entypo
-                style={styles.icon}
-                name='new-message'
-                size={25}
-                color='black'
-              />
-              <Text>Ecrire une critique</Text>
+          </Trailer>
+        ) : null}
+        {(movie && movie.id === id) || (serie && serie.id === id) ? (
+          <RedirectToCritic id={id} movie={movie} serie={serie}>
+            <View style={styles.profileSectionContainer}>
+              <View style={styles.textIconContainer}>
+                <Entypo
+                  style={styles.icon}
+                  name='new-message'
+                  size={25}
+                  color='black'
+                />
+                <Text>Ecrire une critique</Text>
+              </View>
+              <Entypo name='chevron-small-right' size={25} color='black' />
             </View>
-            <Entypo name='chevron-small-right' size={25} color='black' />
-          </View>
-        </RedirectToCritic>
-        <Critics id={id} title={title}>
-          <View style={styles.profileSectionContainer}>
-            <View style={styles.textIconContainer}>
-              <AntDesign
-                style={styles.icon}
-                name='message1'
-                size={25}
-                color='black'
-              />
-              <Text>Critiques {critics?.length > 0 ? critics?.length : 0}</Text>
+          </RedirectToCritic>
+        ) : null}
+        {(movie && movie.id === id) || (serie && serie.id === id) ? (
+          <Critics id={id} title={title}>
+            <View style={styles.profileSectionContainer}>
+              <View style={styles.textIconContainer}>
+                <AntDesign
+                  style={styles.icon}
+                  name='message1'
+                  size={25}
+                  color='black'
+                />
+                <Text>
+                  Critiques {critics?.length > 0 ? critics?.length : 0}
+                </Text>
+              </View>
+              <Entypo name='chevron-small-right' size={25} color='black' />
             </View>
-            <Entypo name='chevron-small-right' size={25} color='black' />
-          </View>
-        </Critics>
+          </Critics>
+        ) : null}
       </View>
     </View>
   )

@@ -11,14 +11,15 @@ import { useSelector } from 'react-redux'
 import dot from '../../../styles/pages/dot'
 import { useNavigation } from '@react-navigation/native'
 
-const Crew = ({ route }) => {
+const CrewSerie = ({ route }) => {
   const { title } = route.params
   const navigation = useNavigation()
   const credits = useSelector((state) => state.serieCrew.data)
 
-  const renderItem = (item) => {
+  const renderItem = (item, index) => {
     return (
       <TouchableOpacity
+        key={index}
         onPress={() =>
           navigation.navigate('DetailsPeople', {
             id: item.id,
@@ -56,8 +57,8 @@ const Crew = ({ route }) => {
       <Text style={styles.seasonTitle}>Equipe technique de {title}</Text>
       <FlatList
         data={credits?.crew}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => renderItem(item)}
+        keyExtractor={(item) => item.credit_id.toString()}
+        renderItem={({ item, index }) => renderItem(item, index)}
       />
     </View>
   )
@@ -73,4 +74,4 @@ const styles = StyleSheet.create({
   seasonTitle: dot.seasonTitle,
 })
 
-export default Crew
+export default CrewSerie

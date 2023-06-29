@@ -12,18 +12,19 @@ import { useDispatch, useSelector } from 'react-redux'
 import { peopleDetails } from '../../../redux/actions/tmdb/people/detailsPeople'
 import { peopleCareer } from '../../../redux/actions/tmdb/people/careerPeople'
 import { LinearGradient } from 'expo-linear-gradient'
-import Cast from './Cast'
 import details from '../../../styles/pages/details'
 import Refresh from '../../../utils/Refresh'
 import OverView from '../../../utils/OverView'
 import moment from 'moment'
 import SVGImdb from '../../../utils/SVGImdb'
+import { Entypo } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native'
 
 const DetailsPeople = ({ route }) => {
   const dispatch = useDispatch()
+  const navigation = useNavigation()
   const { id } = route.params
   const people = useSelector((state) => state.peopleDetails.data)
-  const cast = useSelector((state) => state.peopleCareer.data)
   const [loading, setLoading] = useState(false)
 
   const currentAge = () => {
@@ -95,6 +96,37 @@ const DetailsPeople = ({ route }) => {
               colors={['rgba(0,0,0,0.8)', 'rgba(0,0,0,0.8)']}
               style={styles.linearGradient}
             />
+
+            <View style={styles.titleAndDot}>
+              <View>
+                <Text style={[styles.headerTitle, { left: 15, top: 5 }]}>
+                  {people.name}
+                </Text>
+              </View>
+
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('DotDetails', {
+                    id,
+                    title: people?.name,
+                  })
+                }
+              >
+                <Entypo
+                  style={{
+                    borderRadius: 100,
+                    padding: 5,
+                    backgroundColor: 'white',
+                    right: 15,
+                    top: 5
+                  }}
+                  name='dots-three-vertical'
+                  size={24}
+                  color='black'
+                />
+              </TouchableOpacity>
+            </View>
+
             <View style={styles.headerViewContainer}>
               <View style={styles.posterViewContainer}>
                 <Image
@@ -105,7 +137,6 @@ const DetailsPeople = ({ route }) => {
                 />
               </View>
               <View style={styles.infoViewContainer}>
-                <Text style={styles.headerTitle}>{people.name}</Text>
                 {birth()}
 
                 {people.deathday ? null : currentAge()}
@@ -119,7 +150,6 @@ const DetailsPeople = ({ route }) => {
             </View>
             <OverView isBiography={true} content={people.biography} />
           </View>
-          <Cast cast={cast} />
         </Fragment>
       )}
     </Refresh>
@@ -136,7 +166,8 @@ const styles = StyleSheet.create({
   infoViewContainer: details.infoViewContainer,
   viewOverviewContainer: details.viewOverviewContainer,
   headerTitle: details.headerTitle,
-  textOverview: details.textOverview
+  textOverview: details.textOverview,
+  titleAndDot: details.titleAndDot,
 })
 
 export default DetailsPeople

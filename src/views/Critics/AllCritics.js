@@ -10,14 +10,11 @@ import {
 import { useSelector, useDispatch } from 'react-redux'
 import moment from 'moment/moment'
 import dot from '../../styles/pages/dot'
-import message from "../../styles/components/message"
+import message from '../../styles/components/message'
 import button from '../../styles/components/button'
 import Rate from '../../utils/Rate'
 import { Ionicons } from 'react-native-vector-icons'
-import {
-  searchCritic,
-  resetSearchCritic,
-} from '../../redux/actions/critics/searchCritic'
+import { searchCritic } from '../../redux/actions/critics/searchCritic'
 
 const AllCritics = ({ route }) => {
   const { id, title } = route.params
@@ -74,12 +71,6 @@ const AllCritics = ({ route }) => {
       })
   }, [dispatch, id])
 
-  useEffect(() => {
-    return () => {
-      dispatch(resetSearchCritic())
-    }
-  }, [])
-
   return (
     <View style={styles.container}>
       <Text style={styles.seasonTitle}>Critiques de {title}</Text>
@@ -99,7 +90,14 @@ const AllCritics = ({ route }) => {
 
 const styles = StyleSheet.create({
   container: dot.container,
-  image: dot.image,
+  image: {
+    width: 80,
+    height: 80,
+    resizeMode: 'cover',
+    borderRadius: 15,
+    marginLeft: 15,
+    marginBottom: 5,
+  },
   renderItemContainer: dot.renderItemContainer,
   renderItemTitle: dot.renderItemTitle,
   renderItemOverview: dot.renderItemOverview,

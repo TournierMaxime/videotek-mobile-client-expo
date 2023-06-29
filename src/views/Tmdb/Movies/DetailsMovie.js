@@ -14,35 +14,21 @@ import { movieCrew } from '../../../redux/actions/tmdb/movies/movieCrew'
 import { LinearGradient } from 'expo-linear-gradient'
 import Runtime from '../../../utils/RunTime'
 import Rate from '../../../utils/Rate'
-import Cast from './Cast'
 import Production from './Production'
 import details from '../../../styles/pages/details'
 import Refresh from '../../../utils/Refresh'
 import OverView from '../../../utils/OverView'
-import AllCritics from '../../Critics/AllCritics'
 import button from '../../../styles/components/button'
 import { Entypo } from '@expo/vector-icons'
-import ModalComponent from '../../../utils/ModalComponent'
-import DotDetails from '../../../utils/DotDetails'
+import { useNavigation } from '@react-navigation/native'
 
 const DetailsMovie = ({ route }) => {
   const dispatch = useDispatch()
+  const navigation = useNavigation()
   const movie = useSelector((state) => state.movieDetails.data)
-  const crew = useSelector((state) => state.movieCrew.data)
-  const nbOfCritics = useSelector((state) => state.searchCritic.data.results)
+  const credits = useSelector((state) => state.movieCrew.data)
   const { id } = route.params
   const [loading, setLoading] = useState(false)
-
-  const [modalCritic, setModalCritic] = useState(false)
-  const [modalDot, setModalDot] = useState(false)
-
-  const handleModalCritic = () => {
-    setModalCritic(!modalCritic)
-  }
-
-  const handleModalDot = () => {
-    setModalDot(!modalDot)
-  }
 
   const onRefresh = async () => {
     await dispatch(movieDetails(id))
@@ -60,17 +46,7 @@ const DetailsMovie = ({ route }) => {
     fetchData()
   }, [dispatch, id])
 
-  const critics = (data) => {
-    if (!data || data.length === 0) return null
-    return (
-      <TouchableOpacity
-        style={styles.criticButton}
-        onPress={() => handleModalCritic()}
-      >
-        <Text style={styles.buttonText}>Lire les critiques ({data})</Text>
-      </TouchableOpacity>
-    )
-  }
+  const ProductionMemoized = React.memo(Production)
 
   return (
     <Refresh styles={styles.scrollView} onRefresh={onRefresh}>
@@ -92,32 +68,33 @@ const DetailsMovie = ({ route }) => {
 
             <View style={styles.titleAndDot}>
               <View>
-                <Text
-                  style={[
-                    styles.headerTitle,
-                    { marginLeft: 15, marginTop: 15 },
-                  ]}
-                >
+                <Text style={[styles.headerTitle, { left: 15, top: 5 }]}>
                   {movie.original_title}
                 </Text>
               </View>
 
-              <TouchableOpacity onPress={() => handleModalDot()}>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('DotDetails', {
+                    id,
+                    title: movie?.original_title,
+                  })
+                }
+              >
                 <Entypo
-                  style={{ marginRight: 15, marginTop: 15 }}
+                  style={{
+                    borderRadius: 100,
+                    padding: 5,
+                    backgroundColor: 'white',
+                    right: 15,
+                    top: 5,
+                  }}
                   name='dots-three-vertical'
                   size={24}
-                  color='white'
+                  color='black'
                 />
               </TouchableOpacity>
             </View>
-
-            <ModalComponent
-              visible={modalDot}
-              setVisible={setModalDot}
-              title={'Details'}
-              content={<DotDetails id={id} movie={movie} />}
-            />
 
             <View style={styles.headerViewContainer}>
               <View style={styles.posterViewContainer}>
@@ -131,11 +108,13 @@ const DetailsMovie = ({ route }) => {
               </View>
 
               <View style={styles.infoViewContainer}>
-                <Runtime time={movie.runtime} isMovie={true} />
+                  <Runtime time={movie.runtime} isMovie={true} />
+                  
+                  <Text style={styles.directorTitle}>Genres</Text>
 
                 <View style={styles.genresViewContainer}>
-                  {movie?.genres?.map((genre) => (
-                    <Text key={genre.id} style={styles.genreText}>
+                  {movie?.genres?.map((genre, index) => (
+                    <Text key={index} style={styles.genreText}>
                       {genre.name}
                     </Text>
                   ))}
@@ -144,12 +123,12 @@ const DetailsMovie = ({ route }) => {
                 <Text style={styles.directorTitle}>Réalisation</Text>
 
                 <View style={styles.directorsViewContainer}>
-                  {crew?.crew?.map((crew) => {
-                    if (!crew.job === 'Director') return null
-                    if (crew.job === 'Director') {
+                  {credits?.crew?.map((credit, index) => {
+                    if (!credit.job === 'Director') return null
+                    if (credit.job === 'Director') {
                       return (
-                        <Text key={crew.id} style={styles.directorText}>
-                          {crew.name}
+                        <Text key={index} style={styles.directorText}>
+                          {credit.name}
                         </Text>
                       )
                     }
@@ -162,14 +141,7 @@ const DetailsMovie = ({ route }) => {
           </View>
         )
       )}
-      <Cast crew={crew} />
-      <Production movie={movie} />
-      {critics(nbOfCritics)}
-      <AllCritics
-        id={movie.id}
-        visible={modalCritic}
-        setVisible={setModalCritic}
-      />
+      <ProductionMemoized movie={movie} />
     </Refresh>
   )
 }

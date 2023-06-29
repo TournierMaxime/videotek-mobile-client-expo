@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux'
 import dot from '../../../styles/pages/dot'
 import { useNavigation } from '@react-navigation/native'
 
-const Cast = ({ route }) => {
+const CastSerie = ({ route }) => {
   const { title } = route.params
   const navigation = useNavigation()
   const credits = useSelector((state) => state.serieCrew.data)
@@ -56,7 +56,7 @@ const Cast = ({ route }) => {
       <Text style={styles.seasonTitle}>Distribution de {title}</Text>
       <FlatList
         data={credits?.cast}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.credit_id.toString()}
         renderItem={({ item }) => renderItem(item)}
       />
     </View>
@@ -73,4 +73,4 @@ const styles = StyleSheet.create({
   seasonTitle: dot.seasonTitle,
 })
 
-export default Cast
+export default CastSerie

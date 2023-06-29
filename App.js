@@ -30,8 +30,12 @@ import UpdateCritic from './src/views/User/UpdateCritic'
 import Seasons from './src/utils/Seasons'
 import AllSeasons from './src/views/Tmdb/Series/AllSeasons'
 import AllEpisodes from './src/views/Tmdb/Series/AllEpisodes'
-import Cast from './src/views/Tmdb/Series/Cast'
-import Crew from './src/views/Tmdb/Series/Crew'
+import CastSerie from './src/views/Tmdb/Series/CastSerie'
+import CastMovie from './src/views/Tmdb/Movies/CastMovie'
+import CastPeople from './src/views/Tmdb/People/CastPeople'
+import CrewSerie from './src/views/Tmdb/Series/CrewSerie'
+import CrewMovie from './src/views/Tmdb/Movies/CrewMovie'
+import DotDetails from './src/utils/DotDetails'
 
 const MainStack = createNativeStackNavigator()
 const AuthStack = createNativeStackNavigator()
@@ -196,15 +200,43 @@ const MainStackNavigator = () => {
         })}
       />
       <MainStack.Screen
-        name='Cast'
-        component={Cast}
+        name='CastSerie'
+        component={CastSerie}
         options={() => ({
           header: () => <Header backButton={true} />,
         })}
       />
       <MainStack.Screen
-        name='Crew'
-        component={Crew}
+        name='CastPeople'
+        component={CastPeople}
+        options={() => ({
+          header: () => <Header backButton={true} />,
+        })}
+      />
+      <MainStack.Screen
+        name='CastMovie'
+        component={CastMovie}
+        options={() => ({
+          header: () => <Header backButton={true} />,
+        })}
+      />
+      <MainStack.Screen
+        name='CrewSerie'
+        component={CrewSerie}
+        options={() => ({
+          header: () => <Header backButton={true} />,
+        })}
+      />
+      <MainStack.Screen
+        name='CrewMovie'
+        component={CrewMovie}
+        options={() => ({
+          header: () => <Header backButton={true} />,
+        })}
+      />
+      <MainStack.Screen
+        name='DotDetails'
+        component={DotDetails}
         options={() => ({
           header: () => <Header backButton={true} />,
         })}

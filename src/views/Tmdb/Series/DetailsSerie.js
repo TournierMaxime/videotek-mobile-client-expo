@@ -20,19 +20,14 @@ import Refresh from '../../../utils/Refresh'
 import OverView from '../../../utils/OverView'
 import button from '../../../styles/components/button'
 import { Entypo } from '@expo/vector-icons'
-import ModalComponent from '../../../utils/ModalComponent'
-import DotDetails from '../../../utils/DotDetails'
+import { useNavigation } from '@react-navigation/native'
 
 const DetailsSerie = ({ route }) => {
   const dispatch = useDispatch()
+  const navigation = useNavigation()
   const serie = useSelector((state) => state.serieDetails.data)
   const { id } = route.params
   const [loading, setLoading] = useState(false)
-  const [modalDot, setModalDot] = useState(false)
-
-  const handleModalDot = () => {
-    setModalDot(!modalDot)
-  }
 
   const onRefresh = async () => {
     await dispatch(serieDetails(id))
@@ -78,7 +73,14 @@ const DetailsSerie = ({ route }) => {
                   </Text>
                 </View>
 
-                <TouchableOpacity onPress={() => handleModalDot()}>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate('DotDetails', {
+                      id,
+                      title: serie?.original_name,
+                    })
+                  }
+                >
                   <Entypo
                     style={{
                       borderRadius: 100,
@@ -93,13 +95,6 @@ const DetailsSerie = ({ route }) => {
                   />
                 </TouchableOpacity>
               </View>
-
-              <ModalComponent
-                visible={modalDot}
-                setVisible={setModalDot}
-                title={''}
-                content={<DotDetails id={id} title={serie.original_name} />}
-              />
 
               <View style={styles.headerViewContainer}>
                 <View style={styles.posterViewContainer}>
