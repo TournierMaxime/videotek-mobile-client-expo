@@ -11,3 +11,7 @@ export const updateUser = (data, userId) => async (dispatch) => {
     throw error
   }
 };
+
+export const resetUser = () => ({
+  type: "USER_RESET",
+});

@@ -1,170 +1,113 @@
 import React, { useEffect, useState } from 'react'
-import { searchCritic } from '../../redux/actions/critics/searchCritic'
-import { useDispatch, useSelector } from 'react-redux'
 import {
   Text,
   View,
   StyleSheet,
-  Modal,
-  TouchableOpacity,
   FlatList,
+  Image,
   ActivityIndicator,
-  Pressable,
 } from 'react-native'
-import { Ionicons, Feather } from 'react-native-vector-icons'
-import modal from '../../styles/components/modal'
-import useLoadMore from '../../utils/LoadMore'
-import card from '../../styles/components/card'
-import moment from 'moment'
+import { useSelector, useDispatch } from 'react-redux'
+import moment from 'moment/moment'
+import dot from '../../styles/pages/dot'
+import message from "../../styles/components/message"
 import button from '../../styles/components/button'
-import { deleteCritic } from '../../redux/actions/critics/deleteCritic'
-import AlertModal from '../../utils/AlertModal'
-import { Fragment } from 'react'
+import Rate from '../../utils/Rate'
+import { Ionicons } from 'react-native-vector-icons'
+import {
+  searchCritic,
+  resetSearchCritic,
+} from '../../redux/actions/critics/searchCritic'
 
-const AllCritics = ({ id, visible, setVisible }) => {
+const AllCritics = ({ route }) => {
+  const { id, title } = route.params
   const dispatch = useDispatch()
-  const criticsData = useSelector((state) => state.searchCritic.data)
-  const criticsResults = useSelector((state) => state.searchCritic.data.critics)
-  const userId = useSelector((state) => state.auth.data.user.userId)
-  const [selectedCriticId, setSelectedCriticId] = useState(null)
-
-  const [modalVisible, setModalVisible] = useState(false)
-
-  const handleModal = (criticId) => {
-    setSelectedCriticId(criticId)
-    setModalVisible(!modalVisible)
-  }
-
-  const { currentPage, loadMore } = useLoadMore(
-    criticsData.page,
-    criticsData.totalPages
-  )
-  const [allResults, setAllResults] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const critics = useSelector((state) => state.searchCritic.data)
 
-  const handleModalClose = () => {
-    setVisible(false)
+  const renderItem = (item) => {
+    return (
+      <View style={styles.renderItemContainer}>
+        <View style={{ alignItems: 'center' }}>
+          {item.User.image ? (
+            <Image
+              style={styles.image}
+              source={{
+                uri: item.User.image,
+              }}
+            />
+          ) : (
+            <Image
+              style={styles.image}
+              source={require('../../assets/image/No_Image_Available.jpg')}
+            />
+          )}
+          <Rate rate={item.rate} />
+        </View>
+        <View style={styles.renderItemDetails}>
+          <Text style={styles.renderItemTitle}>
+            {item.User.userName} |{' '}
+            {moment(item.created).format('DD/MM/YYYY à HH:mm:ss')}
+          </Text>
+          <Text style={styles.renderItemOverview}>{item.title}</Text>
+          <Text style={styles.renderItemOverview}>{item.content}</Text>
+        </View>
+      </View>
+    )
   }
+
+  const noDataFound = () => (
+    <View style={styles.containerMessage}>
+      <Ionicons name='information-circle-outline' size={24} color='#696cff' />
+      <Text style={styles.messageText}>Aucune critique pour {title}</Text>
+    </View>
+  )
 
   useEffect(() => {
     setIsLoading(true)
-    dispatch(searchCritic(id, currentPage))
+    dispatch(searchCritic(id))
       .then(() => {
         setIsLoading(false)
       })
       .catch(() => {
         setIsLoading(false)
       })
-  }, [dispatch, id, currentPage])
+  }, [dispatch, id])
 
   useEffect(() => {
-    if (criticsResults?.length > 0) {
-      if (currentPage > 1) {
-        setAllResults((prevResults) => [...prevResults, ...criticsResults])
-      } else {
-        setAllResults(criticsResults)
-      }
+    return () => {
+      dispatch(resetSearchCritic())
     }
-  }, [criticsResults])
+  }, [])
 
   return (
     <View style={styles.container}>
-      <Modal
-        animationType='slide'
-        transparent={true}
-        visible={visible}
-        onRequestClose={handleModalClose}
-      >
-        <View style={styles.modalView}>
-          <View style={styles.closeContainer}>
-            <TouchableOpacity onPress={() => setVisible(!visible)}>
-              <Ionicons style={styles.closeIcons} name='close' size={40} />
-            </TouchableOpacity>
-          </View>
-          <Text style={styles.modalTitle}>Critiques</Text>
-          <FlatList
-            data={allResults}
-            keyExtractor={(item, index) => `${index}`}
-            onEndReached={
-              isLoading === true ? (
-                <ActivityIndicator
-                  style={styles.loader}
-                  size='large'
-                  color='#0000ff'
-                />
-              ) : (
-                loadMore
-              )
-            }
-            onEndReachedThreshold={0.5}
-            renderItem={({ item, index }) => {
-              const handleDelete = async () => {
-                if (selectedCriticId) {
-                  await dispatch(deleteCritic(selectedCriticId)).then(() =>
-                    setModalVisible(false)
-                  )
-                  setAllResults((prevResults) =>
-                    prevResults.filter(
-                      (critic) => critic.criticId !== selectedCriticId
-                    )
-                  )
-                  await dispatch(searchCritic(id, 1))
-                  setSelectedCriticId(null)
-                }
-              }
-
-              return (
-                <View style={styles.criticCardContainer} key={index}>
-                  <View style={styles.criticHeaderContainer}>
-                    <Text style={styles.criticTitle}>{item.title}</Text>
-                    <Text style={styles.criticTitle}>{item.User.userName}</Text>
-                  </View>
-                  <Text style={styles.criticContent}>{item.content}</Text>
-                  <Text>
-                    Le {moment(item.created).format('DD/MM/YYYY à HH:mm:ss')}
-                  </Text>
-                  {item.userId === userId ? (
-                    <Fragment>
-                      <Pressable
-                        style={styles.trashButton}
-                        onPress={() => handleModal(item.criticId)}
-                      >
-                        <Feather name='trash-2' size={25} color='white' />
-                      </Pressable>
-                      <AlertModal
-                        message={
-                          'Etes vous sur de vouloir supprimer cette critique ?'
-                        }
-                        action={handleDelete}
-                        visible={modalVisible}
-                        setVisible={setModalVisible}
-                      />
-                    </Fragment>
-                  ) : null}
-                </View>
-              )
-            }}
-          />
-        </View>
-      </Modal>
+      <Text style={styles.seasonTitle}>Critiques de {title}</Text>
+      {isLoading ? (
+        <ActivityIndicator size='large' color='#0000ff' />
+      ) : (
+        <FlatList
+          data={critics?.critics}
+          ListEmptyComponent={noDataFound}
+          keyExtractor={(item) => item.criticId}
+          renderItem={({ item }) => renderItem(item)}
+        />
+      )}
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  container: modal.container,
-  modalView: modal.modalView,
-  modalText: modal.modalText,
-  closeIcons: modal.closeIcons,
-  closeContainer: modal.closeContainer,
-  modalTitle: modal.modalTitle,
-  criticCardContainer: card.criticCardContainer,
-  criticTitle: card.criticTitle,
-  criticContent: card.criticContent,
-  criticHeaderContainer: card.criticHeaderContainer,
-  deleteButton: button.deleteButton,
-  buttonText: button.buttonText,
+  container: dot.container,
+  image: dot.image,
+  renderItemContainer: dot.renderItemContainer,
+  renderItemTitle: dot.renderItemTitle,
+  renderItemOverview: dot.renderItemOverview,
+  renderItemDetails: dot.renderItemDetails,
+  seasonTitle: dot.seasonTitle,
   trashButton: button.trashButton,
+  containerMessage: message.containerMessage,
+  messageText: message.messageText,
 })
 
 export default AllCritics

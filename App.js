@@ -30,6 +30,8 @@ import UpdateCritic from './src/views/User/UpdateCritic'
 import Seasons from './src/utils/Seasons'
 import AllSeasons from './src/views/Tmdb/Series/AllSeasons'
 import AllEpisodes from './src/views/Tmdb/Series/AllEpisodes'
+import Cast from './src/views/Tmdb/Series/Cast'
+import Crew from './src/views/Tmdb/Series/Crew'
 
 const MainStack = createNativeStackNavigator()
 const AuthStack = createNativeStackNavigator()
@@ -189,6 +191,20 @@ const MainStackNavigator = () => {
       <MainStack.Screen
         name='AllEpisodes'
         component={AllEpisodes}
+        options={() => ({
+          header: () => <Header backButton={true} />,
+        })}
+      />
+      <MainStack.Screen
+        name='Cast'
+        component={Cast}
+        options={() => ({
+          header: () => <Header backButton={true} />,
+        })}
+      />
+      <MainStack.Screen
+        name='Crew'
+        component={Crew}
         options={() => ({
           header: () => <Header backButton={true} />,
         })}

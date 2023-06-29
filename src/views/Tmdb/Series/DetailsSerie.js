@@ -15,12 +15,10 @@ import { LinearGradient } from 'expo-linear-gradient'
 import Runtime from '../../../utils/RunTime'
 import Rate from '../../../utils/Rate'
 import details from '../../../styles/pages/details'
-import Cast from './Cast'
 import Production from './Production'
 import Refresh from '../../../utils/Refresh'
 import OverView from '../../../utils/OverView'
 import button from '../../../styles/components/button'
-import AllCritics from '../../Critics/AllCritics'
 import { Entypo } from '@expo/vector-icons'
 import ModalComponent from '../../../utils/ModalComponent'
 import DotDetails from '../../../utils/DotDetails'
@@ -28,17 +26,9 @@ import DotDetails from '../../../utils/DotDetails'
 const DetailsSerie = ({ route }) => {
   const dispatch = useDispatch()
   const serie = useSelector((state) => state.serieDetails.data)
-  const crew = useSelector((state) => state.serieCrew.data)
-  const nbOfCritics = useSelector((state) => state.searchCritic.data.results)
   const { id } = route.params
   const [loading, setLoading] = useState(false)
-
-  const [modalCritic, setModalCritic] = useState(false)
   const [modalDot, setModalDot] = useState(false)
-
-  const handleModalCritic = () => {
-    setModalCritic(!modalCritic)
-  }
 
   const handleModalDot = () => {
     setModalDot(!modalDot)
@@ -60,25 +50,7 @@ const DetailsSerie = ({ route }) => {
     fetchData()
   }, [dispatch, id])
 
-  const critics = (data) => {
-    if (!data || data.length === 0) return null
-    return (
-      <TouchableOpacity
-        style={styles.criticButton}
-        onPress={() => handleModalCritic()}
-      >
-        <Text style={styles.buttonText}>Lire les critiques ({data})</Text>
-      </TouchableOpacity>
-    )
-  }
-
-  const CastMemoized = React.memo(Cast)
   const ProductionMemoized = React.memo(Production)
-  const AllCriticsMemoized = React.memo(AllCritics, (prevProps, nextProps) => {
-    return (
-      prevProps.id === nextProps.id && prevProps.visible === nextProps.visible
-    )
-  })
 
   return (
     <Refresh styles={styles.scrollView} onRefresh={onRefresh}>
@@ -101,22 +73,23 @@ const DetailsSerie = ({ route }) => {
 
               <View style={styles.titleAndDot}>
                 <View>
-                  <Text
-                    style={[
-                      styles.headerTitle,
-                      { marginLeft: 15, marginTop: 15 },
-                    ]}
-                  >
+                  <Text style={[styles.headerTitle, { left: 15, top: 5 }]}>
                     {serie.original_name}
                   </Text>
                 </View>
 
                 <TouchableOpacity onPress={() => handleModalDot()}>
                   <Entypo
-                    style={{ marginRight: 15, marginTop: 15 }}
+                    style={{
+                      borderRadius: 100,
+                      padding: 5,
+                      backgroundColor: 'white',
+                      right: 15,
+                      top: 5,
+                    }}
                     name='dots-three-vertical'
                     size={24}
-                    color='white'
+                    color='black'
                   />
                 </TouchableOpacity>
               </View>
@@ -124,8 +97,8 @@ const DetailsSerie = ({ route }) => {
               <ModalComponent
                 visible={modalDot}
                 setVisible={setModalDot}
-                title={'Details'}
-                content={<DotDetails id={id} serie={serie} />}
+                title={''}
+                content={<DotDetails id={id} title={serie.original_name} />}
               />
 
               <View style={styles.headerViewContainer}>
@@ -140,13 +113,13 @@ const DetailsSerie = ({ route }) => {
                 </View>
 
                 <View style={styles.infoViewContainer}>
-                    <Runtime time={serie.episode_run_time} isMovie={false} />
-                    
-                    <Text style={styles.directorTitle}>Genres</Text>
-                    
+                  <Runtime time={serie.episode_run_time} isMovie={false} />
+
+                  <Text style={styles.directorTitle}>Genres</Text>
+
                   <View style={styles.genresViewContainer}>
-                    {serie?.genres?.map((genre) => (
-                      <Text key={genre.id} style={styles.genreText}>
+                    {serie?.genres?.map((genre, index) => (
+                      <Text key={index} style={styles.genreText}>
                         {genre.name}
                       </Text>
                     ))}
@@ -155,11 +128,11 @@ const DetailsSerie = ({ route }) => {
                   <Text style={styles.directorTitle}>Réalisation</Text>
 
                   <View style={styles.directorsViewContainer}>
-                    {serie?.created_by?.map((crew) => {
-                      if (!crew.name) return null
+                    {serie?.created_by?.map((credit, index) => {
+                      if (!credit.name) return null
                       return (
-                        <Text key={crew.id} style={styles.directorText}>
-                          {crew.name}
+                        <Text key={index} style={styles.directorText}>
+                          {credit.name}
                         </Text>
                       )
                     })}
@@ -169,14 +142,7 @@ const DetailsSerie = ({ route }) => {
 
               <OverView content={serie.overview} />
             </View>
-            <CastMemoized crew={crew} />
             <ProductionMemoized serie={serie} />
-            {critics(nbOfCritics)}
-            <AllCriticsMemoized
-              id={serie.id}
-              visible={modalCritic}
-              setVisible={setModalCritic}
-            />
           </Fragment>
         )
       )}

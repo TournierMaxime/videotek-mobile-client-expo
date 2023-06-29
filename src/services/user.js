@@ -1,26 +1,31 @@
-import { videotekApi as http } from "./axios.js";
+import { videotekApi as http } from './axios.js'
 
 const SearchUser = (filters) => {
   return http.post(
-    "/users/search",
+    '/users/search',
     {},
     {
       withCredentials: true,
       params: filters,
     }
-  );
-};
+  )
+}
 
 const GetUser = (userId) => {
-  return http.get(`/users/${userId}`, { withCredentials: true });
-};
+  return http.get(`/users/${userId}`, { withCredentials: true })
+}
 
 const Update = (data, userId) => {
-  return http.put(`/users/${userId}`, data, { withCredentials: true });
-};
+  return http.put(`/users/${userId}`, data, {
+    withCredentials: true,
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  })
+}
 
 const Delete = (userId) => {
-  return http.delete(`/users/${userId}`, { withCredentials: true });
-};
+  return http.delete(`/users/${userId}`, { withCredentials: true })
+}
 
-export { GetUser, Update, SearchUser, Delete };
+export { GetUser, Update, SearchUser, Delete }

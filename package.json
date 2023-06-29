@@ -21,6 +21,7 @@
     "axios": "^1.3.5",
     "expo": "~48.0.10",
     "expo-constants": "^14.2.1",
+    "expo-image-picker": "^14.1.1",
     "expo-linear-gradient": "^12.1.2",
     "expo-status-bar": "~1.4.4",
     "expo-updates": "~0.16.4",

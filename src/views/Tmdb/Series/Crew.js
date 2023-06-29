@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux'
 import dot from '../../../styles/pages/dot'
 import { useNavigation } from '@react-navigation/native'
 
-const Cast = ({ route }) => {
+const Crew = ({ route }) => {
   const { title } = route.params
   const navigation = useNavigation()
   const credits = useSelector((state) => state.serieCrew.data)
@@ -42,9 +42,9 @@ const Cast = ({ route }) => {
           )}
           <View style={styles.renderItemDetails}>
             <Text style={styles.renderItemTitle}>
-              {item.name}
+              {item.name} | {item.job}
             </Text>
-            <Text style={styles.renderItemOverview}>Personnage: {item.character}</Text>
+            <Text style={styles.renderItemOverview}>Département: {item.department}</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -53,9 +53,9 @@ const Cast = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.seasonTitle}>Distribution de {title}</Text>
+      <Text style={styles.seasonTitle}>Equipe technique de {title}</Text>
       <FlatList
-        data={credits?.cast}
+        data={credits?.crew}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => renderItem(item)}
       />
@@ -73,4 +73,4 @@ const styles = StyleSheet.create({
   seasonTitle: dot.seasonTitle,
 })
 
-export default Cast
+export default Crew

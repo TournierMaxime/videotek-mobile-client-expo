@@ -9,8 +9,9 @@ import {
 } from 'react-native'
 import { useSelector } from 'react-redux'
 import moment from 'moment/moment'
-import seasons from '../../../styles/pages/seasons'
+import dot from '../../../styles/pages/dot'
 import { useNavigation } from '@react-navigation/native'
+import Rate from '../../../utils/Rate'
 
 const AllSeasons = ({ route }) => {
   const { title, id } = route.params
@@ -28,12 +29,22 @@ const AllSeasons = ({ route }) => {
         }
       >
         <View style={styles.renderItemContainer}>
-          <Image
-            style={styles.image}
-            source={{
-              uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
-            }}
-          />
+          <View style={{ alignItems: 'center' }}>
+            {item.poster_path ? (
+              <Image
+                style={styles.image}
+                source={{
+                  uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
+                }}
+              />
+            ) : (
+              <Image
+                style={styles.image}
+                source={require('../../../assets/image/No_Image_Available.jpg')}
+              />
+            )}
+            <Rate rate={item.vote_average} />
+          </View>
           <View style={styles.renderItemDetails}>
             <Text style={styles.renderItemTitle}>
               {item.name} | {item.episode_count} épisodes{' '}
@@ -59,13 +70,13 @@ const AllSeasons = ({ route }) => {
 }
 
 const styles = StyleSheet.create({
-  container: seasons.container,
-  image: seasons.image,
-  renderItemContainer: seasons.renderItemContainer,
-  renderItemTitle: seasons.renderItemTitle,
-  renderItemOverview: seasons.renderItemOverview,
-  renderItemDetails: seasons.renderItemDetails,
-  seasonTitle: seasons.seasonTitle,
+  container: dot.container,
+  image: dot.image,
+  renderItemContainer: dot.renderItemContainer,
+  renderItemTitle: dot.renderItemTitle,
+  renderItemOverview: dot.renderItemOverview,
+  renderItemDetails: dot.renderItemDetails,
+  seasonTitle: dot.seasonTitle,
 })
 
 export default AllSeasons

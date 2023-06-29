@@ -18,12 +18,15 @@ const renderItemContainer = {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
+    backgroundColor: 'white',
+    marginVertical: 5,
+    padding: 5
   }
   
 const renderItemTitle = {
     fontSize: 16,
     marginLeft: 15,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
 }
   
 const renderItemOverview = {
@@ -35,7 +38,7 @@ const renderItemOverview = {
   
 const renderItemDetails = {
     flex: 1,
-    width: '100%',
+    width: '100%'
 }
 
 const seasonTitle = {

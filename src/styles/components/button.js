@@ -54,10 +54,10 @@ const formButtonRegister = {
 
 const formButtonLogin = {
     backgroundColor: '#00AD4F',
-    borderRadius: 5,
     padding: 5,
     alignItems: 'center',
     marginRight: 10,
+    marginTop: 15
 }
 
 const formButtonForgetPassword = {
@@ -100,7 +100,6 @@ const cancelButton = {
 }
 
 const deleteAccount = {
-    borderRadius: 5,
     padding: 5,
     backgroundColor: 'red',
 }
@@ -113,7 +112,6 @@ const trashButton = {
     borderRadius: 5,
     padding: 5,
     width: 'auto',
-    marginLeft: 'auto',
     backgroundColor: 'red',
 }
 

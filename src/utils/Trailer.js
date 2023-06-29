@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import { movieTrailer } from '../../../redux/actions/tmdb/movies/trailer'
-import { serieTrailer } from '../../../redux/actions/tmdb/series/trailer'
+import { movieTrailer } from '../redux/actions/tmdb/movies/trailer'
+import { serieTrailer } from '../redux/actions/tmdb/series/trailer'
 import { useDispatch, useSelector } from 'react-redux'
 import { Linking, TouchableOpacity } from 'react-native'
 
 const extractFirstTrailerResult = (trailer) => {
-  if (!trailer || !trailer.results || trailer.results.length === 0) {
+  if (!trailer.results) {
     return null
   }
 
@@ -34,27 +34,19 @@ const Trailer = ({ id, children, movie, serie }) => {
   }
 
   useEffect(() => {
-    if (movie) {
-      dispatch(movieTrailer(id))
-    } else if (serie) {
-      dispatch(serieTrailer(id))
+    if (movie?.id === id) {
+      dispatch(movieTrailer(movie?.id))
+    } else if (serie?.id === id) {
+      dispatch(serieTrailer(serie?.id))
     }
   }, [dispatch, id, movie, serie])
-
-  if (movie && !firstMovieTrailerResult) {
-    return null
-  }
-
-  if (serie && !firstSerieTrailerResult) {
-    return null
-  }
 
   return (
     <TouchableOpacity
       onPress={() => {
-        if (movie) {
+        if (id === movie?.id) {
           handleLinkToMovieTrailer()
-        } else if (serie) {
+        } else if (id === serie?.id) {
           handleLinkToSerieTrailer()
         }
       }}
