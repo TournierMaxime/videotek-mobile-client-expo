@@ -13,7 +13,7 @@ import DetailsSerie from './src/views/Tmdb/Series/DetailsSerie'
 import DetailsPeople from './src/views/Tmdb/People/DetailsPeople'
 import Trending from './src/views/Tmdb/Movies/Trending'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { FontAwesome, Ionicons } from 'react-native-vector-icons'
+import { MaterialIcons, Ionicons, Entypo } from 'react-native-vector-icons'
 import UserProfile from './src/views/User/UserProfile'
 import Home from './src/views/Home'
 import { useSelector } from 'react-redux'
@@ -41,89 +41,125 @@ const MainStack = createNativeStackNavigator()
 const AuthStack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
 
-const AuthStackNavigator = () => {
+const AuthStackNavigator = ({ isAuthenticated }) => {
   return (
     <AuthStack.Navigator>
       <AuthStack.Screen
         name='Login'
         component={Login}
         options={() => ({
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={false} />
+          ),
         })}
       />
       <AuthStack.Screen
         name='Register'
         component={Register}
         options={() => ({
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
       <AuthStack.Screen
         name='ForgetPassword'
         component={ForgetPassword}
         options={() => ({
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
       <AuthStack.Screen
         name='ConfirmEmail'
         component={ConfirmEmail}
         options={() => ({
-          header: () => <Header backButton={false} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={false} />
+          ),
         })}
       />
     </AuthStack.Navigator>
   )
 }
 
-const MainStackNavigator = () => {
+const MainStackNavigator = ({ isAuthenticated }) => {
   const userId = useSelector((state) => state.auth.data.user.userId)
   return (
     <MainStack.Navigator>
       <MainStack.Screen
         name='Home'
         component={Home}
-        options={{ header: () => <Header backButton={false} /> }}
+        options={{
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={false} />
+          ),
+        }}
       />
       <MainStack.Screen
         name='NowPlaying'
         component={NowPlaying}
-        options={{ header: () => <Header backButton={true} /> }}
+        options={{
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
+        }}
       />
       <MainStack.Screen
         name='Upcoming'
         component={Upcoming}
-        options={{ header: () => <Header backButton={true} /> }}
+        options={{
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
+        }}
       />
       <MainStack.Screen
         name='Trending'
         component={Trending}
-        options={{ header: () => <Header backButton={true} /> }}
+        options={{
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
+        }}
       />
       <MainStack.Screen
         name='DetailsMovie'
         component={DetailsMovie}
         options={({ route }) => ({
           title: route.params.title,
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
       <MainStack.Screen
         name='OnTheAir'
         component={OnTheAir}
-        options={{ header: () => <Header backButton={true} /> }}
+        options={{
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
+        }}
       />
       <MainStack.Screen
         name='Popular'
         component={Popular}
-        options={{ header: () => <Header backButton={true} /> }}
+        options={{
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
+        }}
       />
       <MainStack.Screen
         name='DetailsSerie'
         component={DetailsSerie}
         options={({ route }) => ({
           title: route.params.title,
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
       <MainStack.Screen
@@ -131,7 +167,9 @@ const MainStackNavigator = () => {
         component={DetailsPeople}
         options={({ route }) => ({
           title: route.params.name,
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
       <MainStack.Screen
@@ -139,7 +177,9 @@ const MainStackNavigator = () => {
         component={DetailsUser}
         options={({ route }) => ({
           title: route.params.userId,
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
       <MainStack.Screen
@@ -147,98 +187,126 @@ const MainStackNavigator = () => {
         component={UserProfile}
         initialParams={{ userId }}
         options={() => ({
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
       <MainStack.Screen
         name='NewCritic'
         component={NewCritic}
         options={() => ({
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
       <MainStack.Screen
         name='AllCritics'
         component={AllCritics}
         options={() => ({
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
       <MainStack.Screen
         name='UserCritics'
         component={UserCritics}
         options={() => ({
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
       <MainStack.Screen
         name='UpdateCritic'
         component={UpdateCritic}
         options={() => ({
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
       <MainStack.Screen
         name='Seasons'
         component={Seasons}
         options={() => ({
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
       <MainStack.Screen
         name='AllSeasons'
         component={AllSeasons}
         options={() => ({
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
       <MainStack.Screen
         name='AllEpisodes'
         component={AllEpisodes}
         options={() => ({
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
       <MainStack.Screen
         name='CastSerie'
         component={CastSerie}
         options={() => ({
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
       <MainStack.Screen
         name='CastPeople'
         component={CastPeople}
         options={() => ({
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
       <MainStack.Screen
         name='CastMovie'
         component={CastMovie}
         options={() => ({
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
       <MainStack.Screen
         name='CrewSerie'
         component={CrewSerie}
         options={() => ({
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
       <MainStack.Screen
         name='CrewMovie'
         component={CrewMovie}
         options={() => ({
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
       <MainStack.Screen
         name='DotDetails'
         component={DotDetails}
         options={() => ({
-          header: () => <Header backButton={true} />,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
         })}
       />
     </MainStack.Navigator>
@@ -246,8 +314,6 @@ const MainStackNavigator = () => {
 }
 
 const App = ({ isAuthenticated, onLoginSuccess }) => {
-  const userId = useSelector((state) => state.auth.data.user.userId)
-
   useEffect(() => {
     const getUserData = async () => {
       try {
@@ -274,44 +340,77 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
           },
         }}
       >
-        <Tab.Screen
-          name='MainStackNavigator'
-          component={MainStackNavigator}
-          options={() => ({
-            tabBarIcon: ({ color }) => (
-              <Ionicons name='home' size={25} color={color} />
-            ),
-            headerShown: false,
-            tabBarLabel: '',
-          })}
-        />
         {isAuthenticated === true ? (
           <Tab.Screen
-            name='UserProfile'
-            initialParams={{ userId }}
-            component={UserProfile}
+            name='MainStackNavigator'
             options={() => ({
-              header: () => <Header backButton={true} />,
               tabBarIcon: ({ color }) => (
-                <FontAwesome name='user' size={25} color={color} />
-              ),
-              tabBarLabel: '',
-            })}
-          />
-        ) : (
-          <Tab.Screen
-            name='AuthStackNavigator'
-            component={AuthStackNavigator}
-            options={() => ({
-              header: () => <Header backButton={true} />,
-              tabBarIcon: ({ color }) => (
-                <FontAwesome name='user' size={25} color={color} />
+                <Entypo name='home' size={25} color={color} />
               ),
               headerShown: false,
               tabBarLabel: '',
             })}
-          />
+          >
+            {() => <MainStackNavigator isAuthenticated={isAuthenticated} />}
+          </Tab.Screen>
+        ) : (
+          <Tab.Screen
+            name='AuthStackNavigator'
+            options={() => ({
+              tabBarIcon: ({ color }) => (
+                <Entypo name='home' size={25} color={color} />
+              ),
+              headerShown: false,
+              tabBarLabel: '',
+            })}
+          >
+            {() => <AuthStackNavigator isAuthenticated={isAuthenticated} />}
+          </Tab.Screen>
         )}
+
+        <Tab.Screen
+          name='Trending'
+          component={Trending}
+          options={() => ({
+            tabBarIcon: ({ color }) => (
+              <Ionicons name='flame' size={25} color={color} />
+            ),
+            header: () => (
+              <Header isAuthenticated={isAuthenticated} backButton={true} />
+            ),
+            headerShown: true,
+            tabBarLabel: '',
+          })}
+        />
+        <Tab.Screen
+          name='NowPlaying'
+          component={NowPlaying}
+          options={() => ({
+            tabBarIcon: ({ color }) => (
+              <MaterialIcons name='movie' size={25} color={color} />
+            ),
+            header: () => (
+              <Header isAuthenticated={isAuthenticated} backButton={true} />
+            ),
+            headerShown: true,
+            tabBarLabel: '',
+          })}
+        />
+
+        <Tab.Screen
+          name='OnTheAir'
+          component={OnTheAir}
+          options={() => ({
+            tabBarIcon: ({ color }) => (
+              <Ionicons name='ios-tv-sharp' size={25} color={color} />
+            ),
+            header: () => (
+              <Header isAuthenticated={isAuthenticated} backButton={true} />
+            ),
+            headerShown: true,
+            tabBarLabel: '',
+          })}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   )

@@ -152,8 +152,8 @@ const genresViewContainer = {
 }
 
 const genreText = {
-  fontSize: 16,
-  borderRadius: 8,
+  fontSize: 14,
+  borderRadius: 4,
   margin: 5,
   paddingHorizontal: 5,
   textAlign: 'center',
@@ -168,8 +168,8 @@ const directorsViewContainer = {
 }
 
 const directorText = {
-  fontSize: 16,
-  borderRadius: 8,
+  fontSize: 14,
+  borderRadius: 4,
   margin: 5,
   paddingHorizontal: 5,
   textAlign: 'center',

@@ -15,29 +15,18 @@ import { ToastSuccess, ToastError } from '../../utils/Toast'
 import ToastConfig from '../../utils/ToastConfig'
 import button from '../../styles/components/button'
 import form from '../../styles/components/form'
-import { deleteUser } from '../../redux/actions/users/deleteUser'
-import { logoutUser } from '../../redux/actions/auth/auth'
-import { useNavigation } from '@react-navigation/native'
-import AlertModal from '../../utils/AlertModal'
 import * as ImagePicker from 'expo-image-picker'
 
 const DetailsUser = ({ route }) => {
   const { userId } = route.params
   const dispatch = useDispatch()
-  const navigation = useNavigation()
   const user = useSelector((state) => state.oneUser.data.user)
-  console.log(user?.image)
+
   const [data, setData] = useState({
-    userName: user?.userName || "",
-    email: user?.email || "",
-    image: user?.image|| "",
+    userName: user?.userName || '',
+    email: user?.email || '',
+    image: user?.image || '',
   })
-
-  const [modalVisible, setModalVisible] = useState(false)
-
-  const handleModal = () => {
-    setModalVisible(!modalVisible)
-  }
 
   const handleUpdate = async () => {
     try {
@@ -49,18 +38,17 @@ const DetailsUser = ({ route }) => {
       formData.append('email', data.email)
 
       // append the image only if it's present
-        const imageUriParts = data.image.split('.')
-        const fileType = imageUriParts[imageUriParts.length - 1]
+      const imageUriParts = data.image.split('.')
+      const fileType = imageUriParts[imageUriParts.length - 1]
 
-        let file = {
-          uri: data.image,
-          name: `image.${fileType}`,
-          type: `image/${fileType}`,
-        }
+      let file = {
+        uri: data.image,
+        name: `image.${fileType}`,
+        type: `image/${fileType}`,
+      }
 
-        // append the image to the form data
-        formData.append('image', file)
-      
+      // append the image to the form data
+      formData.append('image', file)
 
       // send the request
       await dispatch(updateUser(formData, userId)) // make sure your updateUser action sends the data as is, and sets 'Content-Type': 'multipart/form-data'
@@ -74,21 +62,6 @@ const DetailsUser = ({ route }) => {
       } else {
         ToastError('error', "Une erreur s'est produite", true)
       }
-    }
-  }
-
-  const handleDelete = async () => {
-    try {
-      await dispatch(deleteUser(userId))
-      ToastSuccess('success', 'Compte supprimé avec succès', true)
-
-      setTimeout(async () => {
-        await dispatch(logoutUser())
-        navigation.navigate('Home')
-      }, 3000)
-    } catch (error) {
-      console.log(error.response.data.errMsg)
-      ToastError('error', error.response.data.errMsg, true)
     }
   }
 
@@ -108,16 +81,11 @@ const DetailsUser = ({ route }) => {
     }
   }
 
-  /*   const removeImage = (index) => {
-    const updatedImages = data.image.filter((_, i) => i !== index)
-    setData({ ...data, image: updatedImages })
-  } */
-
   useEffect(() => {
     dispatch(getUser(userId))
   }, [dispatch, userId])
 
-    useEffect(() => {
+  useEffect(() => {
     return () => {
       dispatch(resetUser())
     }
@@ -132,50 +100,48 @@ const DetailsUser = ({ route }) => {
       }}
     >
       <View style={styles.formContainer}>
-        <Text style={styles.formLabel}>Votre pseudo</Text>
+        <Text style={styles.formLabel}>Pseudo</Text>
         <TextInput
           style={styles.formInput}
           placeholder='Pseudo'
           onChangeText={(text) => setData({ ...data, userName: text })}
           defaultValue={user?.userName}
         />
-        <Text style={styles.formLabel}>Votre email</Text>
+        <Text style={styles.formLabel}>Email</Text>
         <TextInput
           style={styles.formInput}
           placeholder='Email'
           onChangeText={(text) => setData({ ...data, email: text })}
-          defaultValue={user.email}
+          defaultValue={user?.email}
         />
-        <Text style={styles.formLabel}>Votre avatar</Text>
-        <Image source={{ uri: `${data.image}?t=${new Date().getTime()}` }} style={{ width: 48, height: 48 }} />
-        <View style={{ marginTop: 15 }}>
-          <Button title='Changer Avatar' onPress={() => pickImage()} />
+        <Text style={styles.formLabel}>Avatar</Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: 50,
+          }}
+        >
+          <View>
+            <Image
+              source={{ uri: `${data.image}?t=${new Date().getTime()}` }}
+              style={{ width: 48, height: 48 }}
+            />
+          </View>
+          <View>
+            <Button title='Changer Avatar' onPress={() => pickImage()} />
+          </View>
         </View>
         <View style={styles.buttonContainer}>
           <TouchableOpacity
-            style={styles.formButtonLogin}
+            style={[styles.formButtonLogin, { width: '100%' }]}
             onPress={() => handleUpdate()}
           >
             <Text style={styles.buttonText}>Mettre à jour</Text>
           </TouchableOpacity>
           <ToastConfig />
         </View>
-      </View>
-
-      <AlertModal
-        message={'Etes vous sur de vouloir supprimer votre compte ?'}
-        action={handleDelete}
-        visible={modalVisible}
-        setVisible={setModalVisible}
-      />
-      <View style={styles.deleteAccountContainer}>
-        <TouchableOpacity
-          style={styles.deleteAccount}
-          onPress={() => handleModal()}
-        >
-          <Text style={styles.buttonText}>Supprimer compte</Text>
-        </TouchableOpacity>
-        <ToastConfig />
       </View>
     </View>
   )

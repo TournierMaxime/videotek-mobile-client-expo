@@ -45,14 +45,14 @@ const LoginScreen = () => {
   return (
     <Fragment>
       <View style={styles.formContainer}>
-        <Text style={styles.formLabel}>Votre email</Text>
+        <Text style={styles.formLabel}>Email</Text>
         <TextInput
           style={styles.formInput}
           placeholder='Email'
           onChangeText={(text) => setData({ ...data, email: text })}
           value={data.email}
         />
-        <Text style={styles.formLabel}>Votre mot de passe</Text>
+        <Text style={styles.formLabel}>Mot de passe</Text>
         <TextInput
           style={styles.formInput}
           placeholder='Mot de passe'
@@ -62,28 +62,25 @@ const LoginScreen = () => {
         />
         <View style={styles.buttonContainer}>
           <TouchableOpacity
-            style={styles.formButtonLogin}
+            style={[styles.formButtonLogin, { width: '100%' }]}
             onPress={handleLogin}
           >
-            <Text style={styles.buttonText}>Connexion</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.formButtonForgetPassword}
-            onPress={handleForgetPassword}
-          >
-            <Text style={styles.buttonText}>Mot de passe oublié</Text>
+            <Text style={styles.buttonText}>Se connecter</Text>
           </TouchableOpacity>
           <ToastConfig />
         </View>
-      </View>
-      <View style={[styles.formContainer, { marginTop: 100 }]}>
-        <Text style={styles.formLabel}>Pas encore inscrit ?</Text>
-        <View style={styles.buttonContainer}>
+        <View style={{ flexDirection:'row', justifyContent: 'space-between', width: 'auto', marginTop: 40}}>
           <TouchableOpacity
-            style={styles.formButtonRegister}
+            style={{alignItems: 'center'}}
             onPress={() => navigation.navigate('Register')}
           >
-            <Text style={styles.buttonText}>S&apos;inscrire</Text>
+            <Text style={{color: '#0000EE'}}>Pas encore inscrit ?</Text>
+          </TouchableOpacity>
+                    <TouchableOpacity
+            style={{alignItems: 'center'}}
+            onPress={handleForgetPassword}
+          >
+            <Text style={{color: '#0000EE'}}>Mot de passe oublié ?</Text>
           </TouchableOpacity>
         </View>
       </View>

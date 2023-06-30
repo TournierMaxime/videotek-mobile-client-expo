@@ -16,9 +16,9 @@ const originalTitle = {
 }
 
 const container = {
-    backgroundColor: '#efefef',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginBottom: 25
 }
 
 const title = {

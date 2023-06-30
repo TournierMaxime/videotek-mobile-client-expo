@@ -85,6 +85,8 @@ const DetailsPeople = ({ route }) => {
     fetchData()
   }, [dispatch, id])
 
+  const OverViewMemoized = React.memo(OverView)
+
   return (
     <Refresh styles={styles.scrollView} onRefresh={onRefresh}>
       {loading ? (
@@ -148,7 +150,7 @@ const DetailsPeople = ({ route }) => {
                 </TouchableOpacity>
               </View>
             </View>
-            <OverView isBiography={true} content={people.biography} />
+            <OverViewMemoized isBiography={true} content={people.biography} />
           </View>
         </Fragment>
       )}

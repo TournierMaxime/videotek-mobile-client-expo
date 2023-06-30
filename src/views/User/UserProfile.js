@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import button from '../../styles/components/button'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,6 +8,10 @@ import { useNavigation } from '@react-navigation/native'
 import { checkAccess } from '../../utils/CheckAccess'
 import { Entypo, FontAwesome5, MaterialIcons } from 'react-native-vector-icons'
 import profil from '../../styles/components/profil'
+import AlertModal from '../../utils/AlertModal'
+import { deleteUser } from '../../redux/actions/users/deleteUser'
+import { ToastSuccess, ToastError } from '../../utils/Toast'
+import ToastConfig from '../../utils/ToastConfig'
 
 const UserProfile = ({ route }) => {
   const { userId } = route.params
@@ -16,18 +20,44 @@ const UserProfile = ({ route }) => {
   const oneUser = useSelector((state) => state.oneUser.data)
   const currentUserId = useSelector((state) => state.auth.data.user.userId)
   const isLogged = useSelector((state) => state.auth.isAuthenticated)
+  const [deleteModalVisible, setDeleteModalVisible] = useState(false)
+  const [deleteSuccess, setDeleteSuccess] = useState(false)
 
-  const handleLogout = async () => {
-    await dispatch(logoutUser())
+  console.log("userId ", userId)
+    console.log("oneUser userId ", oneUser?.user?.userId)
+
+  const handleLogout = () => {
+    dispatch(logoutUser())
     navigation.navigate('Home')
+  }
+
+  const handleDelete = async () => {
+    try {
+      await dispatch(deleteUser(userId))
+      setDeleteSuccess(true)
+      ToastSuccess('success', 'Compte supprimé avec succès', true)
+
+      setTimeout(async () => {
+        await dispatch(logoutUser())
+        navigation.navigate('Home')
+      }, 3000)
+    } catch (error) {
+      console.log(error.response.data.errMsg)
+      ToastError('error', error.response.data.errMsg, true)
+    }
+  }
+
+  const handleDeleteModal = () => {
+    setDeleteModalVisible(!deleteModalVisible)
   }
 
   useEffect(() => {
     dispatch(getUser(userId))
   }, [dispatch, userId])
 
-  const accessDenied = checkAccess(isLogged, userId, currentUserId)
+  const accessDenied = checkAccess(isLogged, currentUserId, userId)
   const userName = `${oneUser?.user?.userName}`
+  console.log(userName)
 
   return (
     <View style={styles.container}>
@@ -59,7 +89,12 @@ const UserProfile = ({ route }) => {
               >
                 <View style={styles.profileSectionContainer}>
                   <View style={styles.textIconContainer}>
-                    <Entypo style={styles.icon} name="new-message" size={25} color="black" />
+                    <Entypo
+                      style={styles.icon}
+                      name='new-message'
+                      size={25}
+                      color='black'
+                    />
                     <Text>Critiques</Text>
                   </View>
                   <Entypo name='chevron-small-right' size={25} color='black' />
@@ -80,6 +115,30 @@ const UserProfile = ({ route }) => {
                   <Entypo name='chevron-small-right' size={25} color='black' />
                 </View>
               </TouchableOpacity>
+
+              <TouchableOpacity onPress={() => handleDeleteModal()}>
+                <View style={styles.profileSectionContainer}>
+                  <View style={styles.textIconContainer}>
+                    <MaterialIcons
+                      style={styles.icon}
+                      name='delete-outline'
+                      size={25}
+                      color='black'
+                    />
+                    <Text style={{color: 'red'}}>Supprimer son compte</Text>
+                  </View>
+                  <Entypo name='chevron-small-right' size={25} color='black' />
+                </View>
+              </TouchableOpacity>
+              <AlertModal
+                message={'Etes vous sur de vouloir supprimer votre compte ?'}
+                action={handleDelete}
+                visible={deleteModalVisible}
+                setVisible={setDeleteModalVisible}
+                success={deleteSuccess}
+              >
+                <ToastConfig />
+              </AlertModal>
             </View>
           )}
         </Fragment>

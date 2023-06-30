@@ -78,7 +78,7 @@ const ForgetPasswordScreen = () => {
             <TouchableOpacity
               style={styles.formButton}
               onPress={handleForgetPassword}>
-              <Text style={styles.buttonText}>Envoyer</Text>
+              <Text style={styles.buttonText}>Confirmer</Text>
               <ToastConfig />
             </TouchableOpacity>
           </View>
@@ -98,7 +98,7 @@ const ForgetPasswordScreen = () => {
             style={styles.formButton}
             onPress={handleCheckForgetPasswordCode}
           >
-            <Text style={styles.buttonText}>Valider</Text>
+            <Text style={styles.buttonText}>Confirmer</Text>
             <ToastConfig />
           </TouchableOpacity>
         </View>
@@ -125,7 +125,7 @@ const ForgetPasswordScreen = () => {
               style={styles.formButton}
               onPress={handleResetPassword}>
 
-              <Text style={styles.buttonText}>Envoyer</Text>
+              <Text style={styles.buttonText}>Confirmer</Text>
               <ToastConfig />
             </TouchableOpacity>
           </View>

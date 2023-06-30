@@ -30,7 +30,7 @@ const AllCritics = ({ route }) => {
             <Image
               style={styles.image}
               source={{
-                uri: item.User.image,
+                uri: `${item.User.image}?t=${new Date().getTime()}`,
               }}
             />
           ) : (

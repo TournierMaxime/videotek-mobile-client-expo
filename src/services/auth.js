@@ -6,11 +6,11 @@ const Register = async (data) => {
 };
 
 const Login = (data) => {
-  return http.post("/auth/login", data, { withCredentials: true });
+  return http.post("/auth/login", data);
 };
 
 const LoginWithUserId = (data) => {
-  return http.post("/auth/login-with-userId", data, { withCredentials: true });
+  return http.post("/auth/login-with-userId", data);
 };
 
 const ForgetPasswordReq = async (data) => {

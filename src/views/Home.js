@@ -16,7 +16,7 @@ import { useNavigation } from '@react-navigation/native'
 import home from '../styles/pages/home'
 import Refresh from '../utils/Refresh'
 import { truncateTitle } from '../utils/Truncate'
-import { Ionicons } from 'react-native-vector-icons'
+import { Ionicons, MaterialIcons } from 'react-native-vector-icons'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -32,9 +32,9 @@ const Home = () => {
   const [loading, setLoading] = useState(false)
 
   const onRefresh = async () => {
-      await dispatch(nowPlaying(nowPlayingData.page))
-      await dispatch(trending(trendingData.page))
-      await dispatch(onTheAir(onTheAirData.page))
+    await dispatch(nowPlaying(nowPlayingData.page))
+    await dispatch(trending(trendingData.page))
+    await dispatch(onTheAir(onTheAirData.page))
   }
 
   useEffect(() => {
@@ -60,19 +60,8 @@ const Home = () => {
           <Refresh onRefresh={onRefresh}>
             <View style={styles.categoryViewContainer}>
               <Text style={styles.title}>En ce moment</Text>
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('MainStackNavigator', {
-                    screen: 'Trending',
-                  })
-                }
-              >
-                <Ionicons
-                  name='arrow-forward-outline'
-                  size={25}
-                  color='black'
-                />
-              </TouchableOpacity>
+
+              <Ionicons name='flame' size={25} color='black' />
             </View>
             <View style={styles.container}>
               <FlatList
@@ -155,15 +144,7 @@ const Home = () => {
 
             <View style={styles.categoryViewContainer}>
               <Text style={styles.title}>Films</Text>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('NowPlaying')}
-              >
-                <Ionicons
-                  name='arrow-forward-outline'
-                  size={25}
-                  color='black'
-                />
-              </TouchableOpacity>
+              <MaterialIcons name='movie' size={25} color='black' />
             </View>
             <View style={styles.container}>
               <FlatList
@@ -209,9 +190,7 @@ const Home = () => {
 
             <View style={styles.categoryViewContainer}>
               <Text style={styles.title}>Séries</Text>
-              <TouchableOpacity onPress={() => navigation.navigate('OnTheAir')}>
-                <Ionicons name='arrow-forward-outline' size={25} color='black' />
-              </TouchableOpacity>
+                <Ionicons name='ios-tv-sharp' size={25} color='black' />
             </View>
             <View style={styles.container}>
               <FlatList

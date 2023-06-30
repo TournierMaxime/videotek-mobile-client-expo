@@ -4,7 +4,7 @@ import modal from '../styles/components/modal'
 import { Pressable } from 'react-native'
 import button from '../styles/components/button'
 
-const AlertModal = ({ visible, setVisible, action, message }) => {
+const AlertModal = ({ visible, setVisible, action, message, success }) => {
   const handleModalClose = () => {
     setVisible(false)
   }
@@ -24,10 +24,23 @@ const AlertModal = ({ visible, setVisible, action, message }) => {
               <Pressable style={styles.deleteButton} onPress={() => action()}>
                 <Text style={styles.buttonText}>Supprimer</Text>
               </Pressable>
-              <Pressable style={styles.cancelButton} onPress={() => setVisible(!visible)}>
+              <Pressable
+                style={styles.cancelButton}
+                onPress={() => setVisible(!visible)}
+              >
                 <Text style={styles.buttonText}>Annuler</Text>
               </Pressable>
             </View>
+            {success ? (
+              <Text
+                style={[
+                  styles.alertModalMessage,
+                  { color: 'green', marginTop: 15 },
+                ]}
+              >
+                Votre compte a bien été supprimer avec succès
+              </Text>
+            ) : null}
           </View>
         </View>
       </Modal>
@@ -46,7 +59,7 @@ const styles = StyleSheet.create({
   deleteButton: button.deleteButton,
   buttonText: button.buttonText,
   cancelButton: button.cancelButton,
-  alertModalMessage: modal.alertModalMessage
+  alertModalMessage: modal.alertModalMessage,
 })
 
 export default AlertModal

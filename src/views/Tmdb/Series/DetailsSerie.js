@@ -46,6 +46,7 @@ const DetailsSerie = ({ route }) => {
   }, [dispatch, id])
 
   const ProductionMemoized = React.memo(Production)
+  const OverViewMemoized = React.memo(OverView)
 
   return (
     <Refresh styles={styles.scrollView} onRefresh={onRefresh}>
@@ -135,7 +136,7 @@ const DetailsSerie = ({ route }) => {
                 </View>
               </View>
 
-              <OverView content={serie.overview} />
+              <OverViewMemoized content={serie.overview} />
             </View>
             <ProductionMemoized serie={serie} />
           </Fragment>

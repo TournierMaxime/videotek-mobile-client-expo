@@ -1,6 +1,5 @@
 const loginButton = {
     flex: 1,
-    borderRadius: 5,
     padding: 5,
     alignItems: 'center',
     margin: 1,
@@ -9,7 +8,6 @@ const loginButton = {
 
 const registerButton = {
     flex: 1,
-    borderRadius: 5,
     padding: 5,
     alignItems: 'center',
     margin: 1,
@@ -18,7 +16,6 @@ const registerButton = {
 
 const forgetPasswordButton = {
     flex: 1,
-    borderRadius: 5,
     padding: 5,
     alignItems: 'center',
     margin: 1,
@@ -33,12 +30,11 @@ const buttonText = {
 
 const buttonContainer = {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'center'
 }
 
 const formButton = {
     backgroundColor: '#22C55E',
-    borderRadius: 5,
     padding: 5,
     alignItems: 'center',
     marginRight: 10,
@@ -46,7 +42,6 @@ const formButton = {
 
 const formButtonRegister = {
     backgroundColor: '#476EFF',
-    borderRadius: 5,
     padding: 5,
     alignItems: 'center',
     marginRight: 10,
@@ -57,19 +52,17 @@ const formButtonLogin = {
     padding: 5,
     alignItems: 'center',
     marginRight: 10,
-    marginTop: 15
+    //marginTop: 15
 }
 
 const formButtonForgetPassword = {
     backgroundColor: '#C90404',
-    borderRadius: 5,
     padding: 5,
     alignItems: 'center',
     marginRight: 10,
 }
 
 const orderButton = {
-    borderRadius: 5,
     padding: 5,
     alignItems: 'center',
     margin: 10,
@@ -77,7 +70,6 @@ const orderButton = {
 }
 
 const criticButton = {
-    borderRadius: 5,
     padding: 5,
     alignItems: 'center',
     margin: 10,
@@ -86,14 +78,12 @@ const criticButton = {
 }
 
 const deleteButton = {
-    borderRadius: 5,
     padding: 5,
     width: 'auto',
     backgroundColor: 'red',
 }
 
 const cancelButton = {
-    borderRadius: 5,
     padding: 5,
     width: 'auto',
     backgroundColor: '#476EFF',

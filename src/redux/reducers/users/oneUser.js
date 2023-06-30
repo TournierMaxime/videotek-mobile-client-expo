@@ -23,9 +23,7 @@ switch (action.type) {
       ...state,
       loading: false,
         error: action.payload,
-        oneUser: {
-          data: {}
-      }
+        data: {}
     };
   default:
     return state;

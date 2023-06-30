@@ -14,6 +14,8 @@ import button from '../../styles/components/button'
 import { useDispatch } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 import { loginWithUserId } from '../../redux/actions/auth/auth'
+import { Ionicons } from 'react-native-vector-icons'
+import message from '../../styles/components/message'
 
 const ConfirmEmail = ({ route }) => {
   const dispatch = useDispatch()
@@ -38,9 +40,17 @@ const ConfirmEmail = ({ route }) => {
     setData({})
   }
 
+    const infoMsg = () => (
+    <View style={styles.containerMessage}>
+      <Ionicons name='information-circle-outline' size={24} color='#696cff' />
+      <Text style={styles.messageText}>Un email vous a été envoyé contenant un code à 6 chiffres</Text>
+    </View>
+  )
+
   return (
     <View style={styles.formContainer}>
-      <Text style={styles.formLabel}>Votre code</Text>
+      {infoMsg()}
+      <Text style={styles.formLabel}>Code</Text>
       <TextInput
         style={styles.formInput}
         placeholder='Code'
@@ -52,7 +62,7 @@ const ConfirmEmail = ({ route }) => {
           style={styles.formButtonLogin}
           onPress={handleConfirmEmail}
         >
-          <Text style={styles.buttonText}>Envoyer</Text>
+          <Text style={styles.buttonText}>Confirmer</Text>
         </TouchableOpacity>
         <ToastConfig />
       </View>
@@ -67,6 +77,8 @@ const styles = StyleSheet.create({
   buttonText: button.buttonText,
   buttonContainer: button.buttonContainer,
   formButtonLogin: button.formButtonLogin,
+    containerMessage: message.containerMessage,
+  messageText: message.messageText,
 })
 
 export default ConfirmEmail
