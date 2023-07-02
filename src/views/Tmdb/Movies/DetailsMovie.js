@@ -21,6 +21,7 @@ import OverView from '../../../utils/OverView'
 import button from '../../../styles/components/button'
 import { Entypo } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
+import { useTranslation } from 'react-i18next'
 
 const DetailsMovie = ({ route }) => {
   const dispatch = useDispatch()
@@ -30,16 +31,19 @@ const DetailsMovie = ({ route }) => {
   const { id } = route.params
   const [loading, setLoading] = useState(false)
 
+  const { i18n } = useTranslation()
+  const language = i18n.language
+
   const onRefresh = async () => {
-    await dispatch(movieDetails(id))
-    await dispatch(movieCrew(id))
+    await dispatch(movieDetails(id, language))
+    await dispatch(movieCrew(id, language))
   }
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true)
-      await dispatch(movieDetails(id))
-      await dispatch(movieCrew(id))
+      await dispatch(movieDetails(id, language))
+      await dispatch(movieCrew(id, language))
       setLoading(false)
     }
 

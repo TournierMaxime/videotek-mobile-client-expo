@@ -14,6 +14,7 @@ import useLoadMore from '../../../utils/LoadMore'
 import { truncateTitle } from '../../../utils/Truncate'
 import { useNavigation } from '@react-navigation/native'
 import list from '../../../styles/components/list'
+import { useTranslation } from 'react-i18next'
 
 const Trending = () => {
   const dispatch = useDispatch()
@@ -29,9 +30,12 @@ const Trending = () => {
   const [allResults, setAllResults] = useState([])
   const [isLoading, setIsLoading] = useState(false)
 
+  const { i18n } = useTranslation()
+  const language = i18n.language
+
   useEffect(() => {
     setIsLoading(true)
-    dispatch(trending(currentPage, 'trendingPagination'))
+    dispatch(trending(currentPage, 'trendingPagination', language))
       .then(() => {
         setIsLoading(false)
       })
@@ -71,7 +75,7 @@ const Trending = () => {
         renderItem={({ item }) => {
           return (
             <Fragment>
-              {item.media_type == 'movie' ? (
+              {item.media_type === 'movie' ? (
                 <View style={styles.flatListViewContainer}>
                   <TouchableOpacity
                     onPress={() =>
@@ -88,7 +92,7 @@ const Trending = () => {
                       }}
                     />
                     <Text style={styles.originalTitle}>
-                      {truncateTitle(item.original_title, 15)}
+                      {truncateTitle(item.title, 15)}
                     </Text>
                   </TouchableOpacity>
                 </View>
@@ -109,7 +113,7 @@ const Trending = () => {
                       }}
                     />
                     <Text style={styles.originalTitle}>
-                      {truncateTitle(item.original_name, 15)}
+                      {truncateTitle(item.name, 15)}
                     </Text>
                   </TouchableOpacity>
                 </View>

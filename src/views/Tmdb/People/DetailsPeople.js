@@ -19,6 +19,7 @@ import moment from 'moment'
 import SVGImdb from '../../../utils/SVGImdb'
 import { Entypo } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
+import { useTranslation } from 'react-i18next'
 
 const DetailsPeople = ({ route }) => {
   const dispatch = useDispatch()
@@ -26,6 +27,9 @@ const DetailsPeople = ({ route }) => {
   const { id } = route.params
   const people = useSelector((state) => state.peopleDetails.data)
   const [loading, setLoading] = useState(false)
+
+  const { i18n } = useTranslation()
+  const language = i18n.language
 
   const currentAge = () => {
     const currentYear = moment().format('YYYY')
@@ -70,15 +74,15 @@ const DetailsPeople = ({ route }) => {
   }
 
   const onRefresh = async () => {
-    await dispatch(peopleCareer(id))
-    await dispatch(peopleDetails(id))
+    await dispatch(peopleCareer(id, language))
+    await dispatch(peopleDetails(id, language))
   }
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true)
-      await dispatch(peopleCareer(id))
-      await dispatch(peopleDetails(id))
+      await dispatch(peopleCareer(id, language))
+      await dispatch(peopleDetails(id, language))
       setLoading(false)
     }
 
@@ -120,7 +124,7 @@ const DetailsPeople = ({ route }) => {
                     padding: 5,
                     backgroundColor: 'white',
                     right: 15,
-                    top: 5
+                    top: 5,
                   }}
                   name='dots-three-vertical'
                   size={24}

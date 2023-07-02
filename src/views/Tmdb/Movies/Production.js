@@ -83,7 +83,7 @@ const Production = ({ movie }) => {
   return (
     <View style={styles.productionViewContainer}>
       <View style={styles.technicalSheetViewContainer}>
-        <Text style={styles.title}>Fiche Technique</Text>
+        <Text style={styles.title}>Production</Text>
       </View>
       {release(movie.release_date)}
       {budget(movie.budget)}

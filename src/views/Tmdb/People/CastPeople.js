@@ -50,7 +50,7 @@ const CastPeople = ({ route }) => {
           <View style={styles.renderItemDetails}>
             <Text style={styles.renderItemTitle}>{item.title} | {moment(item.release_date).format('YYYY')} </Text>
             <Text style={styles.renderItemOverview}>
-              Personnage: {item.character}
+              {item.character}
             </Text>
           </View>
         </View>

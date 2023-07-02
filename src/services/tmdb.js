@@ -1,51 +1,51 @@
 import { tmdbApi as http } from "./axios.js";
 import { EXPO_TMDB_API_KEY } from '@env'
 
-const NowPlaying = (page) => {
+const NowPlaying = (page, language) => {
   return http.get("/movie/now_playing", {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language: 'fr-FR',
+      language,
       page,
     },
   });
 };
 
-const Upcoming = (page) => {
+const Upcoming = (page, language) => {
   return http.get("/movie/upcoming", {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language: 'fr-FR',
+      language,
       page
     },
   });
 };
 
-const OnTheAir = (page) => {
+const OnTheAir = (page, language) => {
   return http.get("/tv/on_the_air", {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language: 'fr-FR',
+      language,
       page
     },
   });
 };
 
-const Popular = (page) => {
+const Popular = (page, language) => {
   return http.get("/tv/popular", {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language: 'fr-FR',
+      language,
       page
     },
   });
 };
 
-const Search = (page, query) => {
+const Search = (page, query, language) => {
   return http.get("/search/multi", {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language: 'fr-FR',
+      language,
       page,
       include_adult: false,
       query
@@ -53,101 +53,101 @@ const Search = (page, query) => {
   });
 };
 
-const MovieDetails = (id) => {
+const MovieDetails = (id, language) => {
   return http.get(`/movie/${id}`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language: 'fr-FR'
+      language
     },
   });
 };
 
-const SerieDetails = (id) => {
+const SerieDetails = (id, language) => {
   return http.get(`/tv/${id}`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language: 'fr-FR'
+      language
     },
   });
 };
 
-const SeasonDetails = (id, seasonNumber) => {
+const SeasonDetails = (id, seasonNumber, language) => {
   return http.get(`/tv/${id}/season/${seasonNumber}`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language: 'fr-FR'
+      language
     },
   });
 };
 
-const SeasonWatchProviders = (id, seasonNumber) => {
+const SeasonWatchProviders = (id, seasonNumber, language) => {
   return http.get(`/tv/${id}/season/${seasonNumber}/watch/providers`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language: 'fr-FR'
+      language
     },
   });
 };
 
-const PeopleDetails = (id) => {
+const PeopleDetails = (id, language) => {
   return http.get(`/person/${id}`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language: 'fr-FR'
+      language
     },
   });
 };
 
-const MovieCrew = (id) => {
+const MovieCrew = (id, language) => {
   return http.get(`/movie/${id}/credits`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language: 'fr-FR'
+      language
     },
   });
 };
 
-const MovieTrailer = (id) => {
+const MovieTrailer = (id, language) => {
   return http.get(`/movie/${id}/videos`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language: 'fr-FR'
+      language
     },
   });
 };
 
-const SerieCrew = (id) => {
+const SerieCrew = (id, language) => {
   return http.get(`/tv/${id}/credits`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language: 'fr-FR'
+      language
     },
   });
 };
 
-const SerieTrailer = (id) => {
+const SerieTrailer = (id, language) => {
   return http.get(`/tv/${id}/videos`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language: 'fr-FR'
+      language
     },
   });
 };
 
-const PeopleCareer = (id) => {
+const PeopleCareer = (id, language) => {
   return http.get(`/person/${id}/combined_credits`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language: 'fr-FR'
+      language
     },
   });
 };
 
-const Trending = (page) => {
+const Trending = (page, language) => {
   return http.get(`/trending/all/day`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language: 'fr-FR',
+      language,
       page
     },
   });

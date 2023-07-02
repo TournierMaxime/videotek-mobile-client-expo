@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/native'
 const Header = ({ backButton, isAuthenticated }) => {
   const [modalVisible, setModalVisible] = useState(false)
   const navigation = useNavigation()
-console.log(isAuthenticated)
+
   const handleModal = () => {
     setModalVisible(!modalVisible)
   }

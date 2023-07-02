@@ -21,6 +21,7 @@ import OverView from '../../../utils/OverView'
 import button from '../../../styles/components/button'
 import { Entypo } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
+import { useTranslation } from 'react-i18next'
 
 const DetailsSerie = ({ route }) => {
   const dispatch = useDispatch()
@@ -29,16 +30,19 @@ const DetailsSerie = ({ route }) => {
   const { id } = route.params
   const [loading, setLoading] = useState(false)
 
+    const { i18n } = useTranslation()
+  const language = i18n.language
+
   const onRefresh = async () => {
-    await dispatch(serieDetails(id))
-    await dispatch(serieCrew(id))
+    await dispatch(serieDetails(id, language))
+    await dispatch(serieCrew(id, language))
   }
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true)
-      await dispatch(serieDetails(id))
-      await dispatch(serieCrew(id))
+      await dispatch(serieDetails(id, language))
+      await dispatch(serieCrew(id, language))
       setLoading(false)
     }
 

@@ -1,10 +1,10 @@
 
 import { Upcoming } from '../../../../services/tmdb'
   
-export const upcoming = (page, target = 'upcoming') => async (dispatch) => {
+export const upcoming = (page, target = 'upcoming', language) => async (dispatch) => {
   try {
     dispatch({ type: 'UPCOMING_REQUEST', target });
-    const response = await Upcoming(page)
+    const response = await Upcoming(page, language)
     dispatch({type: 'UPCOMING_SUCCESS', payload: response.data, target});
     return response.data
   } catch (error) {

@@ -1,9 +1,9 @@
 import { NowPlaying } from '../../../../services/tmdb'
 
-export const nowPlaying = (page, target = 'nowPlaying') => async (dispatch) => {
+export const nowPlaying = (page, target = 'nowPlaying', language) => async (dispatch) => {
     try {
         dispatch({ type: 'NOW_PLAYING_REQUEST', target });
-        const response = await NowPlaying(page)
+        const response = await NowPlaying(page, language)
         dispatch({type: 'NOW_PLAYING_SUCCESS', payload: response.data, target});
         return response.data
     } catch (error) {

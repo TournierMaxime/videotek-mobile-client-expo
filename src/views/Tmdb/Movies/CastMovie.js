@@ -44,7 +44,7 @@ const CastMovie = ({ route }) => {
             <Text style={styles.renderItemTitle}>
               {item.name}
             </Text>
-            <Text style={styles.renderItemOverview}>Personnage: {item.character}</Text>
+            <Text style={styles.renderItemOverview}>{item.character}</Text>
           </View>
         </View>
       </TouchableOpacity>

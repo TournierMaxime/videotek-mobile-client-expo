@@ -20,6 +20,7 @@ import { searchCritic } from '../redux/actions/critics/searchCritic'
 import { movieDetails } from '../redux/actions/tmdb/movies/detailsMovie'
 import { serieDetails } from '../redux/actions/tmdb/series/detailsSerie'
 import { peopleDetails } from '../redux/actions/tmdb/people/detailsPeople'
+import { useTranslation } from 'react-i18next'
 
 const DotDetails = ({ route }) => {
   const { id, title } = route.params
@@ -29,23 +30,26 @@ const DotDetails = ({ route }) => {
   const people = useSelector((state) => state.peopleDetails.data)
   const critics = useSelector((state) => state.searchCritic?.data?.critics)
 
+  const { i18n } = useTranslation()
+  const language = i18n.language
+
   useEffect(() => {
     dispatch(searchCritic(id))
     if (id === movie.id) {
-      dispatch(movieDetails(id))
+      dispatch(movieDetails(id, language))
     }
     if (id === serie.id) {
-      dispatch(serieDetails(id))
+      dispatch(serieDetails(id, language))
     }
     if (id === people.id) {
-      dispatch(peopleDetails(id))
+      dispatch(peopleDetails(id, language))
     }
   }, [dispatch, id])
 
   return (
     <View style={styles.container}>
       <View style={styles.profilViewContainer}>
-        <Cast id={id} movie={movie} serie={serie} people={people}>
+        <Cast id={id} movie={movie} serie={serie} people={people} language={language}>
           <View style={styles.profileSectionContainer}>
             <View style={styles.textIconContainer}>
               <SimpleLineIcons
@@ -54,7 +58,11 @@ const DotDetails = ({ route }) => {
                 size={25}
                 color='black'
               />
-              <Text>{(movie && movie.id === id) || (serie && serie.id === id) ? 'Distribution' : 'Filmographie'}</Text>
+              <Text>
+                {(movie && movie.id === id) || (serie && serie.id === id)
+                  ? 'Distribution'
+                  : 'Filmographie'}
+              </Text>
             </View>
             <Entypo name='chevron-small-right' size={25} color='black' />
           </View>

@@ -1,9 +1,9 @@
 
 import { MovieCrew } from '../../../../services/tmdb'
   
-export const movieCrew = (id) => async (dispatch) => {
+export const movieCrew = (id, language) => async (dispatch) => {
   try {
-    const response = await MovieCrew(id)
+    const response = await MovieCrew(id, language)
     dispatch({type: 'MOVIE_CREW_SUCCESS', payload: response.data});
     return response.data
   } catch (error) {

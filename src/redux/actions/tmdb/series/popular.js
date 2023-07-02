@@ -1,9 +1,9 @@
 
 import { Popular } from '../../../../services/tmdb'
   
-export const popular = (page, target = 'popular') => async (dispatch) => {
+export const popular = (page, target = 'popular', language) => async (dispatch) => {
   try {
-    const response = await Popular(page)
+    const response = await Popular(page, language)
     dispatch({type: 'POPULAR_SUCCESS', payload: response.data, target});
     return response.data
   } catch (error) {

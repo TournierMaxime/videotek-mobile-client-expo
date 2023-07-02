@@ -1,10 +1,10 @@
 
 import { Search } from '../../../services/tmdb'
   
-export const search = (page, query) => async (dispatch) => {
+export const search = (page, query, language) => async (dispatch) => {
   try {
     dispatch({type: 'SEARCH_RESET_REQUEST'})
-    const response = await Search(page, query)
+    const response = await Search(page, query, language)
     dispatch({type: 'SEARCH_SUCCESS', payload: response.data});
     return response.data
   } catch (error) {

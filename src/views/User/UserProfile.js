@@ -6,7 +6,7 @@ import { getUser } from '../../redux/actions/users/oneUser'
 import { logoutUser } from '../../redux/actions/auth/auth'
 import { useNavigation } from '@react-navigation/native'
 import { checkAccess } from '../../utils/CheckAccess'
-import { Entypo, FontAwesome5, MaterialIcons } from 'react-native-vector-icons'
+import { Entypo, FontAwesome5, MaterialIcons, Ionicons } from 'react-native-vector-icons'
 import profil from '../../styles/components/profil'
 import AlertModal from '../../utils/AlertModal'
 import { deleteUser } from '../../redux/actions/users/deleteUser'
@@ -22,9 +22,6 @@ const UserProfile = ({ route }) => {
   const isLogged = useSelector((state) => state.auth.isAuthenticated)
   const [deleteModalVisible, setDeleteModalVisible] = useState(false)
   const [deleteSuccess, setDeleteSuccess] = useState(false)
-
-  console.log("userId ", userId)
-    console.log("oneUser userId ", oneUser?.user?.userId)
 
   const handleLogout = () => {
     dispatch(logoutUser())
@@ -57,7 +54,6 @@ const UserProfile = ({ route }) => {
 
   const accessDenied = checkAccess(isLogged, currentUserId, userId)
   const userName = `${oneUser?.user?.userName}`
-  console.log(userName)
 
   return (
     <View style={styles.container}>
@@ -101,6 +97,23 @@ const UserProfile = ({ route }) => {
                 </View>
               </TouchableOpacity>
 
+              <TouchableOpacity
+              onPress={() => navigation.navigate('Settings', { userId })}
+              >
+                <View style={styles.profileSectionContainer}>
+                  <View style={styles.textIconContainer}>
+                    <Ionicons
+                      style={styles.icon}
+                      name='settings-outline'
+                      size={25}
+                      color='black'
+                    />
+                    <Text>Paramètres</Text>
+                  </View>
+                  <Entypo name='chevron-small-right' size={25} color='black' />
+                </View>
+              </TouchableOpacity>
+
               <TouchableOpacity onPress={() => handleLogout()}>
                 <View style={styles.profileSectionContainer}>
                   <View style={styles.textIconContainer}>
@@ -125,7 +138,7 @@ const UserProfile = ({ route }) => {
                       size={25}
                       color='black'
                     />
-                    <Text style={{color: 'red'}}>Supprimer son compte</Text>
+                    <Text style={{ color: 'red' }}>Supprimer son compte</Text>
                   </View>
                   <Entypo name='chevron-small-right' size={25} color='black' />
                 </View>

@@ -1,9 +1,9 @@
 
 import { SerieCrew } from '../../../../services/tmdb'
   
-export const serieCrew = (id) => async (dispatch) => {
+export const serieCrew = (id, language) => async (dispatch) => {
   try {
-    const response = await SerieCrew(id)
+    const response = await SerieCrew(id, language)
     dispatch({type: 'SERIE_CREW_SUCCESS', payload: response.data});
     return response.data
   } catch (error) {

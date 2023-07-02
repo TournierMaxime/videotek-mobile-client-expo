@@ -17,6 +17,7 @@ import home from '../styles/pages/home'
 import Refresh from '../utils/Refresh'
 import { truncateTitle } from '../utils/Truncate'
 import { Ionicons, MaterialIcons } from 'react-native-vector-icons'
+import { useTranslation } from 'react-i18next'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -31,20 +32,21 @@ const Home = () => {
   const onTheAirResults = useSelector((state) => state.onTheAir.data.results)
   const [loading, setLoading] = useState(false)
 
+  const { i18n, t } = useTranslation()
+  const language = i18n.language
+
   const onRefresh = async () => {
-    await dispatch(nowPlaying(nowPlayingData.page))
-    await dispatch(trending(trendingData.page))
-    await dispatch(onTheAir(onTheAirData.page))
+    await dispatch(nowPlaying(nowPlayingData.page, 'nowPlaying', language))
+    await dispatch(trending(trendingData.page, 'trending', language))
+    await dispatch(onTheAir(onTheAirData.page, 'onTheAir', language))
   }
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true)
-      await Promise.all([
-        dispatch(nowPlaying(nowPlayingData.page)),
-        dispatch(trending(trendingData.page)),
-        dispatch(onTheAir(onTheAirData.page)),
-      ])
+        await dispatch(nowPlaying(nowPlayingData.page, 'nowPlaying', language)),
+        await dispatch(trending(trendingData.page, 'trending', language)),
+        await dispatch(onTheAir(onTheAirData.page, 'onTheAir', language)),
       setLoading(false)
     }
 
@@ -59,7 +61,7 @@ const Home = () => {
         <Fragment>
           <Refresh onRefresh={onRefresh}>
             <View style={styles.categoryViewContainer}>
-              <Text style={styles.title}>En ce moment</Text>
+                <Text style={styles.title}>{t('trending')}</Text>
 
               <Ionicons name='flame' size={25} color='black' />
             </View>
@@ -76,12 +78,9 @@ const Home = () => {
                         <View style={styles.listViewContainer}>
                           <TouchableOpacity
                             onPress={() =>
-                              navigation.navigate('MainStackNavigator', {
-                                screen: 'DetailsMovie',
-                                params: {
-                                  id: item.id,
-                                  title: item.original_title,
-                                },
+                              navigation.navigate('DetailsMovie', {
+                                id: item.id,
+                                title: item.original_title,
                               })
                             }
                           >
@@ -101,7 +100,7 @@ const Home = () => {
                               }}
                             />
                             <Text style={styles.originalTitle}>
-                              {truncateTitle(item.original_title, 15)}
+                              {truncateTitle(item.title, 15)}
                             </Text>
                           </TouchableOpacity>
                         </View>
@@ -131,7 +130,7 @@ const Home = () => {
                               }}
                             />
                             <Text style={styles.originalTitle}>
-                              {truncateTitle(item.original_name, 15)}
+                              {truncateTitle(item.name, 15)}
                             </Text>
                           </TouchableOpacity>
                         </View>
@@ -143,7 +142,7 @@ const Home = () => {
             </View>
 
             <View style={styles.categoryViewContainer}>
-              <Text style={styles.title}>Films</Text>
+                <Text style={styles.title}>{t('films')}</Text>
               <MaterialIcons name='movie' size={25} color='black' />
             </View>
             <View style={styles.container}>
@@ -179,7 +178,7 @@ const Home = () => {
                           }}
                         />
                         <Text style={styles.originalTitle}>
-                          {truncateTitle(item.original_title, 15)}
+                          {truncateTitle(item.title, 15)}
                         </Text>
                       </TouchableOpacity>
                     </View>
@@ -189,8 +188,8 @@ const Home = () => {
             </View>
 
             <View style={styles.categoryViewContainer}>
-              <Text style={styles.title}>Séries</Text>
-                <Ionicons name='ios-tv-sharp' size={25} color='black' />
+                <Text style={styles.title}>{t('series')}</Text>
+              <Ionicons name='ios-tv-sharp' size={25} color='black' />
             </View>
             <View style={styles.container}>
               <FlatList
@@ -226,7 +225,7 @@ const Home = () => {
                         />
                       </TouchableOpacity>
                       <Text style={styles.originalTitle}>
-                        {truncateTitle(item.original_name, 15)}
+                        {truncateTitle(item.name, 15)}
                       </Text>
                     </View>
                   )

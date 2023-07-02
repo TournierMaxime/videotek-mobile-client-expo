@@ -1,9 +1,9 @@
 
 import { OnTheAir } from '../../../../services/tmdb'
   
-export const onTheAir = (page, target = 'onTheAir') => async (dispatch) => {
+export const onTheAir = (page, target = 'onTheAir', language) => async (dispatch) => {
   try {
-    const response = await OnTheAir(page)
+    const response = await OnTheAir(page, language)
     dispatch({type: 'ON_THE_AIR_SUCCESS', payload: response.data, target});
     return response.data
   } catch (error) {
