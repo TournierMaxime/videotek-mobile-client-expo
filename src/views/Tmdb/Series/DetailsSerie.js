@@ -30,7 +30,7 @@ const DetailsSerie = ({ route }) => {
   const { id } = route.params
   const [loading, setLoading] = useState(false)
 
-    const { i18n } = useTranslation()
+    const { i18n, t } = useTranslation()
   const language = i18n.language
 
   const onRefresh = async () => {
@@ -74,7 +74,7 @@ const DetailsSerie = ({ route }) => {
               <View style={styles.titleAndDot}>
                 <View>
                   <Text style={[styles.headerTitle, { left: 15, top: 5 }]}>
-                    {serie.original_name}
+                    {serie.name}
                   </Text>
                 </View>
 
@@ -113,9 +113,9 @@ const DetailsSerie = ({ route }) => {
                 </View>
 
                 <View style={styles.infoViewContainer}>
-                  <Runtime time={serie.episode_run_time} isMovie={false} />
+                  <Runtime time={serie.episode_run_time} isMovie={false} t={t} />
 
-                  <Text style={styles.directorTitle}>Genres</Text>
+                    <Text style={styles.directorTitle}>{t('genres')}</Text>
 
                   <View style={styles.genresViewContainer}>
                     {serie?.genres?.map((genre, index) => (
@@ -125,7 +125,7 @@ const DetailsSerie = ({ route }) => {
                     ))}
                   </View>
 
-                  <Text style={styles.directorTitle}>Réalisation</Text>
+                    <Text style={styles.directorTitle}>{t('direction')}</Text>
 
                   <View style={styles.directorsViewContainer}>
                     {serie?.created_by?.map((credit, index) => {
@@ -140,9 +140,9 @@ const DetailsSerie = ({ route }) => {
                 </View>
               </View>
 
-              <OverViewMemoized content={serie.overview} />
+              <OverViewMemoized content={serie.overview} t={t} />
             </View>
-            <ProductionMemoized serie={serie} />
+            <ProductionMemoized serie={serie} t={t} />
           </Fragment>
         )
       )}

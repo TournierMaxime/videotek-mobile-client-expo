@@ -5,11 +5,11 @@ import details from '../../../styles/pages/details'
 import moment from 'moment/moment'
 import Accordion from '../../../components/Accordion'
 
-const Production = ({ movie }) => {
+const Production = ({ movie, t }) => {
   const productionCompanies = (data) => {
     if (!data) return null
     return (
-      <Accordion title={'Producteurs'}>
+      <Accordion title={t('producers')}>
         <View style={styles.mainContainer}>
           {data?.map((item, index) => {
             return (
@@ -26,7 +26,7 @@ const Production = ({ movie }) => {
   const productionCountries = (data) => {
     if (!data) return null
     return (
-      <Accordion title={"Pays d'origine"}>
+      <Accordion title={t('country')}>
         <View style={styles.mainContainer}>
           {data?.map((item, index) => {
             return (
@@ -43,7 +43,7 @@ const Production = ({ movie }) => {
   const release = (data) => {
     if (!data) return null
     return (
-      <Accordion title={'Sortie'}>
+      <Accordion title={t('release')}>
         <View style={styles.mainContainer}>
           <View style={styles.flatListViewContainer}>
             <Text style={styles.tags}>{moment(data).format('DD/MM/YYYY')}</Text>
@@ -56,7 +56,7 @@ const Production = ({ movie }) => {
   const budget = (data) => {
     if (!data) return null
     return (
-      <Accordion title={'Budget'}>
+      <Accordion title={t('budget')}>
         <View style={styles.mainContainer}>
           <View style={styles.flatListViewContainer}>
             <Text style={styles.tags}>{numberWithCommas(data)}$</Text>
@@ -70,7 +70,7 @@ const Production = ({ movie }) => {
     if (!data) return null
 
     return (
-      <Accordion title={'Recette'}>
+      <Accordion title={t('boxOffice')}>
         <View style={styles.mainContainer}>
           <View style={styles.flatListViewContainer}>
             <Text style={styles.tags}>{numberWithCommas(data)}$</Text>
@@ -83,7 +83,7 @@ const Production = ({ movie }) => {
   return (
     <View style={styles.productionViewContainer}>
       <View style={styles.technicalSheetViewContainer}>
-        <Text style={styles.title}>Production</Text>
+        <Text style={styles.title}>{t('production')}</Text>
       </View>
       {release(movie.release_date)}
       {budget(movie.budget)}

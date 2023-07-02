@@ -31,7 +31,7 @@ const DetailsMovie = ({ route }) => {
   const { id } = route.params
   const [loading, setLoading] = useState(false)
 
-  const { i18n } = useTranslation()
+  const { i18n, t } = useTranslation()
   const language = i18n.language
 
   const onRefresh = async () => {
@@ -75,7 +75,7 @@ const DetailsMovie = ({ route }) => {
               <View style={styles.titleAndDot}>
                 <View>
                   <Text style={[styles.headerTitle, { left: 15, top: 5 }]}>
-                    {movie.original_title}
+                    {movie.title}
                   </Text>
                 </View>
 
@@ -114,9 +114,9 @@ const DetailsMovie = ({ route }) => {
                 </View>
 
                 <View style={styles.infoViewContainer}>
-                  <Runtime time={movie.runtime} isMovie={true} />
+                  <Runtime time={movie.runtime} isMovie={true} t={t} />
 
-                  <Text style={styles.directorTitle}>Genres</Text>
+                    <Text style={styles.directorTitle}>{t('genres')}</Text>
 
                   <View style={styles.genresViewContainer}>
                     {movie?.genres?.map((genre, index) => (
@@ -126,7 +126,7 @@ const DetailsMovie = ({ route }) => {
                     ))}
                   </View>
 
-                  <Text style={styles.directorTitle}>Réalisation</Text>
+                    <Text style={styles.directorTitle}>{t('direction')}</Text>
 
                   <View style={styles.directorsViewContainer}>
                     {credits?.crew?.map((credit, index) => {
@@ -143,9 +143,9 @@ const DetailsMovie = ({ route }) => {
                 </View>
               </View>
 
-              <OverViewMemoized content={movie.overview} />
+                <OverViewMemoized content={movie.overview} t={t} />
             </View>
-            <ProductionMemoized movie={movie} />
+            <ProductionMemoized movie={movie} t={t} />
           </Fragment>
         )
       )}

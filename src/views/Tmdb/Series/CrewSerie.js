@@ -10,11 +10,14 @@ import {
 import { useSelector } from 'react-redux'
 import dot from '../../../styles/pages/dot'
 import { useNavigation } from '@react-navigation/native'
+import { useTranslation } from 'react-i18next'
 
 const CrewSerie = ({ route }) => {
   const { title } = route.params
   const navigation = useNavigation()
   const credits = useSelector((state) => state.serieCrew.data)
+
+  const { t } = useTranslation()
 
   const renderItem = (item, index) => {
     return (
@@ -45,7 +48,9 @@ const CrewSerie = ({ route }) => {
             <Text style={styles.renderItemTitle}>
               {item.name} | {item.job}
             </Text>
-            <Text style={styles.renderItemOverview}>Département: {item.department}</Text>
+            <Text style={styles.renderItemOverview}>
+              {item.department}
+            </Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -54,7 +59,7 @@ const CrewSerie = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.seasonTitle}>Equipe technique de {title}</Text>
+      <Text style={styles.seasonTitle}>{t('crewOf')} {title}</Text>
       <FlatList
         data={credits?.crew}
         keyExtractor={(item) => item.credit_id.toString()}

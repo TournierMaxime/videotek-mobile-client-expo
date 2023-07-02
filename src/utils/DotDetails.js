@@ -30,7 +30,7 @@ const DotDetails = ({ route }) => {
   const people = useSelector((state) => state.peopleDetails.data)
   const critics = useSelector((state) => state.searchCritic?.data?.critics)
 
-  const { i18n } = useTranslation()
+  const { i18n, t } = useTranslation()
   const language = i18n.language
 
   useEffect(() => {
@@ -60,8 +60,8 @@ const DotDetails = ({ route }) => {
               />
               <Text>
                 {(movie && movie.id === id) || (serie && serie.id === id)
-                  ? 'Distribution'
-                  : 'Filmographie'}
+                  ? t('cast')
+                  : t('filmography')}
               </Text>
             </View>
             <Entypo name='chevron-small-right' size={25} color='black' />
@@ -77,7 +77,7 @@ const DotDetails = ({ route }) => {
                   size={25}
                   color='black'
                 />
-                <Text>Equipe Technique</Text>
+                <Text>{t('Crew')}</Text>
               </View>
               <Entypo name='chevron-small-right' size={25} color='black' />
             </View>
@@ -93,7 +93,7 @@ const DotDetails = ({ route }) => {
                   size={25}
                   color='black'
                 />
-                <Text>Saisons</Text>
+                <Text>{t('seasons')}</Text>
               </View>
               <Entypo name='chevron-small-right' size={25} color='black' />
             </View>
@@ -109,7 +109,7 @@ const DotDetails = ({ route }) => {
                   size={25}
                   color='black'
                 />
-                <Text>Trailer</Text>
+                <Text>{t('trailer')}</Text>
               </View>
               <Entypo name='chevron-small-right' size={25} color='black' />
             </View>
@@ -125,7 +125,7 @@ const DotDetails = ({ route }) => {
                   size={25}
                   color='black'
                 />
-                <Text>Ecrire une critique</Text>
+                <Text>{t('writeAReview')}</Text>
               </View>
               <Entypo name='chevron-small-right' size={25} color='black' />
             </View>
@@ -142,7 +142,7 @@ const DotDetails = ({ route }) => {
                   color='black'
                 />
                 <Text>
-                  Critiques {critics?.length > 0 ? critics?.length : 0}
+                  {t('critics')} {critics?.length > 0 ? critics?.length : 0}
                 </Text>
               </View>
               <Entypo name='chevron-small-right' size={25} color='black' />

@@ -6,12 +6,18 @@ import { getUser } from '../../redux/actions/users/oneUser'
 import { logoutUser } from '../../redux/actions/auth/auth'
 import { useNavigation } from '@react-navigation/native'
 import { checkAccess } from '../../utils/CheckAccess'
-import { Entypo, FontAwesome5, MaterialIcons, Ionicons } from 'react-native-vector-icons'
+import {
+  Entypo,
+  FontAwesome5,
+  MaterialIcons,
+  Ionicons,
+} from 'react-native-vector-icons'
 import profil from '../../styles/components/profil'
 import AlertModal from '../../utils/AlertModal'
 import { deleteUser } from '../../redux/actions/users/deleteUser'
 import { ToastSuccess, ToastError } from '../../utils/Toast'
 import ToastConfig from '../../utils/ToastConfig'
+import { useTranslation } from 'react-i18next'
 
 const UserProfile = ({ route }) => {
   const { userId } = route.params
@@ -23,6 +29,8 @@ const UserProfile = ({ route }) => {
   const [deleteModalVisible, setDeleteModalVisible] = useState(false)
   const [deleteSuccess, setDeleteSuccess] = useState(false)
 
+  const { t } = useTranslation()
+
   const handleLogout = () => {
     dispatch(logoutUser())
     navigation.navigate('Home')
@@ -32,7 +40,7 @@ const UserProfile = ({ route }) => {
     try {
       await dispatch(deleteUser(userId))
       setDeleteSuccess(true)
-      ToastSuccess('success', 'Compte supprimé avec succès', true)
+      ToastSuccess('success', t('yourAccountHasBeenSuccessfullyDeleted'), true)
 
       setTimeout(async () => {
         await dispatch(logoutUser())
@@ -91,14 +99,14 @@ const UserProfile = ({ route }) => {
                       size={25}
                       color='black'
                     />
-                    <Text>Critiques</Text>
+                    <Text>{t('critics')}</Text>
                   </View>
                   <Entypo name='chevron-small-right' size={25} color='black' />
                 </View>
               </TouchableOpacity>
 
               <TouchableOpacity
-              onPress={() => navigation.navigate('Settings', { userId })}
+                onPress={() => navigation.navigate('Settings', { userId })}
               >
                 <View style={styles.profileSectionContainer}>
                   <View style={styles.textIconContainer}>
@@ -108,7 +116,7 @@ const UserProfile = ({ route }) => {
                       size={25}
                       color='black'
                     />
-                    <Text>Paramètres</Text>
+                    <Text>{t('settings')}</Text>
                   </View>
                   <Entypo name='chevron-small-right' size={25} color='black' />
                 </View>
@@ -123,7 +131,7 @@ const UserProfile = ({ route }) => {
                       size={25}
                       color='black'
                     />
-                    <Text>Déconnexion</Text>
+                    <Text>{t('logout')}</Text>
                   </View>
                   <Entypo name='chevron-small-right' size={25} color='black' />
                 </View>
@@ -138,17 +146,18 @@ const UserProfile = ({ route }) => {
                       size={25}
                       color='black'
                     />
-                    <Text style={{ color: 'red' }}>Supprimer son compte</Text>
+                    <Text style={{ color: 'red' }}>{t('deleteAccount')}</Text>
                   </View>
                   <Entypo name='chevron-small-right' size={25} color='black' />
                 </View>
               </TouchableOpacity>
               <AlertModal
-                message={'Etes vous sur de vouloir supprimer votre compte ?'}
+                message={t('deleteAccountConfirmMsg')}
                 action={handleDelete}
                 visible={deleteModalVisible}
                 setVisible={setDeleteModalVisible}
                 success={deleteSuccess}
+                t={t}
               >
                 <ToastConfig />
               </AlertModal>

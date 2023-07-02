@@ -16,11 +16,14 @@ import ToastConfig from '../../utils/ToastConfig'
 import button from '../../styles/components/button'
 import form from '../../styles/components/form'
 import * as ImagePicker from 'expo-image-picker'
+import { useTranslation } from 'react-i18next'
 
 const DetailsUser = ({ route }) => {
   const { userId } = route.params
   const dispatch = useDispatch()
   const user = useSelector((state) => state.oneUser.data.user)
+
+  const { t } = useTranslation()
 
   const [data, setData] = useState({
     userName: user?.userName || '',
@@ -52,7 +55,7 @@ const DetailsUser = ({ route }) => {
 
       // send the request
       await dispatch(updateUser(formData, userId)) // make sure your updateUser action sends the data as is, and sets 'Content-Type': 'multipart/form-data'
-      ToastSuccess('success', 'Profil mis à jour', true)
+      ToastSuccess('success', t('profileUpdated'), true)
       await dispatch(getUser(userId))
     } catch (error) {
       console.log(error.response.data.errMsg)
@@ -60,7 +63,7 @@ const DetailsUser = ({ route }) => {
       if (error.response && error.response.data && error.response.data.errMsg) {
         ToastError('error', error.response.data.errMsg, true)
       } else {
-        ToastError('error', "Une erreur s'est produite", true)
+        ToastError('error', t('anErrorHasOccurred'), true)
       }
     }
   }
@@ -100,21 +103,21 @@ const DetailsUser = ({ route }) => {
       }}
     >
       <View style={styles.formContainer}>
-        <Text style={styles.formLabel}>Pseudo</Text>
+        <Text style={styles.formLabel}>{t('username')}</Text>
         <TextInput
           style={styles.formInput}
-          placeholder='Pseudo'
+          placeholder={t('username')}
           onChangeText={(text) => setData({ ...data, userName: text })}
           defaultValue={user?.userName}
         />
-        <Text style={styles.formLabel}>Email</Text>
+        <Text style={styles.formLabel}>{t('email')}</Text>
         <TextInput
           style={styles.formInput}
-          placeholder='Email'
+          placeholder={t('email')}
           onChangeText={(text) => setData({ ...data, email: text })}
           defaultValue={user?.email}
         />
-        <Text style={styles.formLabel}>Avatar</Text>
+        <Text style={styles.formLabel}>{t('avatar')}</Text>
         <View
           style={{
             flexDirection: 'row',
@@ -138,7 +141,7 @@ const DetailsUser = ({ route }) => {
             style={[styles.formButtonLogin, { width: '100%' }]}
             onPress={() => handleUpdate()}
           >
-            <Text style={styles.buttonText}>Mettre à jour</Text>
+            <Text style={styles.buttonText}>{t('update')}</Text>
           </TouchableOpacity>
           <ToastConfig />
         </View>

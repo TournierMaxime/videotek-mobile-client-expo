@@ -11,13 +11,16 @@ import dot from '../../../styles/pages/dot'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector } from 'react-redux'
 import moment from 'moment/moment'
+import { useTranslation } from 'react-i18next'
 
 const CastPeople = ({ route }) => {
   const { name } = route.params
   const navigation = useNavigation()
   const career = useSelector((state) => state.peopleCareer.data)
 
-    const sortedCareer = career?.cast?.sort((a, b) => {
+  const { t } = useTranslation()
+
+  const sortedCareer = career?.cast?.sort((a, b) => {
     const dateA = moment(a.release_date || a.first_air_date)
     const dateB = moment(b.release_date || b.first_air_date)
     return dateB.diff(dateA)
@@ -48,10 +51,10 @@ const CastPeople = ({ route }) => {
             />
           )}
           <View style={styles.renderItemDetails}>
-            <Text style={styles.renderItemTitle}>{item.title} | {moment(item.release_date).format('YYYY')} </Text>
-            <Text style={styles.renderItemOverview}>
-              {item.character}
+            <Text style={styles.renderItemTitle}>
+              {item.title} | {moment(item.release_date).format('YYYY')}{' '}
             </Text>
+            <Text style={styles.renderItemOverview}>{item.character}</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -80,9 +83,7 @@ const CastPeople = ({ route }) => {
           )}
           <View style={styles.renderItemDetails}>
             <Text style={styles.renderItemTitle}>{item.name}</Text>
-            <Text style={styles.renderItemOverview}>
-              Personnage: {item.character}
-            </Text>
+            <Text style={styles.renderItemOverview}>{item.character}</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -91,7 +92,7 @@ const CastPeople = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.seasonTitle}>Filmographie de {name}</Text>
+      <Text style={styles.seasonTitle}>{t('filmographyOf')} {name}</Text>
       <FlatList
         data={sortedCareer}
         keyExtractor={(item) => item.credit_id.toString()}

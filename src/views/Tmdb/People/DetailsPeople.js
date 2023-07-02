@@ -28,7 +28,7 @@ const DetailsPeople = ({ route }) => {
   const people = useSelector((state) => state.peopleDetails.data)
   const [loading, setLoading] = useState(false)
 
-  const { i18n } = useTranslation()
+  const { i18n, t } = useTranslation()
   const language = i18n.language
 
   const currentAge = () => {
@@ -36,7 +36,7 @@ const DetailsPeople = ({ route }) => {
     const yearBirthDay = moment(people.birthday).format('YYYY')
     const currentAge = currentYear - yearBirthDay
 
-    return <Text style={styles.headerTitle}>Age {currentAge} ans</Text>
+    return <Text style={styles.headerTitle}>{t('age')} {currentAge} {t('years')}</Text>
   }
 
   const ageDeath = () => {
@@ -44,24 +44,24 @@ const DetailsPeople = ({ route }) => {
     const yearDeathDay = moment(people.deathday).format('YYYY')
     const ageDeath = yearDeathDay - yearBirthDay
 
-    return <Text style={styles.headerTitle}>Mort à {ageDeath} ans</Text>
+    return <Text style={styles.headerTitle}>{t('deathAt')} {ageDeath} {t('years')}</Text>
   }
 
   const birth = () => {
-    const birthDay = moment(people.birthday).format('DD/MM/YYYY')
+    const birthDay = moment(people.birthday).locale(i18n.language).format('LL')
     const placeOfBirth = people.place_of_birth
     const gender = people.gender
 
     if (gender === 1) {
       return (
         <Text style={styles.headerTitle}>
-          Née le {birthDay} à {placeOfBirth}
+          {t('born')} {birthDay} {t('at')} {placeOfBirth}
         </Text>
       )
     } else if (gender === 2) {
       return (
         <Text style={styles.headerTitle}>
-          Né le {birthDay} à {placeOfBirth}
+          {t('born')} {birthDay} {t('at')} {placeOfBirth}
         </Text>
       )
     }
@@ -114,7 +114,7 @@ const DetailsPeople = ({ route }) => {
                 onPress={() =>
                   navigation.navigate('DotDetails', {
                     id,
-                    title: people?.name,
+                    title: people?.name
                   })
                 }
               >
@@ -154,7 +154,7 @@ const DetailsPeople = ({ route }) => {
                 </TouchableOpacity>
               </View>
             </View>
-            <OverViewMemoized isBiography={true} content={people.biography} />
+            <OverViewMemoized isBiography={true} content={people.biography} t={t} />
           </View>
         </Fragment>
       )}

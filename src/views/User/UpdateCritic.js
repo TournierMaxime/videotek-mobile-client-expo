@@ -16,12 +16,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 import { useEffect } from 'react'
 import { searchCriticByUser } from '../../redux/actions/critics/searchCritic'
+import { useTranslation } from 'react-i18next'
 
 const UpdateCritic = ({ route }) => {
   const dispatch = useDispatch()
   const { criticId, userId } = route.params
   const critic = useSelector((state) => state.getOneCritic.data.critic)
   const navigation = useNavigation()
+
+  const { t } = useTranslation()
 
   const [data, setData] = useState({
     title: critic?.title,
@@ -34,7 +37,7 @@ const UpdateCritic = ({ route }) => {
   const handleUpdateCritic = async () => {
     try {
       await dispatch(updateCritic(criticId, data))
-      ToastSuccess('success', 'Critique mise à jour avec succès', true)
+      ToastSuccess('success', t('reviewSuccessfullyUpdated'), true)
       dispatch(searchCriticByUser(userId, 1))
       setTimeout(() => {
         navigation.navigate('UserCritics', { userId })
@@ -50,42 +53,44 @@ const UpdateCritic = ({ route }) => {
   }, [dispatch, criticId])
 
   return (
-      <View style={styles.formContainer}>
-        <Text style={styles.formLabel}>Critique de {critic?.titleMovieOrSerie}</Text>
-        <Text style={styles.formLabel}>Votre titre</Text>
-        <TextInput
-          style={styles.formInput}
-          placeholder='Titre'
-          onChangeText={(text) => setData({ ...data, title: text })}
-          defaultValue={critic?.title}
-        />
-        <Text style={styles.formLabel}>Votre critique</Text>
-        <TextInput
-          style={styles.formInput}
-          editable
-          multiline
-          placeholder='Critique'
-          onChangeText={(text) => setData({ ...data, content: text })}
-          defaultValue={critic?.content}
-        />
-        <Text style={styles.formLabel}>Votre note</Text>
-        <TextInput
-          style={styles.formInput}
-          placeholder='Notation'
-          onChangeText={(text) => setData({ ...data, rate: text })}
-          defaultValue={critic?.rate?.toString()}
-          keyboardType='numeric'
-        />
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={styles.formButtonLogin}
-            onPress={() => handleUpdateCritic()}
-          >
-            <Text style={styles.buttonText}>Mettre à jour</Text>
-          </TouchableOpacity>
-          <ToastConfig />
-        </View>
-      </View> 
+    <View style={styles.formContainer}>
+      <Text style={styles.formLabel}>
+        {t('criticOf')} {critic?.titleMovieOrSerie}
+      </Text>
+      <Text style={styles.formLabel}>{t('title')}</Text>
+      <TextInput
+        style={styles.formInput}
+        placeholder={t('title')}
+        onChangeText={(text) => setData({ ...data, title: text })}
+        defaultValue={critic?.title}
+      />
+      <Text style={styles.formLabel}>{t('critic')}</Text>
+      <TextInput
+        style={styles.formInput}
+        editable
+        multiline
+        placeholder={t('critic')}
+        onChangeText={(text) => setData({ ...data, content: text })}
+        defaultValue={critic?.content}
+      />
+      <Text style={styles.formLabel}>{t('rate')}</Text>
+      <TextInput
+        style={styles.formInput}
+        placeholder={t('rate')}
+        onChangeText={(text) => setData({ ...data, rate: text })}
+        defaultValue={critic?.rate?.toString()}
+        keyboardType='numeric'
+      />
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          style={styles.formButtonLogin}
+          onPress={() => handleUpdateCritic()}
+        >
+          <Text style={styles.buttonText}>{t('update')}</Text>
+        </TouchableOpacity>
+        <ToastConfig />
+      </View>
+    </View>
   )
 }
 

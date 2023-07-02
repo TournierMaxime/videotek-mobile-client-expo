@@ -14,6 +14,7 @@ import form from '../../styles/components/form'
 import { ToastSuccess, ToastError } from '../../utils/Toast'
 import ToastConfig from '../../utils/ToastConfig'
 import { Fragment } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const LoginScreen = () => {
   const dispatch = useDispatch()
@@ -21,16 +22,18 @@ const LoginScreen = () => {
   const [data, setData] = useState({ email: '', password: '' })
   const userId = useSelector((state) => state.auth.data.user.userId)
 
+  const { t } = useTranslation()
+
   const handleLogin = async () => {
     try {
       await dispatch(loginUser(data))
-      ToastSuccess('success', 'Connexion réussie', true)
-        navigation.navigate('UserProfile', {
-          screen: 'UserProfile',
-          params: {
-            id: userId,
-          },
-        })
+      ToastSuccess('success', t('successfullyConnected'), true)
+      navigation.navigate('UserProfile', {
+        screen: 'UserProfile',
+        params: {
+          id: userId,
+        },
+      })
     } catch (error) {
       console.log(error.response.data.errMsg)
       ToastError('error', error.response.data.errMsg, true)
@@ -45,17 +48,17 @@ const LoginScreen = () => {
   return (
     <Fragment>
       <View style={styles.formContainer}>
-        <Text style={styles.formLabel}>Email</Text>
+        <Text style={styles.formLabel}>{t('email')}</Text>
         <TextInput
           style={styles.formInput}
-          placeholder='Email'
+          placeholder={t('email')}
           onChangeText={(text) => setData({ ...data, email: text })}
           value={data.email}
         />
-        <Text style={styles.formLabel}>Mot de passe</Text>
+        <Text style={styles.formLabel}>{t('password')}</Text>
         <TextInput
           style={styles.formInput}
-          placeholder='Mot de passe'
+          placeholder={t('password')}
           onChangeText={(text) => setData({ ...data, password: text })}
           value={data.password}
           secureTextEntry={true}
@@ -65,22 +68,29 @@ const LoginScreen = () => {
             style={[styles.formButtonLogin, { width: '100%' }]}
             onPress={handleLogin}
           >
-            <Text style={styles.buttonText}>Se connecter</Text>
+            <Text style={styles.buttonText}>{t('signIn')}</Text>
           </TouchableOpacity>
           <ToastConfig />
         </View>
-        <View style={{ flexDirection:'row', justifyContent: 'space-between', width: 'auto', marginTop: 40}}>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            width: 'auto',
+            marginTop: 40,
+          }}
+        >
           <TouchableOpacity
-            style={{alignItems: 'center'}}
+            style={{ alignItems: 'center' }}
             onPress={() => navigation.navigate('Register')}
           >
-            <Text style={{color: '#0000EE'}}>Pas encore inscrit ?</Text>
+            <Text style={{ color: '#0000EE' }}>{t('notRegistered')}</Text>
           </TouchableOpacity>
-                    <TouchableOpacity
-            style={{alignItems: 'center'}}
+          <TouchableOpacity
+            style={{ alignItems: 'center' }}
             onPress={handleForgetPassword}
           >
-            <Text style={{color: '#0000EE'}}>Mot de passe oublié ?</Text>
+            <Text style={{ color: '#0000EE' }}>{t('forgotYourPassword')}</Text>
           </TouchableOpacity>
         </View>
       </View>

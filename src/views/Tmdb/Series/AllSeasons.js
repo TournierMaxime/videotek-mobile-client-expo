@@ -12,11 +12,15 @@ import moment from 'moment/moment'
 import dot from '../../../styles/pages/dot'
 import { useNavigation } from '@react-navigation/native'
 import Rate from '../../../utils/Rate'
+import { useTranslation } from 'react-i18next'
 
 const AllSeasons = ({ route }) => {
   const { title, id } = route.params
   const navigation = useNavigation()
   const serie = useSelector((state) => state.serieDetails.data)
+
+  const { t, i18n } = useTranslation()
+  const language = i18n.language
 
   const renderItem = (item) => {
     return (
@@ -47,8 +51,8 @@ const AllSeasons = ({ route }) => {
           </View>
           <View style={styles.renderItemDetails}>
             <Text style={styles.renderItemTitle}>
-              {item.name} | {item.episode_count} épisodes{' '}
-              {moment(item.air_date).format('YYYY')}
+              {item.name} | {item.episode_count} {t('episodes')}{' '}
+              {moment(item.air_date).locale(language).format('LL')}
             </Text>
             <Text style={styles.renderItemOverview}>{item.overview}</Text>
           </View>
@@ -59,7 +63,7 @@ const AllSeasons = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.seasonTitle}>Saisons de {title}</Text>
+      <Text style={styles.seasonTitle}>{t('seasonsOf')} {title}</Text>
       <FlatList
         data={serie?.seasons}
         keyExtractor={(item) => item.id.toString()}

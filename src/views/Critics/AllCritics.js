@@ -15,12 +15,15 @@ import button from '../../styles/components/button'
 import Rate from '../../utils/Rate'
 import { Ionicons } from 'react-native-vector-icons'
 import { searchCritic } from '../../redux/actions/critics/searchCritic'
+import { useTranslation } from 'react-i18next'
 
 const AllCritics = ({ route }) => {
   const { id, title } = route.params
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(false)
   const critics = useSelector((state) => state.searchCritic.data)
+
+  const { t } = useTranslation()
 
   const renderItem = (item) => {
     return (
@@ -56,7 +59,7 @@ const AllCritics = ({ route }) => {
   const noDataFound = () => (
     <View style={styles.containerMessage}>
       <Ionicons name='information-circle-outline' size={24} color='#696cff' />
-      <Text style={styles.messageText}>Aucune critique pour {title}</Text>
+      <Text style={styles.messageText}>{t('noCritic')} {title}</Text>
     </View>
   )
 
@@ -73,7 +76,7 @@ const AllCritics = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.seasonTitle}>Critiques de {title}</Text>
+      <Text style={styles.seasonTitle}>{t('criticOf')} {title}</Text>
       {isLoading ? (
         <ActivityIndicator size='large' color='#0000ff' />
       ) : (

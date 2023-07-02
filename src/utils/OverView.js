@@ -4,7 +4,7 @@ import { truncateOverview } from './Truncate'
 import details from '../styles/pages/details'
 import ModalComponent from './ModalComponent'
 
-const OverView = ({ content, isBiography }) => {
+const OverView = ({ content, isBiography, t }) => {
   const [modalVisible, setModalVisible] = useState(false)
 
   const handleModal = () => {
@@ -22,7 +22,7 @@ const OverView = ({ content, isBiography }) => {
           </Text>
         </TouchableOpacity>
       </View>
-      <ModalComponent title={'Synopsis'} content={content} visible={modalVisible} setVisible={setModalVisible} />
+      <ModalComponent title={t('plot')} content={content} visible={modalVisible} setVisible={setModalVisible} />
     </Fragment>
   )
 }

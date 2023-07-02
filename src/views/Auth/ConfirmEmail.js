@@ -16,6 +16,7 @@ import { useNavigation } from '@react-navigation/native'
 import { loginWithUserId } from '../../redux/actions/auth/auth'
 import { Ionicons } from 'react-native-vector-icons'
 import message from '../../styles/components/message'
+import { useTranslation } from 'react-i18next'
 
 const ConfirmEmail = ({ route }) => {
   const dispatch = useDispatch()
@@ -23,10 +24,12 @@ const ConfirmEmail = ({ route }) => {
   const { userId } = route.params
   const [data, setData] = useState({ code: '' })
 
+  const { t } = useTranslation()
+
   const handleConfirmEmail = async () => {
     try {
       await dispatch(confirmEmail(userId, data))
-      ToastSuccess('success', 'Votre compte a bien été vérifié.', false)
+      ToastSuccess('success', t('yourAccountHasBeenSuccessfullyVerified'), false)
       await dispatch(loginWithUserId({ userId }))
 
       navigation.navigate('MainStackNavigator', {
@@ -40,20 +43,22 @@ const ConfirmEmail = ({ route }) => {
     setData({})
   }
 
-    const infoMsg = () => (
+  const infoMsg = () => (
     <View style={styles.containerMessage}>
       <Ionicons name='information-circle-outline' size={24} color='#696cff' />
-      <Text style={styles.messageText}>Un email vous a été envoyé contenant un code à 6 chiffres</Text>
+      <Text style={styles.messageText}>
+        {t('anEmailHasBeenSentToYouContainingA6DigitCode')}
+      </Text>
     </View>
   )
 
   return (
     <View style={styles.formContainer}>
       {infoMsg()}
-      <Text style={styles.formLabel}>Code</Text>
+      <Text style={styles.formLabel}>{t('code')}</Text>
       <TextInput
         style={styles.formInput}
-        placeholder='Code'
+        placeholder={t('code')}
         onChangeText={(text) => setData({ ...data, code: text })}
         value={data.code}
       />
@@ -62,7 +67,7 @@ const ConfirmEmail = ({ route }) => {
           style={styles.formButtonLogin}
           onPress={handleConfirmEmail}
         >
-          <Text style={styles.buttonText}>Confirmer</Text>
+          <Text style={styles.buttonText}>{t('confirm')}</Text>
         </TouchableOpacity>
         <ToastConfig />
       </View>
@@ -77,7 +82,7 @@ const styles = StyleSheet.create({
   buttonText: button.buttonText,
   buttonContainer: button.buttonContainer,
   formButtonLogin: button.formButtonLogin,
-    containerMessage: message.containerMessage,
+  containerMessage: message.containerMessage,
   messageText: message.messageText,
 })
 

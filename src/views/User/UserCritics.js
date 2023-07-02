@@ -8,7 +8,7 @@ import {
   FlatList,
   ActivityIndicator,
   Pressable,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native'
 import { Feather } from 'react-native-vector-icons'
 import modal from '../../styles/components/modal'
@@ -20,6 +20,7 @@ import { deleteCritic } from '../../redux/actions/critics/deleteCritic'
 import AlertModal from '../../utils/AlertModal'
 import { Fragment } from 'react'
 import { useNavigation } from '@react-navigation/native'
+import { useTranslation } from 'react-i18next'
 
 const UserCritics = () => {
   const dispatch = useDispatch()
@@ -28,6 +29,9 @@ const UserCritics = () => {
   const criticsResults = useSelector((state) => state.searchCritic.data.critics)
   const userId = useSelector((state) => state.auth.data.user.userId)
   const [selectedCriticId, setSelectedCriticId] = useState(null)
+
+  const { i18n, t } = useTranslation()
+  const language = i18n.language
 
   const [modalVisible, setModalVisible] = useState(false)
 
@@ -66,7 +70,7 @@ const UserCritics = () => {
 
   return (
     <Fragment>
-      <Text style={styles.modalTitle}>Critiques</Text>
+      <Text style={styles.modalTitle}>{t('critics')}</Text>
       <FlatList
         data={allResults}
         keyExtractor={(item, index) => `${index}`}
@@ -100,7 +104,14 @@ const UserCritics = () => {
 
           return (
             <Fragment>
-              <TouchableOpacity onPress={() => navigation.navigate('UpdateCritic', { criticId: item.criticId, userId })}>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('UpdateCritic', {
+                    criticId: item.criticId,
+                    userId,
+                  })
+                }
+              >
                 <View style={styles.criticCardContainer} key={index}>
                   <View style={styles.criticHeaderContainer}>
                     <Text style={styles.criticTitle}>{item.title}</Text>
@@ -108,7 +119,7 @@ const UserCritics = () => {
                   </View>
                   <Text style={styles.criticContent}>{item.content}</Text>
                   <Text>
-                    Le {moment(item.created).format('DD/MM/YYYY à HH:mm:ss')}
+                    {moment(item.created).locale(language).format('LLLL')}
                   </Text>
                   {item.userId === userId ? (
                     <Fragment>
@@ -119,12 +130,11 @@ const UserCritics = () => {
                         <Feather name='trash-2' size={25} color='white' />
                       </Pressable>
                       <AlertModal
-                        message={
-                          'Etes vous sur de vouloir supprimer cette critique ?'
-                        }
+                        message={t('deleteAccountConfirmMsg')}
                         action={handleDelete}
                         visible={modalVisible}
                         setVisible={setModalVisible}
+                        t={t}
                       />
                     </Fragment>
                   ) : null}

@@ -10,12 +10,15 @@ import {
 import { useSelector } from 'react-redux'
 import dot from '../../../styles/pages/dot'
 import { useNavigation } from '@react-navigation/native'
+import { useTranslation } from 'react-i18next'
 
 const CastMovie = ({ route }) => {
   const { title } = route.params
   const navigation = useNavigation()
   const credits = useSelector((state) => state.movieCrew.data)
-  
+
+  const { t } = useTranslation()
+
   const renderItem = (item) => {
     return (
       <TouchableOpacity
@@ -41,9 +44,7 @@ const CastMovie = ({ route }) => {
             />
           )}
           <View style={styles.renderItemDetails}>
-            <Text style={styles.renderItemTitle}>
-              {item.name}
-            </Text>
+            <Text style={styles.renderItemTitle}>{item.name}</Text>
             <Text style={styles.renderItemOverview}>{item.character}</Text>
           </View>
         </View>
@@ -53,7 +54,7 @@ const CastMovie = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.seasonTitle}>Distribution de {title}</Text>
+      <Text style={styles.seasonTitle}>{t('castOf')} {title}</Text>
       <FlatList
         data={credits?.cast}
         keyExtractor={(item) => item.id.toString()}

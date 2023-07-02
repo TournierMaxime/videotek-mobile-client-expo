@@ -1,70 +1,76 @@
-import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import {
   View,
   Text,
   TextInput,
   StyleSheet,
   TouchableOpacity,
-} from 'react-native';
+} from 'react-native'
 
-import {createUser} from '../../redux/actions/auth/register';
-import {useNavigation} from '@react-navigation/native';
-import button from '../../styles/components/button';
-import form from '../../styles/components/form';
-import { ToastSuccess, ToastError } from '../../utils/Toast';
-import ToastConfig from '../../utils/ToastConfig';
+import { createUser } from '../../redux/actions/auth/register'
+import { useNavigation } from '@react-navigation/native'
+import button from '../../styles/components/button'
+import form from '../../styles/components/form'
+import { ToastSuccess, ToastError } from '../../utils/Toast'
+import ToastConfig from '../../utils/ToastConfig'
+import { useTranslation } from 'react-i18next'
 
 const RegisterScreen = () => {
-  const [data, setData] = useState({userName: '', email: '', password: ''});
-  const dispatch = useDispatch();
-  const navigation = useNavigation();
+  const [data, setData] = useState({ userName: '', email: '', password: '' })
+  const dispatch = useDispatch()
+  const navigation = useNavigation()
+
+  const { t } = useTranslation()
 
   const handleRegister = async () => {
     try {
-      const response = await dispatch(createUser(data));
-      ToastSuccess('success', 'Votre compte a bien été créé', true)
+      const response = await dispatch(createUser(data))
+      ToastSuccess('success', t('yourAccountHasBeenCreated'), true)
       setTimeout(() => {
-        navigation.navigate('ConfirmEmail', { userId: response.user.userId });
+        navigation.navigate('ConfirmEmail', { userId: response.user.userId })
       }, 3000)
     } catch (error) {
-      console.log(error.response.data.errMsg);
+      console.log(error.response.data.errMsg)
       ToastError('error', error.response.data.errMsg, true)
     }
     setData({})
-  };
+  }
 
   return (
     <View style={styles.formContainer}>
-      <Text style={styles.formLabel}>Votre pseudo</Text>
+      <Text style={styles.formLabel}>{t('userName')}</Text>
       <TextInput
         style={styles.formInput}
-        placeholder="Pseudo"
+        placeholder={t('userName')}
         value={data.userName}
-        onChangeText={text => setData({...data, userName: text})}
+        onChangeText={(text) => setData({ ...data, userName: text })}
       />
-      <Text style={styles.formLabel}>Votre email</Text>
+      <Text style={styles.formLabel}>{t('email')}</Text>
       <TextInput
         style={styles.formInput}
-        placeholder="Email"
+        placeholder={t('email')}
         value={data.email}
-        onChangeText={text => setData({...data, email: text})}
+        onChangeText={(text) => setData({ ...data, email: text })}
       />
-      <Text style={styles.formLabel}>Votre mot de passe</Text>
+      <Text style={styles.formLabel}>{t('password')}</Text>
       <TextInput
         style={styles.formInput}
-        placeholder="Mot de passe"
+        placeholder={t('password')}
         secureTextEntry
         value={data.password}
-        onChangeText={text => setData({...data, password: text})}
+        onChangeText={(text) => setData({ ...data, password: text })}
       />
-      <TouchableOpacity style={styles.formButtonRegister} onPress={handleRegister}>
-        <Text style={styles.buttonText}>S&apos;inscrire</Text>
+      <TouchableOpacity
+        style={styles.formButtonRegister}
+        onPress={handleRegister}
+      >
+        <Text style={styles.buttonText}>{t('signUp')}</Text>
         <ToastConfig />
       </TouchableOpacity>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   formContainer: form.formContainer,
@@ -73,6 +79,6 @@ const styles = StyleSheet.create({
   buttonText: button.buttonText,
   formButtonRegister: button.formButtonRegister,
   buttonContainer: button.buttonContainer,
-});
+})
 
-export default RegisterScreen;
+export default RegisterScreen

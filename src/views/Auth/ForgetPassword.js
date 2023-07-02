@@ -16,18 +16,23 @@ import button from '../../styles/components/button';
 import form from '../../styles/components/form';
 import { ToastSuccess, ToastError } from '../../utils/Toast';
 import ToastConfig from '../../utils/ToastConfig';
+import { useTranslation } from 'react-i18next'
+import { useNavigation } from '@react-navigation/native';
 
 const ForgetPasswordScreen = () => {
   const [email, setEmail] = useState('')
   const [code, setCode] = useState('');
   const [password, setPassword] = useState({password: '', confirmPassword: ''})
   const [step, setStep] = useState(1);
+  const navigation = useNavigation()
   const dispatch = useDispatch();
+
+    const { t } = useTranslation()
 
   const handleForgetPassword = async () => {
     try {
       await dispatch(forgetPassword({email}));
-      ToastSuccess('success', 'Un code de vérification vous a été envoyé par email.', true)
+      ToastSuccess('success', t('anEmailHasBeenSentToYouContainingA6DigitCode'), true)
       setStep(2)
     } catch (error) {
       console.log(error.response.data.errMsg);
@@ -39,7 +44,7 @@ const ForgetPasswordScreen = () => {
     try {
       console.log(email)
       await dispatch(checkForgetPasswordCode({email, code}));
-      ToastSuccess('success', 'Votre code de vérification a bien été validé.', true)
+      ToastSuccess('success', t('yourVerificationCodeHasBeenValidated'), true)
       setStep(3)
     } catch (error) {
       console.log(error.response.data.errMsg);
@@ -52,8 +57,11 @@ const ForgetPasswordScreen = () => {
   const handleResetPassword = async () => {
     try {
       await dispatch(resetPassword({email, password: password.password, confirmPassword: password.confirmPassword}));
-      ToastSuccess('success', 'Votre mot de passe à été rénitialisé avec succès.', false)
+      ToastSuccess('success', t('yourPasswordHasBeenSuccessfullyReset'), false)
       setStep(4)
+      setTimeout(() => {
+          navigation.navigate('Login')
+      }, 2000)
     } catch (error) {
       console.log(error.response.data.errMsg);
       ToastError('error', error.response.data.errMsg, false)
@@ -67,18 +75,18 @@ const ForgetPasswordScreen = () => {
         {step === 1 && (
           <View style={styles.formContainer}>
             <Text style={styles.formLabel}>
-              Entrez votre adresse mail
+              {t('enterYourEmailAddress')}
             </Text>
             <TextInput
               style={styles.formInput}
-              placeholder="Email"
+              placeholder={t('email')}
               value={email}
               onChangeText={text => setEmail(text)}
             />
             <TouchableOpacity
               style={styles.formButton}
               onPress={handleForgetPassword}>
-              <Text style={styles.buttonText}>Confirmer</Text>
+              <Text style={styles.buttonText}>{t('confirm')}</Text>
               <ToastConfig />
             </TouchableOpacity>
           </View>
@@ -86,10 +94,10 @@ const ForgetPasswordScreen = () => {
         {step === 2 && (
         <View style={styles.formContainer}>
           <Text style={styles.formLabel}>
-              Entrez votre code de vérification
+              {t('enterYourVerificationCode')}
             </Text>
           <TextInput
-            placeholder="Code de vérification"
+            placeholder={t('verificationCode')}
             style={styles.formInput}
             value={code}
             onChangeText={text => setCode(text)}
@@ -98,7 +106,7 @@ const ForgetPasswordScreen = () => {
             style={styles.formButton}
             onPress={handleCheckForgetPasswordCode}
           >
-            <Text style={styles.buttonText}>Confirmer</Text>
+              <Text style={styles.buttonText}>{t('confirm')}</Text>
             <ToastConfig />
           </TouchableOpacity>
         </View>
@@ -106,17 +114,17 @@ const ForgetPasswordScreen = () => {
 
         {step === 3 && (
           <View style={styles.formContainer}>
-            <Text style={styles.formLabel}>Entrez votre nouveau mot de passe</Text>
+            <Text style={styles.formLabel}>{t('enterYourNewPassword')}</Text>
             <TextInput
               style={styles.formInput}
-              placeholder="Mot de passe"
+              placeholder={t('password')}
               secureTextEntry={true}
               value={password.password}
               onChangeText={text => setPassword({...password, password: text})}
             />
             <TextInput
               style={styles.formInput}
-              placeholder="Confirmez mot de passe"
+              placeholder={t('confirmYourPassword')}
               secureTextEntry={true}
               value={password.confirmPassword}
               onChangeText={text => setPassword({...password, confirmPassword: text})}
@@ -125,7 +133,7 @@ const ForgetPasswordScreen = () => {
               style={styles.formButton}
               onPress={handleResetPassword}>
 
-              <Text style={styles.buttonText}>Confirmer</Text>
+              <Text style={styles.buttonText}>{t('confirm')}</Text>
               <ToastConfig />
             </TouchableOpacity>
           </View>
@@ -133,7 +141,7 @@ const ForgetPasswordScreen = () => {
         {step === 4 && (
           <View style={styles.formContainer}>
             <Text style={styles.formLabel}>
-              Votre mot de passe a bien été rénitialisé.
+              {t('yourPasswordHasBeenSuccessfullyReset')}
             </Text>
             <ToastConfig />
           </View>

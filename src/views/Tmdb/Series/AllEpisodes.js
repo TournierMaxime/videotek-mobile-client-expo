@@ -4,14 +4,18 @@ import { useSelector, useDispatch } from 'react-redux'
 import moment from 'moment/moment'
 import dot from '../../../styles/pages/dot'
 import { seasonDetails } from '../../../redux/actions/tmdb/series/detailsSeason'
+import { useTranslation } from 'react-i18next'
 
 const AllEpisodes = ({ route }) => {
   const { id, seasonNumber } = route.params
   const dispatch = useDispatch()
   const season = useSelector((state) => state.seasonDetails.data)
 
+  const { i18n, t } = useTranslation()
+  const language = i18n.language
+
   useEffect(() => {
-    dispatch(seasonDetails(id, seasonNumber))
+    dispatch(seasonDetails(id, seasonNumber, language))
   }, [id, seasonNumber])
 
   const renderItem = (item) => {
@@ -33,8 +37,8 @@ const AllEpisodes = ({ route }) => {
 
         <View style={styles.renderItemDetails}>
           <Text style={styles.renderItemTitle}>
-            {item.name} | épisode {item.episode_number}{' '}
-            {moment(item.air_date).format('YYYY')}
+            {item.name} | {t('episode')} {item.episode_number}{' '}
+            {moment(item.air_date).locale(i18n.language).format('LL')}
           </Text>
           <Text style={styles.renderItemOverview}>{item.overview}</Text>
         </View>
@@ -44,7 +48,7 @@ const AllEpisodes = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.seasonTitle}>Episodes</Text>
+      <Text style={styles.seasonTitle}>{t('Episodes')}</Text>
       <FlatList
         data={season?.episodes}
         keyExtractor={(item) => item.id.toString()}
