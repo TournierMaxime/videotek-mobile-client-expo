@@ -78,7 +78,7 @@ i18n
     detection: DETECTION_OPTIONS,
     useLocalStorage: true,
     lng: langStringify,
-    fallbackLng: langStringify,
+    fallbackLng: 'en-US',
     interpolation: {
       escapeValue: false, // react already safes from xss
     },

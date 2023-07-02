@@ -362,6 +362,19 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
       }
     }
     getUserData()
+
+        const updateLanguage = async () => {
+      try {
+        const storedLang = await AsyncStorage.getItem('lang');
+        if (storedLang) {
+          i18n.changeLanguage(storedLang);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    updateLanguage();
   }, [])
 
   return (
