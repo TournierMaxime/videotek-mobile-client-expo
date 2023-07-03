@@ -29,13 +29,18 @@ const DetailsPeople = ({ route }) => {
 
   const { i18n, t } = useTranslation()
   const language = i18n.language
+  moment.locale(language)
 
   const currentAge = () => {
     const currentYear = moment().format('YYYY')
     const yearBirthDay = moment(people.birthday).format('YYYY')
     const currentAge = currentYear - yearBirthDay
 
-    return <Text style={styles.headerTitle}>{t('age')} {currentAge} {t('years')}</Text>
+    return (
+      <Text style={styles.headerTitle}>
+        {t('age')} {currentAge} {t('years')}
+      </Text>
+    )
   }
 
   const ageDeath = () => {
@@ -43,7 +48,11 @@ const DetailsPeople = ({ route }) => {
     const yearDeathDay = moment(people.deathday).format('YYYY')
     const ageDeath = yearDeathDay - yearBirthDay
 
-    return <Text style={styles.headerTitle}>{t('deathAt')} {ageDeath} {t('years')}</Text>
+    return (
+      <Text style={styles.headerTitle}>
+        {t('deathAt')} {ageDeath} {t('years')}
+      </Text>
+    )
   }
 
   const birth = () => {
@@ -93,67 +102,73 @@ const DetailsPeople = ({ route }) => {
       {loading ? (
         <ActivityIndicator size='large' color='#0000ff' />
       ) : (
-        <Fragment>
-          <View style={styles.mainViewContainer}>
-            <LinearGradient
-              colors={['rgba(0,0,0,0.8)', 'rgba(0,0,0,0.8)']}
-              style={styles.linearGradient}
-            />
+        people && (
+          <Fragment>
+            <View style={styles.mainViewContainer}>
+              <LinearGradient
+                colors={['rgba(0,0,0,0.8)', 'rgba(0,0,0,0.8)']}
+                style={styles.linearGradient}
+              />
 
-            <View style={styles.titleAndDot}>
-              <View>
-                <Text style={[styles.headerTitle, { left: 15, top: 5 }]}>
-                  {people.name}
-                </Text>
-              </View>
+              <View style={styles.titleAndDot}>
+                <View>
+                  <Text style={[styles.headerTitle, { left: 15, top: 5 }]}>
+                    {people.name}
+                  </Text>
+                </View>
 
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('DotDetails', {
-                    id,
-                    title: people?.name
-                  })
-                }
-              >
-                <Entypo
-                  style={{
-                    borderRadius: 100,
-                    padding: 5,
-                    backgroundColor: 'white',
-                    right: 15,
-                    top: 5,
-                  }}
-                  name='dots-three-vertical'
-                  size={24}
-                  color='black'
-                />
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.headerViewContainer}>
-              <View style={styles.posterViewContainer}>
-                <Image
-                  style={styles.posterPath}
-                  source={{
-                    uri: `https://image.tmdb.org/t/p/original${people.profile_path}`,
-                  }}
-                />
-              </View>
-              <View style={styles.infoViewContainer}>
-                {birth()}
-
-                {people.deathday ? null : currentAge()}
-
-                {people.deathday ? ageDeath() : null}
-
-                <TouchableOpacity onPress={() => imdb()}>
-                  <SVGImdb />
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate('DotDetails', {
+                      id,
+                      title: people?.name,
+                    })
+                  }
+                >
+                  <Entypo
+                    style={{
+                      borderRadius: 100,
+                      padding: 5,
+                      backgroundColor: 'white',
+                      right: 15,
+                      top: 5,
+                    }}
+                    name='dots-three-vertical'
+                    size={24}
+                    color='black'
+                  />
                 </TouchableOpacity>
               </View>
+
+              <View style={styles.headerViewContainer}>
+                <View style={styles.posterViewContainer}>
+                  <Image
+                    style={styles.posterPath}
+                    source={{
+                      uri: `https://image.tmdb.org/t/p/original${people.profile_path}`,
+                    }}
+                  />
+                </View>
+                <View style={styles.infoViewContainer}>
+                  {birth()}
+
+                  {people.deathday ? null : currentAge()}
+
+                  {people.deathday ? ageDeath() : null}
+
+                  <TouchableOpacity onPress={() => imdb()}>
+                    <SVGImdb />
+                  </TouchableOpacity>
+                </View>
+              </View>
+              <OverViewMemoized
+                isBiography={true}
+                content={people.biography}
+                t={t}
+              />
             </View>
-            <OverViewMemoized isBiography={true} content={people.biography} t={t} />
-          </View>
-        </Fragment>
+          </Fragment>
+        )
       )}
     </Refresh>
   )

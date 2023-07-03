@@ -1,7 +1,6 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import * as Localization from 'expo-localization'
-import ar from './src/locales/ar/translation.json'
 import de from './src/locales/de/translation.json'
 import en from './src/locales/en/translation.json'
 import es from './src/locales/es/translation.json'
@@ -13,6 +12,18 @@ import nl from './src/locales/nl/translation.json'
 import pt from './src/locales/pt/translation.json'
 import ru from './src/locales/ru/translation.json'
 import zh from './src/locales/zh/translation.json'
+import moment from 'moment'
+import 'moment/locale/de'
+import 'moment/locale/en-gb'
+import 'moment/locale/es'
+import 'moment/locale/fr'
+import 'moment/locale/it'
+import 'moment/locale/ja'
+import 'moment/locale/ko'
+import 'moment/locale/nl'
+import 'moment/locale/pt'
+import 'moment/locale/ru'
+import 'moment/locale/zh-cn'
 
 const DETECTION_OPTIONS = {
   order: ['localStorage'],
@@ -20,6 +31,7 @@ const DETECTION_OPTIONS = {
 }
 
 const langStringify = JSON.stringify(i18n.language)
+moment.locale(i18n.language)
 
 const languageDetector = {
   type: 'languageDetector',
@@ -36,9 +48,6 @@ i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     resources: {
-      ar: {
-        translation: ar,
-      },
       de: {
         translation: de,
       },

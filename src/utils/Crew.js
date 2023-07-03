@@ -10,7 +10,7 @@ const Crew = ({ children, serie, movie, id }) => {
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('CrewSerie', {
-              title: serie.original_name,
+              title: serie.name,
               id: serie.id,
             })
           }}
@@ -22,7 +22,7 @@ const Crew = ({ children, serie, movie, id }) => {
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('CrewMovie', {
-              title: movie.original_title,
+              title: movie.title,
               id: movie.id,
             })
           }}

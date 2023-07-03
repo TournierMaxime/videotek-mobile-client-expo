@@ -48,7 +48,7 @@ const CrewMovie = ({ route }) => {
               {item.name} | {item.job}
             </Text>
             <Text style={styles.renderItemOverview}>
-              Département: {item.department}
+              {item.department}
             </Text>
           </View>
         </View>

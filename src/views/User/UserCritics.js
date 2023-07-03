@@ -32,6 +32,7 @@ const UserCritics = () => {
 
   const { i18n, t } = useTranslation()
   const language = i18n.language
+  moment.locale(language)
 
   const [modalVisible, setModalVisible] = useState(false)
 
@@ -119,7 +120,7 @@ const UserCritics = () => {
                   </View>
                   <Text style={styles.criticContent}>{item.content}</Text>
                   <Text>
-                    {moment(item.created).locale(language).format('LLLL')}
+                    {moment(item.created).locale(language).format('LLL')}
                   </Text>
                   {item.userId === userId ? (
                     <Fragment>

@@ -77,7 +77,7 @@ const DotDetails = ({ route }) => {
                   size={25}
                   color='black'
                 />
-                <Text>{t('Crew')}</Text>
+                <Text>{t('crew')}</Text>
               </View>
               <Entypo name='chevron-small-right' size={25} color='black' />
             </View>
