@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   View,
   Text,
@@ -9,16 +9,19 @@ import {
 } from 'react-native'
 import dot from '../../../styles/pages/dot'
 import { useNavigation } from '@react-navigation/native'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment/moment'
 import { useTranslation } from 'react-i18next'
+import { peopleCareer } from '../../../redux/actions/tmdb/people/careerPeople'
 
 const CastPeople = ({ route }) => {
-  const { name } = route.params
+  const { id, name } = route.params
   const navigation = useNavigation()
+  const dispatch = useDispatch()
   const career = useSelector((state) => state.peopleCareer.data)
 
-  const { t } = useTranslation()
+  const { i18n, t } = useTranslation()
+    const language = i18n.language
 
   const sortedCareer = career?.cast?.sort((a, b) => {
     const dateA = moment(a.release_date || a.first_air_date)
@@ -89,6 +92,10 @@ const CastPeople = ({ route }) => {
       </TouchableOpacity>
     )
   }
+
+  useEffect(() => {
+    dispatch(peopleCareer(id, language))
+  }, [id])
 
   return (
     <View style={styles.container}>

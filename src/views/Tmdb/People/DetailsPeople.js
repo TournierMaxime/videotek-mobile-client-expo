@@ -10,7 +10,6 @@ import {
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { peopleDetails } from '../../../redux/actions/tmdb/people/detailsPeople'
-import { peopleCareer } from '../../../redux/actions/tmdb/people/careerPeople'
 import { LinearGradient } from 'expo-linear-gradient'
 import details from '../../../styles/pages/details'
 import Refresh from '../../../utils/Refresh'
@@ -74,14 +73,12 @@ const DetailsPeople = ({ route }) => {
   }
 
   const onRefresh = async () => {
-    await dispatch(peopleCareer(id, language))
     await dispatch(peopleDetails(id, language))
   }
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true)
-      await dispatch(peopleCareer(id, language))
       await dispatch(peopleDetails(id, language))
       setLoading(false)
     }

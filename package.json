@@ -9,7 +9,8 @@
     "web": "expo start --web",
     "build": "eas build",
     "submit": "eas submit",
-    "clear": "expo start --clear"
+    "clear": "expo start --clear",
+    "prod": "expo start --no-dev --minify"
   },
   "dependencies": {
     "@expo/webpack-config": "^18.0.1",
