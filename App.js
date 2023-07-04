@@ -101,14 +101,15 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
       {getCommonScreens(MainStack, isAuthenticated, i18n, t)}
       <MainStack.Screen
         name='DetailsUser'
-        component={DetailsUser}
         options={({ route }) => ({
           title: route.params.userId,
           header: () => (
             <Header isAuthenticated={isAuthenticated} backButton={true} />
           ),
         })}
-      />
+      >
+        {(props) => <DetailsUser {...props} i18n={i18n} t={t} />}
+      </MainStack.Screen>
       <MainStack.Screen
         name='UserProfile'
         initialParams={{ userId }}
@@ -152,14 +153,15 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
       </MainStack.Screen>
       <MainStack.Screen
         name='Settings'
-        component={Settings}
         options={({ route }) => ({
           title: route.params.userId,
           header: () => (
             <Header isAuthenticated={isAuthenticated} backButton={true} />
           ),
         })}
-      />
+      >
+        {(props) => <Settings {...props} i18n={i18n} t={t} />}
+      </MainStack.Screen>
     </MainStack.Navigator>
   )
 }
