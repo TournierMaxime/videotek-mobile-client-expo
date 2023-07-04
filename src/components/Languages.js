@@ -30,7 +30,7 @@ export default function Languages({ i18n }) {
     }
 
     updateLanguage()
-  }, [lang])
+  }, [])
 
   const changeLanguage = async (itemValue) => {
     setLang(itemValue)
