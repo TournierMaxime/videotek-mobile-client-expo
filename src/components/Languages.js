@@ -5,7 +5,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export default function Languages({ i18n }) {
   const [lang, setLang] = useState(i18n.language)
-  console.log(lang)
 
   const itemsPicker = [
     { label: 'German', value: 'de-DE' },
