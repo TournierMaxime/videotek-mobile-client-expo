@@ -101,15 +101,14 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
       {getCommonScreens(MainStack, isAuthenticated, i18n, t)}
       <MainStack.Screen
         name='DetailsUser'
+        component={DetailsUser}
         options={({ route }) => ({
           title: route.params.userId,
           header: () => (
             <Header isAuthenticated={isAuthenticated} backButton={true} />
           ),
         })}
-      >
-        {(props) => <DetailsUser {...props} i18n={i18n} t={t} />}
-      </MainStack.Screen>
+      />
       <MainStack.Screen
         name='UserProfile'
         initialParams={{ userId }}
@@ -153,15 +152,14 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
       </MainStack.Screen>
       <MainStack.Screen
         name='Settings'
+        component={Settings}
         options={({ route }) => ({
           title: route.params.userId,
           header: () => (
             <Header isAuthenticated={isAuthenticated} backButton={true} />
           ),
         })}
-      >
-        {(props) => <Settings {...props} i18n={i18n} t={t} />}
-      </MainStack.Screen>
+      />
     </MainStack.Navigator>
   )
 }
@@ -363,18 +361,18 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
     }
     getUserData()
 
-        const updateLanguage = async () => {
+    const updateLanguage = async () => {
       try {
-        const storedLang = await AsyncStorage.getItem('lang');
+        const storedLang = await AsyncStorage.getItem('lang')
         if (storedLang) {
-          i18n.changeLanguage(storedLang);
+          i18n.changeLanguage(storedLang)
         }
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
-    };
+    }
 
-    updateLanguage();
+    updateLanguage()
   }, [])
 
   return (

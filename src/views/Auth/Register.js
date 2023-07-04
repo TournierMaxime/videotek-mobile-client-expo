@@ -17,15 +17,17 @@ import ToastConfig from '../../utils/ToastConfig'
 import { useTranslation } from 'react-i18next'
 
 const RegisterScreen = () => {
-  const [data, setData] = useState({ userName: '', email: '', password: '' })
+  const [data, setData] = useState({ userName: '', email: '', password: '', lang: '' })
   const dispatch = useDispatch()
   const navigation = useNavigation()
 
-  const { t } = useTranslation()
+  const { i18n, t } = useTranslation()
+  const language = i18n.language
+  const lang = language.slice(0,2)
 
   const handleRegister = async () => {
     try {
-      const response = await dispatch(createUser(data))
+      const response = await dispatch(createUser({...data, lang}))
       ToastSuccess('success', t('yourAccountHasBeenCreated'), true)
       setTimeout(() => {
         navigation.navigate('ConfirmEmail', { userId: response.user.userId })

@@ -39,9 +39,9 @@ export default function Languages({ i18n }) {
 
   const changeLanguage = async (itemValue) => {
     try {
-      await AsyncStorage.setItem('lang', itemValue);
       setLang(itemValue);
       i18n.changeLanguage(itemValue);
+      await AsyncStorage.setItem('lang', itemValue);
     } catch (error) {
       console.log(error);
     }
@@ -50,8 +50,8 @@ export default function Languages({ i18n }) {
   return (
     <View style={{ backgroundColor: 'white' }}>
       <Picker selectedValue={lang} onValueChange={changeLanguage}>
-        {itemsPicker.map((item) => (
-          <Picker.Item key={item.value} label={item.label} value={item.value} />
+        {itemsPicker.map((item, index) => (
+          <Picker.Item key={index} label={item.label} value={item.value} />
         ))}
       </Picker>
     </View>

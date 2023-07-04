@@ -27,11 +27,13 @@ const ForgetPasswordScreen = () => {
   const navigation = useNavigation()
   const dispatch = useDispatch();
 
-    const { t } = useTranslation()
+  const { i18n, t } = useTranslation()
+  const language = i18n.language
+  const lang = language.slice(0,2)
 
   const handleForgetPassword = async () => {
     try {
-      await dispatch(forgetPassword({email}));
+      await dispatch(forgetPassword({email, lang}));
       ToastSuccess('success', t('anEmailHasBeenSentToYouContainingA6DigitCode'), true)
       setStep(2)
     } catch (error) {

@@ -3,8 +3,8 @@ import { Text, View } from 'react-native'
 import Languages from '../../components/Languages'
 import { useTranslation } from 'react-i18next'
 
-const Settings = ({ i18n }) => {
-  const { t } = useTranslation()
+const Settings = () => {
+  const { i18n, t } = useTranslation()
   return (
     <View style={{ justifyContent: 'center' }}>
       <Text style={{ margin: 15, fontSize: 16 }}>
