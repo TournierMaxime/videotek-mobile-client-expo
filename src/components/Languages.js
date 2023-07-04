@@ -7,17 +7,17 @@ export default function Languages({ i18n }) {
   const [lang, setLang] = useState(i18n.language)
 
   const itemsPicker = [
-    { label: 'German', value: 'de-DE' },
-    { label: 'English', value: 'en-US' },
-    { label: 'Spanish', value: 'es-ES' },
-    { label: 'French', value: 'fr-FR' },
-    { label: 'Italian', value: 'it-IT' },
-    { label: 'Japanese', value: 'ja-JP' },
-    { label: 'Korean', value: 'ko-KR' },
-    { label: 'Dutch', value: 'nl-NL' },
-    { label: 'Portuguese', value: 'pt-PT' },
-    { label: 'Russian', value: 'ru-RU' },
-    { label: 'Chinese', value: 'zh-CN' },
+    { label: 'German', value: 'de' },
+    { label: 'English', value: 'en-gb' },
+    { label: 'Spanish', value: 'es' },
+    { label: 'French', value: 'fr' },
+    { label: 'Italian', value: 'it' },
+    { label: 'Japanese', value: 'ja' },
+    { label: 'Korean', value: 'ko' },
+    { label: 'Dutch', value: 'nl' },
+    { label: 'Portuguese', value: 'pt' },
+    { label: 'Russian', value: 'ru' },
+    { label: 'Chinese', value: 'zh-cn' },
   ]
 
   useEffect(() => {

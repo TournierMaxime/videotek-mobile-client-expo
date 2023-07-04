@@ -23,7 +23,7 @@ const RegisterScreen = () => {
 
   const { i18n, t } = useTranslation()
   const language = i18n.language
-  const lang = language.slice(0,2)
+  const lang = language.slice(0, 2)
 
   const handleRegister = async () => {
     try {
