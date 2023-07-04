@@ -11,7 +11,7 @@ const Cast = ({ children, serie, movie, id, people }) => {
         <TouchableOpacity
           onPress={async () => {
             navigation.navigate('CastSerie', {
-              title: serie.original_name,
+              title: serie.name,
               id: serie.id,
             })
           }}
@@ -23,7 +23,7 @@ const Cast = ({ children, serie, movie, id, people }) => {
         <TouchableOpacity
           onPress={async () => {
             navigation.navigate('CastMovie', {
-              title: movie.original_title,
+              title: movie.title,
               id: movie.id,
             })
           }}

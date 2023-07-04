@@ -103,10 +103,10 @@ const DetailsUser = ({ route }) => {
       }}
     >
       <View style={styles.formContainer}>
-        <Text style={styles.formLabel}>{t('username')}</Text>
+        <Text style={styles.formLabel}>{t('userName')}</Text>
         <TextInput
           style={styles.formInput}
-          placeholder={t('username')}
+          placeholder={t('userName')}
           onChangeText={(text) => setData({ ...data, userName: text })}
           defaultValue={user?.userName}
         />

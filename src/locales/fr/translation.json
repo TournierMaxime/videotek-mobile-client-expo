@@ -1,6 +1,10 @@
 {
+    "search": "Rechercher",
     "trending":"En ce moment",
     "films": "Films",
+    "film": "Film",
+    "serie": "Serie",
+    "celebrity": "Célébrité",
     "series": "Séries",
     "critics": "Critiques",
     "settings": "Paramètres",
@@ -72,9 +76,10 @@
     "successfullyConnected": "Connexion réussie",
     "yourAccountHasBeenCreated": "Votre compte a bien été crée",
     "reviewSuccessfullyPublished": "Votre critique a bien été publié",
-    "filmographyOf": "Filmographie ode",
+    "filmographyOf": "Filmographie de",
     "profileUpdated": "Profil mis à jour",
     "anErrorHasOccurred": "Une erreur s'est produite",
     "reviewSuccessfullyUpdated": "Critique mis à jour",
-    "yourAccountHasBeenSuccessfullyDeleted": "Votre compte a bien été supprimé"
+    "yourAccountHasBeenSuccessfullyDeleted": "Votre compte a bien été supprimé",
+    "areYouSureYouWantToDeleteThisReview": "Êtes vous sûr de vouloir supprimer cette critique ?"
 }

@@ -10,7 +10,7 @@ import {
 import dot from '../../../styles/pages/dot'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
-import moment from 'moment/moment'
+import moment from 'moment'
 import { useTranslation } from 'react-i18next'
 import { peopleCareer } from '../../../redux/actions/tmdb/people/careerPeople'
 
@@ -21,7 +21,8 @@ const CastPeople = ({ route }) => {
   const career = useSelector((state) => state.peopleCareer.data)
 
   const { i18n, t } = useTranslation()
-    const language = i18n.language
+  const language = i18n.language
+  moment.locale(language)
 
   const sortedCareer = career?.cast?.sort((a, b) => {
     const dateA = moment(a.release_date || a.first_air_date)
@@ -35,7 +36,7 @@ const CastPeople = ({ route }) => {
         onPress={() =>
           navigation.navigate('DetailsMovie', {
             id: item.id,
-            title: item.original_title,
+            title: item.title,
           })
         }
       >
@@ -66,7 +67,7 @@ const CastPeople = ({ route }) => {
         onPress={() =>
           navigation.navigate('DetailsSerie', {
             id: item.id,
-            title: item.original_name,
+            title: item.name,
           })
         }
       >

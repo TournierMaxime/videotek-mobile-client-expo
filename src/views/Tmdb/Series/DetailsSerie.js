@@ -82,7 +82,7 @@ const DetailsSerie = ({ route }) => {
                   onPress={() =>
                     navigation.navigate('DotDetails', {
                       id,
-                      title: serie?.original_name,
+                      title: serie?.name,
                     })
                   }
                 >

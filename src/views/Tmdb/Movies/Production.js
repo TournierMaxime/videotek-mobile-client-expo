@@ -2,10 +2,12 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { numberWithCommas } from '../../../utils/NumberWithCommas'
 import details from '../../../styles/pages/details'
-import moment from 'moment/moment'
+import moment from 'moment'
 import Accordion from '../../../components/Accordion'
 
-const Production = ({ movie, t }) => {
+const Production = ({ movie, t, language }) => {
+  moment.locale(language)
+
   const productionCompanies = (data) => {
     if (!data) return null
     return (
@@ -46,7 +48,7 @@ const Production = ({ movie, t }) => {
       <Accordion title={t('release')}>
         <View style={styles.mainContainer}>
           <View style={styles.flatListViewContainer}>
-            <Text style={styles.tags}>{moment(data).format('DD/MM/YYYY')}</Text>
+            <Text style={styles.tags}>{moment(data).format('L')}</Text>
           </View>
         </View>
       </Accordion>

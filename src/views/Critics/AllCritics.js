@@ -8,7 +8,7 @@ import {
   ActivityIndicator,
 } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
-import moment from 'moment/moment'
+import moment from 'moment'
 import dot from '../../styles/pages/dot'
 import message from '../../styles/components/message'
 import button from '../../styles/components/button'
@@ -23,7 +23,9 @@ const AllCritics = ({ route }) => {
   const [isLoading, setIsLoading] = useState(false)
   const critics = useSelector((state) => state.searchCritic.data)
 
-  const { t } = useTranslation()
+  const { i18n, t } = useTranslation()
+  const language = i18n.language
+  moment.locale(language)
 
   const renderItem = (item) => {
     return (
@@ -47,7 +49,7 @@ const AllCritics = ({ route }) => {
         <View style={styles.renderItemDetails}>
           <Text style={styles.renderItemTitle}>
             {item.User.userName} |{' '}
-            {moment(item.created).format('DD/MM/YYYY à HH:mm:ss')}
+            {moment(item.created).format('LLL')}
           </Text>
           <Text style={styles.renderItemOverview}>{item.title}</Text>
           <Text style={styles.renderItemOverview}>{item.content}</Text>

@@ -83,7 +83,7 @@ const DetailsMovie = ({ route }) => {
                   onPress={() =>
                     navigation.navigate('DotDetails', {
                       id,
-                      title: movie?.original_title,
+                      title: movie?.title,
                     })
                   }
                 >
@@ -116,7 +116,7 @@ const DetailsMovie = ({ route }) => {
                 <View style={styles.infoViewContainer}>
                   <Runtime time={movie.runtime} isMovie={true} t={t} />
 
-                    <Text style={styles.directorTitle}>{t('genres')}</Text>
+                  <Text style={styles.directorTitle}>{t('genres')}</Text>
 
                   <View style={styles.genresViewContainer}>
                     {movie?.genres?.map((genre, index) => (
@@ -126,7 +126,7 @@ const DetailsMovie = ({ route }) => {
                     ))}
                   </View>
 
-                    <Text style={styles.directorTitle}>{t('direction')}</Text>
+                  <Text style={styles.directorTitle}>{t('direction')}</Text>
 
                   <View style={styles.directorsViewContainer}>
                     {credits?.crew?.map((credit, index) => {
@@ -143,9 +143,9 @@ const DetailsMovie = ({ route }) => {
                 </View>
               </View>
 
-                <OverViewMemoized content={movie.overview} t={t} />
+              <OverViewMemoized content={movie.overview} t={t} />
             </View>
-            <ProductionMemoized movie={movie} t={t} />
+            <ProductionMemoized movie={movie} t={t} language={language} />
           </Fragment>
         )
       )}

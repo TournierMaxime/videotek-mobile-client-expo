@@ -21,6 +21,7 @@ const AllSeasons = ({ route }) => {
 
   const { t, i18n } = useTranslation()
   const language = i18n.language
+  moment.locale(language)
 
   const renderItem = (item) => {
     return (
@@ -51,8 +52,10 @@ const AllSeasons = ({ route }) => {
           </View>
           <View style={styles.renderItemDetails}>
             <Text style={styles.renderItemTitle}>
-              {item.name} | {item.episode_count} {t('episodes')}{' '}
-              {moment(item.air_date).locale(language).format('LL')}
+              {item.name} | {item.episode_count} {t('episodes')}
+            </Text>
+            <Text style={styles.renderItemTitle}>
+              {moment(item.air_date).format('LL')}
             </Text>
             <Text style={styles.renderItemOverview}>{item.overview}</Text>
           </View>
@@ -63,7 +66,9 @@ const AllSeasons = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.seasonTitle}>{t('seasonsOf')} {title}</Text>
+      <Text style={styles.seasonTitle}>
+        {t('seasonsOf')} {title}
+      </Text>
       <FlatList
         data={serie?.seasons}
         keyExtractor={(item) => item.id.toString()}

@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { search } from '../redux/actions/tmdb/search'
 import { useNavigation } from '@react-navigation/native'
 import moment from 'moment'
+import { useTranslation } from 'react-i18next'
 
 const SearchModal = ({ visible, setVisible }) => {
   const dispatch = useDispatch()
@@ -23,10 +24,14 @@ const SearchModal = ({ visible, setVisible }) => {
   const searchResults = useSelector((state) => state.search.data.results)
   const [query, setQuery] = useState('')
 
+  const { i18n, t } = useTranslation()
+  const language = i18n.language
+  moment.locale(language)
+
   const resetSearch = () => {
-    setQuery('');
-    dispatch({ type: 'SEARCH_RESET_REQUEST' });
-  };
+    setQuery('')
+    dispatch({ type: 'SEARCH_RESET_REQUEST' })
+  }
 
   const handleSearch = async () => {
     try {
@@ -46,10 +51,12 @@ const SearchModal = ({ visible, setVisible }) => {
               title: item.original_title,
             }),
               resetSearch()
-              setVisible(false)
+            setVisible(false)
           }}
         >
-          <Text>{`${item.original_title} (${moment(item.release_date).format('YYYY')}) / Film`}</Text>
+          <Text>{`${item.original_title} (${moment(item.release_date).format(
+            'YYYY'
+          )}) / ${t('film')}`}</Text>
         </TouchableOpacity>
       )
     } else if (item.name) {
@@ -62,10 +69,12 @@ const SearchModal = ({ visible, setVisible }) => {
                 title: item.original_name,
               }),
                 resetSearch()
-                setVisible(false)
+              setVisible(false)
             }}
           >
-            <Text>{`${item.name} (${moment(item.first_air_date).format('YYYY')}) / Série`}</Text>
+            <Text>{`${item.name} (${moment(item.first_air_date).format(
+              'YYYY'
+            )}) / ${t('serie')}`}</Text>
           </TouchableOpacity>
         )
       }
@@ -78,10 +87,10 @@ const SearchModal = ({ visible, setVisible }) => {
                 name: item.name,
               }),
                 resetSearch()
-                setVisible(false)
+              setVisible(false)
             }}
           >
-            <Text>{`${item.name} / Célébrité`}</Text>
+            <Text>{`${item.name} / ${t('celebrity')}`}</Text>
           </TouchableOpacity>
         )
       }
@@ -90,10 +99,10 @@ const SearchModal = ({ visible, setVisible }) => {
   }
 
   const handleModalClose = () => {
-    setVisible(false);
-    setQuery('');
-    resetSearch();
-  };
+    setVisible(false)
+    setQuery('')
+    resetSearch()
+  }
 
   useEffect(() => {
     if (!visible) {
@@ -118,7 +127,7 @@ const SearchModal = ({ visible, setVisible }) => {
           <View style={styles.formContainer}>
             <TextInput
               style={styles.formInput}
-              placeholder='Rechercher'
+              placeholder={t('search')}
               onChangeText={(text) => setQuery(text)}
               value={query}
               onSubmitEditing={handleSearch}
@@ -129,9 +138,9 @@ const SearchModal = ({ visible, setVisible }) => {
               renderItem={({ item }) => {
                 return (
                   <View style={{ flexWrap: 'wrap' }}>
-                  <Text style={{ fontSize: 18, marginVertical: 10 }}>
-                    {renderItemContent(item)}
-                  </Text>
+                    <Text style={{ fontSize: 18, marginVertical: 10 }}>
+                      {renderItemContent(item)}
+                    </Text>
                   </View>
                 )
               }}

@@ -37,8 +37,10 @@ const AllEpisodes = ({ route }) => {
 
         <View style={styles.renderItemDetails}>
           <Text style={styles.renderItemTitle}>
-            {item.name} | {t('episode')} {item.episode_number}{' '}
-            {moment(item.air_date).locale(i18n.language).format('LL')}
+            {item.name} | {t('episode')} {item.episode_number}
+          </Text>
+          <Text style={styles.renderItemTitle}>
+            {moment(item.air_date).format('LL')}
           </Text>
           <Text style={styles.renderItemOverview}>{item.overview}</Text>
         </View>

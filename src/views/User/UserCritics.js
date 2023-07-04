@@ -131,7 +131,7 @@ const UserCritics = () => {
                         <Feather name='trash-2' size={25} color='white' />
                       </Pressable>
                       <AlertModal
-                        message={t('deleteAccountConfirmMsg')}
+                        message={t('areYouSureYouWantToDeleteThisReview')}
                         action={handleDelete}
                         visible={modalVisible}
                         setVisible={setModalVisible}
