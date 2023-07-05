@@ -12,7 +12,7 @@ const listViewContainer = {
 
 const originalTitle = {
     textAlign: 'center',
-    fontSize: 12
+    fontSize: 16
 }
 
 const container = {

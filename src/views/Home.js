@@ -130,7 +130,7 @@ const Home = () => {
                               }}
                             />
                             <Text style={styles.originalTitle}>
-                              {truncateTitle(item.name, 15)}
+                              {truncateTitle(item.name, 10)}
                             </Text>
                           </TouchableOpacity>
                         </View>
@@ -178,7 +178,7 @@ const Home = () => {
                           }}
                         />
                         <Text style={styles.originalTitle}>
-                          {truncateTitle(item.title, 15)}
+                          {truncateTitle(item.title, 10)}
                         </Text>
                       </TouchableOpacity>
                     </View>
@@ -225,7 +225,7 @@ const Home = () => {
                         />
                       </TouchableOpacity>
                       <Text style={styles.originalTitle}>
-                        {truncateTitle(item.name, 15)}
+                        {truncateTitle(item.name, 10)}
                       </Text>
                     </View>
                   )

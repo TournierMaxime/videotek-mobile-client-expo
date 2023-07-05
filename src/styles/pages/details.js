@@ -57,7 +57,7 @@ const mainViewContainer = {
   display: 'flex',
   position: 'relative',
   width: '100%',
-  height: horizontalScale(500),
+  height: horizontalScale(600),
 }
 
 const linearGradient = {
@@ -98,6 +98,7 @@ const headerTitle = {
   fontSize: 20,
   color: 'white',
   marginVertical: 5,
+  width: 250
 }
 
 const textOverview = {
@@ -110,7 +111,7 @@ const textOverview = {
 
 const headerViewContainer = {
   position: 'absolute',
-  top: '5%',
+  top: '10%',
   left: 0,
   right: 0,
   bottom: 0,

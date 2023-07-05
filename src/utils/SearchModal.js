@@ -45,6 +45,7 @@ const SearchModal = ({ visible, setVisible }) => {
     if (item.original_title && item.media_type === 'movie') {
       return (
         <TouchableOpacity
+          style={{ width: '100%' }}
           onPress={() => {
             navigation.navigate('DetailsMovie', {
               id: item.id,
@@ -54,15 +55,16 @@ const SearchModal = ({ visible, setVisible }) => {
             setVisible(false)
           }}
         >
-          <Text>{`${item.original_title} (${moment(item.release_date).format(
-            'YYYY'
-          )}) / ${t('film')}`}</Text>
+          <Text style={{ width: '100%', fontSize: 16 }}>{`${item.original_title} (${moment(
+            item.release_date
+          ).format('YYYY')}) / ${t('film')}`}</Text>
         </TouchableOpacity>
       )
     } else if (item.name) {
       if (item.media_type === 'tv') {
         return (
           <TouchableOpacity
+            style={{ width: '100%' }}
             onPress={() => {
               navigation.navigate('DetailsSerie', {
                 id: item.id,
@@ -72,7 +74,7 @@ const SearchModal = ({ visible, setVisible }) => {
               setVisible(false)
             }}
           >
-            <Text>{`${item.name} (${moment(item.first_air_date).format(
+            <Text style={{ width: '100%', fontSize: 16 }}>{`${item.name} (${moment(item.first_air_date).format(
               'YYYY'
             )}) / ${t('serie')}`}</Text>
           </TouchableOpacity>
@@ -81,6 +83,7 @@ const SearchModal = ({ visible, setVisible }) => {
       if (item.media_type === 'person') {
         return (
           <TouchableOpacity
+            style={{ width: '100%' }}
             onPress={() => {
               navigation.navigate('DetailsPeople', {
                 id: item.id,
@@ -90,7 +93,7 @@ const SearchModal = ({ visible, setVisible }) => {
               setVisible(false)
             }}
           >
-            <Text>{`${item.name} / ${t('celebrity')}`}</Text>
+            <Text style={{ width: '100%', fontSize: 16 }}>{`${item.name} / ${t('celebrity')}`}</Text>
           </TouchableOpacity>
         )
       }
@@ -126,7 +129,7 @@ const SearchModal = ({ visible, setVisible }) => {
           </View>
           <View style={styles.formContainer}>
             <TextInput
-              style={styles.formInput}
+              style={[styles.formInput, { fontSize: 16 }]}
               placeholder={t('search')}
               onChangeText={(text) => setQuery(text)}
               value={query}
@@ -137,10 +140,32 @@ const SearchModal = ({ visible, setVisible }) => {
               keyExtractor={(item) => item.id}
               renderItem={({ item }) => {
                 return (
-                  <View style={{ flexWrap: 'wrap' }}>
-                    <Text style={{ fontSize: 18, marginVertical: 10 }}>
+                  <View
+                    style={{
+                      flexWrap: 'wrap',
+                      marginLeft: 'auto',
+                      marginRight: 'auto',
+                      width: '95%'
+                    }}
+                  >
+                    <View
+                      style={{
+                        marginVertical: 10,
+                        padding: 15,
+                        backgroundColor: 'white',
+                        width: '100%',
+                        shadowColor: '#000',
+                        shadowOffset: {
+                          width: 0,
+                          height: 2,
+                        },
+                        shadowOpacity: 0.25,
+                        shadowRadius: 3.84,
+                        elevation: 5,
+                      }}
+                    >
                       {renderItemContent(item)}
-                    </Text>
+                    </View>
                   </View>
                 )
               }}
