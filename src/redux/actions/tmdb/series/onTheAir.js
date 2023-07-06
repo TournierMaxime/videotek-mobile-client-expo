@@ -12,3 +12,7 @@ export const onTheAir = (page, target = 'onTheAir', language) => async (dispatch
     throw error
   }
 };
+
+export const resetOnTheAir = () => ({
+  type: 'RESET_ON_THE_AIR',
+})

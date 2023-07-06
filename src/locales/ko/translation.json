@@ -81,5 +81,8 @@
     "anErrorHasOccurred": "오류가 발생했습니다",
     "reviewSuccessfullyUpdated": "리뷰가 성공적으로 업데이트되었습니다.",
     "yourAccountHasBeenSuccessfullyDeleted": "귀하의 계정이 성공적으로 삭제되었습니다",
-    "areYouSureYouWantToDeleteThisReview": "이 리뷰를 삭제하시겠습니까?"
+    "areYouSureYouWantToDeleteThisReview": "이 리뷰를 삭제하시겠습니까?",
+    "contentPoweredByJustWatch": "JustWatch에서 제공하는 콘텐츠",
+    "flatrate": "스트리밍",
+    "buy": "구입하다"
 }

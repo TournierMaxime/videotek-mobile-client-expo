@@ -13,3 +13,7 @@ export const trending = (page, target = 'trending', language) => async (dispatch
     throw error
   }
 };
+
+export const resetTrending = () => ({
+  type: 'RESET_TRENDING',
+})

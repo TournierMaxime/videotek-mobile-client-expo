@@ -9,7 +9,7 @@ import {
   ActivityIndicator,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { trending } from '../../../redux/actions/tmdb/movies/trending'
+import { trending, resetTrending } from '../../../redux/actions/tmdb/movies/trending'
 import useLoadMore from '../../../utils/LoadMore'
 import { truncateTitle } from '../../../utils/Truncate'
 import { useNavigation } from '@react-navigation/native'
@@ -53,6 +53,12 @@ const Trending = () => {
       }
     }
   }, [trendingResults])
+
+    useEffect(() => {
+    return () => {
+      dispatch(resetTrending())
+    }
+  }, [])
 
   return (
     <View style={styles.container}>

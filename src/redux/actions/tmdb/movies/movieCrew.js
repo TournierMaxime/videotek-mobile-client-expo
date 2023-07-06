@@ -12,3 +12,7 @@ export const movieCrew = (id, language) => async (dispatch) => {
     throw error
   }
 };
+
+export const resetMovieCrew = () => ({
+  type: 'RESET_MOVIE_CREW',
+})

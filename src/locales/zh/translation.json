@@ -81,5 +81,8 @@
     "anErrorHasOccurred": "发生了错误",
     "reviewSuccessfullyUpdated": "评论已成功更新",
     "yourAccountHasBeenSuccessfullyDeleted": "您的帐户已成功删除",
-    "areYouSureYouWantToDeleteThisReview": "您确定要删除此评论吗 ?"
+    "areYouSureYouWantToDeleteThisReview": "您确定要删除此评论吗 ?",
+    "contentPoweredByJustWatch": "内容由 JustWatch 提供支持",
+    "flatrate": "流媒体",
+    "buy": "买"
 }

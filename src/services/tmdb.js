@@ -1,6 +1,14 @@
 import { tmdbApi as http } from "./axios.js";
 import { EXPO_TMDB_API_KEY } from '@env'
 
+const ReleaseDates = (id) => {
+  return http.get(`/movie/${id}/release_dates`, {
+    params: {
+      api_key: EXPO_TMDB_API_KEY
+    },
+  });
+};
+
 const NowPlaying = (page, language) => {
   return http.get("/movie/now_playing", {
     params: {
@@ -155,6 +163,7 @@ const Trending = (page, language) => {
 
 
 export { 
+  ReleaseDates,
   NowPlaying,
   Upcoming,
   OnTheAir,

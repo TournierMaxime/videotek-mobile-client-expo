@@ -13,3 +13,7 @@ export const upcoming = (page, target = 'upcoming', language) => async (dispatch
     throw error
   }
 };
+
+export const resetUpcoming = () => ({
+  type: 'RESET_UPCOMING',
+})

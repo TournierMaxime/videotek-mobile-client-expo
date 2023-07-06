@@ -1,30 +1,32 @@
 const initialState = {
-  data: [],
+  data: {
+    results: [],
+  },
   loading: false,
   error: null,
 }
 
-export default function serieDetailsReducer(state = initialState, action) {
+export default function releaseDatesReducer(state = initialState, action) {
   switch (action.type) {
-    case 'SERIE_DETAILS_REQUEST':
+    case 'RELEASE_DATES_REQUEST':
       return {
         ...state,
         loading: true,
         error: null,
       }
-    case 'SERIE_DETAILS_SUCCESS':
+    case 'RELEASE_DATES_SUCCESS':
       return {
         ...state,
         data: action.payload,
         loading: false,
       }
-    case 'SERIE_DETAILS_FAILURE':
+    case 'RELEASE_DATES_FAILURE':
       return {
         ...state,
         error: action.payload,
         loading: false,
       }
-    case 'RESET_SERIE_DETAILS':
+    case 'RESET_RELEASE_DATES':
       return initialState
     default:
       return state

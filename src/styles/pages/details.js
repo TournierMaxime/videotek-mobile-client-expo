@@ -6,7 +6,7 @@ import {
 
 const mainContainer = {
   display: 'flex',
-  flexDirection: 'column',
+  flexDirection: 'column'
 }
 
 const title = {

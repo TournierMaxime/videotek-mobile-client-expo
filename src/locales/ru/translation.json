@@ -81,5 +81,8 @@
     "anErrorHasOccurred": "произошла ошибка",
     "reviewSuccessfullyUpdated": "Отзыв успешно обновлен",
     "yourAccountHasBeenSuccessfullyDeleted": "Ваш аккаунт успешно удален",
-    "areYouSureYouWantToDeleteThisReview": "Вы уверены, что хотите удалить этот обзор ?"
+    "areYouSureYouWantToDeleteThisReview": "Вы уверены, что хотите удалить этот обзор ?",
+    "contentPoweredByJustWatch": "Контент от JustWatch",
+    "flatrate": "Потоковое",
+    "buy": "Купить"
 }

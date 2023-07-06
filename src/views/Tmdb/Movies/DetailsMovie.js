@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { movieDetails } from '../../../redux/actions/tmdb/movies/detailsMovie'
+import { movieDetails, resetMovieDetails } from '../../../redux/actions/tmdb/movies/detailsMovie'
 import { movieCrew } from '../../../redux/actions/tmdb/movies/movieCrew'
 import { LinearGradient } from 'expo-linear-gradient'
 import Runtime from '../../../utils/RunTime'
@@ -22,6 +22,7 @@ import button from '../../../styles/components/button'
 import { Entypo } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
+import { releaseDates } from '../../../redux/actions/tmdb/movies/releaseDates'
 
 const DetailsMovie = ({ route }) => {
   const dispatch = useDispatch()
@@ -37,6 +38,7 @@ const DetailsMovie = ({ route }) => {
   const onRefresh = async () => {
     await dispatch(movieDetails(id, language))
     await dispatch(movieCrew(id, language))
+    await dispatch(releaseDates(id))
   }
 
   useEffect(() => {
@@ -44,11 +46,18 @@ const DetailsMovie = ({ route }) => {
       setLoading(true)
       await dispatch(movieDetails(id, language))
       await dispatch(movieCrew(id, language))
+      await dispatch(releaseDates(id))
       setLoading(false)
     }
 
     fetchData()
   }, [dispatch, id])
+
+    useEffect(() => {
+    return () => {
+      dispatch(resetMovieDetails())
+    }
+  }, [])
 
   const ProductionMemoized = React.memo(Production)
   const OverViewMemoized = React.memo(OverView)
@@ -145,7 +154,7 @@ const DetailsMovie = ({ route }) => {
 
               <OverViewMemoized content={movie.overview} t={t} />
             </View>
-            <ProductionMemoized movie={movie} t={t} language={language} />
+            <ProductionMemoized id={id} movie={movie} t={t} language={language} />
           </Fragment>
         )
       )}

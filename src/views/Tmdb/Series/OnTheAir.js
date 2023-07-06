@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { onTheAir } from '../../../redux/actions/tmdb/series/onTheAir'
+import { onTheAir, resetOnTheAir } from '../../../redux/actions/tmdb/series/onTheAir'
 import useLoadMore from '../../../utils/LoadMore'
 import { truncateTitle } from '../../../utils/Truncate'
 import { useNavigation } from '@react-navigation/native'
@@ -44,6 +44,12 @@ const OnTheAir = () => {
       }
     }
   }, [onTheAirResults])
+
+    useEffect(() => {
+    return () => {
+      dispatch(resetOnTheAir())
+    }
+  }, [])
 
   return (
     <View style={styles.container}>

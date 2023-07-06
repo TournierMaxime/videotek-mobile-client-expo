@@ -12,3 +12,7 @@ export const serieCrew = (id, language) => async (dispatch) => {
     throw error
   }
 };
+
+export const resetSerieCrew = () => ({
+  type: 'RESET_SERIE_CREW',
+})

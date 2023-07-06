@@ -81,5 +81,8 @@
     "anErrorHasOccurred": "エラーが発生しました",
     "reviewSuccessfullyUpdated": "レビューが正常に更新されました",
     "yourAccountHasBeenSuccessfullyDeleted": "アカウントは正常に削除されました",
-    "areYouSureYouWantToDeleteThisReview": "このレビューを削除してもよろしいですか ?"
+    "areYouSureYouWantToDeleteThisReview": "このレビューを削除してもよろしいですか ?",
+    "contentPoweredByJustWatch": "JustWatch によるコンテンツ",
+    "flatrate": "ストリーミング",
+    "buy": "買う"
 }

@@ -81,5 +81,8 @@
     "anErrorHasOccurred": "Se ha producido un error",
     "reviewSuccessfullyUpdated": "Reseña actualizada con éxito",
     "yourAccountHasBeenSuccessfullyDeleted": "Su cuenta ha sido eliminada con éxito",
-    "areYouSureYouWantToDeleteThisReview": "¿Seguro que quieres eliminar esta crítica?"
+    "areYouSureYouWantToDeleteThisReview": "¿Seguro que quieres eliminar esta crítica?",
+    "contentPoweredByJustWatch": "Contenido impulsado por JustWatch",
+    "flatrate": "Streaming",
+    "buy": "Compras"
 }

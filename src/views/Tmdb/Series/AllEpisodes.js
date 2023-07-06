@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, FlatList, Image } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import moment from 'moment/moment'
 import dot from '../../../styles/pages/dot'
-import { seasonDetails } from '../../../redux/actions/tmdb/series/detailsSeason'
+import { seasonDetails, resetSeasonDetails } from '../../../redux/actions/tmdb/series/detailsSeason'
 import { useTranslation } from 'react-i18next'
 
 const AllEpisodes = ({ route }) => {
@@ -17,6 +17,12 @@ const AllEpisodes = ({ route }) => {
   useEffect(() => {
     dispatch(seasonDetails(id, seasonNumber, language))
   }, [id, seasonNumber])
+
+    useEffect(() => {
+    return () => {
+      dispatch(resetSeasonDetails())
+    }
+  }, [])
 
   const renderItem = (item) => {
     return (

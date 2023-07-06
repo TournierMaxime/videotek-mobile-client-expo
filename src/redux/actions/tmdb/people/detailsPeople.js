@@ -12,3 +12,7 @@ export const peopleDetails = (id, language) => async (dispatch) => {
     throw error
   }
 };
+
+export const resetPeopleDetails = () => ({
+  type: 'RESET_PEOPLE_DETAILS',
+})

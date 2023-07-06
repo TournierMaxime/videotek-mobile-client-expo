@@ -12,3 +12,7 @@ export const nowPlaying = (page, target = 'nowPlaying', language) => async (disp
         throw error
     }
 };
+
+export const resetNowPlaying = () => ({
+  type: 'RESET_NOW_PLAYING',
+})

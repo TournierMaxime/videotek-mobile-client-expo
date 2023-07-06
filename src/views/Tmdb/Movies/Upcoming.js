@@ -9,7 +9,7 @@ import {
   ActivityIndicator,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { upcoming } from '../../../redux/actions/tmdb/movies/upcoming'
+import { upcoming, resetUpcoming } from '../../../redux/actions/tmdb/movies/upcoming'
 import useLoadMore from '../../../utils/LoadMore'
 import { truncateTitle } from '../../../utils/Truncate'
 import { useNavigation } from '@react-navigation/native'
@@ -53,6 +53,12 @@ const Upcoming = () => {
       }
     }
   }, [upcomingResults])
+
+    useEffect(() => {
+    return () => {
+      dispatch(resetUpcoming())
+    }
+  }, [])
 
   return (
     <View style={styles.container}>

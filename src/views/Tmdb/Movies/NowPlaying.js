@@ -9,7 +9,7 @@ import {
   ActivityIndicator,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { nowPlaying } from '../../../redux/actions/tmdb/movies/nowPlaying'
+import { nowPlaying, resetNowPlaying } from '../../../redux/actions/tmdb/movies/nowPlaying'
 import useLoadMore from '../../../utils/LoadMore'
 import { truncateTitle } from '../../../utils/Truncate'
 import { useNavigation } from '@react-navigation/native'
@@ -62,6 +62,12 @@ const NowPlaying = () => {
 
     updateResults()
   }, [nowPlayingResults])
+
+    useEffect(() => {
+    return () => {
+      dispatch(resetNowPlaying())
+    }
+  }, [])
 
   return (
     <View style={styles.container}>

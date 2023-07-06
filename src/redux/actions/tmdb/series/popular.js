@@ -12,3 +12,7 @@ export const popular = (page, target = 'popular', language) => async (dispatch) 
     throw error
   }
 };
+
+export const resetPopular = () => ({
+  type: 'RESET_POPULAR',
+})

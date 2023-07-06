@@ -4,9 +4,13 @@ import { numberWithCommas } from '../../../utils/NumberWithCommas'
 import details from '../../../styles/pages/details'
 import moment from 'moment'
 import Accordion from '../../../components/Accordion'
+import { useSelector } from 'react-redux'
 
 const Production = ({ movie, t, language }) => {
   moment.locale(language)
+  const lang = language.toUpperCase()
+
+  const releases = useSelector((state) => state.releaseDates.data.results)
 
   const productionCompanies = (data) => {
     if (!data) return null
@@ -42,14 +46,41 @@ const Production = ({ movie, t, language }) => {
     )
   }
 
-  const release = (data) => {
-    if (!data) return null
+  const releaseByCountry = (releaseDates, language) => {
+    switch (language) {
+      case 'EN-GB':
+        language = 'US'
+        break
+      case 'ZH-CN':
+        language = 'CN'
+        break
+      case 'JA':
+        language = 'JP'
+        break
+      case 'KO':
+        language = 'KR'
+        break
+          
+    }
     return (
       <Accordion title={t('release')}>
         <View style={styles.mainContainer}>
-          <View style={styles.flatListViewContainer}>
-            <Text style={styles.tags}>{moment(data).format('L')}</Text>
-          </View>
+          {releaseDates.map((releaseDate, index) => {
+            if (releaseDate.iso_3166_1 !== language) return null
+            return (
+              <View key={index}>
+                {releaseDate.release_dates.map((releaseDate, index) => {
+                  return (
+                    <View style={styles.flatListViewContainer} key={index}>
+                      <Text style={styles.tags}>
+                        {moment(releaseDate.release_date).format('L')} {releaseDate.note ? `- ${releaseDate.note}` : null}
+                      </Text>
+                    </View>
+                  )
+                })}
+              </View>
+            )
+          })}
         </View>
       </Accordion>
     )
@@ -87,7 +118,7 @@ const Production = ({ movie, t, language }) => {
       <View style={styles.technicalSheetViewContainer}>
         <Text style={styles.title}>{t('production')}</Text>
       </View>
-      {release(movie.release_date)}
+      {releaseByCountry(releases, lang)}
       {budget(movie.budget)}
       {revenue(movie.revenue)}
       {productionCompanies(movie?.production_companies)}

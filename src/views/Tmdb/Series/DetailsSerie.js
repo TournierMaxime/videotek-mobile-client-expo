@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { serieDetails } from '../../../redux/actions/tmdb/series/detailsSerie'
+import { serieDetails, resetSerieDetails } from '../../../redux/actions/tmdb/series/detailsSerie'
 import { serieCrew } from '../../../redux/actions/tmdb/series/serieCrew'
 import { LinearGradient } from 'expo-linear-gradient'
 import Runtime from '../../../utils/RunTime'
@@ -48,6 +48,12 @@ const DetailsSerie = ({ route }) => {
 
     fetchData()
   }, [dispatch, id])
+
+    useEffect(() => {
+    return () => {
+      dispatch(resetSerieDetails())
+    }
+  }, [])
 
   const ProductionMemoized = React.memo(Production)
   const OverViewMemoized = React.memo(OverView)

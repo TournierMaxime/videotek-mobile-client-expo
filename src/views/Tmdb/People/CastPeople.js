@@ -12,7 +12,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'
 import { useTranslation } from 'react-i18next'
-import { peopleCareer } from '../../../redux/actions/tmdb/people/careerPeople'
+import { peopleCareer, resetPeopleCareer } from '../../../redux/actions/tmdb/people/careerPeople'
 
 const CastPeople = ({ route }) => {
   const { id, name } = route.params
@@ -97,6 +97,12 @@ const CastPeople = ({ route }) => {
   useEffect(() => {
     dispatch(peopleCareer(id, language))
   }, [id])
+
+    useEffect(() => {
+    return () => {
+      dispatch(resetPeopleCareer())
+    }
+  }, [])
 
   return (
     <View style={styles.container}>

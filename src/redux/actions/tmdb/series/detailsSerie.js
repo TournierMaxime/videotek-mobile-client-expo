@@ -12,3 +12,7 @@ export const serieDetails = (id, language) => async (dispatch) => {
     throw error
   }
 };
+
+export const resetSerieDetails = () => ({
+  type: 'RESET_SERIE_DETAILS',
+})

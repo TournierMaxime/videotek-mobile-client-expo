@@ -9,7 +9,10 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { peopleDetails } from '../../../redux/actions/tmdb/people/detailsPeople'
+import {
+  peopleDetails,
+  resetPeopleDetails,
+} from '../../../redux/actions/tmdb/people/detailsPeople'
 import { LinearGradient } from 'expo-linear-gradient'
 import details from '../../../styles/pages/details'
 import Refresh from '../../../utils/Refresh'
@@ -94,6 +97,12 @@ const DetailsPeople = ({ route }) => {
 
     fetchData()
   }, [dispatch, id])
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetPeopleDetails())
+    }
+  }, [])
 
   const OverViewMemoized = React.memo(OverView)
 
@@ -183,7 +192,12 @@ const styles = StyleSheet.create({
   posterPath: details.posterPath,
   infoViewContainer: details.infoViewContainer,
   viewOverviewContainer: details.viewOverviewContainer,
-  headerTitle: details.headerTitle,
+  headerTitle: {
+    fontSize: 20,
+    color: 'white',
+    marginVertical: 5,
+    width: '100%',
+  },
   textOverview: details.textOverview,
   titleAndDot: details.titleAndDot,
 })

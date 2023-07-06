@@ -12,3 +12,7 @@ export const movieDetails = (id, language) => async (dispatch) => {
     throw error
   }
 };
+
+export const resetMovieDetails = () => ({
+  type: 'RESET_MOVIE_DETAILS',
+})

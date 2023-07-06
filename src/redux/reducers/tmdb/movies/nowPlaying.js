@@ -13,7 +13,7 @@ const initialState = {
     loading: false,
     error: null,
   },
-};
+}
 
 export default function nowPlayingReducer(state = initialState, action) {
   switch (action.type) {
@@ -26,7 +26,7 @@ export default function nowPlayingReducer(state = initialState, action) {
             loading: true,
             error: null,
           },
-        };
+        }
       } else if (action.target === 'nowPlayingPagination') {
         return {
           ...state,
@@ -35,9 +35,9 @@ export default function nowPlayingReducer(state = initialState, action) {
             loading: true,
             error: null,
           },
-        };
+        }
       }
-      break;
+      break
     case 'NOW_PLAYING_SUCCESS':
       if (action.target === 'nowPlaying') {
         return {
@@ -49,7 +49,7 @@ export default function nowPlayingReducer(state = initialState, action) {
             total_pages: action.payload.total_pages,
             loading: false,
           },
-        };
+        }
       } else if (action.target === 'nowPlayingPagination') {
         return {
           ...state,
@@ -60,9 +60,9 @@ export default function nowPlayingReducer(state = initialState, action) {
             total_pages: action.payload.total_pages,
             loading: false,
           },
-        };
+        }
       }
-      break;
+      break
     case 'NOW_PLAYING_FAILURE':
       if (action.target === 'nowPlaying') {
         return {
@@ -72,7 +72,7 @@ export default function nowPlayingReducer(state = initialState, action) {
             error: action.payload,
             loading: false,
           },
-        };
+        }
       } else if (action.target === 'nowPlayingPagination') {
         return {
           ...state,
@@ -81,10 +81,12 @@ export default function nowPlayingReducer(state = initialState, action) {
             error: action.payload,
             loading: false,
           },
-        };
+        }
       }
-      break;
+      break
+    case 'RESET_NOW_PLAYING':
+      return initialState
     default:
-      return state;
+      return state
   }
 }

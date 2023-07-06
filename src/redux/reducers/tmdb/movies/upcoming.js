@@ -15,7 +15,7 @@ const initialState = {
     loading: false,
     error: null,
   },
-};
+}
 
 export default function upcomingReducer(state = initialState, action) {
   switch (action.type) {
@@ -28,7 +28,7 @@ export default function upcomingReducer(state = initialState, action) {
             loading: true,
             error: null,
           },
-        };
+        }
       } else if (action.target === 'upcomingPagination') {
         return {
           ...state,
@@ -37,9 +37,9 @@ export default function upcomingReducer(state = initialState, action) {
             loading: true,
             error: null,
           },
-        };
+        }
       }
-      break;
+      break
     case 'UPCOMING_SUCCESS':
       if (action.target === 'upcoming') {
         return {
@@ -52,7 +52,7 @@ export default function upcomingReducer(state = initialState, action) {
             total_pages: action.payload.total_pages,
             loading: false,
           },
-        };
+        }
       } else if (action.target === 'upcomingPagination') {
         return {
           ...state,
@@ -64,9 +64,9 @@ export default function upcomingReducer(state = initialState, action) {
             total_pages: action.payload.total_pages,
             loading: false,
           },
-        };
+        }
       }
-      break;
+      break
     case 'UPCOMING_FAILURE':
       if (action.target === 'upcoming') {
         return {
@@ -76,7 +76,7 @@ export default function upcomingReducer(state = initialState, action) {
             error: action.payload,
             loading: false,
           },
-        };
+        }
       } else if (action.target === 'upcomingPagination') {
         return {
           ...state,
@@ -85,10 +85,12 @@ export default function upcomingReducer(state = initialState, action) {
             error: action.payload,
             loading: false,
           },
-        };
+        }
       }
-      break;
+      break
+    case 'RESET_UPCOMING':
+      return initialState
     default:
-      return state;
+      return state
   }
 }

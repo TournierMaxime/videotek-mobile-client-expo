@@ -12,3 +12,7 @@ export const seasonDetails = (id, seasonNumber, language) => async (dispatch) =>
     throw error
   }
 };
+
+export const resetSeasonDetails = () => ({
+  type: 'RESET_SEASON_DETAILS',
+})
