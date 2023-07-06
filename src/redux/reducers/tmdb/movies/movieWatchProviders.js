@@ -1,43 +1,35 @@
 const initialState = {
   data: {
-    page: 1,
-    results: [],
-    total_pages: 0,
-    total_results: 0,
+    results: {},
   },
   loading: false,
   error: null,
 }
 
-export default function searchReducer(state = initialState, action) {
+export default function movieWatchProvidersReducer(
+  state = initialState,
+  action
+) {
   switch (action.type) {
-    case 'SEARCH_REQUEST':
+    case 'MOVIE_WATCH_PROVIDERS_REQUEST':
       return {
         ...state,
         loading: true,
         error: null,
       }
-    case 'SEARCH_SUCCESS':
+    case 'MOVIE_WATCH_PROVIDERS_SUCCESS':
       return {
         ...state,
         data: action.payload,
         loading: false,
       }
-    case 'SEARCH_FAILURE':
+    case 'MOVIE_WATCH_PROVIDERS_FAILURE':
       return {
         ...state,
         error: action.payload,
         loading: false,
       }
-    case 'SEARCH_RESET_REQUEST':
-      return {
-        ...state,
-        data: {
-          ...state.data,
-          results: [],
-        },
-      }
-    case 'RESET_SEARCH':
+    case 'RESET_MOVIE_WATCH_PROVIDERS':
       return initialState
     default:
       return state

@@ -99,10 +99,9 @@ const deleteAccountContainer = {
 }
 
 const trashButton = {
-    borderRadius: 5,
     padding: 5,
-    width: 'auto',
-    backgroundColor: 'red',
+    width: 40,
+    alignItems: 'center'
 }
 
 export default {

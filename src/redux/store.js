@@ -30,6 +30,7 @@ import updateCriticReducer from './reducers/critics/updateCritic'
 import detailsSeasonReducer from './reducers/tmdb/series/detailsSeason'
 import releaseDatesReducer from './reducers/tmdb/movies/releaseDates'
 import seasonWatchProvidersReducer from './reducers/tmdb/series/seasonWatchProviders'
+import movieWatchProvidersReducer from './reducers/tmdb/movies/movieWatchProviders'
 
 const rootReducer = {
   auth: auth,
@@ -60,7 +61,8 @@ const rootReducer = {
   updateCritic: updateCriticReducer,
   seasonDetails: detailsSeasonReducer,
   releaseDates: releaseDatesReducer,
-  seasonWatchProviders: seasonWatchProvidersReducer
+  seasonWatchProviders: seasonWatchProvidersReducer,
+  movieWatchProviders: movieWatchProvidersReducer
 };
 
 const store = configureStore({

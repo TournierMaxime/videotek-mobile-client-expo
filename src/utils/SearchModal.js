@@ -12,7 +12,7 @@ import modal from '../styles/components/modal'
 import form from '../styles/components/form'
 import { Ionicons } from 'react-native-vector-icons'
 import { useDispatch, useSelector } from 'react-redux'
-import { search } from '../redux/actions/tmdb/search'
+import { search, resetSearchModal } from '../redux/actions/tmdb/search'
 import { useNavigation } from '@react-navigation/native'
 import moment from 'moment'
 import { useTranslation } from 'react-i18next'
@@ -55,9 +55,11 @@ const SearchModal = ({ visible, setVisible }) => {
             setVisible(false)
           }}
         >
-          <Text style={{ width: '100%', fontSize: 16 }}>{`${item.original_title} (${moment(
-            item.release_date
-          ).format('YYYY')}) / ${t('film')}`}</Text>
+          <Text style={{ width: '100%', fontSize: 16 }}>{`${
+            item.original_title
+          } (${moment(item.release_date).format('YYYY')}) / ${t(
+            'film'
+          )}`}</Text>
         </TouchableOpacity>
       )
     } else if (item.name) {
@@ -74,9 +76,11 @@ const SearchModal = ({ visible, setVisible }) => {
               setVisible(false)
             }}
           >
-            <Text style={{ width: '100%', fontSize: 16 }}>{`${item.name} (${moment(item.first_air_date).format(
-              'YYYY'
-            )}) / ${t('serie')}`}</Text>
+            <Text style={{ width: '100%', fontSize: 16 }}>{`${
+              item.name
+            } (${moment(item.first_air_date).format('YYYY')}) / ${t(
+              'serie'
+            )}`}</Text>
           </TouchableOpacity>
         )
       }
@@ -93,7 +97,9 @@ const SearchModal = ({ visible, setVisible }) => {
               setVisible(false)
             }}
           >
-            <Text style={{ width: '100%', fontSize: 16 }}>{`${item.name} / ${t('celebrity')}`}</Text>
+            <Text style={{ width: '100%', fontSize: 16 }}>{`${item.name} / ${t(
+              'celebrity'
+            )}`}</Text>
           </TouchableOpacity>
         )
       }
@@ -112,6 +118,13 @@ const SearchModal = ({ visible, setVisible }) => {
       resetSearch()
     }
   }, [visible])
+
+  useEffect(() => {
+    return () => {
+      dispatch(search())
+      dispatch(resetSearchModal())
+    }
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -145,7 +158,7 @@ const SearchModal = ({ visible, setVisible }) => {
                       flexWrap: 'wrap',
                       marginLeft: 'auto',
                       marginRight: 'auto',
-                      width: '95%'
+                      width: '95%',
                     }}
                   >
                     <View

@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 import moment from 'moment/moment'
 import dot from '../../../styles/pages/dot'
 import { useTranslation } from 'react-i18next'
-import WatchProviders from './WatchProviders'
+import SeasonsWatchProviders from './SeasonsWatchProviders'
  
 const AllSeasons = ({ route }) => {
   const { title, id } = route.params
@@ -27,7 +27,7 @@ const AllSeasons = ({ route }) => {
       <FlatList
         data={serie?.seasons}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <WatchProviders item={item} id={id} language={language} t={t} />}
+        renderItem={({ item }) => <SeasonsWatchProviders item={item} id={id} language={language} t={t} />}
       />
     </View>
   )

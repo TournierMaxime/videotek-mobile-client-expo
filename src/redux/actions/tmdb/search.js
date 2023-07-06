@@ -13,3 +13,7 @@ export const search = (page, query, language) => async (dispatch) => {
     throw error
   }
 };
+
+export const resetSearchModal = () => ({
+  type: 'RESET_SEARCH',
+})

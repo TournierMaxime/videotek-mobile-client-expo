@@ -9,8 +9,9 @@ import {
   ActivityIndicator,
   Pressable,
   TouchableOpacity,
+  Image,
 } from 'react-native'
-import { Feather } from 'react-native-vector-icons'
+import { Feather, Ionicons } from 'react-native-vector-icons'
 import modal from '../../styles/components/modal'
 import useLoadMore from '../../utils/LoadMore'
 import card from '../../styles/components/card'
@@ -21,6 +22,9 @@ import AlertModal from '../../utils/AlertModal'
 import { Fragment } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
+import Rate from '../../utils/Rate'
+import dot from '../../styles/pages/dot'
+import message from '../../styles/components/message'
 
 const UserCritics = () => {
   const dispatch = useDispatch()
@@ -29,12 +33,13 @@ const UserCritics = () => {
   const criticsResults = useSelector((state) => state.searchCritic.data.critics)
   const userId = useSelector((state) => state.auth.data.user.userId)
   const [selectedCriticId, setSelectedCriticId] = useState(null)
+  const [allResults, setAllResults] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [modalVisible, setModalVisible] = useState(false)
 
   const { i18n, t } = useTranslation()
   const language = i18n.language
   moment.locale(language)
-
-  const [modalVisible, setModalVisible] = useState(false)
 
   const handleModal = (criticId) => {
     setSelectedCriticId(criticId)
@@ -45,8 +50,6 @@ const UserCritics = () => {
     criticsData.page,
     criticsData.totalPages
   )
-  const [allResults, setAllResults] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     setIsLoading(true)
@@ -69,82 +72,102 @@ const UserCritics = () => {
     }
   }, [criticsResults])
 
+  const renderItem = (item, index) => {
+    return (
+      <TouchableOpacity
+        key={index}
+        onPress={() =>
+          navigation.navigate('UpdateCritic', {
+            criticId: item.criticId,
+            userId,
+          })
+        }
+      >
+        <View style={styles.renderItemContainer}>
+          <View style={{ alignItems: 'center' }}>
+            {item.User.image ? (
+              <Image
+                style={styles.image}
+                source={{
+                  uri: `${item.User.image}?t=${new Date().getTime()}`,
+                }}
+              />
+            ) : (
+              <Image
+                style={styles.image}
+                source={require('../../assets/image/No_Image_Available.jpg')}
+              />
+            )}
+            <Rate rate={item.rate} />
+          </View>
+          <View style={styles.renderItemDetails}>
+            <Text style={styles.renderItemTitle}>
+              {item.User.userName} | {moment(item.created).format('LLL')}
+            </Text>
+            <Text style={styles.renderItemOverview}>{item.title}</Text>
+            <Text style={styles.renderItemOverview}>{item.content}</Text>
+            <View style={{ alignItems: 'flex-end', marginRight: 50 }}>
+              {item.userId === userId ? (
+                <Fragment>
+                  <Pressable
+                    style={styles.trashButton}
+                    onPress={() => handleModal(item.criticId)}
+                  >
+                    <Feather name='trash-2' size={25} color='red' />
+                  </Pressable>
+                  <AlertModal
+                    message={t('areYouSureYouWantToDeleteThisReview')}
+                    action={handleDelete}
+                    visible={modalVisible}
+                    setVisible={setModalVisible}
+                    t={t}
+                  />
+                </Fragment>
+              ) : null}
+            </View>
+          </View>
+        </View>
+      </TouchableOpacity>
+    )
+  }
+
+  const noDataFound = () => (
+    <View style={styles.containerMessage}>
+      <Ionicons name='information-circle-outline' size={24} color='#696cff' />
+      <Text style={styles.messageText}>
+        {t('noCritic')} {userId}
+      </Text>
+    </View>
+  )
+
+  const handleDelete = async () => {
+    if (selectedCriticId) {
+      await dispatch(deleteCritic(selectedCriticId)).then(() =>
+        setModalVisible(false)
+      )
+      setAllResults((prevResults) =>
+        prevResults.filter((critic) => critic.criticId !== selectedCriticId)
+      )
+      await dispatch(searchCriticByUser(userId, 1))
+      setSelectedCriticId(null)
+    }
+  }
+
   return (
     <Fragment>
       <Text style={styles.modalTitle}>{t('critics')}</Text>
-      <FlatList
-        data={allResults}
-        keyExtractor={(item, index) => `${index}`}
-        onEndReached={
-          isLoading === true ? (
-            <ActivityIndicator
-              style={styles.loader}
-              size='large'
-              color='#0000ff'
-            />
-          ) : (
-            loadMore
-          )
-        }
-        onEndReachedThreshold={0.5}
-        renderItem={({ item, index }) => {
-          const handleDelete = async () => {
-            if (selectedCriticId) {
-              await dispatch(deleteCritic(selectedCriticId)).then(() =>
-                setModalVisible(false)
-              )
-              setAllResults((prevResults) =>
-                prevResults.filter(
-                  (critic) => critic.criticId !== selectedCriticId
-                )
-              )
-              await dispatch(searchCriticByUser(userId, 1))
-              setSelectedCriticId(null)
-            }
-          }
-
-          return (
-            <Fragment>
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('UpdateCritic', {
-                    criticId: item.criticId,
-                    userId,
-                  })
-                }
-              >
-                <View style={styles.criticCardContainer} key={index}>
-                  <View style={styles.criticHeaderContainer}>
-                    <Text style={styles.criticTitle}>{item.title}</Text>
-                    <Text style={styles.criticTitle}>{item.User.userName}</Text>
-                  </View>
-                  <Text style={styles.criticContent}>{item.content}</Text>
-                  <Text>
-                    {moment(item.created).locale(language).format('LLL')}
-                  </Text>
-                  {item.userId === userId ? (
-                    <Fragment>
-                      <Pressable
-                        style={styles.trashButton}
-                        onPress={() => handleModal(item.criticId)}
-                      >
-                        <Feather name='trash-2' size={25} color='white' />
-                      </Pressable>
-                      <AlertModal
-                        message={t('areYouSureYouWantToDeleteThisReview')}
-                        action={handleDelete}
-                        visible={modalVisible}
-                        setVisible={setModalVisible}
-                        t={t}
-                      />
-                    </Fragment>
-                  ) : null}
-                </View>
-              </TouchableOpacity>
-            </Fragment>
-          )
-        }}
-      />
+      {isLoading ? (
+        <ActivityIndicator size='large' color='#0000ff' />
+      ) : (
+        <FlatList
+          data={allResults}
+          keyExtractor={(item, index) => `${index}`}
+          ListEmptyComponent={noDataFound}
+          onEndReached={() => loadMore()}
+          onEndReachedThreshold={0.5}
+          renderItem={({ item, index }) => renderItem(item, index)}
+        />
+      )}
     </Fragment>
   )
 }
@@ -163,6 +186,21 @@ const styles = StyleSheet.create({
   deleteButton: button.deleteButton,
   buttonText: button.buttonText,
   trashButton: button.trashButton,
+  renderItemContainer: dot.renderItemContainer,
+  renderItemTitle: dot.renderItemTitle,
+  renderItemOverview: dot.renderItemOverview,
+  renderItemDetails: dot.renderItemDetails,
+  seasonTitle: dot.seasonTitle,
+  containerMessage: message.containerMessage,
+  messageText: message.messageText,
+  image: {
+    width: 80,
+    height: 80,
+    resizeMode: 'cover',
+    borderRadius: 15,
+    marginLeft: 15,
+    marginBottom: 5,
+  },
 })
 
 export default UserCritics

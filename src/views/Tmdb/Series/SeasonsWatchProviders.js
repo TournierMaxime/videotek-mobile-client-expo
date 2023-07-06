@@ -10,7 +10,7 @@ import Rate from '../../../utils/Rate'
 import dot from '../../../styles/pages/dot'
 import moment from 'moment'
 
-const WatchProviders = ({ id, item, language, t }) => {
+const SeasonsWatchProviders = ({ id, item, language, t }) => {
   const dispatch = useDispatch()
   const navigation = useNavigation()
   const providers = useSelector(
@@ -187,4 +187,4 @@ const styles = StyleSheet.create({
   seasonTitle: dot.seasonTitle,
 })
 
-export default WatchProviders
+export default SeasonsWatchProviders

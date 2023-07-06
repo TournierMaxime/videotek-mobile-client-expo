@@ -5,8 +5,9 @@ import details from '../../../styles/pages/details'
 import moment from 'moment'
 import Accordion from '../../../components/Accordion'
 import { useSelector } from 'react-redux'
+import MovieWatchProviders from './MovieWatchProviders'
 
-const Production = ({ movie, t, language }) => {
+const Production = ({ id, movie, t, language }) => {
   moment.locale(language)
   const lang = language.toUpperCase()
 
@@ -121,6 +122,7 @@ const Production = ({ movie, t, language }) => {
       {releaseByCountry(releases, lang)}
       {budget(movie.budget)}
       {revenue(movie.revenue)}
+      <MovieWatchProviders id={id} language={language} t={t} />
       {productionCompanies(movie?.production_companies)}
       {productionCountries(movie?.production_countries)}
     </View>

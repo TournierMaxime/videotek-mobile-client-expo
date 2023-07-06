@@ -9,7 +9,10 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { movieDetails, resetMovieDetails } from '../../../redux/actions/tmdb/movies/detailsMovie'
+import {
+  movieDetails,
+  resetMovieDetails,
+} from '../../../redux/actions/tmdb/movies/detailsMovie'
 import { movieCrew } from '../../../redux/actions/tmdb/movies/movieCrew'
 import { LinearGradient } from 'expo-linear-gradient'
 import Runtime from '../../../utils/RunTime'
@@ -23,6 +26,7 @@ import { Entypo } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import { releaseDates } from '../../../redux/actions/tmdb/movies/releaseDates'
+import { movieWatchProviders, resetMovieWatchProviders } from '../../../redux/actions/tmdb/movies/movieWatchProviders'
 
 const DetailsMovie = ({ route }) => {
   const dispatch = useDispatch()
@@ -39,6 +43,7 @@ const DetailsMovie = ({ route }) => {
     await dispatch(movieDetails(id, language))
     await dispatch(movieCrew(id, language))
     await dispatch(releaseDates(id))
+    await dispatch(movieWatchProviders(id))
   }
 
   useEffect(() => {
@@ -47,15 +52,17 @@ const DetailsMovie = ({ route }) => {
       await dispatch(movieDetails(id, language))
       await dispatch(movieCrew(id, language))
       await dispatch(releaseDates(id))
+      await dispatch(movieWatchProviders(id))
       setLoading(false)
     }
 
     fetchData()
   }, [dispatch, id])
 
-    useEffect(() => {
+  useEffect(() => {
     return () => {
       dispatch(resetMovieDetails())
+      dispatch(resetMovieWatchProviders())
     }
   }, [])
 
@@ -154,7 +161,12 @@ const DetailsMovie = ({ route }) => {
 
               <OverViewMemoized content={movie.overview} t={t} />
             </View>
-            <ProductionMemoized id={id} movie={movie} t={t} language={language} />
+            <ProductionMemoized
+              id={id}
+              movie={movie}
+              t={t}
+              language={language}
+            />
           </Fragment>
         )
       )}

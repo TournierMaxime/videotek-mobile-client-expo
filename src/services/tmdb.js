@@ -70,6 +70,14 @@ const MovieDetails = (id, language) => {
   });
 };
 
+const MovieWatchProviders = (id) => {
+  return http.get(`/movie/${id}/watch/providers`, {
+    params: {
+      api_key: EXPO_TMDB_API_KEY
+    },
+  });
+};
+
 const SerieDetails = (id, language) => {
   return http.get(`/tv/${id}`, {
     params: {
@@ -179,5 +187,6 @@ export {
   PeopleCareer,
   Trending,
   SeasonDetails,
-  SeasonWatchProviders
+  SeasonWatchProviders,
+  MovieWatchProviders
 };
