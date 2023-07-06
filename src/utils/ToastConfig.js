@@ -1,6 +1,7 @@
 import React from 'react'
 import Toast, { SuccessToast, ErrorToast, InfoToast } from 'react-native-toast-message';
 import { View, Text } from 'react-native';
+import { moderateScale } from './Responsive'
 
 const ToastConfig = () => {
     const toastConfig = {
@@ -15,7 +16,7 @@ const ToastConfig = () => {
             }}
             contentContainerStyle={{ paddingHorizontal: 15 }}
             text1Style={{
-                fontSize: 13,
+                fontSize: moderateScale(13),
                 fontWeight: '400'
             }}
           />
@@ -31,7 +32,7 @@ const ToastConfig = () => {
                 }}
                 contentContainerStyle={{ paddingHorizontal: 15 }}
                 text1Style={{
-                    fontSize: 13,
+                    fontSize: moderateScale(13),
                     fontWeight: '400'
                 }}
             />
@@ -47,14 +48,14 @@ const ToastConfig = () => {
             }}
             contentContainerStyle={{ paddingHorizontal: 15 }}
             text1Style={{
-                fontSize: 13,
+                fontSize: moderateScale(13),
                 fontWeight: '400'
             }}
           />
         ),
 
         tomatoToast: ({ text1, props }) => (
-          <View style={{ height: 60, width: '100%', backgroundColor: 'tomato' }}>
+          <View style={{ height: moderateScale(60), width: '100%', backgroundColor: 'tomato' }}>
             <Text>{text1}</Text>
             <Text>{props.uuid}</Text>
           </View>

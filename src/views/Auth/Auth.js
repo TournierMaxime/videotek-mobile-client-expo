@@ -4,6 +4,7 @@ import button from '../../styles/components/button'
 import { useNavigation } from '@react-navigation/native'
 import { Image } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { moderateScale } from '../../utils/Responsive'
 
 const AuthScreen = () => {
   const navigation = useNavigation()
@@ -48,12 +49,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    width: 300,
-    height: 150,
+    width: moderateScale(300),
+    height: moderateScale(150),
     resizeMode: 'contain',
   },
   title: {
-    fontSize: 20,
+    fontSize: moderateScale(20),
     fontWeight: 'bold',
     color: 'grey',
   },

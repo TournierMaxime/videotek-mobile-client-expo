@@ -22,6 +22,7 @@ import SVGImdb from '../../../utils/SVGImdb'
 import { Entypo } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
+import { moderateScale } from '../../../utils/Responsive'
 
 const DetailsPeople = ({ route }) => {
   const dispatch = useDispatch()
@@ -143,7 +144,7 @@ const DetailsPeople = ({ route }) => {
                       top: 5,
                     }}
                     name='dots-three-vertical'
-                    size={24}
+                    size={moderateScale(25)}
                     color='black'
                   />
                 </TouchableOpacity>
@@ -193,7 +194,7 @@ const styles = StyleSheet.create({
   infoViewContainer: details.infoViewContainer,
   viewOverviewContainer: details.viewOverviewContainer,
   headerTitle: {
-    fontSize: 20,
+    fontSize: moderateScale(20),
     color: 'white',
     marginVertical: 5,
     width: '100%',

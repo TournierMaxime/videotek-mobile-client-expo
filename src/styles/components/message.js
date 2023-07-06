@@ -1,8 +1,10 @@
+import { moderateScale } from '../../utils/Responsive'
+
 const containerMessage = {
-  borderRadius: 5,
+  borderRadius: moderateScale(5),
   backgroundColor: "#e9e9ff",
-  padding: 10,
-  marginBottom: 15,
+  padding: moderateScale(10),
+  marginBottom: moderateScale(15),
   flexDirection: "row",
   justifyContent: "center",
   alignItems: "center",

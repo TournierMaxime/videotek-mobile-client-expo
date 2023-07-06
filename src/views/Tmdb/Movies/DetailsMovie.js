@@ -27,6 +27,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import { releaseDates } from '../../../redux/actions/tmdb/movies/releaseDates'
 import { movieWatchProviders, resetMovieWatchProviders } from '../../../redux/actions/tmdb/movies/movieWatchProviders'
+import { moderateScale } from '../../../utils/Responsive'
 
 const DetailsMovie = ({ route }) => {
   const dispatch = useDispatch()
@@ -112,7 +113,7 @@ const DetailsMovie = ({ route }) => {
                       top: 5,
                     }}
                     name='dots-three-vertical'
-                    size={24}
+                    size={moderateScale(25)}
                     color='black'
                   />
                 </TouchableOpacity>

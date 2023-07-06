@@ -1,3 +1,5 @@
+import { moderateScale } from '../../utils/Responsive'
+
 const cardContainer = {
     flexDirection: 'column',
     alignItems: 'center',
@@ -23,11 +25,11 @@ const cardInfo = {
 }
 
 const textInfo = {
-    fontSize: 25
+    fontSize: moderateScale(25)
 }
 
 const cardTitle = {
-    fontSize: 25
+    fontSize: moderateScale(25)
 }
 
 const buttonIncDec = {
@@ -76,15 +78,15 @@ const criticCardContainer = {
 }
 
 const criticTitle = {
-    fontSize: 18,
+    fontSize: moderateScale(18),
     fontWeight: 'bold',
     marginBottom: 20
 }
 
 const criticContent = {
     textAlign: 'justify',
-    lineHeight: 25,
-    fontSize: 16,
+    lineHeight: moderateScale(25),
+    fontSize: moderateScale(16),
     marginBottom: 20
 }
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Text, StyleSheet } from 'react-native'
+import { moderateScale } from './Responsive'
 
 const Runtime = ({ time, isMovie, t }) => {
   if (!time) return null
@@ -15,20 +16,24 @@ const Runtime = ({ time, isMovie, t }) => {
 
   const hasHours = hours > 0
 
-  const runtime = () => { 
+  const runtime = () => {
     if (time.length === 0) {
       return
     }
     return (
-    <Text style={{ color: 'white' }}>
-      {isMovie ? 
-      <Text style={styles.duration}>{t('duration')} {hasHours ? hours + 'H' : ''}
-      {minutes}Min</Text> : 
-      <Text style={styles.duration}>{t('duration')} {hasHours ? hours + 'H' : ''}
-      {minutes}Min / ep</Text>
-      
-      }
-    </Text>
+      <Text style={{ color: 'white' }}>
+        {isMovie ? (
+          <Text style={styles.duration}>
+            {t('duration')} {hasHours ? hours + 'H' : ''}
+            {minutes}Min
+          </Text>
+        ) : (
+          <Text style={styles.duration}>
+            {t('duration')} {hasHours ? hours + 'H' : ''}
+            {minutes}Min / ep
+          </Text>
+        )}
+      </Text>
     )
   }
 
@@ -37,8 +42,8 @@ const Runtime = ({ time, isMovie, t }) => {
 
 const styles = StyleSheet.create({
   duration: {
-    fontSize: 18
-  }
+    fontSize: moderateScale(18),
+  },
 })
 
 export default Runtime

@@ -16,6 +16,7 @@ import Rate from '../../utils/Rate'
 import { Ionicons } from 'react-native-vector-icons'
 import { searchCritic } from '../../redux/actions/critics/searchCritic'
 import { useTranslation } from 'react-i18next'
+import { moderateScale } from '../../utils/Responsive'
 
 const AllCritics = ({ route }) => {
   const { id, title } = route.params
@@ -96,8 +97,8 @@ const AllCritics = ({ route }) => {
 const styles = StyleSheet.create({
   container: dot.container,
   image: {
-    width: 80,
-    height: 80,
+    width: moderateScale(80),
+    height: moderateScale(80),
     resizeMode: 'cover',
     borderRadius: 15,
     marginLeft: 15,

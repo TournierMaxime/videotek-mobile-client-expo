@@ -16,6 +16,7 @@ import { search, resetSearchModal } from '../redux/actions/tmdb/search'
 import { useNavigation } from '@react-navigation/native'
 import moment from 'moment'
 import { useTranslation } from 'react-i18next'
+import { moderateScale } from './Responsive'
 
 const SearchModal = ({ visible, setVisible }) => {
   const dispatch = useDispatch()
@@ -55,7 +56,7 @@ const SearchModal = ({ visible, setVisible }) => {
             setVisible(false)
           }}
         >
-          <Text style={{ width: '100%', fontSize: 16 }}>{`${
+          <Text style={{ width: '100%', fontSize: moderateScale(16) }}>{`${
             item.original_title
           } (${moment(item.release_date).format('YYYY')}) / ${t(
             'film'
@@ -76,7 +77,7 @@ const SearchModal = ({ visible, setVisible }) => {
               setVisible(false)
             }}
           >
-            <Text style={{ width: '100%', fontSize: 16 }}>{`${
+            <Text style={{ width: '100%', fontSize: moderateScale(16) }}>{`${
               item.name
             } (${moment(item.first_air_date).format('YYYY')}) / ${t(
               'serie'
@@ -97,7 +98,7 @@ const SearchModal = ({ visible, setVisible }) => {
               setVisible(false)
             }}
           >
-            <Text style={{ width: '100%', fontSize: 16 }}>{`${item.name} / ${t(
+            <Text style={{ width: '100%', fontSize: moderateScale(16) }}>{`${item.name} / ${t(
               'celebrity'
             )}`}</Text>
           </TouchableOpacity>
@@ -142,7 +143,7 @@ const SearchModal = ({ visible, setVisible }) => {
           </View>
           <View style={styles.formContainer}>
             <TextInput
-              style={[styles.formInput, { fontSize: 16 }]}
+              style={[styles.formInput, { fontSize: moderateScale(16) }]}
               placeholder={t('search')}
               onChangeText={(text) => setQuery(text)}
               value={query}

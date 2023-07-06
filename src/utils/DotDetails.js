@@ -21,6 +21,7 @@ import { movieDetails } from '../redux/actions/tmdb/movies/detailsMovie'
 import { serieDetails } from '../redux/actions/tmdb/series/detailsSerie'
 import { peopleDetails } from '../redux/actions/tmdb/people/detailsPeople'
 import { useTranslation } from 'react-i18next'
+import { moderateScale } from './Responsive'
 
 const DotDetails = ({ route }) => {
   const { id, title } = route.params
@@ -55,16 +56,16 @@ const DotDetails = ({ route }) => {
               <SimpleLineIcons
                 style={styles.icon}
                 name='people'
-                size={25}
+                size={moderateScale(25)}
                 color='black'
               />
-              <Text>
+              <Text style={styles.textSize}>
                 {(movie && movie.id === id) || (serie && serie.id === id)
                   ? t('cast')
                   : t('filmography')}
               </Text>
             </View>
-            <Entypo name='chevron-small-right' size={25} color='black' />
+            <Entypo name='chevron-small-right' size={moderateScale(25)} color='black' />
           </View>
         </Cast>
         {(movie && movie.id === id) || (serie && serie.id === id) ? (
@@ -74,12 +75,12 @@ const DotDetails = ({ route }) => {
                 <SimpleLineIcons
                   style={styles.icon}
                   name='people'
-                  size={25}
+                  size={moderateScale(25)}
                   color='black'
                 />
-                <Text>{t('crew')}</Text>
+                <Text style={styles.textSize}>{t('crew')}</Text>
               </View>
-              <Entypo name='chevron-small-right' size={25} color='black' />
+              <Entypo name='chevron-small-right' size={moderateScale(25)} color='black' />
             </View>
           </Crew>
         ) : null}
@@ -90,12 +91,12 @@ const DotDetails = ({ route }) => {
                 <FontAwesome
                   style={styles.icon}
                   name='tv'
-                  size={25}
+                  size={moderateScale(25)}
                   color='black'
                 />
-                <Text>{t('seasons')}</Text>
+                <Text style={styles.textSize}>{t('seasons')}</Text>
               </View>
-              <Entypo name='chevron-small-right' size={25} color='black' />
+              <Entypo name='chevron-small-right' size={moderateScale(25)} color='black' />
             </View>
           </Seasons>
         ) : null}
@@ -106,12 +107,12 @@ const DotDetails = ({ route }) => {
                 <Ionicons
                   style={styles.icon}
                   name='videocam-outline'
-                  size={25}
+                  size={moderateScale(25)}
                   color='black'
                 />
-                <Text>{t('trailer')}</Text>
+                <Text style={styles.textSize}>{t('trailer')}</Text>
               </View>
-              <Entypo name='chevron-small-right' size={25} color='black' />
+              <Entypo name='chevron-small-right' size={moderateScale(25)} color='black' />
             </View>
           </Trailer>
         ) : null}
@@ -122,12 +123,12 @@ const DotDetails = ({ route }) => {
                 <Entypo
                   style={styles.icon}
                   name='new-message'
-                  size={25}
+                  size={moderateScale(25)}
                   color='black'
                 />
-                <Text>{t('writeAReview')}</Text>
+                <Text style={styles.textSize}>{t('writeAReview')}</Text>
               </View>
-              <Entypo name='chevron-small-right' size={25} color='black' />
+              <Entypo name='chevron-small-right' size={moderateScale(25)} color='black' />
             </View>
           </RedirectToCritic>
         ) : null}
@@ -138,14 +139,14 @@ const DotDetails = ({ route }) => {
                 <AntDesign
                   style={styles.icon}
                   name='message1'
-                  size={25}
+                  size={moderateScale(25)}
                   color='black'
                 />
-                <Text>
+                <Text style={styles.textSize}>
                   {t('critics')} {critics?.length > 0 ? critics?.length : 0}
                 </Text>
               </View>
-              <Entypo name='chevron-small-right' size={25} color='black' />
+              <Entypo name='chevron-small-right' size={moderateScale(25)} color='black' />
             </View>
           </Critics>
         ) : null}
@@ -166,6 +167,7 @@ const styles = StyleSheet.create({
   icon: profil.icon,
   textIconContainer: profil.textIconContainer,
   profilViewContainer: profil.profilViewContainer,
+  textSize: profil.textSize
 })
 
 export default DotDetails

@@ -1,9 +1,12 @@
+import { moderateScale } from '../../utils/Responsive'
+
 const loginButton = {
     flex: 1,
     padding: 5,
     alignItems: 'center',
     margin: 1,
-    backgroundColor: '#00AD4F'
+    backgroundColor: '#00AD4F',
+    width: 'auto'
 }
 
 const registerButton = {
@@ -11,7 +14,8 @@ const registerButton = {
     padding: 5,
     alignItems: 'center',
     margin: 1,
-    backgroundColor: '#476EFF'
+    backgroundColor: '#476EFF',
+    width: 'auto'
 }
 
 const forgetPasswordButton = {
@@ -19,12 +23,13 @@ const forgetPasswordButton = {
     padding: 5,
     alignItems: 'center',
     margin: 1,
-    backgroundColor: '#C90404'
+    backgroundColor: '#C90404',
+    width: 'auto'
 }
 
 const buttonText = {
     color: '#fff',
-    fontSize: 16,
+    fontSize: moderateScale(16),
     fontWeight: 'bold',
 }
 
@@ -35,31 +40,38 @@ const buttonContainer = {
 
 const formButton = {
     backgroundColor: '#22C55E',
-    padding: 5,
+    padding: 10,
+    borderRadius: 5,
     alignItems: 'center',
     marginRight: 10,
+    width: 'auto'
 }
 
 const formButtonRegister = {
     backgroundColor: '#476EFF',
-    padding: 5,
+    padding: 10,
     alignItems: 'center',
     marginRight: 10,
+    width: 'auto',
+    borderRadius: 5,
 }
 
 const formButtonLogin = {
     backgroundColor: '#00AD4F',
-    padding: 5,
+    padding: 10,
+    borderRadius: 5,
     alignItems: 'center',
     marginRight: 10,
-    //marginTop: 15
+    width: 'auto'
 }
 
 const formButtonForgetPassword = {
     backgroundColor: '#C90404',
-    padding: 5,
+    padding: 10,
     alignItems: 'center',
     marginRight: 10,
+    width: 'auto',
+    borderRadius: 5,
 }
 
 const orderButton = {
@@ -100,7 +112,7 @@ const deleteAccountContainer = {
 
 const trashButton = {
     padding: 5,
-    width: 40,
+    width: moderateScale(40),
     alignItems: 'center'
 }
 

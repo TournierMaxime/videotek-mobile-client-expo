@@ -22,6 +22,7 @@ import button from '../../../styles/components/button'
 import { Entypo } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
+import { moderateScale } from '../../../utils/Responsive'
 
 const DetailsSerie = ({ route }) => {
   const dispatch = useDispatch()
@@ -101,7 +102,7 @@ const DetailsSerie = ({ route }) => {
                       top: 5,
                     }}
                     name='dots-three-vertical'
-                    size={24}
+                    size={moderateScale(25)}
                     color='black'
                   />
                 </TouchableOpacity>

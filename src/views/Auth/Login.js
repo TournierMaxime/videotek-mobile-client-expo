@@ -15,6 +15,7 @@ import { ToastSuccess, ToastError } from '../../utils/Toast'
 import ToastConfig from '../../utils/ToastConfig'
 import { Fragment } from 'react'
 import { useTranslation } from 'react-i18next'
+import { moderateScale } from '../../utils/Responsive'
 
 const LoginScreen = () => {
   const dispatch = useDispatch()
@@ -65,7 +66,7 @@ const LoginScreen = () => {
         />
         <View style={styles.buttonContainer}>
           <TouchableOpacity
-            style={[styles.formButtonLogin, { width: '100%' }]}
+            style={styles.formButtonLogin}
             onPress={handleLogin}
           >
             <Text style={styles.buttonText}>{t('signIn')}</Text>
@@ -84,13 +85,13 @@ const LoginScreen = () => {
             style={{ alignItems: 'center' }}
             onPress={() => navigation.navigate('Register')}
           >
-            <Text style={{ color: '#0000EE' }}>{t('notRegistered')}</Text>
+            <Text style={{ color: '#0000EE', fontSize: moderateScale(16) }}>{t('notRegistered')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{ alignItems: 'center' }}
             onPress={handleForgetPassword}
           >
-            <Text style={{ color: '#0000EE' }}>{t('forgotYourPassword')}</Text>
+            <Text style={{ color: '#0000EE', fontSize: moderateScale(16) }}>{t('forgotYourPassword')}</Text>
           </TouchableOpacity>
         </View>
       </View>

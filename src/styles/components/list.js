@@ -1,3 +1,5 @@
+import { moderateScale } from '../../utils/Responsive'
+
 const container = {
     backgroundColor: '#efefef',
     alignItems: 'center',
@@ -5,15 +7,15 @@ const container = {
 }
 
 const title = {
-    fontSize: 24,
+    fontSize: moderateScale(24),
     marginLeft: 15,
     marginTop: 15,
     fontWeight: 'bold'
 }
 
 const image = {
-    width: 160,
-    height: 260,
+    width: moderateScale(160),
+    height: moderateScale(260),
     resizeMode: 'cover',
     borderRadius: 15,
     margin: 15
@@ -26,7 +28,7 @@ const flatListViewContainer = {
 
 const originalTitle = {
     textAlign: 'center',
-    fontSize: 16
+    fontSize: moderateScale(16)
 }
 
 export default { container, title, image, flatListViewContainer, originalTitle }

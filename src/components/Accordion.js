@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native'
 import { Entypo } from 'react-native-vector-icons'
 import accordion from '../styles/components/accordion'
+import { moderateScale } from '../utils/Responsive'
 
 const Accordion = ({ children, title }) => {
   const [expanded, setExpanded] = useState(false)
@@ -21,7 +22,7 @@ const Accordion = ({ children, title }) => {
         <Text style={styles.accordTitle}>{title}</Text>
         <Entypo
           name={expanded ? 'chevron-small-up' : 'chevron-small-down'}
-          size={25}
+          size={moderateScale(25)}
           color='black'
         />
       </TouchableOpacity>

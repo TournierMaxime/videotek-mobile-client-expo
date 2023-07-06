@@ -17,6 +17,7 @@ import button from '../../styles/components/button'
 import form from '../../styles/components/form'
 import * as ImagePicker from 'expo-image-picker'
 import { useTranslation } from 'react-i18next'
+import { moderateScale } from '../../utils/Responsive'
 
 const DetailsUser = ({ route }) => {
   const { userId } = route.params
@@ -129,7 +130,7 @@ const DetailsUser = ({ route }) => {
           <View>
             <Image
               source={{ uri: `${data.image}?t=${new Date().getTime()}` }}
-              style={{ width: 48, height: 48 }}
+              style={{ width: moderateScale(48), height: moderateScale(48) }}
             />
           </View>
           <View>
@@ -138,7 +139,7 @@ const DetailsUser = ({ route }) => {
         </View>
         <View style={styles.buttonContainer}>
           <TouchableOpacity
-            style={[styles.formButtonLogin, { width: '100%' }]}
+            style={styles.formButtonLogin}
             onPress={() => handleUpdate()}
           >
             <Text style={styles.buttonText}>{t('update')}</Text>

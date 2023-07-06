@@ -1,5 +1,6 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
+import { moderateScale } from './Responsive'
 
 const Rate = ({ rate }) => {
   const percent = (rate * 10).toFixed(0);
@@ -32,8 +33,8 @@ const Rate = ({ rate }) => {
 
 const styles = StyleSheet.create({
   viewContainer: {
-    width: 40,
-    height: 40,
+    width: moderateScale(40),
+    height: moderateScale(40),
     textAlign:'center',
     justifyContent: 'center',
     alignItems: 'center',
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   textContent: {
     fontWeight: 'bold',
     color: 'white',
-    fontSize: 20
+    fontSize: moderateScale(20)
   }
 })
 

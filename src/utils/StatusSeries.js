@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { moderateScale } from './Responsive'
 
 export default function StatusSeries({ status }) {
     switch (status) {
@@ -19,8 +20,8 @@ const styles = StyleSheet.create({
         display: 'flex'
     },
     ended: {
-        fontSize: 12,
-        borderRadius: 100,
+        fontSize: moderateScale(12),
+        borderRadius: moderateScale(100),
         margin: 5,
         paddingHorizontal: 5,
         textAlign: 'center',
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
         marginLeft: 15
     },
     returning: {
-        fontSize: 12,
+        fontSize: moderateScale(12),
         borderRadius: 10,
         padding: 5,
         textAlign: 'center',

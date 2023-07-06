@@ -1,21 +1,17 @@
-import {
-  verticalScale,
-  horizontalScale,
-  moderateScale,
-} from '../../utils/Responsive'
+import { moderateScale } from '../../utils/Responsive'
 
 const mainContainer = {
   display: 'flex',
-  flexDirection: 'column'
+  flexDirection: 'column',
 }
 
 const title = {
-  fontSize: 18,
+  fontSize: moderateScale(18),
   margin: 5,
 }
 
 const subTitle = {
-  fontSize: 16,
+  fontSize: moderateScale(16),
   marginHorizontal: 15,
   fontWeight: 'bold',
 }
@@ -26,8 +22,8 @@ const flatListViewContainer = {
 }
 
 const image = {
-  width: 50,
-  height: 50,
+  width: moderateScale(50),
+  height: moderateScale(50),
   resizeMode: 'contain',
   borderRadius: 15,
   marginLeft: 15,
@@ -35,7 +31,7 @@ const image = {
 }
 
 const tags = {
-  fontSize: 16,
+  fontSize: moderateScale(16),
   borderRadius: 8,
   marginLeft: 15,
   marginRight: 'auto',
@@ -57,7 +53,7 @@ const mainViewContainer = {
   display: 'flex',
   position: 'relative',
   width: '100%',
-  height: horizontalScale(600),
+  height: moderateScale(600),
 }
 
 const linearGradient = {
@@ -95,18 +91,18 @@ const viewOverviewContainer = {
 }
 
 const headerTitle = {
-  fontSize: 20,
+  fontSize: moderateScale(20),
   color: 'white',
   marginVertical: 5,
-  width: 250
+  width: moderateScale(250),
 }
 
 const textOverview = {
   color: 'white',
   textAlign: 'justify',
   marginTop: 5,
-  lineHeight: 20,
-  fontSize: 16,
+  lineHeight: moderateScale(20),
+  fontSize: moderateScale(16),
 }
 
 const headerViewContainer = {
@@ -129,8 +125,8 @@ const posterViewContainer = {
 }
 
 const posterPath = {
-  width: 140,
-  height: 200,
+  width: moderateScale(140),
+  height: moderateScale(200),
   resizeMode: 'cover',
   borderRadius: 5,
 }
@@ -153,7 +149,7 @@ const genresViewContainer = {
 }
 
 const genreText = {
-  fontSize: 14,
+  fontSize: moderateScale(14),
   borderRadius: 4,
   margin: 5,
   paddingHorizontal: 5,
@@ -169,7 +165,7 @@ const directorsViewContainer = {
 }
 
 const directorText = {
-  fontSize: 14,
+  fontSize: moderateScale(14),
   borderRadius: 4,
   margin: 5,
   paddingHorizontal: 5,
@@ -179,7 +175,7 @@ const directorText = {
 }
 
 const directorTitle = {
-  fontSize: 18,
+  fontSize: moderateScale(18),
   color: 'white',
   marginTop: 5,
 }

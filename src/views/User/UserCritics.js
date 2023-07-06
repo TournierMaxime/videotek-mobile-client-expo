@@ -25,6 +25,7 @@ import { useTranslation } from 'react-i18next'
 import Rate from '../../utils/Rate'
 import dot from '../../styles/pages/dot'
 import message from '../../styles/components/message'
+import { moderateScale } from '../../utils/Responsive'
 
 const UserCritics = () => {
   const dispatch = useDispatch()
@@ -113,7 +114,7 @@ const UserCritics = () => {
                     style={styles.trashButton}
                     onPress={() => handleModal(item.criticId)}
                   >
-                    <Feather name='trash-2' size={25} color='red' />
+                    <Feather name='trash-2' size={moderateScale(25)} color='red' />
                   </Pressable>
                   <AlertModal
                     message={t('areYouSureYouWantToDeleteThisReview')}
@@ -194,8 +195,8 @@ const styles = StyleSheet.create({
   containerMessage: message.containerMessage,
   messageText: message.messageText,
   image: {
-    width: 80,
-    height: 80,
+    width: moderateScale(80),
+    height: moderateScale(80),
     resizeMode: 'cover',
     borderRadius: 15,
     marginLeft: 15,

@@ -17,7 +17,12 @@ import ToastConfig from '../../utils/ToastConfig'
 import { useTranslation } from 'react-i18next'
 
 const RegisterScreen = () => {
-  const [data, setData] = useState({ userName: '', email: '', password: '', lang: '' })
+  const [data, setData] = useState({
+    userName: '',
+    email: '',
+    password: '',
+    lang: '',
+  })
   const dispatch = useDispatch()
   const navigation = useNavigation()
 
@@ -27,7 +32,7 @@ const RegisterScreen = () => {
 
   const handleRegister = async () => {
     try {
-      const response = await dispatch(createUser({...data, lang}))
+      const response = await dispatch(createUser({ ...data, lang }))
       ToastSuccess('success', t('yourAccountHasBeenCreated'), true)
       setTimeout(() => {
         navigation.navigate('ConfirmEmail', { userId: response.user.userId })
@@ -63,13 +68,15 @@ const RegisterScreen = () => {
         value={data.password}
         onChangeText={(text) => setData({ ...data, password: text })}
       />
-      <TouchableOpacity
-        style={styles.formButtonRegister}
-        onPress={handleRegister}
-      >
-        <Text style={styles.buttonText}>{t('signUp')}</Text>
-        <ToastConfig />
-      </TouchableOpacity>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          style={styles.formButtonRegister}
+          onPress={handleRegister}
+        >
+          <Text style={styles.buttonText}>{t('signUp')}</Text>
+          <ToastConfig />
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }

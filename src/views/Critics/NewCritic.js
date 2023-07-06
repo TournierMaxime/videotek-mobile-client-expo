@@ -14,12 +14,12 @@ import { createCritic } from '../../redux/actions/critics/createCritic'
 import { searchCritic } from '../../redux/actions/critics/searchCritic'
 import { useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-//import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 
 const NewCritic = ({ route }) => {
   const dispatch = useDispatch()
   const { title, id } = route.params
-  //const navigation = useNavigation()
+  const navigation = useNavigation()
 
   const { t } = useTranslation()
 
@@ -36,9 +36,12 @@ const NewCritic = ({ route }) => {
       await dispatch(createCritic(data))
       ToastSuccess('success', t('reviewSuccessfullyPublished'), true)
       dispatch(searchCritic(id, 1))
-      /* setTimeout(() => {
-        navigation.navigate('DetailsMovie', { title: data.titleMovieOrSerie, id: data.idMovieOrSerie })
-      }, 80) */
+      setTimeout(() => {
+        navigation.navigate('DetailsMovie', {
+          title: data.titleMovieOrSerie,
+          id: data.idMovieOrSerie,
+        })
+      }, 80)
     } catch (error) {
       console.log(error.response.data.errMsg)
       ToastError('error', error.response.data.errMsg, false)
@@ -47,7 +50,9 @@ const NewCritic = ({ route }) => {
 
   return (
     <View style={styles.formContainer}>
-      <Text style={styles.formLabel}>{t('criticOf')} {title}</Text>
+      <Text style={styles.formLabel}>
+        {t('criticOf')} {title}
+      </Text>
       <Text style={styles.formLabel}>{t('title')}</Text>
       <TextInput
         style={styles.formInput}

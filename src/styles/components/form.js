@@ -1,8 +1,10 @@
+import { moderateScale } from '../../utils/Responsive'
+
 const formContainer = {
     backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 10,
-    margin: 20,
+    padding: moderateScale(20),
+    borderRadius: moderateScale(10),
+    margin: moderateScale(20),
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -15,15 +17,16 @@ const formContainer = {
 
 const formInput = {
     backgroundColor: '#f2f2f2',
-    padding: 10,
-    borderRadius: 5,
-    marginBottom: 10,
+    padding: moderateScale(10),
+    borderRadius: moderateScale(5),
+    marginBottom: moderateScale(10),
+    fontSize: moderateScale(16)
 }
 
 const formLabel = {
-    fontSize: 14,
+    fontSize: moderateScale(14),
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: moderateScale(10),
 }
 
 export default { formLabel, formInput, formContainer, }

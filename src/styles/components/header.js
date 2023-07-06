@@ -1,15 +1,17 @@
+import { moderateScale } from '../../utils/Responsive'
+
 const headerContainer = {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 20,
-    height: 100,
+    height: moderateScale(100),
     backgroundColor: '#fff'
 }
 
 const logo = {
-    width: 150,
-    height: 80,
+    width: moderateScale(150),
+    height: moderateScale(80),
     resizeMode: 'contain'
 }
 

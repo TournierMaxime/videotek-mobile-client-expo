@@ -4,6 +4,7 @@ import header from '../../styles/components/header'
 import { FontAwesome5, FontAwesome, Ionicons } from 'react-native-vector-icons'
 import SearchModal from '../../utils/SearchModal'
 import { useNavigation } from '@react-navigation/native'
+import { moderateScale } from '../../utils/Responsive'
 
 const Header = ({ backButton, isAuthenticated }) => {
   const [modalVisible, setModalVisible] = useState(false)
@@ -18,15 +19,15 @@ const Header = ({ backButton, isAuthenticated }) => {
       <View style={styles.headerContainer}>
         {backButton ? (
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Ionicons name='arrow-back-outline' size={25} color='black' />
+            <Ionicons name='arrow-back-outline' size={moderateScale(25)} color='black' />
           </TouchableOpacity>
         ) : isAuthenticated === true  ? (
           <TouchableOpacity onPress={() => navigation.navigate('UserProfile')}>
-            <FontAwesome5 style={styles.icon} name='user' size={25} />
+            <FontAwesome5 style={styles.icon} name='user' size={moderateScale(25)} />
           </TouchableOpacity>
         ) : (
           <TouchableOpacity onPress={() => navigation.navigate('AuthStackNavigator', { screen: 'Login' })}>
-            <FontAwesome5 style={styles.icon} name='user' size={25} />
+            <FontAwesome5 style={styles.icon} name='user' size={moderateScale(25)} />
           </TouchableOpacity>
         )}
         <Image
@@ -34,7 +35,7 @@ const Header = ({ backButton, isAuthenticated }) => {
           source={require('../../assets/image/videotek_logo.webp')}
         />
         <TouchableOpacity onPress={handleModal}>
-          <FontAwesome style={styles.icon} name='search' size={25} />
+          <FontAwesome style={styles.icon} name='search' size={moderateScale(25)} />
         </TouchableOpacity>
       </View>
       <SearchModal visible={modalVisible} setVisible={setModalVisible} />

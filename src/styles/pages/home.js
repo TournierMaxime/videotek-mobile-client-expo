@@ -1,3 +1,5 @@
+import { moderateScale } from '../../utils/Responsive'
+
 const categoryViewContainer = {
     justifyContent: 'space-between',
     alignItems: 'baseline',
@@ -12,7 +14,7 @@ const listViewContainer = {
 
 const originalTitle = {
     textAlign: 'center',
-    fontSize: 16
+    fontSize: moderateScale(16)
 }
 
 const container = {
@@ -22,15 +24,15 @@ const container = {
 }
 
 const title = {
-    fontSize: 18,
+    fontSize: moderateScale(18),
     marginLeft: 15,
     marginTop: 15,
     fontWeight: 'bold'
 }
 
 const image = {
-    width: 133,
-    height: 216,
+    width: moderateScale(133),
+    height: moderateScale(216),
     resizeMode: 'cover',
     borderRadius: 15,
     marginTop: 15,

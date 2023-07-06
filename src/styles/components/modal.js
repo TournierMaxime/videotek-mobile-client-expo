@@ -1,3 +1,5 @@
+import { moderateScale } from '../../utils/Responsive'
+
 const container = {
     flex: 1,
     alignItems: 'flex-end'
@@ -25,14 +27,14 @@ const modalView = {
 
 const modalTitle = {
     margin: 15,
-    fontSize: 20,
+    fontSize: moderateScale(20),
 }
 
 const modalText = {
     margin: 15,
     textAlign: 'justify',
-    fontSize: 18,
-    lineHeight: 30
+    fontSize: moderateScale(18),
+    lineHeight: moderateScale(30)
 }
 
 const closeIcons = {
@@ -95,7 +97,8 @@ const alertModalActions = {
 }
 
 const alertModalMessage = {
-    marginBottom: 20
+    marginBottom: 20,
+    fontSize: moderateScale(14)
 }
 
 export default {

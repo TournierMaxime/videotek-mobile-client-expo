@@ -18,6 +18,7 @@ import { deleteUser } from '../../redux/actions/users/deleteUser'
 import { ToastSuccess, ToastError } from '../../utils/Toast'
 import ToastConfig from '../../utils/ToastConfig'
 import { useTranslation } from 'react-i18next'
+import { moderateScale } from '../../utils/Responsive'
 
 const UserProfile = ({ route }) => {
   const { userId } = route.params
@@ -79,12 +80,12 @@ const UserProfile = ({ route }) => {
                     <FontAwesome5
                       style={styles.icon}
                       name='user'
-                      size={25}
+                      size={moderateScale(25)}
                       color='black'
                     />
-                    <Text>{userName}</Text>
+                    <Text style={styles.textSize}>{userName}</Text>
                   </View>
-                  <Entypo name='chevron-small-right' size={25} color='black' />
+                  <Entypo name='chevron-small-right' size={moderateScale(25)} color='black' />
                 </View>
               </TouchableOpacity>
 
@@ -96,12 +97,12 @@ const UserProfile = ({ route }) => {
                     <Entypo
                       style={styles.icon}
                       name='new-message'
-                      size={25}
+                      size={moderateScale(25)}
                       color='black'
                     />
-                    <Text>{t('critics')}</Text>
+                    <Text style={styles.textSize}>{t('critics')}</Text>
                   </View>
-                  <Entypo name='chevron-small-right' size={25} color='black' />
+                  <Entypo name='chevron-small-right' size={moderateScale(25)} color='black' />
                 </View>
               </TouchableOpacity>
 
@@ -113,12 +114,12 @@ const UserProfile = ({ route }) => {
                     <Ionicons
                       style={styles.icon}
                       name='settings-outline'
-                      size={25}
+                      size={moderateScale(25)}
                       color='black'
                     />
-                    <Text>{t('settings')}</Text>
+                    <Text style={styles.textSize}>{t('settings')}</Text>
                   </View>
-                  <Entypo name='chevron-small-right' size={25} color='black' />
+                  <Entypo name='chevron-small-right' size={moderateScale(25)} color='black' />
                 </View>
               </TouchableOpacity>
 
@@ -128,12 +129,12 @@ const UserProfile = ({ route }) => {
                     <MaterialIcons
                       style={styles.icon}
                       name='logout'
-                      size={25}
+                      size={moderateScale(25)}
                       color='black'
                     />
-                    <Text>{t('logout')}</Text>
+                    <Text style={styles.textSize}>{t('logout')}</Text>
                   </View>
-                  <Entypo name='chevron-small-right' size={25} color='black' />
+                  <Entypo name='chevron-small-right' size={moderateScale(25)} color='black' />
                 </View>
               </TouchableOpacity>
 
@@ -143,12 +144,12 @@ const UserProfile = ({ route }) => {
                     <MaterialIcons
                       style={styles.icon}
                       name='delete-outline'
-                      size={25}
+                      size={moderateScale(25)}
                       color='black'
                     />
-                    <Text style={{ color: 'red' }}>{t('deleteAccount')}</Text>
+                    <Text style={[styles.textSize, { color: 'red' }]}>{t('deleteAccount')}</Text>
                   </View>
-                  <Entypo name='chevron-small-right' size={25} color='black' />
+                  <Entypo name='chevron-small-right' size={moderateScale(25)} color='black' />
                 </View>
               </TouchableOpacity>
               <AlertModal
@@ -181,6 +182,7 @@ const styles = StyleSheet.create({
   icon: profil.icon,
   textIconContainer: profil.textIconContainer,
   profilViewContainer: profil.profilViewContainer,
+  textSize: profil.textSize
 })
 
 export default UserProfile

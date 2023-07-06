@@ -18,6 +18,7 @@ import Refresh from '../utils/Refresh'
 import { truncateTitle } from '../utils/Truncate'
 import { Ionicons, MaterialIcons } from 'react-native-vector-icons'
 import { useTranslation } from 'react-i18next'
+import { moderateScale } from '../utils/Responsive'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -63,7 +64,7 @@ const Home = () => {
             <View style={styles.categoryViewContainer}>
                 <Text style={styles.title}>{t('trending')}</Text>
 
-              <Ionicons name='flame' size={25} color='black' />
+              <Ionicons name='flame' size={moderateScale(25)} color='black' />
             </View>
             <View style={styles.container}>
               <FlatList
@@ -143,7 +144,7 @@ const Home = () => {
 
             <View style={styles.categoryViewContainer}>
                 <Text style={styles.title}>{t('films')}</Text>
-              <MaterialIcons name='movie' size={25} color='black' />
+              <MaterialIcons name='movie' size={moderateScale(25)} color='black' />
             </View>
             <View style={styles.container}>
               <FlatList
@@ -189,7 +190,7 @@ const Home = () => {
 
             <View style={styles.categoryViewContainer}>
                 <Text style={styles.title}>{t('series')}</Text>
-              <Ionicons name='ios-tv-sharp' size={25} color='black' />
+              <Ionicons name='ios-tv-sharp' size={moderateScale(25)} color='black' />
             </View>
             <View style={styles.container}>
               <FlatList

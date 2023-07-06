@@ -41,6 +41,7 @@ import { useTranslation } from 'react-i18next'
 import i18n from './i18n.js'
 import { I18nextProvider } from 'react-i18next'
 import './polyfill.js'
+import { moderateScale } from './src/utils/Responsive'
 
 const MainStack = createNativeStackNavigator()
 const AuthStack = createNativeStackNavigator()
@@ -392,7 +393,7 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
             name='MainStackNavigator'
             options={() => ({
               tabBarIcon: ({ color }) => (
-                <Entypo name='home' size={25} color={color} />
+                <Entypo style={{width: 50, height: 'auto'}} name='home' size={moderateScale(25)} color={color} />
               ),
               headerShown: false,
               tabBarLabel: '',
@@ -411,7 +412,7 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
             name='AuthStackNavigator'
             options={() => ({
               tabBarIcon: ({ color }) => (
-                <Entypo name='home' size={25} color={color} />
+                <Entypo style={{width: 50, height: 'auto'}} name='home' size={moderateScale(25)} color={color} />
               ),
               headerShown: false,
               tabBarLabel: '',
@@ -432,7 +433,7 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
           component={Trending}
           options={() => ({
             tabBarIcon: ({ color }) => (
-              <Ionicons name='flame' size={25} color={color} />
+              <Ionicons style={{width: 50, height: 'auto'}} name='flame' size={moderateScale(25)} color={color} />
             ),
             header: () => (
               <Header isAuthenticated={isAuthenticated} backButton={true} />
@@ -446,7 +447,7 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
           component={NowPlaying}
           options={() => ({
             tabBarIcon: ({ color }) => (
-              <MaterialIcons name='movie' size={25} color={color} />
+              <MaterialIcons style={{width: 50, height: 'auto'}} name='movie' size={moderateScale(25)} color={color} />
             ),
             header: () => (
               <Header isAuthenticated={isAuthenticated} backButton={true} />
@@ -461,7 +462,7 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
           component={OnTheAir}
           options={() => ({
             tabBarIcon: ({ color }) => (
-              <Ionicons name='ios-tv-sharp' size={25} color={color} />
+              <Ionicons style={{width: 50, height: 'auto'}} name='ios-tv-sharp' size={moderateScale(25)} color={color} />
             ),
             header: () => (
               <Header isAuthenticated={isAuthenticated} backButton={true} />

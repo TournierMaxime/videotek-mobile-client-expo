@@ -1,3 +1,5 @@
+import { moderateScale } from '../../utils/Responsive'
+
 const container = {
   flex: 1,
   display: 'flex',
@@ -6,8 +8,8 @@ const container = {
 }
 
 const image = {
-  width: 80,
-  height: 130,
+  width: moderateScale(80),
+  height: moderateScale(130),
   resizeMode: 'cover',
   borderRadius: 15,
   marginLeft: 15,
@@ -24,16 +26,16 @@ const renderItemContainer = {
 }
 
 const renderItemTitle = {
-  fontSize: 16,
+  fontSize: moderateScale(16),
   marginLeft: 15,
   fontWeight: 'bold',
 }
 
 const renderItemOverview = {
-  fontSize: 16,
+  fontSize: moderateScale(16),
   padding: 15,
   textAlign: 'justify',
-  lineHeight: 30,
+  lineHeight: moderateScale(30),
 }
 
 const renderItemDetails = {
@@ -44,16 +46,16 @@ const renderItemDetails = {
 const seasonTitle = {
   textAlign: 'center',
   fontWeight: 'bold',
-  fontSize: 20,
+  fontSize: moderateScale(20),
   marginBottom: 15,
 }
 
 const renderItemTags = {
-  fontSize: 16,
+  fontSize: moderateScale(16),
   paddingVertical: 5,
   paddingHorizontal: 20,
   textAlign: 'justify',
-  lineHeight: 30,
+  lineHeight: moderateScale(30),
   borderRadius: 8,
   marginLeft: 15,
   marginRight: 'auto',
