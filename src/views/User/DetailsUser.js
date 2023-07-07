@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  Button,
-  Image,
-} from 'react-native'
+import { Text, View, TextInput, StyleSheet, Button, Image } from 'react-native'
 import { updateUser, resetUser } from '../../redux/actions/users/updateUser'
 import { getUser } from '../../redux/actions/users/oneUser'
 import { useDispatch, useSelector } from 'react-redux'
@@ -23,6 +15,7 @@ const DetailsUser = ({ route }) => {
   const { userId } = route.params
   const dispatch = useDispatch()
   const user = useSelector((state) => state.oneUser.data.user)
+  const [isModified, setIsModified] = useState(false)
 
   const { t } = useTranslation()
 
@@ -32,8 +25,28 @@ const DetailsUser = ({ route }) => {
     image: user?.image || '',
   })
 
-  const handleUpdate = async () => {
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    })
+
+    if (!result.canceled) {
+      setData({
+        ...data,
+        image: result.assets[0].uri,
+      }),
+        setIsModified(true)
+    }
+  }
+
+  const handleUpdate = () => {
     try {
+      if (!isModified) {
+        return
+      }
       // create a new FormData object
       const formData = new FormData()
 
@@ -55,9 +68,9 @@ const DetailsUser = ({ route }) => {
       formData.append('image', file)
 
       // send the request
-      await dispatch(updateUser(formData, userId)) // make sure your updateUser action sends the data as is, and sets 'Content-Type': 'multipart/form-data'
+      dispatch(updateUser(formData, userId)) // make sure your updateUser action sends the data as is, and sets 'Content-Type': 'multipart/form-data'
       ToastSuccess('success', t('profileUpdated'), true)
-      await dispatch(getUser(userId))
+      dispatch(getUser(userId))
     } catch (error) {
       console.log(error.response.data.errMsg)
 
@@ -66,22 +79,6 @@ const DetailsUser = ({ route }) => {
       } else {
         ToastError('error', t('anErrorHasOccurred'), true)
       }
-    }
-  }
-
-  const pickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    })
-
-    if (!result.canceled) {
-      setData({
-        ...data,
-        image: result.assets[0].uri,
-      })
     }
   }
 
@@ -108,14 +105,18 @@ const DetailsUser = ({ route }) => {
         <TextInput
           style={styles.formInput}
           placeholder={t('userName')}
-          onChangeText={(text) => setData({ ...data, userName: text })}
+          onChangeText={(text) => {
+            setData({ ...data, userName: text }), setIsModified(true)
+          }}
           defaultValue={user?.userName}
         />
         <Text style={styles.formLabel}>{t('email')}</Text>
         <TextInput
           style={styles.formInput}
           placeholder={t('email')}
-          onChangeText={(text) => setData({ ...data, email: text })}
+          onChangeText={(text) => {
+            setData({ ...data, email: text }), setIsModified(true)
+          }}
           defaultValue={user?.email}
         />
         <Text style={styles.formLabel}>{t('avatar')}</Text>
@@ -134,16 +135,16 @@ const DetailsUser = ({ route }) => {
             />
           </View>
           <View>
-            <Button title='Changer Avatar' onPress={() => pickImage()} />
+            <Button title={t('changeAvatar')} onPress={() => pickImage()} />
           </View>
         </View>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={styles.formButtonLogin}
+          <Button
             onPress={() => handleUpdate()}
-          >
-            <Text style={styles.buttonText}>{t('update')}</Text>
-          </TouchableOpacity>
+            color={'#00AD4F'}
+            title={t('update')}
+            disabled={!isModified}
+          />
           <ToastConfig />
         </View>
       </View>

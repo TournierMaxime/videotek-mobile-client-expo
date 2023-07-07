@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1022733328161",
+    "project_id": "videotek-542fd",
+    "storage_bucket": "videotek-542fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1022733328161:android:60af627a1fe59840092860",
+        "android_client_info": {
+          "package_name": "com.hoggy.videotekclientexpo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1022733328161-dou8qu2eh0gir010tssnr7q040tvrdnu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5NsSflFm9FxnaZyA8N_a_-wGdTTVSqdQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1022733328161-dou8qu2eh0gir010tssnr7q040tvrdnu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

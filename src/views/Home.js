@@ -60,7 +60,7 @@ const Home = () => {
         <ActivityIndicator size='large' color='#0000ff' />
       ) : (
         <Fragment>
-          <Refresh onRefresh={onRefresh}>
+            <Refresh onRefresh={onRefresh}>
             <View style={styles.categoryViewContainer}>
                 <Text style={styles.title}>{t('trending')}</Text>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import {
   View,
@@ -15,6 +15,8 @@ import form from '../../styles/components/form'
 import { ToastSuccess, ToastError } from '../../utils/Toast'
 import ToastConfig from '../../utils/ToastConfig'
 import { useTranslation } from 'react-i18next'
+import * as Device from 'expo-device';
+import * as Notifications from 'expo-notifications';
 
 const RegisterScreen = () => {
   const [data, setData] = useState({
@@ -22,6 +24,7 @@ const RegisterScreen = () => {
     email: '',
     password: '',
     lang: '',
+    expoPushToken: ''
   })
   const dispatch = useDispatch()
   const navigation = useNavigation()
@@ -29,6 +32,28 @@ const RegisterScreen = () => {
   const { i18n, t } = useTranslation()
   const language = i18n.language
   const lang = language.slice(0, 2)
+
+  const registerForPushNotificationsAsync = async () => {
+  let token;
+  if (Device.isDevice) {
+    const { status: existingStatus } = await Notifications.getPermissionsAsync();
+    let finalStatus = existingStatus;
+    if (existingStatus !== 'granted') {
+      const { status } = await Notifications.requestPermissionsAsync();
+      finalStatus = status;
+    }
+    if (finalStatus !== 'granted') {
+      alert('Failed to get push token for push notification!');
+      return;
+    }
+    token = (await Notifications.getExpoPushTokenAsync()).data;
+    console.log(token);
+  } else {
+    alert('Must use physical device for Push Notifications');
+  }
+
+  return token;
+}
 
   const handleRegister = async () => {
     try {
@@ -43,6 +68,11 @@ const RegisterScreen = () => {
     }
     setData({})
   }
+
+    useEffect(() => {
+    registerForPushNotificationsAsync().then(token => setData({...data, expoPushToken: token}));
+  }, []);
+
 
   return (
     <View style={styles.formContainer}>
