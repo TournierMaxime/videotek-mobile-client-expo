@@ -19,7 +19,7 @@ import { truncateTitle } from '../utils/Truncate'
 import { Ionicons, MaterialIcons } from 'react-native-vector-icons'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../utils/Responsive'
-import { registerForPushNotificationsAsync } from "../utils/Notifications"
+import { registerForPushNotificationsAsync } from '../utils/Notifications'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -46,16 +46,18 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true)
-        await dispatch(nowPlaying(nowPlayingData.page, 'nowPlaying', language)),
+      await dispatch(nowPlaying(nowPlayingData.page, 'nowPlaying', language)),
         await dispatch(trending(trendingData.page, 'trending', language)),
         await dispatch(onTheAir(onTheAirData.page, 'onTheAir', language)),
-      setLoading(false)
+        setLoading(false)
     }
 
     fetchData()
   }, [dispatch])
 
-  registerForPushNotificationsAsync()
+  useEffect(() => {
+    registerForPushNotificationsAsync()
+  }, [])
 
   return (
     <Fragment>
@@ -63,9 +65,9 @@ const Home = () => {
         <ActivityIndicator size='large' color='#0000ff' />
       ) : (
         <Fragment>
-            <Refresh onRefresh={onRefresh}>
+          <Refresh onRefresh={onRefresh}>
             <View style={styles.categoryViewContainer}>
-                <Text style={styles.title}>{t('trending')}</Text>
+              <Text style={styles.title}>{t('trending')}</Text>
 
               <Ionicons name='flame' size={moderateScale(25)} color='black' />
             </View>
@@ -146,8 +148,12 @@ const Home = () => {
             </View>
 
             <View style={styles.categoryViewContainer}>
-                <Text style={styles.title}>{t('films')}</Text>
-              <MaterialIcons name='movie' size={moderateScale(25)} color='black' />
+              <Text style={styles.title}>{t('films')}</Text>
+              <MaterialIcons
+                name='movie'
+                size={moderateScale(25)}
+                color='black'
+              />
             </View>
             <View style={styles.container}>
               <FlatList
@@ -192,8 +198,12 @@ const Home = () => {
             </View>
 
             <View style={styles.categoryViewContainer}>
-                <Text style={styles.title}>{t('series')}</Text>
-              <Ionicons name='ios-tv-sharp' size={moderateScale(25)} color='black' />
+              <Text style={styles.title}>{t('series')}</Text>
+              <Ionicons
+                name='ios-tv-sharp'
+                size={moderateScale(25)}
+                color='black'
+              />
             </View>
             <View style={styles.container}>
               <FlatList

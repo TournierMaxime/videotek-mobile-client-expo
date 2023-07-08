@@ -18,25 +18,57 @@ const Header = ({ backButton, isAuthenticated }) => {
     <Fragment>
       <View style={styles.headerContainer}>
         {backButton ? (
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Ionicons name='arrow-back-outline' size={moderateScale(25)} color='black' />
-          </TouchableOpacity>
-        ) : isAuthenticated === true  ? (
-          <TouchableOpacity onPress={() => navigation.navigate('UserProfile')}>
-            <FontAwesome5 style={styles.icon} name='user' size={moderateScale(25)} />
-          </TouchableOpacity>
+          <View style={{ marginTop: moderateScale(20) }}>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Ionicons
+                name='arrow-back-outline'
+                size={moderateScale(25)}
+                color='black'
+              />
+            </TouchableOpacity>
+          </View>
+        ) : isAuthenticated === true ? (
+          <View style={{ marginTop: moderateScale(20) }}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('UserProfile')}
+            >
+              <FontAwesome5
+                style={styles.icon}
+                name='user'
+                size={moderateScale(25)}
+              />
+            </TouchableOpacity>
+          </View>
         ) : (
-          <TouchableOpacity onPress={() => navigation.navigate('AuthStackNavigator', { screen: 'Login' })}>
-            <FontAwesome5 style={styles.icon} name='user' size={moderateScale(25)} />
-          </TouchableOpacity>
+          <View style={{ marginTop: moderateScale(20) }}>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('AuthStackNavigator', { screen: 'Login' })
+              }
+            >
+              <FontAwesome5
+                style={styles.icon}
+                name='user'
+                size={moderateScale(25)}
+              />
+            </TouchableOpacity>
+          </View>
         )}
-        <Image
-          style={styles.logo}
-          source={require('../../assets/image/videotek_logo.webp')}
-        />
-        <TouchableOpacity onPress={handleModal}>
-          <FontAwesome style={styles.icon} name='search' size={moderateScale(25)} />
-        </TouchableOpacity>
+        <View style={{ marginTop: moderateScale(20) }}>
+          <Image
+            style={styles.logo}
+            source={require('../../assets/image/videotek_logo.webp')}
+          />
+        </View>
+        <View style={{ marginTop: moderateScale(20) }}>
+          <TouchableOpacity onPress={handleModal}>
+            <FontAwesome
+              style={styles.icon}
+              name='search'
+              size={moderateScale(25)}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
       <SearchModal visible={modalVisible} setVisible={setModalVisible} />
     </Fragment>
