@@ -9,6 +9,7 @@ import {
 } from 'react-native'
 import { Ionicons } from 'react-native-vector-icons'
 import modal from '../styles/components/modal'
+import { moderateScale } from './Responsive'
 
 const ModalComponent = ({ visible, setVisible, title, content }) => {
   const handleModalClose = () => {
@@ -25,7 +26,7 @@ const ModalComponent = ({ visible, setVisible, title, content }) => {
         <View style={styles.modalView}>
           <View style={styles.closeContainer}>
             <TouchableOpacity onPress={() => setVisible(!visible)}>
-              <Ionicons style={styles.closeIcons} name='close' size={40} />
+              <Ionicons style={styles.closeIcons} name='close' size={moderateScale(40)} />
             </TouchableOpacity>
           </View>
           <ScrollView>

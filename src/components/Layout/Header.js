@@ -19,7 +19,10 @@ const Header = ({ backButton, isAuthenticated }) => {
       <View style={styles.headerContainer}>
         {backButton ? (
           <View style={{ marginTop: moderateScale(20) }}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
+            <TouchableOpacity
+              style={{ padding: moderateScale(10) }}
+              onPress={() => navigation.goBack()}
+            >
               <Ionicons
                 name='arrow-back-outline'
                 size={moderateScale(25)}
@@ -30,6 +33,7 @@ const Header = ({ backButton, isAuthenticated }) => {
         ) : isAuthenticated === true ? (
           <View style={{ marginTop: moderateScale(20) }}>
             <TouchableOpacity
+              style={{ padding: moderateScale(10) }}
               onPress={() => navigation.navigate('UserProfile')}
             >
               <FontAwesome5
@@ -42,6 +46,7 @@ const Header = ({ backButton, isAuthenticated }) => {
         ) : (
           <View style={{ marginTop: moderateScale(20) }}>
             <TouchableOpacity
+              style={{ padding: moderateScale(10) }}
               onPress={() =>
                 navigation.navigate('AuthStackNavigator', { screen: 'Login' })
               }
@@ -61,7 +66,10 @@ const Header = ({ backButton, isAuthenticated }) => {
           />
         </View>
         <View style={{ marginTop: moderateScale(20) }}>
-          <TouchableOpacity onPress={handleModal}>
+          <TouchableOpacity
+            style={{ padding: moderateScale(10) }}
+            onPress={handleModal}
+          >
             <FontAwesome
               style={styles.icon}
               name='search'

@@ -47,7 +47,7 @@ const closeContainer = {
     alignItems: 'center',
     paddingHorizontal: 10,
     paddingTop: 10,
-    marginTop: moderateScale(20),
+    marginTop: moderateScale(40),
     width: '100%',
 };
 

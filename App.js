@@ -386,6 +386,13 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
           tabBarItemStyle: {
             marginTop: 10,
           },
+          tabBarStyle: {
+            marginLeft: 15,
+            marginRight: 'auto',
+            justifyContent: 'center',
+            display: 'flex',
+            flexDirection: 'row'
+          },
         }}
       >
         {isAuthenticated === true ? (
@@ -393,7 +400,12 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
             name='MainStackNavigator'
             options={() => ({
               tabBarIcon: ({ color }) => (
-                <Entypo style={{width: 50, height: 'auto'}} name='home' size={moderateScale(25)} color={color} />
+                <Entypo
+                  style={{ width: 50, height: 'auto' }}
+                  name='home'
+                  size={moderateScale(25)}
+                  color={color}
+                />
               ),
               headerShown: false,
               tabBarLabel: '',
@@ -412,7 +424,12 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
             name='AuthStackNavigator'
             options={() => ({
               tabBarIcon: ({ color }) => (
-                <Entypo style={{width: 50, height: 'auto'}} name='home' size={moderateScale(25)} color={color} />
+                <Entypo
+                  style={{ width: 50, height: 'auto' }}
+                  name='home'
+                  size={moderateScale(25)}
+                  color={color}
+                />
               ),
               headerShown: false,
               tabBarLabel: '',
@@ -433,7 +450,12 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
           component={Trending}
           options={() => ({
             tabBarIcon: ({ color }) => (
-              <Ionicons style={{width: 50, height: 'auto'}} name='flame' size={moderateScale(25)} color={color} />
+              <Ionicons
+                style={{ width: 50, height: 'auto' }}
+                name='flame'
+                size={moderateScale(25)}
+                color={color}
+              />
             ),
             header: () => (
               <Header isAuthenticated={isAuthenticated} backButton={true} />
@@ -447,7 +469,12 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
           component={NowPlaying}
           options={() => ({
             tabBarIcon: ({ color }) => (
-              <MaterialIcons style={{width: 50, height: 'auto'}} name='movie' size={moderateScale(25)} color={color} />
+              <MaterialIcons
+                style={{ width: 50, height: 'auto' }}
+                name='movie'
+                size={moderateScale(25)}
+                color={color}
+              />
             ),
             header: () => (
               <Header isAuthenticated={isAuthenticated} backButton={true} />
@@ -462,7 +489,12 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
           component={OnTheAir}
           options={() => ({
             tabBarIcon: ({ color }) => (
-              <Ionicons style={{width: 50, height: 'auto'}} name='ios-tv-sharp' size={moderateScale(25)} color={color} />
+              <Ionicons
+                style={{ width: 50, height: 'auto' }}
+                name='ios-tv-sharp'
+                size={moderateScale(25)}
+                color={color}
+              />
             ),
             header: () => (
               <Header isAuthenticated={isAuthenticated} backButton={true} />
