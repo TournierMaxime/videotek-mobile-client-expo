@@ -19,6 +19,7 @@ import { truncateTitle } from '../utils/Truncate'
 import { Ionicons, MaterialIcons } from 'react-native-vector-icons'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../utils/Responsive'
+import { registerForPushNotificationsAsync } from "../utils/Notifications"
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -53,6 +54,8 @@ const Home = () => {
 
     fetchData()
   }, [dispatch])
+
+  registerForPushNotificationsAsync()
 
   return (
     <Fragment>

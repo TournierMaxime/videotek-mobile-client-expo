@@ -1,11 +1,10 @@
 {
   "name": "videotek-client-expo",
   "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web",
     "build": "eas build",
     "submit": "eas submit",
@@ -21,7 +20,7 @@
     "@react-navigation/native-stack": "^6.9.12",
     "@reduxjs/toolkit": "^1.9.3",
     "axios": "^1.3.5",
-    "expo": "~48.0.10",
+    "expo": "~48.0.18",
     "expo-application": "~5.1.1",
     "expo-constants": "~14.2.1",
     "expo-device": "~5.2.1",
@@ -53,7 +52,8 @@
     "react-native-youtube-iframe": "^2.2.2",
     "react-redux": "^8.0.5",
     "redux": "^4.2.1",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "expo-splash-screen": "~0.18.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
