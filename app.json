@@ -2,7 +2,7 @@
   "expo": {
     "name": "VideoTek",
     "slug": "videotek-client-expo",
-    "version": "1.3.1",
+    "version": "1.3.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -26,7 +26,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.hoggy.videotekclientexpo",
-      "versionCode": 23
+      "versionCode": 24
     },
     "web": {
       "favicon": "./assets/favicon.png"
