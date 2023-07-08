@@ -19,9 +19,6 @@
       "bundleIdentifier": "com.hoggy.videotekclientexpo"
     },
     "android": {
-      "notification": {
-        "icon": "./assets/notifications-icon.png"
-      },
       "googleServicesFile": "./google-services.json",
       "jsEngine": "jsc",
       "adaptiveIcon": {
@@ -44,6 +41,15 @@
     },
     "updates": {
       "url": "https://u.expo.dev/f6110871-1ae7-43e7-8e85-5c2db50c2976"
-    }
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notifications-icon.png",
+          "mode": "production"
+        }
+      ]
+    ]
   }
 }
