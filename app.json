@@ -2,13 +2,10 @@
   "expo": {
     "name": "VideoTek",
     "slug": "videotek-client-expo",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "notification": {
-      "icon": "./assets/notifications-icon.png"
-    },
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -22,6 +19,9 @@
       "bundleIdentifier": "com.hoggy.videotekclientexpo"
     },
     "android": {
+      "notification": {
+        "icon": "./assets/notifications-icon.png"
+      },
       "googleServicesFile": "./google-services.json",
       "jsEngine": "jsc",
       "adaptiveIcon": {
@@ -29,7 +29,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.hoggy.videotekclientexpo",
-      "versionCode": 22
+      "versionCode": 23
     },
     "web": {
       "favicon": "./assets/favicon.png"
