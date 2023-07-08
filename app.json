@@ -22,9 +22,6 @@
       "bundleIdentifier": "com.hoggy.videotekclientexpo"
     },
     "android": {
-      "notification": {
-        "icon": "./assets/notifications-icon.png"
-      },
       "googleServicesFile": "./google-services.json",
       "jsEngine": "jsc",
       "adaptiveIcon": {
