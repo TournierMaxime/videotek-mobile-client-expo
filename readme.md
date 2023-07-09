@@ -6,4 +6,4 @@
     - /android/app/build.gradle dans android.defaultConfig incrémenter versionCode et versionName
 
 2. iOS Maj
-    - /ios/Info.plist dans CFBundleShortVersionString et CFBundleVersion incrémenter les versions
+    - /ios/VideoTek/Info.plist dans CFBundleShortVersionString et CFBundleVersion incrémenter les versions
