@@ -1,5 +1,11 @@
 # videotek
 
+## Installation
+
+- Ajouter le fichier `.env` et compléter le à l'aide du fichier `.env.dist`
+- Lancer la commande `npm i` pour installer les packages
+- Lancer la commande `npm start`
+
 ## MAJ
 
 1. Android Maj
