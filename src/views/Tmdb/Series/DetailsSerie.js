@@ -94,16 +94,10 @@ const DetailsSerie = ({ route }) => {
                   }
                 >
                   <Entypo
-                    style={{
-                      borderRadius: 100,
-                      padding: 5,
-                      backgroundColor: 'white',
-                      right: 15,
-                      top: 5,
-                    }}
+                    style={styles.threeDots}
                     name='dots-three-vertical'
                     size={moderateScale(25)}
-                    color='black'
+                    color='white'
                   />
                 </TouchableOpacity>
               </View>
@@ -181,6 +175,7 @@ const styles = StyleSheet.create({
   directorTitle: details.directorTitle,
   criticButton: button.criticButton,
   buttonText: button.buttonText,
+  threeDots: button.threeDots
 })
 
 export default DetailsSerie

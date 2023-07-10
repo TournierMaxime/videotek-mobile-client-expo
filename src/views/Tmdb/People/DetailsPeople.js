@@ -23,6 +23,7 @@ import { Entypo } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../../../utils/Responsive'
+import button from '../../../styles/components/button'
 
 const DetailsPeople = ({ route }) => {
   const dispatch = useDispatch()
@@ -54,7 +55,7 @@ const DetailsPeople = ({ route }) => {
 
     return (
       <Text style={styles.headerTitle}>
-        {t('deathAt')} {ageDeath} {t('years')}
+        {t('deadAt')} {ageDeath} {t('years')}
       </Text>
     )
   }
@@ -136,16 +137,10 @@ const DetailsPeople = ({ route }) => {
                   }
                 >
                   <Entypo
-                    style={{
-                      borderRadius: 100,
-                      padding: 5,
-                      backgroundColor: 'white',
-                      right: 15,
-                      top: 5,
-                    }}
+                    style={styles.threeDots}
                     name='dots-three-vertical'
                     size={moderateScale(25)}
-                    color='black'
+                    color='white'
                   />
                 </TouchableOpacity>
               </View>
@@ -201,6 +196,7 @@ const styles = StyleSheet.create({
   },
   textOverview: details.textOverview,
   titleAndDot: details.titleAndDot,
+  threeDots: button.threeDots
 })
 
 export default DetailsPeople
