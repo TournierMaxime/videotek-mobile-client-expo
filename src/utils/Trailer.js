@@ -3,17 +3,23 @@ import { movieTrailer } from '../redux/actions/tmdb/movies/trailer'
 import { serieTrailer } from '../redux/actions/tmdb/series/trailer'
 import { useDispatch, useSelector } from 'react-redux'
 import { Linking, TouchableOpacity } from 'react-native'
+import { useTranslation } from 'react-i18next'
 
 const extractFirstTrailerResult = (trailer) => {
   if (!trailer.results) {
     return null
   }
 
-  return trailer.results[0]
+  const trailerResult = trailer.results.find((result) => result.type === 'Trailer')
+
+  return trailerResult
 }
 
 const Trailer = ({ id, children, movie, serie }) => {
   const dispatch = useDispatch()
+
+    const { i18n } = useTranslation()
+    const language = i18n.language
 
   const mvTrailer = useSelector((state) => state.movieTrailer.data)
   const firstMovieTrailerResult = extractFirstTrailerResult(mvTrailer)
@@ -35,9 +41,9 @@ const Trailer = ({ id, children, movie, serie }) => {
 
   useEffect(() => {
     if (movie?.id === id) {
-      dispatch(movieTrailer(movie?.id))
+      dispatch(movieTrailer(movie?.id, language))
     } else if (serie?.id === id) {
-      dispatch(serieTrailer(serie?.id))
+      dispatch(serieTrailer(serie?.id, language))
     }
   }, [dispatch, id, movie, serie])
 
