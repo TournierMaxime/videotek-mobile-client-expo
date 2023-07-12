@@ -86,7 +86,7 @@ const Home = () => {
                             onPress={() =>
                               navigation.navigate('DetailsMovie', {
                                 id: item.id,
-                                title: item.original_title,
+                                title: item.title,
                               })
                             }
                           >
@@ -106,7 +106,15 @@ const Home = () => {
                               }}
                             />
                             <Text style={styles.originalTitle}>
-                              {truncateTitle(item.title, 15)}
+                              {truncateTitle(
+                                item.title,
+                                language,
+                                language === 'zh-cn' ||
+                                  language === 'ko' ||
+                                  language === 'ja'
+                                  ? 5
+                                  : 15
+                              )}
                             </Text>
                           </TouchableOpacity>
                         </View>
@@ -116,7 +124,7 @@ const Home = () => {
                             onPress={() =>
                               navigation.navigate('DetailsSerie', {
                                 id: item.id,
-                                title: item.original_name,
+                                title: item.name,
                               })
                             }
                           >
@@ -136,7 +144,15 @@ const Home = () => {
                               }}
                             />
                             <Text style={styles.originalTitle}>
-                              {truncateTitle(item.name, 10)}
+                              {truncateTitle(
+                                item.name,
+                                language,
+                                language === 'zh-cn' ||
+                                  language === 'ko' ||
+                                  language === 'ja'
+                                  ? 5
+                                  : 15
+                              )}
                             </Text>
                           </TouchableOpacity>
                         </View>
@@ -168,7 +184,7 @@ const Home = () => {
                         onPress={() =>
                           navigation.navigate('DetailsMovie', {
                             id: item.id,
-                            title: item.original_title,
+                            title: item.title,
                           })
                         }
                       >
@@ -188,7 +204,15 @@ const Home = () => {
                           }}
                         />
                         <Text style={styles.originalTitle}>
-                          {truncateTitle(item.title, 10)}
+                          {truncateTitle(
+                            item.title,
+                            language,
+                            language === 'zh-cn' ||
+                              language === 'ko' ||
+                              language === 'ja'
+                              ? 5
+                              : 15
+                          )}
                         </Text>
                       </TouchableOpacity>
                     </View>
@@ -218,7 +242,7 @@ const Home = () => {
                         onPress={() =>
                           navigation.navigate('DetailsSerie', {
                             id: item.id,
-                            title: item.original_name,
+                            title: item.name,
                           })
                         }
                       >
@@ -239,7 +263,15 @@ const Home = () => {
                         />
                       </TouchableOpacity>
                       <Text style={styles.originalTitle}>
-                        {truncateTitle(item.name, 10)}
+                        {truncateTitle(
+                          item.name,
+                          language,
+                          language === 'zh-cn' ||
+                            language === 'ko' ||
+                            language === 'ja'
+                            ? 5
+                            : 15
+                        )}
                       </Text>
                     </View>
                   )

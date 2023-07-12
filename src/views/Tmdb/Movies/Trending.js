@@ -7,9 +7,13 @@ import {
   Image,
   TouchableOpacity,
   ActivityIndicator,
+  RefreshControl,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { trending, resetTrending } from '../../../redux/actions/tmdb/movies/trending'
+import {
+  trending,
+  resetTrending,
+} from '../../../redux/actions/tmdb/movies/trending'
 import useLoadMore from '../../../utils/LoadMore'
 import { truncateTitle } from '../../../utils/Truncate'
 import { useNavigation } from '@react-navigation/native'
@@ -29,9 +33,16 @@ const Trending = () => {
   )
   const [allResults, setAllResults] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [refreshing, setRefreshing] = useState(false)
 
   const { i18n } = useTranslation()
   const language = i18n.language
+
+  const onRefresh = async () => {
+    setRefreshing(true)
+    await dispatch(trending(1, 'trendingPagination', language))
+    setRefreshing(false)
+  }
 
   useEffect(() => {
     setIsLoading(true)
@@ -54,7 +65,7 @@ const Trending = () => {
     }
   }, [trendingResults])
 
-    useEffect(() => {
+  useEffect(() => {
     return () => {
       dispatch(resetTrending())
     }
@@ -66,6 +77,9 @@ const Trending = () => {
         data={allResults}
         keyExtractor={(item, index) => `${index}`}
         numColumns={2}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
         onEndReached={
           isLoading === true ? (
             <ActivityIndicator
@@ -98,7 +112,15 @@ const Trending = () => {
                       }}
                     />
                     <Text style={styles.originalTitle}>
-                      {truncateTitle(item.title, 15)}
+                      {truncateTitle(
+                        item.title,
+                        language,
+                        language === 'zh-cn' ||
+                          language === 'ko' ||
+                          language === 'ja'
+                          ? 5
+                          : 15
+                      )}
                     </Text>
                   </TouchableOpacity>
                 </View>
@@ -108,7 +130,7 @@ const Trending = () => {
                     onPress={() =>
                       navigation.navigate('DetailsSerie', {
                         id: item.id,
-                        title: item.original_name,
+                        title: item.name,
                       })
                     }
                   >
@@ -119,7 +141,15 @@ const Trending = () => {
                       }}
                     />
                     <Text style={styles.originalTitle}>
-                      {truncateTitle(item.name, 15)}
+                      {truncateTitle(
+                        item.name,
+                        language,
+                        language === 'zh-cn' ||
+                          language === 'ko' ||
+                          language === 'ja'
+                          ? 5
+                          : 15
+                      )}
                     </Text>
                   </TouchableOpacity>
                 </View>

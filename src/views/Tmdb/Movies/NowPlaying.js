@@ -7,9 +7,13 @@ import {
   Image,
   TouchableOpacity,
   ActivityIndicator,
+  RefreshControl,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { nowPlaying, resetNowPlaying } from '../../../redux/actions/tmdb/movies/nowPlaying'
+import {
+  nowPlaying,
+  resetNowPlaying,
+} from '../../../redux/actions/tmdb/movies/nowPlaying'
 import useLoadMore from '../../../utils/LoadMore'
 import { truncateTitle } from '../../../utils/Truncate'
 import { useNavigation } from '@react-navigation/native'
@@ -29,9 +33,16 @@ const NowPlaying = () => {
   )
   const [allResults, setAllResults] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [refreshing, setRefreshing] = useState(false)
 
   const { i18n } = useTranslation()
   const language = i18n.language
+
+  const onRefresh = async () => {
+    setRefreshing(true)
+    await nowPlaying(1, 'nowPlayingPagination', language)
+    setRefreshing(false)
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,7 +74,7 @@ const NowPlaying = () => {
     updateResults()
   }, [nowPlayingResults])
 
-    useEffect(() => {
+  useEffect(() => {
     return () => {
       dispatch(resetNowPlaying())
     }
@@ -75,6 +86,9 @@ const NowPlaying = () => {
         data={allResults}
         keyExtractor={(item, index) => `${index}`}
         numColumns={2}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
         onEndReached={
           isLoading === true ? (
             <ActivityIndicator
@@ -94,7 +108,7 @@ const NowPlaying = () => {
                 onPress={() =>
                   navigation.navigate('DetailsMovie', {
                     id: item.id,
-                    title: item.original_title,
+                    title: item.title,
                   })
                 }
               >
@@ -105,7 +119,15 @@ const NowPlaying = () => {
                   }}
                 />
                 <Text style={styles.originalTitle}>
-                  {truncateTitle(item.title, 15)}
+                  {truncateTitle(
+                    item.title,
+                    language,
+                    language === 'zh-cn' ||
+                      language === 'ko' ||
+                      language === 'ja'
+                      ? 5
+                      : 15
+                  )}
                 </Text>
               </TouchableOpacity>
             </View>

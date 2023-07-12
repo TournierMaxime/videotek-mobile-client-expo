@@ -195,12 +195,12 @@ const styles = StyleSheet.create({
   containerMessage: message.containerMessage,
   messageText: message.messageText,
   image: {
-    width: moderateScale(80),
-    height: moderateScale(80),
+    width: moderateScale(60),
+    height: moderateScale(60),
     resizeMode: 'cover',
-    borderRadius: 15,
-    marginLeft: 15,
-    marginBottom: 5,
+    borderRadius: moderateScale(30),
+    marginLeft: moderateScale(15),
+    marginBottom: moderateScale(5),
   },
 })
 

@@ -6,9 +6,13 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
+  RefreshControl,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { onTheAir, resetOnTheAir } from '../../../redux/actions/tmdb/series/onTheAir'
+import {
+  onTheAir,
+  resetOnTheAir,
+} from '../../../redux/actions/tmdb/series/onTheAir'
 import useLoadMore from '../../../utils/LoadMore'
 import { truncateTitle } from '../../../utils/Truncate'
 import { useNavigation } from '@react-navigation/native'
@@ -27,9 +31,16 @@ const OnTheAir = () => {
     onTheAirData.total_pages
   )
   const [allResults, setAllResults] = useState([])
+  const [refreshing, setRefreshing] = useState(false)
 
   const { i18n } = useTranslation()
   const language = i18n.language
+
+  const onRefresh = async () => {
+    setRefreshing(true)
+    await dispatch(onTheAir(1, 'onTheAirPagination', language))
+    setRefreshing(false)
+  }
 
   useEffect(() => {
     dispatch(onTheAir(currentPage, 'onTheAirPagination', language))
@@ -45,7 +56,7 @@ const OnTheAir = () => {
     }
   }, [onTheAirResults])
 
-    useEffect(() => {
+  useEffect(() => {
     return () => {
       dispatch(resetOnTheAir())
     }
@@ -57,6 +68,9 @@ const OnTheAir = () => {
         data={allResults}
         keyExtractor={(item, index) => `${index}`}
         numColumns={2}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
         onEndReached={loadMore}
         onEndReachedThreshold={0.5}
         renderItem={({ item }) => {
@@ -66,7 +80,7 @@ const OnTheAir = () => {
                 onPress={() =>
                   navigation.navigate('DetailsSerie', {
                     id: item.id,
-                    title: item.original_name,
+                    title: item.name,
                   })
                 }
               >
@@ -77,7 +91,15 @@ const OnTheAir = () => {
                   }}
                 />
                 <Text style={styles.originalTitle}>
-                  {truncateTitle(item.name, 15)}
+                  {truncateTitle(
+                    item.name,
+                    language,
+                    language === 'zh-cn' ||
+                      language === 'ko' ||
+                      language === 'ja'
+                      ? 5
+                      : 15
+                  )}
                 </Text>
               </TouchableOpacity>
             </View>
