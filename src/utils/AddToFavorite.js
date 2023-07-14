@@ -19,7 +19,7 @@ const AddToFavorite = ({ id, title, image, type }) => {
   const data = useSelector((state) => state.getOneFavorite.data)
   const userId = useSelector((state) => state.auth.data.user.userId)
   const isAuthenticated = useSelector(
-    (state) => state.auth.data.user.isAuthenticated
+    (state) => state.auth.isAuthenticated
   )
   const [isFavorite, setIsFavorite] = useState(false)
 
@@ -53,7 +53,7 @@ const AddToFavorite = ({ id, title, image, type }) => {
   }
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthenticated === true) {
       dispatch(getOneFavorite(userId, id))
     }
   }, [dispatch, userId, id, isFavorite])
@@ -64,9 +64,11 @@ const AddToFavorite = ({ id, title, image, type }) => {
     }
   }, [])
 
+  console.log(isAuthenticated)
+
   return (
     <Fragment>
-      {isAuthenticated ? (
+      {isAuthenticated === true ? (
         <View style={{ marginTop: 15 }}>
           {!data?.favorite && isFavorite === false ? (
             <TouchableOpacity
