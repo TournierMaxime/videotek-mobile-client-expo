@@ -64,8 +64,6 @@ const AddToFavorite = ({ id, title, image, type }) => {
     }
   }, [])
 
-  console.log(isAuthenticated)
-
   return (
     <Fragment>
       {isAuthenticated === true ? (
