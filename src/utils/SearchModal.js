@@ -36,7 +36,7 @@ const SearchModal = ({ visible, setVisible }) => {
 
   const handleSearch = async () => {
     try {
-      await dispatch(search(data.page, query))
+      await dispatch(search(data.page, query, language))
     } catch (error) {
       console.log(error)
     }

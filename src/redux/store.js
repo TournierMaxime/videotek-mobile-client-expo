@@ -31,6 +31,11 @@ import detailsSeasonReducer from './reducers/tmdb/series/detailsSeason'
 import releaseDatesReducer from './reducers/tmdb/movies/releaseDates'
 import seasonWatchProvidersReducer from './reducers/tmdb/series/seasonWatchProviders'
 import movieWatchProvidersReducer from './reducers/tmdb/movies/movieWatchProviders'
+import peopleExternalIdsReducer from './reducers/tmdb/people/externalIds'
+import searchFavoriteReducer from './reducers/favorites/searchFavorite'
+import createFavoriteReducer from './reducers/favorites/createFavorite'
+import deleteFavoriteReducer from './reducers/favorites/deleteFavorite'
+import getOneFavoriteReducer from './reducers/favorites/getOneFavorite'
 
 const rootReducer = {
   auth: auth,
@@ -62,7 +67,12 @@ const rootReducer = {
   seasonDetails: detailsSeasonReducer,
   releaseDates: releaseDatesReducer,
   seasonWatchProviders: seasonWatchProvidersReducer,
-  movieWatchProviders: movieWatchProvidersReducer
+  movieWatchProviders: movieWatchProvidersReducer,
+  peopleExternalIds: peopleExternalIdsReducer,
+  searchFavorite: searchFavoriteReducer,
+  createFavorite: createFavoriteReducer,
+  deleteFavorite: deleteFavoriteReducer,
+  getOneFavorite: getOneFavoriteReducer
 };
 
 const store = configureStore({

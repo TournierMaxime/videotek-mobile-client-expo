@@ -169,6 +169,14 @@ const Trending = (page, language) => {
   });
 };
 
+const PeopleExternalIds = (id) => {
+  return http.get(`/person/${id}/external_ids`, {
+    params: {
+      api_key: EXPO_TMDB_API_KEY
+    },
+  });
+};
+
 
 export { 
   ReleaseDates,
@@ -188,5 +196,6 @@ export {
   Trending,
   SeasonDetails,
   SeasonWatchProviders,
-  MovieWatchProviders
+  MovieWatchProviders,
+  PeopleExternalIds
 };

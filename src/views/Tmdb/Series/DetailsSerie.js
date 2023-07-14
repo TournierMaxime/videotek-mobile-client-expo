@@ -9,7 +9,10 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { serieDetails, resetSerieDetails } from '../../../redux/actions/tmdb/series/detailsSerie'
+import {
+  serieDetails,
+  resetSerieDetails,
+} from '../../../redux/actions/tmdb/series/detailsSerie'
 import { serieCrew } from '../../../redux/actions/tmdb/series/serieCrew'
 import { LinearGradient } from 'expo-linear-gradient'
 import Runtime from '../../../utils/RunTime'
@@ -23,6 +26,7 @@ import { Entypo } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../../../utils/Responsive'
+import AddToFavorite from '../../../utils/AddToFavorite'
 
 const DetailsSerie = ({ route }) => {
   const dispatch = useDispatch()
@@ -31,7 +35,7 @@ const DetailsSerie = ({ route }) => {
   const { id } = route.params
   const [loading, setLoading] = useState(false)
 
-    const { i18n, t } = useTranslation()
+  const { i18n, t } = useTranslation()
   const language = i18n.language
 
   const onRefresh = async () => {
@@ -48,9 +52,9 @@ const DetailsSerie = ({ route }) => {
     }
 
     fetchData()
-  }, [dispatch, id])
+  }, [dispatch, id, language])
 
-    useEffect(() => {
+  useEffect(() => {
     return () => {
       dispatch(resetSerieDetails())
     }
@@ -60,94 +64,106 @@ const DetailsSerie = ({ route }) => {
   const OverViewMemoized = React.memo(OverView)
 
   return (
-    <Refresh styles={styles.scrollView} onRefresh={onRefresh}>
-      {loading ? (
-        <ActivityIndicator size='large' color='#0000ff' />
-      ) : (
-        serie && (
-          <Fragment>
-            <View style={styles.mainViewContainer}>
-              <LinearGradient
-                colors={['rgba(0,0,0,0.8)', 'rgba(0,0,0,0.8)']}
-                style={styles.linearGradient}
-              />
-              <ImageBackground
-                style={styles.imageBackground}
-                source={{
-                  uri: `https://image.tmdb.org/t/p/original${serie?.backdrop_path}`,
-                }}
-              />
+    <View style={{ flex: 1 }}>
+      <Refresh styles={styles.scrollView} onRefresh={onRefresh}>
+        {loading ? (
+          <ActivityIndicator size='large' color='#0000ff' />
+        ) : (
+          serie && (
+            <Fragment>
+              <View style={styles.mainViewContainer}>
+                <LinearGradient
+                  colors={['rgba(0,0,0,0.8)', 'rgba(0,0,0,0.8)']}
+                  style={styles.linearGradient}
+                />
+                <ImageBackground
+                  style={styles.imageBackground}
+                  source={{
+                    uri: `https://image.tmdb.org/t/p/original${serie?.backdrop_path}`,
+                  }}
+                />
 
-              <View style={styles.titleAndDot}>
-                <View>
-                  <Text style={[styles.headerTitle, { left: 15, top: 5 }]}>
-                    {serie.name}
-                  </Text>
+                <View style={styles.titleAndDot}>
+                  <View>
+                    <Text style={[styles.headerTitle, { left: 15, top: 5 }]}>
+                      {serie.name}
+                    </Text>
+                  </View>
+
+                  <TouchableOpacity
+                    onPress={() =>
+                      navigation.navigate('DotDetails', {
+                        id,
+                        title: serie?.name,
+                      })
+                    }
+                  >
+                    <Entypo
+                      style={styles.threeDots}
+                      name='dots-three-vertical'
+                      size={moderateScale(25)}
+                      color='white'
+                    />
+                  </TouchableOpacity>
                 </View>
 
-                <TouchableOpacity
-                  onPress={() =>
-                    navigation.navigate('DotDetails', {
-                      id,
-                      title: serie?.name,
-                    })
-                  }
-                >
-                  <Entypo
-                    style={styles.threeDots}
-                    name='dots-three-vertical'
-                    size={moderateScale(25)}
-                    color='white'
-                  />
-                </TouchableOpacity>
-              </View>
+                <View style={styles.headerViewContainer}>
+                  <View style={styles.posterViewContainer}>
+                    <Image
+                      style={styles.posterPath}
+                      source={{
+                        uri: `https://image.tmdb.org/t/p/original${serie?.poster_path}`,
+                      }}
+                    />
+                    <Rate rate={serie.vote_average} />
+                  </View>
 
-              <View style={styles.headerViewContainer}>
-                <View style={styles.posterViewContainer}>
-                  <Image
-                    style={styles.posterPath}
-                    source={{
-                      uri: `https://image.tmdb.org/t/p/original${serie?.poster_path}`,
-                    }}
-                  />
-                  <Rate rate={serie.vote_average} />
-                </View>
-
-                <View style={styles.infoViewContainer}>
-                  <Runtime time={serie.episode_run_time} isMovie={false} t={t} />
+                  <View style={styles.infoViewContainer}>
+                    <Runtime
+                      time={serie.episode_run_time}
+                      isMovie={false}
+                      t={t}
+                    />
 
                     <Text style={styles.directorTitle}>{t('genres')}</Text>
 
-                  <View style={styles.genresViewContainer}>
-                    {serie?.genres?.map((genre, index) => (
-                      <Text key={index} style={styles.genreText}>
-                        {genre.name}
-                      </Text>
-                    ))}
-                  </View>
+                    <View style={styles.genresViewContainer}>
+                      {serie?.genres?.map((genre, index) => (
+                        <Text key={index} style={styles.genreText}>
+                          {genre.name}
+                        </Text>
+                      ))}
+                    </View>
 
                     <Text style={styles.directorTitle}>{t('direction')}</Text>
 
-                  <View style={styles.directorsViewContainer}>
-                    {serie?.created_by?.map((credit, index) => {
-                      if (!credit.name) return null
-                      return (
-                        <Text key={index} style={styles.directorText}>
-                          {credit.name}
-                        </Text>
-                      )
-                    })}
+                    <View style={styles.directorsViewContainer}>
+                      {serie?.created_by?.map((credit, index) => {
+                        if (!credit.name) return null
+                        return (
+                          <Text key={index} style={styles.directorText}>
+                            {credit.name}
+                          </Text>
+                        )
+                      })}
+                    </View>
+                    <AddToFavorite
+                      id={id}
+                      title={serie?.name}
+                      image={serie?.poster_path}
+                      type={'serie'}
+                    />
                   </View>
                 </View>
-              </View>
 
-              <OverViewMemoized content={serie.overview} t={t} />
-            </View>
-            <ProductionMemoized serie={serie} t={t} />
-          </Fragment>
-        )
-      )}
-    </Refresh>
+                <OverViewMemoized content={serie.overview} t={t} />
+              </View>
+              <ProductionMemoized serie={serie} t={t} />
+            </Fragment>
+          )
+        )}
+      </Refresh>
+    </View>
   )
 }
 
@@ -175,7 +191,7 @@ const styles = StyleSheet.create({
   directorTitle: details.directorTitle,
   criticButton: button.criticButton,
   buttonText: button.buttonText,
-  threeDots: button.threeDots
+  threeDots: button.threeDots,
 })
 
 export default DetailsSerie

@@ -2,8 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { View } from 'react-native'
 import { Picker } from '@react-native-picker/picker'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+/* import { resetNowPlaying } from '../redux/actions/tmdb/movies/nowPlaying'
+import { resetTrending } from '../redux/actions/tmdb/movies/trending'
+import { resetOnTheAir } from '../redux/actions/tmdb/series/onTheAir'
+import { useDispatch } from 'react-redux' */
 
 export default function Languages({ i18n }) {
+  //const dispatch = useDispatch()
   const [lang, setLang] = useState(i18n.language)
 
   const itemsPicker = [
@@ -30,13 +35,21 @@ export default function Languages({ i18n }) {
     }
 
     updateLanguage()
-  }, [])
+  }, [lang])
 
   const changeLanguage = async (itemValue) => {
     setLang(itemValue)
     i18n.changeLanguage(itemValue)
     await AsyncStorage.setItem('lang', itemValue)
   }
+
+/*     useEffect(() => {
+    return () => {
+      dispatch(resetNowPlaying())
+      dispatch(resetTrending())
+      dispatch(resetOnTheAir())
+    }
+  }, []) */
 
   return (
     <View style={{ backgroundColor: 'white' }}>

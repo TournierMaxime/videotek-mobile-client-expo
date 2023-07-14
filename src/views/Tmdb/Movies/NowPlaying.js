@@ -37,10 +37,11 @@ const NowPlaying = () => {
 
   const { i18n } = useTranslation()
   const language = i18n.language
+  const initialPage = 1
 
   const onRefresh = async () => {
     setRefreshing(true)
-    await nowPlaying(1, 'nowPlayingPagination', language)
+    await dispatch(nowPlaying(initialPage, 'nowPlayingPagination', language))
     setRefreshing(false)
   }
 
@@ -58,7 +59,7 @@ const NowPlaying = () => {
     }
 
     fetchData()
-  }, [dispatch, currentPage])
+  }, [dispatch, currentPage, language])
 
   useEffect(() => {
     const updateResults = async () => {
@@ -121,7 +122,6 @@ const NowPlaying = () => {
                 <Text style={styles.originalTitle}>
                   {truncateTitle(
                     item.title,
-                    language,
                     language === 'zh-cn' ||
                       language === 'ko' ||
                       language === 'ja'

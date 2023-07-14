@@ -1,4 +1,12 @@
 {
+  "loadMoreCritics": "더 많은 비평가 로드",
+  "removedFromFavorite": "즐겨찾기에서 삭제됨",
+  "addedToFavorite": "즐겨찾기에 추가됨",
+  "areYouSureYouWantToDeleteThisFavorite": "이 즐겨찾기를 삭제하시겠습니까 ?",
+  "loadMoreFavorites": "더 많은 즐겨찾기 로드",
+  "noFavorite": "즐겨찾기 없음",
+  "favorites": "즐겨찾기",
+  "versionNumber": "버전 번호",
   "search": "찾다",
   "trending": "시중",
   "films": "영화 산업",

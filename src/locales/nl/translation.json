@@ -1,4 +1,12 @@
 {
+  "loadMoreCritics": "Laad meer critici",
+  "removedFromFavorite": "Verwijderd uit favoriet",
+  "addedToFavorite": "Toegevoegd aan favoriet",
+  "areYouSureYouWantToDeleteThisFavorite": "Weet je zeker dat je deze favoriet wilt verwijderen ?",
+  "loadMoreFavorites": "Laad meer favorieten",
+  "noFavorite": "Geen favorieten",
+  "favorites": "Favorieten",
+  "versionNumber": "Versienummer",
   "search": "Zoekopdracht",
   "trending": "Populair",
   "films": "Films",

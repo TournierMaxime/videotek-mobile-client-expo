@@ -1,9 +1,9 @@
 import { SearchCritic, SearchCriticByUser } from '../../../services/critic'
 
-export const searchCritic = (id, page) => async (dispatch) => {
+export const searchCritic = (id, filters) => async (dispatch) => {
   try {
     dispatch({ type: 'SEARCH_CRITIC_REQUEST' })
-    const response = await SearchCritic(id, page)
+    const response = await SearchCritic(id, filters)
     dispatch({ type: 'SEARCH_CRITIC_SUCCESS', payload: response.data })
     return response.data
   } catch (error) {
@@ -13,10 +13,10 @@ export const searchCritic = (id, page) => async (dispatch) => {
   }
 }
 
-export const searchCriticByUser = (userId, page) => async (dispatch) => {
+export const searchCriticByUser = (userId, filters) => async (dispatch) => {
   try {
     dispatch({ type: 'SEARCH_CRITIC_BY_USER_REQUEST' })
-    const response = await SearchCriticByUser(userId, page)
+    const response = await SearchCriticByUser(userId, filters)
     dispatch({ type: 'SEARCH_CRITIC_BY_USER_SUCCESS', payload: response.data })
     return response.data
   } catch (error) {

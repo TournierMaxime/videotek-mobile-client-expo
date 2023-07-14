@@ -1,4 +1,12 @@
 {
+  "loadMoreCritics": "Загрузить больше критиков",
+  "removedFromFavorite": "Удалено из избранного",
+  "addedToFavorite": "Добавлено в избранное",
+  "areYouSureYouWantToDeleteThisFavorite": "Вы уверены, что хотите удалить это избранное ?",
+  "loadMoreFavorites": "Загрузить больше избранного",
+  "noFavorite": "Нет избранного",
+  "favorites": "Избранное",
+  "versionNumber": "Номер версии",
   "search": "Поиск",
   "trending": "тенденция",
   "films": "Кино",

@@ -35,16 +35,17 @@ const OnTheAir = () => {
 
   const { i18n } = useTranslation()
   const language = i18n.language
+  const initialPage = 1
 
   const onRefresh = async () => {
     setRefreshing(true)
-    await dispatch(onTheAir(1, 'onTheAirPagination', language))
+    await dispatch(onTheAir(initialPage, 'onTheAirPagination', language))
     setRefreshing(false)
   }
 
   useEffect(() => {
     dispatch(onTheAir(currentPage, 'onTheAirPagination', language))
-  }, [dispatch, currentPage])
+  }, [dispatch, currentPage, language])
 
   useEffect(() => {
     if (onTheAirResults?.length > 0) {
@@ -93,7 +94,6 @@ const OnTheAir = () => {
                 <Text style={styles.originalTitle}>
                   {truncateTitle(
                     item.name,
-                    language,
                     language === 'zh-cn' ||
                       language === 'ko' ||
                       language === 'ja'

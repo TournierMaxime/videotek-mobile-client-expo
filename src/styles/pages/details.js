@@ -37,16 +37,19 @@ const tags = {
   marginRight: 'auto',
   marginVertical: 5,
   width: 'auto',
-  paddingHorizontal: 5,
+  paddingVertical: 5,
+  paddingHorizontal: 20,
   textAlign: 'center',
   color: '#495057',
   backgroundColor: '#dee2e6',
+    lineHeight: moderateScale(30),
 }
 
 const scrollView = {
   display: 'flex',
   width: '100%',
   height: '100%',
+  position: 'relative'
 }
 
 const mainViewContainer = {
@@ -182,6 +185,7 @@ const directorTitle = {
 
 const productionViewContainer = {
   marginVertical: 25,
+  paddingBottom: moderateScale(50)
 }
 
 const technicalSheetViewContainer = {

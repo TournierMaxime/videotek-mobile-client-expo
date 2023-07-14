@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
+  ScrollView,
 } from 'react-native'
 import { ToastSuccess, ToastError } from '../../utils/Toast'
 import ToastConfig from '../../utils/ToastConfig'
@@ -15,6 +16,7 @@ import { searchCritic } from '../../redux/actions/critics/searchCritic'
 import { useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
+import { moderateScale } from '../../utils/Responsive'
 
 const NewCritic = ({ route }) => {
   const dispatch = useDispatch()
@@ -37,11 +39,11 @@ const NewCritic = ({ route }) => {
       ToastSuccess('success', t('reviewSuccessfullyPublished'), true)
       dispatch(searchCritic(id, 1))
       setTimeout(() => {
-        navigation.navigate('DetailsMovie', {
+        navigation.navigate('AllCritics', {
           title: data.titleMovieOrSerie,
           id: data.idMovieOrSerie,
         })
-      }, 80)
+      }, 200)
     } catch (error) {
       console.log(error.response.data.errMsg)
       ToastError('error', error.response.data.errMsg, false)
@@ -49,7 +51,7 @@ const NewCritic = ({ route }) => {
   }
 
   return (
-    <View style={styles.formContainer}>
+    <ScrollView style={styles.formContainer}>
       <Text style={styles.formLabel}>
         {t('criticOf')} {title}
       </Text>
@@ -77,7 +79,7 @@ const NewCritic = ({ route }) => {
         value={data.rate}
         keyboardType='numeric'
       />
-      <View style={styles.buttonContainer}>
+      <View style={[styles.buttonContainer, { paddingBottom: moderateScale(50) }]}>
         <TouchableOpacity
           style={styles.formButtonLogin}
           onPress={() => handleCritic()}
@@ -86,7 +88,7 @@ const NewCritic = ({ route }) => {
         </TouchableOpacity>
         <ToastConfig />
       </View>
-    </View>
+    </ScrollView>
   )
 }
 

@@ -37,6 +37,7 @@ import CrewSerie from './src/views/Tmdb/Series/CrewSerie'
 import CrewMovie from './src/views/Tmdb/Movies/CrewMovie'
 import DotDetails from './src/utils/DotDetails'
 import Settings from './src/views/User/Settings'
+import Favorites from './src/views/User/Favorites'
 import { useTranslation } from 'react-i18next'
 import i18n from './i18n.js'
 import { I18nextProvider } from 'react-i18next'
@@ -162,6 +163,17 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         })}
       >
         {(props) => <Settings {...props} i18n={i18n} t={t} />}
+      </MainStack.Screen>
+            <MainStack.Screen
+        name='Favorites'
+        options={({ route }) => ({
+          title: route.params.userId,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
+        })}
+      >
+        {(props) => <Favorites {...props} i18n={i18n} t={t} />}
       </MainStack.Screen>
     </MainStack.Navigator>
   )

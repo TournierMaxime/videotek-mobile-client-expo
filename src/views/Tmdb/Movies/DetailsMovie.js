@@ -26,8 +26,12 @@ import { Entypo } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import { releaseDates } from '../../../redux/actions/tmdb/movies/releaseDates'
-import { movieWatchProviders, resetMovieWatchProviders } from '../../../redux/actions/tmdb/movies/movieWatchProviders'
+import {
+  movieWatchProviders,
+  resetMovieWatchProviders,
+} from '../../../redux/actions/tmdb/movies/movieWatchProviders'
 import { moderateScale } from '../../../utils/Responsive'
+import AddToFavorite from '../../../utils/AddToFavorite'
 
 const DetailsMovie = ({ route }) => {
   const dispatch = useDispatch()
@@ -48,17 +52,17 @@ const DetailsMovie = ({ route }) => {
   }
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = () => {
       setLoading(true)
-      await dispatch(movieDetails(id, language))
-      await dispatch(movieCrew(id, language))
-      await dispatch(releaseDates(id))
-      await dispatch(movieWatchProviders(id))
+      dispatch(movieDetails(id, language))
+      dispatch(movieCrew(id, language))
+      dispatch(releaseDates(id))
+      dispatch(movieWatchProviders(id))
       setLoading(false)
     }
 
     fetchData()
-  }, [dispatch, id])
+  }, [dispatch, id, language])
 
   useEffect(() => {
     return () => {
@@ -71,101 +75,109 @@ const DetailsMovie = ({ route }) => {
   const OverViewMemoized = React.memo(OverView)
 
   return (
-    <Refresh styles={styles.scrollView} onRefresh={onRefresh}>
-      {loading ? (
-        <ActivityIndicator size='large' color='#0000ff' />
-      ) : (
-        movie && (
-          <Fragment>
-            <View style={styles.mainViewContainer}>
-              <LinearGradient
-                colors={['rgba(0,0,0,0.8)', 'rgba(0,0,0,0.8)']}
-                style={styles.linearGradient}
-              />
-              <ImageBackground
-                style={styles.imageBackground}
-                source={{
-                  uri: `https://image.tmdb.org/t/p/original${movie.backdrop_path}`,
-                }}
-              />
+    <View style={{ flex: 1 }}>
+      <Refresh styles={styles.scrollView} onRefresh={onRefresh}>
+        {loading ? (
+          <ActivityIndicator size='large' color='#0000ff' />
+        ) : (
+          movie && (
+            <Fragment>
+              <View style={styles.mainViewContainer}>
+                <LinearGradient
+                  colors={['rgba(0,0,0,0.8)', 'rgba(0,0,0,0.8)']}
+                  style={styles.linearGradient}
+                />
+                <ImageBackground
+                  style={styles.imageBackground}
+                  source={{
+                    uri: `https://image.tmdb.org/t/p/original${movie.backdrop_path}`,
+                  }}
+                />
 
-              <View style={styles.titleAndDot}>
-                <View>
-                  <Text style={[styles.headerTitle, { left: 15, top: 5 }]}>
-                    {movie.title}
-                  </Text>
-                </View>
-
-                <TouchableOpacity
-                  onPress={() =>
-                    navigation.navigate('DotDetails', {
-                      id,
-                      title: movie?.title,
-                    })
-                  }
-                >
-                  <Entypo
-                    style={styles.threeDots}
-                    name='dots-three-vertical'
-                    size={moderateScale(25)}
-                    color='white'
-                  />
-                </TouchableOpacity>
-              </View>
-
-              <View style={styles.headerViewContainer}>
-                <View style={styles.posterViewContainer}>
-                  <Image
-                    style={styles.posterPath}
-                    source={{
-                      uri: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
-                    }}
-                  />
-                  <Rate rate={movie.vote_average} />
-                </View>
-
-                <View style={styles.infoViewContainer}>
-                  <Runtime time={movie.runtime} isMovie={true} t={t} />
-
-                  <Text style={styles.directorTitle}>{t('genres')}</Text>
-
-                  <View style={styles.genresViewContainer}>
-                    {movie?.genres?.map((genre, index) => (
-                      <Text key={index} style={styles.genreText}>
-                        {genre.name}
-                      </Text>
-                    ))}
+                <View style={styles.titleAndDot}>
+                  <View>
+                    <Text style={[styles.headerTitle, { left: 15, top: 5 }]}>
+                      {movie.title}
+                    </Text>
                   </View>
 
-                  <Text style={styles.directorTitle}>{t('direction')}</Text>
+                  <TouchableOpacity
+                    onPress={() =>
+                      navigation.navigate('DotDetails', {
+                        id,
+                        title: movie?.title,
+                      })
+                    }
+                  >
+                    <Entypo
+                      style={styles.threeDots}
+                      name='dots-three-vertical'
+                      size={moderateScale(25)}
+                      color='white'
+                    />
+                  </TouchableOpacity>
+                </View>
 
-                  <View style={styles.directorsViewContainer}>
-                    {credits?.crew?.map((credit, index) => {
-                      if (!credit.job === 'Director') return null
-                      if (credit.job === 'Director') {
-                        return (
-                          <Text key={index} style={styles.directorText}>
-                            {credit.name}
-                          </Text>
-                        )
-                      }
-                    })}
+                <View style={styles.headerViewContainer}>
+                  <View style={styles.posterViewContainer}>
+                    <Image
+                      style={styles.posterPath}
+                      source={{
+                        uri: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
+                      }}
+                    />
+                    <Rate rate={movie.vote_average} />
+                  </View>
+
+                  <View style={styles.infoViewContainer}>
+                    <Runtime time={movie.runtime} isMovie={true} t={t} />
+
+                    <Text style={styles.directorTitle}>{t('genres')}</Text>
+
+                    <View style={styles.genresViewContainer}>
+                      {movie?.genres?.map((genre, index) => (
+                        <Text key={index} style={styles.genreText}>
+                          {genre.name}
+                        </Text>
+                      ))}
+                    </View>
+
+                    <Text style={styles.directorTitle}>{t('direction')}</Text>
+
+                    <View style={styles.directorsViewContainer}>
+                      {credits?.crew?.map((credit, index) => {
+                        if (!credit.job === 'Director') return null
+                        if (credit.job === 'Director') {
+                          return (
+                            <Text key={index} style={styles.directorText}>
+                              {credit.name}
+                            </Text>
+                          )
+                        }
+                      })}
+                    </View>
+                    <AddToFavorite
+                      id={id}
+                      title={movie?.title}
+                      image={movie?.poster_path}
+                      type={'movie'}
+                    />
                   </View>
                 </View>
-              </View>
 
-              <OverViewMemoized content={movie.overview} t={t} />
-            </View>
-            <ProductionMemoized
-              id={id}
-              movie={movie}
-              t={t}
-              language={language}
-            />
-          </Fragment>
-        )
-      )}
-    </Refresh>
+                <OverViewMemoized content={movie.overview} t={t} />
+              </View>
+              <ProductionMemoized
+                id={id}
+                movie={movie}
+                t={t}
+                language={language}
+              />
+            </Fragment>
+          )
+        )}
+      </Refresh>
+    </View>
   )
 }
 
@@ -193,7 +205,7 @@ const styles = StyleSheet.create({
   directorTitle: details.directorTitle,
   criticButton: button.criticButton,
   buttonText: button.buttonText,
-  threeDots: button.threeDots
+  threeDots: button.threeDots,
 })
 
 export default DetailsMovie

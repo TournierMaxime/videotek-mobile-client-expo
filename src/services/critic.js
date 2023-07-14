@@ -1,17 +1,17 @@
 import { videotekApi as http } from './axios.js'
 
-const SearchCritic = (id, page) => {
-  return http.get(`/critics/search/${id}`, {
+const SearchCritic = (id, filters) => {
+  return http.post(`/critics/search/${id}`, {
     params: {
-      page
+      filters
     }
   })
 }
 
-const SearchCriticByUser = (userId, page) => {
-  return http.get(`/critics/search/user/${userId}`, {
+const SearchCriticByUser = (userId, filters) => {
+  return http.post(`/critics/search/user/${userId}`, {
     params: {
-      page
+      filters
     },
     withCredentials: true
   },

@@ -24,12 +24,16 @@ import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../../../utils/Responsive'
 import button from '../../../styles/components/button'
+import { peopleExternalIds } from '../../../redux/actions/tmdb/people/externalIds'
+import Informations from './Informations'
+import AddToFavorite from '../../../utils/AddToFavorite'
 
 const DetailsPeople = ({ route }) => {
   const dispatch = useDispatch()
   const navigation = useNavigation()
   const { id } = route.params
   const people = useSelector((state) => state.peopleDetails.data)
+  const externalIds = useSelector((state) => state.peopleExternalIds.data)
   const [loading, setLoading] = useState(false)
 
   const { i18n, t } = useTranslation()
@@ -94,11 +98,12 @@ const DetailsPeople = ({ route }) => {
     const fetchData = async () => {
       setLoading(true)
       await dispatch(peopleDetails(id, language))
+      await dispatch(peopleExternalIds(id))
       setLoading(false)
     }
 
     fetchData()
-  }, [dispatch, id])
+  }, [dispatch, id, language])
 
   useEffect(() => {
     return () => {
@@ -109,73 +114,82 @@ const DetailsPeople = ({ route }) => {
   const OverViewMemoized = React.memo(OverView)
 
   return (
-    <Refresh styles={styles.scrollView} onRefresh={onRefresh}>
-      {loading ? (
-        <ActivityIndicator size='large' color='#0000ff' />
-      ) : (
-        people && (
-          <Fragment>
-            <View style={styles.mainViewContainer}>
-              <LinearGradient
-                colors={['rgba(0,0,0,0.8)', 'rgba(0,0,0,0.8)']}
-                style={styles.linearGradient}
-              />
+    <View style={{ flex: 1 }}>
+      <Refresh styles={styles.scrollView} onRefresh={onRefresh}>
+        {loading ? (
+          <ActivityIndicator size='large' color='#0000ff' />
+        ) : (
+          people && (
+            <Fragment>
+              <View style={styles.mainViewContainer}>
+                <LinearGradient
+                  colors={['rgba(0,0,0,0.8)', 'rgba(0,0,0,0.8)']}
+                  style={styles.linearGradient}
+                />
 
-              <View style={styles.titleAndDot}>
-                <View>
-                  <Text style={[styles.headerTitle, { left: 15, top: 5 }]}>
-                    {people.name}
-                  </Text>
-                </View>
+                <View style={styles.titleAndDot}>
+                  <View>
+                    <Text style={[styles.headerTitle, { left: 15, top: 5 }]}>
+                      {people.name}
+                    </Text>
+                  </View>
 
-                <TouchableOpacity
-                  onPress={() =>
-                    navigation.navigate('DotDetails', {
-                      id,
-                      title: people?.name,
-                    })
-                  }
-                >
-                  <Entypo
-                    style={styles.threeDots}
-                    name='dots-three-vertical'
-                    size={moderateScale(25)}
-                    color='white'
-                  />
-                </TouchableOpacity>
-              </View>
-
-              <View style={styles.headerViewContainer}>
-                <View style={styles.posterViewContainer}>
-                  <Image
-                    style={styles.posterPath}
-                    source={{
-                      uri: `https://image.tmdb.org/t/p/original${people.profile_path}`,
-                    }}
-                  />
-                </View>
-                <View style={styles.infoViewContainer}>
-                  {birth()}
-
-                  {people.deathday ? null : currentAge()}
-
-                  {people.deathday ? ageDeath() : null}
-
-                  <TouchableOpacity onPress={() => imdb()}>
-                    <SVGImdb />
+                  <TouchableOpacity
+                    onPress={() =>
+                      navigation.navigate('DotDetails', {
+                        id,
+                        title: people?.name,
+                      })
+                    }
+                  >
+                    <Entypo
+                      style={styles.threeDots}
+                      name='dots-three-vertical'
+                      size={moderateScale(25)}
+                      color='white'
+                    />
                   </TouchableOpacity>
                 </View>
+
+                <View style={styles.headerViewContainer}>
+                  <View style={styles.posterViewContainer}>
+                    <Image
+                      style={styles.posterPath}
+                      source={{
+                        uri: `https://image.tmdb.org/t/p/original${people.profile_path}`,
+                      }}
+                    />
+                  </View>
+                  <View style={styles.infoViewContainer}>
+                    {birth()}
+
+                    {people.deathday ? null : currentAge()}
+
+                    {people.deathday ? ageDeath() : null}
+
+                    <TouchableOpacity onPress={() => imdb()}>
+                      <SVGImdb />
+                    </TouchableOpacity>
+                    <AddToFavorite
+                      id={id}
+                      title={people?.name}
+                      image={people?.profile_path}
+                      type={'person'}
+                    />
+                  </View>
+                </View>
+                <OverViewMemoized
+                  isBiography={true}
+                  content={people.biography}
+                  t={t}
+                />
               </View>
-              <OverViewMemoized
-                isBiography={true}
-                content={people.biography}
-                t={t}
-              />
-            </View>
-          </Fragment>
-        )
-      )}
-    </Refresh>
+              <Informations t={t} externalIds={externalIds} />
+            </Fragment>
+          )
+        )}
+      </Refresh>
+    </View>
   )
 }
 
@@ -196,7 +210,7 @@ const styles = StyleSheet.create({
   },
   textOverview: details.textOverview,
   titleAndDot: details.titleAndDot,
-  threeDots: button.threeDots
+  threeDots: button.threeDots,
 })
 
 export default DetailsPeople

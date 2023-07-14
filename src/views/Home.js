@@ -53,7 +53,7 @@ const Home = () => {
     }
 
     fetchData()
-  }, [dispatch])
+  }, [dispatch, language])
 
   useEffect(() => {
     registerForPushNotificationsAsync()
@@ -108,7 +108,6 @@ const Home = () => {
                             <Text style={styles.originalTitle}>
                               {truncateTitle(
                                 item.title,
-                                language,
                                 language === 'zh-cn' ||
                                   language === 'ko' ||
                                   language === 'ja'
@@ -146,7 +145,6 @@ const Home = () => {
                             <Text style={styles.originalTitle}>
                               {truncateTitle(
                                 item.name,
-                                language,
                                 language === 'zh-cn' ||
                                   language === 'ko' ||
                                   language === 'ja'
@@ -206,7 +204,6 @@ const Home = () => {
                         <Text style={styles.originalTitle}>
                           {truncateTitle(
                             item.title,
-                            language,
                             language === 'zh-cn' ||
                               language === 'ko' ||
                               language === 'ja'
@@ -265,7 +262,6 @@ const Home = () => {
                       <Text style={styles.originalTitle}>
                         {truncateTitle(
                           item.name,
-                          language,
                           language === 'zh-cn' ||
                             language === 'ko' ||
                             language === 'ja'

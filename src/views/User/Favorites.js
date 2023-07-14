@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { searchCriticByUser } from '../../redux/actions/critics/searchCritic'
+import { searchFavorite, resetFavorites } from '../../redux/actions/favorites/searchFavorite'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   Text,
@@ -8,8 +8,8 @@ import {
   FlatList,
   Pressable,
   TouchableOpacity,
-  Image,
   Button,
+  Image,
 } from 'react-native'
 import { Feather } from 'react-native-vector-icons'
 import modal from '../../styles/components/modal'
@@ -17,24 +17,25 @@ import useLoadMore from '../../utils/LoadMore'
 import card from '../../styles/components/card'
 import moment from 'moment'
 import button from '../../styles/components/button'
-import { deleteCritic } from '../../redux/actions/critics/deleteCritic'
+import { deleteFavorite } from '../../redux/actions/favorites/deleteFavorite'
 import AlertModal from '../../utils/AlertModal'
 import { Fragment } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
-import Rate from '../../utils/Rate'
 import dot from '../../styles/pages/dot'
 import message from '../../styles/components/message'
 import { moderateScale } from '../../utils/Responsive'
 import NoDataFound from '../../utils/NoDataFound'
 
-const UserCritics = () => {
+const Favorites = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation()
-  const criticsData = useSelector((state) => state.searchCritic.data)
-  const criticsResults = useSelector((state) => state.searchCritic.data.critics)
+  const favoritesData = useSelector((state) => state.searchFavorite.data)
+  const favoritesResults = useSelector(
+    (state) => state.searchFavorite.data.favorites
+  )
   const userId = useSelector((state) => state.auth.data.user.userId)
-  const [selectedCriticId, setSelectedCriticId] = useState(null)
+  const [selectedFavoriteId, setSelectedFavoriteId] = useState(null)
   const [allResults, setAllResults] = useState([])
   const [modalVisible, setModalVisible] = useState(false)
 
@@ -42,48 +43,54 @@ const UserCritics = () => {
   const language = i18n.language
   moment.locale(language)
 
-  const handleModal = (criticId) => {
-    setSelectedCriticId(criticId)
+  const handleModal = (favoriteId) => {
+    setSelectedFavoriteId(favoriteId)
     setModalVisible(!modalVisible)
   }
 
   const { currentPage, loadMore } = useLoadMore(
-    criticsData.page,
-    criticsData.totalPages
+    favoritesData.page,
+    favoritesData.totalPages
   )
 
   useEffect(() => {
-    if (criticsResults?.length > 0) {
+    if (favoritesResults?.length > 0) {
       if (currentPage > 1) {
-        setAllResults((prevResults) => [...prevResults, ...criticsResults])
+        setAllResults((prevResults) => [...prevResults, ...favoritesResults])
       } else {
-        setAllResults(criticsResults)
+        setAllResults(favoritesResults)
       }
     }
-  }, [criticsResults])
+  }, [favoritesResults])
 
   useEffect(() => {
-    dispatch(searchCriticByUser(userId, {page: currentPage}))
+    dispatch(searchFavorite(userId, { page: currentPage }))
   }, [dispatch, userId, currentPage])
+
+  const redirectByType = (type, id, title) => {
+    switch (type) {
+      case 'movie':
+        return navigation.navigate('DetailsMovie', { id, title })
+      case 'serie':
+        return navigation.navigate('DetailsSerie', { id, title })
+      case 'person':
+        return navigation.navigate('DetailsPeople', { id, title })
+    }
+  }
 
   const renderItem = (item, index) => {
     return (
       <TouchableOpacity
+        onPress={() => redirectByType(item.type, item.tmdbId, item.title)}
         key={index}
-        onPress={() =>
-          navigation.navigate('UpdateCritic', {
-            criticId: item.criticId,
-            userId,
-          })
-        }
       >
         <View style={styles.renderItemContainer}>
           <View style={{ alignItems: 'center' }}>
-            {item.User.image ? (
+            {item.image ? (
               <Image
                 style={styles.image}
                 source={{
-                  uri: `${item.User.image}?t=${new Date().getTime()}`,
+                  uri: `${item.image}?t=${new Date().getTime()}`,
                 }}
               />
             ) : (
@@ -92,20 +99,17 @@ const UserCritics = () => {
                 source={require('../../assets/image/No_Image_Available.jpg')}
               />
             )}
-            <Rate rate={item.rate} />
           </View>
           <View style={styles.renderItemDetails}>
             <Text style={styles.renderItemTitle}>
-              {item.User.userName} | {moment(item.created).format('LLL')}
+              {item.title}
             </Text>
-            <Text style={styles.renderItemOverview}>{item.title}</Text>
-            <Text style={styles.renderItemOverview}>{item.content}</Text>
-            <View style={{ alignItems: 'flex-end', marginRight: 50 }}>
+            <View style={{ alignItems: 'flex-end', position: 'absolute', bottom: moderateScale(15), right: moderateScale(15) }}>
               {item.userId === userId ? (
-                <Fragment>
+                <View>
                   <Pressable
                     style={styles.trashButton}
-                    onPress={() => handleModal(item.criticId)}
+                    onPress={() => handleModal(item.favoriteId)}
                   >
                     <Feather
                       name='trash-2'
@@ -114,13 +118,13 @@ const UserCritics = () => {
                     />
                   </Pressable>
                   <AlertModal
-                    message={t('areYouSureYouWantToDeleteThisReview')}
+                    message={t('areYouSureYouWantToDeleteThisFavorite')}
                     action={handleDelete}
                     visible={modalVisible}
                     setVisible={setModalVisible}
                     t={t}
                   />
-                </Fragment>
+                </View>
               ) : null}
             </View>
           </View>
@@ -130,27 +134,35 @@ const UserCritics = () => {
   }
 
   const handleDelete = async () => {
-    if (selectedCriticId) {
-      await dispatch(deleteCritic(selectedCriticId)).then(() =>
+    if (selectedFavoriteId) {
+      await dispatch(deleteFavorite(selectedFavoriteId)).then(() =>
         setModalVisible(false)
       )
       setAllResults((prevResults) =>
-        prevResults.filter((critic) => critic.criticId !== selectedCriticId)
+        prevResults.filter(
+          (favorite) => favorite.favoriteId !== selectedFavoriteId
+        )
       )
-      await dispatch(searchCriticByUser(userId, 1))
-      setSelectedCriticId(null)
+      await dispatch(searchFavorite(userId, { page: 1 }))
+      setSelectedFavoriteId(null)
     }
   }
 
+  useEffect(() => {
+    return () => {
+      dispatch(resetFavorites())
+    }
+  }, [])
+
   return (
     <Fragment>
-      <Text style={styles.modalTitle}>{t('critics')}</Text>
+      <Text style={styles.modalTitle}>{t('favorites')}</Text>
       <FlatList
         data={allResults}
         keyExtractor={(item, index) => `${index}`}
-        ListEmptyComponent={<NoDataFound message={t('noCritic')} />}
+        ListEmptyComponent={<NoDataFound message={t('noFavorite')} />}
         ListFooterComponent={
-          criticsResults?.length > 0 ? (
+          favoritesResults?.length > 0 ? (
             <View
               style={{
                 width: '100%',
@@ -159,9 +171,9 @@ const UserCritics = () => {
               }}
             >
               <Button
-                title={t('loadMoreCritics')}
+                title={t('loadMoreFavorites')}
                 onPress={loadMore}
-                disabled={currentPage >= criticsData.totalPages}
+                disabled={currentPage >= favoritesData.totalPages}
               />
             </View>
           ) : null
@@ -194,13 +206,12 @@ const styles = StyleSheet.create({
   containerMessage: message.containerMessage,
   messageText: message.messageText,
   image: {
-    width: moderateScale(60),
-    height: moderateScale(60),
+    width: moderateScale(140),
+    height: moderateScale(200),
     resizeMode: 'cover',
-    borderRadius: moderateScale(30),
     marginLeft: moderateScale(15),
     marginBottom: moderateScale(5),
   },
 })
 
-export default UserCritics
+export default Favorites

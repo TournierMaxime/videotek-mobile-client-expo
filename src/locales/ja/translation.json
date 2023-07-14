@@ -1,4 +1,12 @@
 {
+  "loadMoreCritics": "さらに批評家をロードする",
+  "removedFromFavorite": "お気に入りから削除されました",
+  "addedToFavorite": "お気に入りに追加されました",
+  "areYouSureYouWantToDeleteThisFavorite": "このお気に入りを削除してもよろしいですか ?",
+  "loadMoreFavorites": "お気に入りをさらにロードする",
+  "noFavorite": "お気に入りはありません",
+  "favorites": "お気に入り",
+  "versionNumber": "バージョンナンバー",
   "search": "検索",
   "trending": "テンダンス",
   "films": "映画",

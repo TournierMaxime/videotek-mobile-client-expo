@@ -106,6 +106,23 @@ const UserProfile = ({ route }) => {
                 </View>
               </TouchableOpacity>
 
+                              <TouchableOpacity
+                onPress={() => navigation.navigate('Favorites', { userId })}
+              >
+                <View style={styles.profileSectionContainer}>
+                  <View style={styles.textIconContainer}>
+                    <Ionicons
+                      style={styles.icon}
+                      name='settings-outline'
+                      size={moderateScale(25)}
+                      color='black'
+                    />
+                    <Text style={styles.textSize}>{t('favorites')}</Text>
+                  </View>
+                  <Entypo name='chevron-small-right' size={moderateScale(25)} color='black' />
+                </View>
+              </TouchableOpacity>
+
               <TouchableOpacity
                 onPress={() => navigation.navigate('Settings', { userId })}
               >

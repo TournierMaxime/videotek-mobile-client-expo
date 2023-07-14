@@ -1,4 +1,12 @@
 {
+  "loadMoreCritics": "加载更多评论家",
+  "removedFromFavorite": "已从收藏夹中删除",
+  "addedToFavorite": "已添加至收藏夹",
+  "areYouSureYouWantToDeleteThisFavorite": "您确定要删除此收藏夹吗 ?",
+  "loadMoreFavorites": "加载更多收藏夹",
+  "noFavorite": "没有收藏夹",
+  "favorites": "收藏夹",
+  "versionNumber": "版本号",
   "search": "搜索",
   "trending": "趋势",
   "films": "电影",

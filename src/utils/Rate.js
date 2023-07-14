@@ -38,8 +38,10 @@ const styles = StyleSheet.create({
     textAlign:'center',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 15,
-    borderRadius: 5
+    marginTop: moderateScale(15),
+    borderRadius: moderateScale(5),
+    marginLeft: moderateScale(25),
+    marginRight: 'auto'
   },
   textContent: {
     fontWeight: 'bold',

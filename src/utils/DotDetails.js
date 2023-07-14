@@ -29,7 +29,7 @@ const DotDetails = ({ route }) => {
   const serie = useSelector((state) => state.serieDetails.data)
   const movie = useSelector((state) => state.movieDetails.data)
   const people = useSelector((state) => state.peopleDetails.data)
-  const critics = useSelector((state) => state.searchCritic?.data?.critics)
+  const numberOfCritics = useSelector((state) => state.searchCritic?.data)
 
   const { i18n, t } = useTranslation()
   const language = i18n.language
@@ -143,7 +143,7 @@ const DotDetails = ({ route }) => {
                   color='black'
                 />
                 <Text style={styles.textSize}>
-                  {t('critics')} {critics?.length > 0 ? critics?.length : 0}
+                  {t('critics')} {numberOfCritics?.results > 0 ? numberOfCritics?.results : 0}
                 </Text>
               </View>
               <Entypo name='chevron-small-right' size={moderateScale(25)} color='black' />

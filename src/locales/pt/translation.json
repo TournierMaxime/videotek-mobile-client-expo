@@ -1,4 +1,12 @@
 {
+  "loadMoreCritics": "Carregar mais críticos",
+  "removedFromFavorite": "Removido dos favoritos",
+  "addedToFavorite": "Adicionado aos favoritos",
+  "areYouSureYouWantToDeleteThisFavorite": "Tem certeza de que deseja excluir este favorito ?",
+  "loadMoreFavorites": "Carregar mais favoritos",
+  "noFavorite": "Sem favoritos",
+  "favorites": "Favoritos",
+  "versionNumber": "Número da versão",
   "search": "Procurar",
   "trending": "Tendendo",
   "films": "Filmes",

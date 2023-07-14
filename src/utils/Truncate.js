@@ -1,5 +1,4 @@
-export function truncateTitle(title, language, maxLength) {
-  if (language === 'zh-cn' || language === 'ko' || language === 'ja') {
+export function truncateTitle(title, maxLength) {
     let length = 0;
     let truncatedTitle = "";
 
@@ -14,9 +13,6 @@ export function truncateTitle(title, language, maxLength) {
     }
 
     return truncatedTitle;
-  }
-
-  // Rest of the code for other languages
 }
 
 

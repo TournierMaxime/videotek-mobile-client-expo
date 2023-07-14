@@ -5,7 +5,7 @@ import {
   StyleSheet,
   FlatList,
   Image,
-  ActivityIndicator,
+  Button,
 } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import moment from 'moment'
@@ -13,20 +13,27 @@ import dot from '../../styles/pages/dot'
 import message from '../../styles/components/message'
 import button from '../../styles/components/button'
 import Rate from '../../utils/Rate'
-import { Ionicons } from 'react-native-vector-icons'
 import { searchCritic } from '../../redux/actions/critics/searchCritic'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../../utils/Responsive'
+import useLoadMore from '../../utils/LoadMore'
+import NoDataFound from '../../utils/NoDataFound'
 
 const AllCritics = ({ route }) => {
   const { id, title } = route.params
   const dispatch = useDispatch()
-  const [isLoading, setIsLoading] = useState(false)
   const critics = useSelector((state) => state.searchCritic.data)
+  const criticsResults = useSelector((state) => state.searchCritic.data.critics)
+  const [allResults, setAllResults] = useState([])
 
   const { i18n, t } = useTranslation()
   const language = i18n.language
   moment.locale(language)
+
+  const { currentPage, loadMore } = useLoadMore(
+    critics.page,
+    critics.totalPages
+  )
 
   const renderItem = (item) => {
     return (
@@ -49,8 +56,7 @@ const AllCritics = ({ route }) => {
         </View>
         <View style={styles.renderItemDetails}>
           <Text style={styles.renderItemTitle}>
-            {item.User.userName} |{' '}
-            {moment(item.created).format('LLL')}
+            {item.User.userName} | {moment(item.created).format('LLL')}
           </Text>
           <Text style={styles.renderItemOverview}>{item.title}</Text>
           <Text style={styles.renderItemOverview}>{item.content}</Text>
@@ -59,37 +65,48 @@ const AllCritics = ({ route }) => {
     )
   }
 
-  const noDataFound = () => (
-    <View style={styles.containerMessage}>
-      <Ionicons name='information-circle-outline' size={24} color='#696cff' />
-      <Text style={styles.messageText}>{t('noCritic')} {title}</Text>
-    </View>
-  )
-
   useEffect(() => {
-    setIsLoading(true)
-    dispatch(searchCritic(id))
-      .then(() => {
-        setIsLoading(false)
-      })
-      .catch(() => {
-        setIsLoading(false)
-      })
-  }, [dispatch, id])
+    if (criticsResults?.length > 0) {
+      if (currentPage > 1) {
+        setAllResults((prevResults) => [...prevResults, ...criticsResults])
+      } else {
+        setAllResults(criticsResults)
+      }
+    }
+  }, [criticsResults])
+
+    useEffect(() => {
+    dispatch(searchCritic(id, {page: currentPage}))
+  }, [dispatch, id, currentPage])
 
   return (
     <View style={styles.container}>
-      <Text style={styles.seasonTitle}>{t('criticOf')} {title}</Text>
-      {isLoading ? (
-        <ActivityIndicator size='large' color='#0000ff' />
-      ) : (
+      <Text style={styles.seasonTitle}>
+        {t('criticOf')} {title}
+      </Text>
         <FlatList
-          data={critics?.critics}
-          ListEmptyComponent={noDataFound}
+          data={allResults}
+          ListEmptyComponent={<NoDataFound message={t('noCritic')} />}
           keyExtractor={(item) => item.criticId}
+          ListFooterComponent={
+            criticsResults?.length > 0 ? (
+              <View
+                style={{
+                  width: '100%',
+                  alignItems: 'center',
+                  marginVertical: moderateScale(25),
+                }}
+              >
+                <Button
+                  title={t('loadMoreCritics')}
+                  onPress={loadMore}
+                  disabled={currentPage >= critics.totalPages}
+                />
+              </View>
+            ) : null
+          }
           renderItem={({ item }) => renderItem(item)}
         />
-      )}
     </View>
   )
 }
@@ -97,10 +114,10 @@ const AllCritics = ({ route }) => {
 const styles = StyleSheet.create({
   container: dot.container,
   image: {
-    width: moderateScale(80),
-    height: moderateScale(80),
+    width: moderateScale(60),
+    height: moderateScale(60),
     resizeMode: 'cover',
-    borderRadius: 15,
+    borderRadius: moderateScale(30),
     marginLeft: 15,
     marginBottom: 5,
   },

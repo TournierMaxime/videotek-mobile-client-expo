@@ -37,10 +37,11 @@ const Trending = () => {
 
   const { i18n } = useTranslation()
   const language = i18n.language
+  const initialPage = 1
 
   const onRefresh = async () => {
     setRefreshing(true)
-    await dispatch(trending(1, 'trendingPagination', language))
+    await dispatch(trending(initialPage, 'trendingPagination', language))
     setRefreshing(false)
   }
 
@@ -53,7 +54,7 @@ const Trending = () => {
       .catch(() => {
         setIsLoading(false)
       })
-  }, [dispatch, currentPage])
+  }, [dispatch, currentPage, language])
 
   useEffect(() => {
     if (trendingResults?.length > 0) {
@@ -114,7 +115,6 @@ const Trending = () => {
                     <Text style={styles.originalTitle}>
                       {truncateTitle(
                         item.title,
-                        language,
                         language === 'zh-cn' ||
                           language === 'ko' ||
                           language === 'ja'

@@ -9,8 +9,6 @@ const MovieWatchProviders = ({ language, t }) => {
     (state) => state.movieWatchProviders.data.results
   )
 
-  const lang = language.toUpperCase()
-
   const flatrate = (providers, languageKey) => {
     let language = languageKey
 
@@ -103,7 +101,7 @@ const MovieWatchProviders = ({ language, t }) => {
         language = 'KR'
         break
     }
-    if (!providers?.[language]?.buy) {
+    if (!providers?.[language]?.rent) {
       return null
     }
 
@@ -123,41 +121,40 @@ const MovieWatchProviders = ({ language, t }) => {
     )
   }
 
-  const providersByCountry = (lang) => {
-    switch (lang) {
+  const providersByCountry = (providers, language) => {
+
+    switch (language) {
       case 'EN-GB':
-        lang = 'US'
+        language = 'US'
         break
       case 'ZH-CN':
-        lang = 'CN'
+        language = 'CN'
         break
       case 'JA':
-        lang = 'JP'
+        language = 'JP'
         break
       case 'KO':
-        lang = 'KR'
+        language = 'KR'
         break
     }
 
     return (
       <Fragment>
-        {flatrate(providers, lang)}
-        {buy(providers, lang)}
-        {rent(providers, lang)}
+        {flatrate(providers, language)}
+        {buy(providers, language)}
+        {rent(providers, language)}
       </Fragment>
     )
   }
 
   return (
     <Accordion title={t('available')}>
-      {providers ? (
-        <View style={styles.mainContainer}>
-          <Text style={[styles.renderItemTitle, { marginBottom: 15 }]}>
-            {t('contentPoweredByJustWatch')}
-          </Text>
-          <View>{providersByCountry(lang)}</View>
-        </View>
-      ) : null}
+      <View style={styles.mainContainer}>
+        <Text style={[styles.renderItemTitle, { marginBottom: 15 }]}>
+          {t('contentPoweredByJustWatch')}
+        </Text>
+        <View>{providersByCountry(providers, language)}</View>
+      </View>
     </Accordion>
   )
 }
