@@ -1,5 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native'
 import button from '../../styles/components/button'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from '../../redux/actions/users/oneUser'
@@ -72,113 +78,141 @@ const UserProfile = ({ route }) => {
         <Fragment>
           {oneUser && (
             <View style={styles.profilViewContainer}>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('DetailsUser', { userId })}
-              >
-                <View style={styles.profileSectionContainer}>
-                  <View style={styles.textIconContainer}>
-                    <FontAwesome5
-                      style={styles.icon}
-                      name='user'
-                      size={moderateScale(25)}
-                      color='black'
-                    />
-                    <Text style={styles.textSize}>{userName}</Text>
-                  </View>
-                  <Entypo name='chevron-small-right' size={moderateScale(25)} color='black' />
-                </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => navigation.navigate('UserCritics', { userId })}
-              >
-                <View style={styles.profileSectionContainer}>
-                  <View style={styles.textIconContainer}>
+              <ScrollView contentContainerStyle={{height: '100%'}}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('DetailsUser', { userId })}
+                >
+                  <View style={styles.profileSectionContainer}>
+                    <View style={styles.textIconContainer}>
+                      <FontAwesome5
+                        style={styles.icon}
+                        name='user'
+                        size={moderateScale(25)}
+                        color='black'
+                      />
+                      <Text style={styles.textSize}>{userName}</Text>
+                    </View>
                     <Entypo
-                      style={styles.icon}
-                      name='new-message'
+                      name='chevron-small-right'
                       size={moderateScale(25)}
                       color='black'
                     />
-                    <Text style={styles.textSize}>{t('critics')}</Text>
                   </View>
-                  <Entypo name='chevron-small-right' size={moderateScale(25)} color='black' />
-                </View>
-              </TouchableOpacity>
+                </TouchableOpacity>
 
-                              <TouchableOpacity
-                onPress={() => navigation.navigate('Favorites', { userId })}
-              >
-                <View style={styles.profileSectionContainer}>
-                  <View style={styles.textIconContainer}>
-                    <Ionicons
-                      style={styles.icon}
-                      name='settings-outline'
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('UserCritics', { userId })}
+                >
+                  <View style={styles.profileSectionContainer}>
+                    <View style={styles.textIconContainer}>
+                      <Entypo
+                        style={styles.icon}
+                        name='new-message'
+                        size={moderateScale(25)}
+                        color='black'
+                      />
+                      <Text style={styles.textSize}>{t('critics')}</Text>
+                    </View>
+                    <Entypo
+                      name='chevron-small-right'
                       size={moderateScale(25)}
                       color='black'
                     />
-                    <Text style={styles.textSize}>{t('favorites')}</Text>
                   </View>
-                  <Entypo name='chevron-small-right' size={moderateScale(25)} color='black' />
-                </View>
-              </TouchableOpacity>
+                </TouchableOpacity>
 
-              <TouchableOpacity
-                onPress={() => navigation.navigate('Settings', { userId })}
-              >
-                <View style={styles.profileSectionContainer}>
-                  <View style={styles.textIconContainer}>
-                    <Ionicons
-                      style={styles.icon}
-                      name='settings-outline'
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Favorites', { userId })}
+                >
+                  <View style={styles.profileSectionContainer}>
+                    <View style={styles.textIconContainer}>
+                      <MaterialIcons
+                        style={styles.icon}
+                        name='favorite-outline'
+                        size={moderateScale(25)}
+                        color='black'
+                      />
+                      <Text style={styles.textSize}>{t('favorites')}</Text>
+                    </View>
+                    <Entypo
+                      name='chevron-small-right'
                       size={moderateScale(25)}
                       color='black'
                     />
-                    <Text style={styles.textSize}>{t('settings')}</Text>
                   </View>
-                  <Entypo name='chevron-small-right' size={moderateScale(25)} color='black' />
-                </View>
-              </TouchableOpacity>
+                </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => handleLogout()}>
-                <View style={styles.profileSectionContainer}>
-                  <View style={styles.textIconContainer}>
-                    <MaterialIcons
-                      style={styles.icon}
-                      name='logout'
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Settings', { userId })}
+                >
+                  <View style={styles.profileSectionContainer}>
+                    <View style={styles.textIconContainer}>
+                      <Ionicons
+                        style={styles.icon}
+                        name='settings-outline'
+                        size={moderateScale(25)}
+                        color='black'
+                      />
+                      <Text style={styles.textSize}>{t('settings')}</Text>
+                    </View>
+                    <Entypo
+                      name='chevron-small-right'
                       size={moderateScale(25)}
                       color='black'
                     />
-                    <Text style={styles.textSize}>{t('logout')}</Text>
                   </View>
-                  <Entypo name='chevron-small-right' size={moderateScale(25)} color='black' />
-                </View>
-              </TouchableOpacity>
+                </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => handleDeleteModal()}>
-                <View style={styles.profileSectionContainer}>
-                  <View style={styles.textIconContainer}>
-                    <MaterialIcons
-                      style={styles.icon}
-                      name='delete-outline'
+                <TouchableOpacity onPress={() => handleLogout()}>
+                  <View style={styles.profileSectionContainer}>
+                    <View style={styles.textIconContainer}>
+                      <MaterialIcons
+                        style={styles.icon}
+                        name='logout'
+                        size={moderateScale(25)}
+                        color='black'
+                      />
+                      <Text style={styles.textSize}>{t('logout')}</Text>
+                    </View>
+                    <Entypo
+                      name='chevron-small-right'
                       size={moderateScale(25)}
                       color='black'
                     />
-                    <Text style={[styles.textSize, { color: 'red' }]}>{t('deleteAccount')}</Text>
                   </View>
-                  <Entypo name='chevron-small-right' size={moderateScale(25)} color='black' />
-                </View>
-              </TouchableOpacity>
-              <AlertModal
-                message={t('deleteAccountConfirmMsg')}
-                action={handleDelete}
-                visible={deleteModalVisible}
-                setVisible={setDeleteModalVisible}
-                success={deleteSuccess}
-                t={t}
-              >
-                <ToastConfig />
-              </AlertModal>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => handleDeleteModal()}>
+                  <View style={styles.profileSectionContainer}>
+                    <View style={styles.textIconContainer}>
+                      <MaterialIcons
+                        style={styles.icon}
+                        name='delete-outline'
+                        size={moderateScale(25)}
+                        color='black'
+                      />
+                      <Text style={[styles.textSize, { color: 'red' }]}>
+                        {t('deleteAccount')}
+                      </Text>
+                    </View>
+                    <Entypo
+                      name='chevron-small-right'
+                      size={moderateScale(25)}
+                      color='black'
+                    />
+                  </View>
+                </TouchableOpacity>
+                <AlertModal
+                  message={t('deleteAccountConfirmMsg')}
+                  action={handleDelete}
+                  visible={deleteModalVisible}
+                  setVisible={setDeleteModalVisible}
+                  success={deleteSuccess}
+                  t={t}
+                >
+                  <ToastConfig />
+                </AlertModal>
+              </ScrollView>
             </View>
           )}
         </Fragment>
@@ -199,7 +233,7 @@ const styles = StyleSheet.create({
   icon: profil.icon,
   textIconContainer: profil.textIconContainer,
   profilViewContainer: profil.profilViewContainer,
-  textSize: profil.textSize
+  textSize: profil.textSize,
 })
 
 export default UserProfile
