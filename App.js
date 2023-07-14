@@ -399,7 +399,7 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
             marginTop: 10,
           },
           tabBarStyle: {
-            marginLeft: 15,
+            ...(Platform.OS === 'android' ? { marginLeft: 0 } : { marginLeft: moderateScale(15) }),
             marginRight: 'auto',
             justifyContent: 'center',
             display: 'flex',
@@ -413,7 +413,7 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
             options={() => ({
               tabBarIcon: ({ color }) => (
                 <Entypo
-                  style={{ width: 50, height: 'auto' }}
+                  style={{ width: moderateScale(50), height: 'auto' }}
                   name='home'
                   size={moderateScale(25)}
                   color={color}

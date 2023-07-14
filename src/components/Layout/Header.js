@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react'
-import { View, Image, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Image, StyleSheet, TouchableOpacity, Platform } from 'react-native'
 import header from '../../styles/components/header'
 import { FontAwesome5, FontAwesome, Ionicons } from 'react-native-vector-icons'
 import SearchModal from '../../utils/SearchModal'
@@ -18,7 +18,7 @@ const Header = ({ backButton, isAuthenticated }) => {
     <Fragment>
       <View style={styles.headerContainer}>
         {backButton ? (
-          <View style={{ marginTop: moderateScale(20) }}>
+          <View style={Platform.OS === 'ios' ? {marginTop: moderateScale(20)} : null}>
             <TouchableOpacity
               style={{ padding: moderateScale(10) }}
               onPress={() => navigation.goBack()}
@@ -31,7 +31,7 @@ const Header = ({ backButton, isAuthenticated }) => {
             </TouchableOpacity>
           </View>
         ) : isAuthenticated === true ? (
-          <View style={{ marginTop: moderateScale(20) }}>
+          <View style={Platform.OS === 'ios' ? {marginTop: moderateScale(20)} : null}>
             <TouchableOpacity
               style={{ padding: moderateScale(10) }}
               onPress={() => navigation.navigate('UserProfile')}
@@ -44,7 +44,7 @@ const Header = ({ backButton, isAuthenticated }) => {
             </TouchableOpacity>
           </View>
         ) : (
-          <View style={{ marginTop: moderateScale(20) }}>
+          <View style={Platform.OS === 'ios' ? {marginTop: moderateScale(20)} : null}>
             <TouchableOpacity
               style={{ padding: moderateScale(10) }}
               onPress={() =>
@@ -59,13 +59,13 @@ const Header = ({ backButton, isAuthenticated }) => {
             </TouchableOpacity>
           </View>
         )}
-        <View style={{ marginTop: moderateScale(20) }}>
+        <View style={Platform.OS === 'ios' ? {marginTop: moderateScale(20)} : null}>
           <Image
             style={styles.logo}
             source={require('../../assets/image/videotek_logo.webp')}
           />
         </View>
-        <View style={{ marginTop: moderateScale(20) }}>
+        <View style={Platform.OS === 'ios' ? {marginTop: moderateScale(20)} : null}>
           <TouchableOpacity
             style={{ padding: moderateScale(10) }}
             onPress={handleModal}
