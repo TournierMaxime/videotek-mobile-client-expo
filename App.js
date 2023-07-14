@@ -401,6 +401,7 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
           tabBarStyle: {
             ...(Platform.OS === 'android' ? { marginLeft: 0 } : { marginLeft: moderateScale(15) }),
             marginRight: 'auto',
+            height: moderateScale(50),
             justifyContent: 'center',
             display: 'flex',
             flexDirection: 'row'

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { TouchableOpacity, StyleSheet, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
@@ -18,6 +18,9 @@ const AddToFavorite = ({ id, title, image, type }) => {
   const { t } = useTranslation()
   const data = useSelector((state) => state.getOneFavorite.data)
   const userId = useSelector((state) => state.auth.data.user.userId)
+  const isAuthenticated = useSelector(
+    (state) => state.auth.data.user.isAuthenticated
+  )
   const [isFavorite, setIsFavorite] = useState(false)
 
   const handleCreate = async () => {
@@ -50,7 +53,9 @@ const AddToFavorite = ({ id, title, image, type }) => {
   }
 
   useEffect(() => {
-    dispatch(getOneFavorite(userId, id))
+    if (isAuthenticated) {
+      dispatch(getOneFavorite(userId, id))
+    }
   }, [dispatch, userId, id, isFavorite])
 
   useEffect(() => {
@@ -60,34 +65,38 @@ const AddToFavorite = ({ id, title, image, type }) => {
   }, [])
 
   return (
-    <View style={{ marginTop: 15 }}>
-      {!data?.favorite && isFavorite === false ? (
-        <TouchableOpacity
-          style={styles.createButtonContainer}
-          onPress={() => handleCreate()}
-        >
-          <AntDesign
-            style={styles.icon}
-            name='heart'
-            size={moderateScale(25)}
-            color='black'
-          />
-        </TouchableOpacity>
-      ) : (
-        <TouchableOpacity
-          style={styles.createButtonContainer}
-          onPress={() => handleDelete()}
-        >
-          <AntDesign
-            style={styles.icon}
-            name='heart'
-            size={moderateScale(25)}
-            color='red'
-          />
-        </TouchableOpacity>
-      )}
-      <ToastConfig />
-    </View>
+    <Fragment>
+      {isAuthenticated ? (
+        <View style={{ marginTop: 15 }}>
+          {!data?.favorite && isFavorite === false ? (
+            <TouchableOpacity
+              style={styles.createButtonContainer}
+              onPress={() => handleCreate()}
+            >
+              <AntDesign
+                style={styles.icon}
+                name='heart'
+                size={moderateScale(25)}
+                color='black'
+              />
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              style={styles.createButtonContainer}
+              onPress={() => handleDelete()}
+            >
+              <AntDesign
+                style={styles.icon}
+                name='heart'
+                size={moderateScale(25)}
+                color='red'
+              />
+            </TouchableOpacity>
+          )}
+          <ToastConfig />
+        </View>
+      ) : null}
+    </Fragment>
   )
 }
 
