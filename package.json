@@ -1,6 +1,6 @@
 {
   "name": "videotek-client-expo",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "scripts": {
     "start": "expo start --dev-client",
     "android": "expo run:android",
