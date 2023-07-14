@@ -43,6 +43,7 @@ import i18n from './i18n.js'
 import { I18nextProvider } from 'react-i18next'
 import './polyfill.js'
 import { moderateScale } from './src/utils/Responsive'
+import { Platform, Dimensions } from 'react-native'
 
 const MainStack = createNativeStackNavigator()
 const AuthStack = createNativeStackNavigator()
@@ -401,7 +402,7 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
           tabBarStyle: {
             ...(Platform.OS === 'android' ? { marginLeft: 0 } : { marginLeft: moderateScale(15) }),
             marginRight: 'auto',
-            height: moderateScale(50),
+            ...(Dimensions.get('window').width > 600 ? { height: moderateScale(50) } : null),
             justifyContent: 'center',
             display: 'flex',
             flexDirection: 'row'
