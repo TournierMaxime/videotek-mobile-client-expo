@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {StyleSheet, View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { popular, resetPopular } from '../../../redux/actions/tmdb/series/popular'
+import { popular, resetPopular } from '../../../redux/actions/tmdb/series'
 import useLoadMore from '../../../utils/LoadMore';
 import { truncateTitle } from '../../../utils/Truncate'
 import {useNavigation} from '@react-navigation/native';

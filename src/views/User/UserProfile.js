@@ -8,8 +8,8 @@ import {
 } from 'react-native'
 import button from '../../styles/components/button'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUser } from '../../redux/actions/users/oneUser'
-import { logoutUser } from '../../redux/actions/auth/auth'
+import { getUser, deleteUser, resetUser } from '../../redux/actions/users'
+import { logoutUser } from '../../redux/actions/auth'
 import { useNavigation } from '@react-navigation/native'
 import { checkAccess } from '../../utils/CheckAccess'
 import {
@@ -20,7 +20,6 @@ import {
 } from 'react-native-vector-icons'
 import profil from '../../styles/components/profil'
 import AlertModal from '../../utils/AlertModal'
-import { deleteUser } from '../../redux/actions/users/deleteUser'
 import { ToastSuccess, ToastError } from '../../utils/Toast'
 import ToastConfig from '../../utils/ToastConfig'
 import { useTranslation } from 'react-i18next'
@@ -35,6 +34,8 @@ const UserProfile = ({ route }) => {
   const isLogged = useSelector((state) => state.auth.isAuthenticated)
   const [deleteModalVisible, setDeleteModalVisible] = useState(false)
   const [deleteSuccess, setDeleteSuccess] = useState(false)
+  const accessDenied = checkAccess(isLogged, currentUserId, userId)
+  const userName = `${oneUser?.user?.userName}`
 
   const { t } = useTranslation()
 
@@ -65,10 +66,13 @@ const UserProfile = ({ route }) => {
 
   useEffect(() => {
     dispatch(getUser(userId))
-  }, [dispatch, userId])
+  }, [dispatch, userId, userName])
 
-  const accessDenied = checkAccess(isLogged, currentUserId, userId)
-  const userName = `${oneUser?.user?.userName}`
+  useEffect(() => {
+    return () => {
+      dispatch(resetUser())
+    }
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -78,7 +82,7 @@ const UserProfile = ({ route }) => {
         <Fragment>
           {oneUser && (
             <View style={styles.profilViewContainer}>
-              <ScrollView contentContainerStyle={{height: '100%'}}>
+              <ScrollView contentContainerStyle={{ height: '100%' }}>
                 <TouchableOpacity
                   onPress={() => navigation.navigate('DetailsUser', { userId })}
                 >

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { searchCriticByUser } from '../../redux/actions/critics/searchCritic'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   Text,
@@ -17,7 +16,7 @@ import useLoadMore from '../../utils/LoadMore'
 import card from '../../styles/components/card'
 import moment from 'moment'
 import button from '../../styles/components/button'
-import { deleteCritic } from '../../redux/actions/critics/deleteCritic'
+import { searchCriticByUser, deleteCritic } from '../../redux/actions/critics'
 import AlertModal from '../../utils/AlertModal'
 import { Fragment } from 'react'
 import { useNavigation } from '@react-navigation/native'
@@ -100,7 +99,7 @@ const UserCritics = () => {
             </Text>
             <Text style={styles.renderItemOverview}>{item.title}</Text>
             <Text style={styles.renderItemOverview}>{item.content}</Text>
-            <View style={{ alignItems: 'flex-end', marginRight: 50 }}>
+            <View style={{ alignItems: 'flex-end', marginRight: moderateScale(15) }}>
               {item.userId === userId ? (
                 <Fragment>
                   <Pressable
@@ -198,7 +197,7 @@ const styles = StyleSheet.create({
     height: moderateScale(60),
     resizeMode: 'cover',
     borderRadius: moderateScale(30),
-    marginLeft: moderateScale(15),
+    marginLeft: 'auto',
     marginBottom: moderateScale(5),
   },
 })

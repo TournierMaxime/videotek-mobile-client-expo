@@ -6,57 +6,60 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
-  ActivityIndicator,
+  RefreshControl,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { upcoming, resetUpcoming } from '../../../redux/actions/tmdb/movies'
+import {
+  trendingTV,
+  resetTrending,
+} from '../../../redux/actions/tmdb/series'
 import useLoadMore from '../../../utils/LoadMore'
 import { truncateTitle } from '../../../utils/Truncate'
 import { useNavigation } from '@react-navigation/native'
 import list from '../../../styles/components/list'
 import { useTranslation } from 'react-i18next'
 
-const Upcoming = () => {
+const TrendingTV = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation()
-  const upcomingData = useSelector((state) => state.upcoming.paginationData)
-  const upcomingResults = useSelector(
-    (state) => state.upcoming.paginationData.results
+  const trendingTVData = useSelector((state) => state.trendingTV.paginationData)
+  const trendingTVResults = useSelector(
+    (state) => state.trendingTV.paginationData.results
   )
   const { currentPage, loadMore } = useLoadMore(
-    upcomingData.page,
-    upcomingData.total_pages
+    trendingTVData.page,
+    trendingTVData.total_pages
   )
   const [allResults, setAllResults] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
+  const [refreshing, setRefreshing] = useState(false)
 
   const { i18n } = useTranslation()
   const language = i18n.language
+  const initialPage = 1
+
+  const onRefresh = async () => {
+    setRefreshing(true)
+    await dispatch(trendingTV(initialPage, 'trendingPaginationTV', language))
+    setRefreshing(false)
+  }
 
   useEffect(() => {
-    setIsLoading(true)
-    dispatch(upcoming(currentPage, 'upcomingPagination', language))
-      .then(() => {
-        setIsLoading(false)
-      })
-      .catch(() => {
-        setIsLoading(false)
-      })
-  }, [dispatch, currentPage])
+    dispatch(trendingTV(currentPage, 'trendingPaginationTV', language))
+  }, [dispatch, currentPage, language])
 
   useEffect(() => {
-    if (upcomingResults?.length > 0) {
+    if (trendingTVResults?.length > 0) {
       if (currentPage > 1) {
-        setAllResults((prevResults) => [...prevResults, ...upcomingResults])
+        setAllResults((prevResults) => [...prevResults, ...trendingTVResults])
       } else {
-        setAllResults(upcomingResults)
+        setAllResults(trendingTVResults)
       }
     }
-  }, [upcomingResults])
+  }, [trendingTVResults])
 
-    useEffect(() => {
+  useEffect(() => {
     return () => {
-      dispatch(resetUpcoming())
+      dispatch(resetTrending())
     }
   }, [])
 
@@ -66,26 +69,19 @@ const Upcoming = () => {
         data={allResults}
         keyExtractor={(item, index) => `${index}`}
         numColumns={2}
-        onEndReached={
-          isLoading === true ? (
-            <ActivityIndicator
-              style={styles.loader}
-              size='large'
-              color='#0000ff'
-            />
-          ) : (
-            loadMore
-          )
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
+        onEndReached={loadMore}
         onEndReachedThreshold={0.5}
         renderItem={({ item }) => {
           return (
             <View style={styles.flatListViewContainer}>
               <TouchableOpacity
                 onPress={() =>
-                  navigation.navigate('Details Movie', {
+                  navigation.navigate('DetailsSerie', {
                     id: item.id,
-                    title: item.original_title,
+                    title: item.name,
                   })
                 }
               >
@@ -96,7 +92,14 @@ const Upcoming = () => {
                   }}
                 />
                 <Text style={styles.originalTitle}>
-                  {truncateTitle(item.original_title, 15)}
+                  {truncateTitle(
+                    item.name,
+                    language === 'zh-cn' ||
+                      language === 'ko' ||
+                      language === 'ja'
+                      ? 5
+                      : 15
+                  )}
                 </Text>
               </TouchableOpacity>
             </View>
@@ -115,4 +118,4 @@ const styles = StyleSheet.create({
   originalTitle: list.originalTitle,
 })
 
-export default Upcoming
+export default TrendingTV

@@ -74,7 +74,7 @@ const Production = ({ id, movie, t, language }) => {
                   return (
                     <View style={styles.flatListViewContainer} key={index}>
                       <Text style={styles.tags}>
-                        {moment(releaseDate.release_date).format('L')} {releaseDate.note ? `- ${releaseDate.note}` : null}
+                        {moment(releaseDate.release_date).format('L')} {releaseDate.note ? `- ${releaseDate.note}` : `- ${t('nationalRelease')}`}
                       </Text>
                     </View>
                   )

@@ -44,6 +44,7 @@ import { I18nextProvider } from 'react-i18next'
 import './polyfill.js'
 import { moderateScale } from './src/utils/Responsive'
 import { Platform, Dimensions } from 'react-native'
+import TrendingTV from './src/views/Tmdb/Series/TrendingTV'
 
 const MainStack = createNativeStackNavigator()
 const AuthStack = createNativeStackNavigator()
@@ -499,8 +500,8 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
         />
 
         <Tab.Screen
-          name='OnTheAir'
-          component={OnTheAir}
+          name='TrendingTV'
+          component={TrendingTV}
           options={() => ({
             tabBarIcon: ({ color }) => (
               <Ionicons

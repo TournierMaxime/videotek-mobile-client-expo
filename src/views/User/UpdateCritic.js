@@ -10,12 +10,10 @@ import { ToastSuccess, ToastError } from '../../utils/Toast'
 import ToastConfig from '../../utils/ToastConfig'
 import button from '../../styles/components/button'
 import form from '../../styles/components/form'
-import { updateCritic } from '../../redux/actions/critics/updateCritic'
-import { getOneCritic } from '../../redux/actions/critics/getOneCritic'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 import { useEffect } from 'react'
-import { searchCriticByUser } from '../../redux/actions/critics/searchCritic'
+import { searchCriticByUser, getOneCritic, updateCritic } from '../../redux/actions/critics'
 import { useTranslation } from 'react-i18next'
 
 const UpdateCritic = ({ route }) => {
@@ -27,9 +25,9 @@ const UpdateCritic = ({ route }) => {
   const { t } = useTranslation()
 
   const [data, setData] = useState({
-    title: critic?.title,
-    content: critic?.content,
-    rate: critic?.rate,
+    title: critic?.title || '',
+    content: critic?.content || '',
+    rate: critic?.rate || '',
     idMovieOrSerie: critic?.idMovieOrSerie,
     titleMovieOrSerie: critic?.titleMovieOrSerie,
   })
@@ -41,7 +39,7 @@ const UpdateCritic = ({ route }) => {
       dispatch(searchCriticByUser(userId, 1))
       setTimeout(() => {
         navigation.navigate('UserCritics', { userId })
-      }, 3000)
+      }, 1500)
     } catch (error) {
       console.log(error.response.data.errMsg)
       ToastError('error', error.response.data.errMsg, false)

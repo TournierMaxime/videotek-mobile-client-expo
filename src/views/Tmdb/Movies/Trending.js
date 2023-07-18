@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   trending,
   resetTrending,
-} from '../../../redux/actions/tmdb/movies/trending'
+} from '../../../redux/actions/tmdb/movies'
 import useLoadMore from '../../../utils/LoadMore'
 import { truncateTitle } from '../../../utils/Truncate'
 import { useNavigation } from '@react-navigation/native'

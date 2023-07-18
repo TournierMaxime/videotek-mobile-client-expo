@@ -12,8 +12,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   movieDetails,
   resetMovieDetails,
-} from '../../../redux/actions/tmdb/movies/detailsMovie'
-import { movieCrew } from '../../../redux/actions/tmdb/movies/movieCrew'
+  movieCrew,
+  releaseDates,
+  movieWatchProviders,
+  resetMovieWatchProviders,
+} from '../../../redux/actions/tmdb/movies'
 import { LinearGradient } from 'expo-linear-gradient'
 import Runtime from '../../../utils/RunTime'
 import Rate from '../../../utils/Rate'
@@ -25,11 +28,6 @@ import button from '../../../styles/components/button'
 import { Entypo } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
-import { releaseDates } from '../../../redux/actions/tmdb/movies/releaseDates'
-import {
-  movieWatchProviders,
-  resetMovieWatchProviders,
-} from '../../../redux/actions/tmdb/movies/movieWatchProviders'
 import { moderateScale } from '../../../utils/Responsive'
 import AddToFavorite from '../../../utils/AddToFavorite'
 

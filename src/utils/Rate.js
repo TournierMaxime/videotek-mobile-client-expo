@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: moderateScale(15),
     borderRadius: moderateScale(5),
-    marginLeft: moderateScale(25),
+    marginLeft: 'auto',
     marginRight: 'auto'
   },
   textContent: {

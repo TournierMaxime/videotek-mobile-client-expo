@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native'
 
-import { createUser } from '../../redux/actions/auth/register'
+import { createUser } from '../../redux/actions/auth'
 import { useNavigation } from '@react-navigation/native'
 import button from '../../styles/components/button'
 import form from '../../styles/components/form'

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Text, View, TextInput, StyleSheet, Button, Image } from 'react-native'
-import { updateUser, resetUser } from '../../redux/actions/users/updateUser'
-import { getUser } from '../../redux/actions/users/oneUser'
+import { getUser, updateUser, resetUser } from '../../redux/actions/users'
 import { useDispatch, useSelector } from 'react-redux'
 import { ToastSuccess, ToastError } from '../../utils/Toast'
 import ToastConfig from '../../utils/ToastConfig'
@@ -42,45 +41,41 @@ const DetailsUser = ({ route }) => {
     }
   }
 
-  const handleUpdate = () => {
-    try {
-      if (!isModified) {
-        return
-      }
-      // create a new FormData object
-      const formData = new FormData()
+const handleUpdate = async () => {
+  if (!isModified) {
+    return
+  }
 
-      // append text data
-      formData.append('userName', data.userName)
-      formData.append('email', data.email)
+  const formData = new FormData()
+  formData.append('userName', data.userName)
+  formData.append('email', data.email)
 
-      // append the image only if it's present
-      const imageUriParts = data.image.split('.')
-      const fileType = imageUriParts[imageUriParts.length - 1]
+  const imageUriParts = data.image.split('.')
+  const fileType = imageUriParts[imageUriParts.length - 1]
 
-      let file = {
-        uri: data.image,
-        name: `image.${fileType}`,
-        type: `image/${fileType}`,
-      }
+  let file = {
+    uri: data.image,
+    name: `image.${fileType}`,
+    type: `image/${fileType}`,
+  }
 
-      // append the image to the form data
-      formData.append('image', file)
+  formData.append('image', file)
 
-      // send the request
-      dispatch(updateUser(formData, userId)) // make sure your updateUser action sends the data as is, and sets 'Content-Type': 'multipart/form-data'
-      ToastSuccess('success', t('profileUpdated'), true)
-      dispatch(getUser(userId))
-    } catch (error) {
-      console.log(error.response.data.errMsg)
+  try {
+    await dispatch(updateUser(formData, userId))
+    ToastSuccess('success', t('profileUpdated'), true)
+    dispatch(getUser(userId))
+  } catch (error) {
+    console.log(error.response.data.errMsg)
 
-      if (error.response && error.response.data && error.response.data.errMsg) {
-        ToastError('error', error.response.data.errMsg, true)
-      } else {
-        ToastError('error', t('anErrorHasOccurred'), true)
-      }
+    if (error.response.data.errMsg) {
+      ToastError('error', error.response.data.errMsg, true)
+    } else {
+      ToastError('error', t('anErrorHasOccurred'), true)
     }
   }
+}
+
 
   useEffect(() => {
     dispatch(getUser(userId))

@@ -12,7 +12,7 @@ const Informations = ({ externalIds, t }) => {
     }
 
     return (
-      <Accordion title={t('socialMedia')}>
+      <Accordion title={t('socialMedias')}>
         {data.twitter_id && (
           <TouchableOpacity
             onPress={() => openLink(`https://twitter.com/${data.twitter_id}`)}

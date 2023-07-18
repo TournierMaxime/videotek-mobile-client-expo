@@ -12,8 +12,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   serieDetails,
   resetSerieDetails,
-} from '../../../redux/actions/tmdb/series/detailsSerie'
-import { serieCrew } from '../../../redux/actions/tmdb/series/serieCrew'
+  serieCrew
+} from '../../../redux/actions/tmdb/series'
 import { LinearGradient } from 'expo-linear-gradient'
 import Runtime from '../../../utils/RunTime'
 import Rate from '../../../utils/Rate'

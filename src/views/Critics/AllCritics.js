@@ -13,7 +13,7 @@ import dot from '../../styles/pages/dot'
 import message from '../../styles/components/message'
 import button from '../../styles/components/button'
 import Rate from '../../utils/Rate'
-import { searchCritic } from '../../redux/actions/critics/searchCritic'
+import { searchCritic } from '../../redux/actions/critics'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../../utils/Responsive'
 import useLoadMore from '../../utils/LoadMore'
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     height: moderateScale(60),
     resizeMode: 'cover',
     borderRadius: moderateScale(30),
-    marginLeft: 15,
+    marginLeft: 'auto',
     marginBottom: 5,
   },
   renderItemContainer: dot.renderItemContainer,

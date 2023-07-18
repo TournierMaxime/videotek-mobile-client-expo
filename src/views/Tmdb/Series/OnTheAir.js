@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   onTheAir,
   resetOnTheAir,
-} from '../../../redux/actions/tmdb/series/onTheAir'
+} from '../../../redux/actions/tmdb/series'
 import useLoadMore from '../../../utils/LoadMore'
 import { truncateTitle } from '../../../utils/Truncate'
 import { useNavigation } from '@react-navigation/native'

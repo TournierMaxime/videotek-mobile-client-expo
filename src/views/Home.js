@@ -9,9 +9,8 @@ import {
   ActivityIndicator,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { nowPlaying } from '../redux/actions/tmdb/movies/nowPlaying'
-import { trending } from '../redux/actions/tmdb/movies/trending'
-import { onTheAir } from '../redux/actions/tmdb/series/onTheAir'
+import { nowPlaying, trending } from '../redux/actions/tmdb/movies'
+import { trendingTV } from '../redux/actions/tmdb/series'
 import { useNavigation } from '@react-navigation/native'
 import home from '../styles/pages/home'
 import Refresh from '../utils/Refresh'
@@ -26,12 +25,12 @@ const Home = () => {
   const navigation = useNavigation()
   const nowPlayingData = useSelector((state) => state.nowPlaying.data)
   const trendingData = useSelector((state) => state.trending.data)
-  const onTheAirData = useSelector((state) => state.onTheAir.data)
+  const trendingTVData = useSelector((state) => state.trendingTV.data)
   const nowPlayingResults = useSelector(
     (state) => state.nowPlaying.data.results
   )
   const trendingResults = useSelector((state) => state.trending.data.results)
-  const onTheAirResults = useSelector((state) => state.onTheAir.data.results)
+  const trendingTVResults = useSelector((state) => state.trendingTV.data.results)
   const [loading, setLoading] = useState(false)
 
   const { i18n, t } = useTranslation()
@@ -40,7 +39,7 @@ const Home = () => {
   const onRefresh = async () => {
     await dispatch(nowPlaying(nowPlayingData.page, 'nowPlaying', language))
     await dispatch(trending(trendingData.page, 'trending', language))
-    await dispatch(onTheAir(onTheAirData.page, 'onTheAir', language))
+    await dispatch(trendingTV(trendingTVData.page, 'trendingTV', language))
   }
 
   useEffect(() => {
@@ -48,7 +47,7 @@ const Home = () => {
       setLoading(true)
       await dispatch(nowPlaying(nowPlayingData.page, 'nowPlaying', language)),
         await dispatch(trending(trendingData.page, 'trending', language)),
-        await dispatch(onTheAir(onTheAirData.page, 'onTheAir', language)),
+        await dispatch(trendingTV(trendingTVData.page, 'trendingTV', language)),
         setLoading(false)
     }
 
@@ -228,7 +227,7 @@ const Home = () => {
             </View>
             <View style={styles.container}>
               <FlatList
-                data={onTheAirResults?.slice(0, 8)}
+                data={trendingTVResults?.slice(0, 8)}
                 keyExtractor={(item) => item.id}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
@@ -249,7 +248,7 @@ const Home = () => {
                             {
                               marginRight:
                                 index ===
-                                onTheAirResults?.slice(0, 8).length - 1
+                                trendingTVResults?.slice(0, 8).length - 1
                                   ? 15
                                   : 0,
                             },

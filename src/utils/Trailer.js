@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { movieTrailer } from '../redux/actions/tmdb/movies/trailer'
-import { serieTrailer } from '../redux/actions/tmdb/series/trailer'
+import { movieTrailer } from '../redux/actions/tmdb/movies'
+import { serieTrailer } from '../redux/actions/tmdb/series'
 import { useDispatch, useSelector } from 'react-redux'
 import { Linking, TouchableOpacity } from 'react-native'
 import { useTranslation } from 'react-i18next'

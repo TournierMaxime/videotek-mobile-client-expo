@@ -12,7 +12,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   peopleDetails,
   resetPeopleDetails,
-} from '../../../redux/actions/tmdb/people/detailsPeople'
+  peopleExternalIds
+} from '../../../redux/actions/tmdb/people'
 import { LinearGradient } from 'expo-linear-gradient'
 import details from '../../../styles/pages/details'
 import Refresh from '../../../utils/Refresh'
@@ -24,7 +25,6 @@ import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../../../utils/Responsive'
 import button from '../../../styles/components/button'
-import { peopleExternalIds } from '../../../redux/actions/tmdb/people/externalIds'
 import Informations from './Informations'
 import AddToFavorite from '../../../utils/AddToFavorite'
 

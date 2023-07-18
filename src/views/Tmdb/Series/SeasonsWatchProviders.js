@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   updateSeasonWatchProviders,
   resetSeasonWatchProviders,
-} from '../../../redux/actions/tmdb/series/seasonWatchProviders'
+} from '../../../redux/actions/tmdb/series'
 import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import Rate from '../../../utils/Rate'

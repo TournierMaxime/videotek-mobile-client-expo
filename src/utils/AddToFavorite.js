@@ -2,14 +2,9 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { TouchableOpacity, StyleSheet, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
-import { createFavorite } from '../redux/actions/favorites/createFavorite'
-import { deleteFavorite } from '../redux/actions/favorites/deleteFavorite'
-import {
-  getOneFavorite,
-  resetFavorites,
-} from '../redux/actions/favorites/getOneFavorite'
+import { createFavorite, getOneFavorite, deleteFavorite, resetFavorites } from '../redux/actions/favorites'
 import { moderateScale } from './Responsive'
-import { AntDesign } from '@expo/vector-icons'
+import { AntDesign, MaterialIcons } from '@expo/vector-icons'
 import { ToastSuccess, ToastError } from './Toast'
 import ToastConfig from './ToastConfig'
 
@@ -73,11 +68,11 @@ const AddToFavorite = ({ id, title, image, type }) => {
               style={styles.createButtonContainer}
               onPress={() => handleCreate()}
             >
-              <AntDesign
+              <MaterialIcons
                 style={styles.icon}
-                name='heart'
+                name='favorite-outline'
                 size={moderateScale(25)}
-                color='black'
+                color='white'
               />
             </TouchableOpacity>
           ) : (
@@ -104,8 +99,6 @@ const styles = StyleSheet.create({
   createButtonContainer: {
     width: moderateScale(40),
     height: moderateScale(40),
-    borderRadius: moderateScale(20),
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },

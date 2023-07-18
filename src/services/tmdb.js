@@ -169,6 +169,16 @@ const Trending = (page, language) => {
   });
 };
 
+const TrendingTV = (page, language) => {
+  return http.get(`/trending/tv/week`, {
+    params: {
+      api_key: EXPO_TMDB_API_KEY,
+      language,
+      page
+    },
+  });
+};
+
 const PeopleExternalIds = (id) => {
   return http.get(`/person/${id}/external_ids`, {
     params: {
@@ -194,6 +204,7 @@ export {
   SerieTrailer,
   PeopleCareer,
   Trending,
+  TrendingTV,
   SeasonDetails,
   SeasonWatchProviders,
   MovieWatchProviders,

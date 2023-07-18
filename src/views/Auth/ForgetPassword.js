@@ -11,7 +11,7 @@ import {
   forgetPassword,
   checkForgetPasswordCode,
   resetPassword,
-} from '../../redux/actions/auth/password'
+} from '../../redux/actions/auth'
 import button from '../../styles/components/button'
 import form from '../../styles/components/form'
 import { ToastSuccess, ToastError } from '../../utils/Toast'

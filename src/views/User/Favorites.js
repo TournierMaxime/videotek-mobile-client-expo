@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { searchFavorite, resetFavorites } from '../../redux/actions/favorites/searchFavorite'
+import { searchFavorite, deleteFavorite, resetFavorites } from '../../redux/actions/favorites'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   Text,
@@ -17,7 +17,6 @@ import useLoadMore from '../../utils/LoadMore'
 import card from '../../styles/components/card'
 import moment from 'moment'
 import button from '../../styles/components/button'
-import { deleteFavorite } from '../../redux/actions/favorites/deleteFavorite'
 import AlertModal from '../../utils/AlertModal'
 import { Fragment } from 'react'
 import { useNavigation } from '@react-navigation/native'
@@ -68,6 +67,7 @@ const Favorites = () => {
   }, [dispatch, userId, currentPage])
 
   const redirectByType = (type, id, title) => {
+
     switch (type) {
       case 'movie':
         return navigation.navigate('DetailsMovie', { id, title })
@@ -81,7 +81,7 @@ const Favorites = () => {
   const renderItem = (item, index) => {
     return (
       <TouchableOpacity
-        onPress={() => redirectByType(item.type, item.tmdbId, item.title)}
+        onPress={() => redirectByType(item.type, Number(item.tmdbId), item.title)}
         key={index}
       >
         <View style={styles.renderItemContainer}>

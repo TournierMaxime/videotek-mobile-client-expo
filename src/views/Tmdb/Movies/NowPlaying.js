@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   nowPlaying,
   resetNowPlaying,
-} from '../../../redux/actions/tmdb/movies/nowPlaying'
+} from '../../../redux/actions/tmdb/movies'
 import useLoadMore from '../../../utils/LoadMore'
 import { truncateTitle } from '../../../utils/Truncate'
 import { useNavigation } from '@react-navigation/native'

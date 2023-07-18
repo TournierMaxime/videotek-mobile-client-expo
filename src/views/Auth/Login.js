@@ -7,7 +7,7 @@ import {
   Text,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { loginUser } from '../../redux/actions/auth/auth'
+import { loginUser } from '../../redux/actions/auth'
 import { useNavigation } from '@react-navigation/native'
 import button from '../../styles/components/button'
 import form from '../../styles/components/form'
