@@ -122,7 +122,21 @@ const threeDots = {
   top: 5,
 }
 
+const blueBtn = {
+  padding: 10,
+  backgroundColor: 'rgb(33, 150, 243)',
+  alignItems: 'center',
+}
+
+const btnTxt = {
+  fontSize: moderateScale(16),
+  color: 'white',
+  textTransform: 'uppercase',
+}
+
 export default {
+  blueBtn,
+  btnTxt,
   threeDots,
   cancelButton,
   deleteAccountContainer,

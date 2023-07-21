@@ -20,7 +20,6 @@ import {
 import { LinearGradient } from 'expo-linear-gradient'
 import Runtime from '../../../utils/RunTime'
 import Rate from '../../../utils/Rate'
-import Production from './Production'
 import details from '../../../styles/pages/details'
 import Refresh from '../../../utils/Refresh'
 import OverView from '../../../utils/OverView'
@@ -30,6 +29,8 @@ import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../../../utils/Responsive'
 import AddToFavorite from '../../../utils/AddToFavorite'
+import Tabs from '../../../components/Tabs'
+import CreateButton from '../../../utils/CreateButton'
 
 const DetailsMovie = ({ route }) => {
   const dispatch = useDispatch()
@@ -69,7 +70,6 @@ const DetailsMovie = ({ route }) => {
     }
   }, [])
 
-  const ProductionMemoized = React.memo(Production)
   const OverViewMemoized = React.memo(OverView)
 
   return (
@@ -165,16 +165,12 @@ const DetailsMovie = ({ route }) => {
 
                 <OverViewMemoized content={movie.overview} t={t} />
               </View>
-              <ProductionMemoized
-                id={id}
-                movie={movie}
-                t={t}
-                language={language}
-              />
+              <Tabs id={id} movie={movie} t={t} language={language} />
             </Fragment>
           )
         )}
       </Refresh>
+      <CreateButton tmdbId={id} tmdbTitle={movie?.title} />
     </View>
   )
 }

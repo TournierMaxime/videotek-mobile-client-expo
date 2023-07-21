@@ -1,4 +1,8 @@
 {
+  "about": "关于",
+  "posts": "帖子",
+  "noPost": "没有找到帖子",
+  "loadMorePosts": "加载更多帖子",
   "nationalRelease": "全国发布",
   "informations": "资讯",
   "socialMedias": "社交媒体",

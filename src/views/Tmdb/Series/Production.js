@@ -79,10 +79,10 @@ const Production = ({ serie, t }) => {
       <View style={styles.technicalSheetViewContainer}>
         <Text style={styles.title}>{t('production')}</Text>
       </View>
-      {status(serie.status)}
-      {networks(serie.networks)}
-      {productionCompanies(serie.production_companies)}
-      {productionCountries(serie.production_countries)}
+      {status(serie?.status)}
+      {networks(serie?.networks)}
+      {productionCompanies(serie?.production_companies)}
+      {productionCountries(serie?.production_countries)}
     </View>
   )
 }

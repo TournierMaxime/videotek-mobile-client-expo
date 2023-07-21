@@ -1,4 +1,8 @@
 {
+  "about": "About",
+  "posts": "Posts",
+  "noPost": "No posts were found",
+  "loadMorePosts": "Load More Posts",
   "nationalRelease": "National release",
   "informations": "Informations",
   "socialMedias": "Social Medias",

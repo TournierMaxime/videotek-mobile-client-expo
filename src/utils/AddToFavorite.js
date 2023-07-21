@@ -2,7 +2,12 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { TouchableOpacity, StyleSheet, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
-import { createFavorite, getOneFavorite, deleteFavorite, resetFavorites } from '../redux/actions/favorites'
+import {
+  createFavorite,
+  getOneFavorite,
+  deleteFavorite,
+  resetFavorites,
+} from '../redux/actions/favorites'
 import { moderateScale } from './Responsive'
 import { AntDesign, MaterialIcons } from '@expo/vector-icons'
 import { ToastSuccess, ToastError } from './Toast'
@@ -13,9 +18,7 @@ const AddToFavorite = ({ id, title, image, type }) => {
   const { t } = useTranslation()
   const data = useSelector((state) => state.getOneFavorite.data)
   const userId = useSelector((state) => state.auth.data.user.userId)
-  const isAuthenticated = useSelector(
-    (state) => state.auth.isAuthenticated
-  )
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
   const [isFavorite, setIsFavorite] = useState(false)
 
   const handleCreate = async () => {
@@ -88,9 +91,9 @@ const AddToFavorite = ({ id, title, image, type }) => {
               />
             </TouchableOpacity>
           )}
-          <ToastConfig />
         </View>
       ) : null}
+      <ToastConfig />
     </Fragment>
   )
 }

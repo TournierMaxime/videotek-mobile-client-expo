@@ -18,7 +18,7 @@ import { LinearGradient } from 'expo-linear-gradient'
 import Runtime from '../../../utils/RunTime'
 import Rate from '../../../utils/Rate'
 import details from '../../../styles/pages/details'
-import Production from './Production'
+import Tabs from '../../../components/Tabs'
 import Refresh from '../../../utils/Refresh'
 import OverView from '../../../utils/OverView'
 import button from '../../../styles/components/button'
@@ -60,7 +60,6 @@ const DetailsSerie = ({ route }) => {
     }
   }, [])
 
-  const ProductionMemoized = React.memo(Production)
   const OverViewMemoized = React.memo(OverView)
 
   return (
@@ -158,7 +157,7 @@ const DetailsSerie = ({ route }) => {
 
                 <OverViewMemoized content={serie.overview} t={t} />
               </View>
-              <ProductionMemoized serie={serie} t={t} />
+              <Tabs serie={serie} t={t} language={language} id={id} />
             </Fragment>
           )
         )}

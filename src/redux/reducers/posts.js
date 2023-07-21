@@ -1,6 +1,6 @@
 const initialState = {
   data: {
-    critics: [],
+    posts: [],
     items: null,
     results: null,
     page: null,
@@ -12,20 +12,20 @@ const initialState = {
   error: null,
 }
 
-const searchCriticReducer = (state = initialState, action) => {
+const searchPostReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SEARCH_CRITIC_REQUEST':
+    case 'SEARCH_POST_REQUEST':
       return {
         ...state,
         loading: true,
         error: null,
       }
-    case 'SEARCH_CRITIC_SUCCESS':
+    case 'SEARCH_POST_SUCCESS':
       return {
         ...state,
         data: {
           ...state.data,
-          critics: action.payload.critics,
+          posts: action.payload.posts,
           items: action.payload.items,
           results: action.payload.results,
           page: action.payload.page,
@@ -33,29 +33,29 @@ const searchCriticReducer = (state = initialState, action) => {
           loading: false,
         },
       }
-    case 'SEARCH_CRITIC_FAILURE':
+    case 'SEARCH_POST_FAILURE':
       return {
         ...state,
         data: {},
         error: action.payload,
         loading: false,
       }
-    case 'SEARCH_CRITIC_RESET':
+    case 'SEARCH_POST_RESET':
       return {
         ...initialState,
       }
-    case 'SEARCH_CRITIC_BY_USER_REQUEST':
+    case 'SEARCH_POST_BY_USER_REQUEST':
       return {
         ...state,
         loading: true,
         error: null,
       }
-    case 'SEARCH_CRITIC_BY_USER_SUCCESS':
+    case 'SEARCH_POST_BY_USER_SUCCESS':
       return {
         ...state,
         data: {
           ...state.data,
-          critics: action.payload.critics,
+          posts: action.payload.posts,
           items: action.payload.items,
           results: action.payload.results,
           page: action.payload.page,
@@ -63,7 +63,7 @@ const searchCriticReducer = (state = initialState, action) => {
           loading: false,
         },
       }
-    case 'SEARCH_CRITIC_BY_USER_FAILURE':
+    case 'SEARCH_POST_BY_USER_FAILURE':
       return {
         ...state,
         data: {},
@@ -75,21 +75,21 @@ const searchCriticReducer = (state = initialState, action) => {
   }
 }
 
-const createCriticReducer = (state = initialState, action) => {
+const createPostReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'CREATE_CRITIC_REQUEST':
+    case 'CREATE_POST_REQUEST':
       return {
         ...state,
         loading: true,
         error: null,
       }
-    case 'CREATE_CRITIC_SUCCESS':
+    case 'CREATE_POST_SUCCESS':
       return {
         ...state,
         loading: false,
         data: action.payload,
       }
-    case 'CREATE_CRITIC_FAILURE':
+    case 'CREATE_POST_FAILURE':
       return {
         ...state,
         loading: false,
@@ -101,21 +101,21 @@ const createCriticReducer = (state = initialState, action) => {
   }
 }
 
-const getOneCriticReducer = (state = initialState, action) => {
+const getOnePostReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'GET_ONE_CRITIC_REQUEST':
+    case 'GET_ONE_POST_REQUEST':
       return {
         ...state,
         loading: true,
         error: null,
       }
-    case 'GET_ONE_CRITIC_SUCCESS':
+    case 'GET_ONE_POST_SUCCESS':
       return {
         ...state,
         loading: false,
         data: action.payload,
       }
-    case 'GET_ONE_CRITIC_FAILURE':
+    case 'GET_ONE_POST_FAILURE':
       return {
         ...state,
         loading: false,
@@ -127,21 +127,21 @@ const getOneCriticReducer = (state = initialState, action) => {
   }
 }
 
-const updateCriticReducer = (state = initialState, action) => {
+const updatePostReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'UPDATE_CRITIC_REQUEST':
+    case 'UPDATE_POST_REQUEST':
       return {
         ...state,
         loading: true,
         error: null,
       }
-    case 'UPDATE_CRITIC_SUCCESS':
+    case 'UPDATE_POST_SUCCESS':
       return {
         ...state,
         loading: false,
         data: action.payload,
       }
-    case 'UPDATE_CRITIC_FAILURE':
+    case 'UPDATE_POST_FAILURE':
       return {
         ...state,
         loading: false,
@@ -153,21 +153,21 @@ const updateCriticReducer = (state = initialState, action) => {
   }
 }
 
-const deleteCriticReducer = (state = initialState, action) => {
+const deletePostReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'DELETE_CRITIC_REQUEST':
+    case 'DELETE_POST_REQUEST':
       return {
         ...state,
         loading: true,
         error: null,
       }
-    case 'DELETE_CRITIC_SUCCESS':
+    case 'DELETE_POST_SUCCESS':
       return {
         ...state,
         loading: false,
         data: action.payload,
       }
-    case 'DELETE_CRITIC_FAILURE':
+    case 'DELETE_POST_FAILURE':
       return {
         ...state,
         loading: false,
@@ -180,9 +180,9 @@ const deleteCriticReducer = (state = initialState, action) => {
 }
 
 export {
-  searchCriticReducer,
-  createCriticReducer,
-  getOneCriticReducer,
-  updateCriticReducer,
-  deleteCriticReducer,
+  searchPostReducer,
+  createPostReducer,
+  getOnePostReducer,
+  updatePostReducer,
+  deletePostReducer,
 }

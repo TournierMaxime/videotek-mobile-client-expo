@@ -1,4 +1,8 @@
 {
+  "about": "Acerca de",
+  "posts": "Publicaciones",
+  "noPost": "No se encontraron publicaciones",
+  "loadMorePosts": "Cargar más entradas",
   "nationalRelease": "lanzamiento nacional",
   "informations": "Informaciones",
   "socialMedias": "Redes Sociales",

@@ -120,8 +120,8 @@ const Production = ({ id, movie, t, language }) => {
         <Text style={styles.title}>{t('production')}</Text>
       </View>
       {releaseByCountry(releases, lang)}
-      {budget(movie.budget)}
-      {revenue(movie.revenue)}
+      {budget(movie?.budget)}
+      {revenue(movie?.revenue)}
       <MovieWatchProviders id={id} language={lang} t={t} />
       {productionCompanies(movie?.production_companies)}
       {productionCountries(movie?.production_countries)}

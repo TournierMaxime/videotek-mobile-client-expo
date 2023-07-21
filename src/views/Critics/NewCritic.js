@@ -51,7 +51,7 @@ const NewCritic = ({ route }) => {
 
   return (
     <ScrollView style={styles.formContainer}>
-      <Text style={styles.formLabel}>
+      <Text style={{fontSize: moderateScale(16), marginBottom: moderateScale(15)}}>
         {t('criticOf')} {title}
       </Text>
       <Text style={styles.formLabel}>{t('title')}</Text>
@@ -63,7 +63,7 @@ const NewCritic = ({ route }) => {
       />
       <Text style={styles.formLabel}>{t('critic')}</Text>
       <TextInput
-        style={styles.formInput}
+        style={[styles.formInput, { height: moderateScale(300) }]}
         editable
         multiline
         placeholder={t('critic')}

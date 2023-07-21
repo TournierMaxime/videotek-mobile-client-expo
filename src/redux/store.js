@@ -52,8 +52,23 @@ import {
   trendingTVReducer,
   seasonDetailsReducer
 } from './reducers/tmdb/series'
+import {
+  searchPostReducer,
+  createPostReducer,
+  getOnePostReducer,
+  updatePostReducer,
+  deletePostReducer,
+} from './reducers/posts'
+import {
+  searchGifReducer,
+  getOneGifReducer,
+  searchCategoryReducer
+} from './reducers/giphy'
 
 const rootReducer = {
+  searchCategory: searchCategoryReducer,
+  searchGif: searchGifReducer,
+  getOneGif: getOneGifReducer,
   auth: authReducer,
   register: registerUserReducer,
   password: passwordReducer,
@@ -90,6 +105,11 @@ const rootReducer = {
   deleteFavorite: deleteFavoriteReducer,
   getOneFavorite: getOneFavoriteReducer,
   trendingTV: trendingTVReducer,
+  searchPost: searchPostReducer,
+  createPost: createPostReducer,
+  getOnePost: getOnePostReducer,
+  updatePost: updatePostReducer,
+  deletePost: deletePostReducer
 }
 
 const store = configureStore({
