@@ -20,7 +20,8 @@
       "env": {
         "EXPO_TMDB_API": "https://api.themoviedb.org/3",
         "EXPO_TMDB_API_KEY": "dfd4790495383fbc1628e14d450b9464",
-        "EXPO_VIDEOTEK_API": "https://api.videotek.xyz/api/v1"
+        "EXPO_VIDEOTEK_API": "https://api.videotek.xyz/api/v1",
+        "EXPO_GIPHY_API": "https://giphy.videotek.xyz/api/v1"
       },
       "ios": {
         "resourceClass": "m-medium"
