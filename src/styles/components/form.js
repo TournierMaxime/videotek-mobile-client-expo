@@ -24,7 +24,7 @@ const formInput = {
 }
 
 const formLabel = {
-    fontSize: moderateScale(14),
+    fontSize: moderateScale(16),
     fontWeight: 'bold',
     marginBottom: moderateScale(10),
 }

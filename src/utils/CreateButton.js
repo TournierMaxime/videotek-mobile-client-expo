@@ -5,6 +5,8 @@ import { moderateScale } from './Responsive'
 import ModalComponent from './ModalComponent'
 import NewPost from '../views/Posts/NewPost'
 import { useSelector } from 'react-redux'
+import moment from 'moment'
+import { useTranslation } from 'react-i18next'
 
 const CreateButton = ({ tmdbId, tmdbTitle }) => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
@@ -12,6 +14,10 @@ const CreateButton = ({ tmdbId, tmdbTitle }) => {
   const handleModal = () => {
     setModalVisible(!modalVisible)
   }
+
+  const { i18n, t } = useTranslation()
+  const language = i18n.language
+  moment.locale(language)
 
   return (
     <Fragment>
@@ -32,7 +38,7 @@ const CreateButton = ({ tmdbId, tmdbTitle }) => {
           <ModalComponent
             visible={modalVisible}
             setVisible={setModalVisible}
-            title={"Ajout d'un post"}
+            title={t('expressYourself')}
             content={
               <NewPost
                 tmdbId={tmdbId}

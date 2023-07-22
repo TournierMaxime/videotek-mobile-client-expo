@@ -51,7 +51,7 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal }) => {
 
   const pickGif = (gifUrl) => {
     if (data.image) {
-      ToastError('error', 'Vous avez déjà sélectionné une image.', true)
+      ToastError('error', t('youHaveAlreadySelectedAnImage'), true)
       return
     }
     setData({ ...data, image: gifUrl })
@@ -60,7 +60,7 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal }) => {
 
   const handleCreate = async () => {
     if (!data.content) {
-      ToastError('error', 'Tous les champs sont obligatoires', true)
+      ToastError('error', t('allFieldsAreMandatory'), true)
       return
     }
     const formData = new FormData()
@@ -84,18 +84,14 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal }) => {
     try {
       const response = await dispatch(createPost(formData))
       if (response) {
-        ToastSuccess('success', 'Post créé avec succès', true)
+        ToastSuccess('success', t('postCreatedSuccessfully'), true)
         setTimeout(() => {
           navigation.navigate('DetailsMovie', { id: tmdbId })
         }, 1000)
         await dispatch(searchPost(tmdbId, { page: 1 }))
         await handleModal()
       } else {
-        ToastError(
-          'error',
-          "Une erreur s'est produite lors de la création du ticket",
-          true
-        )
+        ToastError('error', t('anErrorOccurredWhileCreatingThePost'), true)
       }
     } catch (error) {
       console.log(error.response.data.errMsg)
@@ -103,11 +99,7 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal }) => {
       if (error.response && error.response.data && error.response.data.errMsg) {
         ToastError('error', error.response.data.errMsg, true)
       } else {
-        ToastError(
-          'error',
-          "Une erreur s'est produite lors de la création du ticket",
-          true
-        )
+        ToastError('error', t('anErrorOccurredWhileCreatingThePost'), true)
       }
     }
   }
@@ -120,14 +112,14 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal }) => {
 
   const pickImage = async () => {
     if (data.image) {
-      ToastError('error', 'Vous avez déjà sélectionné une image.', true)
+      ToastError('error', t('youHaveAlreadySelectedAnImage'), true)
       return
     }
     let permissionResult =
       await ImagePicker.requestMediaLibraryPermissionsAsync()
 
     if (permissionResult.granted === false) {
-      alert('Permission to access camera roll is required!')
+      alert(t('permissionToAccessCameraRollIsRequired'))
       return
     }
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -201,11 +193,11 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal }) => {
     <ScrollView>
       <View style={styles.cardContainer}>
         <View>
-          <Text style={styles.formLabel}>Content</Text>
+          <Text style={styles.formLabel}>{t('content')}</Text>
           <TextInput
             editable={true}
             style={styles.formInputContent}
-            placeholder='Content'
+            placeholder={t('content')}
             multiline
             maxLength={300}
             onChangeText={(text) => {
@@ -213,11 +205,7 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal }) => {
                 setData({ ...data, content: text })
                 setCharCount(text.length)
               } else {
-                ToastError(
-                  'error',
-                  'Le contenu ne peut pas dépasser 300 caractères',
-                  true
-                )
+                ToastError('error', t('contentCannotExceed300Characters'), true)
               }
             }}
           />
@@ -264,7 +252,7 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal }) => {
                   size={moderateScale(25)}
                   color='white'
                 />
-                <Text style={styles.btnTxt}>Image</Text>
+                <Text style={styles.btnTxt}>{t('picture')}</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -289,7 +277,7 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal }) => {
             onPress={() => handleCreate()}
             style={styles.blueBtn}
           >
-            <Text style={styles.btnTxt}>Valider</Text>
+            <Text style={styles.btnTxt}>{t('confirm')}</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -306,33 +294,47 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal }) => {
                 alignItems: 'center',
               }}
             >
-              {category.map((item, index) => (
-                <TouchableOpacity
-                  key={index}
-                  onPress={() => handleCategoryClick(item.name)}
-                >
-                  <View
+              {category?.map((item, index) => {
+
+                const colorsCategoryGif = (item) => {
+                  switch(item) {
+                    case 'Reaction':
+                      return 'orange'
+                    case 'Movies':
+                      return 'blue'
+                    default:
+                      return 'grey'
+                  }
+                }
+                
+                return (
+                  <TouchableOpacity
                     key={index}
-                    style={{
-                      borderRadius: moderateScale(10),
-                      padding: moderateScale(10),
-                      backgroundColor: 'blue',
-                      margin: moderateScale(5),
-                      width: '95%',
-                    }}
+                    onPress={() => handleCategoryClick(item.name)}
                   >
-                    <Text
+                    <View
+                      key={index}
                       style={{
-                        color: 'white',
-                        fontSize: moderateScale(20),
-                        textAlign: 'center',
+                        borderRadius: moderateScale(5),
+                        padding: moderateScale(10),
+                        backgroundColor: colorsCategoryGif(item.name),
+                        margin: moderateScale(5),
+                        width: '95%',
                       }}
                     >
-                      {item.name}
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-              ))}
+                      <Text
+                        style={{
+                          color: 'white',
+                          fontSize: moderateScale(20),
+                          textAlign: 'center',
+                        }}
+                      >
+                        {item.name}
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+                )
+              })}
             </View>
             {selectedCategory && (
               <View
@@ -345,7 +347,7 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal }) => {
                 }}
               >
                 {allResults.length === 0 ? (
-                  <NoDataFound message={t('noPost')} />
+                  <NoDataFound message={t('noGif')} />
                 ) : (
                   allResults.map((item, index) => renderItem(item, index))
                 )}
@@ -358,7 +360,7 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal }) => {
                       marginVertical: moderateScale(25),
                     }}
                   >
-                    <Button title={t('loadMorePosts')} onPress={loadMore} />
+                    <Button title={t('loadMoreGifs')} onPress={loadMore} />
                   </View>
                 )}
               </View>

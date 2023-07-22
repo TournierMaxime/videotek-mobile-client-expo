@@ -13,3 +13,8 @@
 
 2. iOS Maj
     - /ios/VideoTek/Info.plist dans CFBundleShortVersionString et CFBundleVersion incrémenter les versions
+
+### Utils
+
+- Bleu : `#00CCCA`
+- Rose : `#FF0090`
