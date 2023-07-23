@@ -64,8 +64,22 @@ import {
   getOneGifReducer,
   searchCategoryReducer
 } from './reducers/giphy'
+import {
+  searchLikeReducer,
+  createLikeReducer,
+  getOneLikePostReducer,
+  getOneLikeCommentReducer,
+  getOneLikeCriticReducer,
+  deleteLikeReducer
+} from './reducers/likes'
 
 const rootReducer = {
+  searchLike: searchLikeReducer,
+  createLike: createLikeReducer,
+  getOneLikePost: getOneLikePostReducer,
+  getOneLikeComment: getOneLikeCommentReducer,
+  getOneLikeCritic: getOneLikeCriticReducer,
+  deleteLike: deleteLikeReducer,
   searchCategory: searchCategoryReducer,
   searchGif: searchGifReducer,
   getOneGif: getOneGifReducer,

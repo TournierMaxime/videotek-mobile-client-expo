@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, memo } from 'react'
 import { View, Text, Image, Button, StyleSheet } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { searchPost, resetSearchPost } from '../../redux/actions/posts'
@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next'
 import dot from '../../styles/pages/dot'
 import message from '../../styles/components/message'
 import button from '../../styles/components/button'
+import Likes from '../../utils/Likes'
 
 const AllPosts = ({ id }) => {
   const dispatch = useDispatch()
@@ -26,7 +27,7 @@ const AllPosts = ({ id }) => {
   const renderItem = (item, index) => {
     return (
       <View style={styles.renderItemContainer} key={index}>
-        <View style={{ alignItems: 'center' }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           {item.User.image ? (
             <Image
               style={styles.image}
@@ -40,11 +41,11 @@ const AllPosts = ({ id }) => {
               source={require('../../assets/image/No_Image_Available.jpg')}
             />
           )}
-        </View>
-        <View style={styles.renderItemDetails}>
           <Text style={styles.renderItemTitle}>
             {item.User.userName} | {moment(item.created).format('LLL')}
           </Text>
+        </View>
+        <View style={styles.renderItemDetails}>
           <Text style={styles.renderItemOverview}>{item.content}</Text>
           {item?.Image ? (
             <Image
@@ -55,9 +56,12 @@ const AllPosts = ({ id }) => {
             />
           ) : null}
         </View>
+        <Likes postId={item.postId} />
       </View>
     )
   }
+  const renderItemMemo = memo(renderItem)
+  renderItemMemo.displayName = 'renderItem'
 
   useEffect(() => {
     if (postsResults?.length > 0) {
@@ -80,26 +84,24 @@ const AllPosts = ({ id }) => {
   }, [])
 
   return (
-    <View>
-      <View>
-        {allResults.length === 0 ? (
-          <NoDataFound message={t('noPost')} />
-        ) : (
-          allResults.map((item, index) => renderItem(item, index))
-        )}
+    <View style={{ marginHorizontal: moderateScale(10) }}>
+      {allResults.length === 0 ? (
+        <NoDataFound message={t('noPost')} />
+      ) : (
+        allResults.map((item, index) => renderItem(item, index))
+      )}
 
-        {postsResults?.length > 0 && currentPage < posts.totalPages && (
-          <View
-            style={{
-              width: '100%',
-              alignItems: 'center',
-              marginVertical: moderateScale(25),
-            }}
-          >
-            <Button title={t('loadMorePosts')} onPress={loadMore} />
-          </View>
-        )}
-      </View>
+      {postsResults?.length > 0 && currentPage < posts.totalPages && (
+        <View
+          style={{
+            width: '100%',
+            alignItems: 'center',
+            marginVertical: moderateScale(25),
+          }}
+        >
+          <Button title={t('loadMorePosts')} onPress={loadMore} />
+        </View>
+      )}
     </View>
   )
 }
@@ -111,19 +113,24 @@ const styles = StyleSheet.create({
     height: moderateScale(60),
     resizeMode: 'cover',
     borderRadius: moderateScale(30),
-    marginLeft: 'auto',
-    marginBottom: 5,
+    margin: moderateScale(10),
   },
   imagePath: {
-    width: moderateScale(240),
-    height: moderateScale(240),
+    width: '100%',
+    height: moderateScale(400),
     resizeMode: 'cover',
-    marginLeft: 'auto',
-    marginRight: 'auto',
     marginBottom: 5,
   },
-  renderItemContainer: dot.renderItemContainer,
-  renderItemTitle: dot.renderItemTitle,
+  renderItemContainer: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    backgroundColor: 'white',
+    marginVertical: moderateScale(10),
+  },
+  renderItemTitle: {
+    fontWeight: 'bold',
+    fontSize: moderateScale(16),
+  },
   renderItemOverview: dot.renderItemOverview,
   renderItemDetails: dot.renderItemDetails,
   seasonTitle: dot.seasonTitle,

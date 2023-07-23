@@ -30,7 +30,9 @@ const Home = () => {
     (state) => state.nowPlaying.data.results
   )
   const trendingResults = useSelector((state) => state.trending.data.results)
-  const trendingTVResults = useSelector((state) => state.trendingTV.data.results)
+  const trendingTVResults = useSelector(
+    (state) => state.trendingTV.data.results
+  )
   const [loading, setLoading] = useState(false)
 
   const { i18n, t } = useTranslation()

@@ -69,17 +69,19 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal }) => {
     formData.append('tmdbTitle', tmdbTitle)
     formData.append('userId', userId)
 
-    const imageUri = data.image
-    const imageUriParts = imageUri.split('.')
-    const fileType = imageUriParts[imageUriParts.length - 1]
+    if (data.image) {
+      const imageUri = data.image
+      const imageUriParts = imageUri.split('.')
+      const fileType = imageUriParts[imageUriParts.length - 1]
 
-    let file = {
-      uri: imageUri,
-      name: `photo.${fileType}`,
-      type: `image/${fileType}`,
+      let file = {
+        uri: imageUri,
+        name: `photo.${fileType}`,
+        type: `image/${fileType}`,
+      }
+
+      formData.append('image', file)
     }
-
-    formData.append('image', file)
 
     try {
       const response = await dispatch(createPost(formData))
@@ -295,9 +297,8 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal }) => {
               }}
             >
               {category?.map((item, index) => {
-
                 const colorsCategoryGif = (item) => {
-                  switch(item) {
+                  switch (item) {
                     case 'Reaction':
                       return 'orange'
                     case 'Movies':
@@ -306,7 +307,7 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal }) => {
                       return 'grey'
                   }
                 }
-                
+
                 return (
                   <TouchableOpacity
                     key={index}
