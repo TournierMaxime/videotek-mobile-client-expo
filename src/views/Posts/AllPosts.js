@@ -10,10 +10,12 @@ import { useTranslation } from 'react-i18next'
 import dot from '../../styles/pages/dot'
 import message from '../../styles/components/message'
 import button from '../../styles/components/button'
-import Likes from '../../utils/Likes'
+import LikesPosts from '../../utils/LikesPosts'
+import Message from '../../utils/Message'
 
 const AllPosts = ({ id }) => {
   const dispatch = useDispatch()
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
   const posts = useSelector((state) => state.searchPost.data)
   const postsResults = useSelector((state) => state.searchPost.data.posts)
   const [allResults, setAllResults] = useState([])
@@ -56,7 +58,7 @@ const AllPosts = ({ id }) => {
             />
           ) : null}
         </View>
-        <Likes postId={item.postId} />
+        <LikesPosts postId={item.postId} likes={item?.Likes} />
       </View>
     )
   }
@@ -85,6 +87,9 @@ const AllPosts = ({ id }) => {
 
   return (
     <View style={{ marginHorizontal: moderateScale(10) }}>
+
+      {!isAuthenticated ? <Message message={t('youMustBeAuthenticatedToPostAMessage')} priority='warning' /> : null}
+      
       {allResults.length === 0 ? (
         <NoDataFound message={t('noPost')} />
       ) : (

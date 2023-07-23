@@ -1,4 +1,5 @@
 {
+  "youMustBeAuthenticatedToPostAMessage": "Je moet geauthenticeerd zijn om een bericht te plaatsen",
   "youHaveAlreadySelectedAnImage": "Je hebt al een afbeelding geselecteerd",
   "allFieldsAreMandatory": "Alle velden zijn verplicht",
   "postCreatedSuccessfully": "Bericht succesvol gemaakt",

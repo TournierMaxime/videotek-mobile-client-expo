@@ -1,4 +1,5 @@
 {
+  "youMustBeAuthenticatedToPostAMessage": "Sie müssen authentifiziert sein, um eine Nachricht zu posten",
   "youHaveAlreadySelectedAnImage": "Sie haben bereits ein Bild ausgewählt",
   "allFieldsAreMandatory": "Alle Felder sind Pflichtfelder",
   "postCreatedSuccessfully": "Beitrag erfolgreich erstellt",

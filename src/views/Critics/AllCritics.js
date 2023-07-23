@@ -18,10 +18,13 @@ import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../../utils/Responsive'
 import useLoadMore from '../../utils/LoadMore'
 import NoDataFound from '../../utils/NoDataFound'
+import LikesCritics from '../../utils/LikesCritics'
+import Message from '../../utils/Message'
 
 const AllCritics = ({ route }) => {
   const { id, title } = route.params
   const dispatch = useDispatch()
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
   const critics = useSelector((state) => state.searchCritic.data)
   const criticsResults = useSelector((state) => state.searchCritic.data.critics)
   const [allResults, setAllResults] = useState([])
@@ -60,6 +63,7 @@ const AllCritics = ({ route }) => {
           </Text>
           <Text style={styles.renderItemOverview}>{item.title}</Text>
           <Text style={styles.renderItemOverview}>{item.content}</Text>
+          <LikesCritics criticId={item.criticId} likes={item?.Likes} />
         </View>
       </View>
     )
@@ -86,6 +90,7 @@ const AllCritics = ({ route }) => {
       </Text>
         <FlatList
           data={allResults}
+          ListHeaderComponent={!isAuthenticated ? <Message message={t('youMustBeAuthenticatedToPostAMessage')} priority='warning' /> : null}
           ListEmptyComponent={<NoDataFound message={t('noCritic')} />}
           keyExtractor={(item) => item.criticId}
           ListFooterComponent={

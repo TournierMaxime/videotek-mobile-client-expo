@@ -170,7 +170,7 @@ const DetailsMovie = ({ route }) => {
           )
         )}
       </Refresh>
-      <CreateButton tmdbId={id} tmdbTitle={movie?.title} />
+      <CreateButton tmdbId={id} tmdbTitle={movie?.title} movie={movie} />
     </View>
   )
 }

@@ -31,7 +31,7 @@ import moment from 'moment'
 import { useTranslation } from 'react-i18next'
 import NoDataFound from '../../utils/NoDataFound'
 
-const NewPost = ({ tmdbId, tmdbTitle, handleModal }) => {
+const NewPost = ({ tmdbId, tmdbTitle, handleModal, movie, serie }) => {
   const dispatch = useDispatch()
   const navigation = useNavigation()
   const userId = useSelector((state) => state.auth.data.user.userId)
@@ -87,9 +87,15 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal }) => {
       const response = await dispatch(createPost(formData))
       if (response) {
         ToastSuccess('success', t('postCreatedSuccessfully'), true)
-        setTimeout(() => {
-          navigation.navigate('DetailsMovie', { id: tmdbId })
-        }, 1000)
+        if (movie) {
+          setTimeout(() => {
+            navigation.navigate('DetailsMovie', { id: tmdbId })
+          }, 1000)
+        } else if (serie) {
+          setTimeout(() => {
+            navigation.navigate('DetailsSerie', { id: tmdbId })
+          }, 1000)
+        }
         await dispatch(searchPost(tmdbId, { page: 1 }))
         await handleModal()
       } else {
@@ -300,11 +306,13 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal }) => {
                 const colorsCategoryGif = (item) => {
                   switch (item) {
                     case 'Reaction':
-                      return 'orange'
+                      return '#FF4500'
                     case 'Movies':
-                      return 'blue'
+                      return '#8A2BE2'
+                    case 'Emotions':
+                      return '#FF69B4'
                     default:
-                      return 'grey'
+                      return 'gray'
                   }
                 }
 

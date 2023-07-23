@@ -1,26 +1,26 @@
-import React from "react"  
-import { View, Text, StyleSheet } from "react-native"
-import { Ionicons } from "react-native-vector-icons"
-import message from "../styles/components/message"
-import { moderateScale } from "./Responsive"
+import React from 'react'
+import { View, Text, StyleSheet } from 'react-native'
+import { Ionicons } from 'react-native-vector-icons'
+import message from '../styles/components/message'
+import { moderateScale } from './Responsive'
 
 const NoDataFound = ({ message }) => {
-    const noDataFound = () => (
-    <View style={styles.containerMessage}>
+  const noDataFound = () => (
+    <View style={[styles.containerMessage, { backgroundColor: '#e9e9ff' }]}>
       <Ionicons
-        name="information-circle-outline"
+        name='information-circle-outline'
         size={moderateScale(24)}
-        color="#696cff"
+        color='#696cff'
       />
-            <Text style={styles.messageText}>{message}</Text>
+      <Text style={[styles.messageText, { color: "#696cff" }]}>{message}</Text>
     </View>
   )
-    return noDataFound()
+  return noDataFound()
 }
 
 const styles = StyleSheet.create({
   containerMessage: message.containerMessage,
-  messageText: message.messageText
+  messageText: message.messageText,
 })
 
 export default NoDataFound

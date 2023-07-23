@@ -1,4 +1,5 @@
 {
+  "youMustBeAuthenticatedToPostAMessage": "You must be authenticated to post a message",
   "youHaveAlreadySelectedAnImage": "You have already selected an image",
   "allFieldsAreMandatory": "All fields are mandatory",
   "postCreatedSuccessfully": "Post created successfully",

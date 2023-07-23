@@ -1,4 +1,5 @@
 {
+  "youMustBeAuthenticatedToPostAMessage": "메시지를 게시하려면 인증을 받아야 합니다.",
   "youHaveAlreadySelectedAnImage": "이미 이미지를 선택했습니다.",
   "allFieldsAreMandatory": "모든 필드는 필수입니다",
   "postCreatedSuccessfully": "게시물이 성공적으로 생성되었습니다.",

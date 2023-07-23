@@ -1,33 +1,37 @@
 import React, { useEffect, useState } from 'react'
-import { TouchableOpacity, StyleSheet, View } from 'react-native'
+import { TouchableOpacity, StyleSheet, View, Text } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   createLike,
-  getOneLikePost,
+  getOneLikeCritic,
   deleteLike,
   resetLike
 } from '../redux/actions/likes'
 import { moderateScale } from './Responsive'
 import { AntDesign, MaterialIcons } from '@expo/vector-icons'
 
-const Likes = ({ postId }) => {
+const LikesCritics = ({ criticId, likes }) => {
   const dispatch = useDispatch()
   const userId = useSelector((state) => state.auth.data.user.userId)
-  const post = useSelector((state) => state.getOneLikePost.data)
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
   const [isLiked, setIsLiked] = useState(false)
+  const [numberOfLikes, setNumberOfLikes] = useState(likes.length)
 
   const handleCreate = async () => {
-      await dispatch(createLike({ postId }))
-      setIsLiked(true)
+    await dispatch(createLike({ criticId }))
+    setIsLiked(true)
+    setNumberOfLikes(likes.length + 1)
   }
 
   const handleDelete = async () => {
     try {
-      const likeId = post?.like?.likeId
+      // Assuming you have a function to fetch likes for a specific post for the user
+      const res = await dispatch(getOneLikeCritic(userId, criticId))
+      const likeId = res?.like?.likeId
       if (likeId) {
         await dispatch(deleteLike(likeId))
         setIsLiked(false)
+        setNumberOfLikes(likes.length)
       }
     } catch (error) {
       console.log(error.response.data.errMsg)
@@ -38,7 +42,7 @@ const Likes = ({ postId }) => {
     const fetchLikeStatus = async () => {
       try {
         if (isAuthenticated) {
-          const res = await dispatch(getOneLikePost(userId, postId))
+          const res = await dispatch(getOneLikeCritic(userId, criticId))
           if (res?.like) {
             setIsLiked(true)
           } else {
@@ -54,7 +58,7 @@ const Likes = ({ postId }) => {
       }
     }
     fetchLikeStatus()
-  }, [dispatch, userId, postId, isAuthenticated, isLiked])
+  }, [dispatch, userId, criticId, isAuthenticated])
 
   useEffect(() => {
     return () => {
@@ -62,12 +66,12 @@ const Likes = ({ postId }) => {
     }
   }, [])
 
-  return isAuthenticated ? (
+  return (
     <View style={{ marginVertical: moderateScale(5) }}>
       {!isLiked ? (
         <TouchableOpacity
           style={styles.createButtonContainer}
-          onPress={() => handleCreate()}
+          onPress={() => isAuthenticated ? handleCreate() : null}
         >
           <MaterialIcons
             style={styles.icon}
@@ -75,11 +79,12 @@ const Likes = ({ postId }) => {
             size={moderateScale(25)}
             color='black'
           />
+          <Text style={styles.likes}>{numberOfLikes}</Text>
         </TouchableOpacity>
       ) : (
         <TouchableOpacity
           style={styles.createButtonContainer}
-          onPress={() => handleDelete()}
+          onPress={() => isAuthenticated ? handleDelete() : null}
         >
           <AntDesign
             style={styles.icon}
@@ -87,10 +92,11 @@ const Likes = ({ postId }) => {
             size={moderateScale(25)}
             color='red'
           />
+          <Text style={styles.likes}>{numberOfLikes}</Text>
         </TouchableOpacity>
       )}
     </View>
-  ) : null
+  )
 }
 
 const styles = StyleSheet.create({
@@ -99,11 +105,16 @@ const styles = StyleSheet.create({
     height: moderateScale(40),
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'row'
   },
   icon: {
     alignItems: 'center',
     justifyContent: 'center',
   },
+  likes: {
+    marginLeft: moderateScale(5),
+    fontSize: moderateScale(14)
+  }
 })
 
-export default Likes
+export default LikesCritics

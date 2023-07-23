@@ -1,4 +1,5 @@
 {
+  "youMustBeAuthenticatedToPostAMessage": "您必须经过身份验证才能发布消息",
   "youHaveAlreadySelectedAnImage": "您已经选择了图像",
   "allFieldsAreMandatory": "所有字段均为必填字段",
   "postCreatedSuccessfully": "帖子创建成功",

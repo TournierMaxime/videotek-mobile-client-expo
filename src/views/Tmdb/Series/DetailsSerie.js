@@ -27,6 +27,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../../../utils/Responsive'
 import AddToFavorite from '../../../utils/AddToFavorite'
+import CreateButton from '../../../utils/CreateButton'
 
 const DetailsSerie = ({ route }) => {
   const dispatch = useDispatch()
@@ -162,6 +163,7 @@ const DetailsSerie = ({ route }) => {
           )
         )}
       </Refresh>
+      <CreateButton tmdbId={id} tmdbTitle={serie?.name} serie={serie} />
     </View>
   )
 }

@@ -1,4 +1,5 @@
 {
+  "youMustBeAuthenticatedToPostAMessage": "メッセージを投稿するには認証が必要です",
   "youHaveAlreadySelectedAnImage": "すでに画像が選択されています",
   "allFieldsAreMandatory": "すべてのフィールドは必須です",
   "postCreatedSuccessfully": "投稿が正常に作成されました",

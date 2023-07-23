@@ -1,4 +1,5 @@
 {
+  "youMustBeAuthenticatedToPostAMessage": "Вы должны пройти аутентификацию, чтобы опубликовать сообщение",
   "youHaveAlreadySelectedAnImage": "Вы уже выбрали изображение",
   "allFieldsAreMandatory": "Bce поля обязательны для заполнения",
   "postCreatedSuccessfully": "Сообщение успешно создано",

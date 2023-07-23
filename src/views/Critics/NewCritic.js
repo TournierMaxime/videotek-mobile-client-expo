@@ -36,7 +36,7 @@ const NewCritic = ({ route }) => {
     try {
       await dispatch(createCritic(data))
       ToastSuccess('success', t('reviewSuccessfullyPublished'), true)
-      dispatch(searchCritic(id, 1))
+      dispatch(searchCritic(id, { page: 1 }))
       setTimeout(() => {
         navigation.navigate('AllCritics', {
           title: data.titleMovieOrSerie,
@@ -63,7 +63,7 @@ const NewCritic = ({ route }) => {
       />
       <Text style={styles.formLabel}>{t('critic')}</Text>
       <TextInput
-        style={[styles.formInput, { height: moderateScale(300) }]}
+        style={[styles.formInput, { height: moderateScale(300), textAlignVertical: 'top' }]}
         editable
         multiline
         placeholder={t('critic')}
