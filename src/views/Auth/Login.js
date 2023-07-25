@@ -11,11 +11,10 @@ import { loginUser } from '../../redux/actions/auth'
 import { useNavigation } from '@react-navigation/native'
 import button from '../../styles/components/button'
 import form from '../../styles/components/form'
-import { ToastSuccess, ToastError } from '../../utils/Toast'
-import ToastConfig from '../../utils/ToastConfig'
 import { Fragment } from 'react'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../../utils/Responsive'
+import { AlertMessage } from '../../utils/AlertMessage'
 
 const LoginScreen = () => {
   const dispatch = useDispatch()
@@ -28,7 +27,6 @@ const LoginScreen = () => {
   const handleLogin = async () => {
     try {
       await dispatch(loginUser(data))
-      ToastSuccess('success', t('successfullyConnected'), true)
       navigation.navigate('UserProfile', {
         screen: 'UserProfile',
         params: {
@@ -37,7 +35,7 @@ const LoginScreen = () => {
       })
     } catch (error) {
       console.log(error.response.data.errMsg)
-      ToastError('error', error.response.data.errMsg, true)
+      AlertMessage(error.response.data.errMsg)
     }
     setData({})
   }
@@ -71,7 +69,6 @@ const LoginScreen = () => {
           >
             <Text style={styles.buttonText}>{t('signIn')}</Text>
           </TouchableOpacity>
-          <ToastConfig />
         </View>
         <View
           style={{

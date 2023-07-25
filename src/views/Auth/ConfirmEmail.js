@@ -6,16 +6,15 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native'
-import { ToastSuccess, ToastError } from '../../utils/Toast'
-import ToastConfig from '../../utils/ToastConfig'
 import { loginWithUserId, confirmEmail } from '../../redux/actions/auth'
 import form from '../../styles/components/form'
 import button from '../../styles/components/button'
 import { useDispatch } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
-import { Ionicons } from 'react-native-vector-icons'
 import message from '../../styles/components/message'
 import { useTranslation } from 'react-i18next'
+import { AlertMessage } from '../../utils/AlertMessage'
+import Message from '../../utils/Message'
 
 const ConfirmEmail = ({ route }) => {
   const dispatch = useDispatch()
@@ -28,7 +27,7 @@ const ConfirmEmail = ({ route }) => {
   const handleConfirmEmail = async () => {
     try {
       await dispatch(confirmEmail(userId, data))
-      ToastSuccess('success', t('yourAccountHasBeenSuccessfullyVerified'), false)
+      AlertMessage(t('yourAccountHasBeenSuccessfullyVerified'))
       await dispatch(loginWithUserId({ userId }))
 
       navigation.navigate('MainStackNavigator', {
@@ -37,17 +36,14 @@ const ConfirmEmail = ({ route }) => {
       })
     } catch (error) {
       console.log(error.response.data.errMsg)
-      ToastError('error', error.response.data.errMsg, false)
+      AlertMessage(error.response.data.errMsg)
     }
     setData({})
   }
 
   const infoMsg = () => (
     <View style={styles.containerMessage}>
-      <Ionicons name='information-circle-outline' size={24} color='#696cff' />
-      <Text style={styles.messageText}>
-        {t('anEmailHasBeenSentToYouContainingA6DigitCode')}
-      </Text>
+      <Message message={t('anEmailHasBeenSentToYouContainingA6DigitCode')} priority='info' />
     </View>
   )
 
@@ -68,7 +64,6 @@ const ConfirmEmail = ({ route }) => {
         >
           <Text style={styles.buttonText}>{t('confirm')}</Text>
         </TouchableOpacity>
-        <ToastConfig />
       </View>
     </View>
   )

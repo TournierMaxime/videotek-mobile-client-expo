@@ -1,5 +1,9 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { TouchableOpacity, StyleSheet, View } from 'react-native'
+import {
+  TouchableOpacity,
+  StyleSheet,
+  View
+} from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -10,8 +14,7 @@ import {
 } from '../redux/actions/favorites'
 import { moderateScale } from './Responsive'
 import { AntDesign, MaterialIcons } from '@expo/vector-icons'
-import { ToastSuccess, ToastError } from './Toast'
-import ToastConfig from './ToastConfig'
+import { AlertMessage } from './AlertMessage'
 
 const AddToFavorite = ({ id, title, image, type }) => {
   const dispatch = useDispatch()
@@ -23,30 +26,57 @@ const AddToFavorite = ({ id, title, image, type }) => {
 
   const handleCreate = async () => {
     try {
-      await dispatch(
-        createFavorite({
-          tmdbId: id,
-          title,
-          image: `https://image.tmdb.org/t/p/original${image}`,
-          type,
-        })
-      )
+      switch (type) {
+        case 'movie':
+          await dispatch(
+            createFavorite({
+              movieData: {
+                tmdbId: id,
+                title,
+                imagePath: `https://image.tmdb.org/t/p/original${image}`,
+              },
+            })
+          )
+          break
+        case 'serie':
+          await dispatch(
+            createFavorite({
+              serieData: {
+                tmdbId: id,
+                name: title,
+                imagePath: `https://image.tmdb.org/t/p/original${image}`,
+              },
+            })
+          )
+          break
+        case 'person':
+          await dispatch(
+            createFavorite({
+              peopleData: {
+                tmdbId: id,
+                name: title,
+                imagePath: `https://image.tmdb.org/t/p/original${image}`,
+              },
+            })
+          )
+          break
+      }
       setIsFavorite(true)
-      ToastSuccess('success', t('addedToFavorite'), true)
+      AlertMessage(t('addedToFavorite'))
     } catch (error) {
       console.log(error.response.data.errMsg)
-      ToastError('error', error.response.data.errMsg, false)
+      AlertMessage(error.response.data.errMsg)
     }
   }
 
   const handleDelete = async () => {
     try {
-      await dispatch(deleteFavorite(data.favorite.favoriteId))
+      await dispatch(deleteFavorite(data?.favorite?.favoriteId))
       setIsFavorite(false)
-      ToastSuccess('success', t('removedFromFavorite'), true)
+      AlertMessage(t('removedFromFavorite'))
     } catch (error) {
       console.log(error.response.data.errMsg)
-      ToastError('error', error.response.data.errMsg, false)
+      AlertMessage(error.response.data.errMsg)
     }
   }
 
@@ -66,7 +96,7 @@ const AddToFavorite = ({ id, title, image, type }) => {
     <Fragment>
       {isAuthenticated === true ? (
         <View style={{ marginTop: 15 }}>
-          {!data?.favorite && isFavorite === false ? (
+          {!data.favorite && isFavorite === false ? (
             <TouchableOpacity
               style={styles.createButtonContainer}
               onPress={() => handleCreate()}
@@ -93,7 +123,6 @@ const AddToFavorite = ({ id, title, image, type }) => {
           )}
         </View>
       ) : null}
-      <ToastConfig />
     </Fragment>
   )
 }

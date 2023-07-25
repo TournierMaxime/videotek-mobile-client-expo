@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { Text, View, TextInput, StyleSheet, Button, Image } from 'react-native'
 import { getUser, updateUser, resetUser } from '../../redux/actions/users'
 import { useDispatch, useSelector } from 'react-redux'
-import { ToastSuccess, ToastError } from '../../utils/Toast'
-import ToastConfig from '../../utils/ToastConfig'
 import button from '../../styles/components/button'
 import form from '../../styles/components/form'
 import * as ImagePicker from 'expo-image-picker'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../../utils/Responsive'
+import { AlertMessage } from '../../utils/AlertMessage'
 
 const DetailsUser = ({ route }) => {
   const { userId } = route.params
@@ -63,15 +62,15 @@ const handleUpdate = async () => {
 
   try {
     await dispatch(updateUser(formData, userId))
-    ToastSuccess('success', t('profileUpdated'), true)
+    AlertMessage(t('profileUpdated'))
     dispatch(getUser(userId))
   } catch (error) {
     console.log(error.response.data.errMsg)
 
     if (error.response.data.errMsg) {
-      ToastError('error', error.response.data.errMsg, true)
+      AlertMessage(error.response.data.errMsg)
     } else {
-      ToastError('error', t('anErrorHasOccurred'), true)
+      AlertMessage(t('anErrorHasOccurred'))
     }
   }
 }
@@ -140,7 +139,6 @@ const handleUpdate = async () => {
             title={t('update')}
             disabled={!isModified}
           />
-          <ToastConfig />
         </View>
       </View>
     </View>

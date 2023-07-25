@@ -6,8 +6,6 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native'
-import { ToastSuccess, ToastError } from '../../utils/Toast'
-import ToastConfig from '../../utils/ToastConfig'
 import button from '../../styles/components/button'
 import form from '../../styles/components/form'
 import { useDispatch, useSelector } from 'react-redux'
@@ -15,6 +13,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useEffect } from 'react'
 import { searchCriticByUser, getOneCritic, updateCritic } from '../../redux/actions/critics'
 import { useTranslation } from 'react-i18next'
+import { AlertMessage } from '../../utils/AlertMessage'
 
 const UpdateCritic = ({ route }) => {
   const dispatch = useDispatch()
@@ -35,14 +34,14 @@ const UpdateCritic = ({ route }) => {
   const handleUpdateCritic = async () => {
     try {
       await dispatch(updateCritic(criticId, data))
-      ToastSuccess('success', t('reviewSuccessfullyUpdated'), true)
+      AlertMessage(t('reviewSuccessfullyUpdated'))
       dispatch(searchCriticByUser(userId, 1))
       setTimeout(() => {
         navigation.navigate('UserCritics', { userId })
       }, 1500)
     } catch (error) {
       console.log(error.response.data.errMsg)
-      ToastError('error', error.response.data.errMsg, false)
+      AlertMessage(error.response.data.errMsg)
     }
   }
 
@@ -86,7 +85,6 @@ const UpdateCritic = ({ route }) => {
         >
           <Text style={styles.buttonText}>{t('update')}</Text>
         </TouchableOpacity>
-        <ToastConfig />
       </View>
     </View>
   )

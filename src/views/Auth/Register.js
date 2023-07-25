@@ -12,10 +12,9 @@ import { createUser } from '../../redux/actions/auth'
 import { useNavigation } from '@react-navigation/native'
 import button from '../../styles/components/button'
 import form from '../../styles/components/form'
-import { ToastSuccess, ToastError } from '../../utils/Toast'
-import ToastConfig from '../../utils/ToastConfig'
 import { useTranslation } from 'react-i18next'
 import { registerForPushNotificationsAsync } from "../../utils/Notifications"
+import { AlertMessage } from '../../utils/AlertMessage'
 
 const RegisterScreen = () => {
   const [data, setData] = useState({
@@ -35,13 +34,13 @@ const RegisterScreen = () => {
   const handleRegister = async () => {
     try {
       const response = await dispatch(createUser({ ...data, lang }))
-      ToastSuccess('success', t('yourAccountHasBeenCreated'), true)
+      AlertMessage(t('yourAccountHasBeenCreated'))
       setTimeout(() => {
         navigation.navigate('ConfirmEmail', { userId: response.user.userId })
       }, 3000)
     } catch (error) {
       console.log(error.response.data.errMsg)
-      ToastError('error', error.response.data.errMsg, true)
+      AlertMessage(error.response.data.errMsg)
     }
     setData({})
   }
@@ -81,7 +80,6 @@ const RegisterScreen = () => {
           onPress={handleRegister}
         >
           <Text style={styles.buttonText}>{t('signUp')}</Text>
-          <ToastConfig />
         </TouchableOpacity>
       </View>
     </View>

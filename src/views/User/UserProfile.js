@@ -20,10 +20,9 @@ import {
 } from 'react-native-vector-icons'
 import profil from '../../styles/components/profil'
 import AlertModal from '../../utils/AlertModal'
-import { ToastSuccess, ToastError } from '../../utils/Toast'
-import ToastConfig from '../../utils/ToastConfig'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../../utils/Responsive'
+import { AlertMessage } from '../../utils/AlertMessage'
 
 const UserProfile = ({ route }) => {
   const { userId } = route.params
@@ -48,7 +47,7 @@ const UserProfile = ({ route }) => {
     try {
       await dispatch(deleteUser(userId))
       setDeleteSuccess(true)
-      ToastSuccess('success', t('yourAccountHasBeenSuccessfullyDeleted'), true)
+      AlertMessage(t('yourAccountHasBeenSuccessfullyDeleted'))
 
       setTimeout(async () => {
         await dispatch(logoutUser())
@@ -56,7 +55,7 @@ const UserProfile = ({ route }) => {
       }, 3000)
     } catch (error) {
       console.log(error.response.data.errMsg)
-      ToastError('error', error.response.data.errMsg, true)
+      AlertMessage(error.response.data.errMsg)
     }
   }
 
@@ -214,7 +213,6 @@ const UserProfile = ({ route }) => {
                   success={deleteSuccess}
                   t={t}
                 >
-                  <ToastConfig />
                 </AlertModal>
               </ScrollView>
             </View>

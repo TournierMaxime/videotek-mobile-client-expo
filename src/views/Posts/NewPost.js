@@ -10,8 +10,6 @@ import {
   Button,
 } from 'react-native'
 import form from '../../styles/components/form'
-import { ToastSuccess, ToastError } from '../../utils/Toast'
-import ToastConfig from '../../utils/ToastConfig'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 import { createPost, searchPost } from '../../redux/actions/posts'
@@ -30,6 +28,7 @@ import useLoadMore from '../../utils/LoadMore'
 import moment from 'moment'
 import { useTranslation } from 'react-i18next'
 import NoDataFound from '../../utils/NoDataFound'
+import { AlertMessage } from '../../utils/AlertMessage'
 
 const NewPost = ({ tmdbId, tmdbTitle, handleModal, movie, serie }) => {
   const dispatch = useDispatch()
@@ -51,7 +50,7 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal, movie, serie }) => {
 
   const pickGif = (gifUrl) => {
     if (data.image) {
-      ToastError('error', t('youHaveAlreadySelectedAnImage'), true)
+      AlertMessage(t('youHaveAlreadySelectedAnImage'))
       return
     }
     setData({ ...data, image: gifUrl })
@@ -60,7 +59,7 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal, movie, serie }) => {
 
   const handleCreate = async () => {
     if (!data.content) {
-      ToastError('error', t('allFieldsAreMandatory'), true)
+      AlertMessage(t('allFieldsAreMandatory'))
       return
     }
     const formData = new FormData()
@@ -86,7 +85,7 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal, movie, serie }) => {
     try {
       const response = await dispatch(createPost(formData))
       if (response) {
-        ToastSuccess('success', t('postCreatedSuccessfully'), true)
+        AlertMessage(t('postCreatedSuccessfully'))
         if (movie) {
           setTimeout(() => {
             navigation.navigate('DetailsMovie', { id: tmdbId })
@@ -99,15 +98,15 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal, movie, serie }) => {
         await dispatch(searchPost(tmdbId, { page: 1 }))
         await handleModal()
       } else {
-        ToastError('error', t('anErrorOccurredWhileCreatingThePost'), true)
+        AlertMessage(t('anErrorOccurredWhileCreatingThePost'))
       }
     } catch (error) {
       console.log(error.response.data.errMsg)
 
       if (error.response && error.response.data && error.response.data.errMsg) {
-        ToastError('error', error.response.data.errMsg, true)
+        AlertMessage(error.response.data.errMsg)
       } else {
-        ToastError('error', t('anErrorOccurredWhileCreatingThePost'), true)
+        AlertMessage(t('anErrorOccurredWhileCreatingThePost'))
       }
     }
   }
@@ -120,7 +119,7 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal, movie, serie }) => {
 
   const pickImage = async () => {
     if (data.image) {
-      ToastError('error', t('youHaveAlreadySelectedAnImage'), true)
+      AlertMessage(t('youHaveAlreadySelectedAnImage'))
       return
     }
     let permissionResult =
@@ -213,7 +212,7 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal, movie, serie }) => {
                 setData({ ...data, content: text })
                 setCharCount(text.length)
               } else {
-                ToastError('error', t('contentCannotExceed300Characters'), true)
+                AlertMessage(t('contentCannotExceed300Characters'))
               }
             }}
           />
@@ -377,7 +376,6 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal, movie, serie }) => {
           </Fragment>
         }
       />
-      <ToastConfig top={moderateScale(0)} />
     </ScrollView>
   )
 }

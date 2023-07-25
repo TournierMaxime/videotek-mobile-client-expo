@@ -14,10 +14,9 @@ import {
 } from '../../redux/actions/auth'
 import button from '../../styles/components/button'
 import form from '../../styles/components/form'
-import { ToastSuccess, ToastError } from '../../utils/Toast'
-import ToastConfig from '../../utils/ToastConfig'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
+import { AlertMessage } from '../../utils/AlertMessage'
 
 const ForgetPasswordScreen = () => {
   const [email, setEmail] = useState('')
@@ -37,15 +36,11 @@ const ForgetPasswordScreen = () => {
   const handleForgetPassword = async () => {
     try {
       await dispatch(forgetPassword({ email, lang }))
-      ToastSuccess(
-        'success',
-        t('anEmailHasBeenSentToYouContainingA6DigitCode'),
-        true
-      )
+      AlertMessage(t('anEmailHasBeenSentToYouContainingA6DigitCode'))
       setStep(2)
     } catch (error) {
       console.log(error.response.data.errMsg)
-      ToastError('error', error.response.data.errMsg, false)
+      AlertMessage(error.response.data.errMsg)
     }
   }
 
@@ -53,11 +48,11 @@ const ForgetPasswordScreen = () => {
     try {
       console.log(email)
       await dispatch(checkForgetPasswordCode({ email, code }))
-      ToastSuccess('success', t('yourVerificationCodeHasBeenValidated'), true)
+      AlertMessage(t('yourVerificationCodeHasBeenValidated'))
       setStep(3)
     } catch (error) {
       console.log(error.response.data.errMsg)
-      ToastError('error', error.response.data.errMsg, false)
+      AlertMessage(error.response.data.errMsg)
     }
     setCode('')
   }
@@ -71,14 +66,14 @@ const ForgetPasswordScreen = () => {
           confirmPassword: password.confirmPassword,
         })
       )
-      ToastSuccess('success', t('yourPasswordHasBeenSuccessfullyReset'), false)
+      AlertMessage(t('yourPasswordHasBeenSuccessfullyReset'))
       setStep(4)
       setTimeout(() => {
         navigation.navigate('Login')
       }, 2000)
     } catch (error) {
       console.log(error.response.data.errMsg)
-      ToastError('error', error.response.data.errMsg, false)
+      AlertMessage(error.response.data.errMsg)
     }
     setPassword({})
   }
@@ -101,7 +96,6 @@ const ForgetPasswordScreen = () => {
                 onPress={handleForgetPassword}
               >
                 <Text style={styles.buttonText}>{t('confirm')}</Text>
-                <ToastConfig />
               </TouchableOpacity>
             </View>
           </View>
@@ -123,7 +117,6 @@ const ForgetPasswordScreen = () => {
                 onPress={handleCheckForgetPasswordCode}
               >
                 <Text style={styles.buttonText}>{t('confirm')}</Text>
-                <ToastConfig />
               </TouchableOpacity>
             </View>
           </View>
@@ -156,7 +149,6 @@ const ForgetPasswordScreen = () => {
                 onPress={handleResetPassword}
               >
                 <Text style={styles.buttonText}>{t('confirm')}</Text>
-                <ToastConfig />
               </TouchableOpacity>
             </View>
           </View>
@@ -166,7 +158,6 @@ const ForgetPasswordScreen = () => {
             <Text style={styles.formLabel}>
               {t('yourPasswordHasBeenSuccessfullyReset')}
             </Text>
-            <ToastConfig />
           </View>
         )}
       </View>
