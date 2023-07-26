@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 import moment from 'moment'
 import { useTranslation } from 'react-i18next'
 
-const CreateButton = ({ tmdbId, tmdbTitle, movie, serie }) => {
+const CreatePost = ({ tmdbId, movie, serie }) => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
   const [modalVisible, setModalVisible] = useState(false)
   const handleModal = () => {
@@ -42,7 +42,7 @@ const CreateButton = ({ tmdbId, tmdbTitle, movie, serie }) => {
             content={
               <NewPost
                 tmdbId={tmdbId}
-                tmdbTitle={tmdbTitle}
+                tmdbTitle={movie ? movie?.title : serie?.name}
                 handleModal={handleModal}
                 movie={movie}
                 serie={serie}
@@ -72,4 +72,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default CreateButton
+export default CreatePost

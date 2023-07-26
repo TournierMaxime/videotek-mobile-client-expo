@@ -73,11 +73,9 @@ const WatchLists = () => {
   const redirectByType = (type, id, title) => {
     switch (type) {
       case 'movie':
-        return navigation.navigate('DetailsMovie', { id, title })
+        return navigation.navigate('WatchedMovie', { id, title })
       case 'serie':
-        return navigation.navigate('DetailsSerie', { id, title })
-      case 'person':
-        return navigation.navigate('DetailsPeople', { id, title })
+        return navigation.navigate('WatchedSerie', { id, title })
     }
   }
 
@@ -151,7 +149,7 @@ const WatchLists = () => {
                 />
               )}
               <View style={{ flexDirection: 'column' }}>
-                <Text style={styles.renderItemTitle}>{item.title}</Text>
+                <Text style={[styles.renderItemTitle, { marginTop: moderateScale(10) }]}>{item.title}</Text>
                 {watchingState(item?.Watcheds[0]?.state)}
               </View>
             </View>
@@ -268,6 +266,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'space-between',
     marginHorizontal: moderateScale(10),
+    marginVertical: moderateScale(10)
   },
   renderItemTitle: dot.renderItemTitle,
   renderItemOverview: dot.renderItemOverview,

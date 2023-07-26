@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native'
 import ProductionMovie from '../views/Tmdb/Movies/Production'
 import ProductionSerie from '../views/Tmdb/Series/Production'
 import AllPosts from '../views/Posts/AllPosts'
 import tab from '../styles/components/tab'
+import AllCritics from '../views/Critics/AllCritics'
 
-const Tabs = ({ id, movie, serie, t, language }) => {
-  const [selectedTab, setSelectedTab] = useState('about')
-
+const Tabs = ({ id, movie, serie, t, language, selectedTab, setSelectedTab }) => {
   return (
     <View style={styles.container}>
       <View style={styles.tabContainer}>
@@ -35,6 +34,20 @@ const Tabs = ({ id, movie, serie, t, language }) => {
             {t('posts')}
           </Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.tab}
+          onPress={() => setSelectedTab('critics')}
+        >
+          <Text
+            style={
+              selectedTab === 'critics'
+                ? styles.selectedTabText
+                : styles.tabText
+            }
+          >
+            {t('critics')}
+          </Text>
+        </TouchableOpacity>
       </View>
       {selectedTab === 'about' &&
         (movie ? (
@@ -43,7 +56,12 @@ const Tabs = ({ id, movie, serie, t, language }) => {
           <ProductionSerie id={id} serie={serie} language={language} t={t} />
         ) : null)}
 
-      {selectedTab === 'posts' && <AllPosts id={id} movie={movie} serie={serie} />}
+      {selectedTab === 'posts' && (
+        <AllPosts id={id} />
+      )}
+      {selectedTab === 'critics' && (
+        <AllCritics id={id} />
+      )}
     </View>
   )
 }

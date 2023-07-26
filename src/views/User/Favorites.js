@@ -1,5 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { searchFavorite, deleteFavorite, resetFavorites } from '../../redux/actions/favorites'
+import {
+  searchFavorite,
+  deleteFavorite,
+  resetFavorites,
+} from '../../redux/actions/favorites'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   Text,
@@ -67,7 +71,6 @@ const Favorites = () => {
   }, [dispatch, userId, currentPage])
 
   const redirectByType = (type, id, title) => {
-
     switch (type) {
       case 'movie':
         return navigation.navigate('DetailsMovie', { id, title })
@@ -78,60 +81,77 @@ const Favorites = () => {
     }
   }
 
-  const renderItem = useCallback((item, index) => {
-    return (
-      <TouchableOpacity
-        onPress={() => redirectByType(item.type, Number(item.tmdbId), item.title)}
-        key={index}
-      >
-        <View style={styles.renderItemContainer}>
-          <View style={{ alignItems: 'center' }}>
-            {item.image ? (
-              <Image
-                style={styles.image}
-                source={{
-                  uri: `${item.image}?t=${new Date().getTime()}`,
-                }}
-              />
-            ) : (
-              <Image
-                style={styles.image}
-                source={require('../../assets/image/No_Image_Available.jpg')}
-              />
-            )}
-          </View>
-          <View style={styles.renderItemDetails}>
-            <Text style={styles.renderItemTitle}>
-              {item.title}
-            </Text>
-            <View style={{ alignItems: 'flex-end', position: 'absolute', bottom: moderateScale(15), right: moderateScale(15) }}>
+  const renderItem = useCallback(
+    (item, index) => {
+      return (
+        <TouchableOpacity
+          onPress={() =>
+            redirectByType(item.type, Number(item.tmdbId), item.title)
+          }
+          key={index}
+        >
+          <View style={styles.renderItemContainer}>
+            <View style={{ flexDirection: 'row' }}>
+              {item.image ? (
+                <Image
+                  style={styles.image}
+                  source={{
+                    uri: `${item.image}?t=${new Date().getTime()}`,
+                  }}
+                />
+              ) : (
+                <Image
+                  style={styles.image}
+                  source={require('../../assets/image/No_Image_Available.jpg')}
+                />
+              )}
+              <View style={{ flexDirection: 'column' }}>
+                <Text style={[styles.renderItemTitle, { marginTop: moderateScale(10) }]}>{item.title}</Text>
+              </View>
+            </View>
+            <View style={styles.renderItemDetails}>
               {item.userId === userId ? (
-                <View>
-                  <Pressable
-                    style={styles.trashButton}
-                    onPress={() => handleModal(item.favoriteId)}
+                <Pressable
+                  style={[
+                    styles.trashButton,
+                    {
+                      backgroundColor: 'red',
+                      width: moderateScale(50),
+                      height: moderateScale(100),
+                    },
+                  ]}
+                  onPress={() => handleModal(item.favoriteId)}
+                >
+                  <View
+                    style={{
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      flex: 1,
+                    }}
                   >
                     <Feather
                       name='trash-2'
                       size={moderateScale(25)}
-                      color='red'
+                      color='white'
                     />
-                  </Pressable>
-                  <AlertModal
-                    message={t('areYouSureYouWantToDeleteThisFavorite')}
-                    action={handleDelete}
-                    visible={modalVisible}
-                    setVisible={setModalVisible}
-                    t={t}
-                  />
-                </View>
+
+                    <AlertModal
+                      message={t('areYouSureYouWantToDeleteThisFavorite')}
+                      action={handleDelete}
+                      visible={modalVisible}
+                      setVisible={setModalVisible}
+                      t={t}
+                    />
+                  </View>
+                </Pressable>
               ) : null}
             </View>
           </View>
-        </View>
-      </TouchableOpacity>
-    )
-  }, [userId, handleModal, t])
+        </TouchableOpacity>
+      )
+    },
+    [userId, handleModal, t]
+  )
 
   const handleDelete = async () => {
     if (selectedFavoriteId) {
@@ -198,19 +218,36 @@ const styles = StyleSheet.create({
   deleteButton: button.deleteButton,
   buttonText: button.buttonText,
   trashButton: button.trashButton,
-  renderItemContainer: dot.renderItemContainer,
+  renderItemContainer: {
+    flexDirection: 'row',
+    backgroundColor: 'white',
+    justifyContent: 'space-between',
+    marginHorizontal: moderateScale(10),
+    marginVertical: moderateScale(10)
+  },
   renderItemTitle: dot.renderItemTitle,
   renderItemOverview: dot.renderItemOverview,
-  renderItemDetails: dot.renderItemDetails,
+  renderItemDetails: {
+    flexDirection: 'column',
+  },
   seasonTitle: dot.seasonTitle,
   containerMessage: message.containerMessage,
   messageText: message.messageText,
   image: {
-    width: moderateScale(140),
-    height: moderateScale(200),
+    width: moderateScale(70),
+    height: moderateScale(100),
     resizeMode: 'cover',
+  },
+  tag: {
     marginLeft: moderateScale(15),
-    marginBottom: moderateScale(5),
+    padding: moderateScale(5),
+    borderRadius: 5,
+    marginTop: moderateScale(5),
+  },
+  tagText: {
+    fontSize: moderateScale(16),
+    fontWeight: 'bold',
+    color: 'white',
   },
 })
 

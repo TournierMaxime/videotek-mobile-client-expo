@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 import button from '../../styles/components/button'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUser, deleteUser, resetUser } from '../../redux/actions/users'
+import { getUser, deleteUser } from '../../redux/actions/users'
 import { logoutUser } from '../../redux/actions/auth'
 import { useNavigation } from '@react-navigation/native'
 import { checkAccess } from '../../utils/CheckAccess'
@@ -66,12 +66,6 @@ const UserProfile = ({ route }) => {
   useEffect(() => {
     dispatch(getUser(userId))
   }, [dispatch, userId, userName])
-
-  useEffect(() => {
-    return () => {
-      dispatch(resetUser())
-    }
-  }, [])
 
   return (
     <View style={styles.container}>

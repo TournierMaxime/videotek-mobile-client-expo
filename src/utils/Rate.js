@@ -35,13 +35,13 @@ const styles = StyleSheet.create({
   viewContainer: {
     width: moderateScale(40),
     height: moderateScale(40),
-    textAlign:'center',
+    textAlign: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: moderateScale(15),
     borderRadius: moderateScale(5),
-    marginLeft: 'auto',
-    marginRight: 'auto'
+    position: 'absolute',
+    right: moderateScale(0),
+    bottom: moderateScale(0)
   },
   textContent: {
     fontWeight: 'bold',

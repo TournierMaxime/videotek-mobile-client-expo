@@ -11,7 +11,6 @@ import {
 } from 'react-native'
 import form from '../../styles/components/form'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigation } from '@react-navigation/native'
 import { createPost, searchPost } from '../../redux/actions/posts'
 import { AntDesign, Entypo } from '@expo/vector-icons'
 import { moderateScale } from '../../utils/Responsive'
@@ -29,9 +28,8 @@ import { useTranslation } from 'react-i18next'
 import NoDataFound from '../../utils/NoDataFound'
 import { AlertMessage } from '../../utils/AlertMessage'
 
-const NewPost = ({ tmdbId, tmdbTitle, handleModal, movie, serie }) => {
+const NewPost = ({ tmdbId, tmdbTitle, handleModal }) => {
   const dispatch = useDispatch()
-  const navigation = useNavigation()
   const userId = useSelector((state) => state.auth.data.user.userId)
   const [data, setData] = useState({ image: '' })
   const category = useSelector((state) => state.searchCategory.data.category)
@@ -85,15 +83,6 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal, movie, serie }) => {
       const response = await dispatch(createPost(formData))
       if (response) {
         AlertMessage(t('postCreatedSuccessfully'))
-        if (movie) {
-          setTimeout(() => {
-            navigation.navigate('DetailsMovie', { id: tmdbId })
-          }, 1000)
-        } else if (serie) {
-          setTimeout(() => {
-            navigation.navigate('DetailsSerie', { id: tmdbId })
-          }, 1000)
-        }
         await dispatch(searchPost(tmdbId, { page: 1 }))
         await handleModal()
       } else {

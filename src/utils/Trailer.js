@@ -2,24 +2,28 @@ import React, { useEffect } from 'react'
 import { movieTrailer } from '../redux/actions/tmdb/movies'
 import { serieTrailer } from '../redux/actions/tmdb/series'
 import { useDispatch, useSelector } from 'react-redux'
-import { Linking, TouchableOpacity } from 'react-native'
+import { Linking, TouchableOpacity, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { Ionicons } from 'react-native-vector-icons'
+import { moderateScale } from './Responsive'
 
 const extractFirstTrailerResult = (trailer) => {
   if (!trailer.results) {
     return null
   }
 
-  const trailerResult = trailer.results.find((result) => result.type === 'Trailer')
+  const trailerResult = trailer.results.find(
+    (result) => result.type === 'Trailer'
+  )
 
   return trailerResult
 }
 
-const Trailer = ({ id, children, movie, serie }) => {
+const Trailer = ({ id, movie, serie }) => {
   const dispatch = useDispatch()
 
-    const { i18n } = useTranslation()
-    const language = i18n.language
+  const { i18n } = useTranslation()
+  const language = i18n.language
 
   const mvTrailer = useSelector((state) => state.movieTrailer.data)
   const firstMovieTrailerResult = extractFirstTrailerResult(mvTrailer)
@@ -48,7 +52,14 @@ const Trailer = ({ id, children, movie, serie }) => {
   }, [dispatch, id, movie, serie])
 
   return (
+    <View style={{ marginTop: 15 }}>
     <TouchableOpacity
+      style={{
+        width: moderateScale(40),
+        height: moderateScale(40),
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
       onPress={() => {
         if (id === movie?.id) {
           handleLinkToMovieTrailer()
@@ -57,10 +68,18 @@ const Trailer = ({ id, children, movie, serie }) => {
         }
       }}
     >
-      {children}
-    </TouchableOpacity>
+      <Ionicons
+        style={{
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+        name='videocam-outline'
+        size={moderateScale(25)}
+        color='white'
+      />
+      </TouchableOpacity>
+      </View>
   )
 }
 
 export default Trailer
-

@@ -46,6 +46,8 @@ import './polyfill.js'
 import { moderateScale } from './src/utils/Responsive'
 import { Platform, Dimensions } from 'react-native'
 import TrendingTV from './src/views/Tmdb/Series/TrendingTV'
+import WatchedMovie from './src/views/Watched/WatchedMovie'
+import WatchedSerie from './src/views/Watched/WatchedSerie'
 
 const MainStack = createNativeStackNavigator()
 const AuthStack = createNativeStackNavigator()
@@ -364,6 +366,24 @@ const getCommonScreens = (Stack, isAuthenticated, i18n, t) => (
     <Stack.Screen
       name='AllCritics'
       component={AllCritics}
+      options={() => ({
+        header: () => (
+          <Header isAuthenticated={isAuthenticated} backButton={true} />
+        ),
+      })}
+    />
+    <Stack.Screen
+      name='WatchedMovie'
+      component={WatchedMovie}
+      options={() => ({
+        header: () => (
+          <Header isAuthenticated={isAuthenticated} backButton={true} />
+        ),
+      })}
+    />
+    <Stack.Screen
+      name='WatchedSerie'
+      component={WatchedSerie}
       options={() => ({
         header: () => (
           <Header isAuthenticated={isAuthenticated} backButton={true} />

@@ -5,8 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   createWatchList,
   getOneWatchList,
-  deleteWatchList,
-  resetWatchLists,
+  deleteWatchList
 } from '../redux/actions/watchlists'
 import { moderateScale } from './Responsive'
 import { Ionicons } from '@expo/vector-icons'
@@ -57,11 +56,9 @@ const AddToWatchList = ({ id, title, image, type }) => {
 
   const handleDelete = async () => {
     try {
-      await dispatch(
-        deleteWatchList(data?.watchList?.watchListId)
-      ).then(() => {
-          setIsAdded(false)
-        })
+      await dispatch(deleteWatchList(data?.watchList?.watchListId)).then(() => {
+        setIsAdded(false)
+      })
       AlertMessage(t('removedFromWatchList'))
     } catch (error) {
       console.log(error.response.data.errMsg)
@@ -70,16 +67,14 @@ const AddToWatchList = ({ id, title, image, type }) => {
   }
 
   useEffect(() => {
+    setIsAdded(data.watchList !== null)
+  }, [data.watchList])
+
+  useEffect(() => {
     if (isAuthenticated === true) {
       dispatch(getOneWatchList(userId, id))
     }
   }, [dispatch, userId, id, isAdded])
-
-  useEffect(() => {
-    return () => {
-      dispatch(resetWatchLists())
-    }
-  }, [])
 
   return (
     <Fragment>

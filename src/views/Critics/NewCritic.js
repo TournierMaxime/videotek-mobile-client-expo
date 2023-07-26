@@ -12,14 +12,11 @@ import form from '../../styles/components/form'
 import { searchCritic, createCritic } from '../../redux/actions/critics'
 import { useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import { useNavigation } from '@react-navigation/native'
 import { moderateScale } from '../../utils/Responsive'
 import { AlertMessage } from '../../utils/AlertMessage'
 
-const NewCritic = ({ route }) => {
+const NewCritic = ({ tmdbId, tmdbTitle, handleModal }) => {
   const dispatch = useDispatch()
-  const { title, id } = route.params
-  const navigation = useNavigation()
 
   const { t } = useTranslation()
 
@@ -27,31 +24,30 @@ const NewCritic = ({ route }) => {
     title: '',
     content: '',
     rate: null,
-    idMovieOrSerie: id,
-    titleMovieOrSerie: title,
+    idMovieOrSerie: tmdbId,
+    titleMovieOrSerie: tmdbTitle,
   })
 
   const handleCritic = async () => {
     try {
       await dispatch(createCritic(data))
+
       AlertMessage(t('reviewSuccessfullyPublished'))
-      dispatch(searchCritic(id, { page: 1 }))
-      setTimeout(() => {
-        navigation.navigate('AllCritics', {
-          title: data.titleMovieOrSerie,
-          id: data.idMovieOrSerie,
-        })
-      }, 200)
+      await dispatch(searchCritic(tmdbId, { page: 1 }))
+      await handleModal()
     } catch (error) {
       console.log(error.response.data.errMsg)
+
       AlertMessage(error.response.data.errMsg)
     }
   }
 
   return (
     <ScrollView style={styles.formContainer}>
-      <Text style={{fontSize: moderateScale(16), marginBottom: moderateScale(15)}}>
-        {t('criticOf')} {title}
+      <Text
+        style={{ fontSize: moderateScale(16), marginBottom: moderateScale(15) }}
+      >
+        {t('criticOf')} {tmdbTitle}
       </Text>
       <Text style={styles.formLabel}>{t('title')}</Text>
       <TextInput
@@ -62,7 +58,10 @@ const NewCritic = ({ route }) => {
       />
       <Text style={styles.formLabel}>{t('critic')}</Text>
       <TextInput
-        style={[styles.formInput, { height: moderateScale(300), textAlignVertical: 'top' }]}
+        style={[
+          styles.formInput,
+          { height: moderateScale(300), textAlignVertical: 'top' },
+        ]}
         editable
         multiline
         placeholder={t('critic')}
@@ -77,7 +76,9 @@ const NewCritic = ({ route }) => {
         value={data.rate}
         keyboardType='numeric'
       />
-      <View style={[styles.buttonContainer, { paddingBottom: moderateScale(50) }]}>
+      <View
+        style={[styles.buttonContainer, { paddingBottom: moderateScale(50) }]}
+      >
         <TouchableOpacity
           style={styles.formButtonLogin}
           onPress={() => handleCritic()}

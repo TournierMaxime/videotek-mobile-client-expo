@@ -12,7 +12,7 @@ import modal from '../styles/components/modal'
 import form from '../styles/components/form'
 import { Ionicons } from 'react-native-vector-icons'
 import { useDispatch, useSelector } from 'react-redux'
-import { search, resetSearchModal } from '../redux/actions/tmdb/search'
+import { search } from '../redux/actions/tmdb/search'
 import { useNavigation } from '@react-navigation/native'
 import moment from 'moment'
 import { useTranslation } from 'react-i18next'
@@ -119,13 +119,6 @@ const SearchModal = ({ visible, setVisible }) => {
       resetSearch()
     }
   }, [visible])
-
-  useEffect(() => {
-    return () => {
-      dispatch(search())
-      dispatch(resetSearchModal())
-    }
-  }, [])
 
   return (
     <View style={styles.container}>

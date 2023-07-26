@@ -33,10 +33,12 @@ import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../../../utils/Responsive'
 import AddToFavorite from '../../../utils/AddToFavorite'
-import CreateButton from '../../../utils/CreateButton'
 import AddToWatchList from '../../../utils/AddToWatchList'
 import { resetFavorites } from '../../../redux/actions/favorites'
 import { resetWatchLists } from '../../../redux/actions/watchlists'
+import Trailer from '../../../utils/Trailer'
+import CreatePost from '../../../utils/CreatePost'
+import CreateCritic from '../../../utils/CreateCritic'
 
 const DetailsSerie = ({ route }) => {
   const dispatch = useDispatch()
@@ -44,6 +46,7 @@ const DetailsSerie = ({ route }) => {
   const serie = useSelector((state) => state.serieDetails.data)
   const { id } = route.params
   const [loading, setLoading] = useState(false)
+  const [selectedTab, setSelectedTab] = useState('about')
 
   const { i18n, t } = useTranslation()
   const language = i18n.language
@@ -179,18 +182,20 @@ const DetailsSerie = ({ route }) => {
                         image={serie?.poster_path}
                         type={'serie'}
                       />
+                      <Trailer serie={serie} id={id} />
                     </View>
                   </View>
                 </View>
 
                 <OverViewMemoized content={serie.overview} t={t} />
               </View>
-              <Tabs serie={serie} t={t} language={language} id={id} />
+              <Tabs serie={serie} t={t} language={language} id={id} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
             </Fragment>
           )
         )}
       </Refresh>
-      <CreateButton tmdbId={id} tmdbTitle={serie?.name} serie={serie} />
+      {selectedTab === 'posts' && <CreatePost tmdbId={id} serie={serie} />}
+      {selectedTab === 'critics' && <CreateCritic tmdbId={id} serie={serie} />}
     </View>
   )
 }

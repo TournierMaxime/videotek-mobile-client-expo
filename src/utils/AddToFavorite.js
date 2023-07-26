@@ -1,16 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import {
-  TouchableOpacity,
-  StyleSheet,
-  View
-} from 'react-native'
+import { TouchableOpacity, StyleSheet, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   createFavorite,
   getOneFavorite,
-  deleteFavorite,
-  resetFavorites,
+  deleteFavorite
 } from '../redux/actions/favorites'
 import { moderateScale } from './Responsive'
 import { AntDesign, MaterialIcons } from '@expo/vector-icons'
@@ -20,10 +15,14 @@ const AddToFavorite = ({ id, title, image, type }) => {
   const dispatch = useDispatch()
   const { t } = useTranslation()
   const data = useSelector((state) => state.getOneFavorite.data)
-  const dataExists = useSelector(state => Boolean(state.getOneFavorite.data?.favorite));
+  const dataExists = useSelector((state) =>
+    Boolean(state.getOneFavorite.data?.favorite)
+  )
   const userId = useSelector((state) => state.auth.data.user.userId)
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
-  const [isFavorite, setIsFavorite] = useState(data.favorite !== null ? dataExists : false)
+  const [isFavorite, setIsFavorite] = useState(
+    data.favorite !== null ? dataExists : false
+  )
 
   const handleCreate = () => {
     try {
@@ -82,16 +81,14 @@ const AddToFavorite = ({ id, title, image, type }) => {
   }
 
   useEffect(() => {
+    setIsFavorite(data.favorite !== null)
+  }, [data.favorite])
+
+  useEffect(() => {
     if (isAuthenticated === true) {
       dispatch(getOneFavorite(userId, id))
     }
   }, [dispatch, userId, id, isFavorite])
-
-  useEffect(() => {
-    return () => {
-      dispatch(resetFavorites())
-    }
-  }, [])
 
   return (
     <Fragment>

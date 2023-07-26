@@ -36,10 +36,12 @@ import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../../../utils/Responsive'
 import AddToFavorite from '../../../utils/AddToFavorite'
 import Tabs from '../../../components/Tabs'
-import CreateButton from '../../../utils/CreateButton'
 import AddToWatchList from '../../../utils/AddToWatchList'
 import { resetFavorites } from '../../../redux/actions/favorites'
 import { resetWatchLists } from '../../../redux/actions/watchlists'
+import Trailer from '../../../utils/Trailer'
+import CreatePost from '../../../utils/CreatePost'
+import CreateCritic from '../../../utils/CreateCritic'
 
 const DetailsMovie = ({ route }) => {
   const dispatch = useDispatch()
@@ -48,6 +50,7 @@ const DetailsMovie = ({ route }) => {
   const credits = useSelector((state) => state.movieCrew.data)
   const { id } = route.params
   const [loading, setLoading] = useState(false)
+  const [selectedTab, setSelectedTab] = useState('about')
 
   const { i18n, t } = useTranslation()
   const language = i18n.language
@@ -185,19 +188,21 @@ const DetailsMovie = ({ route }) => {
                         title={movie?.title}
                         image={movie?.poster_path}
                         type={'movie'}
-                      />
+                        />
+                        <Trailer movie={movie} id={id} />
                     </View>
                   </View>
                 </View>
 
                 <OverViewMemoized content={movie.overview} t={t} />
               </View>
-              <Tabs id={id} movie={movie} t={t} language={language} />
+              <Tabs id={id} movie={movie} t={t} language={language} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
             </Fragment>
           )
         )}
       </Refresh>
-      <CreateButton tmdbId={id} tmdbTitle={movie?.title} movie={movie} />
+      {selectedTab === 'posts' && (<CreatePost tmdbId={id} movie={movie} />)}
+      {selectedTab === 'critics' && (<CreateCritic tmdbId={id} movie={movie} />)}
     </View>
   )
 }
