@@ -7,30 +7,30 @@ import {
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import {
-  createFavorite,
-  getOneFavorite,
-  deleteFavorite,
-  resetFavorites,
-} from '../redux/actions/favorites'
+  createWatchList,
+  getOneWatchList,
+  deleteWatchList,
+  resetWatchLists,
+} from '../redux/actions/watchlists'
 import { moderateScale } from './Responsive'
-import { AntDesign, MaterialIcons } from '@expo/vector-icons'
+import { Ionicons } from '@expo/vector-icons'
 import { AlertMessage } from './AlertMessage'
 
-const AddToFavorite = ({ id, title, image, type }) => {
+const AddToWatchList = ({ id, title, image, type }) => {
   const dispatch = useDispatch()
   const { t } = useTranslation()
-  const data = useSelector((state) => state.getOneFavorite.data)
-  const dataExists = useSelector(state => Boolean(state.getOneFavorite.data));
+  const data = useSelector((state) => state.getOneWatchList.data)
+  const dataExists = useSelector(state => Boolean(state.getOneWatchList.data));
   const userId = useSelector((state) => state.auth.data.user.userId)
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
-  const [isFavorite, setIsFavorite] = useState(data.favorite !== null ? dataExists : false)
+  const [isAdded, setIsAdded] = useState(data.watchList !== null ? dataExists : false)
 
   const handleCreate = () => {
     try {
       switch (type) {
         case 'movie':
           dispatch(
-            createFavorite({
+            createWatchList({
               movieData: {
                 tmdbId: id,
                 title,
@@ -41,7 +41,7 @@ const AddToFavorite = ({ id, title, image, type }) => {
           break
         case 'serie':
           dispatch(
-            createFavorite({
+            createWatchList({
               serieData: {
                 tmdbId: id,
                 name: title,
@@ -50,20 +50,9 @@ const AddToFavorite = ({ id, title, image, type }) => {
             })
           )
           break
-        case 'person':
-          dispatch(
-            createFavorite({
-              peopleData: {
-                tmdbId: id,
-                name: title,
-                imagePath: `https://image.tmdb.org/t/p/original${image}`,
-              },
-            })
-          )
-          break
       }
-      setIsFavorite(true)
-      AlertMessage(t('addedToFavorite'))
+      setIsAdded(true)
+      AlertMessage(t('addedToWatchList'))
     } catch (error) {
       console.log(error.response.data.errMsg)
       AlertMessage(error.response.data.errMsg)
@@ -72,9 +61,9 @@ const AddToFavorite = ({ id, title, image, type }) => {
 
   const handleDelete = () => {
     try {
-      setIsFavorite(false)
-      dispatch(deleteFavorite(data?.favorite?.favoriteId))
-      AlertMessage(t('removedFromFavorite'))
+      setIsAdded(false)
+      dispatch(deleteWatchList(data?.watchList?.watchListId))
+      AlertMessage(t('removedFromWatchList'))
     } catch (error) {
       console.log(error.response.data.errMsg)
       AlertMessage(error.response.data.errMsg)
@@ -83,13 +72,13 @@ const AddToFavorite = ({ id, title, image, type }) => {
 
   useEffect(() => {
     if (isAuthenticated === true) {
-      dispatch(getOneFavorite(userId, id))
+      dispatch(getOneWatchList(userId, id))
     }
-  }, [dispatch, userId, id, isFavorite])
+  }, [dispatch, userId, id, isAdded])
 
   useEffect(() => {
     return () => {
-      dispatch(resetFavorites())
+      dispatch(resetWatchLists())
     }
   }, [])
 
@@ -97,14 +86,14 @@ const AddToFavorite = ({ id, title, image, type }) => {
     <Fragment>
       {isAuthenticated === true ? (
         <View style={{ marginTop: 15 }}>
-          {!data.favorite && isFavorite === false ? (
+          {!data.watchList && isAdded === false ? (
             <TouchableOpacity
               style={styles.createButtonContainer}
               onPress={() => handleCreate()}
             >
-              <MaterialIcons
+              <Ionicons
                 style={styles.icon}
-                name='favorite-outline'
+                name='bookmark-outline'
                 size={moderateScale(25)}
                 color='white'
               />
@@ -114,11 +103,11 @@ const AddToFavorite = ({ id, title, image, type }) => {
               style={styles.createButtonContainer}
               onPress={() => handleDelete()}
             >
-              <AntDesign
+              <Ionicons
                 style={styles.icon}
-                name='heart'
+                name='bookmark'
                 size={moderateScale(25)}
-                color='red'
+                color='green'
               />
             </TouchableOpacity>
           )}
@@ -141,4 +130,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default AddToFavorite
+export default AddToWatchList

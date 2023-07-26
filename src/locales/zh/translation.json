@@ -1,4 +1,6 @@
 {
+  "addedToWatchList": "已添加至关注列表",
+  "removedFromWatchList": "已从监视列表中删除",
   "youMustBeAuthenticatedToPostAMessage": "您必须经过身份验证才能发布消息",
   "youHaveAlreadySelectedAnImage": "您已经选择了图像",
   "allFieldsAreMandatory": "所有字段均为必填字段",

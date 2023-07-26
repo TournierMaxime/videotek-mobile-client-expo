@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useCallback, useEffect, useState } from 'react'
 import {
   View,
   Text,
@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   peopleDetails,
   resetPeopleDetails,
-  peopleExternalIds
+  peopleExternalIds,
 } from '../../../redux/actions/tmdb/people'
 import { LinearGradient } from 'expo-linear-gradient'
 import details from '../../../styles/pages/details'
@@ -40,7 +40,7 @@ const DetailsPeople = ({ route }) => {
   const language = i18n.language
   moment.locale(language)
 
-  const currentAge = () => {
+  const currentAge = useCallback(() => {
     const currentYear = moment().format('YYYY')
     const yearBirthDay = moment(people.birthday).format('YYYY')
     const currentAge = currentYear - yearBirthDay
@@ -50,9 +50,9 @@ const DetailsPeople = ({ route }) => {
         {t('age')} {currentAge} {t('years')}
       </Text>
     )
-  }
+  })
 
-  const ageDeath = () => {
+  const ageDeath = useCallback(() => {
     const yearBirthDay = moment(people.birthday).format('YYYY')
     const yearDeathDay = moment(people.deathday).format('YYYY')
     const ageDeath = yearDeathDay - yearBirthDay
@@ -62,9 +62,9 @@ const DetailsPeople = ({ route }) => {
         {t('deadAt')} {ageDeath} {t('years')}
       </Text>
     )
-  }
+  })
 
-  const birth = () => {
+  const birth = useCallback(() => {
     const birthDay = moment(people.birthday).locale(i18n.language).format('LL')
     const placeOfBirth = people.place_of_birth
     const gender = people.gender
@@ -82,28 +82,28 @@ const DetailsPeople = ({ route }) => {
         </Text>
       )
     }
-  }
+  })
 
-  const imdb = () => {
+  const imdb = useCallback(() => {
     if (!people.imdb_id) return null
     const url = `https://www.imdb.com/name/${people.imdb_id}`
     Linking.openURL(url)
-  }
+  })
 
-  const onRefresh = async () => {
+  const fetchData = useCallback(async () => {
+    setLoading(true)
     await dispatch(peopleDetails(id, language))
-  }
+    await dispatch(peopleExternalIds(id))
+    setLoading(false)
+  }, [dispatch, id, language])
+
+  const onRefresh = useCallback(async () => {
+    await dispatch(peopleDetails(id, language))
+  })
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true)
-      await dispatch(peopleDetails(id, language))
-      await dispatch(peopleExternalIds(id))
-      setLoading(false)
-    }
-
     fetchData()
-  }, [dispatch, id, language])
+  }, [fetchData])
 
   useEffect(() => {
     return () => {
@@ -112,6 +112,8 @@ const DetailsPeople = ({ route }) => {
   }, [])
 
   const OverViewMemoized = React.memo(OverView)
+  const AddToFavoriteMemoized = React.memo(AddToFavorite)
+  const InformationsMemoized = React.memo(Informations)
 
   return (
     <View style={{ flex: 1 }}>
@@ -170,7 +172,7 @@ const DetailsPeople = ({ route }) => {
                     <TouchableOpacity onPress={() => imdb()}>
                       <SVGImdb />
                     </TouchableOpacity>
-                    <AddToFavorite
+                    <AddToFavoriteMemoized
                       id={id}
                       title={people?.name}
                       image={people?.profile_path}
@@ -184,7 +186,7 @@ const DetailsPeople = ({ route }) => {
                   t={t}
                 />
               </View>
-              <Informations t={t} externalIds={externalIds} />
+              <InformationsMemoized t={t} externalIds={externalIds} />
             </Fragment>
           )
         )}

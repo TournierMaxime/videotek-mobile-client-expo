@@ -1,4 +1,10 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, {
+  Fragment,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
 import {
   View,
   Text,
@@ -12,7 +18,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   serieDetails,
   resetSerieDetails,
-  serieCrew
+  serieCrew,
 } from '../../../redux/actions/tmdb/series'
 import { LinearGradient } from 'expo-linear-gradient'
 import Runtime from '../../../utils/RunTime'
@@ -28,6 +34,9 @@ import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../../../utils/Responsive'
 import AddToFavorite from '../../../utils/AddToFavorite'
 import CreateButton from '../../../utils/CreateButton'
+import AddToWatchList from '../../../utils/AddToWatchList'
+import { resetFavorites } from '../../../redux/actions/favorites'
+import { resetWatchLists } from '../../../redux/actions/watchlists'
 
 const DetailsSerie = ({ route }) => {
   const dispatch = useDispatch()
@@ -39,29 +48,52 @@ const DetailsSerie = ({ route }) => {
   const { i18n, t } = useTranslation()
   const language = i18n.language
 
-  const onRefresh = async () => {
+  const fetchData = useCallback(async () => {
+    setLoading(true)
     await dispatch(serieDetails(id, language))
     await dispatch(serieCrew(id, language))
-  }
+    setLoading(false)
+  }, [dispatch, id, language])
+
+  const onRefresh = useCallback(async () => {
+    await dispatch(serieDetails(id, language))
+    await dispatch(serieCrew(id, language))
+  })
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true)
-      await dispatch(serieDetails(id, language))
-      await dispatch(serieCrew(id, language))
-      setLoading(false)
-    }
-
     fetchData()
-  }, [dispatch, id, language])
+  }, [fetchData])
 
   useEffect(() => {
     return () => {
       dispatch(resetSerieDetails())
+      dispatch(resetFavorites())
+      dispatch(resetWatchLists())
     }
   }, [])
 
+  const creators = useMemo(() => {
+    return serie?.created_by?.map((credit, index) => {
+      if (!credit.name) return null
+      return (
+        <Text key={index} style={styles.directorText}>
+          {credit.name}
+        </Text>
+      )
+    })
+  })
+
+  const genres = useMemo(() => {
+    return serie?.genres?.map((genre, index) => (
+      <Text key={index} style={styles.genreText}>
+        {genre.name}
+      </Text>
+    ))
+  })
+
   const OverViewMemoized = React.memo(OverView)
+  const AddToFavoriteMemoized = React.memo(AddToFavorite)
+  const AddToWatchListMemoized = React.memo(AddToWatchList)
 
   return (
     <View style={{ flex: 1 }}>
@@ -127,32 +159,27 @@ const DetailsSerie = ({ route }) => {
 
                     <Text style={styles.directorTitle}>{t('genres')}</Text>
 
-                    <View style={styles.genresViewContainer}>
-                      {serie?.genres?.map((genre, index) => (
-                        <Text key={index} style={styles.genreText}>
-                          {genre.name}
-                        </Text>
-                      ))}
-                    </View>
+                    <View style={styles.genresViewContainer}>{genres}</View>
 
                     <Text style={styles.directorTitle}>{t('direction')}</Text>
 
                     <View style={styles.directorsViewContainer}>
-                      {serie?.created_by?.map((credit, index) => {
-                        if (!credit.name) return null
-                        return (
-                          <Text key={index} style={styles.directorText}>
-                            {credit.name}
-                          </Text>
-                        )
-                      })}
+                      {creators}
                     </View>
-                    <AddToFavorite
-                      id={id}
-                      title={serie?.name}
-                      image={serie?.poster_path}
-                      type={'serie'}
-                    />
+                    <View style={{ flexDirection: 'row' }}>
+                      <AddToFavoriteMemoized
+                        id={id}
+                        title={serie?.name}
+                        image={serie?.poster_path}
+                        type={'serie'}
+                      />
+                      <AddToWatchListMemoized
+                        id={id}
+                        title={serie?.name}
+                        image={serie?.poster_path}
+                        type={'serie'}
+                      />
+                    </View>
                   </View>
                 </View>
 

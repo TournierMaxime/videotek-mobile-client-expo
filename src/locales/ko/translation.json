@@ -1,4 +1,6 @@
 {
+  "addedToWatchList": "관심 목록에 추가됨",
+  "removedFromWatchList": "관심 목록에서 제거됨",
   "youMustBeAuthenticatedToPostAMessage": "메시지를 게시하려면 인증을 받아야 합니다.",
   "youHaveAlreadySelectedAnImage": "이미 이미지를 선택했습니다.",
   "allFieldsAreMandatory": "모든 필드는 필수입니다",

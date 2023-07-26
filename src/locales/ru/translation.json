@@ -1,4 +1,6 @@
 {
+  "addedToWatchList": "Добавлено в список наблюдения",
+  "removedFromWatchList": "Удалено из списка наблюдения",
   "youMustBeAuthenticatedToPostAMessage": "Вы должны пройти аутентификацию, чтобы опубликовать сообщение",
   "youHaveAlreadySelectedAnImage": "Вы уже выбрали изображение",
   "allFieldsAreMandatory": "Bce поля обязательны для заполнения",

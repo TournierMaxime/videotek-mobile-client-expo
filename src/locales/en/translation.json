@@ -1,4 +1,6 @@
 {
+  "addedToWatchList": "Added to watchlist",
+  "removedFromWatchList": "Removed from watchlist",
   "youMustBeAuthenticatedToPostAMessage": "You must be authenticated to post a message",
   "youHaveAlreadySelectedAnImage": "You have already selected an image",
   "allFieldsAreMandatory": "All fields are mandatory",

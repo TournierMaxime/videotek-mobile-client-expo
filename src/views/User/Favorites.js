@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { searchFavorite, deleteFavorite, resetFavorites } from '../../redux/actions/favorites'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -78,7 +78,7 @@ const Favorites = () => {
     }
   }
 
-  const renderItem = (item, index) => {
+  const renderItem = useCallback((item, index) => {
     return (
       <TouchableOpacity
         onPress={() => redirectByType(item.type, Number(item.tmdbId), item.title)}
@@ -131,7 +131,7 @@ const Favorites = () => {
         </View>
       </TouchableOpacity>
     )
-  }
+  }, [userId, handleModal, t])
 
   const handleDelete = async () => {
     if (selectedFavoriteId) {

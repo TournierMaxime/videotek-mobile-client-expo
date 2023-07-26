@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   Text,
@@ -30,8 +30,10 @@ import NoDataFound from '../../utils/NoDataFound'
 const UserCritics = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation()
-  const criticsData = useSelector((state) => state.searchCritic.data)
-  const criticsResults = useSelector((state) => state.searchCritic.data.critics)
+  const criticsData = useSelector((state) => state.searchCritic?.data)
+  const criticsResults = useSelector(
+    (state) => state.searchCritic?.data?.critics
+  )
   const userId = useSelector((state) => state.auth.data.user.userId)
   const [selectedCriticId, setSelectedCriticId] = useState(null)
   const [allResults, setAllResults] = useState([])
@@ -51,6 +53,90 @@ const UserCritics = () => {
     criticsData.totalPages
   )
 
+  const renderItem = useCallback(
+    (item, index) => {
+      return (
+        <TouchableOpacity
+          key={index}
+          onPress={() =>
+            navigation.navigate('UpdateCritic', {
+              criticId: item.criticId,
+              userId,
+            })
+          }
+        >
+          <View style={styles.renderItemContainer}>
+            <View style={{ alignItems: 'center' }}>
+              {item.User.image ? (
+                <Image
+                  style={styles.image}
+                  source={{
+                    uri: `${item.User.image}?t=${new Date().getTime()}`,
+                  }}
+                />
+              ) : (
+                <Image
+                  style={styles.image}
+                  source={require('../../assets/image/No_Image_Available.jpg')}
+                />
+              )}
+              <Rate rate={item.rate} />
+            </View>
+            <View style={styles.renderItemDetails}>
+              <Text style={styles.renderItemTitle}>
+                {item.User.userName} | {moment(item.created).format('LLL')}
+              </Text>
+              <Text style={styles.renderItemOverview}>{item.title}</Text>
+              <Text style={styles.renderItemOverview}>{item.content}</Text>
+              <View
+                style={{
+                  alignItems: 'flex-end',
+                  marginRight: moderateScale(15),
+                }}
+              >
+                {item.userId === userId ? (
+                  <Fragment>
+                    <Pressable
+                      style={styles.trashButton}
+                      onPress={() => handleModal(item.criticId)}
+                    >
+                      <Feather
+                        name='trash-2'
+                        size={moderateScale(25)}
+                        color='red'
+                      />
+                    </Pressable>
+                    <AlertModal
+                      message={t('areYouSureYouWantToDeleteThisReview')}
+                      action={handleDelete}
+                      visible={modalVisible}
+                      setVisible={setModalVisible}
+                      t={t}
+                    />
+                  </Fragment>
+                ) : null}
+              </View>
+            </View>
+          </View>
+        </TouchableOpacity>
+      )
+    },
+    [userId, handleModal, t]
+  )
+
+  const handleDelete = async () => {
+    if (selectedCriticId) {
+      await dispatch(deleteCritic(selectedCriticId)).then(() =>
+        setModalVisible(false)
+      )
+      setAllResults((prevResults) =>
+        prevResults.filter((critic) => critic.criticId !== selectedCriticId)
+      )
+      await dispatch(searchCriticByUser(userId, {page: 1}))
+      setSelectedCriticId(null)
+    }
+  }
+
   useEffect(() => {
     if (criticsResults?.length > 0) {
       if (currentPage > 1) {
@@ -62,84 +148,8 @@ const UserCritics = () => {
   }, [criticsResults])
 
   useEffect(() => {
-    dispatch(searchCriticByUser(userId, {page: currentPage}))
+    dispatch(searchCriticByUser(userId, { page: currentPage }))
   }, [dispatch, userId, currentPage])
-
-  const renderItem = (item, index) => {
-    return (
-      <TouchableOpacity
-        key={index}
-        onPress={() =>
-          navigation.navigate('UpdateCritic', {
-            criticId: item.criticId,
-            userId,
-          })
-        }
-      >
-        <View style={styles.renderItemContainer}>
-          <View style={{ alignItems: 'center' }}>
-            {item.User.image ? (
-              <Image
-                style={styles.image}
-                source={{
-                  uri: `${item.User.image}?t=${new Date().getTime()}`,
-                }}
-              />
-            ) : (
-              <Image
-                style={styles.image}
-                source={require('../../assets/image/No_Image_Available.jpg')}
-              />
-            )}
-            <Rate rate={item.rate} />
-          </View>
-          <View style={styles.renderItemDetails}>
-            <Text style={styles.renderItemTitle}>
-              {item.User.userName} | {moment(item.created).format('LLL')}
-            </Text>
-            <Text style={styles.renderItemOverview}>{item.title}</Text>
-            <Text style={styles.renderItemOverview}>{item.content}</Text>
-            <View style={{ alignItems: 'flex-end', marginRight: moderateScale(15) }}>
-              {item.userId === userId ? (
-                <Fragment>
-                  <Pressable
-                    style={styles.trashButton}
-                    onPress={() => handleModal(item.criticId)}
-                  >
-                    <Feather
-                      name='trash-2'
-                      size={moderateScale(25)}
-                      color='red'
-                    />
-                  </Pressable>
-                  <AlertModal
-                    message={t('areYouSureYouWantToDeleteThisReview')}
-                    action={handleDelete}
-                    visible={modalVisible}
-                    setVisible={setModalVisible}
-                    t={t}
-                  />
-                </Fragment>
-              ) : null}
-            </View>
-          </View>
-        </View>
-      </TouchableOpacity>
-    )
-  }
-
-  const handleDelete = async () => {
-    if (selectedCriticId) {
-      await dispatch(deleteCritic(selectedCriticId)).then(() =>
-        setModalVisible(false)
-      )
-      setAllResults((prevResults) =>
-        prevResults.filter((critic) => critic.criticId !== selectedCriticId)
-      )
-      await dispatch(searchCriticByUser(userId, 1))
-      setSelectedCriticId(null)
-    }
-  }
 
   return (
     <Fragment>

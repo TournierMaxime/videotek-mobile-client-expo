@@ -1,4 +1,10 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, {
+  Fragment,
+  useEffect,
+  useState,
+  useCallback,
+  useMemo,
+} from 'react'
 import {
   View,
   Text,
@@ -31,6 +37,9 @@ import { moderateScale } from '../../../utils/Responsive'
 import AddToFavorite from '../../../utils/AddToFavorite'
 import Tabs from '../../../components/Tabs'
 import CreateButton from '../../../utils/CreateButton'
+import AddToWatchList from '../../../utils/AddToWatchList'
+import { resetFavorites } from '../../../redux/actions/favorites'
+import { resetWatchLists } from '../../../redux/actions/watchlists'
 
 const DetailsMovie = ({ route }) => {
   const dispatch = useDispatch()
@@ -43,34 +52,59 @@ const DetailsMovie = ({ route }) => {
   const { i18n, t } = useTranslation()
   const language = i18n.language
 
-  const onRefresh = async () => {
+  const fetchData = useCallback(async () => {
+    setLoading(true)
     await dispatch(movieDetails(id, language))
     await dispatch(movieCrew(id, language))
     await dispatch(releaseDates(id))
     await dispatch(movieWatchProviders(id))
-  }
+    setLoading(false)
+  }, [dispatch, id, language])
+
+  const onRefresh = useCallback(async () => {
+    await dispatch(movieDetails(id, language))
+    await dispatch(movieCrew(id, language))
+    await dispatch(releaseDates(id))
+    await dispatch(movieWatchProviders(id))
+  })
 
   useEffect(() => {
-    const fetchData = () => {
-      setLoading(true)
-      dispatch(movieDetails(id, language))
-      dispatch(movieCrew(id, language))
-      dispatch(releaseDates(id))
-      dispatch(movieWatchProviders(id))
-      setLoading(false)
-    }
-
     fetchData()
-  }, [dispatch, id, language])
+  }, [fetchData])
 
   useEffect(() => {
     return () => {
       dispatch(resetMovieDetails())
       dispatch(resetMovieWatchProviders())
+      dispatch(resetFavorites())
+      dispatch(resetWatchLists())
     }
   }, [])
 
+  const directors = useMemo(() => {
+    return credits?.crew?.map((credit, index) => {
+      if (!credit.job === 'Director') return null
+      if (credit.job === 'Director') {
+        return (
+          <Text key={index} style={styles.directorText}>
+            {credit.name}
+          </Text>
+        )
+      }
+    })
+  })
+
+  const genres = useMemo(() => {
+    return movie?.genres?.map((genre, index) => (
+      <Text key={index} style={styles.genreText}>
+        {genre.name}
+      </Text>
+    ))
+  })
+
   const OverViewMemoized = React.memo(OverView)
+  const AddToFavoriteMemoized = React.memo(AddToFavorite)
+  const AddToWatchListMemoized = React.memo(AddToWatchList)
 
   return (
     <View style={{ flex: 1 }}>
@@ -132,34 +166,27 @@ const DetailsMovie = ({ route }) => {
 
                     <Text style={styles.directorTitle}>{t('genres')}</Text>
 
-                    <View style={styles.genresViewContainer}>
-                      {movie?.genres?.map((genre, index) => (
-                        <Text key={index} style={styles.genreText}>
-                          {genre.name}
-                        </Text>
-                      ))}
-                    </View>
+                    <View style={styles.genresViewContainer}>{genres}</View>
 
                     <Text style={styles.directorTitle}>{t('direction')}</Text>
 
                     <View style={styles.directorsViewContainer}>
-                      {credits?.crew?.map((credit, index) => {
-                        if (!credit.job === 'Director') return null
-                        if (credit.job === 'Director') {
-                          return (
-                            <Text key={index} style={styles.directorText}>
-                              {credit.name}
-                            </Text>
-                          )
-                        }
-                      })}
+                      {directors}
                     </View>
-                    <AddToFavorite
-                      id={id}
-                      title={movie?.title}
-                      image={movie?.poster_path}
-                      type={'movie'}
-                    />
+                    <View style={{flexDirection: 'row'}}>
+                      <AddToFavoriteMemoized
+                        id={id}
+                        title={movie?.title}
+                        image={movie?.poster_path}
+                        type={'movie'}
+                      />
+                      <AddToWatchListMemoized
+                        id={id}
+                        title={movie?.title}
+                        image={movie?.poster_path}
+                        type={'movie'}
+                      />
+                    </View>
                   </View>
                 </View>
 

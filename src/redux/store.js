@@ -72,8 +72,18 @@ import {
   getOneLikeCriticReducer,
   deleteLikeReducer
 } from './reducers/likes'
+import {
+  searchWatchListReducer,
+  createWatchListReducer,
+  getOneWatchListReducer,
+  deleteWatchListReducer,
+} from './reducers/watchlists'
 
 const rootReducer = {
+  searchWatchList: searchWatchListReducer,
+  createWatchList: createWatchListReducer,
+  getOneWatchList: getOneWatchListReducer,
+  deleteWatchList: deleteWatchListReducer,
   searchLike: searchLikeReducer,
   createLike: createLikeReducer,
   getOneLikePost: getOneLikePostReducer,

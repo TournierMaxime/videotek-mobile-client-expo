@@ -1,4 +1,6 @@
 {
+  "addedToWatchList": "ウォッチリストに追加されました",
+  "removedFromWatchList": "ウォッチリストから削除されました",
   "youMustBeAuthenticatedToPostAMessage": "メッセージを投稿するには認証が必要です",
   "youHaveAlreadySelectedAnImage": "すでに画像が選択されています",
   "allFieldsAreMandatory": "すべてのフィールドは必須です",
