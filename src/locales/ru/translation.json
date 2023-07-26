@@ -1,4 +1,13 @@
 {
+  "seen": "Видимый",
+  "notSeen": "He видел",
+  "completed": "Завершенный",
+  "inProgress": "B ходе выполнения",
+  "abandoned": "Заброшенный",
+  "areYouSureYouWantToDeleteThisWatchList": "Вы уверены, что хотите удалить этот список наблюдения ?",
+  "watchLists": "Списки наблюдения",
+  "noWatchlist": "Нет списка наблюдения",
+  "loadMoreWatchLists": "Загрузить больше списков наблюдения",
   "addedToWatchList": "Добавлено в список наблюдения",
   "removedFromWatchList": "Удалено из списка наблюдения",
   "youMustBeAuthenticatedToPostAMessage": "Вы должны пройти аутентификацию, чтобы опубликовать сообщение",

@@ -1,4 +1,13 @@
 {
+  "seen": "Visto",
+  "notSeen": "Não visto",
+  "completed": "Concluído",
+  "inProgress": "Em andamento",
+  "abandoned": "Abandonado",
+  "areYouSureYouWantToDeleteThisWatchList": "Tem certeza de que deseja excluir esta lista de observação ?",
+  "watchLists": "listas de observação",
+  "noWatchlist": "Nenhuma lista de observação",
+  "loadMoreWatchLists": "Carregar mais listas de observação",
   "addedToWatchList": "Adicionado à lista de observação",
   "removedFromWatchList": "Removido da lista de observação",
   "youMustBeAuthenticatedToPostAMessage": "Você deve estar autenticado para postar uma mensagem",

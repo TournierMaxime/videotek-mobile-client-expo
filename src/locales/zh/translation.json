@@ -1,4 +1,13 @@
 {
+  "seen": "见过",
+  "notSeen": "没有见过",
+  "completed": "完全的",
+  "inProgress": "进行中",
+  "abandoned": "弃",
+  "areYouSureYouWantToDeleteThisWatchList": "您确定要删除此监视列表吗 ?",
+  "watchLists": "关注列表",
+  "noWatchlist": "没有关注列表",
+  "loadMoreWatchLists": "加载更多关注列表",
   "addedToWatchList": "已添加至关注列表",
   "removedFromWatchList": "已从监视列表中删除",
   "youMustBeAuthenticatedToPostAMessage": "您必须经过身份验证才能发布消息",

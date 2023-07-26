@@ -1,4 +1,13 @@
 {
+  "seen": "見た",
+  "notSeen": "見ていません",
+  "completed": "完了しました",
+  "inProgress": "進行中",
+  "abandoned": "放棄された",
+  "areYouSureYouWantToDeleteThisWatchList": "このウォッチリストを削除してもよろしいですか ?",
+  "watchLists": "ウォッチリスト",
+  "noWatchlist": "ウォッチリストはありません",
+  "loadMoreWatchLists": "さらにウォッチリストをロードする",
   "addedToWatchList": "ウォッチリストに追加されました",
   "removedFromWatchList": "ウォッチリストから削除されました",
   "youMustBeAuthenticatedToPostAMessage": "メッセージを投稿するには認証が必要です",

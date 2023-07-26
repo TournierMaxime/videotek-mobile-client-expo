@@ -24,6 +24,14 @@ const DetailsUser = ({ route }) => {
   })
 
   const pickImage = async () => {
+    let permissionResult =
+      await ImagePicker.requestMediaLibraryPermissionsAsync()
+
+    if (permissionResult.granted === false) {
+      alert(t('permissionToAccessCameraRollIsRequired'))
+      return
+    }
+
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
@@ -40,41 +48,40 @@ const DetailsUser = ({ route }) => {
     }
   }
 
-const handleUpdate = async () => {
-  if (!isModified) {
-    return
-  }
+  const handleUpdate = async () => {
+    if (!isModified) {
+      return
+    }
 
-  const formData = new FormData()
-  formData.append('userName', data.userName)
-  formData.append('email', data.email)
+    const formData = new FormData()
+    formData.append('userName', data.userName)
+    formData.append('email', data.email)
 
-  const imageUriParts = data.image.split('.')
-  const fileType = imageUriParts[imageUriParts.length - 1]
+    const imageUriParts = data.image.split('.')
+    const fileType = imageUriParts[imageUriParts.length - 1]
 
-  let file = {
-    uri: data.image,
-    name: `image.${fileType}`,
-    type: `image/${fileType}`,
-  }
+    let file = {
+      uri: data.image,
+      name: `image.${fileType}`,
+      type: `image/${fileType}`,
+    }
 
-  formData.append('image', file)
+    formData.append('image', file)
 
-  try {
-    await dispatch(updateUser(formData, userId))
-    AlertMessage(t('profileUpdated'))
-    dispatch(getUser(userId))
-  } catch (error) {
-    console.log(error.response.data.errMsg)
+    try {
+      await dispatch(updateUser(formData, userId))
+      AlertMessage(t('profileUpdated'))
+      dispatch(getUser(userId))
+    } catch (error) {
+      console.log(error.response.data.errMsg)
 
-    if (error.response.data.errMsg) {
-      AlertMessage(error.response.data.errMsg)
-    } else {
-      AlertMessage(t('anErrorHasOccurred'))
+      if (error.response.data.errMsg) {
+        AlertMessage(error.response.data.errMsg)
+      } else {
+        AlertMessage(t('anErrorHasOccurred'))
+      }
     }
   }
-}
-
 
   useEffect(() => {
     dispatch(getUser(userId))

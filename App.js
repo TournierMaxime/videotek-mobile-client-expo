@@ -38,6 +38,7 @@ import CrewMovie from './src/views/Tmdb/Movies/CrewMovie'
 import DotDetails from './src/utils/DotDetails'
 import Settings from './src/views/User/Settings'
 import Favorites from './src/views/User/Favorites'
+import WatchLists from './src/views/User/WatchLists'
 import { useTranslation } from 'react-i18next'
 import i18n from './i18n.js'
 import { I18nextProvider } from 'react-i18next'
@@ -166,7 +167,7 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
       >
         {(props) => <Settings {...props} i18n={i18n} t={t} />}
       </MainStack.Screen>
-            <MainStack.Screen
+      <MainStack.Screen
         name='Favorites'
         options={({ route }) => ({
           title: route.params.userId,
@@ -176,6 +177,17 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         })}
       >
         {(props) => <Favorites {...props} i18n={i18n} t={t} />}
+      </MainStack.Screen>
+      <MainStack.Screen
+        name='WatchLists'
+        options={({ route }) => ({
+          title: route.params.userId,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
+        })}
+      >
+        {(props) => <WatchLists {...props} i18n={i18n} t={t} />}
       </MainStack.Screen>
     </MainStack.Navigator>
   )
@@ -401,12 +413,16 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
             marginTop: 10,
           },
           tabBarStyle: {
-            ...(Platform.OS === 'android' ? { marginLeft: 0 } : { marginLeft: moderateScale(15) }),
+            ...(Platform.OS === 'android'
+              ? { marginLeft: 0 }
+              : { marginLeft: moderateScale(15) }),
             marginRight: 'auto',
-            ...(Dimensions.get('window').width > 600 ? { height: moderateScale(50) } : null),
+            ...(Dimensions.get('window').width > 600
+              ? { height: moderateScale(50) }
+              : null),
             justifyContent: 'center',
             display: 'flex',
-            flexDirection: 'row'
+            flexDirection: 'row',
           },
         }}
       >

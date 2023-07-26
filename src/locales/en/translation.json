@@ -1,4 +1,13 @@
 {
+  "seen": "Seen",
+  "notSeen": "Not seen",
+  "completed": "Completed",
+  "inProgress": "In progress",
+  "abandoned": "Abandoned",
+  "areYouSureYouWantToDeleteThisWatchList": "Are you sure you want to delete this watchlist ?",
+  "watchLists": "Watchlists",
+  "noWatchlist": "No watchlist",
+  "loadMoreWatchLists": "Load more watchlists",
   "addedToWatchList": "Added to watchlist",
   "removedFromWatchList": "Removed from watchlist",
   "youMustBeAuthenticatedToPostAMessage": "You must be authenticated to post a message",

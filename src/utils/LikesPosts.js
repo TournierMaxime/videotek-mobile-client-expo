@@ -66,7 +66,7 @@ const LikesPosts = ({ postId, likes }) => {
   }, [])
 
   return (
-    <View style={{ marginVertical: moderateScale(5) }}>
+    <View style={{ margin: moderateScale(5) }}>
       {!isLiked ? (
         <TouchableOpacity
           style={styles.createButtonContainer}

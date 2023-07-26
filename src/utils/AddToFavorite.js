@@ -20,7 +20,7 @@ const AddToFavorite = ({ id, title, image, type }) => {
   const dispatch = useDispatch()
   const { t } = useTranslation()
   const data = useSelector((state) => state.getOneFavorite.data)
-  const dataExists = useSelector(state => Boolean(state.getOneFavorite.data));
+  const dataExists = useSelector(state => Boolean(state.getOneFavorite.data?.favorite));
   const userId = useSelector((state) => state.auth.data.user.userId)
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
   const [isFavorite, setIsFavorite] = useState(data.favorite !== null ? dataExists : false)

@@ -1,4 +1,13 @@
 {
+  "seen": "Gezien",
+  "notSeen": "Niet gezien",
+  "completed": "Voltooid",
+  "inProgress": "Bezig",
+  "abandoned": "Verlaten",
+  "areYouSureYouWantToDeleteThisWatchList": "Weet u zeker dat u deze volglijst wilt verwijderen ?",
+  "watchLists": "Volglijsten",
+  "noWatchlist": "Geen volglijst",
+  "loadMoreWatchLists": "Laad meer volglijsten",
   "addedToWatchList": "Toegevoegd aan volglijst",
   "removedFromWatchList": "Verwijderd van volglijst",
   "youMustBeAuthenticatedToPostAMessage": "Je moet geauthenticeerd zijn om een bericht te plaatsen",

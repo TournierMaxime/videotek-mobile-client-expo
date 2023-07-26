@@ -13,7 +13,6 @@ import form from '../../styles/components/form'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 import { createPost, searchPost } from '../../redux/actions/posts'
-import * as ImagePicker from 'expo-image-picker'
 import { AntDesign, Entypo } from '@expo/vector-icons'
 import { moderateScale } from '../../utils/Responsive'
 import button from '../../styles/components/button'
@@ -117,33 +116,6 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal, movie, serie }) => {
     dispatch(searchGifs({ page: 1, nameCategory: categoryName }))
   }
 
-  const pickImage = async () => {
-    if (data.image) {
-      AlertMessage(t('youHaveAlreadySelectedAnImage'))
-      return
-    }
-    let permissionResult =
-      await ImagePicker.requestMediaLibraryPermissionsAsync()
-
-    if (permissionResult.granted === false) {
-      alert(t('permissionToAccessCameraRollIsRequired'))
-      return
-    }
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      aspect: [4, 3],
-      quality: 0.2,
-      allowsMultipleSelection: false,
-    })
-
-    if (!result.canceled) {
-      setData({
-        ...data,
-        image: result.assets[0].uri,
-      })
-    }
-  }
-
   const removeImage = () => {
     setData({ ...data, image: '' })
   }
@@ -182,8 +154,6 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal, movie, serie }) => {
 
   useEffect(() => {
     if (!gifModalVisible) {
-      dispatch(resetCategory())
-      dispatch(resetGif())
       setAllResults([])
       setSelectedCategory(null)
     }
@@ -200,7 +170,7 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal, movie, serie }) => {
     <ScrollView>
       <View style={styles.cardContainer}>
         <View>
-          <Text style={styles.formLabel}>{t('content')}</Text>
+          <Text style={styles.formLabel}>{t('content')} {charCount}/300</Text>
           <TextInput
             editable={true}
             style={styles.formInputContent}
@@ -216,7 +186,6 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal, movie, serie }) => {
               }
             }}
           />
-          <Text>{charCount}/300</Text>
         </View>
         <View>
           <View
@@ -245,23 +214,6 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal, movie, serie }) => {
                 <Text style={styles.btnTxt}>GIF</Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => pickImage()}
-              style={styles.blueBtn}
-            >
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Entypo
-                  style={{
-                    alignItems: 'center',
-                    marginRight: moderateScale(5),
-                  }}
-                  name='image'
-                  size={moderateScale(25)}
-                  color='white'
-                />
-                <Text style={styles.btnTxt}>{t('picture')}</Text>
-              </View>
-            </TouchableOpacity>
           </View>
           {data.image && (
             <Fragment>
@@ -279,7 +231,7 @@ const NewPost = ({ tmdbId, tmdbTitle, handleModal, movie, serie }) => {
             </Fragment>
           )}
         </View>
-        <View style={{ marginTop: moderateScale(100) }}>
+        <View style={{ marginTop: moderateScale(10) }}>
           <TouchableOpacity
             onPress={() => handleCreate()}
             style={styles.blueBtn}

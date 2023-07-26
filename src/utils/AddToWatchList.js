@@ -1,9 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import {
-  TouchableOpacity,
-  StyleSheet,
-  View
-} from 'react-native'
+import { TouchableOpacity, StyleSheet, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -20,16 +16,16 @@ const AddToWatchList = ({ id, title, image, type }) => {
   const dispatch = useDispatch()
   const { t } = useTranslation()
   const data = useSelector((state) => state.getOneWatchList.data)
-  const dataExists = useSelector(state => Boolean(state.getOneWatchList.data));
+  //const dataExists = useSelector(state => Boolean(state.getOneWatchList?.data?.watchList));
   const userId = useSelector((state) => state.auth.data.user.userId)
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
-  const [isAdded, setIsAdded] = useState(data.watchList !== null ? dataExists : false)
+  const [isAdded, setIsAdded] = useState(false)
 
-  const handleCreate = () => {
+  const handleCreate = async () => {
     try {
       switch (type) {
         case 'movie':
-          dispatch(
+          await dispatch(
             createWatchList({
               movieData: {
                 tmdbId: id,
@@ -40,7 +36,7 @@ const AddToWatchList = ({ id, title, image, type }) => {
           )
           break
         case 'serie':
-          dispatch(
+          await dispatch(
             createWatchList({
               serieData: {
                 tmdbId: id,
@@ -59,10 +55,13 @@ const AddToWatchList = ({ id, title, image, type }) => {
     }
   }
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     try {
-      setIsAdded(false)
-      dispatch(deleteWatchList(data?.watchList?.watchListId))
+      await dispatch(
+        deleteWatchList(data?.watchList?.watchListId)
+      ).then(() => {
+          setIsAdded(false)
+        })
       AlertMessage(t('removedFromWatchList'))
     } catch (error) {
       console.log(error.response.data.errMsg)

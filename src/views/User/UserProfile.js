@@ -125,6 +125,27 @@ const UserProfile = ({ route }) => {
                 </TouchableOpacity>
 
                 <TouchableOpacity
+                  onPress={() => navigation.navigate('WatchLists', { userId })}
+                >
+                  <View style={styles.profileSectionContainer}>
+                    <View style={styles.textIconContainer}>
+                      <Ionicons
+                        style={styles.icon}
+                        name='bookmark-outline'
+                        size={moderateScale(25)}
+                        color='black'
+                      />
+                      <Text style={styles.textSize}>{t('watchLists')}</Text>
+                    </View>
+                    <Entypo
+                      name='chevron-small-right'
+                      size={moderateScale(25)}
+                      color='black'
+                    />
+                  </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity
                   onPress={() => navigation.navigate('Favorites', { userId })}
                 >
                   <View style={styles.profileSectionContainer}>
@@ -212,8 +233,7 @@ const UserProfile = ({ route }) => {
                   setVisible={setDeleteModalVisible}
                   success={deleteSuccess}
                   t={t}
-                >
-                </AlertModal>
+                ></AlertModal>
               </ScrollView>
             </View>
           )}

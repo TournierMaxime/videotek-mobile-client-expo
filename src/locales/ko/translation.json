@@ -1,4 +1,13 @@
-{
+{  
+  "seen": "본",
+  "notSeen": "보이지 않는",
+  "completed": "완전한",
+  "inProgress": "진행 중",
+  "abandoned": "버려진",
+  "areYouSureYouWantToDeleteThisWatchList": "이 관심 목록을 삭제하시겠습니까 ?",
+  "watchLists": "관심 목록",
+  "noWatchlist": "관심 목록 없음",
+  "loadMoreWatchLists": "더 많은 관심 목록 로드",
   "addedToWatchList": "관심 목록에 추가됨",
   "removedFromWatchList": "관심 목록에서 제거됨",
   "youMustBeAuthenticatedToPostAMessage": "메시지를 게시하려면 인증을 받아야 합니다.",
