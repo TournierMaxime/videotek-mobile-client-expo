@@ -1,7 +1,6 @@
-import React, { Fragment } from 'react'
-import { Entypo } from '@expo/vector-icons'
+import React from 'react'
 import { moderateScale } from './Responsive'
-import { View } from 'react-native'
+import { TouchableOpacity, Text, View } from 'react-native'
 
 export function truncateTitle(title, maxLength) {
   let length = 0
@@ -20,7 +19,7 @@ export function truncateTitle(title, maxLength) {
   return truncatedTitle
 }
 
-export function truncateOverview(title, maxLength) {
+export function truncateOverview(title, handleModal, t, textOverview, maxLength) {
   if (typeof title !== 'string') {
     return ''
   }
@@ -33,18 +32,26 @@ export function truncateOverview(title, maxLength) {
     length += code < 0x10000 ? 1 : 2
     if (length > maxLength) {
       truncatedOverview = (
-        <Fragment>
-          {truncatedOverview}
-          {'... '}
-          <View style={{ position: 'relative' }}>
-            <Entypo
-              style={{position: 'absolute', bottom: moderateScale(-5)}}
-              name={'chevron-small-down'}
-              size={moderateScale(25)}
-              color='white'
-            />
-          </View>
-        </Fragment>
+        <View style={{ flexDirection: 'column' }}>
+          <Text style={textOverview}>
+            {truncatedOverview} {'... '}
+          </Text>
+          <TouchableOpacity
+            style={{
+              textAlign: 'center',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#dee2e6',
+              width: moderateScale(80),
+              height: moderateScale(25),
+              borderRadius: moderateScale(3),
+              margin: moderateScale(5),
+            }}
+            onPress={() => handleModal()}
+          >
+            <Text style={{ color: '#495057', fontSize: moderateScale(14) }}>{t('more')}</Text>
+          </TouchableOpacity>
+        </View>
       )
       break
     }

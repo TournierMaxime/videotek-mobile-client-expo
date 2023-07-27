@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import { truncateOverview } from './Truncate'
 import details from '../styles/pages/details'
 import ModalComponent from './ModalComponent'
@@ -15,6 +15,8 @@ const OverView = ({ content, isBiography, t }) => {
     setModalVisible(!modalVisible)
   }
 
+  const textOverview = styles.textOverview
+
   if (!content) return null
   return (
     <Fragment>
@@ -22,16 +24,15 @@ const OverView = ({ content, isBiography, t }) => {
         <Text style={styles.headerTitle}>
           {isBiography === true ? t('biography') : t('plot')}
         </Text>
-        <TouchableOpacity onPress={() => handleModal()}>
-          <Text style={styles.textOverview}>
-            {truncateOverview(
-              content,
-              language === 'zh-cn' || language === 'ko' || language === 'ja'
-                ? 150
-                : 300
-            )}
-          </Text>
-        </TouchableOpacity>
+          {truncateOverview(
+            content,
+            handleModal,
+            t,
+            textOverview,
+            language === 'zh-cn' || language === 'ko' || language === 'ja'
+              ? 150
+              : 300
+          )}
       </View>
       <ModalComponent
         title={t('plot')}

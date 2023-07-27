@@ -150,7 +150,7 @@ const WatchLists = () => {
               )}
               <View style={{ flexDirection: 'column' }}>
                 <Text style={[styles.renderItemTitle, { marginTop: moderateScale(10) }]}>{item.title}</Text>
-                {watchingState(item?.Watcheds[0]?.state)}
+                {watchingState(item?.Watched?.state)}
               </View>
             </View>
             <View style={styles.renderItemDetails}>
