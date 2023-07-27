@@ -1,5 +1,12 @@
 import React, { useEffect, useCallback, useState, Fragment } from 'react'
-import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import {
+  View,
+  Image,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native'
 import { moderateScale } from '../../utils/Responsive'
 import { useDispatch, useSelector } from 'react-redux'
 import { serieDetails } from '../../redux/actions/tmdb/series'
@@ -11,9 +18,7 @@ import { seasonDetails } from '../../redux/actions/tmdb/series'
 import { Entypo } from 'react-native-vector-icons'
 
 const Accordion = ({ children }) => {
-  const body = <View style={styles.accordBody}>{children}</View>
-
-  return <View style={styles.accordContainer}>{body}</View>
+  return <View style={{backgroundColor: 'white'}}>{children}</View>
 }
 
 const Header = ({ serie, title, t }) => {
@@ -79,45 +84,71 @@ const Seasons = ({ serie, seasons }) => {
   const [expanded, setExpanded] = useState({})
 
   const toggleItem = (index) => {
-    setExpanded(prevExpanded => ({
+    setExpanded((prevExpanded) => ({
       ...prevExpanded,
-      [index]: !prevExpanded[index]
+      [index]: !prevExpanded[index],
     }))
   }
 
   const allSeasons = (data) => {
-    return data.map((item, index) => {
+    return data?.map((item, index) => {
+      const seasonData = seasons[item.season_number]
       return (
-        <View key={index}>
+        <View
+          style={{ flexDirection: 'column', alignItems: 'stretch', marginVertical: moderateScale(10), }}
+          key={index}
+        >
           <View
             style={{
               backgroundColor: 'white',
               flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              padding: moderateScale(10),
-              marginVertical: moderateScale(10),
+              padding: moderateScale(10)
             }}
           >
-            <TouchableOpacity onPress={() => toggleItem(index)}>
-              <Text style={{ fontSize: moderateScale(20) }}>
-                {item.name}{' '}
-                <Entypo
-                  name={expanded[index] ? 'chevron-small-up' : 'chevron-small-down'}
-                  size={moderateScale(25)}
-                  color='black'
-                />
-              </Text>
-              <Text style={{ fontSize: moderateScale(20) }}>
-                {seasons.episodes.length}
-              </Text>
+            <TouchableOpacity
+              onPress={() => toggleItem(index)}
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                flex: 1,
+              }}
+            >
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'flex-start',
+                }}
+              >
+                <Text style={{ fontSize: moderateScale(20) }}>
+                  {item.name}{' '}
+                  <Entypo
+                    name={
+                      expanded[index]
+                        ? 'chevron-small-up'
+                        : 'chevron-small-down'
+                    }
+                    size={moderateScale(25)}
+                    color='black'
+                  />
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'flex-end',
+                }}
+              >
+                <Text style={{ fontSize: moderateScale(20) }}>
+                  {seasonData?.episodes?.length}
+                </Text>
+              </View>
             </TouchableOpacity>
           </View>
-          <View>
+          <View style={{backgroundColor: 'white'}}>
             {expanded[index] ? (
               <Accordion>
-                {seasons.episodes.map((item, index) => {
-                  return <Text key={index}>{item.name}</Text>
+                {seasonData?.episodes?.map((item, index) => {
+                  return <Text style={{fontSize: moderateScale(18), margin: moderateScale(5)}} key={index}>{item.name}</Text>
                 })}
               </Accordion>
             ) : null}
@@ -129,7 +160,6 @@ const Seasons = ({ serie, seasons }) => {
 
   return <Fragment>{allSeasons(serie.seasons)}</Fragment>
 }
-
 
 const WatchedSerie = ({ route }) => {
   const { id, title } = route.params
@@ -158,9 +188,11 @@ const WatchedSerie = ({ route }) => {
 
   return (
     <View style={{ flex: 1, backgroundColor: '#efefef' }}>
-      <Header serie={serie} title={title} t={t} />
-      <InProgress serie={serie} t={t} userId={userId} watchlist={watchlist} />
-      <Seasons serie={serie} seasons={seasons} />
+      <ScrollView>
+        <Header serie={serie} title={title} t={t} />
+        <InProgress serie={serie} t={t} userId={userId} watchlist={watchlist} />
+        <Seasons serie={serie} seasons={seasons} />
+      </ScrollView>
     </View>
   )
 }
@@ -170,6 +202,8 @@ const styles = StyleSheet.create({
     width: '100%',
     height: moderateScale(200),
     resizeMode: 'cover',
+    backgroundColor: 'black',
+    opacity: 0.7,
   },
 })
 

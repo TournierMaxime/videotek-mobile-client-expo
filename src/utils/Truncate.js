@@ -19,7 +19,13 @@ export function truncateTitle(title, maxLength) {
   return truncatedTitle
 }
 
-export function truncateOverview(title, handleModal, t, textOverview, maxLength) {
+export function truncateOverview(
+  title,
+  handleModal,
+  t,
+  textOverview,
+  maxLength
+) {
   if (typeof title !== 'string') {
     return ''
   }
@@ -49,7 +55,9 @@ export function truncateOverview(title, handleModal, t, textOverview, maxLength)
             }}
             onPress={() => handleModal()}
           >
-            <Text style={{ color: '#495057', fontSize: moderateScale(14) }}>{t('more')}</Text>
+            <Text style={{ color: '#495057', fontSize: moderateScale(14) }}>
+              {t('more')}
+            </Text>
           </TouchableOpacity>
         </View>
       )
@@ -58,5 +66,9 @@ export function truncateOverview(title, handleModal, t, textOverview, maxLength)
     truncatedOverview += char
   }
 
-  return truncatedOverview
+  return (
+    <View style={{ flexDirection: 'column' }}>
+      <Text style={textOverview}>{truncatedOverview}</Text>
+    </View>
+  )
 }

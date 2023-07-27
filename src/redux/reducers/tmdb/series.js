@@ -29,7 +29,10 @@ const seasonDetailsReducer = (state = initialState, action) => {
     case 'SEASON_DETAILS_SUCCESS':
       return {
         ...state,
-        data: action.payload,
+        data: {
+          ...state.data,
+          [action.payload.season_number]: action.payload,
+        },
         loading: false,
       }
     case 'SEASON_DETAILS_FAILURE':
