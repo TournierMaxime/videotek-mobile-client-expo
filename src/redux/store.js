@@ -1,5 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import thunkMiddleware from 'redux-thunk'
+import { persistStore, persistReducer } from 'redux-persist';
+import AsyncStorage from '@react-native-async-storage/async-storage'
+//import storage from 'redux-persist/lib/storage';
+//import FSStorage from 'redux-persist-filesystem-storage'
+import { combineReducers } from 'redux'
 //import logger from 'redux-logger';
 import searchReducer from './reducers/tmdb/search'
 import {
@@ -78,8 +83,31 @@ import {
   getOneWatchListReducer,
   deleteWatchListReducer,
 } from './reducers/watchlists'
+import {
+  createSeasonReducer,
+  getOneSeasonReducer,
+  deleteSeasonReducer,
+} from './reducers/seasons'
+import {
+  createEpisodeReducer,
+  deleteEpisodeReducer,
+} from './reducers/episodes'
+import {
+  watchedReducer
+} from './reducers/watched'
 
-const rootReducer = {
+const persistConfig = {
+  key: 'root',
+  storage: AsyncStorage,
+};
+
+const rootReducer = combineReducers({
+  watched: watchedReducer,
+  createSeason: createSeasonReducer,
+  getOneSeason: getOneSeasonReducer,
+  deleteSeason: deleteSeasonReducer,
+  createEpisode: createEpisodeReducer,
+  deleteEpisode: deleteEpisodeReducer,
   searchWatchList: searchWatchListReducer,
   createWatchList: createWatchListReducer,
   getOneWatchList: getOneWatchListReducer,
@@ -134,12 +162,17 @@ const rootReducer = {
   getOnePost: getOnePostReducer,
   updatePost: updatePostReducer,
   deletePost: deletePostReducer
-}
+})
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ immutableCheck: false }).concat(thunkMiddleware),
+    getDefaultMiddleware({ serializableCheck: false, immutableCheck: false }).concat(thunkMiddleware),
 })
+
+let persistor = persistStore(store)
+
 //immutableCheck: false désactiver pendant le dev
-export default store
+export { store, persistor}

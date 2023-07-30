@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  Pressable,
 } from 'react-native'
 import { moderateScale } from '../../utils/Responsive'
 import { useDispatch, useSelector } from 'react-redux'
@@ -15,10 +16,13 @@ import moment from 'moment'
 import Rate from '../../utils/Rate'
 import { getOneWatchList } from '../../redux/actions/watchlists'
 import { seasonDetails } from '../../redux/actions/tmdb/series'
-import { Entypo } from 'react-native-vector-icons'
+import { Entypo, AntDesign } from 'react-native-vector-icons'
+import { createSeason, deleteSeason, getOneSeason } from '../../redux/actions/seasons'
+import { createEpisode, deleteEpisode } from '../../redux/actions/episodes'
+import { markEpisodeWatched, markSeasonWatched, unmarkEpisodeWatched, unmarkSeasonWatched } from '../../redux/actions/watched'
 
 const Accordion = ({ children }) => {
-  return <View style={{backgroundColor: 'white'}}>{children}</View>
+  return <View style={{ backgroundColor: 'white' }}>{children}</View>
 }
 
 const Header = ({ serie, title, t }) => {
@@ -80,8 +84,93 @@ const InProgress = ({ t, watchlist }) => {
   )
 }
 
-const Seasons = ({ serie, seasons }) => {
+const Episodes = (props) => {
+  const { episode, seasonId, serieId, dispatch, userId } = props;
+  const watchedEpisodes = useSelector((state) => state.watched.watchedEpisodes);
+  const episodeIds = useSelector((state) => state.watched.episodeIds);
+  const episodeId = serieId && episodeIds ? episodeIds[serieId]?.[seasonId]?.[episode.episode_number] : undefined;
+
+  const toggleWatchedEpisode = async () => {
+
+    if (watchedEpisodes[serieId]?.[episode.episode_number]) {
+      const response = await dispatch(deleteEpisode(episodeId));
+      if (response.success) {
+        dispatch(unmarkEpisodeWatched(serieId, seasonId, episode.episode_number));
+      } else {
+        // handle error
+      }
+    } else {
+      const response = await dispatch(createEpisode({ serieId, seasonId, userId, episodeNumber: episode.episode_number, state: 'seen' }));
+      if (response.success) {
+        dispatch(markEpisodeWatched(serieId, seasonId, episode.episode_number));
+      } else {
+        // handle error
+      }
+    }
+  };
+
+
+  return (
+    <View
+      style={{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginVertical: moderateScale(10),
+        backgroundColor: 'white',
+        padding: moderateScale(10),
+      }}
+      key={episode.id}
+    >
+      <Text style={{ fontSize: moderateScale(20) }}>{episode.name}</Text>
+      <Pressable
+        onPress={toggleWatchedEpisode}
+      >
+        {watchedEpisodes[serieId]?.[episode.episode_number] ? (
+          <AntDesign
+            name='checkcircle'
+            size={moderateScale(25)}
+            color='green'
+          />
+        ) : (
+          <AntDesign
+            name='checkcircleo'
+            size={moderateScale(25)}
+            color='black'
+          />
+        )}
+      </Pressable>
+    </View>
+  );
+}
+
+const Seasons = (props) => {
+  const { serie, seasons, dispatch, userId, watchList } = props
   const [expanded, setExpanded] = useState({})
+  const watchedSeasons = useSelector((state) => state.watched.watchedSeasons)
+  const seasonIds = useSelector((state) => state.watched.seasonIds)
+  const serieId = watchList?.watchList?.serieId
+
+  const toggleWatchedSeason = async (seasonNumber) => {
+    const seasonId = serieId && seasonIds ? seasonIds[serieId]?.[seasonNumber] : undefined
+    const seasonData = seasons[seasonNumber];
+    const totalWatchedEpisodes = seasonData?.episodes?.length;
+
+    if (watchedSeasons[watchList?.watchList?.serieId]?.[seasonNumber]?.watched === true) {
+      const response = await dispatch(deleteSeason(seasonId, serieId, seasonNumber));
+      if (response.success) {
+        await dispatch(unmarkSeasonWatched(watchList.watchList.serieId, seasonNumber));
+      } else {
+        // handle error
+      }
+    } else {
+      const response = await dispatch(createSeason({ serieId: watchList.watchList.serieId, userId, seasonNumber, state: 'seen', totalWatchedEpisodes, watched: true }));
+      if (response.success) {
+        dispatch(markSeasonWatched(watchList.watchList.serieId, seasonNumber));
+      } else {
+        // handle error
+      }
+    }
+  };
 
   const toggleItem = (index) => {
     setExpanded((prevExpanded) => ({
@@ -90,19 +179,25 @@ const Seasons = ({ serie, seasons }) => {
     }))
   }
 
+
   const allSeasons = (data) => {
     return data?.map((item, index) => {
       const seasonData = seasons[item.season_number]
+
       return (
         <View
-          style={{ flexDirection: 'column', alignItems: 'stretch', marginVertical: moderateScale(10), }}
+          style={{
+            flexDirection: 'column',
+            alignItems: 'stretch',
+            marginVertical: moderateScale(10),
+          }}
           key={index}
         >
           <View
             style={{
               backgroundColor: 'white',
               flexDirection: 'row',
-              padding: moderateScale(10)
+              padding: moderateScale(10),
             }}
           >
             <TouchableOpacity
@@ -139,16 +234,43 @@ const Seasons = ({ serie, seasons }) => {
                 }}
               >
                 <Text style={{ fontSize: moderateScale(20) }}>
-                  {seasonData?.episodes?.length}
+                {watchedSeasons[watchList?.watchList?.serieId]?.[item.season_number]?.totalWatchedEpisodes || 0}
+                  /{seasonData?.episodes?.length}
                 </Text>
+                <Pressable
+                style={{ marginLeft: moderateScale(15) }}
+                onPress={() => toggleWatchedSeason(item.season_number)}
+              >
+                {watchedSeasons[watchList?.watchList?.serieId]?.[item.season_number]?.watched ? (
+                  <AntDesign
+                    name='checkcircle'
+                    size={moderateScale(25)}
+                    color='green'
+                  />
+                ) : (
+                  <AntDesign
+                    name='checkcircleo'
+                    size={moderateScale(25)}
+                    color='black'
+                  />
+                )}
+              </Pressable>
               </View>
             </TouchableOpacity>
           </View>
-          <View style={{backgroundColor: 'white'}}>
+          <View style={{ backgroundColor: 'white' }}>
             {expanded[index] ? (
               <Accordion>
-                {seasonData?.episodes?.map((item, index) => {
-                  return <Text style={{fontSize: moderateScale(18), margin: moderateScale(5)}} key={index}>{item.name}</Text>
+                {seasonData?.episodes?.map((episode) => {
+                  return (
+                    <Episodes
+                      episode={episode}
+                      key={episode.id}
+                      serieId={serieId}
+                      dispatch={dispatch}
+                      userId={userId}
+                    />
+                  )
                 })}
               </Accordion>
             ) : null}
@@ -191,7 +313,13 @@ const WatchedSerie = ({ route }) => {
       <ScrollView>
         <Header serie={serie} title={title} t={t} />
         <InProgress serie={serie} t={t} userId={userId} watchlist={watchlist} />
-        <Seasons serie={serie} seasons={seasons} />
+        <Seasons
+          serie={serie}
+          seasons={seasons}
+          dispatch={dispatch}
+          userId={userId}
+          watchList={watchlist}
+        />
       </ScrollView>
     </View>
   )

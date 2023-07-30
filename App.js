@@ -2,7 +2,7 @@ import { connect, Provider } from 'react-redux'
 import React, { useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import store from './src/redux/store'
+import { store, persistor } from './src/redux/store'
 import Header from './src/components/Layout/Header'
 import NowPlaying from './src/views/Tmdb/Movies/NowPlaying'
 import Upcoming from './src/views/Tmdb/Movies/Upcoming'
@@ -48,6 +48,7 @@ import { Platform, Dimensions } from 'react-native'
 import TrendingTV from './src/views/Tmdb/Series/TrendingTV'
 import WatchedMovie from './src/views/Watched/WatchedMovie'
 import WatchedSerie from './src/views/Watched/WatchedSerie'
+import { PersistGate } from 'redux-persist/integration/react'
 
 const MainStack = createNativeStackNavigator()
 const AuthStack = createNativeStackNavigator()
@@ -573,9 +574,11 @@ const ConnectedApp = connect(mapStateToProps, login)(App)
 
 const AppWithRedux = () => (
   <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
     <I18nextProvider i18n={i18n}>
       <ConnectedApp />
     </I18nextProvider>
+    </PersistGate>
   </Provider>
 )
 

@@ -46,83 +46,88 @@ const searchFavoriteReducer = (state = initialState, action) => {
 }
 
 const createFavoriteReducer = (state = initialState, action) => {
-switch (action.type) {
-  case 'CREATE_FAVORITE_REQUEST':
-    return {
-      ...state,
-      loading: true,
-      error: null
-    };
-  case 'CREATE_FAVORITE_SUCCESS':
-    return {
-      ...state,
+  switch (action.type) {
+    case 'CREATE_FAVORITE_REQUEST':
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      }
+    case 'CREATE_FAVORITE_SUCCESS':
+      return {
+        ...state,
         loading: false,
-          data: action.payload
-    };
-  case 'CREATE_FAVORITE_FAILURE':
-    return {
-      ...state,
-      loading: false,
+        data: action.payload,
+      }
+    case 'CREATE_FAVORITE_FAILURE':
+      return {
+        ...state,
+        loading: false,
         error: action.payload,
-        data: {}
-    };
-  default:
-    return state;
-}
+        data: {},
+      }
+    default:
+      return state
+  }
 }
 
 const getOneFavoriteReducer = (state = initialState, action) => {
-switch (action.type) {
-  case 'GET_ONE_FAVORITE_REQUEST':
-    return {
-      ...state,
-      loading: true,
-      error: null
-    };
-  case 'GET_ONE_FAVORITE_SUCCESS':
-    return {
-      ...state,
+  switch (action.type) {
+    case 'GET_ONE_FAVORITE_REQUEST':
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      }
+    case 'GET_ONE_FAVORITE_SUCCESS':
+      return {
+        ...state,
         loading: false,
-          data: action.payload
-    };
-  case 'GET_ONE_FAVORITE_FAILURE':
-    return {
-      ...state,
-      loading: false,
+        data: action.payload,
+      }
+    case 'GET_ONE_FAVORITE_FAILURE':
+      return {
+        ...state,
+        loading: false,
         error: action.payload,
-        data: {}
-    };
-  case 'RESET_FAVORITES':
-    return initialState
-  default:
-    return state;
-}
+        data: {},
+      }
+    case 'RESET_FAVORITES':
+      return initialState
+    default:
+      return state
+  }
 }
 
 const deleteFavoriteReducer = (state = initialState, action) => {
-switch (action.type) {
-  case 'DELETE_FAVORITE_REQUEST':
-    return {
-      ...state,
-      loading: true,
-      error: null
-    };
-  case 'DELETE_FAVORITE_SUCCESS':
-    return {
-      ...state,
+  switch (action.type) {
+    case 'DELETE_FAVORITE_REQUEST':
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      }
+    case 'DELETE_FAVORITE_SUCCESS':
+      return {
+        ...state,
         loading: false,
-          data: action.payload
-    };
-  case 'DELETE_FAVORITE_FAILURE':
-    return {
-      ...state,
-      loading: false,
+        data: action.payload,
+      }
+    case 'DELETE_FAVORITE_FAILURE':
+      return {
+        ...state,
+        loading: false,
         error: action.payload,
-        data: {}
-    };
-  default:
-    return state;
-}
+        data: {},
+      }
+    default:
+      return state
+  }
 }
 
-export { searchFavoriteReducer, createFavoriteReducer, getOneFavoriteReducer, deleteFavoriteReducer }
+export {
+  searchFavoriteReducer,
+  createFavoriteReducer,
+  getOneFavoriteReducer,
+  deleteFavoriteReducer,
+}
