@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Pressable,
+  Button,
 } from 'react-native'
 import { moderateScale } from '../../utils/Responsive'
 import { useDispatch, useSelector } from 'react-redux'
@@ -17,9 +18,13 @@ import Rate from '../../utils/Rate'
 import { getOneWatchList } from '../../redux/actions/watchlists'
 import { seasonDetails } from '../../redux/actions/tmdb/series'
 import { Entypo, AntDesign } from 'react-native-vector-icons'
-import { createSeason, deleteSeason, getOneSeason } from '../../redux/actions/seasons'
+import { createSeason, deleteSeason } from '../../redux/actions/seasons'
 import { createEpisode, deleteEpisode } from '../../redux/actions/episodes'
-import { markEpisodeWatched, markSeasonWatched, unmarkEpisodeWatched, unmarkSeasonWatched } from '../../redux/actions/watched'
+import {
+  markEpisodeWatched,
+  unmarkEpisodeWatched,
+} from '../../redux/actions/watched'
+import { persistor } from '../../redux/store'
 
 const Accordion = ({ children }) => {
   return <View style={{ backgroundColor: 'white' }}>{children}</View>
@@ -85,30 +90,53 @@ const InProgress = ({ t, watchlist }) => {
 }
 
 const Episodes = (props) => {
-  const { episode, seasonId, serieId, dispatch, userId } = props;
-  const watchedEpisodes = useSelector((state) => state.watched.watchedEpisodes);
-  const episodeIds = useSelector((state) => state.watched.episodeIds);
-  const episodeId = serieId && episodeIds ? episodeIds[serieId]?.[seasonId]?.[episode.episode_number] : undefined;
+  const { episode, serieId, dispatch, userId, seasonNumber } = props
+  const watchedEpisodes = useSelector((state) => state.watched.watchedEpisodes)
+  const episodeIds = useSelector((state) => state.watched.episodeIds)
 
   const toggleWatchedEpisode = async () => {
+    const isEpisodeWatched = watchedEpisodes[serieId]?.[seasonNumber]?.includes(episode.episode_number)
+    const episodeId =
+    serieId && episodeIds
+      ? episodeIds[serieId]?.[seasonNumber]?.[episode.episode_number]
+      : undefined
 
-    if (watchedEpisodes[serieId]?.[episode.episode_number]) {
-      const response = await dispatch(deleteEpisode(episodeId));
+console.log('episodeId', episodeId)
+
+    if (isEpisodeWatched) {
+      const response = await dispatch(
+        deleteEpisode(episodeId, serieId, seasonNumber, episode.episode_number)
+      )
       if (response.success) {
-        dispatch(unmarkEpisodeWatched(serieId, seasonId, episode.episode_number));
-      } else {
-        // handle error
+        dispatch(
+          unmarkEpisodeWatched({
+            serieId,
+            seasonNumber,
+            episodeNumber: episode.episode_number,
+          })
+        )
       }
     } else {
-      const response = await dispatch(createEpisode({ serieId, seasonId, userId, episodeNumber: episode.episode_number, state: 'seen' }));
+      const response = await dispatch(
+        createEpisode({
+          serieId,
+          userId,
+          seasonNumber,
+          episodeNumber: episode.episode_number,
+          state: 'seen',
+        })
+      )
       if (response.success) {
-        dispatch(markEpisodeWatched(serieId, seasonId, episode.episode_number));
-      } else {
-        // handle error
+        dispatch(
+          markEpisodeWatched({
+            serieId,
+            seasonNumber,
+            episodeNumber: episode.episode_number,
+          })
+        )
       }
     }
-  };
-
+  }
 
   return (
     <View
@@ -122,10 +150,9 @@ const Episodes = (props) => {
       key={episode.id}
     >
       <Text style={{ fontSize: moderateScale(20) }}>{episode.name}</Text>
-      <Pressable
-        onPress={toggleWatchedEpisode}
-      >
-        {watchedEpisodes[serieId]?.[episode.episode_number] ? (
+      <Pressable onPress={toggleWatchedEpisode}>
+        {watchedEpisodes[serieId]?.[seasonNumber]?.includes(episode.episode_number)
+         ? (
           <AntDesign
             name='checkcircle'
             size={moderateScale(25)}
@@ -140,37 +167,13 @@ const Episodes = (props) => {
         )}
       </Pressable>
     </View>
-  );
+  )
 }
 
 const Seasons = (props) => {
   const { serie, seasons, dispatch, userId, watchList } = props
   const [expanded, setExpanded] = useState({})
-  const watchedSeasons = useSelector((state) => state.watched.watchedSeasons)
-  const seasonIds = useSelector((state) => state.watched.seasonIds)
   const serieId = watchList?.watchList?.serieId
-
-  const toggleWatchedSeason = async (seasonNumber) => {
-    const seasonId = serieId && seasonIds ? seasonIds[serieId]?.[seasonNumber] : undefined
-    const seasonData = seasons[seasonNumber];
-    const totalWatchedEpisodes = seasonData?.episodes?.length;
-
-    if (watchedSeasons[watchList?.watchList?.serieId]?.[seasonNumber]?.watched === true) {
-      const response = await dispatch(deleteSeason(seasonId, serieId, seasonNumber));
-      if (response.success) {
-        await dispatch(unmarkSeasonWatched(watchList.watchList.serieId, seasonNumber));
-      } else {
-        // handle error
-      }
-    } else {
-      const response = await dispatch(createSeason({ serieId: watchList.watchList.serieId, userId, seasonNumber, state: 'seen', totalWatchedEpisodes, watched: true }));
-      if (response.success) {
-        dispatch(markSeasonWatched(watchList.watchList.serieId, seasonNumber));
-      } else {
-        // handle error
-      }
-    }
-  };
 
   const toggleItem = (index) => {
     setExpanded((prevExpanded) => ({
@@ -178,7 +181,6 @@ const Seasons = (props) => {
       [index]: !prevExpanded[index],
     }))
   }
-
 
   const allSeasons = (data) => {
     return data?.map((item, index) => {
@@ -227,35 +229,39 @@ const Seasons = (props) => {
                   />
                 </Text>
               </View>
-              <View
+{/*               <View
                 style={{
                   flexDirection: 'row',
                   justifyContent: 'flex-end',
                 }}
               >
                 <Text style={{ fontSize: moderateScale(20) }}>
-                {watchedSeasons[watchList?.watchList?.serieId]?.[item.season_number]?.totalWatchedEpisodes || 0}
+                  {watchedSeasons[watchList?.watchList?.serieId]?.[
+                    item.season_number
+                  ]?.totalWatchedEpisodes || 0}
                   /{seasonData?.episodes?.length}
                 </Text>
                 <Pressable
-                style={{ marginLeft: moderateScale(15) }}
-                onPress={() => toggleWatchedSeason(item.season_number)}
-              >
-                {watchedSeasons[watchList?.watchList?.serieId]?.[item.season_number]?.watched ? (
-                  <AntDesign
-                    name='checkcircle'
-                    size={moderateScale(25)}
-                    color='green'
-                  />
-                ) : (
-                  <AntDesign
-                    name='checkcircleo'
-                    size={moderateScale(25)}
-                    color='black'
-                  />
-                )}
-              </Pressable>
-              </View>
+                  style={{ marginLeft: moderateScale(15) }}
+                  onPress={() => toggleWatchedSeason(item.season_number)}
+                >
+                  {watchedSeasons[watchList?.watchList?.serieId]?.[
+                    item.season_number
+                  ]?.watched ? (
+                    <AntDesign
+                      name='checkcircle'
+                      size={moderateScale(25)}
+                      color='green'
+                    />
+                  ) : (
+                    <AntDesign
+                      name='checkcircleo'
+                      size={moderateScale(25)}
+                      color='black'
+                    />
+                  )}
+                </Pressable>
+              </View> */}
             </TouchableOpacity>
           </View>
           <View style={{ backgroundColor: 'white' }}>
@@ -269,6 +275,8 @@ const Seasons = (props) => {
                       serieId={serieId}
                       dispatch={dispatch}
                       userId={userId}
+                      seasonNumber={item.season_number}
+                      seasons={seasons}
                     />
                   )
                 })}
@@ -319,6 +327,12 @@ const WatchedSerie = ({ route }) => {
           dispatch={dispatch}
           userId={userId}
           watchList={watchlist}
+        />
+        <Button
+          title='Purger'
+          onPress={() => {
+            persistor.purge()
+          }}
         />
       </ScrollView>
     </View>
