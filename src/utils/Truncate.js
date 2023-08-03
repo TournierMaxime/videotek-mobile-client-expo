@@ -42,12 +42,12 @@ export function truncateOverview(
           <Text style={textOverview}>
             {truncatedOverview} {'... '}
           </Text>
-          <View style={{ position: 'relative' }}>
+          <Fragment>
             <TouchableOpacity
               style={{
                 position: 'absolute',
-                bottom: moderateScale(-50),
-                left: moderateScale(-50),
+                bottom: moderateScale(0),
+                left: moderateScale(0),
                 textAlign: 'center',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -63,7 +63,7 @@ export function truncateOverview(
                 {t('more')}
               </Text>
             </TouchableOpacity>
-          </View>
+          </Fragment>
         </Fragment>
       )
       break
