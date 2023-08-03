@@ -36,27 +36,55 @@ const getOneSeasonReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        error: null
-      };
+        error: null,
+      }
     case 'GET_ONE_SEASON_SUCCESS':
       return {
         ...state,
-          loading: false,
-            data: action.payload
-      };
+        loading: false,
+        data: action.payload,
+      }
     case 'GET_ONE_SEASON_FAILURE':
       return {
         ...state,
         loading: false,
-          error: action.payload,
-          data: {}
-      };
+        error: action.payload,
+        data: {},
+      }
     case 'RESET_SEASONS':
       return initialState
     default:
-      return state;
+      return state
   }
+}
+
+const updateSeasonReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'UPDATE_SEASON_REQUEST':
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      }
+    case 'UPDATE_SEASON_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        data: action.payload,
+      }
+    case 'UPDATE_SEASON_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        data: {},
+      }
+    case 'RESET_SEASONS':
+      return initialState
+    default:
+      return state
   }
+}
 
 const deleteSeasonReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -84,4 +112,9 @@ const deleteSeasonReducer = (state = initialState, action) => {
   }
 }
 
-export { createSeasonReducer, getOneSeasonReducer, deleteSeasonReducer }
+export {
+  createSeasonReducer,
+  getOneSeasonReducer,
+  updateSeasonReducer,
+  deleteSeasonReducer,
+}

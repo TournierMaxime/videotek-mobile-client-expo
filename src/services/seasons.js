@@ -12,6 +12,12 @@ const GetOneSeason = (userId, seasonId) => {
   })
 }
 
+const UpdateSeason = (data, userId, seasonId) => {
+  return http.put(`/seasons/user/${userId}/season/${seasonId}`, data, {
+    withCredentials: true,
+  })
+}
+
 const DeleteSeason = (seasonId) => {
   return http.delete(`/seasons/${seasonId}`, {
     withCredentials: true,
@@ -21,5 +27,6 @@ const DeleteSeason = (seasonId) => {
 export {
   CreateSeason,
   GetOneSeason,
+  UpdateSeason,
   DeleteSeason
 }

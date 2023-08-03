@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react'
 import {
   searchWatchList,
   deleteWatchList,
-  resetWatchLists,
 } from '../../redux/actions/watchlists'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -70,12 +69,12 @@ const WatchLists = () => {
     dispatch(searchWatchList(userId, { page: currentPage }))
   }, [dispatch, userId, currentPage])
 
-  const redirectByType = (type, id, title) => {
+  const redirectByType = (type, id, title, watchListId) => {
     switch (type) {
       case 'movie':
-        return navigation.navigate('WatchedMovie', { id, title })
+        return navigation.navigate('WatchedMovie', { id, title, watchListId })
       case 'serie':
-        return navigation.navigate('WatchedSerie', { id, title })
+        return navigation.navigate('WatchedSerie', { id, title, watchListId })
     }
   }
 
@@ -126,10 +125,11 @@ const WatchLists = () => {
 
   const renderItem = useCallback(
     (item, index) => {
+      const watchListId = item?.Watched?.watchListId
       return (
         <TouchableOpacity
           onPress={() =>
-            redirectByType(item.type, Number(item.tmdbId), item.title)
+            redirectByType(item.type, Number(item.tmdbId), item.title, watchListId)
           }
           key={index}
         >
@@ -210,12 +210,6 @@ const WatchLists = () => {
       setSelectedWatchListId(null)
     }
   }
-
-  useEffect(() => {
-    return () => {
-      dispatch(resetWatchLists())
-    }
-  }, [])
 
   return (
     <Fragment>

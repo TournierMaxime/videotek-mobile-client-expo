@@ -3,12 +3,38 @@ const initialState = {
   watchedEpisodes: {},
   seasonIds: {},
   episodeIds: {},
+  data: {}
 }
 
 const watchedReducer = (state = initialState, action) => {
   switch (action.type) {
+    case 'MARK_SEASON_WATCHED': {
+      const { serieId, seasonNumber, seasonId } = action.payload;
+      return {
+        ...state,
+        watchedSeasons: {
+          ...state.watchedSeasons,
+          [serieId]: {
+            ...(state.watchedSeasons[serieId] || {}),
+            [seasonNumber]: true,
+            seasonId
+          }
+        },
+        seasonIds: {
+          ...state.seasonIds,
+          [serieId]: {
+            ...(state.seasonIds[serieId] || {}),
+            [seasonNumber]: {
+              ...(state.seasonIds[serieId]?.[seasonNumber] || {}),
+              seasonId,
+            }
+          }
+        }
+      };
+    }
+    
     case 'MARK_EPISODE_WATCHED': {
-      const { serieId, seasonNumber, episodeNumber } = action.payload;
+      const { serieId, seasonNumber, episodeNumber, episodeId } = action.payload;
       return {
         ...state,
         watchedEpisodes: {
@@ -20,11 +46,22 @@ const watchedReducer = (state = initialState, action) => {
               episodeNumber
             ]
           }
+        },
+        episodeIds: {
+          ...state.episodeIds,
+          [serieId]: {
+            ...(state.episodeIds[serieId] || {}),
+            [seasonNumber]: {
+              ...(state.episodeIds[serieId]?.[seasonNumber] || {}),
+              [episodeNumber]: episodeId,
+            }
+          }
         }
       };
     }
     case 'UNMARK_EPISODE_WATCHED': {
       const { serieId, seasonNumber, episodeNumber, episodeId} = action.payload;
+      const { [episodeNumber]: value, ...remainingEpisodes } = state.episodeIds[serieId]?.[seasonNumber] || {};
       return {
         ...state,
         watchedEpisodes: {
@@ -36,6 +73,13 @@ const watchedReducer = (state = initialState, action) => {
             ),
             episodeId
           }
+        },
+        episodeIds: {
+          ...state.episodeIds,
+          [serieId]: {
+            ...(state.episodeIds[serieId] || {}),
+            [seasonNumber]: remainingEpisodes,
+          }
         }
       };
     }
@@ -46,5 +90,31 @@ const watchedReducer = (state = initialState, action) => {
   }
 }
 
+const updateWatchedReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'UPDATE_WATCHED_REQUEST':
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      }
+    case 'UPDATE_WATCHED_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        data: action.payload,
+      }
+    case 'UPDATE_WATCHED_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        data: {},
+      }
+    default:
+      return state
+  }
+}
 
-export { watchedReducer }
+
+export { watchedReducer, updateWatchedReducer }

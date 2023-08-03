@@ -1,4 +1,4 @@
-import { CreateSeason, GetOneSeason, DeleteSeason } from '../../services/seasons'
+import { CreateSeason, GetOneSeason, UpdateSeason, DeleteSeason } from '../../services/seasons'
 
 const createSeason = (data) => async (dispatch) => {
   try {
@@ -28,6 +28,18 @@ const getOneSeason = (userId, seasonId) => async (dispatch) => {
   }
 };
 
+const updateSeason = (data, userId, seasonId) => async (dispatch) => {
+  try {
+    const response = await UpdateSeason(data, userId, seasonId)
+    dispatch({type: 'UPDATE_SEASON_SUCCESS', payload: response.data});
+    return response.data
+  } catch (error) {
+    dispatch({type: 'UPDATE_SEASON_FAILURE', payload: error.message});
+    console.log(error)
+    throw error
+  }
+};
+
 const deleteSeason = (seasonId, serieId, seasonNumber) => async (dispatch) => {
   try {
     const response = await DeleteSeason(seasonId)
@@ -41,4 +53,4 @@ const deleteSeason = (seasonId, serieId, seasonNumber) => async (dispatch) => {
   }
 };
 
-export { createSeason, getOneSeason, deleteSeason }
+export { createSeason, getOneSeason, updateSeason, deleteSeason }

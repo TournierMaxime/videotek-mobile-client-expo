@@ -18,11 +18,17 @@ import Rate from '../../utils/Rate'
 import { getOneWatchList } from '../../redux/actions/watchlists'
 import { seasonDetails } from '../../redux/actions/tmdb/series'
 import { Entypo, AntDesign } from 'react-native-vector-icons'
-import { createSeason, deleteSeason } from '../../redux/actions/seasons'
+import {
+  createSeason,
+  updateSeason,
+  deleteSeason,
+} from '../../redux/actions/seasons'
 import { createEpisode, deleteEpisode } from '../../redux/actions/episodes'
 import {
+  markSeasonWatched,
   markEpisodeWatched,
   unmarkEpisodeWatched,
+  updateWatched
 } from '../../redux/actions/watched'
 import { persistor } from '../../redux/store'
 
@@ -90,18 +96,28 @@ const InProgress = ({ t, watchlist }) => {
 }
 
 const Episodes = (props) => {
-  const { episode, serieId, dispatch, userId, seasonNumber } = props
+  const { episode, serieId, dispatch, userId, seasonNumber, seasonData, watchListId } = props
   const watchedEpisodes = useSelector((state) => state.watched.watchedEpisodes)
+  const seasonIds = useSelector((state) => state.watched.seasonIds)
   const episodeIds = useSelector((state) => state.watched.episodeIds)
 
-  const toggleWatchedEpisode = async () => {
-    const isEpisodeWatched = watchedEpisodes[serieId]?.[seasonNumber]?.includes(episode.episode_number)
-    const episodeId =
-    serieId && episodeIds
-      ? episodeIds[serieId]?.[seasonNumber]?.[episode.episode_number]
-      : undefined
+  console.log('watchedEpisodes', watchedEpisodes)
 
-console.log('episodeId', episodeId)
+  const toggleWatchedEpisode = async () => {
+    const isEpisodeWatched = watchedEpisodes[serieId]?.[seasonNumber]?.includes(
+      episode.episode_number
+    )
+    const episodeId =
+      serieId && episodeIds
+        ? episodeIds[serieId]?.[seasonNumber]?.[episode.episode_number]
+        : undefined
+
+        const seasonId =
+        serieId && seasonIds
+          ? seasonIds[serieId]?.[seasonNumber]?.seasonId
+          : undefined
+
+          console.log('seasonId', seasonId)
 
     if (isEpisodeWatched) {
       const response = await dispatch(
@@ -116,7 +132,13 @@ console.log('episodeId', episodeId)
           })
         )
       }
+
+      if (watchedEpisodes[serieId]?.[seasonNumber]?.length === 1) {
+        // Then we should delete the season as well
+        dispatch(deleteSeason(seasonId, serieId, seasonNumber))
+      }
     } else {
+
       const response = await dispatch(
         createEpisode({
           serieId,
@@ -126,8 +148,9 @@ console.log('episodeId', episodeId)
           state: 'seen',
         })
       )
+
       if (response.success) {
-        dispatch(
+        await dispatch(
           markEpisodeWatched({
             serieId,
             seasonNumber,
@@ -135,6 +158,32 @@ console.log('episodeId', episodeId)
           })
         )
       }
+
+      if (
+        watchedEpisodes[serieId]?.[seasonNumber]?.length + 1 ===
+        seasonData?.episodes?.length
+      ) {
+        await dispatch(
+          updateSeason(
+            { state: 'seen' },
+            userId,
+            seasonId
+          )
+        )
+        await dispatch(updateWatched({state: 'seen'}, userId, watchListId))
+      }
+      
+      if (watchedEpisodes[serieId]?.[seasonNumber]?.length + 1 === 1) {
+        const responseSeason = await dispatch(createSeason({ serieId, userId, seasonNumber, seasonId, state: 'in-progress' })
+        )
+
+        if (responseSeason.success) {
+          const newSeasonId = createSeasonResponse.season.seasonId 
+          await dispatch(markSeasonWatched({serieId, seasonNumber, seasonId: newSeasonId}))
+          dispatch(updateWatched({state: 'in-progress'}, userId, watchListId))
+        }
+      }
+      
     }
   }
 
@@ -151,8 +200,9 @@ console.log('episodeId', episodeId)
     >
       <Text style={{ fontSize: moderateScale(20) }}>{episode.name}</Text>
       <Pressable onPress={toggleWatchedEpisode}>
-        {watchedEpisodes[serieId]?.[seasonNumber]?.includes(episode.episode_number)
-         ? (
+        {watchedEpisodes[serieId]?.[seasonNumber]?.includes(
+          episode.episode_number
+        ) ? (
           <AntDesign
             name='checkcircle'
             size={moderateScale(25)}
@@ -171,9 +221,11 @@ console.log('episodeId', episodeId)
 }
 
 const Seasons = (props) => {
-  const { serie, seasons, dispatch, userId, watchList } = props
+  const { serie, seasons, dispatch, userId, watchList, watchListId } = props
   const [expanded, setExpanded] = useState({})
   const serieId = watchList?.watchList?.serieId
+
+  
 
   const toggleItem = (index) => {
     setExpanded((prevExpanded) => ({
@@ -229,7 +281,7 @@ const Seasons = (props) => {
                   />
                 </Text>
               </View>
-{/*               <View
+              {/*               <View
                 style={{
                   flexDirection: 'row',
                   justifyContent: 'flex-end',
@@ -277,6 +329,8 @@ const Seasons = (props) => {
                       userId={userId}
                       seasonNumber={item.season_number}
                       seasons={seasons}
+                      seasonData={seasonData}
+                      watchListId={watchListId}
                     />
                   )
                 })}
@@ -292,7 +346,7 @@ const Seasons = (props) => {
 }
 
 const WatchedSerie = ({ route }) => {
-  const { id, title } = route.params
+  const { id, title, watchListId } = route.params
   const dispatch = useDispatch()
   const serie = useSelector((state) => state.serieDetails.data)
   const seasons = useSelector((state) => state.seasonDetails.data)
@@ -327,6 +381,7 @@ const WatchedSerie = ({ route }) => {
           dispatch={dispatch}
           userId={userId}
           watchList={watchlist}
+          watchListId={watchListId}
         />
         <Button
           title='Purger'

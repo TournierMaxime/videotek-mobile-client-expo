@@ -86,6 +86,7 @@ import {
 import {
   createSeasonReducer,
   getOneSeasonReducer,
+  updateSeasonReducer,
   deleteSeasonReducer,
 } from './reducers/seasons'
 import {
@@ -93,7 +94,8 @@ import {
   deleteEpisodeReducer,
 } from './reducers/episodes'
 import {
-  watchedReducer
+  watchedReducer,
+  updateWatchedReducer
 } from './reducers/watched'
 
 const persistConfig = {
@@ -103,8 +105,10 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   watched: watchedReducer,
+  updateWatched: updateWatchedReducer,
   createSeason: createSeasonReducer,
   getOneSeason: getOneSeasonReducer,
+  updateSeason: updateSeasonReducer,
   deleteSeason: deleteSeasonReducer,
   createEpisode: createEpisodeReducer,
   deleteEpisode: deleteEpisodeReducer,
