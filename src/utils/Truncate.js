@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { moderateScale } from './Responsive'
 import { TouchableOpacity, Text, View } from 'react-native'
 
@@ -38,28 +38,33 @@ export function truncateOverview(
     length += code < 0x10000 ? 1 : 2
     if (length > maxLength) {
       truncatedOverview = (
-        <View style={{ flexDirection: 'column' }}>
+        <Fragment>
           <Text style={textOverview}>
             {truncatedOverview} {'... '}
           </Text>
-          <TouchableOpacity
-            style={{
-              textAlign: 'center',
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: '#dee2e6',
-              width: moderateScale(80),
-              height: moderateScale(25),
-              borderRadius: moderateScale(3),
-              margin: moderateScale(5),
-            }}
-            onPress={() => handleModal()}
-          >
-            <Text style={{ color: '#495057', fontSize: moderateScale(14) }}>
-              {t('more')}
-            </Text>
-          </TouchableOpacity>
-        </View>
+          <View style={{ position: 'relative' }}>
+            <TouchableOpacity
+              style={{
+                position: 'absolute',
+                bottom: moderateScale(-50),
+                left: moderateScale(-50),
+                textAlign: 'center',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: '#dee2e6',
+                width: moderateScale(80),
+                height: moderateScale(25),
+                borderRadius: moderateScale(3),
+                margin: moderateScale(5),
+              }}
+              onPress={() => handleModal()}
+            >
+              <Text style={{ color: '#495057', fontSize: moderateScale(14) }}>
+                {t('more')}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </Fragment>
       )
       break
     }
