@@ -33,7 +33,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../../../utils/Responsive'
 import AddToFavorite from '../../../utils/AddToFavorite'
-import AddToWatchList from '../../../utils/AddToWatchList'
+//import AddToWatchList from '../../../utils/AddToWatchList'
 import { resetFavorites } from '../../../redux/actions/favorites'
 import { resetWatchLists } from '../../../redux/actions/watchlists'
 import Trailer from '../../../utils/Trailer'
@@ -96,7 +96,7 @@ const DetailsSerie = ({ route }) => {
 
   const OverViewMemoized = React.memo(OverView)
   const AddToFavoriteMemoized = React.memo(AddToFavorite)
-  const AddToWatchListMemoized = React.memo(AddToWatchList)
+  //const AddToWatchListMemoized = React.memo(AddToWatchList)
 
   return (
     <View style={{ flex: 1 }}>
@@ -176,12 +176,12 @@ const DetailsSerie = ({ route }) => {
                         image={serie?.poster_path}
                         type={'serie'}
                       />
-                      <AddToWatchListMemoized
+{/*                       <AddToWatchListMemoized
                         id={id}
                         title={serie?.name}
                         image={serie?.poster_path}
                         type={'serie'}
-                      />
+                      /> */}
                       <Trailer serie={serie} id={id} />
                     </View>
                   </View>

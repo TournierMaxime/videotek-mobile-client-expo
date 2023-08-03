@@ -36,7 +36,7 @@ import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../../../utils/Responsive'
 import AddToFavorite from '../../../utils/AddToFavorite'
 import Tabs from '../../../components/Tabs'
-import AddToWatchList from '../../../utils/AddToWatchList'
+//import AddToWatchList from '../../../utils/AddToWatchList'
 import { resetFavorites } from '../../../redux/actions/favorites'
 import { resetWatchLists } from '../../../redux/actions/watchlists'
 import Trailer from '../../../utils/Trailer'
@@ -107,7 +107,7 @@ const DetailsMovie = ({ route }) => {
 
   const OverViewMemoized = React.memo(OverView)
   const AddToFavoriteMemoized = React.memo(AddToFavorite)
-  const AddToWatchListMemoized = React.memo(AddToWatchList)
+  //const AddToWatchListMemoized = React.memo(AddToWatchList)
 
   return (
     <View style={{ flex: 1 }}>
@@ -183,12 +183,12 @@ const DetailsMovie = ({ route }) => {
                         image={movie?.poster_path}
                         type={'movie'}
                       />
-                      <AddToWatchListMemoized
+{/*                       <AddToWatchListMemoized
                         id={id}
                         title={movie?.title}
                         image={movie?.poster_path}
                         type={'movie'}
-                        />
+                        /> */}
                         <Trailer movie={movie} id={id} />
                     </View>
                   </View>

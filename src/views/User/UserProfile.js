@@ -118,7 +118,7 @@ const UserProfile = ({ route }) => {
                   </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity
+{/*                 <TouchableOpacity
                   onPress={() => navigation.navigate('WatchLists', { userId })}
                 >
                   <View style={styles.profileSectionContainer}>
@@ -137,7 +137,7 @@ const UserProfile = ({ route }) => {
                       color='black'
                     />
                   </View>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
                 <TouchableOpacity
                   onPress={() => navigation.navigate('Favorites', { userId })}
