@@ -88,8 +88,10 @@ const DetailsUser = ({ route }) => {
   }, [dispatch, userId])
 
   useEffect(() => {
-    return () => {
-      dispatch(resetUser())
+    if (isModified) {
+      return () => {
+        dispatch(resetUser())
+      }
     }
   }, [])
 
@@ -130,10 +132,12 @@ const DetailsUser = ({ route }) => {
           }}
         >
           <View>
-            <Image
-              source={{ uri: `${data.image}?t=${new Date().getTime()}` }}
-              style={{ width: moderateScale(48), height: moderateScale(48) }}
-            />
+            {
+              <Image
+                source={{ uri: `${user.image}` }}
+                style={{ width: moderateScale(48), height: moderateScale(48) }}
+              />
+            }
           </View>
           <View>
             <Button title={t('changeAvatar')} onPress={() => pickImage()} />

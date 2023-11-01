@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   createFavorite,
   getOneFavorite,
-  deleteFavorite
+  deleteFavorite,
 } from '../redux/actions/favorites'
 import { moderateScale } from './Responsive'
 import { AntDesign, MaterialIcons } from '@expo/vector-icons'
@@ -81,7 +81,7 @@ const AddToFavorite = ({ id, title, image, type }) => {
   }
 
   useEffect(() => {
-    setIsFavorite(data.favorite !== null)
+      setIsFavorite(data.favorite !== null)
   }, [data.favorite])
 
   useEffect(() => {

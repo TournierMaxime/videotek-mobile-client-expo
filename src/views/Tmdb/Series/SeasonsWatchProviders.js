@@ -138,7 +138,7 @@ const SeasonsWatchProviders = ({ id, item, language, t }) => {
       onPress={() =>
         navigation.navigate('AllEpisodes', {
           id,
-          seasonNumber: item.season_number,
+          seasonNumber,
         })
       }
     >

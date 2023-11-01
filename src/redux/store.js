@@ -1,11 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
 import thunkMiddleware from 'redux-thunk'
-import { persistStore, persistReducer } from 'redux-persist';
-import AsyncStorage from '@react-native-async-storage/async-storage'
-//import storage from 'redux-persist/lib/storage';
-//import FSStorage from 'redux-persist-filesystem-storage'
-import { combineReducers } from 'redux'
-//import logger from 'redux-logger';
 import searchReducer from './reducers/tmdb/search'
 import {
   oneUserReducer,
@@ -96,12 +90,7 @@ import {
   watchedReducer
 } from './reducers/watched'
 
-const persistConfig = {
-  key: 'root',
-  storage: AsyncStorage,
-};
-
-const rootReducer = combineReducers({
+const rootReducer = {
   watched: watchedReducer,
   createSeason: createSeasonReducer,
   getOneSeason: getOneSeasonReducer,
@@ -162,17 +151,11 @@ const rootReducer = combineReducers({
   getOnePost: getOnePostReducer,
   updatePost: updatePostReducer,
   deletePost: deletePostReducer
-})
-
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+}
 
 const store = configureStore({
-  reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false, immutableCheck: false }).concat(thunkMiddleware),
-})
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({immutableCheck: false, serializableCheck: false}).concat(thunkMiddleware)
+});
 
-let persistor = persistStore(store)
-
-//immutableCheck: false désactiver pendant le dev
-export { store, persistor}
+export default store
