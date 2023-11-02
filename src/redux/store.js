@@ -4,7 +4,7 @@ import searchReducer from './reducers/tmdb/search'
 import {
   oneUserReducer,
   updateUserReducer,
-  deleteUserReducer,
+  deleteUserReducer
 } from './reducers/users'
 import {
   searchCriticReducer,
@@ -24,6 +24,7 @@ import {
   confirmEmailReducer,
   passwordReducer,
   registerUserReducer,
+  setUserWithLocalStorageReducer
 } from './reducers/auth'
 import {
   nowPlayingReducer,
@@ -113,6 +114,7 @@ const rootReducer = {
   auth: authReducer,
   register: registerUserReducer,
   password: passwordReducer,
+  setUserWithLocalStorage: setUserWithLocalStorageReducer,
   nowPlaying: nowPlayingReducer,
   upcoming: upcomingReducer,
   onTheAir: onTheAirReducer,
