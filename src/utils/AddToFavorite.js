@@ -34,7 +34,7 @@ const AddToFavorite = ({ id, title, image, type, genre }) => {
                 tmdbId: id,
                 title,
                 imagePath: `https://image.tmdb.org/t/p/original${image}`,
-                genre
+                genre: genre.name
               },
             })
           )
