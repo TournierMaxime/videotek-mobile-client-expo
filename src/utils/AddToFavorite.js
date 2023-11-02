@@ -11,7 +11,7 @@ import { moderateScale } from './Responsive'
 import { AntDesign, MaterialIcons } from '@expo/vector-icons'
 import { AlertMessage } from './AlertMessage'
 
-const AddToFavorite = ({ id, title, image, type }) => {
+const AddToFavorite = ({ id, title, image, type, genre }) => {
   const dispatch = useDispatch()
   const { t } = useTranslation()
   const data = useSelector((state) => state.getOneFavorite.data)
@@ -34,6 +34,7 @@ const AddToFavorite = ({ id, title, image, type }) => {
                 tmdbId: id,
                 title,
                 imagePath: `https://image.tmdb.org/t/p/original${image}`,
+                genre
               },
             })
           )
@@ -45,6 +46,7 @@ const AddToFavorite = ({ id, title, image, type }) => {
                 tmdbId: id,
                 name: title,
                 imagePath: `https://image.tmdb.org/t/p/original${image}`,
+                genre: genre.name
               },
             })
           )

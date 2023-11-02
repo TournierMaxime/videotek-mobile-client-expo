@@ -51,6 +51,7 @@ const DetailsMovie = ({ route }) => {
   const { id } = route.params
   const [loading, setLoading] = useState(false)
   const [selectedTab, setSelectedTab] = useState('about')
+  const genre = movie?.genres?.find((item) => item.name)
 
   const { i18n, t } = useTranslation()
   const language = i18n.language
@@ -181,7 +182,8 @@ const DetailsMovie = ({ route }) => {
                         id={id}
                         title={movie?.title}
                         image={movie?.poster_path}
-                        type={'movie'}
+                          type={'movie'}
+                          genre={genre}
                       />
 {/*                       <AddToWatchListMemoized
                         id={id}

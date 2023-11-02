@@ -47,6 +47,7 @@ const DetailsSerie = ({ route }) => {
   const { id } = route.params
   const [loading, setLoading] = useState(false)
   const [selectedTab, setSelectedTab] = useState('about')
+  const genre = serie?.genres?.find((item) => item.name)
 
   const { i18n, t } = useTranslation()
   const language = i18n.language
@@ -175,8 +176,9 @@ const DetailsSerie = ({ route }) => {
                         title={serie?.name}
                         image={serie?.poster_path}
                         type={'serie'}
+                        genre={genre}
                       />
-{/*                       <AddToWatchListMemoized
+                      {/*                       <AddToWatchListMemoized
                         id={id}
                         title={serie?.name}
                         image={serie?.poster_path}
@@ -189,7 +191,14 @@ const DetailsSerie = ({ route }) => {
 
                 <OverViewMemoized content={serie.overview} t={t} />
               </View>
-              <Tabs serie={serie} t={t} language={language} id={id} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+              <Tabs
+                serie={serie}
+                t={t}
+                language={language}
+                id={id}
+                selectedTab={selectedTab}
+                setSelectedTab={setSelectedTab}
+              />
             </Fragment>
           )
         )}
