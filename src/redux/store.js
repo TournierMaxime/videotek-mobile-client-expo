@@ -23,8 +23,7 @@ import {
   authReducer,
   confirmEmailReducer,
   passwordReducer,
-  registerUserReducer,
-  setUserWithLocalStorageReducer
+  registerUserReducer
 } from './reducers/auth'
 import {
   nowPlayingReducer,
@@ -114,7 +113,6 @@ const rootReducer = {
   auth: authReducer,
   register: registerUserReducer,
   password: passwordReducer,
-  setUserWithLocalStorage: setUserWithLocalStorageReducer,
   nowPlaying: nowPlayingReducer,
   upcoming: upcomingReducer,
   onTheAir: onTheAirReducer,

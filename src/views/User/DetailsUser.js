@@ -20,9 +20,9 @@ const DetailsUser = ({ route }) => {
   const { t } = useTranslation()
 
   const [data, setData] = useState({
-    userName: localStorageData.user.userName || '',
-    email: localStorageData.user.email || '',
-    image: localStorageData.user.image || '',
+    userName: localStorageData.user?.userName || '',
+    email: localStorageData.user?.email || '',
+    image: localStorageData.user?.image || '',
   })
 
   const pickImage = async () => {
