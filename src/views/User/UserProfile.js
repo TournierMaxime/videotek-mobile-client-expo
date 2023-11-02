@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import {
   StyleSheet,
   View,
@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 import button from '../../styles/components/button'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUser, deleteUser } from '../../redux/actions/users'
+import { deleteUser } from '../../redux/actions/users'
 import { logoutUser } from '../../redux/actions/auth'
 import { useNavigation } from '@react-navigation/native'
 import { checkAccess } from '../../utils/CheckAccess'
@@ -34,7 +34,8 @@ const UserProfile = ({ route }) => {
   const [deleteModalVisible, setDeleteModalVisible] = useState(false)
   const [deleteSuccess, setDeleteSuccess] = useState(false)
   const accessDenied = checkAccess(isLogged, currentUserId, userId)
-  const userName = `${oneUser?.user?.userName}`
+  const user = useSelector((state) => state.auth.data.user)
+  const userName = `${user.userName}`
 
   const { t } = useTranslation()
 
@@ -62,10 +63,6 @@ const UserProfile = ({ route }) => {
   const handleDeleteModal = () => {
     setDeleteModalVisible(!deleteModalVisible)
   }
-
-  useEffect(() => {
-    dispatch(getUser(userId))
-  }, [dispatch, userId, userName])
 
   return (
     <View style={styles.container}>

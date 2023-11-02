@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Text, View, TextInput, StyleSheet, Button, Image } from 'react-native'
-import { getUser, updateUser, resetUser } from '../../redux/actions/users'
+import { updateUser } from '../../redux/actions/users'
+import { setUserWithLocalStorage } from '../../redux/actions/auth'
 import { useDispatch, useSelector } from 'react-redux'
 import button from '../../styles/components/button'
 import form from '../../styles/components/form'
@@ -8,19 +9,20 @@ import * as ImagePicker from 'expo-image-picker'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from '../../utils/Responsive'
 import { AlertMessage } from '../../utils/AlertMessage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const DetailsUser = ({ route }) => {
   const { userId } = route.params
   const dispatch = useDispatch()
-  const user = useSelector((state) => state.oneUser.data.user)
-  const [isModified, setIsModified] = useState(false)
+  const localStorageData = useSelector((state) => state.auth.data)
+  const [isOnChange, setIsOnChange] = useState(false)
 
   const { t } = useTranslation()
 
   const [data, setData] = useState({
-    userName: user?.userName || '',
-    email: user?.email || '',
-    image: user?.image || '',
+    userName: localStorageData.user.userName || '',
+    email: localStorageData.user.email || '',
+    image: localStorageData.user.image || '',
   })
 
   const pickImage = async () => {
@@ -43,16 +45,11 @@ const DetailsUser = ({ route }) => {
       setData({
         ...data,
         image: result.assets[0].uri,
-      }),
-        setIsModified(true)
+      })
     }
   }
 
   const handleUpdate = async () => {
-    if (!isModified) {
-      return
-    }
-
     const formData = new FormData()
     formData.append('userName', data.userName)
     formData.append('email', data.email)
@@ -65,13 +62,25 @@ const DetailsUser = ({ route }) => {
       name: `image.${fileType}`,
       type: `image/${fileType}`,
     }
+    if (file) {
+      formData.append('image', file)
+    }
 
-    formData.append('image', file)
+    const updatedUserData = {
+      ...localStorageData,
+      user: {
+        ...localStorageData.user,
+        userName: data.userName,
+        email: data.email,
+        image: data.image,
+      },
+    }
 
     try {
       await dispatch(updateUser(formData, userId))
+      await AsyncStorage.setItem('userData', JSON.stringify(updatedUserData))
+      await dispatch(setUserWithLocalStorage(updatedUserData))
       AlertMessage(t('profileUpdated'))
-      dispatch(getUser(userId))
     } catch (error) {
       console.log(error.response.data.errMsg)
 
@@ -82,16 +91,6 @@ const DetailsUser = ({ route }) => {
       }
     }
   }
-
-  useEffect(() => {
-    dispatch(getUser(userId))
-  }, [dispatch, userId])
-
-  useEffect(() => {
-    return () => {
-      dispatch(resetUser())
-    }
-  }, [])
 
   return (
     <View
@@ -107,18 +106,18 @@ const DetailsUser = ({ route }) => {
           style={styles.formInput}
           placeholder={t('userName')}
           onChangeText={(text) => {
-            setData({ ...data, userName: text }), setIsModified(true)
+            setData({ ...data, userName: text }), setIsOnChange(true)
           }}
-          defaultValue={user?.userName}
+          defaultValue={data?.userName}
         />
         <Text style={styles.formLabel}>{t('email')}</Text>
         <TextInput
           style={styles.formInput}
           placeholder={t('email')}
           onChangeText={(text) => {
-            setData({ ...data, email: text }), setIsModified(true)
+            setData({ ...data, email: text }), setIsOnChange(true)
           }}
-          defaultValue={user?.email}
+          defaultValue={data?.email}
         />
         <Text style={styles.formLabel}>{t('avatar')}</Text>
         <View
@@ -130,13 +129,22 @@ const DetailsUser = ({ route }) => {
           }}
         >
           <View>
-            <Image
-              source={{ uri: `${data.image}?t=${new Date().getTime()}` }}
-              style={{ width: moderateScale(48), height: moderateScale(48) }}
-            />
+            {
+              <Image
+                source={{
+                  uri: `${data?.image}?t=${Date.now()}`,
+                }}
+                style={{ width: moderateScale(48), height: moderateScale(48) }}
+              />
+            }
           </View>
           <View>
-            <Button title={t('changeAvatar')} onPress={() => pickImage()} />
+            <Button
+              title={t('changeAvatar')}
+              onPress={() => {
+                pickImage(), setIsOnChange(true)
+              }}
+            />
           </View>
         </View>
         <View style={styles.buttonContainer}>
@@ -144,7 +152,7 @@ const DetailsUser = ({ route }) => {
             onPress={() => handleUpdate()}
             color={'#00AD4F'}
             title={t('update')}
-            disabled={!isModified}
+            disabled={!isOnChange}
           />
         </View>
       </View>

@@ -43,6 +43,17 @@ const authReducer = (state = initialState, action) => {
           user: {},
         },
       }
+    case 'SET_USER_LOCALSTORAGE_SUCCESS':
+      return {
+        ...state,
+        data: action.payload,
+      }
+    case 'SET_USER_LOCALSTORAGE_FAILURE':
+      return {
+        ...state,
+        error: action.payload,
+        data: {},
+      }
     default:
       return state
   }

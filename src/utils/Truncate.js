@@ -46,16 +46,13 @@ export function truncateOverview(
             <TouchableOpacity
               style={{
                 position: 'absolute',
-                bottom: moderateScale(0),
-                left: moderateScale(0),
                 textAlign: 'center',
                 alignItems: 'center',
                 justifyContent: 'center',
                 backgroundColor: '#dee2e6',
                 width: moderateScale(80),
                 height: moderateScale(25),
-                borderRadius: moderateScale(3),
-                margin: moderateScale(5),
+                borderRadius: moderateScale(3)
               }}
               onPress={() => handleModal()}
             >

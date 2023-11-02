@@ -22,7 +22,7 @@ const AllEpisodes = ({ route }) => {
     return () => {
       dispatch(resetSeasonDetails())
     }
-  }, [])
+    }, [])
 
   const renderItem = (item) => {
     return (

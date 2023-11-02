@@ -135,6 +135,18 @@ const createUser = (data) => async (dispatch) => {
   }
 }
 
+const setUserWithLocalStorage = (localStorageData) => async (dispatch) => {
+  try {
+    dispatch({ type: 'SET_USER_LOCALSTORAGE_SUCCESS', payload: localStorageData });
+    console.log('Action', localStorageData)
+    return localStorageData
+  } catch (error) {
+    dispatch({type: 'SET_USER_LOCALSTORAGE_FAILURE', payload: error});
+    console.log(error)
+    throw error
+  }
+};
+
 export {
   loginUser,
   loginWithUserId,
@@ -144,4 +156,5 @@ export {
   checkForgetPasswordCode,
   resetPassword,
   createUser,
+  setUserWithLocalStorage
 }

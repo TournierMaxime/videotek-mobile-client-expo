@@ -84,13 +84,13 @@ const viewOverviewContainer = {
   flexDirection: 'column',
   display: 'flex',
   position: 'absolute',
-  top: '55%',
+  top: '50%',
   left: 0,
   right: 0,
   bottom: 0,
   justifyContent: 'flex-start',
   alignItems: 'flex-start',
-  margin: 15,
+  margin: moderateScale(15),
 }
 
 const headerTitle = {
@@ -104,7 +104,7 @@ const textOverview = {
   color: 'white',
   textAlign: 'justify',
   marginTop: 5,
-  lineHeight: moderateScale(20),
+  lineHeight: moderateScale(30),
   fontSize: moderateScale(16),
 }
 
