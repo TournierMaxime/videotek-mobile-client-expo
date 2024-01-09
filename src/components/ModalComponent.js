@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import { Ionicons } from 'react-native-vector-icons'
 import modal from '../styles/components/modal'
-import { moderateScale } from './Responsive'
+import { moderateScale } from '../utils/Responsive'
 
 const ModalComponent = ({ visible, setVisible, title, content }) => {
   const handleModalClose = () => {

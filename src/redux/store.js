@@ -7,19 +7,6 @@ import {
   deleteUserReducer
 } from './reducers/users'
 import {
-  searchCriticReducer,
-  createCriticReducer,
-  getOneCriticReducer,
-  updateCriticReducer,
-  deleteCriticReducer,
-} from './reducers/critics'
-import {
-  searchFavoriteReducer,
-  createFavoriteReducer,
-  getOneFavoriteReducer,
-  deleteFavoriteReducer,
-} from './reducers/favorites'
-import {
   authReducer,
   confirmEmailReducer,
   passwordReducer,
@@ -52,61 +39,13 @@ import {
   seasonDetailsReducer
 } from './reducers/tmdb/series'
 import {
-  searchPostReducer,
-  createPostReducer,
-  getOnePostReducer,
-  updatePostReducer,
-  deletePostReducer,
-} from './reducers/posts'
-import {
   searchGifReducer,
   getOneGifReducer,
   searchCategoryReducer
 } from './reducers/giphy'
-import {
-  searchLikeReducer,
-  createLikeReducer,
-  getOneLikePostReducer,
-  getOneLikeCommentReducer,
-  getOneLikeCriticReducer,
-  deleteLikeReducer
-} from './reducers/likes'
-import {
-  searchWatchListReducer,
-  createWatchListReducer,
-  getOneWatchListReducer,
-  deleteWatchListReducer,
-} from './reducers/watchlists'
-import {
-  createSeasonReducer,
-  getOneSeasonReducer,
-  deleteSeasonReducer,
-} from './reducers/seasons'
-import {
-  createEpisodeReducer,
-  deleteEpisodeReducer,
-} from './reducers/episodes'
-import {
-  watchedReducer
-} from './reducers/watched'
+import { favoritesReducer } from './reducers/tmdb/favorites'
 
 const rootReducer = {
-  watched: watchedReducer,
-  createSeason: createSeasonReducer,
-  getOneSeason: getOneSeasonReducer,
-  deleteSeason: deleteSeasonReducer,
-  createEpisode: createEpisodeReducer,
-  deleteEpisode: deleteEpisodeReducer,
-  searchWatchList: searchWatchListReducer,
-  createWatchList: createWatchListReducer,
-  getOneWatchList: getOneWatchListReducer,
-  deleteWatchList: deleteWatchListReducer,
-  searchLike: searchLikeReducer,
-  createLike: createLikeReducer,
-  getOneLikePost: getOneLikePostReducer,
-  getOneLikeComment: getOneLikeCommentReducer,
-  getOneLikeCritic: getOneLikeCriticReducer,
-  deleteLike: deleteLikeReducer,
   searchCategory: searchCategoryReducer,
   searchGif: searchGifReducer,
   getOneGif: getOneGifReducer,
@@ -128,29 +67,16 @@ const rootReducer = {
   peopleCareer: peopleCareerReducer,
   trending: trendingReducer,
   oneUser: oneUserReducer,
-  createCritic: createCriticReducer,
-  searchCritic: searchCriticReducer,
   confirmEmail: confirmEmailReducer,
-  deleteCritic: deleteCriticReducer,
   updateUser: updateUserReducer,
   deleteUser: deleteUserReducer,
-  getOneCritic: getOneCriticReducer,
-  updateCritic: updateCriticReducer,
   seasonDetails: seasonDetailsReducer,
   releaseDates: releaseDatesReducer,
   seasonWatchProviders: seasonWatchProvidersReducer,
   movieWatchProviders: movieWatchProvidersReducer,
   peopleExternalIds: peopleExternalIdsReducer,
-  searchFavorite: searchFavoriteReducer,
-  createFavorite: createFavoriteReducer,
-  deleteFavorite: deleteFavoriteReducer,
-  getOneFavorite: getOneFavoriteReducer,
   trendingTV: trendingTVReducer,
-  searchPost: searchPostReducer,
-  createPost: createPostReducer,
-  getOnePost: getOnePostReducer,
-  updatePost: updatePostReducer,
-  deletePost: deletePostReducer
+  favorites: favoritesReducer
 }
 
 const store = configureStore({

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { moderateScale } from './Responsive'
+import { moderateScale } from '../utils/Responsive'
 
 const Rate = ({ rate }) => {
   const percent = (rate * 10).toFixed(0);

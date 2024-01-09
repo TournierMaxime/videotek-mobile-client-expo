@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { truncateOverview } from './Truncate'
+import { truncateOverview } from '../utils/Truncate'
 import details from '../styles/pages/details'
 import ModalComponent from './ModalComponent'
 import { useTranslation } from 'react-i18next'

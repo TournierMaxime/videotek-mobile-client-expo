@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { Ionicons } from 'react-native-vector-icons'
 import message from '../styles/components/message'
-import { moderateScale } from './Responsive'
+import { moderateScale } from '../utils/Responsive'
 
 const NoDataFound = ({ message }) => {
   const noDataFound = () => (

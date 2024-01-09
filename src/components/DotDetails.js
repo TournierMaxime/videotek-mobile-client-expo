@@ -7,7 +7,7 @@ import {
 } from 'react-native-vector-icons'
 import profil from '../styles/components/profil'
 import button from '../styles/components/button'
-import Seasons from './Seasons'
+import Seasons from '../utils/Seasons'
 import Cast from './Cast'
 import Crew from './Crew'
 import { useDispatch, useSelector } from 'react-redux'
@@ -16,7 +16,7 @@ import { movieDetails } from '../redux/actions/tmdb/movies'
 import { serieDetails } from '../redux/actions/tmdb/series'
 import { peopleDetails } from '../redux/actions/tmdb/people'
 import { useTranslation } from 'react-i18next'
-import { moderateScale } from './Responsive'
+import { moderateScale } from '../utils/Responsive'
 
 const DotDetails = ({ route }) => {
   const { id } = route.params
