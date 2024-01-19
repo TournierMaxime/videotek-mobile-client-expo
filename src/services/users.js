@@ -1,4 +1,4 @@
-import { videotekApi as http } from './axios.js'
+import http from '@mod/mobile-common/services/axios'
 
 const SearchUsers = (filters) => {
   return http.post(

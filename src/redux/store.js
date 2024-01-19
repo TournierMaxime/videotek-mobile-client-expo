@@ -1,17 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit'
-import thunkMiddleware from 'redux-thunk'
+import createBaseStore from "@mod/mobile-common/redux/store"
+import authCommonReducer from "@mod/mobile-common/redux/index"
 import searchReducer from './reducers/tmdb/search'
 import {
   oneUserReducer,
   updateUserReducer,
   deleteUserReducer
 } from './reducers/users'
-import {
-  authReducer,
-  confirmEmailReducer,
-  passwordReducer,
-  registerUserReducer
-} from './reducers/auth'
 import {
   nowPlayingReducer,
   movideDetailsReducer,
@@ -45,13 +39,10 @@ import {
 } from './reducers/giphy'
 import { favoritesReducer } from './reducers/tmdb/favorites'
 
-const rootReducer = {
+const videotekReducer = {
   searchCategory: searchCategoryReducer,
   searchGif: searchGifReducer,
   getOneGif: getOneGifReducer,
-  auth: authReducer,
-  register: registerUserReducer,
-  password: passwordReducer,
   nowPlaying: nowPlayingReducer,
   upcoming: upcomingReducer,
   onTheAir: onTheAirReducer,
@@ -67,7 +58,6 @@ const rootReducer = {
   peopleCareer: peopleCareerReducer,
   trending: trendingReducer,
   oneUser: oneUserReducer,
-  confirmEmail: confirmEmailReducer,
   updateUser: updateUserReducer,
   deleteUser: deleteUserReducer,
   seasonDetails: seasonDetailsReducer,
@@ -79,9 +69,11 @@ const rootReducer = {
   favorites: favoritesReducer
 }
 
-const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({immutableCheck: false, serializableCheck: false}).concat(thunkMiddleware)
-});
+const rootReducer = {
+  ...authCommonReducer,
+  ...videotekReducer
+}
+
+const store = createBaseStore(rootReducer);
 
 export default store

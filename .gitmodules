@@ -1,0 +1,6 @@
+[submodule "src/modules/mod-mobile-common"]
+	path = src/modules/mod-mobile-common
+	url = git@github.com:TournierMaxime/mod-mobile-common.git
+[submodule "src/modules/mod-mobile-tmdb"]
+	path = src/modules/mod-mobile-tmdb
+	url = git@github.com:TournierMaxime/mod-mobile-tmdb.git
