@@ -2,21 +2,21 @@ import { connect, Provider } from 'react-redux'
 import React, { useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import store from './src/redux/store'
-import Header from './src/components/Layout/Header'
-import NowPlaying from './src/views/Tmdb/Movies/NowPlaying'
-import Trending from './src/views/Tmdb/Movies/Trending'
+import Header from '@mod/mobile-common/lib/components/layout/Header'
+import NowPlaying from '@mod/mobile-tmdb/views/Movies/NowPlaying'
+import Trending from '@mod/mobile-tmdb/views/Movies/Trending'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { MaterialIcons, Ionicons, Entypo } from 'react-native-vector-icons'
 import { useTranslation } from 'react-i18next'
-import i18n from './i18n.js'
+import i18n from '@mod/mobile-tmdb/i18n'
 import { I18nextProvider } from 'react-i18next'
-import './polyfill.js'
+import '@mod/mobile-tmdb/polyfill'
 import { Platform, Dimensions } from 'react-native'
-import TrendingTV from './src/views/Tmdb/Series/TrendingTV'
-import AppClass from './src/utils/App.js'
+import TrendingTV from '@mod/mobile-tmdb/views/Series/TrendingTV'
+import Utils from '@mod/mobile-common/lib/class/Utils'
 import AuthStackNavigator from './src/navigators/AuthStackNavigator.js'
 import MainStackNavigator from './src/navigators/AuthStackNavigator.js'
-import useLocalStorage from './src/hooks/utils/useLocalStorage.js'
+import useLocalStorage from '@mod/mobile-common/lib/hooks/utils/useLocalStorage'
 
 const Tab = createBottomTabNavigator()
 
@@ -41,15 +41,15 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
         screenOptions={{
           activeTintColor: '#4900AD',
           tabBarItemStyle: {
-            marginTop: AppClass.moderateScale(10),
+            marginTop: Utils.moderateScale(10),
           },
           tabBarStyle: {
             ...(Platform.OS === 'android'
-              ? { marginLeft: AppClass.moderateScale(0) }
-              : { marginLeft: AppClass.moderateScale(15) }),
+              ? { marginLeft: Utils.moderateScale(0) }
+              : { marginLeft: Utils.moderateScale(15) }),
             marginRight: 'auto',
             ...(Dimensions.get('window').width > 600
-              ? { height: AppClass.moderateScale(50) }
+              ? { height: Utils.moderateScale(50) }
               : null),
             justifyContent: 'center',
             display: 'flex',
@@ -63,9 +63,9 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
             options={() => ({
               tabBarIcon: ({ color }) => (
                 <Entypo
-                  style={{ width: AppClass.moderateScale(50), height: 'auto' }}
+                  style={{ width: Utils.moderateScale(50), height: 'auto' }}
                   name='home'
-                  size={AppClass.moderateScale(25)}
+                  size={Utils.moderateScale(25)}
                   color={color}
                 />
               ),
@@ -87,9 +87,9 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
             options={() => ({
               tabBarIcon: ({ color }) => (
                 <Entypo
-                  style={{ width: AppClass.moderateScale(50), height: 'auto' }}
+                  style={{ width: Utils.moderateScale(50), height: 'auto' }}
                   name='home'
-                  size={AppClass.moderateScale(25)}
+                  size={Utils.moderateScale(25)}
                   color={color}
                 />
               ),
@@ -113,9 +113,9 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
           options={() => ({
             tabBarIcon: ({ color }) => (
               <Ionicons
-                style={{ width: AppClass.moderateScale(50), height: 'auto' }}
+                style={{ width: Utils.moderateScale(50), height: 'auto' }}
                 name='flame'
-                size={AppClass.moderateScale(25)}
+                size={Utils.moderateScale(25)}
                 color={color}
               />
             ),
@@ -132,9 +132,9 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
           options={() => ({
             tabBarIcon: ({ color }) => (
               <MaterialIcons
-                style={{ width: AppClass.moderateScale(50), height: 'auto' }}
+                style={{ width: Utils.moderateScale(50), height: 'auto' }}
                 name='movie'
-                size={AppClass.moderateScale(25)}
+                size={Utils.moderateScale(25)}
                 color={color}
               />
             ),
@@ -152,9 +152,9 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
           options={() => ({
             tabBarIcon: ({ color }) => (
               <Ionicons
-                style={{ width: AppClass.moderateScale(50), height: 'auto' }}
+                style={{ width: Utils.moderateScale(50), height: 'auto' }}
                 name='ios-tv-sharp'
-                size={AppClass.moderateScale(25)}
+                size={Utils.moderateScale(25)}
                 color={color}
               />
             ),

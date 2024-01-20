@@ -1,15 +1,13 @@
 import React, { useState } from 'react'
-import { Text, View, TextInput, StyleSheet, Button, Image } from 'react-native'
+import { Text, View, TextInput, Button, Image } from 'react-native'
 import { updateUser } from '../../redux/actions/users'
-import { setUserWithLocalStorage } from '../../redux/actions/auth'
+import { setUserWithLocalStorage } from '@mod/mobile-common/redux/actions/auth'
 import { useDispatch, useSelector } from 'react-redux'
-import button from '../../styles/components/button'
-import form from '../../styles/components/form'
 import * as ImagePicker from 'expo-image-picker'
 import { useTranslation } from 'react-i18next'
-import { moderateScale } from '../../utils/Responsive'
-import { AlertMessage } from '../../utils/AlertMessage'
+import { AlertMessage } from '@mod/mobile-common/lib/components/utils/AlertMessage'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import tw from 'twrnc'
 
 const DetailsUser = ({ route }) => {
   const { userId } = route.params
@@ -94,39 +92,30 @@ const DetailsUser = ({ route }) => {
 
   return (
     <View
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-      }}
+      style={tw`flex flex-col justify-between`}
     >
-      <View style={styles.formContainer}>
-        <Text style={styles.formLabel}>{t('userName')}</Text>
+      <View style={tw`bg-white p-4 rounded-md m-4`}>
+        <Text style={tw`font-medium text-lg mb-4`}>{t('userName')}</Text>
         <TextInput
-          style={styles.formInput}
+          style={tw`bg-slate-100 p-4 rounded-sm mb-4 font-medium text-lg`}
           placeholder={t('userName')}
           onChangeText={(text) => {
             setData({ ...data, userName: text }), setIsOnChange(true)
           }}
           defaultValue={data?.userName}
         />
-        <Text style={styles.formLabel}>{t('email')}</Text>
+        <Text style={tw`font-medium text-lg mb-4`}>{t('email')}</Text>
         <TextInput
-          style={styles.formInput}
+          style={tw`bg-slate-100 p-4 rounded-sm mb-4 font-medium text-lg`}
           placeholder={t('email')}
           onChangeText={(text) => {
             setData({ ...data, email: text }), setIsOnChange(true)
           }}
           defaultValue={data?.email}
         />
-        <Text style={styles.formLabel}>{t('avatar')}</Text>
+        <Text style={tw`font-medium text-lg mb-4`}>{t('avatar')}</Text>
         <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginBottom: 50,
-          }}
+          style={tw`flex-row justify-between items-center mb-8`}
         >
           <View>
             {
@@ -134,7 +123,7 @@ const DetailsUser = ({ route }) => {
                 source={{
                   uri: `${data?.image}?t=${Date.now()}`,
                 }}
-                style={{ width: moderateScale(48), height: moderateScale(48) }}
+                style={tw`w-20 h-20`}
               />
             }
           </View>
@@ -147,7 +136,7 @@ const DetailsUser = ({ route }) => {
             />
           </View>
         </View>
-        <View style={styles.buttonContainer}>
+        <View style={tw`flex-row justify-center`}>
           <Button
             onPress={() => handleUpdate()}
             color={'#00AD4F'}
@@ -159,18 +148,5 @@ const DetailsUser = ({ route }) => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  formContainer: form.formContainer,
-  formLabel: form.formLabel,
-  formInput: form.formInput,
-  buttonText: button.buttonText,
-  formButtonRegister: button.formButtonRegister,
-  buttonContainer: button.buttonContainer,
-  formButtonLogin: button.formButtonLogin,
-  formButtonForgetPassword: button.formButtonForgetPassword,
-  deleteAccount: button.deleteAccount,
-  deleteAccountContainer: button.deleteAccountContainer,
-})
 
 export default DetailsUser

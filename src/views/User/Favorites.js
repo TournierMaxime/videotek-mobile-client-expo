@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   Text,
   View,
-  StyleSheet,
   FlatList,
   Pressable,
   TouchableOpacity,
@@ -16,19 +15,15 @@ import {
   Image,
 } from 'react-native'
 import { Feather } from 'react-native-vector-icons'
-import modal from '../../styles/components/modal'
-import useLoadMore from '../../utils/LoadMore'
-import card from '../../styles/components/card'
+import useLoadMore from '@mod/mobile-common/lib/hooks/utils/useLoadMore'
 import moment from 'moment'
-import button from '../../styles/components/button'
-import AlertModal from '../../utils/AlertModal'
+import AlertModal from '@mod/mobile-common/lib/components/utils/AlertModal'
 import { Fragment } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
-import dot from '../../styles/pages/dot'
-import message from '../../styles/components/message'
-import { moderateScale } from '../../utils/Responsive'
-import NoDataFound from '../../utils/NoDataFound'
+import Utils from '@mod/mobile-common/lib/class/Utils'
+import NoDataFound from '@mod/mobile-common/lib/components/utils/NoDataFound'
+import tw from 'twrnc'
 
 const Favorites = () => {
   const dispatch = useDispatch()
@@ -90,48 +85,37 @@ const Favorites = () => {
           }
           key={index}
         >
-          <View style={styles.renderItemContainer}>
-            <View style={{ flexDirection: 'row' }}>
+          <View style={tw`flex-row justify-between bg-white m-4`}>
+            <View style={tw`flex-row`}>
               {item.image ? (
                 <Image
-                  style={styles.image}
+                  style={[tw`w-7 h-10`, { resizeMode: 'cover' }]}
                   source={{
                     uri: `${item.image}?t=${new Date().getTime()}`,
                   }}
                 />
               ) : (
                 <Image
-                  style={styles.image}
+                  style={[tw`w-7 h-10`, { resizeMode: 'cover' }]}
                   source={require('../../assets/image/No_Image_Available.jpg')}
                 />
               )}
-              <View style={{ flexDirection: 'column' }}>
-                <Text style={[styles.renderItemTitle, { marginTop: moderateScale(10) }]}>{item.title}</Text>
+              <View style={tw`flex-col`}>
+                <Text style={tw`mt-4 font-medium text-lg ml-4`}>{item.title}</Text>
               </View>
             </View>
-            <View style={styles.renderItemDetails}>
+            <View style={tw`flex-col`}>
               {item.userId === userId ? (
                 <Pressable
-                  style={[
-                    styles.trashButton,
-                    {
-                      backgroundColor: 'red',
-                      width: moderateScale(50),
-                      height: moderateScale(100),
-                    },
-                  ]}
+                  style={tw`p-4 w-5 h-10 items-center bg-red-500`}
                   onPress={() => handleModal(item.favoriteId)}
                 >
                   <View
-                    style={{
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      flex: 1,
-                    }}
+                    style={tw`flex-1 justify-center items-center`}
                   >
                     <Feather
                       name='trash-2'
-                      size={moderateScale(25)}
+                      size={Utils.moderateScale(25)}
                       color='white'
                     />
 
@@ -176,7 +160,7 @@ const Favorites = () => {
 
   return (
     <Fragment>
-      <Text style={styles.modalTitle}>{t('favorites')}</Text>
+      <Text style={tw`m-4 font-medium text-lg`}>{t('favorites')}</Text>
       <FlatList
         data={allResults}
         keyExtractor={(item, index) => `${index}`}
@@ -184,11 +168,7 @@ const Favorites = () => {
         ListFooterComponent={
           favoritesResults?.length > 0 ? (
             <View
-              style={{
-                width: '100%',
-                alignItems: 'center',
-                marginVertical: moderateScale(25),
-              }}
+              style={tw`w-full items-center my-6`}
             >
               <Button
                 title={t('loadMoreFavorites')}
@@ -203,52 +183,5 @@ const Favorites = () => {
     </Fragment>
   )
 }
-
-const styles = StyleSheet.create({
-  container: modal.container,
-  modalView: modal.modalView,
-  modalText: modal.modalText,
-  closeIcons: modal.closeIcons,
-  closeContainer: modal.closeContainer,
-  modalTitle: modal.modalTitle,
-  criticCardContainer: card.criticCardContainer,
-  criticTitle: card.criticTitle,
-  criticContent: card.criticContent,
-  criticHeaderContainer: card.criticHeaderContainer,
-  deleteButton: button.deleteButton,
-  buttonText: button.buttonText,
-  trashButton: button.trashButton,
-  renderItemContainer: {
-    flexDirection: 'row',
-    backgroundColor: 'white',
-    justifyContent: 'space-between',
-    marginHorizontal: moderateScale(10),
-    marginVertical: moderateScale(10)
-  },
-  renderItemTitle: dot.renderItemTitle,
-  renderItemOverview: dot.renderItemOverview,
-  renderItemDetails: {
-    flexDirection: 'column',
-  },
-  seasonTitle: dot.seasonTitle,
-  containerMessage: message.containerMessage,
-  messageText: message.messageText,
-  image: {
-    width: moderateScale(70),
-    height: moderateScale(100),
-    resizeMode: 'cover',
-  },
-  tag: {
-    marginLeft: moderateScale(15),
-    padding: moderateScale(5),
-    borderRadius: 5,
-    marginTop: moderateScale(5),
-  },
-  tagText: {
-    fontSize: moderateScale(16),
-    fontWeight: 'bold',
-    color: 'white',
-  },
-})
 
 export default Favorites

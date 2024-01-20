@@ -1,6 +1,5 @@
 import React, { useEffect, Fragment, useState } from 'react'
 import {
-  StyleSheet,
   View,
   Text,
   FlatList,
@@ -9,16 +8,15 @@ import {
   ActivityIndicator,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { nowPlaying, trending } from '../redux/actions/tmdb/movies'
-import { trendingTV } from '../redux/actions/tmdb/series'
+import { nowPlaying, trending } from '@mod/mobile-tmdb/redux/actions/movies'
+import { trendingTV } from '@mod/mobile-tmdb/redux/actions/series'
 import { useNavigation } from '@react-navigation/native'
-import home from '../styles/pages/home'
-import Refresh from '../utils/Refresh'
-import { truncateTitle } from '../utils/Truncate'
+import Refresh from '@mod/mobile-common/lib/components/utils/Refresh'
+import Utils from '@mod/mobile-common/lib/class/Utils'
 import { Ionicons, MaterialIcons } from 'react-native-vector-icons'
 import { useTranslation } from 'react-i18next'
-import { moderateScale } from '../utils/Responsive'
-import { registerForPushNotificationsAsync } from '../utils/Notifications'
+import { registerForPushNotificationsAsync } from '@mod/mobile-common/lib/components/utils/Notifications'
+import tw from 'twrnc'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -67,12 +65,18 @@ const Home = () => {
       ) : (
         <Fragment>
           <Refresh onRefresh={onRefresh}>
-            <View style={styles.categoryViewContainer}>
-              <Text style={styles.title}>{t('trending')}</Text>
+            <View style={tw`justify-between items-baseline flex-row mr-4`}>
+              <Text style={tw`font-medium text-lg ml-4 mt-4`}>
+                {t('trending')}
+              </Text>
 
-              <Ionicons name='flame' size={moderateScale(25)} color='black' />
+              <Ionicons
+                name='flame'
+                size={Utils.moderateScale(25)}
+                color='black'
+              />
             </View>
-            <View style={styles.container}>
+            <View style={tw`items-center justify-between mb-6`}>
               <FlatList
                 data={trendingResults?.slice(0, 8)}
                 keyExtractor={(item) => item.id}
@@ -82,7 +86,7 @@ const Home = () => {
                   return (
                     <Fragment>
                       {item.media_type == 'movie' ? (
-                        <View style={styles.listViewContainer}>
+                        <View style={tw`flex-col justify-between`}>
                           <TouchableOpacity
                             onPress={() =>
                               navigation.navigate('DetailsMovie', {
@@ -93,8 +97,9 @@ const Home = () => {
                           >
                             <Image
                               style={[
-                                styles.image,
+                                tw`w-13 h-21 rounded-md mt-4 ml-4 mb-4`,
                                 {
+                                  resizeMode: 'cover',
                                   marginRight:
                                     index ===
                                     trendingResults?.slice(0, 8).length - 1
@@ -106,8 +111,8 @@ const Home = () => {
                                 uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
                               }}
                             />
-                            <Text style={styles.originalTitle}>
-                              {truncateTitle(
+                            <Text style={tw`text-center font-medium text-lg`}>
+                              {Utils.truncateTitle(
                                 item.title,
                                 language === 'zh-cn' ||
                                   language === 'ko' ||
@@ -119,7 +124,7 @@ const Home = () => {
                           </TouchableOpacity>
                         </View>
                       ) : (
-                        <View style={styles.listViewContainer}>
+                        <View style={tw`flex-col justify-between`}>
                           <TouchableOpacity
                             onPress={() =>
                               navigation.navigate('DetailsSerie', {
@@ -130,8 +135,9 @@ const Home = () => {
                           >
                             <Image
                               style={[
-                                styles.image,
+                                tw`w-13 h-21 rounded-md mt-4 ml-4 mb-4`,
                                 {
+                                  resizeMode: 'cover',
                                   marginRight:
                                     index ===
                                     trendingResults?.slice(0, 8).length - 1
@@ -143,8 +149,8 @@ const Home = () => {
                                 uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
                               }}
                             />
-                            <Text style={styles.originalTitle}>
-                              {truncateTitle(
+                            <Text style={tw`text-center font-medium text-lg`}>
+                              {Utils.truncateTitle(
                                 item.name,
                                 language === 'zh-cn' ||
                                   language === 'ko' ||
@@ -162,15 +168,17 @@ const Home = () => {
               />
             </View>
 
-            <View style={styles.categoryViewContainer}>
-              <Text style={styles.title}>{t('films')}</Text>
+            <View style={tw`justify-between items-baseline flex-row mr-4`}>
+              <Text style={tw`font-medium text-lg ml-4 mt-4`}>
+                {t('films')}
+              </Text>
               <MaterialIcons
                 name='movie'
-                size={moderateScale(25)}
+                size={Utils.moderateScale(25)}
                 color='black'
               />
             </View>
-            <View style={styles.container}>
+            <View style={tw`items-center justify-between mb-6`}>
               <FlatList
                 data={nowPlayingResults?.slice(0, 8)}
                 keyExtractor={(item) => item.id}
@@ -178,7 +186,7 @@ const Home = () => {
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item, index }) => {
                   return (
-                    <View style={styles.listViewContainer}>
+                    <View style={tw`flex-col justify-between`}>
                       <TouchableOpacity
                         onPress={() =>
                           navigation.navigate('DetailsMovie', {
@@ -189,8 +197,9 @@ const Home = () => {
                       >
                         <Image
                           style={[
-                            styles.image,
+                            tw`w-13 h-21 rounded-md mt-4 ml-4 mb-4`,
                             {
+                              resizeMode: 'cover',
                               marginRight:
                                 index ===
                                 nowPlayingResults?.slice(0, 8).length - 1
@@ -202,8 +211,8 @@ const Home = () => {
                             uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
                           }}
                         />
-                        <Text style={styles.originalTitle}>
-                          {truncateTitle(
+                        <Text style={tw`text-center font-medium text-lg`}>
+                          {Utils.truncateTitle(
                             item.title,
                             language === 'zh-cn' ||
                               language === 'ko' ||
@@ -219,15 +228,17 @@ const Home = () => {
               />
             </View>
 
-            <View style={styles.categoryViewContainer}>
-              <Text style={styles.title}>{t('series')}</Text>
+            <View style={tw`justify-between items-baseline flex-row mr-4`}>
+              <Text style={tw`font-medium text-lg ml-4 mt-4`}>
+                {t('series')}
+              </Text>
               <Ionicons
                 name='ios-tv-sharp'
-                size={moderateScale(25)}
+                size={Utils.moderateScale(25)}
                 color='black'
               />
             </View>
-            <View style={styles.container}>
+            <View style={tw`items-center justify-between mb-6`}>
               <FlatList
                 data={trendingTVResults?.slice(0, 8)}
                 keyExtractor={(item) => item.id}
@@ -235,7 +246,7 @@ const Home = () => {
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item, index }) => {
                   return (
-                    <View style={styles.listViewContainer}>
+                    <View style={tw`flex-col justify-between`}>
                       <TouchableOpacity
                         onPress={() =>
                           navigation.navigate('DetailsSerie', {
@@ -246,8 +257,9 @@ const Home = () => {
                       >
                         <Image
                           style={[
-                            styles.image,
+                            tw`w-13 h-21 rounded-md mt-4 ml-4 mb-4`,
                             {
+                              resizeMode: 'cover',
                               marginRight:
                                 index ===
                                 trendingTVResults?.slice(0, 8).length - 1
@@ -260,8 +272,8 @@ const Home = () => {
                           }}
                         />
                       </TouchableOpacity>
-                      <Text style={styles.originalTitle}>
-                        {truncateTitle(
+                      <Text style={tw`text-center font-medium text-lg`}>
+                        {Utils.truncateTitle(
                           item.name,
                           language === 'zh-cn' ||
                             language === 'ko' ||
@@ -281,14 +293,5 @@ const Home = () => {
     </Fragment>
   )
 }
-
-const styles = StyleSheet.create({
-  categoryViewContainer: home.categoryViewContainer,
-  listViewContainer: home.listViewContainer,
-  originalTitle: home.originalTitle,
-  container: home.container,
-  title: home.title,
-  image: home.image,
-})
 
 export default Home
