@@ -5,7 +5,6 @@ import Header from '@mod/mobile-common/lib/components/layout/Header'
 import UserProfile from '../views/User/UserProfile'
 import DetailsUser from '../views/User/DetailsUser'
 import Settings from '../views/User/Settings'
-import Favorites from '../views/User/Favorites'
 import getCommonScreens from './getCommonScreens.js'
 
 const MainStack = createNativeStackNavigator()
@@ -47,17 +46,6 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         })}
       >
         {(props) => <Settings {...props} i18n={i18n} t={t} />}
-      </MainStack.Screen>
-      <MainStack.Screen
-        name='Favorites'
-        options={({ route }) => ({
-          title: route.params.userId,
-          header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
-          ),
-        })}
-      >
-        {(props) => <Favorites {...props} i18n={i18n} t={t} />}
       </MainStack.Screen>
     </MainStack.Navigator>
   )

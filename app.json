@@ -2,7 +2,7 @@
   "expo": {
     "name": "VideoTek",
     "slug": "videotek-client-expo",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "jsEngine": "hermes",
     "ios": {
       "jsEngine": "jsc",
@@ -28,10 +26,20 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.hoggy.videotekclientexpo",
-      "versionCode": 28
+      "versionCode": 28,
+      "build": {
+        "babel": {
+          "include": ["@mod/mobile-common", "@mod/mobile-tmdb", "expo-modules-core"]
+        }
+      }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "build": {
+        "babel": {
+          "include": ["@mod/mobile-common", "@mod/mobile-tmdb", "expo-modules-core", "crypto"]
+        }
+      }
     },
     "extra": {
       "eas": {
