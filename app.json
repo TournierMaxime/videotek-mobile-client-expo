@@ -11,7 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "jsEngine": "hermes",
     "ios": {
       "jsEngine": "jsc",
@@ -49,7 +51,8 @@
           "icon": "./assets/notifications-icon.png",
           "mode": "production"
         }
-      ]
+      ],
+      "expo-localization"
     ]
   }
 }

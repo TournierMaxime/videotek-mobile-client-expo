@@ -15,7 +15,7 @@ import { Platform, Dimensions } from 'react-native'
 import TrendingTV from '@mod/mobile-tmdb/views/Series/TrendingTV'
 import Utils from '@mod/mobile-common/lib/class/Utils'
 import AuthStackNavigator from './src/navigators/AuthStackNavigator.js'
-import MainStackNavigator from './src/navigators/AuthStackNavigator.js'
+import MainStackNavigator from './src/navigators/MainStackNavigator.js'
 import useLocalStorage from '@mod/mobile-common/lib/hooks/utils/useLocalStorage'
 
 const Tab = createBottomTabNavigator()
@@ -25,14 +25,14 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
   const {
     getUserData,
     updateLanguage,
-    favorites,
+    //favorites,
     lang
   } = useLocalStorage({ onLoginSuccess })
 
   useEffect(() => {
     getUserData()
     updateLanguage()
-    favorites()
+    //favorites()
   }, [lang])
 
   return (

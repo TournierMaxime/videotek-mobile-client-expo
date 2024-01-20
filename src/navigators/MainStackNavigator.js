@@ -1,11 +1,11 @@
 import React from "react"
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { useSelector } from 'react-redux'
-import Header from '../components/Layout/Header'
-import UserProfile from './src/views/User/UserProfile'
-import DetailsUser from './src/views/User/DetailsUser'
-import Settings from './src/views/User/Settings'
-import Favorites from './src/views/User/Favorites'
+import Header from '@mod/mobile-common/lib/components/layout/Header'
+import UserProfile from '../views/User/UserProfile'
+import DetailsUser from '../views/User/DetailsUser'
+import Settings from '../views/User/Settings'
+import Favorites from '../views/User/Favorites'
 import getCommonScreens from './getCommonScreens.js'
 
 const MainStack = createNativeStackNavigator()
