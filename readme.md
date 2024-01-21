@@ -18,3 +18,6 @@
 
 - Bleu : `#00CCCA`
 - Rose : `#FF0090`
+
+watchman watch-del '/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo';
+watchman watch-project '/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo'
