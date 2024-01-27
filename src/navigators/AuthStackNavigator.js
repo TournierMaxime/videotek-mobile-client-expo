@@ -1,10 +1,10 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import Header from '@mod/mobile-common/lib/components/layout/Header'
-import Login from '@mod/mobile-common/views/Auth/Login'
-import Register from '@mod/mobile-common/views/Auth/Register'
-import ForgetPassword from '@mod/mobile-common/views/Auth/ForgetPassword'
-import ConfirmEmail from '@mod/mobile-common/views/Auth/ConfirmEmail'
+import Header from '../lib/components/layout/Header'
+import Login from '../views/Auth/Login'
+import Register from '../views/Auth/Register'
+import ForgetPassword from '../views/Auth/ForgetPassword'
+import ConfirmEmail from '../views/Auth/ConfirmEmail'
 import getCommonScreens from './getCommonScreens.js'
 
 const AuthStack = createNativeStackNavigator()

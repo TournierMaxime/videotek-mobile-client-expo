@@ -12,7 +12,6 @@
       "backgroundColor": "#ffffff"
     },
     "assetBundlePatterns": ["**/*"],
-    "jsEngine": "hermes",
     "ios": {
       "jsEngine": "jsc",
       "supportsTablet": true,
@@ -20,7 +19,6 @@
     },
     "android": {
       "googleServicesFile": "./google-services.json",
-      "jsEngine": "jsc",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"

@@ -2,21 +2,21 @@ import { connect, Provider } from 'react-redux'
 import React, { useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import store from './src/redux/store'
-import Header from '@mod/mobile-common/lib/components/layout/Header'
-import NowPlaying from '@mod/mobile-tmdb/views/Movies/NowPlaying'
-import Trending from '@mod/mobile-tmdb/views/Movies/Trending'
+import Header from './src/lib/components/layout/Header'
+import NowPlaying from './src/views/Movies/NowPlaying'
+import Trending from './src/views/Movies/Trending'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { MaterialIcons, Ionicons, Entypo } from 'react-native-vector-icons'
 import { useTranslation } from 'react-i18next'
-import i18n from '@mod/mobile-tmdb/i18n'
+import i18n from './i18n'
 import { I18nextProvider } from 'react-i18next'
-import '@mod/mobile-tmdb/polyfill'
+import './polyfill'
 import { Platform, Dimensions } from 'react-native'
-import TrendingTV from '@mod/mobile-tmdb/views/Series/TrendingTV'
-import Utils from '@mod/mobile-common/lib/class/Utils'
+import TrendingTV from './src/views/Series/TrendingTV'
+import Utils from './src/lib/class/Utils'
 import AuthStackNavigator from './src/navigators/AuthStackNavigator.js'
 import MainStackNavigator from './src/navigators/MainStackNavigator.js'
-import useLocalStorage from '@mod/mobile-common/lib/hooks/utils/useLocalStorage'
+import useLocalStorage from './src/lib/hooks/utils/useLocalStorage'
 
 const Tab = createBottomTabNavigator()
 
@@ -153,7 +153,7 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
             tabBarIcon: ({ color }) => (
               <Ionicons
                 style={{ width: Utils.moderateScale(50), height: 'auto' }}
-                name='ios-tv-sharp'
+                name='tv-sharp'
                 size={Utils.moderateScale(25)}
                 color={color}
               />

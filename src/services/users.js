@@ -1,4 +1,4 @@
-import http from '@mod/mobile-common/services/axios'
+import http from './axios'
 
 const SearchUsers = (filters) => {
   return http.post(

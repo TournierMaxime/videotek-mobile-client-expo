@@ -1,25 +1,26 @@
-import createBaseStore from "@mod/mobile-common/redux/store"
-import authCommonReducer from "@mod/mobile-common/redux/index"
-import tmdbReducer from "@mod/mobile-tmdb/redux/index"
-import {
-  oneUserReducer,
-  updateUserReducer,
-  deleteUserReducer
-} from './reducers/users'
-import { favoritesReducer } from './reducers/favorites'
-
-const videotekReducer = {
-  oneUser: oneUserReducer,
-  updateUser: updateUserReducer,
-  deleteUser: deleteUserReducer,
-  favorites: favoritesReducer
-}
+import {configureStore} from '@reduxjs/toolkit';
+import thunkMiddleware from 'redux-thunk';
+import { authCommonReducer, tmdbReducer, userReducer, favoriteReducer } from "./index"
 
 const rootReducer = {
   ...authCommonReducer,
-  ...videotekReducer,
-  ...tmdbReducer
+  ...tmdbReducer,
+  ...userReducer,
+  ...favoriteReducer
 }
+
+const createBaseStore = (reducers) => {
+  const store = configureStore({
+    reducer: reducers,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        immutableCheck: false,
+        serializableCheck: false,
+      }).concat(thunkMiddleware),
+  });
+
+  return store;
+};
 
 const store = createBaseStore(rootReducer);
 
