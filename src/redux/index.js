@@ -32,6 +32,7 @@ import {
   seasonDetailsReducer,
 } from './reducers/series'
 import {
+  searchUsersReducer,
   oneUserReducer,
   updateUserReducer,
   deleteUserReducer
@@ -70,6 +71,7 @@ const authCommonReducer = {
 }
 
 const userReducer = {
+  searchUsers: searchUsersReducer,
   oneUser: oneUserReducer,
   updateUser: updateUserReducer,
   deleteUser: deleteUserReducer

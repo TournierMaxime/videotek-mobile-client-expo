@@ -1,12 +1,8 @@
-import axios from "axios"
-import { EXPO_TMDB_API, EXPO_TMDB_API_KEY } from '@env'
-
-const tmdbApi = axios.create({
-  baseURL: EXPO_TMDB_API,
-})
+import { tmdbApi as http } from "./axios.js";
+import { EXPO_TMDB_API_KEY } from '@env'
 
 const ReleaseDates = (id) => {
-  return tmdbApi.get(`/movie/${id}/release_dates`, {
+  return http.get(`/movie/${id}/release_dates`, {
     params: {
       api_key: EXPO_TMDB_API_KEY
     },
@@ -14,7 +10,7 @@ const ReleaseDates = (id) => {
 };
 
 const NowPlaying = (page, language) => {
-  return tmdbApi.get("/movie/now_playing", {
+  return http.get("/movie/now_playing", {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language,
@@ -24,7 +20,7 @@ const NowPlaying = (page, language) => {
 };
 
 const Upcoming = (page, language) => {
-  return tmdbApi.get("/movie/upcoming", {
+  return http.get("/movie/upcoming", {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language,
@@ -34,7 +30,7 @@ const Upcoming = (page, language) => {
 };
 
 const OnTheAir = (page, language) => {
-  return tmdbApi.get("/tv/on_the_air", {
+  return http.get("/tv/on_the_air", {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language,
@@ -44,7 +40,7 @@ const OnTheAir = (page, language) => {
 };
 
 const Popular = (page, language) => {
-  return tmdbApi.get("/tv/popular", {
+  return http.get("/tv/popular", {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language,
@@ -54,7 +50,7 @@ const Popular = (page, language) => {
 };
 
 const Search = (page, query, language) => {
-  return tmdbApi.get("/search/multi", {
+  return http.get("/search/multi", {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language,
@@ -66,7 +62,7 @@ const Search = (page, query, language) => {
 };
 
 const MovieDetails = (id, language) => {
-  return tmdbApi.get(`/movie/${id}`, {
+  return http.get(`/movie/${id}`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language
@@ -75,7 +71,7 @@ const MovieDetails = (id, language) => {
 };
 
 const MovieWatchProviders = (id) => {
-  return tmdbApi.get(`/movie/${id}/watch/providers`, {
+  return http.get(`/movie/${id}/watch/providers`, {
     params: {
       api_key: EXPO_TMDB_API_KEY
     },
@@ -83,7 +79,7 @@ const MovieWatchProviders = (id) => {
 };
 
 const SerieDetails = (id, language) => {
-  return tmdbApi.get(`/tv/${id}`, {
+  return http.get(`/tv/${id}`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language
@@ -92,7 +88,7 @@ const SerieDetails = (id, language) => {
 };
 
 const SeasonDetails = (id, seasonNumber, language) => {
-  return tmdbApi.get(`/tv/${id}/season/${seasonNumber}`, {
+  return http.get(`/tv/${id}/season/${seasonNumber}`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language
@@ -101,7 +97,7 @@ const SeasonDetails = (id, seasonNumber, language) => {
 };
 
 const SeasonWatchProviders = (id, seasonNumber, language) => {
-  return tmdbApi.get(`/tv/${id}/season/${seasonNumber}/watch/providers`, {
+  return http.get(`/tv/${id}/season/${seasonNumber}/watch/providers`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language
@@ -110,7 +106,7 @@ const SeasonWatchProviders = (id, seasonNumber, language) => {
 };
 
 const PeopleDetails = (id, language) => {
-  return tmdbApi.get(`/person/${id}`, {
+  return http.get(`/person/${id}`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language
@@ -119,7 +115,7 @@ const PeopleDetails = (id, language) => {
 };
 
 const MovieCrew = (id, language) => {
-  return tmdbApi.get(`/movie/${id}/credits`, {
+  return http.get(`/movie/${id}/credits`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language
@@ -128,7 +124,7 @@ const MovieCrew = (id, language) => {
 };
 
 const MovieTrailer = (id, language) => {
-  return tmdbApi.get(`/movie/${id}/videos`, {
+  return http.get(`/movie/${id}/videos`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language
@@ -137,7 +133,7 @@ const MovieTrailer = (id, language) => {
 };
 
 const SerieCrew = (id, language) => {
-  return tmdbApi.get(`/tv/${id}/credits`, {
+  return http.get(`/tv/${id}/credits`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language
@@ -146,7 +142,7 @@ const SerieCrew = (id, language) => {
 };
 
 const SerieTrailer = (id, language) => {
-  return tmdbApi.get(`/tv/${id}/videos`, {
+  return http.get(`/tv/${id}/videos`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language
@@ -155,7 +151,7 @@ const SerieTrailer = (id, language) => {
 };
 
 const PeopleCareer = (id, language) => {
-  return tmdbApi.get(`/person/${id}/combined_credits`, {
+  return http.get(`/person/${id}/combined_credits`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language
@@ -164,7 +160,7 @@ const PeopleCareer = (id, language) => {
 };
 
 const Trending = (page, language) => {
-  return tmdbApi.get(`/trending/all/day`, {
+  return http.get(`/trending/all/day`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language,
@@ -174,7 +170,7 @@ const Trending = (page, language) => {
 };
 
 const TrendingTV = (page, language) => {
-  return tmdbApi.get(`/trending/tv/week`, {
+  return http.get(`/trending/tv/week`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language,
@@ -184,7 +180,7 @@ const TrendingTV = (page, language) => {
 };
 
 const PeopleExternalIds = (id) => {
-  return tmdbApi.get(`/person/${id}/external_ids`, {
+  return http.get(`/person/${id}/external_ids`, {
     params: {
       api_key: EXPO_TMDB_API_KEY
     },

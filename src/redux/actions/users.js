@@ -1,4 +1,16 @@
-import { GetOneUser, UpdateUser, DeleteUser } from '../../services/users'
+import { SearchUsers, GetOneUser, UpdateUser, DeleteUser } from '../../services/users'
+
+const searchUsers = (data) => async (dispatch) => {
+  try {
+    const response = await SearchUsers(data)
+    dispatch({type: 'SEARCH_USERS_SUCCESS', payload: response.data});
+    return response.data
+  } catch (error) {
+    dispatch({type: 'SEARCH_USERS_FAILURE', payload: error.message});
+    console.log(error)
+    throw error
+  }
+};
 
 const getUser = (userId) => async (dispatch) => {
   try {
@@ -40,4 +52,4 @@ const resetUser = () => ({
   type: "USER_RESET",
 });
 
-export { getUser, updateUser, deleteUser, resetUser }
+export { searchUsers, getUser, updateUser, deleteUser, resetUser }
