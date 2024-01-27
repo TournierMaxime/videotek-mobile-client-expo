@@ -15,7 +15,7 @@ import Refresh from '@mod/mobile-common/lib/components/utils/Refresh'
 import Utils from '@mod/mobile-common/lib/class/Utils'
 import { Ionicons, MaterialIcons } from 'react-native-vector-icons'
 import { useTranslation } from 'react-i18next'
-import { registerForPushNotificationsAsync } from '@mod/mobile-common/lib/components/utils/Notifications'
+import registerForPushNotificationsAsync from '@mod/mobile-common/lib/components/utils/Notifications'
 import tw from 'twrnc'
 
 const Home = () => {
