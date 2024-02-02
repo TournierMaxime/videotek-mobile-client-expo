@@ -33,7 +33,7 @@ const MovieWatchProviders = ({ language, t }) => {
 
     return (
       <View>
-        <Text style={tw`font-medium text-lg ml-4`}>{t('flatrate')}</Text>
+        <Text style={tw`font-medium text-lg ml-4`}>{t('utils.flatrate')}</Text>
         {providers?.[language]?.flatrate?.map((provider, index) => {
           return (
             <View key={index} style={tw`flex-col justify-between`}>
@@ -75,7 +75,7 @@ const MovieWatchProviders = ({ language, t }) => {
 
     return (
       <View>
-        <Text style={tw`font-medium text-lg ml-4`}>{t('buy')}</Text>
+        <Text style={tw`font-medium text-lg ml-4`}>{t('utils.buy')}</Text>
         {providers?.[language]?.buy?.map((provider, index) => {
           return (
             <View key={index} style={tw`flex-col justify-between`}>
@@ -117,7 +117,7 @@ const MovieWatchProviders = ({ language, t }) => {
 
     return (
       <View>
-        <Text style={tw`font-medium text-lg ml-4`}>{t('rent')}</Text>
+        <Text style={tw`font-medium text-lg ml-4`}>{t('utils.rent')}</Text>
         {providers?.[language]?.buy?.map((provider, index) => {
           return (
             <View key={index} style={tw`flex-col justify-between`}>
@@ -162,10 +162,10 @@ const MovieWatchProviders = ({ language, t }) => {
   }
 
   return (
-    <Accordion title={t('available')}>
+    <Accordion title={t('utils.available')}>
       <View style={tw`flex flex-col`}>
         <Text style={tw`font-medium text-lg ml-4 mb-4`}>
-          {t('contentPoweredByJustWatch')}
+          {t('utils.contentPoweredByJustWatch')}
         </Text>
         <View>{providersByCountry(providers, language)}</View>
       </View>

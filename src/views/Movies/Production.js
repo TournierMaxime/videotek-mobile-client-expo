@@ -16,7 +16,7 @@ const Production = ({ id, movie, t, language }) => {
   const productionCompanies = (data) => {
     if (!data) return null
     return (
-      <Accordion title={t('producers')}>
+      <Accordion title={t('utils.producers')}>
         <View style={tw`flex flex-col`}>
           {data?.map((item, index) => {
             return (
@@ -40,7 +40,7 @@ const Production = ({ id, movie, t, language }) => {
   const productionCountries = (data) => {
     if (!data) return null
     return (
-      <Accordion title={t('country')}>
+      <Accordion title={t('utils.country')}>
         <View style={tw`flex flex-col`}>
           {data?.map((item, index) => {
             return (
@@ -73,7 +73,8 @@ const Production = ({ id, movie, t, language }) => {
         break
     }
     return (
-      <Accordion title={t('release')}>
+      <View style={[tw`border-slate-100`, { borderTopWidth: 2 }]}>
+      <Accordion title={t('utils.release')}>
         <View style={tw`flex flex-col`}>
           {releaseDates.map((releaseDate, index) => {
             if (releaseDate.iso_3166_1 !== language) return null
@@ -89,7 +90,7 @@ const Production = ({ id, movie, t, language }) => {
                         {moment(releaseDate.release_date).format('L')}{' '}
                         {releaseDate.note
                           ? `- ${releaseDate.note}`
-                          : `- ${t('nationalRelease')}`}
+                          : `- ${t('utils.nationalRelease')}`}
                       </Text>
                     </View>
                   )
@@ -98,14 +99,15 @@ const Production = ({ id, movie, t, language }) => {
             )
           })}
         </View>
-      </Accordion>
+        </Accordion>
+        </View>
     )
   }
 
   const budget = (data) => {
     if (!data) return null
     return (
-      <Accordion title={t('budget')}>
+      <Accordion title={t('utils.budget')}>
         <View style={tw`flex flex-col`}>
           <View style={tw`flex-col justify-between`}>
             <Text style={[
@@ -122,7 +124,7 @@ const Production = ({ id, movie, t, language }) => {
     if (!data) return null
 
     return (
-      <Accordion title={t('boxOffice')}>
+      <Accordion title={t('utils.boxOffice')}>
         <View style={tw`flex flex-col`}>
           <View style={tw`flex-col justify-between`}>
             <Text style={[
@@ -136,10 +138,7 @@ const Production = ({ id, movie, t, language }) => {
   }
 
   return (
-    <View style={tw`my-4 pb-4`}>
-      <View style={tw`flex flex-row my-2`}>
-        <Text style={tw`font-medium text-lg m-2`}>{t('production')}</Text>
-      </View>
+    <View style={tw`pb-4 bg-white h-full`}>
       {releaseByCountry(releases, lang)}
       {budget(movie?.budget)}
       {revenue(movie?.revenue)}

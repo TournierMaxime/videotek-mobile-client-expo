@@ -21,7 +21,7 @@ import useLocalStorage from './src/lib/hooks/utils/useLocalStorage'
 const Tab = createBottomTabNavigator()
 
 const App = ({ isAuthenticated, onLoginSuccess }) => {
-  console.log("isAuthenticated", isAuthenticated);
+
   const { i18n, t } = useTranslation()
   const {
     getUserData,

@@ -15,14 +15,14 @@ const OverView = ({ content, isBiography, t }) => {
     setModalVisible(!modalVisible)
   }
 
-  const textOverview = tw`text-white text-justify mt-4 font-medium text-lg leading-7`
+  const textOverview = tw`text-white text-justify mt-4 font-medium text-lg leading-8`
 
   if (!content) return null
   return (
     <Fragment>
-      <View style={[tw`h-full flex-col flex absolute top-1/2 justify-start items-start m-4`, { width: '90%' }]}>
-        <Text style={tw`font-medium text-lg text-white my-4 w-40`}>
-          {isBiography === true ? t('biography') : t('plot')}
+      <View style={[tw`h-full flex-col flex absolute bottom-0 justify-end items-start m-4`, { width: '90%' }]}>
+        <Text style={tw`font-medium text-lg text-white mt-4`}>
+          {isBiography === true ? t('utils.biography') : t('utils.plot')}
         </Text>
           {Utils.truncateOverview(
             content,
@@ -31,11 +31,11 @@ const OverView = ({ content, isBiography, t }) => {
             textOverview,
             language === 'zh-cn' || language === 'ko' || language === 'ja'
               ? 150
-              : 300
+              : 150
           )}
       </View>
       <ModalComponent
-        title={t('plot')}
+        title={t('utils.plot')}
         content={content}
         visible={modalVisible}
         setVisible={setModalVisible}

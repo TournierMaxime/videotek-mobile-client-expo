@@ -2,25 +2,21 @@ import React from 'react'
 import {
   Text,
   View,
-  FlatList,
   Image,
   TouchableOpacity,
 } from 'react-native'
 import { useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
-import { useTranslation } from 'react-i18next'
 import tw from 'twrnc'
 
-const CastMovie = ({ route }) => {
-  const { title } = route.params
+const CastMovie = () => {
   const navigation = useNavigation()
   const credits = useSelector((state) => state.movieCrew.data)
 
-  const { t } = useTranslation()
-
-  const renderItem = (item) => {
+  const renderItem = (item, idx) => {
     return (
       <TouchableOpacity
+        key={idx}
         onPress={() =>
           navigation.navigate('DetailsPeople', {
             id: item.id,
@@ -28,7 +24,7 @@ const CastMovie = ({ route }) => {
           })
         }
       >
-        <View style={tw`flex flex-row justify-start bg-white my-4 p-4`}>
+        <View style={tw`flex flex-row justify-start bg-white p-4`}>
           {item.profile_path ? (
             <Image
               style={[tw`w-20 h-30 rounded-md ml-4 mb-2`, { resizeMode: 'cover' }]}
@@ -44,7 +40,7 @@ const CastMovie = ({ route }) => {
           )}
           <View style={tw`flex-1 w-full`}>
             <Text style={tw`font-medium text-lg ml-4`}>{item.name}</Text>
-            <Text style={tw`font-medium text-lg p-4 text-justify leading-7`}>{item.character}</Text>
+            <Text style={tw`font-medium text-base p-4 text-justify leading-7`}>{item.character}</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -52,13 +48,8 @@ const CastMovie = ({ route }) => {
   }
 
   return (
-    <View style={tw`flex-1 flex flex-col mt-4`}>
-      <Text style={tw`text-center font-medium text-lg mb-4`}>{t('castOf')} {title}</Text>
-      <FlatList
-        data={credits?.cast}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => renderItem(item)}
-      />
+    <View style={[tw`flex-1 flex flex-col border-slate-100`, { borderTopWidth: 2 }]}>
+      {credits?.cast?.map((item) => renderItem(item))}
     </View>
   )
 }

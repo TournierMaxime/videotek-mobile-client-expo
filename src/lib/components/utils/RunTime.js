@@ -24,12 +24,12 @@ const Runtime = ({ time, isMovie, t }) => {
       <Text style={tw`text-white`}>
         {isMovie ? (
           <Text style={tw`font-medium text-lg`}>
-            {t('duration')} {hasHours ? hours + 'H' : ''}
+            {t('utils.duration')} {hasHours ? hours + 'H' : ''}
             {minutes}Min
           </Text>
         ) : (
           <Text style={tw`font-medium text-lg`}>
-            {t('duration')} {hasHours ? hours + 'H' : ''}
+            {t('utils.duration')} {hasHours ? hours + 'H' : ''}
             {minutes}Min / ep
           </Text>
         )}

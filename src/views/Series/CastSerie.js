@@ -11,8 +11,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import tw from 'twrnc'
 
-const CastSerie = ({ route }) => {
-  const { title } = route.params
+const CastSerie = ({ title }) => {
   const navigation = useNavigation()
   const credits = useSelector((state) => state.serieCrew.data)
 

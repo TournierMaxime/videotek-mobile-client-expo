@@ -73,7 +73,7 @@ class Utils {
                 onPress={() => handleModal()}
               >
                 <Text style={{ color: '#495057', fontSize: this.moderateScale(14) }}>
-                  {t('more')}
+                  {t('utils.more')}
                 </Text>
               </TouchableOpacity>
             </Fragment>

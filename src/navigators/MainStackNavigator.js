@@ -11,7 +11,7 @@ const MainStack = createNativeStackNavigator()
 
 const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
   const userId = useSelector((state) => state.auth.data.user.userId)
-  console.log('user', userId);
+
   return (
     <MainStack.Navigator>
       {getCommonScreens(MainStack, isAuthenticated, i18n, t)}

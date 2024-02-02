@@ -11,12 +11,10 @@ const Accordion = ({ children, title }) => {
     setExpanded(!expanded)
   }
 
-  const body = <View style={tw`p-0`}>{children}</View>
-
   return (
-    <View style={tw`pb-4`}>
+    <View style={[tw`py-4 border-slate-100`, { borderBottomWidth: 2 }]}>
       <TouchableOpacity
-        style={tw`p-4 flex-1 flex flex-row justify-between`}
+        style={tw`p-2 flex flex-row justify-between`}
         onPress={() => toggleItem()}
       >
         <Text style={tw`font-medium text-lg`}>{title}</Text>
@@ -26,7 +24,7 @@ const Accordion = ({ children, title }) => {
           color='black'
         />
       </TouchableOpacity>
-      {expanded && body}
+      {expanded && children}
     </View>
   )
 }

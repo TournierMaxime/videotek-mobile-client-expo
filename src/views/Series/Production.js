@@ -17,7 +17,7 @@ const Production = ({ serie, t }) => {
     }
 
     return (
-      <Accordion title={t('status')}>
+      <Accordion title={t('utils.status')}>
         <View style={tw`flex flex-col`}>
           <View style={tw`flex-col justify-between`}>{statusSerie()}</View>
         </View>
@@ -29,7 +29,7 @@ const Production = ({ serie, t }) => {
     if (!data) return null
 
     return (
-      <Accordion title={t('diffusers')}>
+      <Accordion title={t('utils.diffusers')}>
         {data?.map((item, index) => {
           return (
             <View key={index} style={tw`flex-col justify-between`}>
@@ -45,7 +45,7 @@ const Production = ({ serie, t }) => {
     if (!data) return null
 
     return (
-      <Accordion title={t('producers')}>
+      <Accordion title={t('utils.producers')}>
         {data?.map((item, index) => {
           return (
             <View key={index} style={tw`flex-col justify-between`}>
@@ -61,7 +61,7 @@ const Production = ({ serie, t }) => {
     if (!data) return null
 
     return (
-      <Accordion title={t('country')}>
+      <Accordion title={t('utils.country')}>
         {data?.map((item, index) => {
           return (
             <View key={index} style={tw`flex-col justify-between`}>

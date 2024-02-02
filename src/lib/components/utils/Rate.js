@@ -8,19 +8,19 @@ const Rate = ({ rate }) => {
   const rating = (percent) => {
     if (percent > 1 && percent <= 50) {
         return (
-            <View style={tw`w-20 h-20 text-center justify-center items-center rounded-md absolute bg-red-500`}>
+            <View style={tw`w-12 h-12 text-center justify-center items-center rounded-md absolute bg-red-500 bottom-0 right-0`}>
                 <Text style={tw`font-medium text-lg text-white`}>{percent}</Text>
             </View>
           )
     } else if (percent > 50 && percent <= 70) {
         return (
-            <View style={tw`w-20 h-20 text-center justify-center items-center rounded-md absolute bg-orange-500`}>
+            <View style={tw`w-12 h-12 text-center justify-center items-center rounded-md absolute bg-orange-500 bottom-0 right-0`}>
                 <Text style={tw`font-medium text-lg text-white`}>{percent}</Text>
             </View>
           )
     } else if (percent > 70 && percent <= 100) {
       return (
-        <View style={tw`w-20 h-20 text-center justify-center items-center rounded-md absolute bg-green-500`}>
+        <View style={tw`w-12 h-12 text-center justify-center items-center rounded-md absolute bg-green-500 bottom-0 right-0`}>
             <Text style={tw`font-medium text-lg text-white`}>{percent}</Text>
         </View>
       )

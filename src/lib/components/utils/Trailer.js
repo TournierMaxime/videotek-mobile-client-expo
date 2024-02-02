@@ -55,7 +55,7 @@ const Trailer = ({ id, movie, serie }) => {
   return (
     <View style={tw`mt-4`}>
     <TouchableOpacity
-      style={tw`w-20 h-20 items-center justify-center`}
+      style={tw`p-2 items-center justify-center`}
       onPress={() => {
         if (id === movie?.id) {
           handleLinkToMovieTrailer()
