@@ -48,35 +48,34 @@ const RegisterScreen = () => {
 
 
   return (
-    <View style={tw`bg-white p-4 rounded-md m-4`}>
-      <Text style={tw`font-medium text-lg mb-4`}>{t('userName')}</Text>
+    <View style={tw`bg-white p-4 rounded-md h-full`}>
+      <Text style={tw`font-medium text-lg mt-2`}>{t('utils.userName')}</Text>
       <TextInput
-        style={tw`bg-slate-100 p-4 rounded-md mb-4 font-medium text-lg`}
-        placeholder={t('userName')}
+        style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
+        placeholder={t('utils.userName')}
         value={data.userName}
         onChangeText={(text) => setData({ ...data, userName: text })}
       />
-      <Text style={tw`font-medium text-lg mb-4`}>{t('email')}</Text>
+      <Text style={tw`font-medium text-lg mt-2`}>{t('utils.email')}</Text>
       <TextInput
-        style={tw`bg-slate-100 p-4 rounded-md mb-4 font-medium text-lg`}
-        placeholder={t('email')}
+        style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
+        placeholder={t('utils.email')}
         value={data.email}
         onChangeText={(text) => setData({ ...data, email: text })}
       />
-      <Text style={tw`font-medium text-lg mb-4`}>{t('password')}</Text>
+      <Text style={tw`font-medium text-lg mt-2`}>{t('utils.password')}</Text>
       <TextInput
-        style={tw`bg-slate-100 p-4 rounded-md mb-4 font-medium text-lg`}
-        placeholder={t('password')}
+        style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
+        placeholder={t('utils.password')}
         secureTextEntry
         value={data.password}
         onChangeText={(text) => setData({ ...data, password: text })}
       />
-      <View style={tw`flex-row justify-center`}>
+      <View style={tw`flex-row justify-center mt-4`}>
         <TouchableOpacity
-          style={[tw`p-4 rounded-md items-center mr-4 w-auto`, { backgroundColor: '#476EFF' }]}
           onPress={handleRegister}
         >
-          <Text style={tw`text-white font-medium text-lg`}>{t('signUp')}</Text>
+          <Text style={tw`px-4 py-2 text-white text-xl font-medium bg-indigo-600 rounded-lg`}>{t('utils.signUp')}</Text>
         </TouchableOpacity>
       </View>
     </View>

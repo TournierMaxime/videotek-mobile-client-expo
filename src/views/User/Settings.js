@@ -8,19 +8,19 @@ import tw from 'twrnc'
 const Settings = () => {
   const { i18n, t } = useTranslation()
   return (
-    <ScrollView>
-      <View style={tw`justify-center`}>
-        <Text style={tw`m-4 font-medium text-lg`}>
-          {t('selectLanguage')}
+    <ScrollView style={tw`bg-white h-full`}>
+      <View style={[tw`justify-center border-slate-100`, { borderTopWidth: 2, borderBottomWidth: 2 }]}>
+        <Text style={tw`mt-2 px-4 py-2 font-medium text-lg`}>
+          {t('utils.selectLanguage')}
         </Text>
         <Languages i18n={i18n} />
       </View>
 
-      <View style={tw`mt-4 justify-center bg-white`}>
-        <Text style={tw`m-4 forn-medium text-lg`}>
-          {t('versionNumber')}
+      <View style={[tw`justify-center border-slate-100`, { borderBottomWidth: 2 }]}>
+        <Text style={tw`mt-2 px-4 py-2 font-medium text-lg`}>
+          {t('utils.versionNumber')}
         </Text>
-        <Text style={tw`my-2 mx-4 font-medium text-lg`}>{packageJson.version}</Text>
+        <Text style={tw`my-2 mx-4 font-normal text-lg`}>{packageJson.version}</Text>
       </View>
     </ScrollView>
   )

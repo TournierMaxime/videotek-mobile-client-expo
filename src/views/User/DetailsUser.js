@@ -18,17 +18,19 @@ const DetailsUser = ({ route }) => {
   const { t } = useTranslation()
 
   const [data, setData] = useState({
-    userName: localStorageData.user?.userName || '',
+    userName: localStorageData.user?.pseudo || '',
     email: localStorageData.user?.email || '',
     image: localStorageData.user?.image || '',
   })
+
+  console.log(data.image);
 
   const pickImage = async () => {
     let permissionResult =
       await ImagePicker.requestMediaLibraryPermissionsAsync()
 
     if (permissionResult.granted === false) {
-      alert(t('permissionToAccessCameraRollIsRequired'))
+      alert(t('actions.permissionToAccessCameraRollIsRequired'))
       return
     }
 
@@ -78,14 +80,14 @@ const DetailsUser = ({ route }) => {
       await dispatch(updateUser(formData, userId))
       await AsyncStorage.setItem('userData', JSON.stringify(updatedUserData))
       await dispatch(setUserWithLocalStorage(updatedUserData))
-      AlertMessage(t('profileUpdated'))
+      AlertMessage(t('actions.profileUpdated'))
     } catch (error) {
       console.log(error.response.data.errMsg)
 
       if (error.response.data.errMsg) {
         AlertMessage(error.response.data.errMsg)
       } else {
-        AlertMessage(t('anErrorHasOccurred'))
+        AlertMessage(t('errors.anErrorHasOccurred'))
       }
     }
   }
@@ -94,26 +96,26 @@ const DetailsUser = ({ route }) => {
     <View
       style={tw`flex flex-col justify-between`}
     >
-      <View style={tw`bg-white p-4 rounded-md m-4`}>
-        <Text style={tw`font-medium text-lg mb-4`}>{t('userName')}</Text>
+      <View style={tw`bg-white p-4 rounded-md h-full`}>
+        <Text style={tw`font-medium text-lg`}>{t('utils.userName')}</Text>
         <TextInput
-          style={tw`bg-slate-100 p-4 rounded-sm mb-4 font-medium text-lg`}
-          placeholder={t('userName')}
+          style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
+          placeholder={t('utils.userName')}
           onChangeText={(text) => {
             setData({ ...data, userName: text }), setIsOnChange(true)
           }}
           defaultValue={data?.userName}
         />
-        <Text style={tw`font-medium text-lg mb-4`}>{t('email')}</Text>
+        <Text style={tw`font-medium text-lg`}>{t('utils.email')}</Text>
         <TextInput
-          style={tw`bg-slate-100 p-4 rounded-sm mb-4 font-medium text-lg`}
-          placeholder={t('email')}
+          style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
+          placeholder={t('utils.email')}
           onChangeText={(text) => {
             setData({ ...data, email: text }), setIsOnChange(true)
           }}
           defaultValue={data?.email}
         />
-        <Text style={tw`font-medium text-lg mb-4`}>{t('avatar')}</Text>
+        <Text style={tw`mt-2 font-medium text-lg`}>{t('utils.avatar')}</Text>
         <View
           style={tw`flex-row justify-between items-center mb-8`}
         >
@@ -121,7 +123,7 @@ const DetailsUser = ({ route }) => {
             {
               <Image
                 source={{
-                  uri: `${data?.image}?t=${Date.now()}`,
+                  uri: `${data?.image}`,
                 }}
                 style={tw`w-20 h-20`}
               />
@@ -129,7 +131,7 @@ const DetailsUser = ({ route }) => {
           </View>
           <View>
             <Button
-              title={t('changeAvatar')}
+              title={t('utils.changeAvatar')}
               onPress={() => {
                 pickImage(), setIsOnChange(true)
               }}
@@ -140,7 +142,7 @@ const DetailsUser = ({ route }) => {
           <Button
             onPress={() => handleUpdate()}
             color={'#00AD4F'}
-            title={t('update')}
+            title={t('utils.update')}
             disabled={!isOnChange}
           />
         </View>

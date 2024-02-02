@@ -9,32 +9,33 @@ const AlertModal = ({ visible, setVisible, action, message, success, t }) => {
   }
 
   return (
-    <View style={tw`items-center justify-center`}>
+    <View style={tw`items-center justify-center relative`}>
       <Modal
         animationType='slide'
         visible={visible}
         onRequestClose={handleModalClose}
         presentationStyle='overFullScreen'
+        transparent={true}
       >
-        <View style={[tw`ml-auto mr-auto items-center bg-white absolute h-auto flex flex-col justify-center p-4 rounded-md top-1/4`, { width: '80%', left: '10%' }]}>
+        <View style={tw`ml-auto mr-auto items-center bg-white z-5 absolute h-60 flex flex-col justify-center top-150 w-full rounded-t-xl`}>
           <View>
             <Text style={tw`mb-4 font-medium text-lg`}>{message}</Text>
             <View style={tw`flex flex-row justify-between`}>
-              <Pressable style={tw`p-4 w-auto bg-red-500 ml-auto mr-auto`} onPress={() => action()}>
-                <Text style={tw`text-white font-medium text-lg`}>{t('delete')}</Text>
+              <Pressable style={tw`px-4 py-2 w-auto bg-red-500 ml-auto mr-auto rounded-md`} onPress={() => action()}>
+                <Text style={tw`text-white font-medium text-lg`}>{t('utils.delete')}</Text>
               </Pressable>
               <Pressable
-                style={[tw`p-4 w-auto mr-auto ml-auto`, { backgroundColor: '#476EFF' }]}
+                style={[tw`px-4 py-2 w-auto mr-auto ml-auto rounded-md`, { backgroundColor: '#476EFF' }]}
                 onPress={() => setVisible(!visible)}
               >
-                <Text style={tw`text-white font-medium text-lg`}>{t('cancel')}</Text>
+                <Text style={tw`text-white font-medium text-lg`}>{t('utils.cancel')}</Text>
               </Pressable>
             </View>
             {success ? (
               <Text
-                style={tw`text-green-500 mt-4 mb-4 font-medium text-lg`}
+                style={tw`text-green-500 font-medium text-lg`}
               >
-                {t('yourAccountHasBeenSuccessfullyDeleted')}
+                {t('actions.yourAccountHasBeenSuccessfullyDeleted')}
               </Text>
             ) : null}
           </View>

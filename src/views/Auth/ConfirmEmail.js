@@ -45,21 +45,20 @@ const ConfirmEmail = ({ route }) => {
   )
 
   return (
-    <View style={tw`bg-white p-4 rounded-md m-4`}>
+    <View style={tw`bg-white p-4 rounded-md h-full`}>
       {infoMsg()}
-      <Text style={tw`font-medium text-lg mb-4`}>{t('code')}</Text>
+      <Text style={tw`font-medium text-lg mt-2`}>{t('utils.code')}</Text>
       <TextInput
-        style={tw`bg-slate-100 p-4 rounded-md mb-4 font-medium text-lg`}
-        placeholder={t('code')}
+        style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
+        placeholder={t('utils.code')}
         onChangeText={(text) => setData({ ...data, code: text })}
         value={data.code}
       />
       <View style={tw`flex-row justify-center`}>
         <TouchableOpacity
-          style={[tw`p-4 rounded-md items-center mr-4 w-auto ml-auto mr-auto`, { backgroundColor: '#00AD4F' }]}
           onPress={handleConfirmEmail}
         >
-          <Text style={tw`text-white font-medium text-lg`}>{t('confirm')}</Text>
+          <Text style={tw`px-4 py-2 text-white text-xl font-medium bg-indigo-600 rounded-lg`}>{t('utils.confirm')}</Text>
         </TouchableOpacity>
       </View>
     </View>

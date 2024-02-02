@@ -13,13 +13,9 @@ const useHandleLogin = ({ navigation }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await dispatch(
+      await dispatch(
         loginUser({ email: data.email, password: data.password })
       )
-
-      if (response.errors) {
-        return setMessage({ error: response.errors[0].message })
-      }
 
       navigation.navigate("Home")
     } catch (error) {

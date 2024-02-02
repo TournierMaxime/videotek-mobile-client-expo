@@ -14,7 +14,7 @@ import { useNavigation } from '@react-navigation/native'
 import moment from 'moment'
 import { useTranslation } from 'react-i18next'
 import tw from 'twrnc'
-import Utils from "../../class/Utils"
+import Utils from '../../class/Utils'
 
 const SearchModal = ({ visible, setVisible }) => {
   const dispatch = useDispatch()
@@ -44,7 +44,7 @@ const SearchModal = ({ visible, setVisible }) => {
     if (item.original_title && item.media_type === 'movie') {
       return (
         <TouchableOpacity
-          style={tw`w-full`}
+          style={[tw`w-full border-slate-100 p-6`, { borderBottomWidth: 2 }]}
           onPress={() => {
             navigation.navigate('DetailsMovie', {
               id: item.id,
@@ -57,7 +57,7 @@ const SearchModal = ({ visible, setVisible }) => {
           <Text style={tw`w-full font-medium text-lg`}>{`${
             item.original_title
           } (${moment(item.release_date).format('YYYY')}) / ${t(
-            'film'
+            'utils.film'
           )}`}</Text>
         </TouchableOpacity>
       )
@@ -65,7 +65,7 @@ const SearchModal = ({ visible, setVisible }) => {
       if (item.media_type === 'tv') {
         return (
           <TouchableOpacity
-            style={tw`w-full`}
+            style={[tw`w-full border-slate-100 p-6`, { borderBottomWidth: 2 }]}
             onPress={() => {
               navigation.navigate('DetailsSerie', {
                 id: item.id,
@@ -78,7 +78,7 @@ const SearchModal = ({ visible, setVisible }) => {
             <Text style={tw`w-full font-medium text-lg`}>{`${
               item.name
             } (${moment(item.first_air_date).format('YYYY')}) / ${t(
-              'serie'
+              'utils.serie'
             )}`}</Text>
           </TouchableOpacity>
         )
@@ -86,7 +86,7 @@ const SearchModal = ({ visible, setVisible }) => {
       if (item.media_type === 'person') {
         return (
           <TouchableOpacity
-            style={tw`w-full`}
+            style={[tw`w-full border-slate-100 p-6`, { borderBottomWidth: 2 }]}
             onPress={() => {
               navigation.navigate('DetailsPeople', {
                 id: item.id,
@@ -97,7 +97,7 @@ const SearchModal = ({ visible, setVisible }) => {
             }}
           >
             <Text style={tw`w-full font-medium text-lg`}>{`${item.name} / ${t(
-              'celebrity'
+              'utils.celebrity'
             )}`}</Text>
           </TouchableOpacity>
         )
@@ -127,15 +127,21 @@ const SearchModal = ({ visible, setVisible }) => {
         onRequestClose={handleModalClose}
       >
         <View style={tw`flex-1 justify-start items-stretch bg-white`}>
-          <View style={tw`flex-row justify-end items-center px-4 pt-4 mt-4 w-full`}>
+          <View
+            style={tw`flex-row justify-end items-center px-4 pt-4 mt-4 w-full`}
+          >
             <TouchableOpacity onPress={() => setVisible(!visible)}>
-              <Ionicons style={tw`text-black`} name='close' size={Utils.moderateScale(40)} />
+              <Ionicons
+                style={tw`text-black`}
+                name='close'
+                size={Utils.moderateScale(40)}
+              />
             </TouchableOpacity>
           </View>
-          <View style={tw`p-4 m-4 relative`}>
+          <View style={tw`px-4 mt-4 relative`}>
             <TextInput
               style={tw`bg-slate-100 p-4 rounded-md mb-4 font-medium text-lg`}
-              placeholder={t('search')}
+              placeholder={t('utils.search')}
               onChangeText={(text) => setQuery(text)}
               value={query}
               onSubmitEditing={handleSearch}
@@ -145,14 +151,8 @@ const SearchModal = ({ visible, setVisible }) => {
               keyExtractor={(item) => item.id}
               renderItem={({ item }) => {
                 return (
-                  <View
-                    style={[tw`ml-auto mr-auto flex-wrap`, { width: '95%' }]}
-                  >
-                    <View
-                      style={tw`my-4 p-4 bg-white w-full`}
-                    >
-                      {renderItemContent(item)}
-                    </View>
+                  <View style={tw`ml-auto mr-auto flex-wrap w-full`}>
+                    {renderItemContent(item)}
                   </View>
                 )
               }}

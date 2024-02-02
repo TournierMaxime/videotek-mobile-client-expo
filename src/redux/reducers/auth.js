@@ -2,10 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const initialState = {
   isAuthenticated: false,
-  data: {
-    token: null,
-    user: {},
-  },
+  data: {},
   code: null,
   error: null,
   forgetPasswordSuccess: false,
@@ -26,22 +23,12 @@ const authReducer = (state = initialState, action) => {
         data: action.payload,
         isAuthenticated: true,
       }
-    case 'LOGIN_WITH_USERID_SUCCESS':
-      AsyncStorage.setItem('userData', JSON.stringify(action.payload))
-      return {
-        ...state,
-        data: action.payload,
-        isAuthenticated: true,
-      }
     case 'LOGOUT_USER_SUCCESS':
       AsyncStorage.removeItem('userData')
       return {
         ...state,
         isAuthenticated: false,
-        data: {
-          token: null,
-          user: {},
-        },
+        data: {},
       }
     case 'SET_USER_LOCALSTORAGE_SUCCESS':
       return {

@@ -34,7 +34,7 @@ const ForgetPasswordScreen = () => {
   const handleForgetPassword = async () => {
     try {
       await dispatch(forgetPassword({ email, lang }))
-      AlertMessage(t('anEmailHasBeenSentToYouContainingA6DigitCode'))
+      AlertMessage(t('actions.anEmailHasBeenSentToYouContainingA6DigitCode'))
       setStep(2)
     } catch (error) {
       console.log(error.response.data.errMsg)
@@ -45,7 +45,7 @@ const ForgetPasswordScreen = () => {
   const handleCheckForgetPasswordCode = async () => {
     try {
       await dispatch(checkForgetPasswordCode({ email, code }))
-      AlertMessage(t('yourVerificationCodeHasBeenValidated'))
+      AlertMessage(t('actions.yourVerificationCodeHasBeenValidated'))
       setStep(3)
     } catch (error) {
       console.log(error.response.data.errMsg)
@@ -63,7 +63,7 @@ const ForgetPasswordScreen = () => {
           confirmPassword: password.confirmPassword,
         })
       )
-      AlertMessage(t('yourPasswordHasBeenSuccessfullyReset'))
+      AlertMessage(t('actionsyourPasswordHasBeenSuccessfullyReset'))
       setStep(4)
       setTimeout(() => {
         navigation.navigate('Login')
@@ -79,52 +79,52 @@ const ForgetPasswordScreen = () => {
     <View>
       <View>
         {step === 1 && (
-          <View style={tw`bg-white p-4 rounded-md m-4`}>
-            <Text style={tw`font-medium text-lg mb-4`}>{t('enterYourEmailAddress')}</Text>
+          <View style={tw`bg-white p-4 rounded-md h-full`}>
+            <Text style={tw`font-medium text-lg mt-2`}>{t('utils.enterYourEmailAddress')}</Text>
             <TextInput
-              style={tw`bg-slate-100 p-4 rounded-md mb-4 font-medium text-lg`}
-              placeholder={t('email')}
+              style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
+              placeholder={t('utils.email')}
               value={email}
               onChangeText={(text) => setEmail(text)}
             />
             <View style={tw`flex-row justify-center`}>
               <TouchableOpacity
-                style={[tw`p-4 rounded-md items-center mr-4 w-auto`, { backgroundColor: '#22C55E' }]}
+                style={[tw`mt-4 px-4 py-2 rounded-md items-center mr-4 w-auto`, { backgroundColor: '#22C55E' }]}
                 onPress={handleForgetPassword}
               >
-                <Text style={tw`text-white font-medium text-lg`}>{t('confirm')}</Text>
+                <Text style={tw`text-white font-medium text-lg`}>{t('utils.confirm')}</Text>
               </TouchableOpacity>
             </View>
           </View>
         )}
         {step === 2 && (
-          <View style={tw`bg-white p-4 rounded-md m-4`}>
-            <Text style={tw`font-medium text-lg mb-4`}>
-              {t('enterYourVerificationCode')}
+          <View style={tw`bg-white p-4 rounded-md h-full`}>
+            <Text style={tw`font-medium text-lg mt-2`}>
+              {t('utils.enterYourVerificationCode')}
             </Text>
             <TextInput
-              placeholder={t('verificationCode')}
-              style={tw`bg-slate-100 p-4 rounded-md mb-4 font-medium text-lg`}
+              placeholder={t('utils.verificationCode')}
+              style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
               value={code}
               onChangeText={(text) => setCode(text)}
             />
             <View style={tw`flex-row justify-center`}>
               <TouchableOpacity
-                style={[tw`p-4 rounded-md items-center mr-4 w-auto`, { backgroundColor: '#22C55E' }]}
+                style={[tw`mt-4 px-4 py-2 rounded-md items-center mr-4 w-auto`, { backgroundColor: '#22C55E' }]}
                 onPress={handleCheckForgetPasswordCode}
               >
-                <Text style={tw`text-white font-medium text-lg`}>{t('confirm')}</Text>
+                <Text style={tw`text-white font-medium text-lg`}>{t('utils.confirm')}</Text>
               </TouchableOpacity>
             </View>
           </View>
         )}
 
         {step === 3 && (
-          <View style={tw`bg-white p-4 rounded-md m-4`}>
-            <Text style={tw`font-medium text-lg mb-4`}>{t('enterYourNewPassword')}</Text>
+          <View style={tw`bg-white p-4 rounded-md h-full`}>
+            <Text style={tw`font-medium text-lg mt-2`}>{t('utils.enterYourNewPassword')}</Text>
             <TextInput
-              style={tw`bg-slate-100 p-4 rounded-md mb-4 font-medium text-lg`}
-              placeholder={t('password')}
+              style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
+              placeholder={t('utils.password')}
               secureTextEntry={true}
               value={password.password}
               onChangeText={(text) =>
@@ -132,8 +132,8 @@ const ForgetPasswordScreen = () => {
               }
             />
             <TextInput
-              style={tw`bg-slate-100 p-4 rounded-md mb-4 font-medium text-lg`}
-              placeholder={t('confirmYourPassword')}
+              style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
+              placeholder={t('utils.confirmYourPassword')}
               secureTextEntry={true}
               value={password.confirmPassword}
               onChangeText={(text) =>
@@ -142,18 +142,18 @@ const ForgetPasswordScreen = () => {
             />
             <View style={tw`flex-row justify-center`}>
               <TouchableOpacity
-                style={[tw`p-4 rounded-md items-center mr-4 w-auto`, { backgroundColor: '#22C55E' }]}
+                style={[tw`mt-4 px-4 py-2 rounded-md items-center mr-4 w-auto`, { backgroundColor: '#22C55E' }]}
                 onPress={handleResetPassword}
               >
-                <Text style={tw`text-white font-medium text-lg`}>{t('confirm')}</Text>
+                <Text style={tw`text-white font-medium text-lg`}>{t('utils.confirm')}</Text>
               </TouchableOpacity>
             </View>
           </View>
         )}
         {step === 4 && (
-          <View style={tw`bg-white p-4 rounded-md m-4`}>
+          <View style={tw`bg-white p-4 rounded-md h-full`}>
             <Text style={tw`font-medium text-lg mb-4`}>
-              {t('yourPasswordHasBeenSuccessfullyReset')}
+              {t('actions.yourPasswordHasBeenSuccessfullyReset')}
             </Text>
           </View>
         )}

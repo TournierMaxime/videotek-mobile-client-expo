@@ -33,7 +33,7 @@ const UserProfile = ({ route }) => {
   const [deleteSuccess, setDeleteSuccess] = useState(false)
   const accessDenied = checkAccess(isLogged, currentUserId, userId)
   const user = useSelector((state) => state.auth.data.user)
-  const userName = `${user.userName}`
+  const userName = `${user.pseudo}`
 
   const { t } = useTranslation()
 
@@ -63,7 +63,7 @@ const UserProfile = ({ route }) => {
   }
 
   return (
-    <View style={tw`bg-slate-100 flex-1 items-center justify-between`}>
+    <View style={tw`bg-white flex-1 items-center justify-between`}>
       {accessDenied ? (
         accessDenied
       ) : (
@@ -74,7 +74,7 @@ const UserProfile = ({ route }) => {
                 <TouchableOpacity
                   onPress={() => navigation.navigate('DetailsUser', { userId })}
                 >
-                  <View style={tw`bg-white w-full p-4 flex flex-row items-center justify-between mt-2`}>
+                  <View style={[tw`bg-white w-full p-4 flex flex-row items-center justify-between border-slate-100`, { borderTopWidth: 2, borderBottomWidth: 2 }]}>
                     <View style={tw`flex flex-row items-center`}>
                       <FontAwesome5
                         style={tw`mr-4`}
@@ -91,32 +91,11 @@ const UserProfile = ({ route }) => {
                     />
                   </View>
                 </TouchableOpacity>
-
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('UserCritics', { userId })}
-                >
-                  <View style={tw`bg-white w-full p-4 flex flex-row items-center justify-between mt-2`}>
-                    <View style={tw`flex flex-row items-center`}>
-                      <Entypo
-                        style={tw`mr-4`}
-                        name='new-message'
-                        size={Utils.moderateScale(25)}
-                        color='black'
-                      />
-                      <Text style={tw`font-medium text-lg`}>{t('critics')}</Text>
-                    </View>
-                    <Entypo
-                      name='chevron-small-right'
-                      size={Utils.moderateScale(25)}
-                      color='black'
-                    />
-                  </View>
-                  </TouchableOpacity>
                   
                 <TouchableOpacity
                   onPress={() => navigation.navigate('Favorites', { userId })}
                 >
-                  <View style={tw`bg-white w-full p-4 flex flex-row items-center justify-between mt-2`}>
+                  <View style={[tw`bg-white w-full p-4 flex flex-row items-center justify-between border-slate-100`, { borderBottomWidth: 2 }]}>
                     <View style={tw`flex flex-row items-center`}>
                       <MaterialIcons
                         style={tw`mr-4`}
@@ -124,7 +103,7 @@ const UserProfile = ({ route }) => {
                         size={Utils.moderateScale(25)}
                         color='black'
                       />
-                      <Text style={tw`font-medium text-lg`}>{t('favorites')}</Text>
+                      <Text style={tw`font-medium text-lg`}>{t('utils.favorites')}</Text>
                     </View>
                     <Entypo
                       name='chevron-small-right'
@@ -137,7 +116,7 @@ const UserProfile = ({ route }) => {
                 <TouchableOpacity
                   onPress={() => navigation.navigate('Settings', { userId })}
                 >
-                  <View style={tw`bg-white w-full p-4 flex flex-row items-center justify-between mt-2`}>
+                  <View style={[tw`bg-white w-full p-4 flex flex-row items-center justify-between border-slate-100`, { borderBottomWidth: 2 }]}>
                     <View style={tw`flex flex-row items-center`}>
                       <Ionicons
                         style={tw`mr-4`}
@@ -145,7 +124,7 @@ const UserProfile = ({ route }) => {
                         size={Utils.moderateScale(25)}
                         color='black'
                       />
-                      <Text style={tw`font-medium text-lg`}>{t('settings')}</Text>
+                      <Text style={tw`font-medium text-lg`}>{t('utils.settings')}</Text>
                     </View>
                     <Entypo
                       name='chevron-small-right'
@@ -156,7 +135,7 @@ const UserProfile = ({ route }) => {
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => handleLogout()}>
-                  <View style={tw`bg-white w-full p-4 flex flex-row items-center justify-between mt-2`}>
+                  <View style={[tw`bg-white w-full p-4 flex flex-row items-center justify-between border-slate-100`, { borderBottomWidth: 2 }]}>
                     <View style={tw`flex flex-row items-center`}>
                       <MaterialIcons
                         style={tw`mr-4`}
@@ -164,7 +143,7 @@ const UserProfile = ({ route }) => {
                         size={Utils.moderateScale(25)}
                         color='black'
                       />
-                      <Text style={tw`font-medium text-lg`}>{t('logout')}</Text>
+                      <Text style={tw`font-medium text-lg`}>{t('utils.logout')}</Text>
                     </View>
                     <Entypo
                       name='chevron-small-right'
@@ -175,7 +154,7 @@ const UserProfile = ({ route }) => {
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => handleDeleteModal()}>
-                  <View style={tw`bg-white w-full p-4 flex flex-row items-center justify-between mt-2`}>
+                  <View style={[tw`bg-white w-full p-4 flex flex-row items-center justify-between border-slate-100`, { borderBottomWidth: 2 }]}>
                     <View style={tw`flex flex-row items-center`}>
                       <MaterialIcons
                         style={tw`mr-4`}
@@ -184,7 +163,7 @@ const UserProfile = ({ route }) => {
                         color='black'
                       />
                       <Text style={[tw`font-medium text-lg`, { color: 'red' }]}>
-                        {t('deleteAccount')}
+                        {t('utils.deleteAccount')}
                       </Text>
                     </View>
                     <Entypo
@@ -195,7 +174,7 @@ const UserProfile = ({ route }) => {
                   </View>
                 </TouchableOpacity>
                 <AlertModal
-                  message={t('deleteAccountConfirmMsg')}
+                  message={t('actions.deleteAccountConfirmMsg')}
                   action={handleDelete}
                   visible={deleteModalVisible}
                   setVisible={setDeleteModalVisible}

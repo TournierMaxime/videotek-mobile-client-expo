@@ -14,7 +14,7 @@ const TrendingTV = ({ t }) => {
   return (
     <Fragment>
       <View style={tw`justify-between items-baseline flex-row mr-4`}>
-        <Text style={tw`font-medium text-xl ml-4 mt-4`}>{t('series')}</Text>
+        <Text style={tw`font-medium text-xl ml-4 mt-4`}>{t('utils.series')}</Text>
         <Ionicons
           name='tv-sharp'
           size={Utils.moderateScale(25)}

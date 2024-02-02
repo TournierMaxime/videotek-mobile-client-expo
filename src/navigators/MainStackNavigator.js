@@ -11,13 +11,14 @@ const MainStack = createNativeStackNavigator()
 
 const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
   const userId = useSelector((state) => state.auth.data.user.userId)
+  console.log('user', userId);
   return (
     <MainStack.Navigator>
       {getCommonScreens(MainStack, isAuthenticated, i18n, t)}
       <MainStack.Screen
         name='DetailsUser'
         options={({ route }) => ({
-          title: route.params.userId,
+          userId: route.params.userId,
           header: () => (
             <Header isAuthenticated={isAuthenticated} backButton={true} />
           ),
@@ -39,7 +40,7 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
       <MainStack.Screen
         name='Settings'
         options={({ route }) => ({
-          title: route.params.userId,
+          userId: route.params.userId,
           header: () => (
             <Header isAuthenticated={isAuthenticated} backButton={true} />
           ),

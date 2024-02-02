@@ -39,13 +39,13 @@ const LoginScreen = () => {
       <View style={tw`flex-col items-center`}>
         <View style={tw`mt-5`}>
           <Text style={tw`text-gray-800 text-2xl font-bold sm:text-3xl`}>
-            {t('auth.logInToYourAccount')}
+            {t('utils.signIn')}
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate('Register')}>
             <Text
               style={tw`font-medium text-base text-center my-2 text-indigo-600`}
             >
-              {t('auth.notRegistered')}
+              {t('utils.notRegistered')}
             </Text>
           </TouchableOpacity>
         </View>
@@ -62,27 +62,27 @@ const LoginScreen = () => {
 
         <View style={tw`relative border-b border-slate-300 my-4`}>
           <Text style={tw`text-sm bg-white px-2 -top-2 inset-x-0 mx-auto`}>
-            {t('auth.orContinueWith')}
+            {t('utils.orContinueWith')}
           </Text>
         </View>
 
         <View style={tw`w-10/12`}>
-          <Text style={tw`font-medium text-base`}>{t('auth.email')}</Text>
+          <Text style={tw`font-medium text-lg`}>{t('utils.email')}</Text>
           <TextInput
-            placeholder={t('auth.email')}
+            placeholder={t('utils.email')}
             onChangeText={(text) => setData({ ...data, email: text })}
             value={data.email}
-            style={tw`mt-2 px-3 py-2 text-gray-500 border border-slate-200 rounded-lg`}
+            style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
           />
-          <Text style={tw`font-medium text-base mt-2`}>
-            {t('auth.password')}
+          <Text style={tw`font-medium text-lg mt-2`}>
+            {t('utils.password')}
           </Text>
           <TextInput
-            placeholder={t('auth.password')}
+            placeholder={t('utils.password')}
             onChangeText={(text) => setData({ ...data, password: text })}
             value={data.password}
             secureTextEntry={true}
-            style={tw`mt-2 px-3 py-2 text-gray-500 border border-slate-200 rounded-lg`}
+            style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
           />
 
           {message.error ? (
@@ -99,9 +99,9 @@ const LoginScreen = () => {
                 <ActivityIndicator size={'large'} />
               ) : (
                 <Text
-                  style={tw`px-4 py-2 text-white text-base font-medium bg-indigo-600 rounded-lg`}
+                  style={tw`px-4 py-2 text-white text-xl font-medium bg-indigo-600 rounded-lg`}
                 >
-                  {t('auth.signIn')}
+                  {t('utils.signIn')}
                 </Text>
               )}
             </TouchableOpacity>
@@ -111,7 +111,7 @@ const LoginScreen = () => {
         <View>
           <TouchableOpacity onPress={handleForgetPassword}>
             <Text style={tw`mt-10 text-base font-medium text-indigo-600`}>
-              {t('auth.forgotYourPassword')}
+              {t('utils.forgotYourPassword')}
             </Text>
           </TouchableOpacity>
         </View>
