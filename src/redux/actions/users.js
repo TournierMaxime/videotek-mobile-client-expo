@@ -2,6 +2,7 @@ import { SearchUsers, GetOneUser, UpdateUser, DeleteUser } from '../../services/
 
 const searchUsers = (data) => async (dispatch) => {
   try {
+    dispatch({type: 'SEARCH_USERS_REQUEST'})
     const response = await SearchUsers(data)
     dispatch({type: 'SEARCH_USERS_SUCCESS', payload: response.data});
     return response.data
@@ -14,6 +15,7 @@ const searchUsers = (data) => async (dispatch) => {
 
 const getUser = (userId) => async (dispatch) => {
   try {
+    dispatch({type: 'GET_USER_REQUEST'})
     const response = await GetOneUser(userId)
     dispatch({type: 'GET_USER_SUCCESS', payload: response.data});
     return response.data
@@ -26,6 +28,7 @@ const getUser = (userId) => async (dispatch) => {
 
 const updateUser = (data, userId) => async (dispatch) => {
   try {
+    dispatch({type: 'UPDATE_USER_REQUEST'})
     const response = await UpdateUser(data, userId)
     dispatch({type: 'UPDATE_USER_SUCCESS', payload: response.data});
     return response.data
@@ -38,6 +41,7 @@ const updateUser = (data, userId) => async (dispatch) => {
 
 const deleteUser = (userId) => async (dispatch) => {
   try {
+    dispatch({type: 'DELETE_USER_REQUEST'})
     const response = await DeleteUser(userId)
     dispatch({type: 'DELETE_USER_SUCCESS', payload: response.data});
     return response.data

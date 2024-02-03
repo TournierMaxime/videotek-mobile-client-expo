@@ -15,11 +15,9 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import {
   movieDetails,
-  resetMovieDetails,
   movieCrew,
   releaseDates,
   movieWatchProviders,
-  resetMovieWatchProviders,
 } from '../../redux/actions/movies'
 import { LinearGradient } from 'expo-linear-gradient'
 import Runtime from '../../lib/components/utils/RunTime'
@@ -36,20 +34,18 @@ const DetailsMovie = ({ route }) => {
   const dispatch = useDispatch()
   const movie = useSelector((state) => state.movieDetails.data)
   const credits = useSelector((state) => state.movieCrew.data)
+  const loading = useSelector((state) => state.movieDetails.loading)
   const { id } = route.params
-  const [loading, setLoading] = useState(false)
   const [selectedTab, setSelectedTab] = useState('about')
 
   const { i18n, t } = useTranslation()
   const language = i18n.language
 
   const fetchData = useCallback(async () => {
-    setLoading(true)
     await dispatch(movieDetails(id, language))
     await dispatch(movieCrew(id, language))
     await dispatch(releaseDates(id))
     await dispatch(movieWatchProviders(id))
-    setLoading(false)
   }, [dispatch, id, language])
 
   const onRefresh = useCallback(async () => {
@@ -62,13 +58,6 @@ const DetailsMovie = ({ route }) => {
   useEffect(() => {
     fetchData()
   }, [fetchData])
-
-  useEffect(() => {
-    return () => {
-      dispatch(resetMovieDetails())
-      dispatch(resetMovieWatchProviders())
-    }
-  }, [])
 
   const directors = useMemo(() => {
     return credits?.crew?.map((credit, index) => {
@@ -102,8 +91,6 @@ const DetailsMovie = ({ route }) => {
       </Text>
     ))
   })
-
-  const OverViewMemoized = React.memo(OverView)
 
   return (
     <View style={tw`flex-1`}>
@@ -184,7 +171,7 @@ const DetailsMovie = ({ route }) => {
                   </View>
                 </View>
 
-                <OverViewMemoized content={movie.overview} t={t} />
+                <OverView content={movie.overview} t={t} />
               </View>
               <Tabs
                 id={id}

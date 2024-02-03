@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Text, View, Image, TouchableOpacity } from 'react-native'
 import { useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
@@ -41,9 +41,12 @@ const CrewMovie = () => {
           )}
           <View style={tw`flex-1 w-full`}>
             <Text style={tw`font-medium text-lg ml-4`}>
-              {item.name} | {item.job}
+              {item.name}
             </Text>
-            <Text style={tw`font-medium text-base p-4 text-justify leading-7`}>
+            <Text style={tw`font-medium text-base px-4 text-justify leading-7`}>
+              {item.job}
+            </Text>
+            <Text style={tw`font-medium text-base px-4 text-justify leading-7`}>
               {item.department}
             </Text>
           </View>
@@ -56,9 +59,9 @@ const CrewMovie = () => {
     <View
       style={[tw`flex-1 flex flex-col border-slate-100`, { borderTopWidth: 2 }]}
     >
-      {credits?.crew?.map((item) => renderItem(item))}
+      {credits?.crew?.map((item, idx) => renderItem(item, idx))}
     </View>
   )
 }
 
-export default CrewMovie
+export default memo(CrewMovie)

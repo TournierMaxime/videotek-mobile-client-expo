@@ -23,8 +23,6 @@ const DetailsUser = ({ route }) => {
     image: localStorageData.user?.image || '',
   })
 
-  console.log(data.image);
-
   const pickImage = async () => {
     let permissionResult =
       await ImagePicker.requestMediaLibraryPermissionsAsync()

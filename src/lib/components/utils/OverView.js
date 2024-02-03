@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, memo } from 'react'
 import { View, Text } from 'react-native'
 import Utils from '../../../lib/class/Utils'
 import ModalComponent from '../../../lib/components/utils/ModalComponent'
@@ -35,7 +35,7 @@ const OverView = ({ content, isBiography, t }) => {
           )}
       </View>
       <ModalComponent
-        title={t('utils.plot')}
+        title={isBiography === true ? t('utils.biography') : t('utils.plot')}
         content={content}
         visible={modalVisible}
         setVisible={setModalVisible}
@@ -44,4 +44,4 @@ const OverView = ({ content, isBiography, t }) => {
   )
 }
 
-export default OverView
+export default memo(OverView)

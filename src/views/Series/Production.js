@@ -10,18 +10,38 @@ const Production = ({ serie, t }) => {
     const statusSerie = () => {
       switch (data) {
         case 'Returning Series':
-          return <Text style={[tw`font-medium text-lg rounded-md ml-4 mr-auto w-auto py-2 px-4 text-center leading-7`, { color: '#495057', backgroundColor: '#dee2e6' }]}>{t('returningSeries')}</Text>
+          return (
+            <Text
+              style={[
+                tw`font-medium text-lg rounded-md ml-4 mr-auto my-2 w-auto py-2 px-4 text-center leading-7`,
+                { color: '#495057', backgroundColor: '#dee2e6' },
+              ]}
+            >
+              {t('utils.returningSeries')}
+            </Text>
+          )
         case 'Ended':
-          return <Text style={[tw`font-medium text-lg rounded-md ml-4 mr-auto w-auto py-2 px-4 text-center leading-7`, { color: '#495057', backgroundColor: '#dee2e6' }]}>{t('ended')}</Text>
+          return (
+            <Text
+              style={[
+                tw`font-medium text-lg rounded-md ml-4 mr-auto my-2 w-auto py-2 px-4 text-center leading-7`,
+                { color: '#495057', backgroundColor: '#dee2e6' },
+              ]}
+            >
+              {t('utils.ended')}
+            </Text>
+          )
       }
     }
 
     return (
-      <Accordion title={t('utils.status')}>
-        <View style={tw`flex flex-col`}>
-          <View style={tw`flex-col justify-between`}>{statusSerie()}</View>
-        </View>
-      </Accordion>
+      <View style={[tw`border-slate-100`, { borderTopWidth: 2 }]}>
+        <Accordion title={t('utils.status')}>
+          <View style={tw`flex flex-col`}>
+            <View style={tw`flex-col justify-between`}>{statusSerie()}</View>
+          </View>
+        </Accordion>
+      </View>
     )
   }
 
@@ -33,7 +53,14 @@ const Production = ({ serie, t }) => {
         {data?.map((item, index) => {
           return (
             <View key={index} style={tw`flex-col justify-between`}>
-              <Text style={[tw`font-medium text-lg rounded-md ml-4 mr-auto w-auto py-2 px-4 text-center leading-7`, { color: '#495057', backgroundColor: '#dee2e6' }]}>{item.name}</Text>
+              <Text
+                style={[
+                  tw`font-medium text-lg rounded-md ml-4 mr-auto my-2 w-auto py-2 px-4 text-center leading-7`,
+                  { color: '#495057', backgroundColor: '#dee2e6' },
+                ]}
+              >
+                {item.name}
+              </Text>
             </View>
           )
         })}
@@ -49,7 +76,14 @@ const Production = ({ serie, t }) => {
         {data?.map((item, index) => {
           return (
             <View key={index} style={tw`flex-col justify-between`}>
-              <Text style={[tw`font-medium text-lg rounded-md ml-4 mr-auto w-auto py-2 px-4 text-center leading-7`, { color: '#495057', backgroundColor: '#dee2e6' }]}>{item.name}</Text>
+              <Text
+                style={[
+                  tw`font-medium text-lg rounded-md ml-4 mr-auto my-2 w-auto py-2 px-4 text-center leading-7`,
+                  { color: '#495057', backgroundColor: '#dee2e6' },
+                ]}
+              >
+                {item.name}
+              </Text>
             </View>
           )
         })}
@@ -65,7 +99,14 @@ const Production = ({ serie, t }) => {
         {data?.map((item, index) => {
           return (
             <View key={index} style={tw`flex-col justify-between`}>
-              <Text style={[tw`font-medium text-lg rounded-md ml-4 mr-auto w-auto py-2 px-4 text-center leading-7`, { color: '#495057', backgroundColor: '#dee2e6' }]}>{item.name}</Text>
+              <Text
+                style={[
+                  tw`font-medium text-lg rounded-md ml-4 mr-auto my-2 w-auto py-2 px-4 text-center leading-7`,
+                  { color: '#495057', backgroundColor: '#dee2e6' },
+                ]}
+              >
+                {item.name}
+              </Text>
             </View>
           )
         })}
@@ -74,10 +115,7 @@ const Production = ({ serie, t }) => {
   }
 
   return (
-    <View style={tw`my-4 pb-4`}>
-      <View style={tw`flex flex-row my-2`}>
-        <Text style={tw`font-medium text-lg m-2`}>{t('production')}</Text>
-      </View>
+    <View style={tw`pb-4 bg-white h-full`}>
       {status(serie?.status)}
       {networks(serie?.networks)}
       {productionCompanies(serie?.production_companies)}

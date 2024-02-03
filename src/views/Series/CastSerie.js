@@ -1,25 +1,18 @@
-import React from 'react'
-import {
-  Text,
-  View,
-  FlatList,
-  Image,
-  TouchableOpacity,
-} from 'react-native'
+import React, { memo } from 'react'
+import { Text, View, Image, TouchableOpacity } from 'react-native'
 import { useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
-import { useTranslation } from 'react-i18next'
 import tw from 'twrnc'
 
-const CastSerie = ({ title }) => {
+const CastSerie = () => {
   const navigation = useNavigation()
   const credits = useSelector((state) => state.serieCrew.data)
 
-  const { t } = useTranslation()
-
-  const renderItem = (item) => {
+  const renderItem = (item, idx) => {
+    console.log('cast', item.name);
     return (
       <TouchableOpacity
+        key={idx}
         onPress={() =>
           navigation.navigate('DetailsPeople', {
             id: item.id,
@@ -27,23 +20,31 @@ const CastSerie = ({ title }) => {
           })
         }
       >
-        <View style={tw`flex flex-row justify-start bg-white my-2 p-2`}>
+        <View style={tw`flex flex-row justify-start bg-white p-4`}>
           {item.profile_path ? (
             <Image
-              style={[tw`w-20 h-30 rounded-md ml-4 mb-2`, { resizeMode: 'cover' }]}
+              style={[
+                tw`w-20 h-30 rounded-md ml-4 mb-2`,
+                { resizeMode: 'cover' },
+              ]}
               source={{
                 uri: `https://image.tmdb.org/t/p/original/${item.profile_path}`,
               }}
             />
           ) : (
             <Image
-              style={[tw`w-20 h-30 rounded-md ml-4 mb-2`, { resizeMode: 'cover' }]}
+              style={[
+                tw`w-20 h-30 rounded-md ml-4 mb-2`,
+                { resizeMode: 'cover' },
+              ]}
               source={require('../../assets/images/No_Image_Available.jpg')}
             />
           )}
           <View style={tw`flex-1 w-full`}>
             <Text style={tw`font-medium text-lg ml-4`}>{item.name}</Text>
-            <Text style={tw`font-medium p-4 text-justify leading-7`}>{item.character}</Text>
+            <Text style={tw`font-medium text-base px-4 text-justify leading-7`}>
+              {item.character}
+            </Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -51,15 +52,12 @@ const CastSerie = ({ title }) => {
   }
 
   return (
-    <View style={tw`flex-1 flex flex-col mt-4`}>
-      <Text style={tw`text-center font-medium text-lg mb-4`}>{t('castOf')} {title}</Text>
-      <FlatList
-        data={credits?.cast}
-        keyExtractor={(item) => item.credit_id.toString()}
-        renderItem={({ item }) => renderItem(item)}
-      />
+    <View
+      style={[tw`flex-1 flex flex-col border-slate-100`, { borderTopWidth: 2 }]}
+    >
+      {credits?.cast?.map((item, idx) => renderItem(item, idx))}
     </View>
   )
 }
 
-export default CastSerie
+export default memo(CastSerie)
