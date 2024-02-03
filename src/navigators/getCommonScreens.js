@@ -9,7 +9,6 @@ import Popular from '../views/Series/Popular'
 import DetailsSerie from '../views/Series/DetailsSerie'
 import DetailsPeople from '../views/People/DetailsPeople'
 import Trending from '../views/Movies/Trending'
-import Seasons from '../lib/components/utils/Seasons'
 import AllSeasons from '../views/Series/AllSeasons'
 import AllEpisodes from '../views/Series/AllEpisodes'
 import CastMovie from '../views/Movies/CastMovie'
@@ -100,15 +99,6 @@ const getCommonScreens = (Stack, isAuthenticated, i18n, t) => (
       component={DetailsPeople}
       options={({ route }) => ({
         title: route.params.name,
-        header: () => (
-          <Header isAuthenticated={isAuthenticated} backButton={true} />
-        ),
-      })}
-    />
-    <Stack.Screen
-      name='Seasons'
-      component={Seasons}
-      options={() => ({
         header: () => (
           <Header isAuthenticated={isAuthenticated} backButton={true} />
         ),

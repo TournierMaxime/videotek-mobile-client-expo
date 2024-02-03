@@ -4,7 +4,6 @@ import {
   Text,
   Image,
   ActivityIndicator,
-  Linking,
   TouchableOpacity,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
@@ -22,6 +21,7 @@ import { useTranslation } from 'react-i18next'
 import tw from 'twrnc'
 import Utils from '../../lib/class/Utils'
 import Tabs from '../../lib/components/utils/Tabs'
+import People from '../../lib/class/People'
 
 const DetailsPeople = ({ route }) => {
   const dispatch = useDispatch()
@@ -35,56 +35,6 @@ const DetailsPeople = ({ route }) => {
   const { i18n, t } = useTranslation()
   const language = i18n.language
   moment.locale(language)
-
-  const currentAge = useCallback(() => {
-    const currentYear = moment().format('YYYY')
-    const yearBirthDay = moment(people.birthday).format('YYYY')
-    const currentAge = currentYear - yearBirthDay
-
-    return (
-      <Text style={tw`font-medium text-lg w-full my-2 text-white`}>
-        {t('utils.age')} {currentAge} {t('utils.years')}
-      </Text>
-    )
-  })
-
-  const ageDeath = useCallback(() => {
-    const yearBirthDay = moment(people.birthday).format('YYYY')
-    const yearDeathDay = moment(people.deathday).format('YYYY')
-    const ageDeath = yearDeathDay - yearBirthDay
-
-    return (
-      <Text style={tw`font-medium text-lg w-full my-2 text-white`}>
-        {t('utils.deadAt')} {ageDeath} {t('utils.years')}
-      </Text>
-    )
-  })
-
-  const birth = useCallback(() => {
-    const birthDay = moment(people.birthday).locale(i18n.language).format('LL')
-    const placeOfBirth = people.place_of_birth
-    const gender = people.gender
-
-    if (gender === 1) {
-      return (
-        <Text style={tw`font-medium text-lg w-full my-2 text-white`}>
-          {t('utils.born')} {birthDay} {t('utils.at')} {placeOfBirth}
-        </Text>
-      )
-    } else if (gender === 2) {
-      return (
-        <Text style={tw`font-medium text-lg w-full my-2 text-white`}>
-          {t('utils.born')} {birthDay} {t('utils.at')} {placeOfBirth}
-        </Text>
-      )
-    }
-  })
-
-  const imdb = useCallback(() => {
-    if (!people.imdb_id) return null
-    const url = `https://www.imdb.com/name/${people.imdb_id}`
-    Linking.openURL(url)
-  })
 
   const fetchData = useCallback(async () => {
     await dispatch(peopleDetails(id, language))
@@ -145,13 +95,13 @@ const DetailsPeople = ({ route }) => {
                     />
                   </View>
                   <View style={tw`flex flex-col w-1/2`}>
-                    {birth()}
+                    {People.birth(people, t, i18n)}
 
-                    {people.deathday ? null : currentAge()}
+                    {people.deathday ? null : People.currentAge(people, t)}
 
-                    {people.deathday ? ageDeath() : null}
+                    {people.deathday ? People.ageDeath(people, t) : null}
 
-                    <TouchableOpacity onPress={() => imdb()}>
+                    <TouchableOpacity onPress={() => People.imdb(people)}>
                       <SVGImdb />
                     </TouchableOpacity>
                   </View>
