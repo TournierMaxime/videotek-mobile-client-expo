@@ -7,19 +7,19 @@ import {
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteUser } from '../../redux/actions/users'
-import { logoutUser } from '../../modules/mod-mobile-common/redux/actions/auth'
+import { logoutUser } from '@mod/mobile-common/redux/actions/auth'
 import { useNavigation } from '@react-navigation/native'
-import { checkAccess } from '../../lib/components/utils/CheckAccess'
+import { checkAccess } from '@mod/mobile-common/lib/components/utils/CheckAccess'
 import {
   Entypo,
   FontAwesome5,
   MaterialIcons,
   Ionicons,
 } from 'react-native-vector-icons'
-import AlertModal from '../../lib/components/utils/AlertModal'
+import AlertModal from '@mod/mobile-common/lib/components/utils/AlertModal'
 import { useTranslation } from 'react-i18next'
 import Utils from '@mod/mobile-common/lib/class/Utils'
-import { AlertMessage } from '../../lib/components/utils/AlertMessage'
+import { AlertMessage } from '@mod/mobile-common/lib/components/utils/AlertMessage'
 import tw from 'twrnc'
 
 const UserProfile = ({ route }) => {
