@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native'
 import { MaterialIcons } from 'react-native-vector-icons'
-import Utils from '../lib/class/Utils'
+import Utils from '@mod/mobile-common/lib/class/Utils'
 import tw from 'twrnc'
 import { useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'

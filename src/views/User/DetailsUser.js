@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Text, View, TextInput, Button, Image } from 'react-native'
 import { updateUser } from '../../redux/actions/users'
-import { setUserWithLocalStorage } from '../../redux/actions/auth'
+import { setUserWithLocalStorage } from '../../modules/mod-mobile-common/redux/actions/auth'
 import { useDispatch, useSelector } from 'react-redux'
 import * as ImagePicker from 'expo-image-picker'
 import { useTranslation } from 'react-i18next'

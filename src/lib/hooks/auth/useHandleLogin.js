@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { loginUser } from "../../../redux/actions/auth"
+import { loginUser } from "@mod/mobile-common/redux/actions/auth"
 import { useState } from "react"
 
 const useHandleLogin = ({ navigation }) => {

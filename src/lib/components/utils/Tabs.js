@@ -1,14 +1,14 @@
 import React from 'react'
 import { View, TouchableOpacity, Text } from 'react-native'
-import ProductionMovie from '../../../views/Movies/Production'
-import ProductionSerie from '../../../views/Series/Production'
+import ProductionMovie from '@mod/mobile-tmdb/views/Movies/Production'
+import ProductionSerie from '@mod/mobile-tmdb/views/Series/Production'
 import tw from 'twrnc'
-import CastMovie from '../../../views/Movies/CastMovie'
-import CastSerie from '../../../views/Series/CastSerie'
-import CrewMovie from '../../../views/Movies/CrewMovie'
-import CrewSerie from '../../../views/Series/CrewSerie'
-import Informations from '../../../views/People/Informations'
-import CastPeople from '../../../views/People/CastPeople'
+import CastMovie from '@mod/mobile-tmdb/views/Movies/CastMovie'
+import CastSerie from '@mod/mobile-tmdb/views/Series/CastSerie'
+import CrewMovie from '@mod/mobile-tmdb/views/Movies/CrewMovie'
+import CrewSerie from '@mod/mobile-tmdb/views/Series/CrewSerie'
+import Informations from '@mod/mobile-tmdb/views/People/Informations'
+import CastPeople from '@mod/mobile-tmdb/views/People/CastPeople'
 
 const Tabs = ({
   id,

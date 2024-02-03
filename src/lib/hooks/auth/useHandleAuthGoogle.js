@@ -1,7 +1,7 @@
 import { authorize } from 'react-native-app-auth'
 import axios from 'axios'
 import { GOOGLE_AUTH_CLIENT_ID, GOOGLE_REDIRECT_URI } from '@env'
-import { createUser, loginUser } from '../../../redux/actions/auth'
+import { createUser, loginUser } from '@mod/mobile-common/redux/actions/auth'
 import { searchUsers } from '../../../redux/actions/users'
 import { useDispatch } from 'react-redux'
 import { useState } from 'react'

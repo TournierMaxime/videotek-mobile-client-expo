@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import { movieTrailer } from '../../../redux/actions/movies'
-import { serieTrailer } from '../../../redux/actions/series'
+import { movieTrailer } from '@mod/mobile-tmdb/redux/actions/movies'
+import { serieTrailer } from '@mod/mobile-tmdb/redux/actions/series'
 import { useDispatch, useSelector } from 'react-redux'
 import { Linking, TouchableOpacity, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { Ionicons } from 'react-native-vector-icons'
-import Utils from '../../../lib/class/Utils'
+import Utils from '@mod/mobile-common/lib/class/Utils'
 import tw from 'twrnc'
 
 const extractFirstTrailerResult = (trailer) => {

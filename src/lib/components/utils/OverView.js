@@ -1,6 +1,6 @@
 import React, { Fragment, useState, memo } from 'react'
 import { View, Text } from 'react-native'
-import Utils from '../../../lib/class/Utils'
+import Utils from '@mod/mobile-common/lib/class/Utils'
 import ModalComponent from '../../../lib/components/utils/ModalComponent'
 import { useTranslation } from 'react-i18next'
 import tw from 'twrnc'

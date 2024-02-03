@@ -3,8 +3,8 @@ import {
   ActivityIndicator,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { nowPlaying, trending } from '../redux/actions/movies'
-import { trendingTV } from '../redux/actions/series'
+import { nowPlaying, trending } from '@mod/mobile-tmdb/redux/actions/movies'
+import { trendingTV } from '@mod/mobile-tmdb/redux/actions/series'
 import Refresh from '../lib/components/utils/Refresh'
 import { useTranslation } from 'react-i18next'
 import registerForPushNotificationsAsync from '../lib/components/utils/Notifications'

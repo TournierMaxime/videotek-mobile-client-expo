@@ -7,7 +7,7 @@ import {
   Text,
 } from 'react-native'
 import { Ionicons } from 'react-native-vector-icons'
-import Utils from '../../../lib/class/Utils'
+import Utils from '@mod/mobile-common/lib/class/Utils'
 import tw from 'twrnc'
 
 const ModalComponent = ({ visible, setVisible, title, content }) => {

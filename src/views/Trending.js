@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native'
 import { Ionicons } from 'react-native-vector-icons'
 import tw from 'twrnc'
 import { useSelector } from 'react-redux'
-import Utils from '../lib/class/Utils'
+import Utils from '@mod/mobile-common/lib/class/Utils'
 import { useNavigation } from '@react-navigation/native'
 
 const Trending = ({ t }) => {

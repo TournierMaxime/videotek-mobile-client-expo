@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { View, TouchableOpacity, Text } from 'react-native'
 import { Entypo } from 'react-native-vector-icons'
-import Utils from '../../class/Utils'
+import Utils from '@mod/mobile-common/lib/class/Utils'
 import tw from 'twrnc'
 
 const Accordion = ({ children, title }) => {

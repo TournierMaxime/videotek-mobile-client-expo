@@ -9,12 +9,12 @@ import {
 } from 'react-native'
 import { Ionicons } from 'react-native-vector-icons'
 import { useDispatch, useSelector } from 'react-redux'
-import { search } from '../../../redux/actions/search'
+import { search } from '@mod/mobile-tmdb/redux/actions/search'
 import { useNavigation } from '@react-navigation/native'
 import moment from 'moment'
 import { useTranslation } from 'react-i18next'
 import tw from 'twrnc'
-import Utils from '../../class/Utils'
+import Utils from '@mod/mobile-common/lib/class/Utils'
 
 const SearchModal = ({ visible, setVisible }) => {
   const dispatch = useDispatch()
