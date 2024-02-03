@@ -4,17 +4,14 @@ import {
   View,
   Text,
   TextInput,
-  StyleSheet,
   TouchableOpacity,
 } from 'react-native'
-
 import { createUser } from '../../redux/actions/auth'
 import { useNavigation } from '@react-navigation/native'
-import button from '../../styles/components/button'
-import form from '../../styles/components/form'
 import { useTranslation } from 'react-i18next'
-import { registerForPushNotificationsAsync } from "../../utils/Notifications"
-import { AlertMessage } from '../../utils/AlertMessage'
+import registerForPushNotificationsAsync from "../../lib/components/utils/Notifications"
+import { AlertMessage } from '../../lib/components/utils/AlertMessage'
+import tw from 'twrnc'
 
 const RegisterScreen = () => {
   const [data, setData] = useState({
@@ -51,48 +48,38 @@ const RegisterScreen = () => {
 
 
   return (
-    <View style={styles.formContainer}>
-      <Text style={styles.formLabel}>{t('userName')}</Text>
+    <View style={tw`bg-white p-4 rounded-md h-full`}>
+      <Text style={tw`font-medium text-lg mt-2`}>{t('utils.userName')}</Text>
       <TextInput
-        style={styles.formInput}
-        placeholder={t('userName')}
+        style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
+        placeholder={t('utils.userName')}
         value={data.userName}
         onChangeText={(text) => setData({ ...data, userName: text })}
       />
-      <Text style={styles.formLabel}>{t('email')}</Text>
+      <Text style={tw`font-medium text-lg mt-2`}>{t('utils.email')}</Text>
       <TextInput
-        style={styles.formInput}
-        placeholder={t('email')}
+        style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
+        placeholder={t('utils.email')}
         value={data.email}
         onChangeText={(text) => setData({ ...data, email: text })}
       />
-      <Text style={styles.formLabel}>{t('password')}</Text>
+      <Text style={tw`font-medium text-lg mt-2`}>{t('utils.password')}</Text>
       <TextInput
-        style={styles.formInput}
-        placeholder={t('password')}
+        style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
+        placeholder={t('utils.password')}
         secureTextEntry
         value={data.password}
         onChangeText={(text) => setData({ ...data, password: text })}
       />
-      <View style={styles.buttonContainer}>
+      <View style={tw`flex-row justify-center mt-4`}>
         <TouchableOpacity
-          style={styles.formButtonRegister}
           onPress={handleRegister}
         >
-          <Text style={styles.buttonText}>{t('signUp')}</Text>
+          <Text style={tw`px-4 py-2 text-white text-xl font-medium bg-indigo-600 rounded-lg`}>{t('utils.signUp')}</Text>
         </TouchableOpacity>
       </View>
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  formContainer: form.formContainer,
-  formLabel: form.formLabel,
-  formInput: form.formInput,
-  buttonText: button.buttonText,
-  formButtonRegister: button.formButtonRegister,
-  buttonContainer: button.buttonContainer,
-})
 
 export default RegisterScreen

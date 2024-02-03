@@ -1,15 +1,13 @@
 import React, { useState } from 'react'
-import { Text, View, TextInput, StyleSheet, Button, Image } from 'react-native'
+import { Text, View, TextInput, Button, Image } from 'react-native'
 import { updateUser } from '../../redux/actions/users'
 import { setUserWithLocalStorage } from '../../redux/actions/auth'
 import { useDispatch, useSelector } from 'react-redux'
-import button from '../../styles/components/button'
-import form from '../../styles/components/form'
 import * as ImagePicker from 'expo-image-picker'
 import { useTranslation } from 'react-i18next'
-import { moderateScale } from '../../utils/Responsive'
-import { AlertMessage } from '../../utils/AlertMessage'
+import { AlertMessage } from '../../lib/components/utils/AlertMessage'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import tw from 'twrnc'
 
 const DetailsUser = ({ route }) => {
   const { userId } = route.params
@@ -20,7 +18,7 @@ const DetailsUser = ({ route }) => {
   const { t } = useTranslation()
 
   const [data, setData] = useState({
-    userName: localStorageData.user?.userName || '',
+    userName: localStorageData.user?.pseudo || '',
     email: localStorageData.user?.email || '',
     image: localStorageData.user?.image || '',
   })
@@ -30,7 +28,7 @@ const DetailsUser = ({ route }) => {
       await ImagePicker.requestMediaLibraryPermissionsAsync()
 
     if (permissionResult.granted === false) {
-      alert(t('permissionToAccessCameraRollIsRequired'))
+      alert(t('actions.permissionToAccessCameraRollIsRequired'))
       return
     }
 
@@ -80,78 +78,69 @@ const DetailsUser = ({ route }) => {
       await dispatch(updateUser(formData, userId))
       await AsyncStorage.setItem('userData', JSON.stringify(updatedUserData))
       await dispatch(setUserWithLocalStorage(updatedUserData))
-      AlertMessage(t('profileUpdated'))
+      AlertMessage(t('actions.profileUpdated'))
     } catch (error) {
       console.log(error.response.data.errMsg)
 
       if (error.response.data.errMsg) {
         AlertMessage(error.response.data.errMsg)
       } else {
-        AlertMessage(t('anErrorHasOccurred'))
+        AlertMessage(t('errors.anErrorHasOccurred'))
       }
     }
   }
 
   return (
     <View
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-      }}
+      style={tw`flex flex-col justify-between`}
     >
-      <View style={styles.formContainer}>
-        <Text style={styles.formLabel}>{t('userName')}</Text>
+      <View style={tw`bg-white p-4 rounded-md h-full`}>
+        <Text style={tw`font-medium text-lg`}>{t('utils.userName')}</Text>
         <TextInput
-          style={styles.formInput}
-          placeholder={t('userName')}
+          style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
+          placeholder={t('utils.userName')}
           onChangeText={(text) => {
             setData({ ...data, userName: text }), setIsOnChange(true)
           }}
           defaultValue={data?.userName}
         />
-        <Text style={styles.formLabel}>{t('email')}</Text>
+        <Text style={tw`font-medium text-lg`}>{t('utils.email')}</Text>
         <TextInput
-          style={styles.formInput}
-          placeholder={t('email')}
+          style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
+          placeholder={t('utils.email')}
           onChangeText={(text) => {
             setData({ ...data, email: text }), setIsOnChange(true)
           }}
           defaultValue={data?.email}
         />
-        <Text style={styles.formLabel}>{t('avatar')}</Text>
+        <Text style={tw`mt-2 font-medium text-lg`}>{t('utils.avatar')}</Text>
         <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginBottom: 50,
-          }}
+          style={tw`flex-row justify-between items-center mb-8`}
         >
           <View>
             {
               <Image
                 source={{
-                  uri: `${data?.image}?t=${Date.now()}`,
+                  uri: `${data?.image}`,
                 }}
-                style={{ width: moderateScale(48), height: moderateScale(48) }}
+                style={tw`w-20 h-20`}
               />
             }
           </View>
           <View>
             <Button
-              title={t('changeAvatar')}
+              title={t('utils.changeAvatar')}
               onPress={() => {
                 pickImage(), setIsOnChange(true)
               }}
             />
           </View>
         </View>
-        <View style={styles.buttonContainer}>
+        <View style={tw`flex-row justify-center`}>
           <Button
             onPress={() => handleUpdate()}
             color={'#00AD4F'}
-            title={t('update')}
+            title={t('utils.update')}
             disabled={!isOnChange}
           />
         </View>
@@ -159,18 +148,5 @@ const DetailsUser = ({ route }) => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  formContainer: form.formContainer,
-  formLabel: form.formLabel,
-  formInput: form.formInput,
-  buttonText: button.buttonText,
-  formButtonRegister: button.formButtonRegister,
-  buttonContainer: button.buttonContainer,
-  formButtonLogin: button.formButtonLogin,
-  formButtonForgetPassword: button.formButtonForgetPassword,
-  deleteAccount: button.deleteAccount,
-  deleteAccountContainer: button.deleteAccountContainer,
-})
 
 export default DetailsUser

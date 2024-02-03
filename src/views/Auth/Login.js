@@ -1,109 +1,123 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
-  StyleSheet,
   View,
   TextInput,
   TouchableOpacity,
   Text,
+  ScrollView,
+  ActivityIndicator,
 } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
-import { loginUser } from '../../redux/actions/auth'
 import { useNavigation } from '@react-navigation/native'
-import button from '../../styles/components/button'
-import form from '../../styles/components/form'
-import { Fragment } from 'react'
 import { useTranslation } from 'react-i18next'
-import { moderateScale } from '../../utils/Responsive'
-import { AlertMessage } from '../../utils/AlertMessage'
+import tw from 'twrnc'
+import GoogleSVG from '../../assets/images/GoogleSVG'
+import Message from '../../lib/components/utils/Message'
+import useHandleLogin from '../../lib/hooks/auth/useHandleLogin'
+import useHandleAuthGoogle from '../../lib/hooks/auth/useHandleAuthGoogle'
+import { useSelector } from "react-redux"
 
 const LoginScreen = () => {
-  const dispatch = useDispatch()
   const navigation = useNavigation()
-  const [data, setData] = useState({ email: '', password: '' })
-  const userId = useSelector((state) => state.auth.data.user.userId)
 
-  const { t } = useTranslation()
+  const { i18n, t } = useTranslation()
 
-  const handleLogin = async () => {
-    try {
-      await dispatch(loginUser(data))
-      navigation.navigate('UserProfile', {
-        screen: 'UserProfile',
-        params: {
-          id: userId,
-        },
-      })
-    } catch (error) {
-      console.log(error.response.data.errMsg)
-      AlertMessage(error.response.data.errMsg)
-    }
-    setData({})
-  }
+  const { handleLogin, data, setData, message } = useHandleLogin({ navigation })
+
+  const { loginWithGoogle, googleMessage } = useHandleAuthGoogle({
+    i18n,
+    navigation,
+  })
+
+  const loading = useSelector((state) => state.auth.loading)
 
   const handleForgetPassword = () => {
     navigation.navigate('ForgetPassword')
   }
 
   return (
-    <Fragment>
-      <View style={styles.formContainer}>
-        <Text style={styles.formLabel}>{t('email')}</Text>
-        <TextInput
-          style={styles.formInput}
-          placeholder={t('email')}
-          onChangeText={(text) => setData({ ...data, email: text })}
-          value={data.email}
-        />
-        <Text style={styles.formLabel}>{t('password')}</Text>
-        <TextInput
-          style={styles.formInput}
-          placeholder={t('password')}
-          onChangeText={(text) => setData({ ...data, password: text })}
-          value={data.password}
-          secureTextEntry={true}
-        />
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={styles.formButtonLogin}
-            onPress={handleLogin}
-          >
-            <Text style={styles.buttonText}>{t('signIn')}</Text>
+    <ScrollView style={tw`flex bg-white h-full`}>
+      <View style={tw`flex-col items-center`}>
+        <View style={tw`mt-5`}>
+          <Text style={tw`text-gray-800 text-2xl font-bold sm:text-3xl`}>
+            {t('utils.signIn')}
+          </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+            <Text
+              style={tw`font-medium text-base text-center my-2 text-indigo-600`}
+            >
+              {t('utils.notRegistered')}
+            </Text>
           </TouchableOpacity>
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: 'auto',
-            marginTop: 40,
-          }}
-        >
-          <TouchableOpacity
-            style={{ alignItems: 'center' }}
-            onPress={() => navigation.navigate('Register')}
-          >
-            <Text style={{ color: '#0000EE', fontSize: moderateScale(16) }}>{t('notRegistered')}</Text>
+
+        <View style={tw`flex flex-row`}>
+          <TouchableOpacity onPress={() => loginWithGoogle()}>
+            <View
+              style={tw`bg-white px-8 py-2.5 m-2 border border-slate-200 rounded-lg`}
+            >
+              <GoogleSVG />
+            </View>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={{ alignItems: 'center' }}
-            onPress={handleForgetPassword}
-          >
-            <Text style={{ color: '#0000EE', fontSize: moderateScale(16) }}>{t('forgotYourPassword')}</Text>
+        </View>
+
+        <View style={tw`relative border-b border-slate-300 my-4`}>
+          <Text style={tw`text-sm bg-white px-2 -top-2 inset-x-0 mx-auto`}>
+            {t('utils.orContinueWith')}
+          </Text>
+        </View>
+
+        <View style={tw`w-10/12`}>
+          <Text style={tw`font-medium text-lg`}>{t('utils.email')}</Text>
+          <TextInput
+            placeholder={t('utils.email')}
+            onChangeText={(text) => setData({ ...data, email: text })}
+            value={data.email}
+            style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
+          />
+          <Text style={tw`font-medium text-lg mt-2`}>
+            {t('utils.password')}
+          </Text>
+          <TextInput
+            placeholder={t('utils.password')}
+            onChangeText={(text) => setData({ ...data, password: text })}
+            value={data.password}
+            secureTextEntry={true}
+            style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
+          />
+
+          {message.error ? (
+            <Message priority={'error'} message={message.error} />
+          ) : null}
+
+          {googleMessage.error ? (
+            <Message priority={'error'} message={googleMessage.error} />
+          ) : null}
+
+          <View style={tw`mt-10 items-center`}>
+            <TouchableOpacity onPress={handleLogin}>
+              {loading ? (
+                <ActivityIndicator size={'large'} />
+              ) : (
+                <Text
+                  style={tw`px-4 py-2 text-white text-xl font-medium bg-indigo-600 rounded-lg`}
+                >
+                  {t('utils.signIn')}
+                </Text>
+              )}
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <View>
+          <TouchableOpacity onPress={handleForgetPassword}>
+            <Text style={tw`mt-10 text-base font-medium text-indigo-600`}>
+              {t('utils.forgotYourPassword')}
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
-    </Fragment>
+    </ScrollView>
   )
 }
 
-const styles = StyleSheet.create({
-  formContainer: form.formContainer,
-  formLabel: form.formLabel,
-  formInput: form.formInput,
-  buttonText: button.buttonText,
-  formButtonRegister: button.formButtonRegister,
-  buttonContainer: button.buttonContainer,
-  formButtonLogin: button.formButtonLogin,
-  formButtonForgetPassword: button.formButtonForgetPassword,
-})
 export default LoginScreen

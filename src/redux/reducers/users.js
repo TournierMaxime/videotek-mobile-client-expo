@@ -4,6 +4,36 @@ const initialState = {
   error: null,
 }
 
+const searchUsersReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'SEARCH_USERS_REQUEST':
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      }
+    case 'SEARCH_USERS_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        data: action.payload,
+      }
+    case 'SEARCH_USERS_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        data: {},
+      }
+    case 'USER_RESET':
+      return {
+        ...initialState,
+      }
+    default:
+      return state
+  }
+}
+
 const oneUserReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'GET_USER_REQUEST':
@@ -94,4 +124,4 @@ const deleteUserReducer = (state = initialState, action) => {
   }
 }
 
-export { oneUserReducer, updateUserReducer, deleteUserReducer }
+export { searchUsersReducer, oneUserReducer, updateUserReducer, deleteUserReducer }

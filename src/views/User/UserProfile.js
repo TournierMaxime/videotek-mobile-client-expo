@@ -1,28 +1,26 @@
 import React, { Fragment, useState } from 'react'
 import {
-  StyleSheet,
   View,
   Text,
   TouchableOpacity,
   ScrollView,
 } from 'react-native'
-import button from '../../styles/components/button'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteUser } from '../../redux/actions/users'
 import { logoutUser } from '../../redux/actions/auth'
 import { useNavigation } from '@react-navigation/native'
-import { checkAccess } from '../../utils/CheckAccess'
+import { checkAccess } from '../../lib/components/utils/CheckAccess'
 import {
   Entypo,
   FontAwesome5,
   MaterialIcons,
   Ionicons,
 } from 'react-native-vector-icons'
-import profil from '../../styles/components/profil'
-import AlertModal from '../../utils/AlertModal'
+import AlertModal from '../../lib/components/utils/AlertModal'
 import { useTranslation } from 'react-i18next'
-import { moderateScale } from '../../utils/Responsive'
-import { AlertMessage } from '../../utils/AlertMessage'
+import Utils from '../../lib/class/Utils'
+import { AlertMessage } from '../../lib/components/utils/AlertMessage'
+import tw from 'twrnc'
 
 const UserProfile = ({ route }) => {
   const { userId } = route.params
@@ -35,7 +33,7 @@ const UserProfile = ({ route }) => {
   const [deleteSuccess, setDeleteSuccess] = useState(false)
   const accessDenied = checkAccess(isLogged, currentUserId, userId)
   const user = useSelector((state) => state.auth.data.user)
-  const userName = `${user.userName}`
+  const userName = `${user.pseudo}`
 
   const { t } = useTranslation()
 
@@ -65,93 +63,51 @@ const UserProfile = ({ route }) => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={tw`bg-white flex-1 items-center justify-between`}>
       {accessDenied ? (
         accessDenied
       ) : (
         <Fragment>
           {oneUser && (
-            <View style={styles.profilViewContainer}>
-              <ScrollView contentContainerStyle={{ height: '100%' }}>
+            <View style={tw`flex w-full`}>
+              <ScrollView contentContainerStyle={tw`h-full`}>
                 <TouchableOpacity
                   onPress={() => navigation.navigate('DetailsUser', { userId })}
                 >
-                  <View style={styles.profileSectionContainer}>
-                    <View style={styles.textIconContainer}>
+                  <View style={[tw`bg-white w-full p-4 flex flex-row items-center justify-between border-slate-100`, { borderTopWidth: 2, borderBottomWidth: 2 }]}>
+                    <View style={tw`flex flex-row items-center`}>
                       <FontAwesome5
-                        style={styles.icon}
+                        style={tw`mr-4`}
                         name='user'
-                        size={moderateScale(25)}
+                        size={Utils.moderateScale(25)}
                         color='black'
                       />
-                      <Text style={styles.textSize}>{userName}</Text>
+                      <Text style={tw`font-medium text-lg`}>{userName}</Text>
                     </View>
                     <Entypo
                       name='chevron-small-right'
-                      size={moderateScale(25)}
+                      size={Utils.moderateScale(25)}
                       color='black'
                     />
                   </View>
                 </TouchableOpacity>
-
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('UserCritics', { userId })}
-                >
-                  <View style={styles.profileSectionContainer}>
-                    <View style={styles.textIconContainer}>
-                      <Entypo
-                        style={styles.icon}
-                        name='new-message'
-                        size={moderateScale(25)}
-                        color='black'
-                      />
-                      <Text style={styles.textSize}>{t('critics')}</Text>
-                    </View>
-                    <Entypo
-                      name='chevron-small-right'
-                      size={moderateScale(25)}
-                      color='black'
-                    />
-                  </View>
-                </TouchableOpacity>
-
-{/*                 <TouchableOpacity
-                  onPress={() => navigation.navigate('WatchLists', { userId })}
-                >
-                  <View style={styles.profileSectionContainer}>
-                    <View style={styles.textIconContainer}>
-                      <Ionicons
-                        style={styles.icon}
-                        name='bookmark-outline'
-                        size={moderateScale(25)}
-                        color='black'
-                      />
-                      <Text style={styles.textSize}>{t('watchLists')}</Text>
-                    </View>
-                    <Entypo
-                      name='chevron-small-right'
-                      size={moderateScale(25)}
-                      color='black'
-                    />
-                  </View>
-                </TouchableOpacity> */}
-
+                  
                 <TouchableOpacity
                   onPress={() => navigation.navigate('Favorites', { userId })}
                 >
-                  <View style={styles.profileSectionContainer}>
-                    <View style={styles.textIconContainer}>
+                  <View style={[tw`bg-white w-full p-4 flex flex-row items-center justify-between border-slate-100`, { borderBottomWidth: 2 }]}>
+                    <View style={tw`flex flex-row items-center`}>
                       <MaterialIcons
-                        style={styles.icon}
+                        style={tw`mr-4`}
                         name='favorite-outline'
-                        size={moderateScale(25)}
+                        size={Utils.moderateScale(25)}
                         color='black'
                       />
-                      <Text style={styles.textSize}>{t('favorites')}</Text>
+                      <Text style={tw`font-medium text-lg`}>{t('utils.favorites')}</Text>
                     </View>
                     <Entypo
                       name='chevron-small-right'
-                      size={moderateScale(25)}
+                      size={Utils.moderateScale(25)}
                       color='black'
                     />
                   </View>
@@ -160,65 +116,65 @@ const UserProfile = ({ route }) => {
                 <TouchableOpacity
                   onPress={() => navigation.navigate('Settings', { userId })}
                 >
-                  <View style={styles.profileSectionContainer}>
-                    <View style={styles.textIconContainer}>
+                  <View style={[tw`bg-white w-full p-4 flex flex-row items-center justify-between border-slate-100`, { borderBottomWidth: 2 }]}>
+                    <View style={tw`flex flex-row items-center`}>
                       <Ionicons
-                        style={styles.icon}
+                        style={tw`mr-4`}
                         name='settings-outline'
-                        size={moderateScale(25)}
+                        size={Utils.moderateScale(25)}
                         color='black'
                       />
-                      <Text style={styles.textSize}>{t('settings')}</Text>
+                      <Text style={tw`font-medium text-lg`}>{t('utils.settings')}</Text>
                     </View>
                     <Entypo
                       name='chevron-small-right'
-                      size={moderateScale(25)}
+                      size={Utils.moderateScale(25)}
                       color='black'
                     />
                   </View>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => handleLogout()}>
-                  <View style={styles.profileSectionContainer}>
-                    <View style={styles.textIconContainer}>
+                  <View style={[tw`bg-white w-full p-4 flex flex-row items-center justify-between border-slate-100`, { borderBottomWidth: 2 }]}>
+                    <View style={tw`flex flex-row items-center`}>
                       <MaterialIcons
-                        style={styles.icon}
+                        style={tw`mr-4`}
                         name='logout'
-                        size={moderateScale(25)}
+                        size={Utils.moderateScale(25)}
                         color='black'
                       />
-                      <Text style={styles.textSize}>{t('logout')}</Text>
+                      <Text style={tw`font-medium text-lg`}>{t('utils.logout')}</Text>
                     </View>
                     <Entypo
                       name='chevron-small-right'
-                      size={moderateScale(25)}
+                      size={Utils.moderateScale(25)}
                       color='black'
                     />
                   </View>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => handleDeleteModal()}>
-                  <View style={styles.profileSectionContainer}>
-                    <View style={styles.textIconContainer}>
+                  <View style={[tw`bg-white w-full p-4 flex flex-row items-center justify-between border-slate-100`, { borderBottomWidth: 2 }]}>
+                    <View style={tw`flex flex-row items-center`}>
                       <MaterialIcons
-                        style={styles.icon}
+                        style={tw`mr-4`}
                         name='delete-outline'
-                        size={moderateScale(25)}
+                        size={Utils.moderateScale(25)}
                         color='black'
                       />
-                      <Text style={[styles.textSize, { color: 'red' }]}>
-                        {t('deleteAccount')}
+                      <Text style={[tw`font-medium text-lg`, { color: 'red' }]}>
+                        {t('utils.deleteAccount')}
                       </Text>
                     </View>
                     <Entypo
                       name='chevron-small-right'
-                      size={moderateScale(25)}
+                      size={Utils.moderateScale(25)}
                       color='black'
                     />
                   </View>
                 </TouchableOpacity>
                 <AlertModal
-                  message={t('deleteAccountConfirmMsg')}
+                  message={t('actions.deleteAccountConfirmMsg')}
                   action={handleDelete}
                   visible={deleteModalVisible}
                   setVisible={setDeleteModalVisible}
@@ -233,20 +189,5 @@ const UserProfile = ({ route }) => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#efefef',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  logoutButton: button.logoutButton,
-  profileSectionContainer: profil.profileSectionContainer,
-  icon: profil.icon,
-  textIconContainer: profil.textIconContainer,
-  profilViewContainer: profil.profilViewContainer,
-  textSize: profil.textSize,
-})
 
 export default UserProfile

@@ -1,133 +1,45 @@
 const initialState = {
-  data: {
-    favorites: [],
-    items: null,
-    results: null,
-    page: null,
-    totalPages: null,
-    loading: false,
-    error: null,
-  },
+  favorites: [],
+  loading: false,
+  error: null,
 }
 
-const searchFavoriteReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'SEARCH_FAVORITE_REQUEST':
+const favoritesReducer = (state = initialState, action) => {
+  switch (action.type) {   
+    case "ALL_FAVORITES":
       return {
         ...state,
-        loading: true,
-        error: null,
+        favorites: action.payload
       }
-    case 'SEARCH_FAVORITE_SUCCESS':
-      return {
-        ...state,
-        data: {
-          ...state.data,
-          favorites: action.payload.favorites,
-          items: action.payload.items,
-          results: action.payload.results,
-          page: action.payload.page,
-          totalPages: action.payload.totalPages,
-          loading: false,
-        },
+    
+    case "ADD_FAVORITE": {
+      const { game } = action.payload
+      if (!state.favorites.some((favorite) => favorite.id === game.id)) {
+        const newFavorite = {
+          id: game?.id,
+          name: game?.names?.international,
+          image: game?.assets?.["cover-tiny"]?.uri,
+        }
+        const updatedFavorites = [...state.favorites, newFavorite]
+        return { ...state, favorites: updatedFavorites }
       }
-    case 'SEARCH_FAVORITE_FAILURE':
-      return {
-        ...state,
-        loading: false,
-        error: action.payload,
-        data: {},
-      }
-    case 'RESET_FAVORITES':
+      return state
+    }
+
+    case "REMOVE_FAVORITE": {
+      const { gameId } = action.payload
+      const updatedFavorites = state.favorites.filter(
+        (game) => game.id !== gameId
+      )
+      return { ...state, favorites: updatedFavorites }
+    }
+
+    case "RESET":
       return initialState
+
     default:
       return state
   }
 }
 
-const createFavoriteReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'CREATE_FAVORITE_REQUEST':
-      return {
-        ...state,
-        loading: true,
-        error: null,
-      }
-    case 'CREATE_FAVORITE_SUCCESS':
-      return {
-        ...state,
-        loading: false,
-        data: action.payload,
-      }
-    case 'CREATE_FAVORITE_FAILURE':
-      return {
-        ...state,
-        loading: false,
-        error: action.payload,
-        data: {},
-      }
-    default:
-      return state
-  }
-}
-
-const getOneFavoriteReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'GET_ONE_FAVORITE_REQUEST':
-      return {
-        ...state,
-        loading: true,
-        error: null,
-      }
-    case 'GET_ONE_FAVORITE_SUCCESS':
-      return {
-        ...state,
-        loading: false,
-        data: action.payload,
-      }
-    case 'GET_ONE_FAVORITE_FAILURE':
-      return {
-        ...state,
-        loading: false,
-        error: action.payload,
-        data: {},
-      }
-    case 'RESET_FAVORITES':
-      return initialState
-    default:
-      return state
-  }
-}
-
-const deleteFavoriteReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'DELETE_FAVORITE_REQUEST':
-      return {
-        ...state,
-        loading: true,
-        error: null,
-      }
-    case 'DELETE_FAVORITE_SUCCESS':
-      return {
-        ...state,
-        loading: false,
-        data: action.payload,
-      }
-    case 'DELETE_FAVORITE_FAILURE':
-      return {
-        ...state,
-        loading: false,
-        error: action.payload,
-        data: {},
-      }
-    default:
-      return state
-  }
-}
-
-export {
-  searchFavoriteReducer,
-  createFavoriteReducer,
-  getOneFavoriteReducer,
-  deleteFavoriteReducer,
-}
+export { favoritesReducer }

@@ -3,7 +3,6 @@ import {
   View,
   Text,
   TextInput,
-  StyleSheet,
   TouchableOpacity,
 } from 'react-native'
 import { useDispatch } from 'react-redux'
@@ -12,11 +11,10 @@ import {
   checkForgetPasswordCode,
   resetPassword,
 } from '../../redux/actions/auth'
-import button from '../../styles/components/button'
-import form from '../../styles/components/form'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
-import { AlertMessage } from '../../utils/AlertMessage'
+import { AlertMessage } from '../../lib/components/utils/AlertMessage'
+import tw from 'twrnc'
 
 const ForgetPasswordScreen = () => {
   const [email, setEmail] = useState('')
@@ -36,7 +34,7 @@ const ForgetPasswordScreen = () => {
   const handleForgetPassword = async () => {
     try {
       await dispatch(forgetPassword({ email, lang }))
-      AlertMessage(t('anEmailHasBeenSentToYouContainingA6DigitCode'))
+      AlertMessage(t('actions.anEmailHasBeenSentToYouContainingA6DigitCode'))
       setStep(2)
     } catch (error) {
       console.log(error.response.data.errMsg)
@@ -46,9 +44,8 @@ const ForgetPasswordScreen = () => {
 
   const handleCheckForgetPasswordCode = async () => {
     try {
-      console.log(email)
       await dispatch(checkForgetPasswordCode({ email, code }))
-      AlertMessage(t('yourVerificationCodeHasBeenValidated'))
+      AlertMessage(t('actions.yourVerificationCodeHasBeenValidated'))
       setStep(3)
     } catch (error) {
       console.log(error.response.data.errMsg)
@@ -66,7 +63,7 @@ const ForgetPasswordScreen = () => {
           confirmPassword: password.confirmPassword,
         })
       )
-      AlertMessage(t('yourPasswordHasBeenSuccessfullyReset'))
+      AlertMessage(t('actionsyourPasswordHasBeenSuccessfullyReset'))
       setStep(4)
       setTimeout(() => {
         navigation.navigate('Login')
@@ -82,52 +79,52 @@ const ForgetPasswordScreen = () => {
     <View>
       <View>
         {step === 1 && (
-          <View style={styles.formContainer}>
-            <Text style={styles.formLabel}>{t('enterYourEmailAddress')}</Text>
+          <View style={tw`bg-white p-4 rounded-md h-full`}>
+            <Text style={tw`font-medium text-lg mt-2`}>{t('utils.enterYourEmailAddress')}</Text>
             <TextInput
-              style={styles.formInput}
-              placeholder={t('email')}
+              style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
+              placeholder={t('utils.email')}
               value={email}
               onChangeText={(text) => setEmail(text)}
             />
-            <View style={styles.buttonContainer}>
+            <View style={tw`flex-row justify-center`}>
               <TouchableOpacity
-                style={styles.formButton}
+                style={[tw`mt-4 px-4 py-2 rounded-md items-center mr-4 w-auto`, { backgroundColor: '#22C55E' }]}
                 onPress={handleForgetPassword}
               >
-                <Text style={styles.buttonText}>{t('confirm')}</Text>
+                <Text style={tw`text-white font-medium text-lg`}>{t('utils.confirm')}</Text>
               </TouchableOpacity>
             </View>
           </View>
         )}
         {step === 2 && (
-          <View style={styles.formContainer}>
-            <Text style={styles.formLabel}>
-              {t('enterYourVerificationCode')}
+          <View style={tw`bg-white p-4 rounded-md h-full`}>
+            <Text style={tw`font-medium text-lg mt-2`}>
+              {t('utils.enterYourVerificationCode')}
             </Text>
             <TextInput
-              placeholder={t('verificationCode')}
-              style={styles.formInput}
+              placeholder={t('utils.verificationCode')}
+              style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
               value={code}
               onChangeText={(text) => setCode(text)}
             />
-            <View style={styles.buttonContainer}>
+            <View style={tw`flex-row justify-center`}>
               <TouchableOpacity
-                style={styles.formButton}
+                style={[tw`mt-4 px-4 py-2 rounded-md items-center mr-4 w-auto`, { backgroundColor: '#22C55E' }]}
                 onPress={handleCheckForgetPasswordCode}
               >
-                <Text style={styles.buttonText}>{t('confirm')}</Text>
+                <Text style={tw`text-white font-medium text-lg`}>{t('utils.confirm')}</Text>
               </TouchableOpacity>
             </View>
           </View>
         )}
 
         {step === 3 && (
-          <View style={styles.formContainer}>
-            <Text style={styles.formLabel}>{t('enterYourNewPassword')}</Text>
+          <View style={tw`bg-white p-4 rounded-md h-full`}>
+            <Text style={tw`font-medium text-lg mt-2`}>{t('utils.enterYourNewPassword')}</Text>
             <TextInput
-              style={styles.formInput}
-              placeholder={t('password')}
+              style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
+              placeholder={t('utils.password')}
               secureTextEntry={true}
               value={password.password}
               onChangeText={(text) =>
@@ -135,28 +132,28 @@ const ForgetPasswordScreen = () => {
               }
             />
             <TextInput
-              style={styles.formInput}
-              placeholder={t('confirmYourPassword')}
+              style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
+              placeholder={t('utils.confirmYourPassword')}
               secureTextEntry={true}
               value={password.confirmPassword}
               onChangeText={(text) =>
                 setPassword({ ...password, confirmPassword: text })
               }
             />
-            <View style={styles.buttonContainer}>
+            <View style={tw`flex-row justify-center`}>
               <TouchableOpacity
-                style={styles.formButton}
+                style={[tw`mt-4 px-4 py-2 rounded-md items-center mr-4 w-auto`, { backgroundColor: '#22C55E' }]}
                 onPress={handleResetPassword}
               >
-                <Text style={styles.buttonText}>{t('confirm')}</Text>
+                <Text style={tw`text-white font-medium text-lg`}>{t('utils.confirm')}</Text>
               </TouchableOpacity>
             </View>
           </View>
         )}
         {step === 4 && (
-          <View style={styles.formContainer}>
-            <Text style={styles.formLabel}>
-              {t('yourPasswordHasBeenSuccessfullyReset')}
+          <View style={tw`bg-white p-4 rounded-md h-full`}>
+            <Text style={tw`font-medium text-lg mb-4`}>
+              {t('actions.yourPasswordHasBeenSuccessfullyReset')}
             </Text>
           </View>
         )}
@@ -164,14 +161,5 @@ const ForgetPasswordScreen = () => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  formContainer: form.formContainer,
-  formLabel: form.formLabel,
-  formInput: form.formInput,
-  buttonText: button.buttonText,
-  formButton: button.formButton,
-  buttonContainer: button.buttonContainer,
-})
 
 export default ForgetPasswordScreen
