@@ -52,7 +52,7 @@ const Tabs = ({
                   : tw`text-black font-medium text-lg`
               }
             >
-              {t('utils.cast')}
+              Cast
             </Text>
           </TouchableOpacity>
         ) : serie ? (
@@ -67,7 +67,7 @@ const Tabs = ({
                   : tw`text-black font-medium text-lg`
               }
             >
-              {t('utils.cast')}
+              Cast
             </Text>
           </TouchableOpacity>
         ) : null}
@@ -83,7 +83,7 @@ const Tabs = ({
                   : tw`text-black font-medium text-lg`
               }
             >
-              {t('utils.crew')}
+              Crew
             </Text>
           </TouchableOpacity>
         ) : serie ? (
@@ -98,7 +98,7 @@ const Tabs = ({
                   : tw`text-black font-medium text-lg`
               }
             >
-              {t('utils.crew')}
+              Crew
             </Text>
           </TouchableOpacity>
         ) : null}
@@ -114,7 +114,7 @@ const Tabs = ({
                   : tw`text-black font-medium text-lg`
               }
             >
-              {t('utils.informations')}
+              {t('utils.about')}
             </Text>
           </TouchableOpacity>
         ) : null}
@@ -130,7 +130,7 @@ const Tabs = ({
                   : tw`text-black font-medium text-lg`
               }
             >
-              {t('utils.cast')}
+              Cast
             </Text>
           </TouchableOpacity>
         ) : null}

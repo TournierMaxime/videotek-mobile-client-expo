@@ -17,7 +17,6 @@ import CrewMovie from '../views/Movies/CrewMovie'
 import CastSerie from '../views/Series/CastSerie'
 import CrewSerie from '../views/Series/CrewSerie'
 import CastPeople from '../views/People/CastPeople'
-import DotDetails from '../lib/components/utils/DotDetails'
 
 const getCommonScreens = (Stack, isAuthenticated, i18n, t) => (
   <>
@@ -172,15 +171,6 @@ const getCommonScreens = (Stack, isAuthenticated, i18n, t) => (
     <Stack.Screen
       name='CrewMovie'
       component={CrewMovie}
-      options={() => ({
-        header: () => (
-          <Header isAuthenticated={isAuthenticated} backButton={true} />
-        ),
-      })}
-    />
-    <Stack.Screen
-      name='DotDetails'
-      component={DotDetails}
       options={() => ({
         header: () => (
           <Header isAuthenticated={isAuthenticated} backButton={true} />

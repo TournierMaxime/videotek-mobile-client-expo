@@ -17,7 +17,7 @@ const AlertModal = ({ visible, setVisible, action, message, success, t }) => {
         presentationStyle='overFullScreen'
         transparent={true}
       >
-        <View style={tw`ml-auto mr-auto items-center bg-white z-5 absolute h-60 flex flex-col justify-center top-150 w-full rounded-t-xl`}>
+        <View style={tw`ml-auto mr-auto items-center bg-slate-100 z-5 absolute h-60 flex flex-col justify-center top-150 w-full rounded-t-xl`}>
           <View>
             <Text style={tw`mb-4 font-medium text-lg`}>{message}</Text>
             <View style={tw`flex flex-row justify-between`}>
