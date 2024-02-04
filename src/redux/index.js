@@ -1,12 +1,11 @@
 import { movieTmdbReducer, serieTmdbReducer, peopleTmdbReducer, searchTmdbReducer } from '@mod/mobile-tmdb/redux/index'
-import { authCommonReducer } from '@mod/mobile-common/redux/index'
+import { authCommonReducer, favoriteReducer } from '@mod/mobile-common/redux/index'
 import {
   searchUsersReducer,
   oneUserReducer,
   updateUserReducer,
   deleteUserReducer
 } from './reducers/users'
-import { favoritesReducer } from './reducers/favorites'
 
 const userReducer = {
   searchUsers: searchUsersReducer,
@@ -15,8 +14,4 @@ const userReducer = {
   deleteUser: deleteUserReducer
 }
 
-const favoriteReducer = {
-    favorites: favoritesReducer
-}
-
-export { authCommonReducer, movieTmdbReducer, serieTmdbReducer, peopleTmdbReducer, searchTmdbReducer, userReducer, favoriteReducer}
+export { authCommonReducer, favoriteReducer, movieTmdbReducer, serieTmdbReducer, peopleTmdbReducer, searchTmdbReducer, userReducer}

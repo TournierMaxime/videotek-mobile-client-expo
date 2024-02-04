@@ -26,14 +26,14 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
   const {
     getUserData,
     updateLanguage,
-    //favorites,
+    favorites,
     lang
   } = useLocalStorage({ onLoginSuccess })
 
   useEffect(() => {
     getUserData()
     updateLanguage()
-    //favorites()
+    favorites()
   }, [lang])
 
   return (
