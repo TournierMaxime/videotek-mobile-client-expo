@@ -42,11 +42,11 @@ const UserProfile = ({ route }) => {
     navigation.navigate('Home')
   }
 
-  const handleDelete = async () => {
+  const handleDelete = () => {
     try {
-      await dispatch(deleteUser(userId))
+      dispatch(deleteUser(userId))
       setDeleteSuccess(true)
-      AlertMessage(t('yourAccountHasBeenSuccessfullyDeleted'))
+      AlertMessage(t('actions.yourAccountHasBeenSuccessfullyDeleted'))
 
       setTimeout(async () => {
         await dispatch(logoutUser())

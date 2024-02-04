@@ -115,9 +115,7 @@ const deleteUserReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.payload,
-        oneUser: {
-          data: {},
-        },
+        data: {}
       }
     default:
       return state
