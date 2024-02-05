@@ -17,18 +17,17 @@ import Utils from '@mod/mobile-common/lib/class/Utils'
 import AuthStackNavigator from './src/navigators/AuthStackNavigator.js'
 import MainStackNavigator from './src/navigators/MainStackNavigator.js'
 import useLocalStorage from '@mod/mobile-common/lib/hooks/utils/useLocalStorage'
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+const queryClient = new QueryClient()
 
 const Tab = createBottomTabNavigator()
 
 const App = ({ isAuthenticated, onLoginSuccess }) => {
-
   const { i18n, t } = useTranslation()
-  const {
-    getUserData,
-    updateLanguage,
-    favorites,
-    lang
-  } = useLocalStorage({ onLoginSuccess })
+  const { getUserData, updateLanguage, favorites, lang } = useLocalStorage({
+    onLoginSuccess,
+  })
 
   useEffect(() => {
     getUserData()
@@ -55,7 +54,7 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
             justifyContent: 'center',
             display: 'flex',
             flexDirection: 'row',
-            zIndex: 0
+            zIndex: 0,
           },
         }}
       >
@@ -186,9 +185,11 @@ const ConnectedApp = connect(mapStateToProps, login)(App)
 
 const AppWithRedux = () => (
   <Provider store={store}>
-    <I18nextProvider i18n={i18n}>
-      <ConnectedApp />
-    </I18nextProvider>
+    <QueryClientProvider client={queryClient}>
+      <I18nextProvider i18n={i18n}>
+        <ConnectedApp />
+      </I18nextProvider>
+    </QueryClientProvider>
   </Provider>
 )
 
