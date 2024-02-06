@@ -1,5 +1,8 @@
 {
   "utils": {
+    "popular": "受欢迎的",
+    "onTheAir": "正在播出",
+    "upcoming": "未来",
     "more": "更多的",
     "seen": "见过",
     "notSeen": "没有见过",

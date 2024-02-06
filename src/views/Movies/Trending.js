@@ -1,24 +1,33 @@
 import React, { Fragment } from 'react'
 import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native'
-import { Ionicons } from 'react-native-vector-icons'
+import { Ionicons, AntDesign } from '@expo/vector-icons'
 import tw from 'twrnc'
-import { useSelector } from 'react-redux'
 import Utils from '@mod/mobile-common/lib/class/Utils'
 import { useNavigation } from '@react-navigation/native'
 
-const Trending = ({ t }) => {
+const Trending = ({ trending, t, arrow }) => {
   const navigation = useNavigation()
-  const trendingResults = useSelector((state) => state.trending.data.results)
   return (
     <Fragment>
       <View style={tw`justify-between items-baseline flex-row mr-4`}>
-        <Text style={tw`font-medium text-xl ml-4 mt-4`}>{t('utils.trending')}</Text>
-
-        <Ionicons name='flame' size={Utils.moderateScale(25)} color='black' />
+        <Text style={tw`font-medium text-xl ml-4 mt-4`}>
+          {t('utils.trending')}
+        </Text>
+        {arrow ? (
+          <TouchableOpacity onPress={() => navigation.navigate('Trending')}>
+            <AntDesign
+              name='arrowright'
+              size={Utils.moderateScale(25)}
+              color='black'
+            />
+          </TouchableOpacity>
+        ) : (
+          <Ionicons name='flame' size={Utils.moderateScale(25)} color='black' />
+        )}
       </View>
       <View style={tw`items-center justify-between mb-6`}>
         <FlatList
-          data={trendingResults?.slice(0, 8)}
+          data={trending?.results?.slice(0, 8)}
           keyExtractor={(item) => item.id}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
@@ -41,7 +50,8 @@ const Trending = ({ t }) => {
                           {
                             resizeMode: 'cover',
                             marginRight:
-                              index === trendingResults?.slice(0, 8).length - 1
+                              index ===
+                              trending?.results?.slice(0, 8).length - 1
                                 ? 15
                                 : 0,
                           },
@@ -68,7 +78,8 @@ const Trending = ({ t }) => {
                           {
                             resizeMode: 'cover',
                             marginRight:
-                              index === trendingResults?.slice(0, 8).length - 1
+                              index ===
+                              trending?.results?.slice(0, 8).length - 1
                                 ? 15
                                 : 0,
                           },

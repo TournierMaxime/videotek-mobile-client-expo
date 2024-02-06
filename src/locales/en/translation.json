@@ -1,5 +1,8 @@
 {
   "utils": {
+    "popular": "Popular",
+    "onTheAir": "On the air",
+    "upcoming": "Upcoming",
     "more": "More",
     "seen": "Seen",
     "notSeen": "Not seen",

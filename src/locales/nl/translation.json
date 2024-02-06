@@ -1,5 +1,8 @@
 {
   "utils": {
+    "popular": "Populair",
+    "onTheAir": "Momenteel uitgezonden",
+    "upcoming": "Toekomst",
     "more": "Meer",
     "seen": "Gezien",
     "notSeen": "Niet gezien",

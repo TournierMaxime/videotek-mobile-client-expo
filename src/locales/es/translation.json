@@ -1,5 +1,8 @@
 {
   "utils": {
+    "popular": "Popular",
+    "onTheAir": "Emitido actualmente",
+    "upcoming": "Futuro",
     "more": "Más",
     "seen": "Visto",
     "notSeen": "No visto",

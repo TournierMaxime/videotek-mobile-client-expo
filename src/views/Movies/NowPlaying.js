@@ -1,29 +1,38 @@
 import React, { Fragment } from 'react'
 import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native'
 import { MaterialIcons } from 'react-native-vector-icons'
+import { AntDesign } from '@expo/vector-icons'
 import Utils from '@mod/mobile-common/lib/class/Utils'
 import tw from 'twrnc'
-import { useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 
-const NowPlaying = ({ t }) => {
+const NowPlaying = ({ nowPlaying, t, arrow }) => {
   const navigation = useNavigation()
-  const nowPlayingResults = useSelector(
-    (state) => state.nowPlaying.data.results
-  )
   return (
     <Fragment>
       <View style={tw`justify-between items-baseline flex-row mr-4`}>
-        <Text style={tw`font-medium text-xl ml-4 mt-4`}>{t('utils.films')}</Text>
-        <MaterialIcons
-          name='movie'
-          size={Utils.moderateScale(25)}
-          color='black'
-        />
+        <Text style={tw`font-medium text-xl ml-4 mt-4`}>
+          {t('utils.films')}
+        </Text>
+        {arrow ? (
+          <TouchableOpacity onPress={() => navigation.navigate('NowPlaying')}>
+            <AntDesign
+              name='arrowright'
+              size={Utils.moderateScale(25)}
+              color='black'
+            />
+          </TouchableOpacity>
+        ) : (
+          <MaterialIcons
+            name='movie'
+            size={Utils.moderateScale(25)}
+            color='black'
+          />
+        )}
       </View>
       <View style={tw`items-center justify-between mb-6`}>
         <FlatList
-          data={nowPlayingResults?.slice(0, 8)}
+          data={nowPlaying?.results?.slice(0, 8)}
           keyExtractor={(item) => item.id}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
@@ -44,7 +53,7 @@ const NowPlaying = ({ t }) => {
                       {
                         resizeMode: 'cover',
                         marginRight:
-                          index === nowPlayingResults?.slice(0, 8).length - 1
+                          index === nowPlaying?.results?.slice(0, 8).length - 1
                             ? 15
                             : 0,
                       },

@@ -3,7 +3,6 @@ import React, { useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import store from './src/redux/store'
 import Header from '@mod/mobile-common/lib/components/layout/Header'
-import NowPlaying from '@mod/mobile-tmdb/views/Movies/NowPlaying'
 import Trending from '@mod/mobile-tmdb/views/Movies/Trending'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { MaterialIcons, Ionicons, Entypo } from 'react-native-vector-icons'
@@ -12,12 +11,13 @@ import i18n from './i18n'
 import { I18nextProvider } from 'react-i18next'
 import './polyfill'
 import { Platform, Dimensions } from 'react-native'
-import TrendingTV from '@mod/mobile-tmdb/views/Series/TrendingTV'
 import Utils from '@mod/mobile-common/lib/class/Utils'
 import AuthStackNavigator from './src/navigators/AuthStackNavigator.js'
 import MainStackNavigator from './src/navigators/MainStackNavigator.js'
 import useLocalStorage from '@mod/mobile-common/lib/hooks/utils/useLocalStorage'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import Movies from './src/views/Movies.js'
+import Series from './src/views/Series.js'
 
 const queryClient = new QueryClient()
 
@@ -128,8 +128,8 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
           })}
         />
         <Tab.Screen
-          name='NowPlaying'
-          component={NowPlaying}
+          name='Movies'
+          component={Movies}
           options={() => ({
             tabBarIcon: ({ color }) => (
               <MaterialIcons
@@ -148,8 +148,8 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
         />
 
         <Tab.Screen
-          name='TrendingTV'
-          component={TrendingTV}
+          name='Series'
+          component={Series}
           options={() => ({
             tabBarIcon: ({ color }) => (
               <Ionicons

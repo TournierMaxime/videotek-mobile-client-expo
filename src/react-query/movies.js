@@ -1,4 +1,13 @@
-import { MovieDetails, MovieCrew, ReleaseDates, MovieWatchProviders } from "../services/tmdb"
+import {
+  MovieDetails,
+  MovieCrew,
+  ReleaseDates,
+  MovieWatchProviders,
+  MovieTrailer,
+  NowPlaying,
+  Trending,
+  Upcoming
+} from '../services/tmdb'
 
 const movieDetails = async (id, language) => {
   try {
@@ -40,4 +49,54 @@ const movieWatchProviders = async (id) => {
   }
 }
 
-export { movieDetails, movieCrew, releaseDates, movieWatchProviders }
+const movieTrailer = async (id, language) => {
+  try {
+    const response = await MovieTrailer(id, language)
+    return response.data
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
+const nowPlaying = async (page, language) => {
+  try {
+    const response = await NowPlaying(page, language)
+    return response.data
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
+const trending = async (page, language) => {
+  try {
+    const response = await Trending(page, language)
+    return response.data
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
+const upcoming =
+  async (page, language) => {
+    try {
+      const response = await Upcoming(page, language)
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
+export {
+  movieDetails,
+  movieCrew,
+  releaseDates,
+  movieWatchProviders,
+  movieTrailer,
+  nowPlaying,
+  trending,
+  upcoming
+}
