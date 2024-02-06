@@ -6,6 +6,7 @@ import Upcoming from '@mod/mobile-tmdb/views/Movies/Upcoming'
 import DetailsMovie from '@mod/mobile-tmdb/views/Movies/DetailsMovie'
 import OnTheAir from '@mod/mobile-tmdb/views/Series/OnTheAir'
 import Popular from '@mod/mobile-tmdb/views/Series/Popular'
+import TrendingTV from '@mod/mobile-tmdb/views/Series/TrendingTV'
 import DetailsSerie from '@mod/mobile-tmdb/views/Series/DetailsSerie'
 import DetailsPeople from '@mod/mobile-tmdb/views/People/DetailsPeople'
 import Trending from '@mod/mobile-tmdb/views/Movies/Trending'
@@ -78,6 +79,15 @@ const getCommonScreens = (Stack, isAuthenticated, i18n, t) => (
     <Stack.Screen
       name='Popular'
       component={Popular}
+      options={{
+        header: () => (
+          <Header isAuthenticated={isAuthenticated} backButton={true} />
+        ),
+      }}
+    />
+    <Stack.Screen
+      name='TrendingTV'
+      component={TrendingTV}
       options={{
         header: () => (
           <Header isAuthenticated={isAuthenticated} backButton={true} />

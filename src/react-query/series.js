@@ -5,6 +5,8 @@ import {
   TrendingTV,
   OnTheAir,
   Popular,
+  SeasonDetails,
+  SeasonWatchProviders,
 } from '../services/tmdb'
 
 const serieDetails = async (id, language) => {
@@ -67,4 +69,44 @@ const popular = async (page, language) => {
   }
 }
 
-export { serieDetails, serieCrew, serieTrailer, trendingTV, onTheAir, popular }
+const seasonDetails = async (id, seasonNumber, language) => {
+  try {
+    const response = await SeasonDetails(id, seasonNumber, language)
+    return response.data
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
+const seasonWatchProviders = async (id, seasonNumber, language) => {
+  try {
+    const response = await SeasonWatchProviders(id, seasonNumber, language)
+    return response.data.results
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
+const updateSeasonWatchProviders = async (id, seasonNumber, language) => {
+  try {
+    const response = await SeasonWatchProviders(id, seasonNumber, language)
+    return response.data.results
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
+export {
+  serieDetails,
+  serieCrew,
+  serieTrailer,
+  trendingTV,
+  onTheAir,
+  popular,
+  seasonDetails,
+  seasonWatchProviders,
+  updateSeasonWatchProviders,
+}

@@ -12,10 +12,10 @@ const TrendingTV = ({ arrow, trendingTV, t }) => {
     <Fragment>
       <View style={tw`justify-between items-baseline flex-row mr-4`}>
         <Text style={tw`font-medium text-xl ml-4 mt-4`}>
-          {t('utils.trending')}
+          {t('utils.series')}
         </Text>
         {arrow ? (
-          <TouchableOpacity onPress={() => navigation.navigate('Popular')}>
+          <TouchableOpacity onPress={() => navigation.navigate('TrendingTV')}>
             <AntDesign
               name='arrowright'
               size={Utils.moderateScale(25)}
