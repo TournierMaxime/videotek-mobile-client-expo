@@ -11,7 +11,13 @@ const AuthStack = createNativeStackNavigator()
 
 const AuthStackNavigator = ({ isAuthenticated, i18n, t }) => {
   return (
-    <AuthStack.Navigator>
+    <AuthStack.Navigator
+      screenOptions={{
+        contentStyle: {
+          backgroundColor: 'white',
+        },
+      }}
+    >
       {getCommonScreens(AuthStack, isAuthenticated, i18n, t)}
       <AuthStack.Screen
         name='Login'

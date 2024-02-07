@@ -14,7 +14,11 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
   const userId = useSelector((state) => state.auth.data.user.userId)
 
   return (
-    <MainStack.Navigator>
+    <MainStack.Navigator screenOptions={{
+      contentStyle: {
+        backgroundColor: "white"
+      }
+    }}>
       {getCommonScreens(MainStack, isAuthenticated, i18n, t)}
       <MainStack.Screen
         name='DetailsUser'

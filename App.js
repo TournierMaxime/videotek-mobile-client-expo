@@ -39,7 +39,6 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
-          activeTintColor: '#4900AD',
           tabBarItemStyle: {
             marginTop: Utils.moderateScale(10),
           },

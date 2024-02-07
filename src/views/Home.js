@@ -13,9 +13,16 @@ const Home = () => {
   const { i18n, t } = useTranslation()
   const language = i18n.language
 
-  const { data: nowPlayingData, isLoading } = useQuery(['nowPlaying', 1, language], () => nowPlaying(1, language))
-  const { data: trendingData } = useQuery(['trending', 1, language], () => trending(1, language))
-  const { data: trendingTVData } = useQuery(['trendingTV', 1, language], () => trendingTV(1, language))
+  const { data: nowPlayingData, isLoading } = useQuery(
+    ['nowPlaying', 1, language],
+    () => nowPlaying(1, language)
+  )
+  const { data: trendingData } = useQuery(['trending', 1, language], () =>
+    trending(1, language)
+  )
+  const { data: trendingTVData } = useQuery(['trendingTV', 1, language], () =>
+    trendingTV(1, language)
+  )
 
   useEffect(() => {
     registerForPushNotificationsAsync()
@@ -26,15 +33,13 @@ const Home = () => {
       {isLoading ? (
         <ActivityIndicator size='large' color='#0000ff' />
       ) : (
-        <Fragment>
-          <ScrollView>
-            <Trending arrow={false} trending={trendingData} t={t} />
+        <ScrollView>
+          <Trending arrow={false} trending={trendingData} t={t} />
 
-            <NowPlaying arrow={false} nowPlaying={nowPlayingData} t={t} />
+          <NowPlaying arrow={false} nowPlaying={nowPlayingData} t={t} />
 
-            <TrendingTV arrow={false} trendingTV={trendingTVData} t={t} />
-          </ScrollView>
-        </Fragment>
+          <TrendingTV arrow={false} trendingTV={trendingTVData} t={t} />
+        </ScrollView>
       )}
     </Fragment>
   )

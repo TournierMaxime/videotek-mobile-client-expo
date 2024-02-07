@@ -18,7 +18,7 @@ const DetailsUser = ({ route }) => {
   const { t } = useTranslation()
 
   const [data, setData] = useState({
-    userName: localStorageData.user?.pseudo || '',
+    pseudo: localStorageData.user?.pseudo || '',
     email: localStorageData.user?.email || '',
     image: localStorageData.user?.image || '',
   })
@@ -49,7 +49,7 @@ const DetailsUser = ({ route }) => {
 
   const handleUpdate = async () => {
     const formData = new FormData()
-    formData.append('userName', data.userName)
+    formData.append('pseudo', data.pseudo)
     formData.append('email', data.email)
 
     const imageUriParts = data.image.split('.')
@@ -68,7 +68,7 @@ const DetailsUser = ({ route }) => {
       ...localStorageData,
       user: {
         ...localStorageData.user,
-        userName: data.userName,
+        pseudo: data.pseudo,
         email: data.email,
         image: data.image,
       },
@@ -100,9 +100,9 @@ const DetailsUser = ({ route }) => {
           style={tw`mt-2 px-3 py-2 text-gray-500 text-lg border border-slate-200 rounded-lg`}
           placeholder={t('utils.userName')}
           onChangeText={(text) => {
-            setData({ ...data, userName: text }), setIsOnChange(true)
+            setData({ ...data, pseudo: text }), setIsOnChange(true)
           }}
-          defaultValue={data?.userName}
+          defaultValue={data?.pseudo}
         />
         <Text style={tw`font-medium text-lg`}>{t('utils.email')}</Text>
         <TextInput
