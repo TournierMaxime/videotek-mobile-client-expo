@@ -33,7 +33,8 @@ const UserProfile = ({ route }) => {
   const [deleteSuccess, setDeleteSuccess] = useState(false)
   const accessDenied = checkAccess(isLogged, currentUserId, userId)
   const user = useSelector((state) => state.auth.data.user)
-  const userName = `${user.pseudo}`
+
+  console.log(user?.pseudo);
 
   const { t } = useTranslation()
 
@@ -82,7 +83,7 @@ const UserProfile = ({ route }) => {
                         size={Utils.moderateScale(25)}
                         color='black'
                       />
-                      <Text style={tw`font-medium text-lg`}>{userName}</Text>
+                      <Text style={tw`font-medium text-lg`}>{user?.pseudo}</Text>
                     </View>
                     <Entypo
                       name='chevron-small-right'
