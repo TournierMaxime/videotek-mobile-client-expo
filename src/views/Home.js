@@ -8,6 +8,7 @@ import Trending from './Movies/Trending'
 import NowPlaying from './Movies/NowPlaying'
 import TrendingTV from './Series/TrendingTV'
 import { useQuery } from 'react-query'
+import useNotification from '@mod/mobile-common/lib/hooks/utils/useNotification.js'
 
 const Home = () => {
   const { i18n, t } = useTranslation()
@@ -23,6 +24,8 @@ const Home = () => {
   const { data: trendingTVData } = useQuery(['trendingTV', 1, language], () =>
     trendingTV(1, language)
   )
+
+  useNotification()
 
   useEffect(() => {
     registerForPushNotificationsAsync()
