@@ -27,15 +27,7 @@
       "versionCode": 28,
       "build": {
         "babel": {
-          "include": ["@mod/mobile-common", "@mod/mobile-tmdb", "expo-modules-core"]
-        }
-      }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png",
-      "build": {
-        "babel": {
-          "include": ["@mod/mobile-common", "@mod/mobile-tmdb", "expo-modules-core", "crypto"]
+          "include": ["@mod/mobile-common", "@mod/mobile-auth", "@mod/mobile-tmdb", "expo-modules-core"]
         }
       }
     },

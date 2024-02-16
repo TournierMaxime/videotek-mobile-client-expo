@@ -7,7 +7,7 @@ import {
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteUser } from '../../redux/actions/users'
-import { logoutUser } from '@mod/mobile-common/redux/actions/auth'
+import { logoutUser } from '@mod/mobile-auth/redux/actions/auth'
 import { useNavigation } from '@react-navigation/native'
 import { checkAccess } from '@mod/mobile-common/lib/components/utils/CheckAccess'
 import {

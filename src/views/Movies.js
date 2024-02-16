@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { ActivityIndicator, ScrollView } from 'react-native'
-import { nowPlaying, trending, upcoming } from '../react-query/movies'
+import { nowPlaying, trending, upcoming } from '@mod/mobile-tmdb/react-query/movies'
 import { useTranslation } from 'react-i18next'
 import Trending from './Movies/Trending'
 import NowPlaying from './Movies/NowPlaying'

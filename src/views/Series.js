@@ -1,6 +1,6 @@
 import React, { useEffect, Fragment } from 'react'
 import { ActivityIndicator, ScrollView } from 'react-native'
-import { trendingTV, onTheAir, popular } from '../react-query/series'
+import { trendingTV, onTheAir, popular } from '@mod/mobile-tmdb/react-query/series'
 import { useTranslation } from 'react-i18next'
 import registerForPushNotificationsAsync from '@mod/mobile-common/lib/components/utils/Notifications'
 import Popular from './Series/Popular'
