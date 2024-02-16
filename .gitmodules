@@ -4,3 +4,6 @@
 [submodule "src/modules/mod-mobile-common"]
 	path = src/modules/mod-mobile-common
 	url = git@github.com:TournierMaxime/mod-mobile-common.git
+[submodule "src/modules/mod-mobile-auth"]
+	path = src/modules/mod-mobile-auth
+	url = git@github.com:TournierMaxime/mod-mobile-auth.git

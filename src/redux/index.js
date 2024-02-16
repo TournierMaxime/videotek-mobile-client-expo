@@ -1,5 +1,6 @@
 import { movieTmdbReducer, serieTmdbReducer, peopleTmdbReducer, searchTmdbReducer } from '@mod/mobile-tmdb/redux/index'
-import { authCommonReducer, favoriteReducer } from '@mod/mobile-common/redux/index'
+import { favoriteReducer } from '@mod/mobile-common/redux/index'
+import { authCommonReducer } from '@mod/mobile-auth/redux/index'
 import {
   searchUsersReducer,
   oneUserReducer,
