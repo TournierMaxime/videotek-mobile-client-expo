@@ -25,7 +25,7 @@ const Trending = ({ trending, t, arrow }) => {
           <Ionicons name='flame' size={Utils.moderateScale(25)} color='black' />
         )}
       </View>
-      <View style={tw`items-center justify-between mb-6`}>
+      <View style={tw`items-center justify-between`}>
         <FlatList
           data={trending?.results?.slice(0, 8)}
           keyExtractor={(item) => item.id}

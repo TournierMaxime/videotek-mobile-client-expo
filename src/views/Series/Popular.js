@@ -30,7 +30,7 @@ const Popular = ({ arrow, popular, t }) => {
           />
         )}
       </View>
-      <View style={tw`items-center justify-between mb-6`}>
+      <View style={tw`items-center justify-between`}>
         <FlatList
           data={popular?.results?.slice(0, 8)}
           keyExtractor={(item) => item.id}

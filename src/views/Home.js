@@ -35,9 +35,7 @@ const Home = () => {
       ) : (
         <ScrollView>
           <Trending arrow={false} trending={trendingData} t={t} />
-
           <NowPlaying arrow={false} nowPlaying={nowPlayingData} t={t} />
-
           <TrendingTV arrow={false} trendingTV={trendingTVData} t={t} />
         </ScrollView>
       )}

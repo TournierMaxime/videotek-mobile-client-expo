@@ -1,12 +1,17 @@
 import React, { useEffect, Fragment } from 'react'
 import { ActivityIndicator, ScrollView } from 'react-native'
-import { trendingTV, onTheAir, popular } from '@mod/mobile-tmdb/react-query/series'
+import {
+  trendingTV,
+  onTheAir,
+  popular,
+} from '@mod/mobile-tmdb/react-query/series'
 import { useTranslation } from 'react-i18next'
 import registerForPushNotificationsAsync from '@mod/mobile-common/lib/components/utils/Notifications'
 import Popular from './Series/Popular'
 import OnTheAir from './Series/OnTheAir'
 import TrendingTV from './Series/TrendingTV'
 import { useQuery } from 'react-query'
+import tw from 'twrnc'
 
 const Home = () => {
   const { i18n, t } = useTranslation()
@@ -32,13 +37,11 @@ const Home = () => {
       {isLoading ? (
         <ActivityIndicator size='large' color='#0000ff' />
       ) : (
-        <Fragment>
-          <ScrollView>
-            <TrendingTV arrow={true} trendingTV={trendingTVData} t={t} />
-            <OnTheAir arrow={true} onTheAir={onTheAirData} t={t} />
-            <Popular arrow={true} popular={popularData} t={t} />
-          </ScrollView>
-        </Fragment>
+        <ScrollView style={tw`bg-white`}>
+          <TrendingTV arrow={true} trendingTV={trendingTVData} t={t} />
+          <OnTheAir arrow={true} onTheAir={onTheAirData} t={t} />
+          <Popular arrow={true} popular={popularData} t={t} />
+        </ScrollView>
       )}
     </Fragment>
   )
