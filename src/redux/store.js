@@ -1,10 +1,10 @@
 import {configureStore} from '@reduxjs/toolkit';
 import thunkMiddleware from 'redux-thunk';
-import { authCommonReducer, userReducer, favoriteReducer, movieTmdbReducer, serieTmdbReducer, peopleTmdbReducer, searchTmdbReducer } from "./index"
+import { authCommonReducer, userReducers, favoriteReducer, movieTmdbReducer, serieTmdbReducer, peopleTmdbReducer, searchTmdbReducer } from "./index"
 
 const rootReducer = {
   ...authCommonReducer,
-  ...userReducer,
+  ...userReducers,
   ...movieTmdbReducer,
   ...serieTmdbReducer,
   ...peopleTmdbReducer,
