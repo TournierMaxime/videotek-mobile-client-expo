@@ -187,6 +187,22 @@ const PeopleExternalIds = (id) => {
   });
 };
 
+const RecommendationMovie = (id) => {
+  return http.get(`/movie/${id}/recommendations`, {
+    params: {
+      api_key: EXPO_TMDB_API_KEY
+    },
+  });
+};
+
+const RecommendationSerie = (id) => {
+  return http.get(`/tv/${id}/recommendations`, {
+    params: {
+      api_key: EXPO_TMDB_API_KEY
+    },
+  });
+};
+
 
 export { 
   ReleaseDates,
@@ -208,5 +224,7 @@ export {
   SeasonDetails,
   SeasonWatchProviders,
   MovieWatchProviders,
-  PeopleExternalIds
+  PeopleExternalIds,
+  RecommendationMovie,
+  RecommendationSerie
 };

@@ -1,6 +1,6 @@
 import {configureStore} from '@reduxjs/toolkit';
 import thunkMiddleware from 'redux-thunk';
-import { authCommonReducer, userReducers, favoriteReducer, movieTmdbReducer, serieTmdbReducer, peopleTmdbReducer, searchTmdbReducer } from "./index"
+import { authCommonReducer, userReducers, favoriteReducer, movieTmdbReducer, serieTmdbReducer, peopleTmdbReducer, searchTmdbReducer, recommendationReducers } from "./index"
 
 const rootReducer = {
   ...authCommonReducer,
@@ -9,7 +9,8 @@ const rootReducer = {
   ...serieTmdbReducer,
   ...peopleTmdbReducer,
   ...searchTmdbReducer,
-  ...favoriteReducer
+  ...favoriteReducer,
+  ...recommendationReducers
 }
 
 const createBaseStore = (reducers) => {

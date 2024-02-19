@@ -6,6 +6,7 @@ import UserProfile from '@mod/mobile-user/views/Users/UserProfile'
 import DetailsUser from '@mod/mobile-user/views/Users/DetailsUser'
 import Settings from '@mod/mobile-user/views/Users/Settings'
 import Favorites from '@mod/mobile-user/views/Users/Favorites'
+import Recommendations from '@mod/mobile-user/views/Users/Recommendations'
 import getCommonScreens from './getCommonScreens.js'
 
 const MainStack = createNativeStackNavigator()
@@ -64,6 +65,15 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
       >
         {(props) => <Favorites {...props} i18n={i18n} t={t} />}
       </MainStack.Screen>
+      <MainStack.Screen
+        name='Recommendations'
+        component={Recommendations}
+        options={{
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
+        }}
+      />
     </MainStack.Navigator>
   )
 }
