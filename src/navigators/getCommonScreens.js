@@ -3,6 +3,7 @@ import Header from '@mod/mobile-common/lib/components/layout/Header'
 import Home from '../views/Home'
 import NowPlaying from '@mod/mobile-tmdb/views/Movies/NowPlaying'
 import Upcoming from '@mod/mobile-tmdb/views/Movies/Upcoming'
+import ComingSoon from '@mod/mobile-tmdb/views/Movies/ComingSoon'
 import DetailsMovie from '@mod/mobile-tmdb/views/Movies/DetailsMovie'
 import OnTheAir from '@mod/mobile-tmdb/views/Series/OnTheAir'
 import Popular from '@mod/mobile-tmdb/views/Series/Popular'
@@ -43,6 +44,15 @@ const getCommonScreens = (Stack, isAuthenticated, i18n, t) => {
       <Stack.Screen
         name='Upcoming'
         component={Upcoming}
+        options={{
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name='ComingSoon'
+        component={ComingSoon}
         options={{
           header: () => (
             <Header isAuthenticated={isAuthenticated} backButton={true} />

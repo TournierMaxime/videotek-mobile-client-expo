@@ -1,5 +1,7 @@
 {
   "utils": {
+    "comingSoon": "Вскоре",
+    "becauseYouLiked": "Потому что тебе понравилось",
     "popular": "Популярный",
     "onTheAir": "B настоящее время транслируется",
     "upcoming": "Будущее",
