@@ -1,99 +1,74 @@
-import React, { useEffect, useState } from 'react'
-import {
-  View,
-  FlatList,
-  Image,
-  TouchableOpacity,
-  RefreshControl,
-} from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
-import {
-  onTheAir,
-  resetOnTheAir,
-} from '../../redux/actions/series'
-import useLoadMore from '../../lib/hooks/utils/useLoadMore'
-import { useNavigation } from '@react-navigation/native'
-import { useTranslation } from 'react-i18next'
+import React, { Fragment } from 'react'
+import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native'
+import { Ionicons } from 'react-native-vector-icons'
+import { AntDesign } from '@expo/vector-icons'
+import Utils from '@mod/mobile-common/lib/class/Utils'
 import tw from 'twrnc'
+import { useNavigation } from '@react-navigation/native'
 
-const OnTheAir = () => {
-  const dispatch = useDispatch()
+const OnTheAir = ({ arrow, onTheAir, t }) => {
   const navigation = useNavigation()
-  const onTheAirData = useSelector((state) => state.onTheAir.paginationData)
-  const onTheAirResults = useSelector(
-    (state) => state.onTheAir.paginationData.results
-  )
-  const { currentPage, loadMore } = useLoadMore(
-    onTheAirData.page,
-    onTheAirData.total_pages
-  )
-  const [allResults, setAllResults] = useState([])
-  const [refreshing, setRefreshing] = useState(false)
-
-  const { i18n } = useTranslation()
-  const language = i18n.language
-  const initialPage = 1
-
-  const onRefresh = async () => {
-    setRefreshing(true)
-    await dispatch(onTheAir(initialPage, 'onTheAirPagination', language))
-    setRefreshing(false)
-  }
-
-  useEffect(() => {
-    dispatch(onTheAir(currentPage, 'onTheAirPagination', language))
-  }, [dispatch, currentPage, language])
-
-  useEffect(() => {
-    if (onTheAirResults?.length > 0) {
-      if (currentPage > 1) {
-        setAllResults((prevResults) => [...prevResults, ...onTheAirResults])
-      } else {
-        setAllResults(onTheAirResults)
-      }
-    }
-  }, [onTheAirResults])
-
-  useEffect(() => {
-    return () => {
-      dispatch(resetOnTheAir())
-    }
-  }, [])
-
   return (
-    <View style={tw`bg-slate-100 items-center justify-between`}>
-      <FlatList
-        data={allResults}
-        keyExtractor={(item, index) => `${index}`}
-        numColumns={2}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
-        onEndReached={loadMore}
-        onEndReachedThreshold={0.5}
-        renderItem={({ item }) => {
-          return (
-            <View style={tw`flex-col justify-between`}>
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('DetailsSerie', {
-                    id: item.id,
-                    title: item.name,
-                  })
-                }
-              >
-                <Image
-                  style={[tw`w-40 h-60 rounded-md m-4`, { resizeMode: 'cover' }]}
-                  source={{
-                    uri: `https://image.tmdb.org/t/p/original${item.poster_path}`,
-                  }}
-                />
-              </TouchableOpacity>
-            </View>
-          )
-        }}
-      />
-    </View>
+    <Fragment>
+      <View style={tw`justify-between items-baseline flex-row mr-4`}>
+        <Text style={tw`font-medium text-xl ml-4 mt-4`}>
+          {t('utils.onTheAir')}
+        </Text>
+        {arrow ? (
+          <TouchableOpacity onPress={() => navigation.navigate('OnTheAir')}>
+            <AntDesign
+              name='arrowright'
+              size={Utils.moderateScale(25)}
+              color='black'
+            />
+          </TouchableOpacity>
+        ) : (
+          <Ionicons
+            name='tv-sharp'
+            size={Utils.moderateScale(25)}
+            color='black'
+          />
+        )}
+      </View>
+      <View style={tw`items-center justify-between`}>
+        <FlatList
+          data={onTheAir?.results?.slice(0, 8)}
+          keyExtractor={(item) => item.id}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({ item, index }) => {
+            return (
+              <View style={tw`flex-col justify-between`}>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate('DetailsSerie', {
+                      id: item.id,
+                      title: item.name,
+                    })
+                  }
+                >
+                  <Image
+                    style={[
+                      tw`w-30 h-50 rounded-md mt-4 ml-4 mb-4`,
+                      {
+                        resizeMode: 'cover',
+                        marginRight:
+                          index === onTheAir?.results?.slice(0, 8).length - 1
+                            ? 15
+                            : 0,
+                      },
+                    ]}
+                    source={{
+                      uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
+                    }}
+                  />
+                </TouchableOpacity>
+              </View>
+            )
+          }}
+        />
+      </View>
+    </Fragment>
   )
 }
 

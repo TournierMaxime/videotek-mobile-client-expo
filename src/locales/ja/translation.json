@@ -1,5 +1,10 @@
 {
   "utils": {
+    "comingSoon": "近日公開",
+    "becauseYouLiked": "あなたが好きだったから",
+    "popular": "人気のある",
+    "onTheAir": "現在放送中",
+    "upcoming": "未来",
     "more": "もっと",
     "seen": "見た",
     "notSeen": "見ていません",

@@ -13,8 +13,10 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^18.0.1",
+    "@mod/mobile-auth": "file:src/modules/mod-mobile-auth",
     "@mod/mobile-common": "file:src/modules/mod-mobile-common",
     "@mod/mobile-tmdb": "file:src/modules/mod-mobile-tmdb",
+    "@mod/mobile-user": "file:src/modules/mod-mobile-user",
     "@react-native-async-storage/async-storage": "1.17.11",
     "@react-native-picker/picker": "2.4.8",
     "@react-navigation/bottom-tabs": "^6.5.7",
@@ -54,6 +56,7 @@
     "react-native-web": "~0.18.10",
     "react-native-webview": "11.26.0",
     "react-native-youtube-iframe": "^2.2.2",
+    "react-query": "^3.39.3",
     "react-redux": "^8.0.5",
     "redux": "^4.2.1",
     "redux-logger": "^3.0.6",

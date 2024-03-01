@@ -1,102 +1,73 @@
-import React, { useEffect, useState } from 'react'
-import {
-  View,
-  FlatList,
-  Image,
-  TouchableOpacity,
-  ActivityIndicator,
-} from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
-import { upcoming, resetUpcoming } from '../../redux/actions/movies'
-import useLoadMore from '../../lib/hooks/utils/useLoadMore'
-import { useNavigation } from '@react-navigation/native'
-import { useTranslation } from 'react-i18next'
+import React, { Fragment } from 'react'
+import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native'
+import { Ionicons, AntDesign } from '@expo/vector-icons'
+import Utils from '@mod/mobile-common/lib/class/Utils'
 import tw from 'twrnc'
+import { useNavigation } from '@react-navigation/native'
 
-const Upcoming = () => {
-  const dispatch = useDispatch()
+const Upcoming = ({ upcoming, t, arrow }) => {
   const navigation = useNavigation()
-  const upcomingData = useSelector((state) => state.upcoming.paginationData)
-  const upcomingResults = useSelector(
-    (state) => state.upcoming.paginationData.results
-  )
-  const { currentPage, loadMore } = useLoadMore(
-    upcomingData.page,
-    upcomingData.total_pages
-  )
-  const [allResults, setAllResults] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-
-  const { i18n } = useTranslation()
-  const language = i18n.language
-
-  useEffect(() => {
-    setIsLoading(true)
-    dispatch(upcoming(currentPage, 'upcomingPagination', language))
-      .then(() => {
-        setIsLoading(false)
-      })
-      .catch(() => {
-        setIsLoading(false)
-      })
-  }, [dispatch, currentPage])
-
-  useEffect(() => {
-    if (upcomingResults?.length > 0) {
-      if (currentPage > 1) {
-        setAllResults((prevResults) => [...prevResults, ...upcomingResults])
-      } else {
-        setAllResults(upcomingResults)
-      }
-    }
-  }, [upcomingResults])
-
-    useEffect(() => {
-    return () => {
-      dispatch(resetUpcoming())
-    }
-  }, [])
-
   return (
-    <View style={tw`bg-slate-100 items-center justify-between`}>
-      <FlatList
-        data={allResults}
-        keyExtractor={(item, index) => `${index}`}
-        numColumns={2}
-        onEndReached={
-          isLoading === true ? (
-            <ActivityIndicator
-              size='large'
-              color='#0000ff'
+    <Fragment>
+      <View style={tw`justify-between items-baseline flex-row mr-4`}>
+        <Text style={tw`font-medium text-xl ml-4 mt-4`}>
+          {t('utils.upcoming')}
+        </Text>
+        {arrow ? (
+          <TouchableOpacity onPress={() => navigation.navigate('Upcoming')}>
+            <AntDesign
+              name='arrowright'
+              size={Utils.moderateScale(25)}
+              color='black'
             />
-          ) : (
-            loadMore
-          )
-        }
-        onEndReachedThreshold={0.5}
-        renderItem={({ item }) => {
-          return (
-            <View style={tw`flex-col justify-between`}>
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('Details Movie', {
-                    id: item.id,
-                    title: item.original_title,
-                  })
-                }
-              >
-                <Image
-                  style={[tw`w-40 h-60 rounded-md m-4`, { resizeMode: 'cover' }]}
-                  source={{
-                    uri: `https://image.tmdb.org/t/p/original${item.poster_path}`,
-                  }}
-                />
-              </TouchableOpacity>
-            </View>
-          )
-        }}
-      />
-    </View>
+          </TouchableOpacity>
+        ) : (
+          <Ionicons
+            name='time-outline'
+            size={Utils.moderateScale(25)}
+            color='black'
+          />
+        )}
+      </View>
+      <View style={tw`items-center justify-between`}>
+        <FlatList
+          data={upcoming?.results?.slice(0, 8)}
+          keyExtractor={(item) => item.id}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({ item, index }) => {
+            return (
+              <View style={tw`flex-col justify-between`}>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate('DetailsMovie', {
+                      id: item.id,
+                      title: item.title,
+                    })
+                  }
+                >
+                  <Image
+                    style={[
+                      tw`w-30 h-50 rounded-md mt-4 ml-4 mb-4`,
+                      {
+                        resizeMode: 'cover',
+                        marginRight:
+                          index === upcoming?.results?.slice(0, 8).length - 1
+                            ? 15
+                            : 0,
+                      },
+                    ]}
+                    source={{
+                      uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
+                    }}
+                  />
+                </TouchableOpacity>
+              </View>
+            )
+          }}
+        />
+      </View>
+    </Fragment>
   )
 }
 

@@ -1,5 +1,10 @@
 {
   "utils": {
+    "comingSoon": "Demnächst",
+    "becauseYouLiked": "Weil es dir gefallen hat",
+    "popular": "Beliebt",
+    "onTheAir": "Derzeit ausgestrahlt",
+    "upcoming": "Zukunft",
     "password": "Passwort",
     "signIn": "Anmelden",
     "notRegistered": "Nicht registriert ?",

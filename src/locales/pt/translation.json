@@ -1,5 +1,10 @@
 {
   "utils": {
+    "comingSoon": "Em breve",
+    "becauseYouLiked": "Porque você gostou",
+    "popular": "Popular",
+    "onTheAir": "Atualmente transmitido",
+    "upcoming": "Futuro",
     "more": "Mais",
     "seen": "Visto",
     "notSeen": "Não visto",

@@ -1,61 +1,75 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { popular, resetPopular } from '../../redux/actions/series'
-import useLoadMore from '../../lib/hooks/utils/useLoadMore';
-import Utils from '../../lib/class/Utils'
-import { useNavigation } from '@react-navigation/native';
+import React, { Fragment } from 'react'
+import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native'
+import { Ionicons } from 'react-native-vector-icons'
+import { AntDesign } from '@expo/vector-icons'
+import Utils from '@mod/mobile-common/lib/class/Utils'
 import tw from 'twrnc'
+import { useNavigation } from '@react-navigation/native'
 
-const Popular = () => {
-    const dispatch = useDispatch();
-    const navigation = useNavigation();
-    const popularData = useSelector((state) => state.popular.paginationData)
-    const popularResults = useSelector((state) => state.popular.paginationData.results)
-    const { currentPage, loadMore } = useLoadMore(popularData.page, popularData.total_pages)
-    const [allResults, setAllResults] = useState([])
-
-    useEffect(() => {
-        dispatch(popular(currentPage, 'popularPagination'))
-      }, [dispatch, currentPage])
-
-      useEffect(() => {
-        if (popularResults?.length > 0) {
-          if (currentPage > 1) {
-            setAllResults((prevResults) => [...prevResults, ...popularResults]);
-          } else {
-            setAllResults(popularResults);
-          }
-        }
-      }, [popularResults]);
-  
-    useEffect(() => {
-    return () => {
-      dispatch(resetPopular())
-    }
-  }, [])
-
+const Popular = ({ arrow, popular, t }) => {
+  const navigation = useNavigation()
   return (
-    <View style={tw`bg-slate-100 items-center justify-between`}>
-        <FlatList 
-          data={allResults}
-          keyExtractor={(item, index) => `${index}`}
-          numColumns={2}
-          onEndReached={loadMore}
-          onEndReachedThreshold={0.5}
-          renderItem={({item}) => {
+    <Fragment>
+      <View style={tw`justify-between items-baseline flex-row mr-4`}>
+        <Text style={tw`font-medium text-xl ml-4 mt-4`}>
+          {t('utils.popular')}
+        </Text>
+        {arrow ? (
+          <TouchableOpacity onPress={() => navigation.navigate('Popular')}>
+            <AntDesign
+              name='arrowright'
+              size={Utils.moderateScale(25)}
+              color='black'
+            />
+          </TouchableOpacity>
+        ) : (
+          <Ionicons
+            name='tv-sharp'
+            size={Utils.moderateScale(25)}
+            color='black'
+          />
+        )}
+      </View>
+      <View style={tw`items-center justify-between`}>
+        <FlatList
+          data={popular?.results?.slice(0, 8)}
+          keyExtractor={(item) => item.id}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({ item, index }) => {
             return (
               <View style={tw`flex-col justify-between`}>
-                <TouchableOpacity onPress={() => navigation.navigate('DetailsSerie', {id: item.id, title: item.original_name})}>
-                  <Image style={[tw`w-16 h-26 rounded-md m-4`, { resizeMode: 'cover' }]} source={{uri: `https://image.tmdb.org/t/p/original${item.poster_path}`}} />
-                  <Text style={tw`text-center font-medium text-lg`}>{Utils.truncateTitle(item.original_name, 15)}</Text>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate('DetailsSerie', {
+                      id: item.id,
+                      title: item.name,
+                    })
+                  }
+                >
+                  <Image
+                    style={[
+                      tw`w-30 h-50 rounded-md mt-4 ml-4 mb-4`,
+                      {
+                        resizeMode: 'cover',
+                        marginRight:
+                          index === popular?.results?.slice(0, 8).length - 1
+                            ? 15
+                            : 0,
+                      },
+                    ]}
+                    source={{
+                      uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
+                    }}
+                  />
                 </TouchableOpacity>
               </View>
             )
           }}
         />
-    </View>
-  );
-};
+      </View>
+    </Fragment>
+  )
+}
 
-export default Popular;
+export default Popular

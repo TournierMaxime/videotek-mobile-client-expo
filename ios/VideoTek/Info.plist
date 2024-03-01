@@ -23,6 +23,8 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+		    <key>CFBundleURLName</key>
+    		<string>com.hoggy.videotekclientexpo</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.hoggy.videotekclientexpo</string>

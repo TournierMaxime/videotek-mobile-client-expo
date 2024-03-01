@@ -1,31 +1,32 @@
 import React, { useEffect, Fragment } from 'react'
 import { ActivityIndicator, ScrollView } from 'react-native'
-import { nowPlaying, trending } from '@mod/mobile-tmdb/react-query/movies'
-import { trendingTV } from '@mod/mobile-tmdb/react-query/series'
+import {
+  trendingTV,
+  onTheAir,
+  popular,
+} from '@mod/mobile-tmdb/react-query/series'
 import { useTranslation } from 'react-i18next'
 import registerForPushNotificationsAsync from '@mod/mobile-common/lib/components/utils/Notifications'
-import Trending from './Movies/Trending'
-import NowPlaying from './Movies/NowPlaying'
+import Popular from './Series/Popular'
+import OnTheAir from './Series/OnTheAir'
 import TrendingTV from './Series/TrendingTV'
 import { useQuery } from 'react-query'
-import useNotification from '@mod/mobile-common/lib/hooks/utils/useNotification.js'
+import tw from 'twrnc'
 
 const Home = () => {
   const { i18n, t } = useTranslation()
   const language = i18n.language
 
-  const { data: nowPlayingData, isLoading } = useQuery(
-    ['nowPlaying', 1, language],
-    () => nowPlaying(1, language)
+  const { data: popularData, isLoading } = useQuery(
+    ['popular', 1, language],
+    () => popular(1, language)
   )
-  const { data: trendingData } = useQuery(['trending', 1, language], () =>
-    trending(1, language)
+  const { data: onTheAirData } = useQuery(['onTheAir', 1, language], () =>
+    onTheAir(1, language)
   )
   const { data: trendingTVData } = useQuery(['trendingTV', 1, language], () =>
     trendingTV(1, language)
   )
-
-  useNotification()
 
   useEffect(() => {
     registerForPushNotificationsAsync()
@@ -36,10 +37,10 @@ const Home = () => {
       {isLoading ? (
         <ActivityIndicator size='large' color='#0000ff' />
       ) : (
-        <ScrollView>
-          <Trending arrow={false} trending={trendingData} t={t} />
-          <NowPlaying arrow={false} nowPlaying={nowPlayingData} t={t} />
-          <TrendingTV arrow={false} trendingTV={trendingTVData} t={t} />
+        <ScrollView style={tw`bg-white`}>
+          <TrendingTV arrow={true} trendingTV={trendingTVData} t={t} />
+          <OnTheAir arrow={true} onTheAir={onTheAirData} t={t} />
+          <Popular arrow={true} popular={popularData} t={t} />
         </ScrollView>
       )}
     </Fragment>
