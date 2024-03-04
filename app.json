@@ -24,7 +24,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.hoggy.videotekclientexpo",
-      "versionCode": 28,
+      "versionCode": 29,
       "build": {
         "babel": {
           "include": ["@mod/mobile-common", "@mod/mobile-auth", "@mod/mobile-tmdb", "expo-modules-core"]
