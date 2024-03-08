@@ -5,12 +5,9 @@ const Register = async (data) => {
     return response;
 };
 
-const Login = (data) => {
-  return http.post("/auth/login", data);
-};
-
-const LoginWithUserId = (data) => {
-  return http.post("/auth/login-with-userId", data);
+const Login = async (data) => {
+  const response = await http.post("/auth/login", data);
+  return response
 };
 
 const ForgetPasswordReq = async (data) => {
@@ -50,7 +47,6 @@ const ResetPasswordMobile = async (data) => {
 export {
   Register,
   Login,
-  LoginWithUserId,
   ForgetPasswordReq,
   ResetPasswordReq,
   Logout,
