@@ -1,5 +1,5 @@
 import { connect, Provider } from 'react-redux'
-import React, { useEffect } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import store from './src/redux/store'
 import Header from '@mod/mobile-common/lib/components/layout/Header'
@@ -58,29 +58,90 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
         }}
       >
         {isAuthenticated === true ? (
-          <Tab.Screen
-            name='MainStackNavigator'
-            options={() => ({
-              tabBarIcon: ({ color }) => (
-                <Entypo
-                  style={{ width: Utils.moderateScale(50), height: 'auto' }}
-                  name='home'
-                  size={Utils.moderateScale(25)}
-                  color={color}
+          <Fragment>
+            <Tab.Screen
+              name='MainStackNavigator'
+              options={() => ({
+                tabBarIcon: ({ color }) => (
+                  <Entypo
+                    style={{ width: Utils.moderateScale(50), height: 'auto' }}
+                    name='home'
+                    size={Utils.moderateScale(25)}
+                    color={color}
+                  />
+                ),
+                headerShown: false,
+                tabBarLabel: '',
+              })}
+            >
+              {() => (
+                <MainStackNavigator
+                  i18n={i18n}
+                  t={t}
+                  isAuthenticated={isAuthenticated}
                 />
-              ),
-              headerShown: false,
-              tabBarLabel: '',
-            })}
-          >
-            {() => (
-              <MainStackNavigator
-                i18n={i18n}
-                t={t}
-                isAuthenticated={isAuthenticated}
-              />
-            )}
-          </Tab.Screen>
+              )}
+            </Tab.Screen>
+
+            <Tab.Screen
+              name='Trending'
+              component={Trending}
+              options={() => ({
+                tabBarIcon: ({ color }) => (
+                  <Ionicons
+                    style={{ width: Utils.moderateScale(50), height: 'auto' }}
+                    name='flame'
+                    size={Utils.moderateScale(25)}
+                    color={color}
+                  />
+                ),
+                header: () => (
+                  <Header isAuthenticated={isAuthenticated} backButton={true} />
+                ),
+                headerShown: true,
+                tabBarLabel: '',
+              })}
+            />
+            <Tab.Screen
+              name='Movies'
+              component={Movies}
+              options={() => ({
+                tabBarIcon: ({ color }) => (
+                  <MaterialIcons
+                    style={{ width: Utils.moderateScale(50), height: 'auto' }}
+                    name='movie'
+                    size={Utils.moderateScale(25)}
+                    color={color}
+                  />
+                ),
+                header: () => (
+                  <Header isAuthenticated={isAuthenticated} backButton={true} />
+                ),
+                headerShown: true,
+                tabBarLabel: '',
+              })}
+            />
+
+            <Tab.Screen
+              name='Series'
+              component={Series}
+              options={() => ({
+                tabBarIcon: ({ color }) => (
+                  <Ionicons
+                    style={{ width: Utils.moderateScale(50), height: 'auto' }}
+                    name='tv-sharp'
+                    size={Utils.moderateScale(25)}
+                    color={color}
+                  />
+                ),
+                header: () => (
+                  <Header isAuthenticated={isAuthenticated} backButton={true} />
+                ),
+                headerShown: true,
+                tabBarLabel: '',
+              })}
+            />
+          </Fragment>
         ) : (
           <Tab.Screen
             name='AuthStackNavigator'
@@ -106,65 +167,6 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
             )}
           </Tab.Screen>
         )}
-
-        <Tab.Screen
-          name='Trending'
-          component={Trending}
-          options={() => ({
-            tabBarIcon: ({ color }) => (
-              <Ionicons
-                style={{ width: Utils.moderateScale(50), height: 'auto' }}
-                name='flame'
-                size={Utils.moderateScale(25)}
-                color={color}
-              />
-            ),
-            header: () => (
-              <Header isAuthenticated={isAuthenticated} backButton={true} />
-            ),
-            headerShown: true,
-            tabBarLabel: '',
-          })}
-        />
-        <Tab.Screen
-          name='Movies'
-          component={Movies}
-          options={() => ({
-            tabBarIcon: ({ color }) => (
-              <MaterialIcons
-                style={{ width: Utils.moderateScale(50), height: 'auto' }}
-                name='movie'
-                size={Utils.moderateScale(25)}
-                color={color}
-              />
-            ),
-            header: () => (
-              <Header isAuthenticated={isAuthenticated} backButton={true} />
-            ),
-            headerShown: true,
-            tabBarLabel: '',
-          })}
-        />
-
-        <Tab.Screen
-          name='Series'
-          component={Series}
-          options={() => ({
-            tabBarIcon: ({ color }) => (
-              <Ionicons
-                style={{ width: Utils.moderateScale(50), height: 'auto' }}
-                name='tv-sharp'
-                size={Utils.moderateScale(25)}
-                color={color}
-              />
-            ),
-            header: () => (
-              <Header isAuthenticated={isAuthenticated} backButton={true} />
-            ),
-            headerShown: true,
-            tabBarLabel: '',
-          })}
-        />
       </Tab.Navigator>
     </NavigationContainer>
   )
