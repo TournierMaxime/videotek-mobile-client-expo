@@ -12,10 +12,15 @@ import OnTheAir from './Series/OnTheAir'
 import TrendingTV from './Series/TrendingTV'
 import { useQuery } from 'react-query'
 import tw from 'twrnc'
+import { useSelector } from 'react-redux'
+import { useDynamicThemeStyles } from '@mod/mobile-common/styles/theme'
 
 const Home = () => {
   const { i18n, t } = useTranslation()
   const language = i18n.language
+
+  const darkMode = useSelector((state) => state.theme.darkMode)
+  const { background } = useDynamicThemeStyles(darkMode)
 
   const { data: popularData, isLoading } = useQuery(
     ['popular', 1, language],
@@ -37,7 +42,7 @@ const Home = () => {
       {isLoading ? (
         <ActivityIndicator size='large' color='#0000ff' />
       ) : (
-        <ScrollView style={tw`bg-white`}>
+        <ScrollView style={tw`${background}`}>
           <TrendingTV arrow={true} trendingTV={trendingTVData} t={t} />
           <OnTheAir arrow={true} onTheAir={onTheAirData} t={t} />
           <Popular arrow={true} popular={popularData} t={t} />

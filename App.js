@@ -18,6 +18,8 @@ import useLocalStorage from '@mod/mobile-common/lib/hooks/utils/useLocalStorage'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import Movies from './src/views/Movies.js'
 import Series from './src/views/Series.js'
+import { useDynamicThemeStyles } from '@mod/mobile-common/styles/theme'
+import { useSelector } from 'react-redux'
 
 const queryClient = new QueryClient()
 
@@ -25,14 +27,20 @@ const Tab = createBottomTabNavigator()
 
 const App = ({ isAuthenticated, onLoginSuccess }) => {
   const { i18n, t } = useTranslation()
-  const { getUserData, updateLanguage, favorites, lang } = useLocalStorage({
-    onLoginSuccess,
-  })
+  const { getUserData, updateLanguage, favorites, loadTheme, lang } =
+    useLocalStorage({
+      onLoginSuccess,
+    })
+
+  const darkMode = useSelector((state) => state.theme.darkMode)
+
+  const { colorIcon, backgroundTabColor } = useDynamicThemeStyles(darkMode)
 
   useEffect(() => {
     getUserData()
     updateLanguage()
     favorites()
+    loadTheme()
   }, [lang])
 
   return (
@@ -54,6 +62,7 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
             display: 'flex',
             flexDirection: 'row',
             zIndex: 0,
+            backgroundColor: backgroundTabColor
           },
         }}
       >
@@ -62,12 +71,12 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
             <Tab.Screen
               name='MainStackNavigator'
               options={() => ({
-                tabBarIcon: ({ color }) => (
+                tabBarIcon: () => (
                   <Entypo
                     style={{ width: Utils.moderateScale(50), height: 'auto' }}
                     name='home'
                     size={Utils.moderateScale(25)}
-                    color={color}
+                    color={colorIcon}
                   />
                 ),
                 headerShown: false,
@@ -87,12 +96,12 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
               name='Trending'
               component={Trending}
               options={() => ({
-                tabBarIcon: ({ color }) => (
+                tabBarIcon: () => (
                   <Ionicons
                     style={{ width: Utils.moderateScale(50), height: 'auto' }}
                     name='flame'
                     size={Utils.moderateScale(25)}
-                    color={color}
+                    color={colorIcon}
                   />
                 ),
                 header: () => (
@@ -106,12 +115,12 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
               name='Movies'
               component={Movies}
               options={() => ({
-                tabBarIcon: ({ color }) => (
+                tabBarIcon: () => (
                   <MaterialIcons
                     style={{ width: Utils.moderateScale(50), height: 'auto' }}
                     name='movie'
                     size={Utils.moderateScale(25)}
-                    color={color}
+                    color={colorIcon}
                   />
                 ),
                 header: () => (
@@ -126,12 +135,12 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
               name='Series'
               component={Series}
               options={() => ({
-                tabBarIcon: ({ color }) => (
+                tabBarIcon: () => (
                   <Ionicons
                     style={{ width: Utils.moderateScale(50), height: 'auto' }}
                     name='tv-sharp'
                     size={Utils.moderateScale(25)}
-                    color={color}
+                    color={colorIcon}
                   />
                 ),
                 header: () => (
@@ -146,12 +155,12 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
           <Tab.Screen
             name='AuthStackNavigator'
             options={() => ({
-              tabBarIcon: ({ color }) => (
+              tabBarIcon: () => (
                 <Entypo
                   style={{ width: Utils.moderateScale(50), height: 'auto' }}
                   name='home'
                   size={Utils.moderateScale(25)}
-                  color={color}
+                  color={colorIcon}
                 />
               ),
               headerShown: false,

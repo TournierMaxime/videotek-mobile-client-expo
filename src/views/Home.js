@@ -11,6 +11,7 @@ import { useQuery } from 'react-query'
 import useNotification from '@mod/mobile-common/lib/hooks/utils/useNotification.js'
 
 const Home = () => {
+
   const { i18n, t } = useTranslation()
   const language = i18n.language
 

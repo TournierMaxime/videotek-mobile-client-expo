@@ -4,7 +4,7 @@ import {
   peopleTmdbReducer,
   searchTmdbReducer,
 } from '@mod/mobile-tmdb/redux/index'
-import { favoriteReducer } from '@mod/mobile-common/redux/index'
+import { favoriteReducer, theme } from '@mod/mobile-common/redux/index'
 import { authCommonReducer } from '@mod/mobile-auth/redux/index'
 import {
   userReducers,
@@ -20,4 +20,5 @@ export {
   searchTmdbReducer,
   userReducers,
   recommendationReducers,
+  theme
 }

@@ -4,13 +4,18 @@ import { Ionicons, AntDesign } from '@expo/vector-icons'
 import tw from 'twrnc'
 import Utils from '@mod/mobile-common/lib/class/Utils'
 import { useNavigation } from '@react-navigation/native'
+import { useDynamicThemeStyles } from '@mod/mobile-common/styles/theme'
+import { useSelector } from 'react-redux'
 
 const Trending = ({ trending, t, arrow }) => {
   const navigation = useNavigation()
+  const darkMode = useSelector((state) => state.theme.darkMode)
+  const { background, text, colorIcon } = useDynamicThemeStyles(darkMode)
+
   return (
-    <Fragment>
+    <View style={tw`${background}`}>
       <View style={tw`justify-between items-baseline flex-row mr-4`}>
-        <Text style={tw`font-medium text-xl ml-4 mt-4`}>
+        <Text style={tw`font-medium text-xl ml-4 mt-4 ${text}`}>
           {t('utils.trending')}
         </Text>
         {arrow ? (
@@ -18,15 +23,16 @@ const Trending = ({ trending, t, arrow }) => {
             <AntDesign
               name='arrowright'
               size={Utils.moderateScale(25)}
-              color='black'
+              color={colorIcon}
             />
           </TouchableOpacity>
         ) : (
-          <Ionicons name='flame' size={Utils.moderateScale(25)} color='black' />
+          <Ionicons name='flame' size={Utils.moderateScale(25)} color={colorIcon} />
         )}
       </View>
-      <View style={tw`items-center justify-between`}>
+      <View style={tw`items-center justify-between ${background}`}>
         <FlatList
+          style={tw`${background}`}
           data={trending?.results?.slice(0, 8)}
           keyExtractor={(item) => item.id}
           horizontal={true}
@@ -96,7 +102,7 @@ const Trending = ({ trending, t, arrow }) => {
           }}
         />
       </View>
-    </Fragment>
+    </View>
   )
 }
 

@@ -11,10 +11,15 @@ import NowPlaying from './Movies/NowPlaying'
 import Upcoming from './Movies/Upcoming'
 import { useQuery } from 'react-query'
 import tw from 'twrnc'
+import { useSelector } from 'react-redux'
+import { useDynamicThemeStyles } from '@mod/mobile-common/styles/theme'
 
 const Movies = () => {
   const { i18n, t } = useTranslation()
   const language = i18n.language
+
+  const darkMode = useSelector((state) => state.theme.darkMode)
+  const { background } = useDynamicThemeStyles(darkMode)
 
   const { data: nowPlayingData, isLoading } = useQuery(
     ['nowPlaying', 1, language],
@@ -32,7 +37,7 @@ const Movies = () => {
       {isLoading ? (
         <ActivityIndicator size='large' color='#0000ff' />
       ) : (
-        <ScrollView style={tw`bg-white`}>
+        <ScrollView style={tw`${background}`}>
           <Trending arrow={true} trending={trendingData} t={t} />
           <NowPlaying arrow={true} nowPlaying={nowPlayingData} t={t} />
           <Upcoming arrow={true} upcoming={upcomingData} t={t} />

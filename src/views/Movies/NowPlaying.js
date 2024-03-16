@@ -1,17 +1,22 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native'
 import { MaterialIcons } from 'react-native-vector-icons'
 import { AntDesign } from '@expo/vector-icons'
 import Utils from '@mod/mobile-common/lib/class/Utils'
 import tw from 'twrnc'
 import { useNavigation } from '@react-navigation/native'
+import { useDynamicThemeStyles } from '@mod/mobile-common/styles/theme'
+import { useSelector } from 'react-redux'
 
 const NowPlaying = ({ nowPlaying, t, arrow }) => {
   const navigation = useNavigation()
+  const darkMode = useSelector((state) => state.theme.darkMode)
+  const { background, text, colorIcon } = useDynamicThemeStyles(darkMode)
+
   return (
-    <Fragment>
+    <View style={tw`${background}`}>
       <View style={tw`justify-between items-baseline flex-row mr-4`}>
-        <Text style={tw`font-medium text-xl ml-4 mt-4`}>
+        <Text style={tw`font-medium text-xl ml-4 mt-4 ${text}`}>
           {t('utils.films')}
         </Text>
         {arrow ? (
@@ -19,14 +24,14 @@ const NowPlaying = ({ nowPlaying, t, arrow }) => {
             <AntDesign
               name='arrowright'
               size={Utils.moderateScale(25)}
-              color='black'
+              color={colorIcon}
             />
           </TouchableOpacity>
         ) : (
           <MaterialIcons
             name='movie'
             size={Utils.moderateScale(25)}
-            color='black'
+            color={colorIcon}
           />
         )}
       </View>
@@ -68,7 +73,7 @@ const NowPlaying = ({ nowPlaying, t, arrow }) => {
           }}
         />
       </View>
-    </Fragment>
+    </View>
   )
 }
 
