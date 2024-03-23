@@ -1,30 +1,20 @@
 import React, { useEffect, Fragment } from "react"
-import { ActivityIndicator, ScrollView, Image } from "react-native"
-import { nowPlaying, trending } from "@mod/mobile-tmdb/react-query/movies"
-import { trendingTV } from "@mod/mobile-tmdb/react-query/series"
+import { ActivityIndicator } from "react-native"
 import { useTranslation } from "react-i18next"
 import registerForPushNotificationsAsync from "@mod/mobile-common/lib/components/utils/Notifications"
-import Trending from "./Movies/Trending"
-import NowPlaying from "./Movies/NowPlaying"
-import TrendingTV from "./Series/TrendingTV"
-import { useQuery } from "react-query"
 import useNotification from "@mod/mobile-common/lib/hooks/utils/useNotification.js"
-import tw from "twrnc"
+import Feeds from "./Feeds"
+import { useSelector, useDispatch } from "react-redux"
+import { searchFeeds } from "@mod/mobile-tmdb/redux/actions/feeds"
 
 const Home = () => {
-  const { i18n, t } = useTranslation()
+  const { i18n } = useTranslation()
   const language = i18n.language
 
-  const { data: nowPlayingData, isLoading } = useQuery(
-    ["nowPlaying", 1, language],
-    () => nowPlaying(1, language),
-  )
-  const { data: trendingData } = useQuery(["trending", 1, language], () =>
-    trending(1, language),
-  )
-  const { data: trendingTVData } = useQuery(["trendingTV", 1, language], () =>
-    trendingTV(1, language),
-  )
+  const dispatch = useDispatch()
+
+  const data = useSelector((state) => state.searchFeeds.data?.feeds)
+  const isLoading = useSelector((state) => state.searchFeeds.loading)
 
   useNotification()
 
@@ -32,16 +22,19 @@ const Home = () => {
     registerForPushNotificationsAsync()
   }, [language])
 
+  useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(searchFeeds())
+    }
+    fetchData()
+  }, [dispatch])
+
   return (
     <Fragment>
       {isLoading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
-        <ScrollView>
-          <Trending arrow={false} trending={trendingData} t={t} />
-          <NowPlaying arrow={false} nowPlaying={nowPlayingData} t={t} />
-          <TrendingTV arrow={false} trendingTV={trendingTVData} t={t} />
-        </ScrollView>
+        <Feeds data={data} />
       )}
     </Fragment>
   )

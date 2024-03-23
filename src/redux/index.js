@@ -3,13 +3,14 @@ import {
   serieTmdbReducer,
   peopleTmdbReducer,
   searchTmdbReducer,
-} from '@mod/mobile-tmdb/redux/index'
-import { favoriteReducer, theme } from '@mod/mobile-common/redux/index'
-import { authCommonReducer } from '@mod/mobile-auth/redux/index'
+  feedsReducer,
+} from "@mod/mobile-tmdb/redux/index"
+import { favoriteReducer, theme } from "@mod/mobile-common/redux/index"
+import { authCommonReducer } from "@mod/mobile-auth/redux/index"
 import {
   userReducers,
   recommendationReducers,
-} from '@mod/mobile-user/redux/index'
+} from "@mod/mobile-user/redux/index"
 
 export {
   authCommonReducer,
@@ -20,5 +21,6 @@ export {
   searchTmdbReducer,
   userReducers,
   recommendationReducers,
-  theme
+  theme,
+  feedsReducer,
 }

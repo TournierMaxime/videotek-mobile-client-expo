@@ -5,7 +5,11 @@ import store from "./src/redux/store"
 import Header from "@mod/mobile-common/lib/components/layout/Header"
 import Trending from "@mod/mobile-tmdb/views/Movies/Trending"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import { MaterialIcons, Ionicons, Entypo } from "react-native-vector-icons"
+import {
+  MaterialCommunityIcons,
+  Ionicons,
+  Entypo,
+} from "react-native-vector-icons"
 import { useTranslation } from "react-i18next"
 import i18n from "./i18n"
 import { I18nextProvider } from "react-i18next"
@@ -16,10 +20,10 @@ import AuthStackNavigator from "@mod/mobile-auth/navigators/AuthStackNavigator"
 import MainStackNavigator from "./src/navigators/MainStackNavigator.js"
 import useLocalStorage from "@mod/mobile-common/lib/hooks/utils/useLocalStorage"
 import { QueryClient, QueryClientProvider } from "react-query"
-import Movies from "./src/views/Movies.js"
-import Series from "./src/views/Series.js"
 import { useDynamicThemeStyles } from "@mod/mobile-common/styles/theme"
 import { useSelector } from "react-redux"
+import MovieStackNavigator from "./src/navigators/MovieStackNavigator.js"
+import SerieStackNavigator from "./src/navigators/SerieStackNavigator.js"
 
 const queryClient = new QueryClient()
 
@@ -73,9 +77,9 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
               name="MainStackNavigator"
               options={() => ({
                 tabBarIcon: ({ focused }) => (
-                  <Entypo
+                  <Ionicons
                     style={{ width: Utils.moderateScale(50), height: "auto" }}
-                    name="home"
+                    name="newspaper-outline"
                     size={Utils.moderateScale(25)}
                     color={focused ? activeIcon : colorIcon}
                   />
@@ -100,7 +104,7 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
                 tabBarIcon: ({ focused }) => (
                   <Ionicons
                     style={{ width: Utils.moderateScale(50), height: "auto" }}
-                    name="flame"
+                    name="flame-outline"
                     size={Utils.moderateScale(25)}
                     color={focused ? activeIcon : colorIcon}
                   />
@@ -114,45 +118,54 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
               })}
             />
             <Tab.Screen
-              name="Movies"
-              component={Movies}
+              name="MoviesTab"
               options={() => ({
                 tabBarIcon: ({ focused }) => (
-                  <MaterialIcons
+                  <MaterialCommunityIcons
                     style={{ width: Utils.moderateScale(50), height: "auto" }}
-                    name="movie"
+                    name="movie-open-outline"
                     size={Utils.moderateScale(25)}
                     color={focused ? activeIcon : colorIcon}
                   />
                 ),
-                header: () => (
-                  <Header isAuthenticated={isAuthenticated} backButton={true} />
-                ),
-                headerShown: true,
+                headerShown: false,
                 tabBarLabel: "",
                 tabBarActiveTintColor: activeIcon,
               })}
-            />
+            >
+              {() => (
+                <MovieStackNavigator
+                  i18n={i18n}
+                  t={t}
+                  isAuthenticated={isAuthenticated}
+                />
+              )}
+            </Tab.Screen>
 
             <Tab.Screen
-              name="Series"
-              component={Series}
+              name="SeriesTab"
               options={() => ({
                 tabBarIcon: ({ focused }) => (
                   <Ionicons
                     style={{ width: Utils.moderateScale(50), height: "auto" }}
-                    name="tv-sharp"
+                    name="tv-outline"
                     size={Utils.moderateScale(25)}
                     color={focused ? activeIcon : colorIcon}
                   />
                 ),
-                header: () => (
-                  <Header isAuthenticated={isAuthenticated} backButton={true} />
-                ),
-                headerShown: true,
+                headerShown: false,
                 tabBarLabel: "",
+                tabBarActiveTintColor: activeIcon,
               })}
-            />
+            >
+              {() => (
+                <SerieStackNavigator
+                  i18n={i18n}
+                  t={t}
+                  isAuthenticated={isAuthenticated}
+                />
+              )}
+            </Tab.Screen>
           </Fragment>
         ) : (
           <Tab.Screen

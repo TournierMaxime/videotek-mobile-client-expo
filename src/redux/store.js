@@ -1,6 +1,17 @@
-import {configureStore} from '@reduxjs/toolkit';
-import thunkMiddleware from 'redux-thunk';
-import { authCommonReducer, userReducers, favoriteReducer, movieTmdbReducer, serieTmdbReducer, peopleTmdbReducer, searchTmdbReducer, recommendationReducers, theme } from "./index"
+import { configureStore } from "@reduxjs/toolkit"
+import thunkMiddleware from "redux-thunk"
+import {
+  authCommonReducer,
+  userReducers,
+  favoriteReducer,
+  movieTmdbReducer,
+  serieTmdbReducer,
+  peopleTmdbReducer,
+  searchTmdbReducer,
+  recommendationReducers,
+  theme,
+  feedsReducer,
+} from "./index"
 
 const rootReducer = {
   ...authCommonReducer,
@@ -11,7 +22,8 @@ const rootReducer = {
   ...searchTmdbReducer,
   ...favoriteReducer,
   ...recommendationReducers,
-  ...theme
+  ...theme,
+  ...feedsReducer,
 }
 
 const createBaseStore = (reducers) => {
@@ -22,11 +34,11 @@ const createBaseStore = (reducers) => {
         immutableCheck: false,
         serializableCheck: false,
       }).concat(thunkMiddleware),
-  });
+  })
 
-  return store;
-};
+  return store
+}
 
-const store = createBaseStore(rootReducer);
+const store = createBaseStore(rootReducer)
 
 export default store
