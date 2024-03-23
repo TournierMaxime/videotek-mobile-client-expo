@@ -14,7 +14,7 @@ import Trending from "@mod/mobile-tmdb/views/Movies/Trending"
 const MainStack = createNativeStackNavigator()
 
 const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
-  const userId = useSelector((state) => state.auth.data.user.userId)
+  const userId = useSelector((state) => state.auth.data?.user?.userId)
 
   return (
     <MainStack.Navigator
