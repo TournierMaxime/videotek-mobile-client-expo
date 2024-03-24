@@ -63,8 +63,8 @@ const SerieStackNavigator = ({ isAuthenticated, i18n, t }) => {
       </SerieStack.Screen>
       <SerieStack.Screen
         name="DetailsSerie"
-        options={({ route }) => ({
-          title: route.params.title,
+        initialParams={{ id: "" }}
+        options={() => ({
           header: () => (
             <Header isAuthenticated={isAuthenticated} backButton={true} />
           ),
@@ -104,8 +104,8 @@ const SerieStackNavigator = ({ isAuthenticated, i18n, t }) => {
       </SerieStack.Screen>
       <SerieStack.Screen
         name="DetailsPeople"
-        options={({ route }) => ({
-          title: route.params.title,
+        initialParams={{ id: "" }}
+        options={() => ({
           header: () => (
             <Header isAuthenticated={isAuthenticated} backButton={true} />
           ),

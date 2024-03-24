@@ -52,8 +52,8 @@ const MovieStackNavigator = ({ isAuthenticated, i18n, t }) => {
       </MovieStack.Screen>
       <MovieStack.Screen
         name="DetailsMovie"
-        options={({ route }) => ({
-          title: route.params.title,
+        initialParams={{ id: "" }}
+        options={() => ({
           header: () => (
             <Header isAuthenticated={isAuthenticated} backButton={true} />
           ),
@@ -63,8 +63,8 @@ const MovieStackNavigator = ({ isAuthenticated, i18n, t }) => {
       </MovieStack.Screen>
       <MovieStack.Screen
         name="DetailsPeople"
-        options={({ route }) => ({
-          title: route.params.name,
+        initialParams={{ id: "" }}
+        options={() => ({
           header: () => (
             <Header isAuthenticated={isAuthenticated} backButton={true} />
           ),
