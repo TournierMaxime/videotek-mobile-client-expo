@@ -26,6 +26,11 @@ watchman watch-project '/Users/maximetournier/Desktop/NAS/videotek/videotek-mobi
 
 - Lancer la commande dans `/android/app` keytool -genkey -v -keystore keystore.jks -alias ladd-exatech-mms-client -keyalg RSA -keysize 2048 -validity 10000
 
+### Lister ses empreintes
+
+- Lancer la commande suivante `keytool -list -v -keystore keystore.jks`
+
 ## Wireless Debug Issue
 
 adb pair IP:PORT
+adb connect IP:PORT
