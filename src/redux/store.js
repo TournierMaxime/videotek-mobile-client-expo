@@ -10,7 +10,7 @@ import {
   searchTmdbReducer,
   recommendationReducers,
   theme,
-  feedsReducer,
+  /*   feedsReducer, */
 } from "./index"
 
 const rootReducer = {
@@ -23,7 +23,7 @@ const rootReducer = {
   ...favoriteReducer,
   ...recommendationReducers,
   ...theme,
-  ...feedsReducer,
+  /*   ...feedsReducer, */
 }
 
 const createBaseStore = (reducers) => {

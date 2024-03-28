@@ -1,4 +1,4 @@
-import React, { memo } from "react"
+/* import React, { memo } from "react"
 import {
   FlatList,
   Linking,
@@ -61,3 +61,4 @@ const Feeds = ({ data }) => {
 }
 
 export default memo(Feeds)
+ */
