@@ -2,8 +2,6 @@ import { connect, Provider } from "react-redux"
 import React, { Fragment, useEffect } from "react"
 import { NavigationContainer } from "@react-navigation/native"
 import store from "./src/redux/store"
-import Header from "@mod/mobile-common/lib/components/layout/Header"
-import Trending from "@mod/mobile-tmdb/views/Movies/Trending"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import {
   MaterialCommunityIcons,
@@ -79,7 +77,7 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
                 tabBarIcon: ({ focused }) => (
                   <Ionicons
                     style={{ width: Utils.moderateScale(50), height: "auto" }}
-                    name="newspaper-outline"
+                    name="flame-outline"
                     size={Utils.moderateScale(25)}
                     color={focused ? activeIcon : colorIcon}
                   />
@@ -97,26 +95,6 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
               )}
             </Tab.Screen>
 
-            <Tab.Screen
-              name="Trending"
-              component={Trending}
-              options={() => ({
-                tabBarIcon: ({ focused }) => (
-                  <Ionicons
-                    style={{ width: Utils.moderateScale(50), height: "auto" }}
-                    name="flame-outline"
-                    size={Utils.moderateScale(25)}
-                    color={focused ? activeIcon : colorIcon}
-                  />
-                ),
-                header: () => (
-                  <Header isAuthenticated={isAuthenticated} backButton={true} />
-                ),
-                headerShown: true,
-                tabBarLabel: "",
-                tabBarActiveTintColor: activeIcon,
-              })}
-            />
             <Tab.Screen
               name="MoviesTab"
               options={() => ({

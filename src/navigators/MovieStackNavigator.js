@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import Header from "@mod/mobile-common/lib/components/layout/Header.js"
 import Movies from "../views/Movies"
 import NowPlaying from "@mod/mobile-tmdb/views/Movies/NowPlaying"
+import TopRated from "@mod/mobile-tmdb/views/Movies/TopRated"
 import Upcoming from "@mod/mobile-tmdb/views/Movies/Upcoming"
 import DetailsMovie from "@mod/mobile-tmdb/views/Movies/DetailsMovie"
 import DetailsPeople from "@mod/mobile-tmdb/views/People/DetailsPeople"
@@ -39,6 +40,16 @@ const MovieStackNavigator = ({ isAuthenticated, i18n, t }) => {
         }}
       >
         {(props) => <NowPlaying {...props} i18n={i18n} t={t} />}
+      </MovieStack.Screen>
+      <MovieStack.Screen
+        name="TopRated"
+        options={{
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
+        }}
+      >
+        {(props) => <TopRated {...props} i18n={i18n} t={t} />}
       </MovieStack.Screen>
       <MovieStack.Screen
         name="Upcoming"

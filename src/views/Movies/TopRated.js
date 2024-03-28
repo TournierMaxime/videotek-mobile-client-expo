@@ -7,7 +7,7 @@ import { useNavigation } from "@react-navigation/native"
 import { useDynamicThemeStyles } from "@mod/mobile-common/styles/theme"
 import { useSelector } from "react-redux"
 
-const Trending = ({ trending, t, arrow }) => {
+const TopRated = ({ topRated, t, arrow }) => {
   const navigation = useNavigation()
   const darkMode = useSelector((state) => state.theme.darkMode)
   const { background, text, colorIcon } = useDynamicThemeStyles(darkMode)
@@ -16,10 +16,10 @@ const Trending = ({ trending, t, arrow }) => {
     <View style={tw`${background}`}>
       <View style={tw`justify-between items-baseline flex-row mr-4`}>
         <Text style={tw`font-medium text-xl ml-4 mt-4 ${text}`}>
-          {t("utils.trending")}
+          {t("utils.topRated")}
         </Text>
         {arrow ? (
-          <TouchableOpacity onPress={() => navigation.navigate("Trending")}>
+          <TouchableOpacity onPress={() => navigation.navigate("TopRated")}>
             <AntDesign
               name="arrowright"
               size={Utils.moderateScale(25)}
@@ -37,7 +37,7 @@ const Trending = ({ trending, t, arrow }) => {
       <View style={tw`items-center justify-between ${background}`}>
         <FlatList
           style={tw`${background}`}
-          data={trending?.results?.slice(0, 8)}
+          data={topRated?.results?.slice(0, 8)}
           keyExtractor={(item) => item.id}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
@@ -61,7 +61,7 @@ const Trending = ({ trending, t, arrow }) => {
                             resizeMode: "cover",
                             marginRight:
                               index ===
-                              trending?.results?.slice(0, 8).length - 1
+                              topRated?.results?.slice(0, 8).length - 1
                                 ? 15
                                 : 0,
                           },
@@ -89,7 +89,7 @@ const Trending = ({ trending, t, arrow }) => {
                             resizeMode: "cover",
                             marginRight:
                               index ===
-                              trending?.results?.slice(0, 8).length - 1
+                              topRated?.results?.slice(0, 8).length - 1
                                 ? 15
                                 : 0,
                           },
@@ -110,4 +110,4 @@ const Trending = ({ trending, t, arrow }) => {
   )
 }
 
-export default Trending
+export default TopRated

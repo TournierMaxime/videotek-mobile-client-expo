@@ -2,11 +2,11 @@ import React, { Fragment } from "react"
 import { ActivityIndicator, ScrollView } from "react-native"
 import {
   nowPlaying,
-  trending,
+  topRated,
   upcoming,
 } from "@mod/mobile-tmdb/react-query/movies"
 import { useTranslation } from "react-i18next"
-import Trending from "./Movies/Trending"
+import TopRated from "./Movies/TopRated"
 import NowPlaying from "./Movies/NowPlaying"
 import Upcoming from "./Movies/Upcoming"
 import { useQuery } from "react-query"
@@ -25,8 +25,8 @@ const Movies = () => {
     ["nowPlaying", 1, language],
     () => nowPlaying(1, language),
   )
-  const { data: trendingData } = useQuery(["trending", 1, language], () =>
-    trending(1, language),
+  const { data: topRatedData } = useQuery(["topRated", 1, language], () =>
+    topRated(1, language),
   )
   const { data: upcomingData } = useQuery(["upcoming", 1, language], () =>
     upcoming(1, language),
@@ -40,6 +40,7 @@ const Movies = () => {
         <ScrollView style={tw`${background}`}>
           <NowPlaying arrow={true} nowPlaying={nowPlayingData} t={t} />
           <Upcoming arrow={true} upcoming={upcomingData} t={t} />
+          <TopRated arrow={true} topRated={topRatedData} t={t} />
         </ScrollView>
       )}
     </Fragment>
