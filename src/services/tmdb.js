@@ -1,13 +1,13 @@
-import { tmdbApi as http } from "./axios.js";
-import { EXPO_TMDB_API_KEY } from '@env'
+import { tmdbApi as http } from "./axios.js"
+import { EXPO_TMDB_API_KEY } from "@env"
 
 const ReleaseDates = (id) => {
   return http.get(`/movie/${id}/release_dates`, {
     params: {
-      api_key: EXPO_TMDB_API_KEY
+      api_key: EXPO_TMDB_API_KEY,
     },
-  });
-};
+  })
+}
 
 const NowPlaying = (page, language) => {
   return http.get("/movie/now_playing", {
@@ -16,38 +16,48 @@ const NowPlaying = (page, language) => {
       language,
       page,
     },
-  });
-};
+  })
+}
+
+const TopRated = (page, language) => {
+  return http.get("/movie/top_rated", {
+    params: {
+      api_key: EXPO_TMDB_API_KEY,
+      language,
+      page,
+    },
+  })
+}
 
 const Upcoming = (page, language) => {
   return http.get("/movie/upcoming", {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language,
-      page
+      page,
     },
-  });
-};
+  })
+}
 
 const OnTheAir = (page, language) => {
   return http.get("/tv/on_the_air", {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language,
-      page
+      page,
     },
-  });
-};
+  })
+}
 
 const Popular = (page, language) => {
   return http.get("/tv/popular", {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language,
-      page
+      page,
     },
-  });
-};
+  })
+}
 
 const Search = (page, query, language) => {
   return http.get("/search/multi", {
@@ -56,141 +66,157 @@ const Search = (page, query, language) => {
       language,
       page,
       include_adult: false,
-      query
+      query,
     },
-  });
-};
+  })
+}
 
 const MovieDetails = (id, language) => {
   return http.get(`/movie/${id}`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language
+      language,
     },
-  });
-};
+  })
+}
 
 const MovieWatchProviders = (id) => {
   return http.get(`/movie/${id}/watch/providers`, {
     params: {
-      api_key: EXPO_TMDB_API_KEY
+      api_key: EXPO_TMDB_API_KEY,
     },
-  });
-};
+  })
+}
 
 const SerieDetails = (id, language) => {
   return http.get(`/tv/${id}`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language
+      language,
     },
-  });
-};
+  })
+}
 
 const SeasonDetails = (id, seasonNumber, language) => {
   return http.get(`/tv/${id}/season/${seasonNumber}`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language
+      language,
     },
-  });
-};
+  })
+}
 
 const SeasonWatchProviders = (id, seasonNumber, language) => {
   return http.get(`/tv/${id}/season/${seasonNumber}/watch/providers`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language
+      language,
     },
-  });
-};
+  })
+}
 
 const PeopleDetails = (id, language) => {
   return http.get(`/person/${id}`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language
+      language,
     },
-  });
-};
+  })
+}
 
 const MovieCrew = (id, language) => {
   return http.get(`/movie/${id}/credits`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language
+      language,
     },
-  });
-};
+  })
+}
 
 const MovieTrailer = (id, language) => {
   return http.get(`/movie/${id}/videos`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language
+      language,
     },
-  });
-};
+  })
+}
 
 const SerieCrew = (id, language) => {
   return http.get(`/tv/${id}/credits`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language
+      language,
     },
-  });
-};
+  })
+}
 
 const SerieTrailer = (id, language) => {
   return http.get(`/tv/${id}/videos`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language
+      language,
     },
-  });
-};
+  })
+}
 
 const PeopleCareer = (id, language) => {
   return http.get(`/person/${id}/combined_credits`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language
+      language,
     },
-  });
-};
+  })
+}
 
 const Trending = (page, language) => {
   return http.get(`/trending/all/day`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language,
-      page
+      page,
     },
-  });
-};
+  })
+}
 
 const TrendingTV = (page, language) => {
   return http.get(`/trending/tv/week`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
       language,
-      page
+      page,
     },
-  });
-};
+  })
+}
 
 const PeopleExternalIds = (id) => {
   return http.get(`/person/${id}/external_ids`, {
     params: {
-      api_key: EXPO_TMDB_API_KEY
+      api_key: EXPO_TMDB_API_KEY,
     },
-  });
-};
+  })
+}
 
+const RecommendationMovie = (id) => {
+  return http.get(`/movie/${id}/recommendations`, {
+    params: {
+      api_key: EXPO_TMDB_API_KEY,
+    },
+  })
+}
 
-export { 
+const RecommendationSerie = (id) => {
+  return http.get(`/tv/${id}/recommendations`, {
+    params: {
+      api_key: EXPO_TMDB_API_KEY,
+    },
+  })
+}
+
+export {
   ReleaseDates,
   NowPlaying,
+  TopRated,
   Upcoming,
   OnTheAir,
   Popular,
@@ -208,5 +234,7 @@ export {
   SeasonDetails,
   SeasonWatchProviders,
   MovieWatchProviders,
-  PeopleExternalIds
-};
+  PeopleExternalIds,
+  RecommendationMovie,
+  RecommendationSerie,
+}

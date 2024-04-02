@@ -1,11 +1,10 @@
-import { videotekApi as http } from './axios.js'
+import { videotekApi as http } from "./axios.js"
 
 const SearchUsers = (filters) => {
   return http.post(
-    '/users/search',
+    "/users/search",
     {},
     {
-      withCredentials: true,
       params: filters,
     }
   )
@@ -19,7 +18,7 @@ const UpdateUser = (data, userId) => {
   return http.put(`/users/${userId}`, data, {
     withCredentials: true,
     headers: {
-      'Content-Type': 'multipart/form-data',
+      "Content-Type": "multipart/form-data",
     },
   })
 }

@@ -115,6 +115,7 @@ android {
 
     namespace 'com.hoggy.videotekclientexpo'
     defaultConfig {
+        manifestPlaceholders = [appAuthRedirectScheme: "com.hoggy.videotekclientexpo"]
         applicationId 'com.hoggy.videotekclientexpo'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion

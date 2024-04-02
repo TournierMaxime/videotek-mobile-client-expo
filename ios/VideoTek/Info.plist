@@ -23,6 +23,8 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+		    <key>CFBundleURLName</key>
+    		<string>com.hoggy.videotekclientexpo</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.hoggy.videotekclientexpo</string>
@@ -30,7 +32,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>26</string>
+	<string>28</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
