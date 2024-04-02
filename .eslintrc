@@ -1,0 +1,17 @@
+{
+  "extends": ["standard", "eslint:recommended", "plugin:prettier/recommended", "plugin:react/recommended"],
+  "plugins": ["react"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "react/prop-types": 0,
+    "prefer-const": "off",
+    "no-unneeded-ternary": "off"
+  },
+ "env": {
+    "browser": true
+  }
+}

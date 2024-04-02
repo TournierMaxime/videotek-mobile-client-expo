@@ -6,7 +6,7 @@ const SearchUsers = (filters) => {
     {},
     {
       params: filters,
-    }
+    },
   )
 }
 

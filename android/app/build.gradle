@@ -119,8 +119,8 @@ android {
         applicationId 'com.hoggy.videotekclientexpo'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 26
-        versionName "1.4.0"
+        versionCode 29
+        versionName "1.5.0"
     }
 
     splits {

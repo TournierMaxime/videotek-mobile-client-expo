@@ -24,13 +24,13 @@ const Home = () => {
 
   const { data: popularData, isLoading } = useQuery(
     ["popular", 1, language],
-    () => popular(1, language)
+    () => popular(1, language),
   )
   const { data: onTheAirData } = useQuery(["onTheAir", 1, language], () =>
-    onTheAir(1, language)
+    onTheAir(1, language),
   )
   const { data: trendingTVData } = useQuery(["trendingTV", 1, language], () =>
-    trendingTV(1, language)
+    trendingTV(1, language),
   )
 
   useEffect(() => {

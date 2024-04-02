@@ -23,13 +23,13 @@ const Movies = () => {
 
   const { data: nowPlayingData, isLoading } = useQuery(
     ["nowPlaying", 1, language],
-    () => nowPlaying(1, language)
+    () => nowPlaying(1, language),
   )
   const { data: topRatedData } = useQuery(["topRated", 1, language], () =>
-    topRated(1, language)
+    topRated(1, language),
   )
   const { data: upcomingData } = useQuery(["upcoming", 1, language], () =>
-    upcoming(1, language)
+    upcoming(1, language),
   )
 
   return (

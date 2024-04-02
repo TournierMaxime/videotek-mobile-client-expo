@@ -38,7 +38,7 @@ const ForgetPasswordMobile = async (data) => {
 const CheckForgetPasswordCodeMobile = async (data) => {
   const response = await http.post(
     `/auth/check-forget-password-code-mobile`,
-    data
+    data,
   )
   return response
 }
