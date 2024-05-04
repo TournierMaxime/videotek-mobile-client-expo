@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-51:/values-ka/values-ka.xml",
+            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-52:/values-ka/values-ka.xml",
             "map": [
                 {
                     "source": "/Users/maximetournier/.gradle/caches/transforms-3/cce59a6381f3264456569d66fa1aadc0/transformed/jetified-play-services-basement-17.0.0/res/values-ka/values.xml",

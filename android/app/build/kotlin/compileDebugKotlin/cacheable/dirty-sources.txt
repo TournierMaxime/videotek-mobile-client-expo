@@ -1,2 +1,0 @@
-/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/java/com/hoggy/videotekclientexpo/MainApplication.kt
-/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/java/com/hoggy/videotekclientexpo/MainActivity.kt

@@ -99,627 +99,629 @@
 54    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 54-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:5-77
 54-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:22-74
-55    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
-55-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:23:5-68
-55-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:23:22-65
-56    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-56-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:25:5-82
-56-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:25:22-79
-57
-58    <permission
-58-->[androidx.core:core:1.12.0] /Users/maximetournier/.gradle/caches/transforms-3/6fa08ebee00822939d86a47ace4a1202/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
-59        android:name="com.hoggy.videotekclientexpo.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-59-->[androidx.core:core:1.12.0] /Users/maximetournier/.gradle/caches/transforms-3/6fa08ebee00822939d86a47ace4a1202/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
-60        android:protectionLevel="signature" />
-60-->[androidx.core:core:1.12.0] /Users/maximetournier/.gradle/caches/transforms-3/6fa08ebee00822939d86a47ace4a1202/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
-61
-62    <uses-permission android:name="com.hoggy.videotekclientexpo.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-62-->[androidx.core:core:1.12.0] /Users/maximetournier/.gradle/caches/transforms-3/6fa08ebee00822939d86a47ace4a1202/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
-62-->[androidx.core:core:1.12.0] /Users/maximetournier/.gradle/caches/transforms-3/6fa08ebee00822939d86a47ace4a1202/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
-63    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> <!-- for android -->
-63-->[com.android.installreferrer:installreferrer:2.2] /Users/maximetournier/.gradle/caches/transforms-3/5916bf72a5c0d2cbbd79c680313cc06e/transformed/jetified-installreferrer-2.2/AndroidManifest.xml:9:5-110
-63-->[com.android.installreferrer:installreferrer:2.2] /Users/maximetournier/.gradle/caches/transforms-3/5916bf72a5c0d2cbbd79c680313cc06e/transformed/jetified-installreferrer-2.2/AndroidManifest.xml:9:22-107
-64    <!-- <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/> -->
-65    <!-- <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/> -->
-66    <!-- <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" /> -->
-67    <!-- <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" /> -->
-68    <!-- for Samsung -->
-69    <uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
-69-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:5-86
-69-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:22-83
-70    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" /> <!-- for htc -->
-70-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:5-87
-70-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:22-84
-71    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
-71-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:5-81
-71-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:22-78
-72    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" /> <!-- for sony -->
-72-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:5-83
-72-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:22-80
-73    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
-73-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:5-88
-73-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:22-85
-74    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" /> <!-- for apex -->
-74-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:5-92
-74-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:22-89
-75    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" /> <!-- for solid -->
-75-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:5-84
-75-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:22-81
-76    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" /> <!-- for huawei -->
-76-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:5-83
-76-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:22-80
-77    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
-77-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:5-91
-77-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:22-88
-78    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
-78-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:5-92
-78-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:22-89
-79    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" /> <!-- for ZUK -->
-79-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:5-93
-79-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:22-90
-80    <uses-permission android:name="android.permission.READ_APP_BADGE" /> <!-- for OPPO -->
-80-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:5-73
-80-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:22-70
-81    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS" />
-81-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:5-82
-81-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:22-79
-82    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS" /> <!-- for EvMe -->
-82-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:5-83
-82-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:22-80
-83    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ" />
-83-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:5-88
-83-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:22-85
-84    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE" />
-84-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:5-89
-84-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:22-86
-85
-86    <application
-86-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:15:3-41:17
-87        android:name="com.hoggy.videotekclientexpo.MainApplication"
-87-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:15:16-47
-88        android:allowBackup="false"
-88-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:15:162-189
-89        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-89-->[androidx.core:core:1.12.0] /Users/maximetournier/.gradle/caches/transforms-3/6fa08ebee00822939d86a47ace4a1202/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
-90        android:debuggable="true"
-91        android:extractNativeLibs="false"
-92        android:icon="@mipmap/ic_launcher"
-92-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:15:81-115
-93        android:label="@string/app_name"
-93-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:15:48-80
-94        android:roundIcon="@mipmap/ic_launcher_round"
-94-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:15:116-161
-95        android:testOnly="true"
-96        android:theme="@style/AppTheme"
-96-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:15:190-221
-97        android:usesCleartextTraffic="true" >
-97-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/debug/AndroidManifest.xml:6:18-53
-98        <meta-data
-98-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:16:5-141
-99            android:name="expo.modules.notifications.default_notification_icon"
-99-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:16:16-83
-100            android:resource="@drawable/ic_stat_notifications_icon" />
-100-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:16:84-139
-101        <meta-data
-101-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:17:5-82
-102            android:name="expo.modules.updates.ENABLED"
-102-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:17:16-59
-103            android:value="true" />
-103-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:17:60-80
-104        <meta-data
-104-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:18:5-105
-105            android:name="expo.modules.updates.EXPO_RUNTIME_VERSION"
-105-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:18:16-72
-106            android:value="exposdk:48.0.0" />
-106-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:18:73-103
-107        <meta-data
-107-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:19:5-105
-108            android:name="expo.modules.updates.EXPO_UPDATES_CHECK_ON_LAUNCH"
-108-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:19:16-80
-109            android:value="ALWAYS" />
-109-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:19:81-103
-110        <meta-data
-110-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:20:5-99
-111            android:name="expo.modules.updates.EXPO_UPDATES_LAUNCH_WAIT_MS"
-111-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:20:16-79
-112            android:value="0" />
-112-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:20:80-97
-113        <meta-data
-113-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:21:5-141
-114            android:name="expo.modules.updates.EXPO_UPDATE_URL"
-114-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:21:16-67
-115            android:value="https://u.expo.dev/f6110871-1ae7-43e7-8e85-5c2db50c2976" />
-115-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:21:68-139
-116
-117        <activity
-117-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:22:5-39:16
-118            android:name="com.hoggy.videotekclientexpo.MainActivity"
-118-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:22:15-43
-119            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode"
-119-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:22:44-134
-120            android:exported="true"
-120-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:22:256-279
-121            android:launchMode="singleTask"
-121-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:22:135-166
-122            android:theme="@style/Theme.App.SplashScreen"
-122-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:22:210-255
-123            android:windowSoftInputMode="adjustResize" >
-123-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:22:167-209
-124            <intent-filter>
-124-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:23:7-26:23
-125                <action android:name="android.intent.action.MAIN" />
-125-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:24:9-60
-125-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:24:17-58
-126
-127                <category android:name="android.intent.category.LAUNCHER" />
-127-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:25:9-68
-127-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:25:19-66
-128            </intent-filter>
-129            <intent-filter>
-129-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:27:7-32:23
-130                <action android:name="android.intent.action.VIEW" />
-130-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:10:7-58
-130-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:10:15-56
-131
-132                <category android:name="android.intent.category.DEFAULT" />
-132-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:29:9-67
-132-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:29:19-65
-133                <category android:name="android.intent.category.BROWSABLE" />
-133-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:11:7-67
-133-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:11:17-65
-134
-135                <data android:scheme="com.hoggy.videotekclientexpo" />
-135-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:12:7-37
-135-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:12:13-35
-136            </intent-filter>
-137            <intent-filter>
-137-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:33:7-38:23
-138                <action android:name="android.intent.action.VIEW" />
-138-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:10:7-58
-138-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:10:15-56
-139
-140                <category android:name="android.intent.category.DEFAULT" />
-140-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:29:9-67
-140-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:29:19-65
-141                <category android:name="android.intent.category.BROWSABLE" />
-141-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:11:7-67
-141-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:11:17-65
-142
-143                <data
-143-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:12:7-37
-144                    android:host="oauth2redirect"
-145                    android:pathPrefix="/google"
-146                    android:scheme="com.hoggy.videotekclientexpo" />
-146-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:12:13-35
-147            </intent-filter>
-148        </activity>
-149        <activity
-149-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:40:5-106
-150            android:name="com.facebook.react.devsupport.DevSettingsActivity"
-150-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:40:15-79
-151            android:exported="false" />
-151-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:40:80-104
-152
-153        <provider
-153-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-16:20
-154            android:name="com.imagepicker.ImagePickerProvider"
-154-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-63
-155            android:authorities="com.hoggy.videotekclientexpo.imagepickerprovider"
-155-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-71
-156            android:exported="false"
-156-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-37
-157            android:grantUriPermissions="true" >
-157-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-47
-158            <meta-data
-158-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-15:70
-159                android:name="android.support.FILE_PROVIDER_PATHS"
-159-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:17-67
-160                android:resource="@xml/imagepicker_provider_paths" />
-160-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-67
-161        </provider>
-162        <provider
-162-->[:react-native-webview] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-16:20
-163            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
-163-->[:react-native-webview] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-83
-164            android:authorities="com.hoggy.videotekclientexpo.fileprovider"
-164-->[:react-native-webview] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-64
-165            android:exported="false"
-165-->[:react-native-webview] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-37
-166            android:grantUriPermissions="true" >
-166-->[:react-native-webview] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-47
-167            <meta-data
-167-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-15:70
-168                android:name="android.support.FILE_PROVIDER_PATHS"
-168-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:17-67
-169                android:resource="@xml/file_provider_paths" />
-169-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-67
-170        </provider>
-171        <provider
-171-->[:expo-file-system] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:9-30:20
-172            android:name="expo.modules.filesystem.FileSystemFileProvider"
-172-->[:expo-file-system] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-74
-173            android:authorities="com.hoggy.videotekclientexpo.FileSystemFileProvider"
-173-->[:expo-file-system] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-74
-174            android:exported="false"
-174-->[:expo-file-system] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:24:13-37
-175            android:grantUriPermissions="true" >
-175-->[:expo-file-system] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:25:13-47
-176            <meta-data
-176-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-15:70
-177                android:name="android.support.FILE_PROVIDER_PATHS"
-177-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:17-67
-178                android:resource="@xml/file_system_provider_paths" />
-178-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-67
-179        </provider>
-180
-181        <service
-181-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:30:9-42:19
-182            android:name="com.google.android.gms.metadata.ModuleDependencies"
-182-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:31:13-78
-183            android:enabled="false"
-183-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:32:13-36
-184            android:exported="false" >
-184-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:33:13-37
-185            <intent-filter>
-185-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:35:13-37:29
-186                <action android:name="com.google.android.gms.metadata.MODULE_DEPENDENCIES" />
-186-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:36:17-94
-186-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:36:25-91
-187            </intent-filter>
-188
-189            <meta-data
-189-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:39:13-41:36
-190                android:name="photopicker_activity:0:required"
-190-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:40:17-63
-191                android:value="" />
-191-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:41:17-33
-192        </service>
-193
-194        <activity
-194-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:44:9-46:59
-195            android:name="com.canhub.cropper.CropImageActivity"
-195-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:45:13-64
-196            android:exported="true"
-196-->[com.github.CanHub:Android-Image-Cropper:4.3.1] /Users/maximetournier/.gradle/caches/transforms-3/eeb30e9ed572f280c8a26173d8f71114/transformed/jetified-Android-Image-Cropper-4.3.1/AndroidManifest.xml:35:13-36
-197            android:theme="@style/Base.Theme.AppCompat" /> <!-- https://developer.android.com/guide/topics/manifest/provider-element.html -->
-197-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:46:13-56
-198        <provider
-198-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:48:9-56:20
-199            android:name="expo.modules.imagepicker.fileprovider.ImagePickerFileProvider"
-199-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:49:13-89
-200            android:authorities="com.hoggy.videotekclientexpo.ImagePickerFileProvider"
-200-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:50:13-75
-201            android:exported="false"
-201-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:51:13-37
-202            android:grantUriPermissions="true" >
-202-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:52:13-47
-203            <meta-data
-203-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-15:70
-204                android:name="android.support.FILE_PROVIDER_PATHS"
-204-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:17-67
-205                android:resource="@xml/image_picker_provider_paths" />
-205-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-67
-206        </provider>
-207
-208        <service
-208-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:9-17:19
-209            android:name="expo.modules.notifications.service.ExpoFirebaseMessagingService"
-209-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-91
-210            android:exported="false" >
-210-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-37
-211            <intent-filter android:priority="-1" >
-211-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-16:29
-211-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:28-49
-212                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-212-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-78
-212-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:25-75
-213            </intent-filter>
-214        </service>
-215
-216        <receiver
-216-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:19:9-31:20
-217            android:name="expo.modules.notifications.service.NotificationsService"
-217-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-83
-218            android:enabled="true"
-218-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-35
-219            android:exported="false" >
-219-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-37
-220            <intent-filter android:priority="-1" >
-220-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-30:29
-220-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:28-49
-221                <action android:name="expo.modules.notifications.NOTIFICATION_EVENT" />
-221-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:24:17-88
-221-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:24:25-85
-222                <action android:name="android.intent.action.BOOT_COMPLETED" />
-222-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:25:17-79
-222-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:25:25-76
-223                <action android:name="android.intent.action.REBOOT" />
-223-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:26:17-71
-223-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:26:25-68
-224                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
-224-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:27:17-82
-224-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:27:25-79
-225                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
-225-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:28:17-82
-225-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:28:25-79
-226                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
-226-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:29:17-84
-226-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:29:25-81
-227            </intent-filter>
-228        </receiver>
-229
-230        <activity
-230-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:33:9-40:75
-231            android:name="expo.modules.notifications.service.NotificationForwarderActivity"
-231-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:34:13-92
-232            android:excludeFromRecents="true"
-232-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:35:13-46
-233            android:exported="false"
-233-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:36:13-37
-234            android:launchMode="standard"
-234-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:37:13-42
-235            android:noHistory="true"
-235-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:38:13-37
-236            android:taskAffinity=""
-236-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:39:13-36
-237            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-237-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:40:13-72
-238
-239        <meta-data
-239-->[:expo-modules-core] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:9-11:89
-240            android:name="org.unimodules.core.AppLoader#react-native-headless"
-240-->[:expo-modules-core] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-79
-241            android:value="expo.modules.adapters.react.apploader.RNHeadlessAppLoader" />
-241-->[:expo-modules-core] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-86
-242        <meta-data
-242-->[:expo-modules-core] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:9-15:45
-243            android:name="com.facebook.soloader.enabled"
-243-->[:expo-modules-core] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-57
-244            android:value="true" />
-244-->[:expo-modules-core] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-33
-245
-246        <provider
-246-->[com.github.CanHub:Android-Image-Cropper:4.3.1] /Users/maximetournier/.gradle/caches/transforms-3/eeb30e9ed572f280c8a26173d8f71114/transformed/jetified-Android-Image-Cropper-4.3.1/AndroidManifest.xml:23:9-31:20
-247            android:name="com.canhub.cropper.CropFileProvider"
-247-->[com.github.CanHub:Android-Image-Cropper:4.3.1] /Users/maximetournier/.gradle/caches/transforms-3/eeb30e9ed572f280c8a26173d8f71114/transformed/jetified-Android-Image-Cropper-4.3.1/AndroidManifest.xml:24:13-63
-248            android:authorities="com.hoggy.videotekclientexpo.cropper.fileprovider"
-248-->[com.github.CanHub:Android-Image-Cropper:4.3.1] /Users/maximetournier/.gradle/caches/transforms-3/eeb30e9ed572f280c8a26173d8f71114/transformed/jetified-Android-Image-Cropper-4.3.1/AndroidManifest.xml:25:13-72
-249            android:exported="false"
-249-->[com.github.CanHub:Android-Image-Cropper:4.3.1] /Users/maximetournier/.gradle/caches/transforms-3/eeb30e9ed572f280c8a26173d8f71114/transformed/jetified-Android-Image-Cropper-4.3.1/AndroidManifest.xml:26:13-37
-250            android:grantUriPermissions="true" >
-250-->[com.github.CanHub:Android-Image-Cropper:4.3.1] /Users/maximetournier/.gradle/caches/transforms-3/eeb30e9ed572f280c8a26173d8f71114/transformed/jetified-Android-Image-Cropper-4.3.1/AndroidManifest.xml:27:13-47
-251            <meta-data
-251-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-15:70
-252                android:name="android.support.FILE_PROVIDER_PATHS"
-252-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:17-67
-253                android:resource="@xml/library_file_paths" />
-253-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-67
-254        </provider>
-255
-256        <activity
-256-->[net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:35:9-40:77
-257            android:name="net.openid.appauth.AuthorizationManagementActivity"
-257-->[net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:36:13-78
-258            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden"
-258-->[net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:37:13-115
-259            android:exported="false"
-259-->[net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:38:13-37
-260            android:launchMode="singleTask"
-260-->[net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:39:13-44
-261            android:theme="@style/Theme.AppCompat.Translucent.NoTitleBar" />
-261-->[net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:40:13-74
-262        <activity
-262-->[net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:41:9-52:20
-263            android:name="net.openid.appauth.RedirectUriReceiverActivity"
-263-->[net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:42:13-74
-264            android:exported="true" >
-264-->[net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:43:13-36
-265            <intent-filter>
-265-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:27:7-32:23
-266                <action android:name="android.intent.action.VIEW" />
-266-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:10:7-58
-266-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:10:15-56
-267
-268                <category android:name="android.intent.category.DEFAULT" />
-268-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:29:9-67
-268-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:29:19-65
-269                <category android:name="android.intent.category.BROWSABLE" />
-269-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:11:7-67
-269-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:11:17-65
-270
-271                <data android:scheme="com.hoggy.videotekclientexpo" />
-271-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:12:7-37
-271-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:12:13-35
-272            </intent-filter>
-273        </activity>
-274
-275        <receiver
-275-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:28:9-35:20
-276            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-276-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:29:13-78
-277            android:exported="true"
-277-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:30:13-36
-278            android:permission="com.google.android.c2dm.permission.SEND" >
-278-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:31:13-73
-279            <intent-filter>
-279-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:32:13-34:29
-280                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-280-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:33:17-81
-280-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:33:25-78
-281            </intent-filter>
-282        </receiver>
-283        <!--
-284             FirebaseMessagingService performs security checks at runtime,
-285             but set to not exported to explicitly avoid allowing another app to call it.
-286        -->
-287        <service
-287-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:41:9-48:19
-288            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-288-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:42:13-82
-289            android:directBootAware="true"
-289-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:43:13-43
-290            android:exported="false" >
-290-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:44:13-37
-291            <intent-filter android:priority="-500" >
-291-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-16:29
-291-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:28-49
-292                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-292-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-78
-292-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:25-75
-293            </intent-filter>
-294        </service>
-295        <service
-295-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:49:9-55:19
-296            android:name="com.google.firebase.components.ComponentDiscoveryService"
-296-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:50:13-84
-297            android:directBootAware="true"
-297-->[com.google.firebase:firebase-common:20.0.0] /Users/maximetournier/.gradle/caches/transforms-3/aae4d40147a3afe69e1c28be8be71707/transformed/jetified-firebase-common-20.0.0/AndroidManifest.xml:35:13-43
-298            android:exported="false" >
-298-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:51:13-37
-299            <meta-data
-299-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:52:13-54:85
-300                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
-300-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:53:17-119
-301                android:value="com.google.firebase.components.ComponentRegistrar" />
-301-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:54:17-82
-302            <meta-data
-302-->[com.google.firebase:firebase-datatransport:18.0.0] /Users/maximetournier/.gradle/caches/transforms-3/721a6315e2e0d1f6a61872dbb5107612/transformed/jetified-firebase-datatransport-18.0.0/AndroidManifest.xml:28:13-30:85
-303                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
-303-->[com.google.firebase:firebase-datatransport:18.0.0] /Users/maximetournier/.gradle/caches/transforms-3/721a6315e2e0d1f6a61872dbb5107612/transformed/jetified-firebase-datatransport-18.0.0/AndroidManifest.xml:29:17-115
-304                android:value="com.google.firebase.components.ComponentRegistrar" />
-304-->[com.google.firebase:firebase-datatransport:18.0.0] /Users/maximetournier/.gradle/caches/transforms-3/721a6315e2e0d1f6a61872dbb5107612/transformed/jetified-firebase-datatransport-18.0.0/AndroidManifest.xml:30:17-82
-305            <meta-data
-305-->[com.google.firebase:firebase-installations:17.0.0] /Users/maximetournier/.gradle/caches/transforms-3/5779f02f05c6d878e188b628070cd1ab/transformed/jetified-firebase-installations-17.0.0/AndroidManifest.xml:18:13-20:85
-306                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-306-->[com.google.firebase:firebase-installations:17.0.0] /Users/maximetournier/.gradle/caches/transforms-3/5779f02f05c6d878e188b628070cd1ab/transformed/jetified-firebase-installations-17.0.0/AndroidManifest.xml:19:17-127
-307                android:value="com.google.firebase.components.ComponentRegistrar" />
-307-->[com.google.firebase:firebase-installations:17.0.0] /Users/maximetournier/.gradle/caches/transforms-3/5779f02f05c6d878e188b628070cd1ab/transformed/jetified-firebase-installations-17.0.0/AndroidManifest.xml:20:17-82
-308        </service>
-309
-310        <provider
-310-->[com.google.firebase:firebase-common:20.0.0] /Users/maximetournier/.gradle/caches/transforms-3/aae4d40147a3afe69e1c28be8be71707/transformed/jetified-firebase-common-20.0.0/AndroidManifest.xml:26:9-31:39
-311            android:name="com.google.firebase.provider.FirebaseInitProvider"
-311-->[com.google.firebase:firebase-common:20.0.0] /Users/maximetournier/.gradle/caches/transforms-3/aae4d40147a3afe69e1c28be8be71707/transformed/jetified-firebase-common-20.0.0/AndroidManifest.xml:27:13-77
-312            android:authorities="com.hoggy.videotekclientexpo.firebaseinitprovider"
-312-->[com.google.firebase:firebase-common:20.0.0] /Users/maximetournier/.gradle/caches/transforms-3/aae4d40147a3afe69e1c28be8be71707/transformed/jetified-firebase-common-20.0.0/AndroidManifest.xml:28:13-72
-313            android:directBootAware="true"
-313-->[com.google.firebase:firebase-common:20.0.0] /Users/maximetournier/.gradle/caches/transforms-3/aae4d40147a3afe69e1c28be8be71707/transformed/jetified-firebase-common-20.0.0/AndroidManifest.xml:29:13-43
-314            android:exported="false"
-314-->[com.google.firebase:firebase-common:20.0.0] /Users/maximetournier/.gradle/caches/transforms-3/aae4d40147a3afe69e1c28be8be71707/transformed/jetified-firebase-common-20.0.0/AndroidManifest.xml:30:13-37
-315            android:initOrder="100" />
-315-->[com.google.firebase:firebase-common:20.0.0] /Users/maximetournier/.gradle/caches/transforms-3/aae4d40147a3afe69e1c28be8be71707/transformed/jetified-firebase-common-20.0.0/AndroidManifest.xml:31:13-36
-316
-317        <meta-data
-317-->[com.google.android.gms:play-services-basement:17.0.0] /Users/maximetournier/.gradle/caches/transforms-3/cce59a6381f3264456569d66fa1aadc0/transformed/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
-318            android:name="com.google.android.gms.version"
-318-->[com.google.android.gms:play-services-basement:17.0.0] /Users/maximetournier/.gradle/caches/transforms-3/cce59a6381f3264456569d66fa1aadc0/transformed/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
-319            android:value="@integer/google_play_services_version" />
-319-->[com.google.android.gms:play-services-basement:17.0.0] /Users/maximetournier/.gradle/caches/transforms-3/cce59a6381f3264456569d66fa1aadc0/transformed/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
-320
-321        <provider
-321-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-3/4e292a0dbf38262aded1b9d63d414de2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
-322            android:name="androidx.startup.InitializationProvider"
-322-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-3/4e292a0dbf38262aded1b9d63d414de2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
-323            android:authorities="com.hoggy.videotekclientexpo.androidx-startup"
-323-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-3/4e292a0dbf38262aded1b9d63d414de2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
-324            android:exported="false" >
-324-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-3/4e292a0dbf38262aded1b9d63d414de2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
-325            <meta-data
-325-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-3/4e292a0dbf38262aded1b9d63d414de2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
-326                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-326-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-3/4e292a0dbf38262aded1b9d63d414de2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
-327                android:value="androidx.startup" />
-327-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-3/4e292a0dbf38262aded1b9d63d414de2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
-328            <meta-data
-328-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/maximetournier/.gradle/caches/transforms-3/57260026e01bdf9cc9938d43ab68d2cb/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:29:13-31:52
-329                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-329-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/maximetournier/.gradle/caches/transforms-3/57260026e01bdf9cc9938d43ab68d2cb/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:30:17-78
-330                android:value="androidx.startup" />
-330-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/maximetournier/.gradle/caches/transforms-3/57260026e01bdf9cc9938d43ab68d2cb/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:31:17-49
-331            <meta-data
-331-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
-332                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-332-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
-333                android:value="androidx.startup" />
-333-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
-334        </provider>
-335
-336        <receiver
-336-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
-337            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-337-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
-338            android:directBootAware="false"
-338-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
-339            android:enabled="true"
-339-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
-340            android:exported="true"
-340-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
-341            android:permission="android.permission.DUMP" >
-341-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
-342            <intent-filter>
-342-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
-343                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-343-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
-343-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
-344            </intent-filter>
-345            <intent-filter>
-345-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
-346                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-346-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
-346-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
-347            </intent-filter>
-348            <intent-filter>
-348-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
-349                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-349-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
-349-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
-350            </intent-filter>
-351            <intent-filter>
-351-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
-352                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-352-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
-352-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
-353            </intent-filter>
-354        </receiver>
-355
-356        <service
-356-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/da2cc0818e4c64ebf0554dedcac5aef6/transformed/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:29:9-35:19
-357            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-357-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/da2cc0818e4c64ebf0554dedcac5aef6/transformed/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:30:13-103
-358            android:exported="false" >
-358-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/da2cc0818e4c64ebf0554dedcac5aef6/transformed/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:31:13-37
-359            <meta-data
-359-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/da2cc0818e4c64ebf0554dedcac5aef6/transformed/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:32:13-34:39
-360                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-360-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/da2cc0818e4c64ebf0554dedcac5aef6/transformed/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:33:17-94
-361                android:value="cct" />
-361-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/da2cc0818e4c64ebf0554dedcac5aef6/transformed/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:34:17-36
-362        </service>
-363        <service
-363-->[com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:26:9-30:19
-364            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-364-->[com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:27:13-117
-365            android:exported="false"
-365-->[com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:28:13-37
-366            android:permission="android.permission.BIND_JOB_SERVICE" >
-366-->[com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:29:13-69
+55    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+55-->[com.facebook.flipper:flipper:0.201.0] /Users/maximetournier/.gradle/caches/transforms-3/8a2c25120e18a90bd0c7b612e5019e69/transformed/jetified-flipper-0.201.0/AndroidManifest.xml:14:5-76
+55-->[com.facebook.flipper:flipper:0.201.0] /Users/maximetournier/.gradle/caches/transforms-3/8a2c25120e18a90bd0c7b612e5019e69/transformed/jetified-flipper-0.201.0/AndroidManifest.xml:14:22-73
+56    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+56-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:23:5-68
+56-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:23:22-65
+57    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+57-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:25:5-82
+57-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:25:22-79
+58
+59    <permission
+59-->[androidx.core:core:1.12.0] /Users/maximetournier/.gradle/caches/transforms-3/6fa08ebee00822939d86a47ace4a1202/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+60        android:name="com.hoggy.videotekclientexpo.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+60-->[androidx.core:core:1.12.0] /Users/maximetournier/.gradle/caches/transforms-3/6fa08ebee00822939d86a47ace4a1202/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+61        android:protectionLevel="signature" />
+61-->[androidx.core:core:1.12.0] /Users/maximetournier/.gradle/caches/transforms-3/6fa08ebee00822939d86a47ace4a1202/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+62
+63    <uses-permission android:name="com.hoggy.videotekclientexpo.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+63-->[androidx.core:core:1.12.0] /Users/maximetournier/.gradle/caches/transforms-3/6fa08ebee00822939d86a47ace4a1202/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+63-->[androidx.core:core:1.12.0] /Users/maximetournier/.gradle/caches/transforms-3/6fa08ebee00822939d86a47ace4a1202/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+64    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> <!-- for android -->
+64-->[com.android.installreferrer:installreferrer:2.2] /Users/maximetournier/.gradle/caches/transforms-3/5916bf72a5c0d2cbbd79c680313cc06e/transformed/jetified-installreferrer-2.2/AndroidManifest.xml:9:5-110
+64-->[com.android.installreferrer:installreferrer:2.2] /Users/maximetournier/.gradle/caches/transforms-3/5916bf72a5c0d2cbbd79c680313cc06e/transformed/jetified-installreferrer-2.2/AndroidManifest.xml:9:22-107
+65    <!-- <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/> -->
+66    <!-- <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/> -->
+67    <!-- <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" /> -->
+68    <!-- <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" /> -->
+69    <!-- for Samsung -->
+70    <uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
+70-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:5-86
+70-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:22-83
+71    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" /> <!-- for htc -->
+71-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:5-87
+71-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:22-84
+72    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
+72-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:5-81
+72-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:22-78
+73    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" /> <!-- for sony -->
+73-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:5-83
+73-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:22-80
+74    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
+74-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:5-88
+74-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:22-85
+75    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" /> <!-- for apex -->
+75-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:5-92
+75-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:22-89
+76    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" /> <!-- for solid -->
+76-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:5-84
+76-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:22-81
+77    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" /> <!-- for huawei -->
+77-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:5-83
+77-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:22-80
+78    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
+78-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:5-91
+78-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:22-88
+79    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
+79-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:5-92
+79-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:22-89
+80    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" /> <!-- for ZUK -->
+80-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:5-93
+80-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:22-90
+81    <uses-permission android:name="android.permission.READ_APP_BADGE" /> <!-- for OPPO -->
+81-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:5-73
+81-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:22-70
+82    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS" />
+82-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:5-82
+82-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:22-79
+83    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS" /> <!-- for EvMe -->
+83-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:5-83
+83-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:22-80
+84    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ" />
+84-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:5-88
+84-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:22-85
+85    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE" />
+85-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:5-89
+85-->[me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:22-86
+86
+87    <application
+87-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:15:3-41:17
+88        android:name="com.hoggy.videotekclientexpo.MainApplication"
+88-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:15:16-47
+89        android:allowBackup="false"
+89-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:15:162-189
+90        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+90-->[androidx.core:core:1.12.0] /Users/maximetournier/.gradle/caches/transforms-3/6fa08ebee00822939d86a47ace4a1202/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+91        android:debuggable="true"
+92        android:extractNativeLibs="false"
+93        android:icon="@mipmap/ic_launcher"
+93-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:15:81-115
+94        android:label="@string/app_name"
+94-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:15:48-80
+95        android:roundIcon="@mipmap/ic_launcher_round"
+95-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:15:116-161
+96        android:testOnly="true"
+97        android:theme="@style/AppTheme"
+97-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:15:190-221
+98        android:usesCleartextTraffic="true" >
+98-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/debug/AndroidManifest.xml:6:18-53
+99        <meta-data
+99-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:16:5-141
+100            android:name="expo.modules.notifications.default_notification_icon"
+100-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:16:16-83
+101            android:resource="@drawable/ic_stat_notifications_icon" />
+101-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:16:84-139
+102        <meta-data
+102-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:17:5-82
+103            android:name="expo.modules.updates.ENABLED"
+103-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:17:16-59
+104            android:value="true" />
+104-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:17:60-80
+105        <meta-data
+105-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:18:5-105
+106            android:name="expo.modules.updates.EXPO_RUNTIME_VERSION"
+106-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:18:16-72
+107            android:value="exposdk:48.0.0" />
+107-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:18:73-103
+108        <meta-data
+108-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:19:5-105
+109            android:name="expo.modules.updates.EXPO_UPDATES_CHECK_ON_LAUNCH"
+109-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:19:16-80
+110            android:value="ALWAYS" />
+110-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:19:81-103
+111        <meta-data
+111-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:20:5-99
+112            android:name="expo.modules.updates.EXPO_UPDATES_LAUNCH_WAIT_MS"
+112-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:20:16-79
+113            android:value="0" />
+113-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:20:80-97
+114        <meta-data
+114-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:21:5-141
+115            android:name="expo.modules.updates.EXPO_UPDATE_URL"
+115-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:21:16-67
+116            android:value="https://u.expo.dev/f6110871-1ae7-43e7-8e85-5c2db50c2976" />
+116-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:21:68-139
+117
+118        <activity
+118-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:22:5-39:16
+119            android:name="com.hoggy.videotekclientexpo.MainActivity"
+119-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:22:15-43
+120            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode"
+120-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:22:44-134
+121            android:exported="true"
+121-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:22:256-279
+122            android:launchMode="singleTask"
+122-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:22:135-166
+123            android:theme="@style/Theme.App.SplashScreen"
+123-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:22:210-255
+124            android:windowSoftInputMode="adjustResize" >
+124-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:22:167-209
+125            <intent-filter>
+125-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:23:7-26:23
+126                <action android:name="android.intent.action.MAIN" />
+126-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:24:9-60
+126-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:24:17-58
+127
+128                <category android:name="android.intent.category.LAUNCHER" />
+128-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:25:9-68
+128-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:25:19-66
+129            </intent-filter>
+130            <intent-filter>
+130-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:27:7-32:23
+131                <action android:name="android.intent.action.VIEW" />
+131-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:10:7-58
+131-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:10:15-56
+132
+133                <category android:name="android.intent.category.DEFAULT" />
+133-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:29:9-67
+133-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:29:19-65
+134                <category android:name="android.intent.category.BROWSABLE" />
+134-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:11:7-67
+134-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:11:17-65
+135
+136                <data android:scheme="com.hoggy.videotekclientexpo" />
+136-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:12:7-37
+136-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:12:13-35
+137            </intent-filter>
+138            <intent-filter>
+138-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:33:7-38:23
+139                <action android:name="android.intent.action.VIEW" />
+139-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:10:7-58
+139-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:10:15-56
+140
+141                <category android:name="android.intent.category.DEFAULT" />
+141-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:29:9-67
+141-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:29:19-65
+142                <category android:name="android.intent.category.BROWSABLE" />
+142-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:11:7-67
+142-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:11:17-65
+143
+144                <data
+144-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:12:7-37
+145                    android:host="oauth2redirect"
+146                    android:pathPrefix="/google"
+147                    android:scheme="com.hoggy.videotekclientexpo" />
+147-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:12:13-35
+148            </intent-filter>
+149        </activity>
+150        <activity
+150-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:40:5-106
+151            android:name="com.facebook.react.devsupport.DevSettingsActivity"
+151-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:40:15-79
+152            android:exported="false" />
+152-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:40:80-104
+153
+154        <provider
+154-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-16:20
+155            android:name="com.imagepicker.ImagePickerProvider"
+155-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-63
+156            android:authorities="com.hoggy.videotekclientexpo.imagepickerprovider"
+156-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-71
+157            android:exported="false"
+157-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-37
+158            android:grantUriPermissions="true" >
+158-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-47
+159            <meta-data
+159-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-15:70
+160                android:name="android.support.FILE_PROVIDER_PATHS"
+160-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:17-67
+161                android:resource="@xml/imagepicker_provider_paths" />
+161-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-67
+162        </provider>
+163        <provider
+163-->[:react-native-webview] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-16:20
+164            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
+164-->[:react-native-webview] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-83
+165            android:authorities="com.hoggy.videotekclientexpo.fileprovider"
+165-->[:react-native-webview] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-64
+166            android:exported="false"
+166-->[:react-native-webview] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-37
+167            android:grantUriPermissions="true" >
+167-->[:react-native-webview] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-47
+168            <meta-data
+168-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-15:70
+169                android:name="android.support.FILE_PROVIDER_PATHS"
+169-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:17-67
+170                android:resource="@xml/file_provider_paths" />
+170-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-67
+171        </provider>
+172        <provider
+172-->[:expo-file-system] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:9-30:20
+173            android:name="expo.modules.filesystem.FileSystemFileProvider"
+173-->[:expo-file-system] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-74
+174            android:authorities="com.hoggy.videotekclientexpo.FileSystemFileProvider"
+174-->[:expo-file-system] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-74
+175            android:exported="false"
+175-->[:expo-file-system] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:24:13-37
+176            android:grantUriPermissions="true" >
+176-->[:expo-file-system] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:25:13-47
+177            <meta-data
+177-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-15:70
+178                android:name="android.support.FILE_PROVIDER_PATHS"
+178-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:17-67
+179                android:resource="@xml/file_system_provider_paths" />
+179-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-67
+180        </provider>
+181
+182        <service
+182-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:30:9-42:19
+183            android:name="com.google.android.gms.metadata.ModuleDependencies"
+183-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:31:13-78
+184            android:enabled="false"
+184-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:32:13-36
+185            android:exported="false" >
+185-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:33:13-37
+186            <intent-filter>
+186-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:35:13-37:29
+187                <action android:name="com.google.android.gms.metadata.MODULE_DEPENDENCIES" />
+187-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:36:17-94
+187-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:36:25-91
+188            </intent-filter>
+189
+190            <meta-data
+190-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:39:13-41:36
+191                android:name="photopicker_activity:0:required"
+191-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:40:17-63
+192                android:value="" />
+192-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:41:17-33
+193        </service>
+194
+195        <activity
+195-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:44:9-46:59
+196            android:name="com.canhub.cropper.CropImageActivity"
+196-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:45:13-64
+197            android:exported="true"
+197-->[com.github.CanHub:Android-Image-Cropper:4.3.1] /Users/maximetournier/.gradle/caches/transforms-3/eeb30e9ed572f280c8a26173d8f71114/transformed/jetified-Android-Image-Cropper-4.3.1/AndroidManifest.xml:35:13-36
+198            android:theme="@style/Base.Theme.AppCompat" /> <!-- https://developer.android.com/guide/topics/manifest/provider-element.html -->
+198-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:46:13-56
+199        <provider
+199-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:48:9-56:20
+200            android:name="expo.modules.imagepicker.fileprovider.ImagePickerFileProvider"
+200-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:49:13-89
+201            android:authorities="com.hoggy.videotekclientexpo.ImagePickerFileProvider"
+201-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:50:13-75
+202            android:exported="false"
+202-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:51:13-37
+203            android:grantUriPermissions="true" >
+203-->[:expo-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:52:13-47
+204            <meta-data
+204-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-15:70
+205                android:name="android.support.FILE_PROVIDER_PATHS"
+205-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:17-67
+206                android:resource="@xml/image_picker_provider_paths" />
+206-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-67
+207        </provider>
+208
+209        <service
+209-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:9-17:19
+210            android:name="expo.modules.notifications.service.ExpoFirebaseMessagingService"
+210-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-91
+211            android:exported="false" >
+211-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-37
+212            <intent-filter android:priority="-1" >
+212-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-16:29
+212-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:28-49
+213                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+213-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-78
+213-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:25-75
+214            </intent-filter>
+215        </service>
+216
+217        <receiver
+217-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:19:9-31:20
+218            android:name="expo.modules.notifications.service.NotificationsService"
+218-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-83
+219            android:enabled="true"
+219-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-35
+220            android:exported="false" >
+220-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-37
+221            <intent-filter android:priority="-1" >
+221-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-30:29
+221-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:28-49
+222                <action android:name="expo.modules.notifications.NOTIFICATION_EVENT" />
+222-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:24:17-88
+222-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:24:25-85
+223                <action android:name="android.intent.action.BOOT_COMPLETED" />
+223-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:25:17-79
+223-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:25:25-76
+224                <action android:name="android.intent.action.REBOOT" />
+224-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:26:17-71
+224-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:26:25-68
+225                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+225-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:27:17-82
+225-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:27:25-79
+226                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+226-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:28:17-82
+226-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:28:25-79
+227                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+227-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:29:17-84
+227-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:29:25-81
+228            </intent-filter>
+229        </receiver>
+230
+231        <activity
+231-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:33:9-40:75
+232            android:name="expo.modules.notifications.service.NotificationForwarderActivity"
+232-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:34:13-92
+233            android:excludeFromRecents="true"
+233-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:35:13-46
+234            android:exported="false"
+234-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:36:13-37
+235            android:launchMode="standard"
+235-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:37:13-42
+236            android:noHistory="true"
+236-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:38:13-37
+237            android:taskAffinity=""
+237-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:39:13-36
+238            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+238-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:40:13-72
+239
+240        <meta-data
+240-->[:expo-modules-core] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:9-11:89
+241            android:name="org.unimodules.core.AppLoader#react-native-headless"
+241-->[:expo-modules-core] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-79
+242            android:value="expo.modules.adapters.react.apploader.RNHeadlessAppLoader" />
+242-->[:expo-modules-core] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-86
+243        <meta-data
+243-->[:expo-modules-core] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:9-15:45
+244            android:name="com.facebook.soloader.enabled"
+244-->[:expo-modules-core] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-57
+245            android:value="true" />
+245-->[:expo-modules-core] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-33
+246
+247        <provider
+247-->[com.github.CanHub:Android-Image-Cropper:4.3.1] /Users/maximetournier/.gradle/caches/transforms-3/eeb30e9ed572f280c8a26173d8f71114/transformed/jetified-Android-Image-Cropper-4.3.1/AndroidManifest.xml:23:9-31:20
+248            android:name="com.canhub.cropper.CropFileProvider"
+248-->[com.github.CanHub:Android-Image-Cropper:4.3.1] /Users/maximetournier/.gradle/caches/transforms-3/eeb30e9ed572f280c8a26173d8f71114/transformed/jetified-Android-Image-Cropper-4.3.1/AndroidManifest.xml:24:13-63
+249            android:authorities="com.hoggy.videotekclientexpo.cropper.fileprovider"
+249-->[com.github.CanHub:Android-Image-Cropper:4.3.1] /Users/maximetournier/.gradle/caches/transforms-3/eeb30e9ed572f280c8a26173d8f71114/transformed/jetified-Android-Image-Cropper-4.3.1/AndroidManifest.xml:25:13-72
+250            android:exported="false"
+250-->[com.github.CanHub:Android-Image-Cropper:4.3.1] /Users/maximetournier/.gradle/caches/transforms-3/eeb30e9ed572f280c8a26173d8f71114/transformed/jetified-Android-Image-Cropper-4.3.1/AndroidManifest.xml:26:13-37
+251            android:grantUriPermissions="true" >
+251-->[com.github.CanHub:Android-Image-Cropper:4.3.1] /Users/maximetournier/.gradle/caches/transforms-3/eeb30e9ed572f280c8a26173d8f71114/transformed/jetified-Android-Image-Cropper-4.3.1/AndroidManifest.xml:27:13-47
+252            <meta-data
+252-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-15:70
+253                android:name="android.support.FILE_PROVIDER_PATHS"
+253-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:17-67
+254                android:resource="@xml/library_file_paths" />
+254-->[:react-native-image-picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-67
+255        </provider>
+256
+257        <activity
+257-->[net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:35:9-40:77
+258            android:name="net.openid.appauth.AuthorizationManagementActivity"
+258-->[net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:36:13-78
+259            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden"
+259-->[net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:37:13-115
+260            android:exported="false"
+260-->[net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:38:13-37
+261            android:launchMode="singleTask"
+261-->[net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:39:13-44
+262            android:theme="@style/Theme.AppCompat.Translucent.NoTitleBar" />
+262-->[net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:40:13-74
+263        <activity
+263-->[net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:41:9-52:20
+264            android:name="net.openid.appauth.RedirectUriReceiverActivity"
+264-->[net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:42:13-74
+265            android:exported="true" >
+265-->[net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:43:13-36
+266            <intent-filter>
+266-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:27:7-32:23
+267                <action android:name="android.intent.action.VIEW" />
+267-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:10:7-58
+267-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:10:15-56
+268
+269                <category android:name="android.intent.category.DEFAULT" />
+269-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:29:9-67
+269-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:29:19-65
+270                <category android:name="android.intent.category.BROWSABLE" />
+270-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:11:7-67
+270-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:11:17-65
+271
+272                <data android:scheme="com.hoggy.videotekclientexpo" />
+272-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:12:7-37
+272-->/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:12:13-35
+273            </intent-filter>
+274        </activity>
+275
+276        <receiver
+276-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:28:9-35:20
+277            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+277-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:29:13-78
+278            android:exported="true"
+278-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:30:13-36
+279            android:permission="com.google.android.c2dm.permission.SEND" >
+279-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:31:13-73
+280            <intent-filter>
+280-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:32:13-34:29
+281                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+281-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:33:17-81
+281-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:33:25-78
+282            </intent-filter>
+283        </receiver>
+284        <!--
+285             FirebaseMessagingService performs security checks at runtime,
+286             but set to not exported to explicitly avoid allowing another app to call it.
+287        -->
+288        <service
+288-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:41:9-48:19
+289            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+289-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:42:13-82
+290            android:directBootAware="true"
+290-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:43:13-43
+291            android:exported="false" >
+291-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:44:13-37
+292            <intent-filter android:priority="-500" >
+292-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-16:29
+292-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:28-49
+293                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+293-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-78
+293-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:25-75
+294            </intent-filter>
+295        </service>
+296        <service
+296-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:49:9-55:19
+297            android:name="com.google.firebase.components.ComponentDiscoveryService"
+297-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:50:13-84
+298            android:directBootAware="true"
+298-->[com.google.firebase:firebase-common:20.0.0] /Users/maximetournier/.gradle/caches/transforms-3/aae4d40147a3afe69e1c28be8be71707/transformed/jetified-firebase-common-20.0.0/AndroidManifest.xml:35:13-43
+299            android:exported="false" >
+299-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:51:13-37
+300            <meta-data
+300-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:52:13-54:85
+301                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+301-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:53:17-119
+302                android:value="com.google.firebase.components.ComponentRegistrar" />
+302-->[com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:54:17-82
+303            <meta-data
+303-->[com.google.firebase:firebase-datatransport:18.0.0] /Users/maximetournier/.gradle/caches/transforms-3/721a6315e2e0d1f6a61872dbb5107612/transformed/jetified-firebase-datatransport-18.0.0/AndroidManifest.xml:28:13-30:85
+304                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+304-->[com.google.firebase:firebase-datatransport:18.0.0] /Users/maximetournier/.gradle/caches/transforms-3/721a6315e2e0d1f6a61872dbb5107612/transformed/jetified-firebase-datatransport-18.0.0/AndroidManifest.xml:29:17-115
+305                android:value="com.google.firebase.components.ComponentRegistrar" />
+305-->[com.google.firebase:firebase-datatransport:18.0.0] /Users/maximetournier/.gradle/caches/transforms-3/721a6315e2e0d1f6a61872dbb5107612/transformed/jetified-firebase-datatransport-18.0.0/AndroidManifest.xml:30:17-82
+306            <meta-data
+306-->[com.google.firebase:firebase-installations:17.0.0] /Users/maximetournier/.gradle/caches/transforms-3/5779f02f05c6d878e188b628070cd1ab/transformed/jetified-firebase-installations-17.0.0/AndroidManifest.xml:18:13-20:85
+307                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+307-->[com.google.firebase:firebase-installations:17.0.0] /Users/maximetournier/.gradle/caches/transforms-3/5779f02f05c6d878e188b628070cd1ab/transformed/jetified-firebase-installations-17.0.0/AndroidManifest.xml:19:17-127
+308                android:value="com.google.firebase.components.ComponentRegistrar" />
+308-->[com.google.firebase:firebase-installations:17.0.0] /Users/maximetournier/.gradle/caches/transforms-3/5779f02f05c6d878e188b628070cd1ab/transformed/jetified-firebase-installations-17.0.0/AndroidManifest.xml:20:17-82
+309        </service>
+310
+311        <provider
+311-->[com.google.firebase:firebase-common:20.0.0] /Users/maximetournier/.gradle/caches/transforms-3/aae4d40147a3afe69e1c28be8be71707/transformed/jetified-firebase-common-20.0.0/AndroidManifest.xml:26:9-31:39
+312            android:name="com.google.firebase.provider.FirebaseInitProvider"
+312-->[com.google.firebase:firebase-common:20.0.0] /Users/maximetournier/.gradle/caches/transforms-3/aae4d40147a3afe69e1c28be8be71707/transformed/jetified-firebase-common-20.0.0/AndroidManifest.xml:27:13-77
+313            android:authorities="com.hoggy.videotekclientexpo.firebaseinitprovider"
+313-->[com.google.firebase:firebase-common:20.0.0] /Users/maximetournier/.gradle/caches/transforms-3/aae4d40147a3afe69e1c28be8be71707/transformed/jetified-firebase-common-20.0.0/AndroidManifest.xml:28:13-72
+314            android:directBootAware="true"
+314-->[com.google.firebase:firebase-common:20.0.0] /Users/maximetournier/.gradle/caches/transforms-3/aae4d40147a3afe69e1c28be8be71707/transformed/jetified-firebase-common-20.0.0/AndroidManifest.xml:29:13-43
+315            android:exported="false"
+315-->[com.google.firebase:firebase-common:20.0.0] /Users/maximetournier/.gradle/caches/transforms-3/aae4d40147a3afe69e1c28be8be71707/transformed/jetified-firebase-common-20.0.0/AndroidManifest.xml:30:13-37
+316            android:initOrder="100" />
+316-->[com.google.firebase:firebase-common:20.0.0] /Users/maximetournier/.gradle/caches/transforms-3/aae4d40147a3afe69e1c28be8be71707/transformed/jetified-firebase-common-20.0.0/AndroidManifest.xml:31:13-36
+317
+318        <meta-data
+318-->[com.google.android.gms:play-services-basement:17.0.0] /Users/maximetournier/.gradle/caches/transforms-3/cce59a6381f3264456569d66fa1aadc0/transformed/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
+319            android:name="com.google.android.gms.version"
+319-->[com.google.android.gms:play-services-basement:17.0.0] /Users/maximetournier/.gradle/caches/transforms-3/cce59a6381f3264456569d66fa1aadc0/transformed/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
+320            android:value="@integer/google_play_services_version" />
+320-->[com.google.android.gms:play-services-basement:17.0.0] /Users/maximetournier/.gradle/caches/transforms-3/cce59a6381f3264456569d66fa1aadc0/transformed/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
+321
+322        <provider
+322-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-3/4e292a0dbf38262aded1b9d63d414de2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+323            android:name="androidx.startup.InitializationProvider"
+323-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-3/4e292a0dbf38262aded1b9d63d414de2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+324            android:authorities="com.hoggy.videotekclientexpo.androidx-startup"
+324-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-3/4e292a0dbf38262aded1b9d63d414de2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+325            android:exported="false" >
+325-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-3/4e292a0dbf38262aded1b9d63d414de2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+326            <meta-data
+326-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-3/4e292a0dbf38262aded1b9d63d414de2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+327                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+327-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-3/4e292a0dbf38262aded1b9d63d414de2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+328                android:value="androidx.startup" />
+328-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-3/4e292a0dbf38262aded1b9d63d414de2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+329            <meta-data
+329-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/maximetournier/.gradle/caches/transforms-3/57260026e01bdf9cc9938d43ab68d2cb/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:29:13-31:52
+330                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+330-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/maximetournier/.gradle/caches/transforms-3/57260026e01bdf9cc9938d43ab68d2cb/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:30:17-78
+331                android:value="androidx.startup" />
+331-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/maximetournier/.gradle/caches/transforms-3/57260026e01bdf9cc9938d43ab68d2cb/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:31:17-49
+332            <meta-data
+332-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+333                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+333-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+334                android:value="androidx.startup" />
+334-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+335        </provider>
+336
+337        <receiver
+337-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+338            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+338-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+339            android:directBootAware="false"
+339-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+340            android:enabled="true"
+340-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+341            android:exported="true"
+341-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+342            android:permission="android.permission.DUMP" >
+342-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+343            <intent-filter>
+343-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+344                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+344-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+344-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+345            </intent-filter>
+346            <intent-filter>
+346-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+347                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+347-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+347-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+348            </intent-filter>
+349            <intent-filter>
+349-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+350                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+350-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+350-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+351            </intent-filter>
+352            <intent-filter>
+352-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+353                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+353-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+353-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+354            </intent-filter>
+355        </receiver>
+356
+357        <service
+357-->[androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:25:9-28:40
+358            android:name="androidx.room.MultiInstanceInvalidationService"
+358-->[androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:26:13-74
+359            android:directBootAware="true"
+359-->[androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:27:13-43
+360            android:exported="false" />
+360-->[androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:28:13-37
+361        <service
+361-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/da2cc0818e4c64ebf0554dedcac5aef6/transformed/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:29:9-35:19
+362            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+362-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/da2cc0818e4c64ebf0554dedcac5aef6/transformed/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:30:13-103
+363            android:exported="false" >
+363-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/da2cc0818e4c64ebf0554dedcac5aef6/transformed/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:31:13-37
+364            <meta-data
+364-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/da2cc0818e4c64ebf0554dedcac5aef6/transformed/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:32:13-34:39
+365                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+365-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/da2cc0818e4c64ebf0554dedcac5aef6/transformed/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:33:17-94
+366                android:value="cct" />
+366-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/da2cc0818e4c64ebf0554dedcac5aef6/transformed/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:34:17-36
 367        </service>
-368
-369        <receiver
-369-->[com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:32:9-34:40
-370            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-370-->[com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:33:13-132
-371            android:exported="false" />
-371-->[com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:34:13-37
-372
-373        <service
-373-->[androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:25:9-28:40
-374            android:name="androidx.room.MultiInstanceInvalidationService"
-374-->[androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:26:13-74
-375            android:directBootAware="true"
-375-->[androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:27:13-43
+368        <service
+368-->[com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:26:9-30:19
+369            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+369-->[com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:27:13-117
+370            android:exported="false"
+370-->[com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:28:13-37
+371            android:permission="android.permission.BIND_JOB_SERVICE" >
+371-->[com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:29:13-69
+372        </service>
+373
+374        <receiver
+374-->[com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:32:9-34:40
+375            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+375-->[com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:33:13-132
 376            android:exported="false" />
-376-->[androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:28:13-37
+376-->[com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:34:13-37
 377    </application>
 378
 379</manifest>

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-51:/values-en-rGB/values-en-rGB.xml",
+            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-52:/values-en-rGB/values-en-rGB.xml",
             "map": [
                 {
                     "source": "/Users/maximetournier/.gradle/caches/transforms-3/965ca604c3431eab8811bd7682895e8c/transformed/appcompat-1.6.1/res/values-en-rGB/values-en-rGB.xml",

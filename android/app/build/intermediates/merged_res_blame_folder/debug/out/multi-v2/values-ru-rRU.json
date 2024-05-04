@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-51:/values-ru-rRU/values-ru-rRU.xml",
+            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-52:/values-ru-rRU/values-ru-rRU.xml",
             "map": [
                 {
                     "source": "/Users/maximetournier/.gradle/caches/transforms-3/eeb30e9ed572f280c8a26173d8f71114/transformed/jetified-Android-Image-Cropper-4.3.1/res/values-ru-rRU/values-ru-rRU.xml",

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-51:/values-bs/values-bs.xml",
+            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-52:/values-bs/values-bs.xml",
             "map": [
                 {
                     "source": "/Users/maximetournier/.gradle/caches/transforms-3/db3cb4c010cd7242b65007b624d40152/transformed/jetified-react-android-0.73.6-debug/res/values-bs/values-bs.xml",

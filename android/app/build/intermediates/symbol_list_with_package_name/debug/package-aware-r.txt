@@ -3264,6 +3264,8 @@ id fitToContents
 id fitXY
 id fixed
 id flip
+id flipper_skip_empty_view_group_traversal
+id flipper_skip_view_traversal
 id floating
 id focusCrop
 id forever

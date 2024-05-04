@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-51:/values-it/values-it.xml",
+            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-52:/values-it/values-it.xml",
             "map": [
                 {
                     "source": "/Users/maximetournier/.gradle/caches/transforms-3/6fa08ebee00822939d86a47ace4a1202/transformed/core-1.12.0/res/values-it/values-it.xml",

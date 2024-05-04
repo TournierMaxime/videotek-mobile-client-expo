@@ -3263,6 +3263,8 @@ int id fitToContents 0x7f0800cb
 int id fitXY 0x7f0800cc
 int id fixed 0x7f0800cd
 int id flip 0x7f0800ce
+int id flipper_skip_empty_view_group_traversal 0x7f080213
+int id flipper_skip_view_traversal 0x7f080214
 int id floating 0x7f0800cf
 int id focusCrop 0x7f0800d0
 int id forever 0x7f0800d1

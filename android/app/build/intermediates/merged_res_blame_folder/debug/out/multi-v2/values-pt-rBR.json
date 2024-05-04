@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-51:/values-pt-rBR/values-pt-rBR.xml",
+            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-52:/values-pt-rBR/values-pt-rBR.xml",
             "map": [
                 {
                     "source": "/Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/res/values-pt-rBR/values.xml",

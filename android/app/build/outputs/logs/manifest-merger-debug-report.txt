@@ -5,6 +5,7 @@ MERGED from /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-ex
 INJECTED from /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/debug/AndroidManifest.xml:1:1-7:12
 INJECTED from /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/debug/AndroidManifest.xml:1:1-7:12
 INJECTED from /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+MERGED from [com.facebook.react:flipper-integration:0.73.6] /Users/maximetournier/.gradle/caches/transforms-3/a870a614a2a06c3333f98bd77b21ae23/transformed/jetified-flipper-integration-0.73.6-debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-async-storage_async-storage] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-picker_picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/@react-native-picker/picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:expo] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
@@ -33,6 +34,8 @@ MERGED from [:expo-splash-screen] /Users/maximetournier/Desktop/NAS/videotek/vid
 MERGED from [:expo-structured-headers] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-structured-headers/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:expo-modules-core] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-18:12
 MERGED from [com.facebook.react:react-android:0.73.6] /Users/maximetournier/.gradle/caches/transforms-3/db3cb4c010cd7242b65007b624d40152/transformed/jetified-react-android-0.73.6-debug/AndroidManifest.xml:2:1-24:12
+MERGED from [com.facebook.fresco:flipper-fresco-plugin:3.1.3] /Users/maximetournier/.gradle/caches/transforms-3/e36c40fee784602eb08396fe737bc10e/transformed/jetified-flipper-fresco-plugin-3.1.3/AndroidManifest.xml:8:1-13:12
+MERGED from [com.facebook.fresco:flipper:3.1.3] /Users/maximetournier/.gradle/caches/transforms-3/9952f23c7889cc5aea17b03fb07e26b7/transformed/jetified-flipper-3.1.3/AndroidManifest.xml:2:1-7:12
 MERGED from [com.facebook.fresco:fresco:3.1.3] /Users/maximetournier/.gradle/caches/transforms-3/9c51337f957f47544c05cf8cf4133b64/transformed/jetified-fresco-3.1.3/AndroidManifest.xml:2:1-7:12
 MERGED from [com.facebook.fresco:imagepipeline-okhttp3:3.1.3] /Users/maximetournier/.gradle/caches/transforms-3/4b0b4cd2d24d45c8c082cb3d9374c831/transformed/jetified-imagepipeline-okhttp3-3.1.3/AndroidManifest.xml:2:1-7:12
 MERGED from [com.facebook.fresco:animated-gif:3.1.3] /Users/maximetournier/.gradle/caches/transforms-3/f4f6841ca629dd99e9fcf6417289e24d/transformed/jetified-animated-gif-3.1.3/AndroidManifest.xml:2:1-7:12
@@ -53,11 +56,14 @@ MERGED from [com.facebook.fresco:middleware:3.1.3] /Users/maximetournier/.gradle
 MERGED from [com.facebook.fresco:ui-common:3.1.3] /Users/maximetournier/.gradle/caches/transforms-3/b0acc2ffa0da4a23d2d882a6a9162ace/transformed/jetified-ui-common-3.1.3/AndroidManifest.xml:2:1-7:12
 MERGED from [com.facebook.fresco:soloader:3.1.3] /Users/maximetournier/.gradle/caches/transforms-3/f153dbd822e587e820117285090a48da/transformed/jetified-soloader-3.1.3/AndroidManifest.xml:2:1-7:12
 MERGED from [com.facebook.fresco:fbcore:3.1.3] /Users/maximetournier/.gradle/caches/transforms-3/650ae4f1204e322a49235413a6e2319a/transformed/jetified-fbcore-3.1.3/AndroidManifest.xml:2:1-7:12
+MERGED from [com.facebook.flipper:flipper-network-plugin:0.201.0] /Users/maximetournier/.gradle/caches/transforms-3/6c9733fdc73e8ee7f4ca3ea81b9b7f38/transformed/jetified-flipper-network-plugin-0.201.0/AndroidManifest.xml:8:1-13:12
+MERGED from [com.facebook.flipper:flipper:0.201.0] /Users/maximetournier/.gradle/caches/transforms-3/8a2c25120e18a90bd0c7b612e5019e69/transformed/jetified-flipper-0.201.0/AndroidManifest.xml:8:1-16:12
 MERGED from [com.github.CanHub:Android-Image-Cropper:4.3.1] /Users/maximetournier/.gradle/caches/transforms-3/eeb30e9ed572f280c8a26173d8f71114/transformed/jetified-Android-Image-Cropper-4.3.1/AndroidManifest.xml:2:1-38:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/maximetournier/.gradle/caches/transforms-3/6780a2009a4dd79695e6581211bbd520/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
 MERGED from [net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:15:1-55:12
 MERGED from [com.google.android.material:material:1.9.0] /Users/maximetournier/.gradle/caches/transforms-3/f1852cac82263a0db8af6cf304099aeb/transformed/material-1.9.0/AndroidManifest.xml:17:1-26:12
 MERGED from [com.github.adityaxjha:Android-ScalableVideoView:10e7b4da8b] /Users/maximetournier/.gradle/caches/transforms-3/b854ceba38ec862570df5adf2b2d2d18/transformed/jetified-Android-ScalableVideoView-10e7b4da8b/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.stetho:stetho:1.6.0] /Users/maximetournier/.gradle/caches/transforms-3/52963e56ca573c7c394dc0939c7e7189/transformed/jetified-stetho-1.6.0/AndroidManifest.xml:2:1-13:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /Users/maximetournier/.gradle/caches/transforms-3/fbce3ea05e23c43d4828664bb6f57a15/transformed/constraintlayout-2.0.1/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/maximetournier/.gradle/caches/transforms-3/965ca604c3431eab8811bd7682895e8c/transformed/appcompat-1.6.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/maximetournier/.gradle/caches/transforms-3/0a7124dc67ace9e9baf7b1abad3799cb/transformed/legacy-support-v4-1.0.0/AndroidManifest.xml:17:1-22:12
@@ -121,8 +127,11 @@ MERGED from [:expo-json-utils] /Users/maximetournier/Desktop/NAS/videotek/videot
 MERGED from [:expo-updates-interface] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-updates-interface/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/maximetournier/.gradle/caches/transforms-3/57f54075348123f87e67a9bc67fa90fb/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/maximetournier/.gradle/caches/transforms-3/8cf56301e22695e89c32549beaa2d130/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.sqlite:sqlite-framework:2.2.0] /Users/maximetournier/.gradle/caches/transforms-3/e9428404b5bdeff8a197a0bf484f208a/transformed/sqlite-framework-2.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/maximetournier/.gradle/caches/transforms-3/baf9b8ccafc8bef9dfab9bcc80a987bd/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.cardview:cardview:1.0.0] /Users/maximetournier/.gradle/caches/transforms-3/1636afba8ed6db655f1261199ba2756d/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite:2.2.0] /Users/maximetournier/.gradle/caches/transforms-3/03cbe3d6fd84f118b130262c1de2b868/transformed/sqlite-2.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.exifinterface:exifinterface:1.3.6] /Users/maximetournier/.gradle/caches/transforms-3/c72924bcdf2521da1303a237b6f2e418/transformed/exifinterface-1.3.6/AndroidManifest.xml:17:1-24:12
 MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] /Users/maximetournier/.gradle/caches/transforms-3/0445af2450edb679ebbed3af74d842e8/transformed/jetified-gifdecoder-4.16.0/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.databinding:viewbinding:7.2.1] /Users/maximetournier/.gradle/caches/transforms-3/4f242a82e07e6e48411789d243a44d83/transformed/jetified-viewbinding-7.2.1/AndroidManifest.xml:17:1-24:12
@@ -130,9 +139,6 @@ MERGED from [com.google.android.datatransport:transport-backend-cct:3.0.0] /User
 MERGED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:15:1-41:12
 MERGED from [com.google.android.datatransport:transport-api:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/ea70c46085143708f989239fee36859d/transformed/jetified-transport-api-3.0.0/AndroidManifest.xml:15:1-22:12
 MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/maximetournier/.gradle/caches/transforms-3/8a4368322e3c7dc588a8eb05ad8c394d/transformed/jetified-firebase-components-17.0.0/AndroidManifest.xml:15:1-23:12
-MERGED from [androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:17:1-31:12
-MERGED from [androidx.sqlite:sqlite-framework:2.2.0] /Users/maximetournier/.gradle/caches/transforms-3/e9428404b5bdeff8a197a0bf484f208a/transformed/sqlite-framework-2.2.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.sqlite:sqlite:2.2.0] /Users/maximetournier/.gradle/caches/transforms-3/03cbe3d6fd84f118b130262c1de2b868/transformed/sqlite-2.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/maximetournier/.gradle/caches/transforms-3/ac8150c032b7a8984bcb476bcf2d56f1/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/maximetournier/.gradle/caches/transforms-3/df92957d989e74969c471a184e1acfd1/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] /Users/maximetournier/.gradle/caches/transforms-3/aec91eead8be826d1b60978c64ac9903/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
@@ -141,6 +147,7 @@ MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/maximetournier/.gradl
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/a4892e0e61a0218cb3409e3308d6bdb9/transformed/jetified-annotation-experimental-1.3.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.facebook.fbjni:fbjni:0.5.1] /Users/maximetournier/.gradle/caches/transforms-3/166688ab8b0217e0237c6a3517571028/transformed/jetified-fbjni-0.5.1/AndroidManifest.xml:2:1-7:12
 MERGED from [com.facebook.soloader:soloader:0.10.5] /Users/maximetournier/.gradle/caches/transforms-3/f12a0b4f76d40a018c0e0e2a0b997ab0/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:2:1-17:12
+MERGED from [com.android.ndk.thirdparty:openssl:1.1.1l-beta-1] /Users/maximetournier/.gradle/caches/transforms-3/7ee1972708ed6497ae9c283ecbde7bf6/transformed/jetified-openssl-1.1.1l-beta-1/AndroidManifest.xml:1:1-3:12
 MERGED from [com.android.installreferrer:installreferrer:2.2] /Users/maximetournier/.gradle/caches/transforms-3/5916bf72a5c0d2cbbd79c680313cc06e/transformed/jetified-installreferrer-2.2/AndroidManifest.xml:2:1-13:12
 MERGED from [me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:2:1-52:12
 	package
@@ -158,6 +165,8 @@ uses-permission#android.permission.INTERNET
 ADDED from /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:2:3-64
 MERGED from [:expo-file-system] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:5-67
 MERGED from [:expo-file-system] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:5-67
+MERGED from [com.facebook.flipper:flipper:0.201.0] /Users/maximetournier/.gradle/caches/transforms-3/8a2c25120e18a90bd0c7b612e5019e69/transformed/jetified-flipper-0.201.0/AndroidManifest.xml:13:5-67
+MERGED from [com.facebook.flipper:flipper:0.201.0] /Users/maximetournier/.gradle/caches/transforms-3/8a2c25120e18a90bd0c7b612e5019e69/transformed/jetified-flipper-0.201.0/AndroidManifest.xml:13:5-67
 MERGED from [net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:22:5-67
 MERGED from [net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:22:5-67
 MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/maximetournier/.gradle/caches/transforms-3/5476e726e24c1b9851b20a9e52541de5/transformed/jetified-play-services-cloud-messaging-16.0.0/AndroidManifest.xml:8:5-67
@@ -249,6 +258,8 @@ MERGED from [net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/tra
 MERGED from [net.openid:appauth:0.11.1] /Users/maximetournier/.gradle/caches/transforms-3/8e57f056f4b8c831b2a2096891721fa1/transformed/jetified-appauth-0.11.1/AndroidManifest.xml:34:5-53:19
 MERGED from [com.google.android.material:material:1.9.0] /Users/maximetournier/.gradle/caches/transforms-3/f1852cac82263a0db8af6cf304099aeb/transformed/material-1.9.0/AndroidManifest.xml:24:5-20
 MERGED from [com.google.android.material:material:1.9.0] /Users/maximetournier/.gradle/caches/transforms-3/f1852cac82263a0db8af6cf304099aeb/transformed/material-1.9.0/AndroidManifest.xml:24:5-20
+MERGED from [com.facebook.stetho:stetho:1.6.0] /Users/maximetournier/.gradle/caches/transforms-3/52963e56ca573c7c394dc0939c7e7189/transformed/jetified-stetho-1.6.0/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.stetho:stetho:1.6.0] /Users/maximetournier/.gradle/caches/transforms-3/52963e56ca573c7c394dc0939c7e7189/transformed/jetified-stetho-1.6.0/AndroidManifest.xml:11:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /Users/maximetournier/.gradle/caches/transforms-3/fbce3ea05e23c43d4828664bb6f57a15/transformed/constraintlayout-2.0.1/AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /Users/maximetournier/.gradle/caches/transforms-3/fbce3ea05e23c43d4828664bb6f57a15/transformed/constraintlayout-2.0.1/AndroidManifest.xml:9:5-20
 MERGED from [com.google.firebase:firebase-messaging:22.0.0] /Users/maximetournier/.gradle/caches/transforms-3/c5e51de4161ca386a66c7b766dfd1f12/transformed/jetified-firebase-messaging-22.0.0/AndroidManifest.xml:27:5-56:19
@@ -279,14 +290,14 @@ MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetour
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:23:5-53:19
 MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/maximetournier/.gradle/caches/transforms-3/1c4ad1c0a2c51e307bb85a2a12a5bd8e/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
 MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/maximetournier/.gradle/caches/transforms-3/1c4ad1c0a2c51e307bb85a2a12a5bd8e/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:24:5-29:19
+MERGED from [androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:24:5-29:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/maximetournier/.gradle/caches/transforms-3/baf9b8ccafc8bef9dfab9bcc80a987bd/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/maximetournier/.gradle/caches/transforms-3/baf9b8ccafc8bef9dfab9bcc80a987bd/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/da2cc0818e4c64ebf0554dedcac5aef6/transformed/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:28:5-36:19
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/da2cc0818e4c64ebf0554dedcac5aef6/transformed/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:28:5-36:19
 MERGED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:25:5-39:19
 MERGED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:25:5-39:19
-MERGED from [androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:24:5-29:19
-MERGED from [androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:24:5-29:19
 MERGED from [com.facebook.soloader:soloader:0.10.5] /Users/maximetournier/.gradle/caches/transforms-3/f12a0b4f76d40a018c0e0e2a0b997ab0/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:11:5-15:19
 MERGED from [com.facebook.soloader:soloader:0.10.5] /Users/maximetournier/.gradle/caches/transforms-3/f12a0b4f76d40a018c0e0e2a0b997ab0/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:11:5-15:19
 MERGED from [com.android.installreferrer:installreferrer:2.2] /Users/maximetournier/.gradle/caches/transforms-3/5916bf72a5c0d2cbbd79c680313cc06e/transformed/jetified-installreferrer-2.2/AndroidManifest.xml:11:5-20
@@ -401,6 +412,8 @@ uses-sdk
 INJECTED from /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/debug/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/debug/AndroidManifest.xml
 INJECTED from /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/debug/AndroidManifest.xml
+MERGED from [com.facebook.react:flipper-integration:0.73.6] /Users/maximetournier/.gradle/caches/transforms-3/a870a614a2a06c3333f98bd77b21ae23/transformed/jetified-flipper-integration-0.73.6-debug/AndroidManifest.xml:5:5-44
+MERGED from [com.facebook.react:flipper-integration:0.73.6] /Users/maximetournier/.gradle/caches/transforms-3/a870a614a2a06c3333f98bd77b21ae23/transformed/jetified-flipper-integration-0.73.6-debug/AndroidManifest.xml:5:5-44
 MERGED from [:react-native-async-storage_async-storage] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:react-native-async-storage_async-storage] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:react-native-picker_picker] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/@react-native-picker/picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
@@ -457,6 +470,10 @@ MERGED from [:expo-modules-core] /Users/maximetournier/Desktop/NAS/videotek/vide
 MERGED from [:expo-modules-core] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-44
 MERGED from [com.facebook.react:react-android:0.73.6] /Users/maximetournier/.gradle/caches/transforms-3/db3cb4c010cd7242b65007b624d40152/transformed/jetified-react-android-0.73.6-debug/AndroidManifest.xml:10:5-44
 MERGED from [com.facebook.react:react-android:0.73.6] /Users/maximetournier/.gradle/caches/transforms-3/db3cb4c010cd7242b65007b624d40152/transformed/jetified-react-android-0.73.6-debug/AndroidManifest.xml:10:5-44
+MERGED from [com.facebook.fresco:flipper-fresco-plugin:3.1.3] /Users/maximetournier/.gradle/caches/transforms-3/e36c40fee784602eb08396fe737bc10e/transformed/jetified-flipper-fresco-plugin-3.1.3/AndroidManifest.xml:11:5-44
+MERGED from [com.facebook.fresco:flipper-fresco-plugin:3.1.3] /Users/maximetournier/.gradle/caches/transforms-3/e36c40fee784602eb08396fe737bc10e/transformed/jetified-flipper-fresco-plugin-3.1.3/AndroidManifest.xml:11:5-44
+MERGED from [com.facebook.fresco:flipper:3.1.3] /Users/maximetournier/.gradle/caches/transforms-3/9952f23c7889cc5aea17b03fb07e26b7/transformed/jetified-flipper-3.1.3/AndroidManifest.xml:5:5-44
+MERGED from [com.facebook.fresco:flipper:3.1.3] /Users/maximetournier/.gradle/caches/transforms-3/9952f23c7889cc5aea17b03fb07e26b7/transformed/jetified-flipper-3.1.3/AndroidManifest.xml:5:5-44
 MERGED from [com.facebook.fresco:fresco:3.1.3] /Users/maximetournier/.gradle/caches/transforms-3/9c51337f957f47544c05cf8cf4133b64/transformed/jetified-fresco-3.1.3/AndroidManifest.xml:5:5-44
 MERGED from [com.facebook.fresco:fresco:3.1.3] /Users/maximetournier/.gradle/caches/transforms-3/9c51337f957f47544c05cf8cf4133b64/transformed/jetified-fresco-3.1.3/AndroidManifest.xml:5:5-44
 MERGED from [com.facebook.fresco:imagepipeline-okhttp3:3.1.3] /Users/maximetournier/.gradle/caches/transforms-3/4b0b4cd2d24d45c8c082cb3d9374c831/transformed/jetified-imagepipeline-okhttp3-3.1.3/AndroidManifest.xml:5:5-44
@@ -497,6 +514,10 @@ MERGED from [com.facebook.fresco:soloader:3.1.3] /Users/maximetournier/.gradle/c
 MERGED from [com.facebook.fresco:soloader:3.1.3] /Users/maximetournier/.gradle/caches/transforms-3/f153dbd822e587e820117285090a48da/transformed/jetified-soloader-3.1.3/AndroidManifest.xml:5:5-44
 MERGED from [com.facebook.fresco:fbcore:3.1.3] /Users/maximetournier/.gradle/caches/transforms-3/650ae4f1204e322a49235413a6e2319a/transformed/jetified-fbcore-3.1.3/AndroidManifest.xml:5:5-44
 MERGED from [com.facebook.fresco:fbcore:3.1.3] /Users/maximetournier/.gradle/caches/transforms-3/650ae4f1204e322a49235413a6e2319a/transformed/jetified-fbcore-3.1.3/AndroidManifest.xml:5:5-44
+MERGED from [com.facebook.flipper:flipper-network-plugin:0.201.0] /Users/maximetournier/.gradle/caches/transforms-3/6c9733fdc73e8ee7f4ca3ea81b9b7f38/transformed/jetified-flipper-network-plugin-0.201.0/AndroidManifest.xml:11:5-44
+MERGED from [com.facebook.flipper:flipper-network-plugin:0.201.0] /Users/maximetournier/.gradle/caches/transforms-3/6c9733fdc73e8ee7f4ca3ea81b9b7f38/transformed/jetified-flipper-network-plugin-0.201.0/AndroidManifest.xml:11:5-44
+MERGED from [com.facebook.flipper:flipper:0.201.0] /Users/maximetournier/.gradle/caches/transforms-3/8a2c25120e18a90bd0c7b612e5019e69/transformed/jetified-flipper-0.201.0/AndroidManifest.xml:11:5-44
+MERGED from [com.facebook.flipper:flipper:0.201.0] /Users/maximetournier/.gradle/caches/transforms-3/8a2c25120e18a90bd0c7b612e5019e69/transformed/jetified-flipper-0.201.0/AndroidManifest.xml:11:5-44
 MERGED from [com.github.CanHub:Android-Image-Cropper:4.3.1] /Users/maximetournier/.gradle/caches/transforms-3/eeb30e9ed572f280c8a26173d8f71114/transformed/jetified-Android-Image-Cropper-4.3.1/AndroidManifest.xml:5:5-7:41
 MERGED from [com.github.CanHub:Android-Image-Cropper:4.3.1] /Users/maximetournier/.gradle/caches/transforms-3/eeb30e9ed572f280c8a26173d8f71114/transformed/jetified-Android-Image-Cropper-4.3.1/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/maximetournier/.gradle/caches/transforms-3/6780a2009a4dd79695e6581211bbd520/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
@@ -507,6 +528,8 @@ MERGED from [com.google.android.material:material:1.9.0] /Users/maximetournier/.
 MERGED from [com.google.android.material:material:1.9.0] /Users/maximetournier/.gradle/caches/transforms-3/f1852cac82263a0db8af6cf304099aeb/transformed/material-1.9.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.github.adityaxjha:Android-ScalableVideoView:10e7b4da8b] /Users/maximetournier/.gradle/caches/transforms-3/b854ceba38ec862570df5adf2b2d2d18/transformed/jetified-Android-ScalableVideoView-10e7b4da8b/AndroidManifest.xml:5:5-7:41
 MERGED from [com.github.adityaxjha:Android-ScalableVideoView:10e7b4da8b] /Users/maximetournier/.gradle/caches/transforms-3/b854ceba38ec862570df5adf2b2d2d18/transformed/jetified-Android-ScalableVideoView-10e7b4da8b/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.stetho:stetho:1.6.0] /Users/maximetournier/.gradle/caches/transforms-3/52963e56ca573c7c394dc0939c7e7189/transformed/jetified-stetho-1.6.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.stetho:stetho:1.6.0] /Users/maximetournier/.gradle/caches/transforms-3/52963e56ca573c7c394dc0939c7e7189/transformed/jetified-stetho-1.6.0/AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /Users/maximetournier/.gradle/caches/transforms-3/fbce3ea05e23c43d4828664bb6f57a15/transformed/constraintlayout-2.0.1/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /Users/maximetournier/.gradle/caches/transforms-3/fbce3ea05e23c43d4828664bb6f57a15/transformed/constraintlayout-2.0.1/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/maximetournier/.gradle/caches/transforms-3/965ca604c3431eab8811bd7682895e8c/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
@@ -633,10 +656,16 @@ MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/maximetournier/.
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/maximetournier/.gradle/caches/transforms-3/57f54075348123f87e67a9bc67fa90fb/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/maximetournier/.gradle/caches/transforms-3/8cf56301e22695e89c32549beaa2d130/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/maximetournier/.gradle/caches/transforms-3/8cf56301e22695e89c32549beaa2d130/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite-framework:2.2.0] /Users/maximetournier/.gradle/caches/transforms-3/e9428404b5bdeff8a197a0bf484f208a/transformed/sqlite-framework-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite-framework:2.2.0] /Users/maximetournier/.gradle/caches/transforms-3/e9428404b5bdeff8a197a0bf484f208a/transformed/sqlite-framework-2.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/maximetournier/.gradle/caches/transforms-3/baf9b8ccafc8bef9dfab9bcc80a987bd/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/maximetournier/.gradle/caches/transforms-3/baf9b8ccafc8bef9dfab9bcc80a987bd/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.cardview:cardview:1.0.0] /Users/maximetournier/.gradle/caches/transforms-3/1636afba8ed6db655f1261199ba2756d/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] /Users/maximetournier/.gradle/caches/transforms-3/1636afba8ed6db655f1261199ba2756d/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.2.0] /Users/maximetournier/.gradle/caches/transforms-3/03cbe3d6fd84f118b130262c1de2b868/transformed/sqlite-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite:2.2.0] /Users/maximetournier/.gradle/caches/transforms-3/03cbe3d6fd84f118b130262c1de2b868/transformed/sqlite-2.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.exifinterface:exifinterface:1.3.6] /Users/maximetournier/.gradle/caches/transforms-3/c72924bcdf2521da1303a237b6f2e418/transformed/exifinterface-1.3.6/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.exifinterface:exifinterface:1.3.6] /Users/maximetournier/.gradle/caches/transforms-3/c72924bcdf2521da1303a237b6f2e418/transformed/exifinterface-1.3.6/AndroidManifest.xml:20:5-22:41
 MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] /Users/maximetournier/.gradle/caches/transforms-3/0445af2450edb679ebbed3af74d842e8/transformed/jetified-gifdecoder-4.16.0/AndroidManifest.xml:5:5-7:41
@@ -651,12 +680,6 @@ MERGED from [com.google.android.datatransport:transport-api:3.0.0] /Users/maxime
 MERGED from [com.google.android.datatransport:transport-api:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/ea70c46085143708f989239fee36859d/transformed/jetified-transport-api-3.0.0/AndroidManifest.xml:18:5-20:41
 MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/maximetournier/.gradle/caches/transforms-3/8a4368322e3c7dc588a8eb05ad8c394d/transformed/jetified-firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/maximetournier/.gradle/caches/transforms-3/8a4368322e3c7dc588a8eb05ad8c394d/transformed/jetified-firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
-MERGED from [androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.sqlite:sqlite-framework:2.2.0] /Users/maximetournier/.gradle/caches/transforms-3/e9428404b5bdeff8a197a0bf484f208a/transformed/sqlite-framework-2.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.sqlite:sqlite-framework:2.2.0] /Users/maximetournier/.gradle/caches/transforms-3/e9428404b5bdeff8a197a0bf484f208a/transformed/sqlite-framework-2.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.sqlite:sqlite:2.2.0] /Users/maximetournier/.gradle/caches/transforms-3/03cbe3d6fd84f118b130262c1de2b868/transformed/sqlite-2.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.sqlite:sqlite:2.2.0] /Users/maximetournier/.gradle/caches/transforms-3/03cbe3d6fd84f118b130262c1de2b868/transformed/sqlite-2.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/maximetournier/.gradle/caches/transforms-3/ac8150c032b7a8984bcb476bcf2d56f1/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/maximetournier/.gradle/caches/transforms-3/ac8150c032b7a8984bcb476bcf2d56f1/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/maximetournier/.gradle/caches/transforms-3/df92957d989e74969c471a184e1acfd1/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
@@ -673,6 +696,8 @@ MERGED from [com.facebook.fbjni:fbjni:0.5.1] /Users/maximetournier/.gradle/cache
 MERGED from [com.facebook.fbjni:fbjni:0.5.1] /Users/maximetournier/.gradle/caches/transforms-3/166688ab8b0217e0237c6a3517571028/transformed/jetified-fbjni-0.5.1/AndroidManifest.xml:5:5-44
 MERGED from [com.facebook.soloader:soloader:0.10.5] /Users/maximetournier/.gradle/caches/transforms-3/f12a0b4f76d40a018c0e0e2a0b997ab0/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.soloader:soloader:0.10.5] /Users/maximetournier/.gradle/caches/transforms-3/f12a0b4f76d40a018c0e0e2a0b997ab0/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.ndk.thirdparty:openssl:1.1.1l-beta-1] /Users/maximetournier/.gradle/caches/transforms-3/7ee1972708ed6497ae9c283ecbde7bf6/transformed/jetified-openssl-1.1.1l-beta-1/AndroidManifest.xml:2:2-70
+MERGED from [com.android.ndk.thirdparty:openssl:1.1.1l-beta-1] /Users/maximetournier/.gradle/caches/transforms-3/7ee1972708ed6497ae9c283ecbde7bf6/transformed/jetified-openssl-1.1.1l-beta-1/AndroidManifest.xml:2:2-70
 MERGED from [com.android.installreferrer:installreferrer:2.2] /Users/maximetournier/.gradle/caches/transforms-3/5916bf72a5c0d2cbbd79c680313cc06e/transformed/jetified-installreferrer-2.2/AndroidManifest.xml:5:5-7:41
 MERGED from [com.android.installreferrer:installreferrer:2.2] /Users/maximetournier/.gradle/caches/transforms-3/5916bf72a5c0d2cbbd79c680313cc06e/transformed/jetified-installreferrer-2.2/AndroidManifest.xml:5:5-7:41
 MERGED from [me.leolin:ShortcutBadger:1.1.22] /Users/maximetournier/.gradle/caches/transforms-3/e5ab509913b0eed0ba52bf3072017ab1/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:7:5-9:41
@@ -896,6 +921,10 @@ MERGED from [com.facebook.soloader:soloader:0.10.5] /Users/maximetournier/.gradl
 		REJECTED from [com.facebook.soloader:soloader:0.10.5] /Users/maximetournier/.gradle/caches/transforms-3/f12a0b4f76d40a018c0e0e2a0b997ab0/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:14:13-34
 	android:name
 		ADDED from [:expo-modules-core] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-57
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from [com.facebook.flipper:flipper:0.201.0] /Users/maximetournier/.gradle/caches/transforms-3/8a2c25120e18a90bd0c7b612e5019e69/transformed/jetified-flipper-0.201.0/AndroidManifest.xml:14:5-76
+	android:name
+		ADDED from [com.facebook.flipper:flipper:0.201.0] /Users/maximetournier/.gradle/caches/transforms-3/8a2c25120e18a90bd0c7b612e5019e69/transformed/jetified-flipper-0.201.0/AndroidManifest.xml:14:22-73
 intent#action:name:android.intent.action.GET_CONTENT+category:name:android.intent.category.OPENABLE+data:mimeType:*/*
 ADDED from [com.github.CanHub:Android-Image-Cropper:4.3.1] /Users/maximetournier/.gradle/caches/transforms-3/eeb30e9ed572f280c8a26173d8f71114/transformed/jetified-Android-Image-Cropper-4.3.1/AndroidManifest.xml:10:9-16:18
 action#android.intent.action.GET_CONTENT
@@ -1112,6 +1141,14 @@ action#androidx.profileinstaller.action.BENCHMARK_OPERATION
 ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
 	android:name
 		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-3/6ead0acd45e516902dee8e583e1e5f46/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:25:9-28:40
+	android:exported
+		ADDED from [androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:28:13-37
+	android:directBootAware
+		ADDED from [androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:27:13-43
+	android:name
+		ADDED from [androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:26:13-74
 service#com.google.android.datatransport.runtime.backends.TransportBackendDiscovery
 ADDED from [com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/da2cc0818e4c64ebf0554dedcac5aef6/transformed/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:29:9-35:19
 MERGED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:36:9-38:40
@@ -1140,14 +1177,6 @@ ADDED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/max
 		ADDED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:34:13-37
 	android:name
 		ADDED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/maximetournier/.gradle/caches/transforms-3/b0d6edc5a447a2667c65efca90a4e4af/transformed/jetified-transport-runtime-3.0.0/AndroidManifest.xml:33:13-132
-service#androidx.room.MultiInstanceInvalidationService
-ADDED from [androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:25:9-28:40
-	android:exported
-		ADDED from [androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:28:13-37
-	android:directBootAware
-		ADDED from [androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:27:13-43
-	android:name
-		ADDED from [androidx.room:room-runtime:2.4.2] /Users/maximetournier/.gradle/caches/transforms-3/11e97b619513970748d6de6b7cb5e8f4/transformed/room-runtime-2.4.2/AndroidManifest.xml:26:13-74
 uses-permission#com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE
 ADDED from [com.android.installreferrer:installreferrer:2.2] /Users/maximetournier/.gradle/caches/transforms-3/5916bf72a5c0d2cbbd79c680313cc06e/transformed/jetified-installreferrer-2.2/AndroidManifest.xml:9:5-110
 	android:name
