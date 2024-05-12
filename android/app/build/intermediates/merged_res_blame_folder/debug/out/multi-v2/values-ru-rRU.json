@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-52:/values-ru-rRU/values-ru-rRU.xml",
+            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-57:/values-ru-rRU/values-ru-rRU.xml",
             "map": [
                 {
-                    "source": "/Users/maximetournier/.gradle/caches/transforms-3/eeb30e9ed572f280c8a26173d8f71114/transformed/jetified-Android-Image-Cropper-4.3.1/res/values-ru-rRU/values-ru-rRU.xml",
+                    "source": "/Users/maximetournier/.gradle/caches/transforms-3/d36e63b6f43a62d8d9eba49fff478766/transformed/jetified-Android-Image-Cropper-4.3.1/res/values-ru-rRU/values-ru-rRU.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",

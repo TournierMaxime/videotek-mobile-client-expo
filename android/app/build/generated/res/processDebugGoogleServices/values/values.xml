@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">1022733328161-dou8qu2eh0gir010tssnr7q040tvrdnu.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">1022733328161</string>
+    <string name="google_api_key" translatable="false">AIzaSyC5NsSflFm9FxnaZyA8N_a_-wGdTTVSqdQ</string>
+    <string name="google_app_id" translatable="false">1:1022733328161:android:60af627a1fe59840092860</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC5NsSflFm9FxnaZyA8N_a_-wGdTTVSqdQ</string>
+    <string name="google_storage_bucket" translatable="false">videotek-542fd.appspot.com</string>
+    <string name="project_id" translatable="false">videotek-542fd</string>
+</resources>

@@ -1,10 +1,20 @@
 {
     "logs": [
         {
-            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-52:/values-v16/values-v16.xml",
+            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-57:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/Users/maximetournier/.gradle/caches/transforms-3/965ca604c3431eab8811bd7682895e8c/transformed/appcompat-1.6.1/res/values-v16/values-v16.xml",
+                    "source": "/Users/maximetournier/.gradle/caches/transforms-3/12dbb6d798967d91f851c671254cc50e/transformed/core-1.12.0/res/values-v16/values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                },
+                {
+                    "source": "/Users/maximetournier/.gradle/caches/transforms-3/e3443442f8385646d2e6c18e7383b5f7/transformed/appcompat-1.6.1/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -20,16 +30,6 @@
                         "endLines": "6",
                         "endColumns": "12",
                         "endOffsets": "289"
-                    }
-                },
-                {
-                    "source": "/Users/maximetournier/.gradle/caches/transforms-3/6fa08ebee00822939d86a47ace4a1202/transformed/core-1.12.0/res/values-v16/values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
                     }
                 }
             ]

@@ -29,11 +29,6 @@
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="com.hoggy.videotekclientexpo"/>
-      </intent-filter>
-      <intent-filter>
-        <action android:name="android.intent.action.VIEW" />
-        <category android:name="android.intent.category.DEFAULT" />
-        <category android:name="android.intent.category.BROWSABLE" />
         <data android:scheme="com.hoggy.videotekclientexpo" android:host="oauth2redirect" android:pathPrefix="/google" />
       </intent-filter>
     </activity>

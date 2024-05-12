@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-52:/values-en-rAU/values-en-rAU.xml",
+            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-57:/values-en-rAU/values-en-rAU.xml",
             "map": [
                 {
-                    "source": "/Users/maximetournier/.gradle/caches/transforms-3/2a61ed4da323d705c979b0ee3cbf80bf/transformed/browser-1.4.0/res/values-en-rAU/values-en-rAU.xml",
+                    "source": "/Users/maximetournier/.gradle/caches/transforms-3/d4449daf1f2794945a0010c51f1da739/transformed/browser-1.4.0/res/values-en-rAU/values-en-rAU.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/maximetournier/.gradle/caches/transforms-3/6fa08ebee00822939d86a47ace4a1202/transformed/core-1.12.0/res/values-en-rAU/values-en-rAU.xml",
+                    "source": "/Users/maximetournier/.gradle/caches/transforms-3/12dbb6d798967d91f851c671254cc50e/transformed/core-1.12.0/res/values-en-rAU/values-en-rAU.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "/Users/maximetournier/.gradle/caches/transforms-3/965ca604c3431eab8811bd7682895e8c/transformed/appcompat-1.6.1/res/values-en-rAU/values-en-rAU.xml",
+                    "source": "/Users/maximetournier/.gradle/caches/transforms-3/e3443442f8385646d2e6c18e7383b5f7/transformed/appcompat-1.6.1/res/values-en-rAU/values-en-rAU.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
