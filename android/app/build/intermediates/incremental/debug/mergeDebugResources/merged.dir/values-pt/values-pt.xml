@@ -35,8 +35,6 @@
     <string msgid="6107532579223922871" name="call_notification_incoming_text">"Chamada recebida"</string>
     <string msgid="8623827134497363134" name="call_notification_ongoing_text">"Chamada em andamento"</string>
     <string msgid="59049573811482460" name="call_notification_screening_text">"Filtrando uma ligação recebida"</string>
-    <string gender="unknown" name="catalyst_dev_menu_header">Menu de desenvolvedor de reações nativas (%1$s)</string>
-    <string gender="unknown" name="catalyst_dev_menu_sub_header">%1$s em veiculação</string>
     <string gender="unknown" name="combobox_description">Caixa de combinação</string>
     <string msgid="3260749812566568062" name="copy_toast_msg">"Link copiado para a área de transferência"</string>
     <string msgid="4566929209979330987" name="fallback_menu_item_copy_link">"Copiar link"</string>

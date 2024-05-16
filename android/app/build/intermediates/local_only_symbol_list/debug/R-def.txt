@@ -8,7 +8,6 @@ drawable ic_stat_notifications_icon
 drawable rn_edit_text_material
 drawable splashscreen
 integer react_native_dev_server_port
-integer react_native_inspector_proxy_port
 mipmap ic_launcher
 mipmap ic_launcher_foreground
 mipmap ic_launcher_round

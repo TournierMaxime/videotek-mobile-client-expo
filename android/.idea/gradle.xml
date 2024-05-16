@@ -46,7 +46,6 @@
             <option value="$PROJECT_DIR$/../node_modules/expo-modules-core/android-annotation" />
             <option value="$PROJECT_DIR$/../node_modules/expo-modules-core/android-annotation-processor" />
             <option value="$PROJECT_DIR$/../node_modules/expo-notifications/android" />
-            <option value="$PROJECT_DIR$/../node_modules/expo-splash-screen/android" />
             <option value="$PROJECT_DIR$/../node_modules/expo-structured-headers/android" />
             <option value="$PROJECT_DIR$/../node_modules/expo-updates-interface/android" />
             <option value="$PROJECT_DIR$/../node_modules/expo-updates/android" />

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-57:/values-v25/values-v25.xml",
+            "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-56:/values-v25/values-v25.xml",
             "map": [
                 {
-                    "source": "/Users/maximetournier/.gradle/caches/transforms-3/e3443442f8385646d2e6c18e7383b5f7/transformed/appcompat-1.6.1/res/values-v25/values-v25.xml",
+                    "source": "/Users/maximetournier/.gradle/caches/transforms-4/6ef96624dab93ec8f7a82a65007c1f58/transformed/appcompat-1.6.1/res/values-v25/values-v25.xml",
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",

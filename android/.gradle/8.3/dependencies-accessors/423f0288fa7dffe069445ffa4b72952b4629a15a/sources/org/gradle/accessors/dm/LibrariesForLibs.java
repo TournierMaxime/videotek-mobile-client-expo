@@ -161,7 +161,7 @@ public class LibrariesForLibs extends AbstractExternalDependencyFactory {
         public VersionAccessors(ProviderFactory providers, DefaultVersionCatalog config) { super(providers, config); }
 
             /**
-             * Returns the version associated to this alias: agp (8.1.1)
+             * Returns the version associated to this alias: agp (8.2.1)
              * If the version is a rich version and that its not expressible as a
              * single version string, then an empty string is returned.
              * This version was declared in catalog libs.versions.toml
@@ -201,7 +201,7 @@ public class LibrariesForLibs extends AbstractExternalDependencyFactory {
             public Provider<String> getJunit() { return getVersion("junit"); }
 
             /**
-             * Returns the version associated to this alias: kotlin (1.8.0)
+             * Returns the version associated to this alias: kotlin (1.9.22)
              * If the version is a rich version and that its not expressible as a
              * single version string, then an empty string is returned.
              * This version was declared in catalog libs.versions.toml

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string gender="unknown" name="alert_description">Alerta</string>
-    <string gender="unknown" name="catalyst_dev_menu_header">Menú del desarrollador de React Native (%1$s)</string>
-    <string gender="unknown" name="catalyst_dev_menu_sub_header">Se está ejecutando %1$s</string>
     <string gender="unknown" name="combobox_description">Cuadro combinado</string>
     <string gender="unknown" name="header_description">Encabezado</string>
     <string gender="unknown" name="image_description">Imagen</string>
