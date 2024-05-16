@@ -18,28 +18,13 @@
     },
     "android": {
       "googleServicesFile": "./google-services.json",
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
       "package": "com.hoggy.videotekclientexpo",
-      "versionCode": 29,
-      "build": {
-        "babel": {
-          "include": ["@mod/mobile-common", "@mod/mobile-auth", "@mod/mobile-tmdb", "expo-modules-core"]
-        }
-      }
+      "versionCode": 29
     },
     "extra": {
       "eas": {
         "projectId": "f6110871-1ae7-43e7-8e85-5c2db50c2976"
       }
-    },
-    "runtimeVersion": {
-      "policy": "sdkVersion"
-    },
-    "updates": {
-      "url": "https://u.expo.dev/f6110871-1ae7-43e7-8e85-5c2db50c2976"
     },
     "plugins": [
       [
