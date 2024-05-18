@@ -387,6 +387,8 @@ ADDED from /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-exp
 		ADDED from /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:19:16-79
 activity#com.hoggy.videotekclientexpo.MainActivity
 ADDED from /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:20:5-32:16
+	android:screenOrientation
+		ADDED from /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:20:280-316
 	android:launchMode
 		ADDED from /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/android/app/src/main/AndroidManifest.xml:20:135-166
 	android:windowSoftInputMode

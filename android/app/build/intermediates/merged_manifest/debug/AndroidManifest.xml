@@ -116,6 +116,7 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode"
             android:exported="true"
             android:launchMode="singleTask"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.App.SplashScreen"
             android:windowSoftInputMode="adjustResize" >
             <intent-filter>
