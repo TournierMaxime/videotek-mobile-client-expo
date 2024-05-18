@@ -3,6 +3,8 @@ import React, { Fragment, useEffect } from "react"
 import { NavigationContainer } from "@react-navigation/native"
 import store from "./src/redux/store"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import AllArticles from "./src/views/Articles/AllArticles"
+import Header from "@mod/mobile-common/lib/components/layout/Header"
 import {
   MaterialCommunityIcons,
   Ionicons,
@@ -22,6 +24,7 @@ import { useDynamicThemeStyles } from "@mod/mobile-common/styles/theme"
 import { useSelector } from "react-redux"
 import MovieStackNavigator from "./src/navigators/MovieStackNavigator.js"
 import SerieStackNavigator from "./src/navigators/SerieStackNavigator.js"
+import ArticleStackNavigator from "./src/navigators/ArticleStackNavigator.js"
 
 const queryClient = new QueryClient()
 
@@ -88,6 +91,31 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
             >
               {() => (
                 <MainStackNavigator
+                  i18n={i18n}
+                  t={t}
+                  isAuthenticated={isAuthenticated}
+                />
+              )}
+            </Tab.Screen>
+
+            <Tab.Screen
+              name="ArticlesTab"
+              options={() => ({
+                tabBarIcon: ({ focused }) => (
+                  <Ionicons
+                    style={{ width: Utils.moderateScale(50), height: "auto" }}
+                    name="newspaper-outline"
+                    size={Utils.moderateScale(25)}
+                    color={focused ? activeIcon : colorIcon}
+                  />
+                ),
+                headerShown: false,
+                tabBarLabel: "",
+                tabBarActiveTintColor: activeIcon,
+              })}
+            >
+              {() => (
+                <ArticleStackNavigator
                   i18n={i18n}
                   t={t}
                   isAuthenticated={isAuthenticated}
