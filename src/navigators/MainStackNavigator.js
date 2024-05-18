@@ -36,22 +36,24 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
       </MainStack.Screen>
       <MainStack.Screen
         name="ComingSoon"
-        component={ComingSoon}
         options={{
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header isAuthenticated={isAuthenticated} backButton={false} />
           ),
         }}
-      />
+      >
+        {(props) => <ComingSoon {...props} i18n={i18n} t={t} />}
+      </MainStack.Screen>
       <MainStack.Screen
         name="Trending"
-        component={Trending}
         options={{
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header isAuthenticated={isAuthenticated} backButton={false} />
           ),
         }}
-      />
+      >
+        {(props) => <Trending {...props} i18n={i18n} t={t} />}
+      </MainStack.Screen>
       <MainStack.Screen
         name="DetailsUser"
         options={({ route }) => ({
@@ -98,13 +100,14 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
       </MainStack.Screen>
       <MainStack.Screen
         name="Recommendations"
-        component={Recommendations}
         options={{
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header isAuthenticated={isAuthenticated} backButton={false} />
           ),
         }}
-      />
+      >
+        {(props) => <Recommendations {...props} i18n={i18n} t={t} />}
+      </MainStack.Screen>
     </MainStack.Navigator>
   )
 }

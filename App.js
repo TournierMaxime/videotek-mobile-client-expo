@@ -125,6 +125,12 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
 
             <Tab.Screen
               name="MoviesTab"
+              listeners={({ navigation }) => ({
+                tabPress: (e) => {
+                  e.preventDefault()
+                  navigation.navigate("MoviesTab", { screen: "Movies" })
+                },
+              })}
               options={() => ({
                 tabBarIcon: ({ focused }) => (
                   <MaterialCommunityIcons
@@ -150,6 +156,12 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
 
             <Tab.Screen
               name="SeriesTab"
+              listeners={({ navigation }) => ({
+                tabPress: (e) => {
+                  e.preventDefault()
+                  navigation.navigate("SeriesTab", { screen: "Series" })
+                },
+              })}
               options={() => ({
                 tabBarIcon: ({ focused }) => (
                   <Ionicons
