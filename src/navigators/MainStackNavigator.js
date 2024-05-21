@@ -3,13 +3,16 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { useSelector } from "react-redux"
 import Header from "@mod/mobile-common/lib/components/layout/Header.js"
 import UserProfile from "@mod/mobile-user/views/Users/UserProfile"
-import DetailsUser from "@mod/mobile-user/views/Users/DetailsUser"
 import Settings from "@mod/mobile-user/views/Users/Settings"
 import Favorites from "@mod/mobile-user/views/Users/Favorites"
 import Recommendations from "@mod/mobile-user/views/Users/Recommendations"
 import Home from "../views/Home"
 import ComingSoon from "@mod/mobile-tmdb/views/Movies/ComingSoon"
 import Trending from "@mod/mobile-tmdb/views/Movies/Trending"
+import UpdateData from "@mod/mobile-user/views/Users/UpdateData/Index"
+import UpdateUserName from "@mod/mobile-user/views/Users/UpdateData/UpdateUserName"
+import UpdateEmail from "@mod/mobile-user/views/Users/UpdateData/UpdateEmail"
+import UpdateAvatar from "@mod/mobile-user/views/Users/UpdateData/UpdateAvatar"
 
 const MainStack = createNativeStackNavigator()
 
@@ -55,7 +58,7 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         {(props) => <Trending {...props} i18n={i18n} t={t} />}
       </MainStack.Screen>
       <MainStack.Screen
-        name="DetailsUser"
+        name="UpdateData"
         options={({ route }) => ({
           userId: route.params.userId,
           header: () => (
@@ -63,7 +66,40 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
           ),
         })}
       >
-        {(props) => <DetailsUser {...props} i18n={i18n} t={t} />}
+        {(props) => <UpdateData {...props} i18n={i18n} t={t} />}
+      </MainStack.Screen>
+      <MainStack.Screen
+        name="UpdateUserName"
+        options={({ route }) => ({
+          userId: route.params.userId,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
+        })}
+      >
+        {(props) => <UpdateUserName {...props} i18n={i18n} t={t} />}
+      </MainStack.Screen>
+      <MainStack.Screen
+        name="UpdateEmail"
+        options={({ route }) => ({
+          userId: route.params.userId,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
+        })}
+      >
+        {(props) => <UpdateEmail {...props} i18n={i18n} t={t} />}
+      </MainStack.Screen>
+      <MainStack.Screen
+        name="UpdateAvatar"
+        options={({ route }) => ({
+          userId: route.params.userId,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
+        })}
+      >
+        {(props) => <UpdateAvatar {...props} i18n={i18n} t={t} />}
       </MainStack.Screen>
       <MainStack.Screen
         name="UserProfile"
