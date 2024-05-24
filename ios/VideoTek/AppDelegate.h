@@ -4,7 +4,6 @@
 #import <React/RCTLinkingManager.h>
 #import "RNAppAuthAuthorizationFlowManager.h"
 
-@interface AppDelegate : RCTAppDelegate <RNAppAuthAuthorizationFlowManager>
+@interface AppDelegate : EXAppDelegateWrapper <RNAppAuthAuthorizationFlowManager>
 @property(nonatomic, weak) id<RNAppAuthAuthorizationFlowManagerDelegate> authorizationFlowManagerDelegate;
-
 @end
