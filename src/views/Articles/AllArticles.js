@@ -12,10 +12,14 @@ import Utils from "@mod/mobile-common/lib/class/Utils"
 import { Entypo } from "react-native-vector-icons"
 import { useNavigation } from "@react-navigation/native"
 import { searchArticles } from "@mod/mobile-tmdb/redux/actions/articles"
+import { useTranslation } from "react-i18next"
 
 const AllArticles = () => {
   const navigation = useNavigation()
   const dispatch = useDispatch()
+
+  const { i18n } = useTranslation()
+  const language = i18n.language
 
   const data = useSelector((state) => state.searchArticles.data?.articles)
   const isLoading = useSelector((state) => state.searchArticles.loading)
@@ -50,8 +54,8 @@ const AllArticles = () => {
   }
 
   useEffect(() => {
-    dispatch(searchArticles())
-  }, [dispatch])
+    dispatch(searchArticles(language))
+  }, [dispatch, language])
 
   return (
     <FlatList

@@ -1,7 +1,7 @@
 import { videotekImportApi as http } from "./axios.js"
 
-const SearchArticles = () => {
-  return http.post("/articles/search")
+const SearchArticles = (lang) => {
+  return http.post(`/articles/search?lang=${lang}`)
 }
 
 const GetOneArticle = (articleId) => {
