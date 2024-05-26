@@ -100,6 +100,12 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
 
             <Tab.Screen
               name="ArticlesTab"
+              listeners={({ navigation }) => ({
+                tabPress: (e) => {
+                  e.preventDefault()
+                  navigation.navigate("ArticlesTab", { screen: "AllArticles" })
+                },
+              })}
               options={() => ({
                 tabBarIcon: ({ focused }) => (
                   <Ionicons

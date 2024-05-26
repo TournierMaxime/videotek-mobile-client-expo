@@ -1,5 +1,7 @@
 {
   "utils": {
+    "notifications": "Notifications",
+    "privacyPolicy": "Politique de confidentialité",
     "topRated": "Les mieux notés",
     "comingSoon": "Prochainement",
     "becauseYouLiked": "Parce que vous avez aimé",
@@ -111,6 +113,7 @@
     "available": "Disponible"
   },
   "actions": {
+    "enableNotifications": "Enable Notifications",
     "areYouSureYouWantToDeleteThisWatchList": "Etes vous sur de vouloir supprimer cette liste de suivi ?",
     "areYouSureYouWantToDeleteThisFavorite": "Etes vous sur de vouloir supprimer ce favori ?",
     "deleteAccountConfirmMsg": "Etes vous sur de vouloir supprimer votre compte ?",
@@ -139,5 +142,86 @@
     "contentCannotExceed300Characters": "Le contenu ne peut pas dépasser 300 caractères",
     "anErrorHasOccurred": "Une erreur s'est produite",
     "youMustBeAuthenticatedToPostAMessage": "Vous devez être authentifié pour poster un message"
+  },
+  "privacy": {
+    "h1PrivacyPolicy": "Politique de confidentialité",
+    "h2Introduction": "Introduction",
+    "pIntroduction": "Devant le développement des nouveaux outils de communication, il est nécessaire de porter une attention particulière à la protection de la vie privée. C'est pourquoi, nous nous engageons à respecter la confidentialité des renseignements personnels que nous collectons.",
+    "h3PersonalInformation": "Collecte des renseignements personnels",
+    "ulPersonalInformation": [{ "li": "Adresse électronique" }],
+    "pPersonalInformation": "Les renseignements personnels que nous collectons sont recueillis au travers de formulaires et grâce à l'interactivité établie entre vous et notre site Web. Nous utilisons également, comme indiqué dans la section suivante, des fichiers témoins et/ou journaux pour réunir des informations vous concernant.",
+    "h3Forms&Interactivity": "Formulaires et interactivité",
+    "p1Forms&Interactivity": "Vos renseignements personnels sont collectés par le biais de formulaire, à savoir :",
+    "ul1Forms&Interactivity": [
+      {
+        "li": "Formulaire d'inscription"
+      },
+      {
+        "li": "Formulaire de mise à jour de profil"
+      },
+      {
+        "li": "Récupération de mot de passe"
+      }
+    ],
+    "p2Forms&Interactivity": "Nous utilisons les renseignements ainsi collectés pour les finalités suivantes :",
+    "ul2Forms&Interactivity": [
+      {
+        "li": "Statistiques"
+      },
+      {
+        "li": "Contact"
+      }
+    ],
+    "h3RightOfOpposition": "Droit d'opposition et de retrait",
+    "p1RightOfOpposition": "Nous nous engageons à vous offrir un droit d'opposition et de retrait quant à vos renseignements personnels. Le droit d'opposition s'entend comme étant la possiblité offerte aux internautes de refuser que leurs renseignements personnels soient utilisées à certaines fins mentionnées lors de la collecte. Le droit de retrait s'entend comme étant la possiblité offerte aux internautes de demander à ce que leurs renseignements personnels ne figurent plus, par exemple, dans une liste de diffusion.",
+    "p2RightOfOpposition": "Pour pouvoir exercer ces droits, vous pouvez :",
+    "ulRightOfOpposition": [
+      {
+        "li": "Courriel : contact@videotek.xyz"
+      },
+      {
+        "li": "Section du site web : https://videotek.xyz"
+      }
+    ],
+    "h3PermissionToAccess": "Droit d'accès",
+    "p1PermissionToAccess": "Nous nous engageons à reconnaître un droit d'accès et de rectification aux personnes concernées désireuses de consulter, modifier, voire radier les informations les concernant.",
+    "p2PermissionToAccess": "L'exercice de ce droit se fera :",
+    "ulPermissionToAccess": [
+      {
+        "li": "Courriel : contact@videotek.xyz"
+      }, 
+      {
+        "li": "Section du site web : https://videotek.xyz"
+      }
+    ],
+    "h3Security": "Sécurité",
+    "p1Security": "Les renseignements personnels que nous collectons sont conservés dans un environnement sécurisé. Les personnes travaillant pour nous sont tenues de respecter la confidentialité de vos informations.",
+    "p2Security": "Pour assurer la sécurité de vos renseignements personnels, nous avons recours aux mesures suivantes :",
+    "ulSecurity": [
+      {
+        "li": "Protocole SSL"
+      },
+      {
+        "li": "Gestion des accès - personne autorisée"
+      },
+      {
+        "li": "Gestion des accès - personne concernée"
+      },
+      {
+        "li": "Identifiant / mot de passe"
+      },
+      {
+        "li": "Connexion via un tiers (Google)"
+      }
+    ],
+    "p3Security": "Nous nous engageons à maintenir un haut degré de confidentialité en intégrant les dernières innovations technologiques permettant d'assurer la confidentialité de vos transactions. Toutefois, comme aucun mécanisme n'offre une sécurité maximale, une part de risque est toujours présente lorsque l'on utilise Internet pour transmettre des renseignements personnels.",
+    "h3Legislation": "Législation",
+    "pLegislation": "Nous nous engageons à respecter les dispositions législatives énoncées dans :",
+    "ulLegislation": [
+      {
+        "li": "Norme RGPD"
+      }
+    ],
+    "update": "Mis à jour: 23/05/2024"
   }
 }

@@ -25,7 +25,7 @@ const AllArticles = () => {
   const isLoading = useSelector((state) => state.searchArticles.loading)
 
   const darkMode = useSelector((state) => state.theme.darkMode)
-  const { background, text, tag, tagText, borderColor, colorIcon } =
+  const { background, text, borderColor, colorIcon } =
     useDynamicThemeStyles(darkMode)
 
   const renderItem = (item, idx) => {

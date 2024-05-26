@@ -1,5 +1,7 @@
 {
   "utils": {
+    "notifications": "Notifications",
+    "privacyPolicy": "Privacy Policy",
     "topRated": "Top rated",
     "continueWithGoogle": "Continue with",
     "comingSoon": "Coming Soon",
@@ -113,6 +115,7 @@
     "content": "Content",
     "picture": "Picture",
     "noGif": "No GIF",
+    "enableNotifications": "Enable Notifications",
     "loadMoreGifs": "Load more gifs",
     "removedFromFavorite": "Removed from favorite",
     "addedToFavorite": "Added to favorite",
@@ -138,5 +141,86 @@
     "permissionToAccessCameraRollIsRequired": "Permission to access camera roll is required",
     "contentCannotExceed300Characters": "Content cannot exceed 300 characters",
     "anErrorHasOccurred": "An error has occurred"
+  },
+  "privacy": {
+    "h1PrivacyPolicy": "Privacy Policy",
+    "h2Introduction": "Introduction",
+    "pIntroduction": "Faced with the development of new communication tools, it is necessary to pay particular attention to the protection of privacy. This is why we are committed to respecting the confidentiality of the personal information we collect.",
+    "h3PersonalInformation": "Collection of personal information",
+    "ulPersonalInformation": [{ "li": "Email address" }],
+    "pPersonalInformation": "The personal information we collect is collected through forms and through the interactivity established between you and our website. We also use, as indicated in the following section, cookies and/or log files to gather information about you.",
+    "h3Forms&Interactivity": "Forms and interactivity",
+    "p1Forms&Interactivity": "Your personal information is collected via forms, namely :",
+    "ul1Forms&Interactivity": [
+      {
+        "li": "Registration form"
+      },
+      {
+        "li": "Profile update form"
+      },
+      {
+        "li": "Password recovery"
+      }
+    ],
+    "p2Forms&Interactivity": "We use the information thus collected for the following purposes :",
+    "ul2Forms&Interactivity": [
+      {
+        "li": "Statistics"
+      },
+      {
+        "li": "Contact"
+      }
+    ],
+    "h3RightOfOpposition": "Right of opposition and withdrawal",
+    "p1RightOfOpposition": "We are committed to offering you a right of opposition and withdrawal regarding your personal information. The right to object is understood as the possibility offered to Internet users to refuse that their personal information be used for certain purposes mentioned during collection. The right of withdrawal is understood as being the possibility offered to Internet users to request that their personal information no longer appears, for example, in a mailing list.",
+    "p2RightOfOpposition": "To exercise these rights, you can :",
+    "ulRightOfOpposition": [
+      {
+        "li": "E-mail : contact@videotek.xyz"
+      },
+      {
+        "li": "Website section : https://videotek.xyz"
+      }
+    ],
+    "h3PermissionToAccess": "Permission to access",
+    "p1PermissionToAccess": "We undertake to recognize a right of access and rectification to data subjects wishing to consult, modify or even delete information concerning them.",
+    "p2PermissionToAccess": "The exercise of this right will be :",
+    "ulPermissionToAccess": [
+      {
+        "li": "E-mail : contact@videotek.xyz"
+      }, 
+      {
+        "li": "Website section : https://videotek.xyz"
+      }
+    ],
+    "h3Security": "Security",
+    "p1Security": "The personal information we collect is stored in a secure environment. People working for us are required to respect the confidentiality of your information.",
+    "p2Security": "To ensure the security of your personal information, we use the following measures :",
+    "ulSecurity": [
+      {
+        "li": "SSL protocol"
+      },
+      {
+        "li": "Access management - authorized person"
+      },
+      {
+        "li": "Access management - data subject"
+      },
+      {
+        "li": "Login / Password"
+      },
+      {
+        "li": "Connection via a third party (Google)"
+      }
+    ],
+    "p3Security": "We are committed to maintaining a high degree of confidentiality by integrating the latest technological innovations to ensure the confidentiality of your transactions. However, as no mechanism offers maximum security, some risk is always present when using the Internet to transmit personal information.",
+    "h3Legislation": "Legislation",
+    "pLegislation": "We undertake to respect the legislative provisions set out in :",
+    "ulLegislation": [
+      {
+        "li": "GDPR standard (European law)"
+      }
+    ],
+    "update": "Update: 2024-05-23"
   }
 }

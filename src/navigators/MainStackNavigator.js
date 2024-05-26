@@ -13,6 +13,7 @@ import UpdateData from "@mod/mobile-user/views/Users/UpdateData/Index"
 import UpdateUserName from "@mod/mobile-user/views/Users/UpdateData/UpdateUserName"
 import UpdateEmail from "@mod/mobile-user/views/Users/UpdateData/UpdateEmail"
 import UpdateAvatar from "@mod/mobile-user/views/Users/UpdateData/UpdateAvatar"
+import PrivacyPolicy from "@mod/mobile-user/views/Users/PrivacyPolicy"
 
 const MainStack = createNativeStackNavigator()
 
@@ -143,6 +144,16 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         }}
       >
         {(props) => <Recommendations {...props} i18n={i18n} t={t} />}
+      </MainStack.Screen>
+      <MainStack.Screen
+        name="PrivacyPolicy"
+        options={{
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={false} />
+          ),
+        }}
+      >
+        {(props) => <PrivacyPolicy {...props} i18n={i18n} t={t} />}
       </MainStack.Screen>
     </MainStack.Navigator>
   )

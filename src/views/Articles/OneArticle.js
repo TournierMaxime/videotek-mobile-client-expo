@@ -6,6 +6,7 @@ import tw from "twrnc"
 import moment from "moment"
 import WebView from "react-native-webview"
 import Utils from "@mod/mobile-common/lib/class/Utils"
+import { useDynamicThemeStyles } from "@mod/mobile-common/styles/theme"
 
 const OneArticle = ({ route }) => {
   const { articleId } = route.params
@@ -13,6 +14,10 @@ const OneArticle = ({ route }) => {
 
   const oneArticle = useSelector((state) => state.oneArticle.data.article)
   const isLoading = useSelector((state) => state.oneArticle.loading)
+
+  const darkMode = useSelector((state) => state.theme.darkMode)
+  const { background, text, borderColor, colorIcon } =
+    useDynamicThemeStyles(darkMode)
 
   const paragraphs = oneArticle?.paragraphs
   const medias = oneArticle?.medias
@@ -80,15 +85,15 @@ const OneArticle = ({ route }) => {
   }, [dispatch, articleId])
 
   return (
-    <ScrollView>
+    <ScrollView style={tw`${background}`}>
       {isLoading ? (
         <ActivityIndicator />
       ) : (
         <View style={tw`w-90 mr-auto ml-auto my-4`}>
-          <Text style={tw`font-medium text-lg text-justify`}>
+          <Text style={tw`${text} font-medium text-lg text-justify`}>
             {oneArticle?.title}
           </Text>
-          <Text style={tw`font-normal text-lg mt-4 text-justify`}>
+          <Text style={tw`${text} font-normal text-lg mt-4 text-justify`}>
             {oneArticle?.intro}
           </Text>
           {introImage ? introImage && mediaType(introImage, 0) : null}
@@ -96,7 +101,7 @@ const OneArticle = ({ route }) => {
             return (
               <Text
                 key={paragraph.position}
-                style={tw`font-normal text-lg mt-4 text-justify`}
+                style={tw`${text} font-normal text-lg mt-4 text-justify`}
               >
                 {paragraph.text}
               </Text>
@@ -108,7 +113,7 @@ const OneArticle = ({ route }) => {
             }
             return null
           })}
-          <Text style={tw`font-normal text-lg mt-4`}>
+          <Text style={tw`${text} font-normal text-lg mt-4`}>
             {moment(oneArticle?.createdAt).format("YYYY-MM-DD - HH:mm")}
           </Text>
         </View>
