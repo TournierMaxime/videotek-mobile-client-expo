@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.hoggy.videotekclientexpo.app-mergeReleaseResources-57:/values-hdpi-v4/values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "/Users/maximetournier/.gradle/caches/transforms-4/6ef96624dab93ec8f7a82a65007c1f58/transformed/appcompat-1.6.1/res/values-hdpi-v4/values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "13",
+                        "endOffsets": "327"
+                    }
+                }
+            ]
+        }
+    ]
+}
