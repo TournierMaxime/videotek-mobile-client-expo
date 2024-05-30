@@ -1,5 +1,6 @@
 {
   "utils": {
+    "languages": "Langues",
     "notifications": "Notifications",
     "privacyPolicy": "Politique de confidentialité",
     "topRated": "Les mieux notés",
@@ -46,7 +47,7 @@
     "loadMoreFavorites": "Charger plus de favoris",
     "noFavorite": "Aucun favoris",
     "favorites": "Favoris",
-    "versionNumber": "Numéro de version",
+    "version": "Version",
     "search": "Rechercher",
     "trending": "En ce moment",
     "films": "Films",
@@ -113,7 +114,8 @@
     "available": "Disponible"
   },
   "actions": {
-    "enableNotifications": "Enable Notifications",
+    "enableEmails": "Etre notifié par email",
+    "enableNotifications": "Activer les notifications",
     "areYouSureYouWantToDeleteThisWatchList": "Etes vous sur de vouloir supprimer cette liste de suivi ?",
     "areYouSureYouWantToDeleteThisFavorite": "Etes vous sur de vouloir supprimer ce favori ?",
     "deleteAccountConfirmMsg": "Etes vous sur de vouloir supprimer votre compte ?",

@@ -1,5 +1,6 @@
 {
   "utils": {
+    "languages": "Languages",
     "notifications": "Notifications",
     "privacyPolicy": "Privacy Policy",
     "topRated": "Top rated",
@@ -29,7 +30,7 @@
     "loadMoreFavorites": "Load more favorites",
     "noFavorite": "No favorites",
     "favorites": "Favorites",
-    "versionNumber": "Version number",
+    "version": "Version",
     "search": "Search",
     "trending": "Trending",
     "films": "Movies",
@@ -115,6 +116,7 @@
     "content": "Content",
     "picture": "Picture",
     "noGif": "No GIF",
+    "enableEmails": "Be notified by email",
     "enableNotifications": "Enable Notifications",
     "loadMoreGifs": "Load more gifs",
     "removedFromFavorite": "Removed from favorite",

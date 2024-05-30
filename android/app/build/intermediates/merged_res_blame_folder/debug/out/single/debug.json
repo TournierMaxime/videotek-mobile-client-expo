@@ -1,102 +1,98 @@
 [
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-hdpi_ic_launcher_foreground.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/mipmap-hdpi/ic_launcher_foreground.png"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/mipmap-mdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/mipmap-xxxhdpi/ic_launcher.png"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/mipmap-hdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-mdpi_ic_launcher_foreground.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/mipmap-mdpi/ic_launcher_foreground.png"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/drawable-hdpi_ic_stat_notifications_icon.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/drawable-hdpi/ic_stat_notifications_icon.png"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/drawable-xxxhdpi_ic_stat_notifications_icon.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/drawable-xxxhdpi/ic_stat_notifications_icon.png"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/mipmap-xxhdpi/ic_launcher.png"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/drawable-mdpi_ic_stat_notifications_icon.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/drawable-mdpi/ic_stat_notifications_icon.png"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/mipmap-hdpi/ic_launcher.png"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/mipmap-xxxhdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/mipmap-xxhdpi/ic_launcher_round.png"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/drawable_rn_edit_text_material.xml.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/drawable/rn_edit_text_material.xml"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/mipmap-hdpi/ic_launcher_round.png"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/mipmap-xxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/mipmap-xxhdpi/ic_launcher_foreground.png"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/drawable-xxhdpi_ic_stat_notifications_icon.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/drawable-xxhdpi/ic_stat_notifications_icon.png"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/mipmap-xxhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-xhdpi_ic_launcher_round.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/mipmap-xhdpi/ic_launcher_round.png"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/mipmap-xxxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/drawable-xxxhdpi_ic_stat_notifications_icon.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/drawable-xxxhdpi/ic_stat_notifications_icon.png"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/drawable-xhdpi_ic_stat_notifications_icon.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/drawable-xhdpi/ic_stat_notifications_icon.png"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/mipmap-xhdpi/ic_launcher.png"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/mipmap-xhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/drawable_splashscreen.xml.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/drawable/splashscreen.xml"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/mipmap-xxhdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-mdpi_ic_launcher.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/mipmap-mdpi/ic_launcher.png"
-    },
-    {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/mipmap-xxxhdpi/ic_launcher_foreground.png"
-    },
-    {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/drawable_rn_edit_text_material.xml.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/drawable/rn_edit_text_material.xml"
-    },
-    {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/drawable-mdpi_ic_stat_notifications_icon.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/drawable-mdpi/ic_stat_notifications_icon.png"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/drawable-hdpi_ic_stat_notifications_icon.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/drawable-hdpi/ic_stat_notifications_icon.png"
     },
     {
         "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/drawable_splashscreen.xml.flat",
         "source": "com.hoggy.videotekclientexpo.app-main-60:/drawable/splashscreen.xml"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/mipmap-xxxhdpi/ic_launcher_round.png"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/mipmap-mdpi/ic_launcher_round.png"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/drawable-xhdpi_ic_stat_notifications_icon.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/drawable-xhdpi/ic_stat_notifications_icon.png"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-xhdpi_ic_launcher_foreground.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/mipmap-xhdpi/ic_launcher_foreground.png"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/mipmap-xhdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "/Users/maximetournier/.gradle/daemon/8.6/com.hoggy.videotekclientexpo.app-main-60:/mipmap-mdpi/ic_launcher_round.png"
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/drawable-xxhdpi_ic_stat_notifications_icon.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/drawable-xxhdpi/ic_stat_notifications_icon.png"
+    },
+    {
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.hoggy.videotekclientexpo.app-merged_res-58:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.hoggy.videotekclientexpo.app-main-60:/mipmap-xhdpi/ic_launcher.png"
     }
 ]

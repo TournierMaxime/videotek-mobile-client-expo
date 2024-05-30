@@ -4,7 +4,7 @@
             "outputFile": "com.hoggy.videotekclientexpo.app-mergeDebugResources-56:/values-he/values-he.xml",
             "map": [
                 {
-                    "source": "/Users/maximetournier/.gradle/caches/transforms-4/f05c62bb5c14ef8858d024cdbc1ba64c/transformed/jetified-Android-Image-Cropper-4.3.1/res/values-he/values-he.xml",
+                    "source": "/Users/maximetournier/.gradle/caches/transforms-4/c144b4af8ea675e27aa6a96dc5517625/transformed/jetified-Android-Image-Cropper-4.3.1/res/values-he/values-he.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",

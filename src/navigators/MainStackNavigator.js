@@ -3,7 +3,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { useSelector } from "react-redux"
 import Header from "@mod/mobile-common/lib/components/layout/Header.js"
 import UserProfile from "@mod/mobile-user/views/Users/UserProfile"
-import Settings from "@mod/mobile-user/views/Users/Settings"
+import Settings from "@mod/mobile-user/views/Settings/Index"
+import Theme from "@mod/mobile-user/views/Settings/Theme"
+import Notifications from "@mod/mobile-user/views/Settings/Notifications"
+import Languages from "@mod/mobile-user/views/Settings/Languages"
 import Favorites from "@mod/mobile-user/views/Users/Favorites"
 import Recommendations from "@mod/mobile-user/views/Users/Recommendations"
 import Home from "../views/Home"
@@ -123,6 +126,37 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         })}
       >
         {(props) => <Settings {...props} i18n={i18n} t={t} />}
+      </MainStack.Screen>
+      <MainStack.Screen
+        name="Languages"
+        options={() => ({
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
+        })}
+      >
+        {(props) => <Languages {...props} i18n={i18n} t={t} />}
+      </MainStack.Screen>
+      <MainStack.Screen
+        name="Theme"
+        options={() => ({
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
+        })}
+      >
+        {(props) => <Theme {...props} i18n={i18n} t={t} />}
+      </MainStack.Screen>
+      <MainStack.Screen
+        name="Notifications"
+        options={({ route }) => ({
+          userId: route.params.userId,
+          header: () => (
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
+          ),
+        })}
+      >
+        {(props) => <Notifications {...props} i18n={i18n} t={t} />}
       </MainStack.Screen>
       <MainStack.Screen
         name="Favorites"
