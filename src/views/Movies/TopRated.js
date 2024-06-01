@@ -44,63 +44,32 @@ const TopRated = ({ topRated, t, arrow }) => {
           renderItem={({ item, index }) => {
             return (
               <Fragment>
-                {item.media_type == "movie" ? (
-                  <View style={tw`flex-col justify-between`}>
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.navigate("MoviesTab", {
-                          screen: "DetailsMovie",
-                          params: { id: item.id },
-                        })
-                      }
-                    >
-                      <Image
-                        style={[
-                          tw`w-30 h-50 rounded-md mt-4 ml-4 mb-4`,
-                          {
-                            resizeMode: "cover",
-                            marginRight:
-                              index ===
-                              topRated?.results?.slice(0, 8).length - 1
-                                ? 15
-                                : 0,
-                          },
-                        ]}
-                        source={{
-                          uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
-                        }}
-                      />
-                    </TouchableOpacity>
-                  </View>
-                ) : (
-                  <View style={tw`flex-col justify-between`}>
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.navigate("SeriesTab", {
-                          screen: "DetailsSerie",
-                          params: { id: item.id },
-                        })
-                      }
-                    >
-                      <Image
-                        style={[
-                          tw`w-30 h-50 rounded-md mt-4 ml-4 mb-4`,
-                          {
-                            resizeMode: "cover",
-                            marginRight:
-                              index ===
-                              topRated?.results?.slice(0, 8).length - 1
-                                ? 15
-                                : 0,
-                          },
-                        ]}
-                        source={{
-                          uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
-                        }}
-                      />
-                    </TouchableOpacity>
-                  </View>
-                )}
+                <View style={tw`flex-col justify-between`}>
+                  <TouchableOpacity
+                    onPress={() =>
+                      navigation.navigate("DetailsMovie", {
+                        id: item.id,
+                        title: item.title,
+                      })
+                    }
+                  >
+                    <Image
+                      style={[
+                        tw`w-30 h-50 rounded-md mt-4 ml-4 mb-4`,
+                        {
+                          resizeMode: "cover",
+                          marginRight:
+                            index === topRated?.results?.slice(0, 8).length - 1
+                              ? 15
+                              : 0,
+                        },
+                      ]}
+                      source={{
+                        uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
+                      }}
+                    />
+                  </TouchableOpacity>
+                </View>
               </Fragment>
             )
           }}

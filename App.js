@@ -3,18 +3,12 @@ import React, { Fragment, useEffect } from "react"
 import { NavigationContainer } from "@react-navigation/native"
 import store from "./src/redux/store"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import AllArticles from "./src/views/Articles/AllArticles"
-import Header from "@mod/mobile-common/lib/components/layout/Header"
-import {
-  MaterialCommunityIcons,
-  Ionicons,
-  Entypo,
-} from "react-native-vector-icons"
+import { MaterialCommunityIcons, Ionicons } from "react-native-vector-icons"
 import { useTranslation } from "react-i18next"
 import i18n from "./i18n"
 import { I18nextProvider } from "react-i18next"
 import "./polyfill"
-import { Platform, Dimensions } from "react-native"
+import { Dimensions } from "react-native"
 import Utils from "@mod/mobile-common/lib/class/Utils"
 import AuthStackNavigator from "@mod/mobile-auth/navigators/AuthStackNavigator"
 import MainStackNavigator from "./src/navigators/MainStackNavigator.js"
@@ -57,9 +51,7 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
             marginTop: Utils.moderateScale(10),
           },
           tabBarStyle: {
-            ...(Platform.OS === "android"
-              ? { marginLeft: Utils.moderateScale(0) }
-              : { marginLeft: Utils.moderateScale(15) }),
+            marginLeft: Utils.moderateScale(0),
             marginRight: "auto",
             ...(Dimensions.get("window").width > 600
               ? { height: Utils.moderateScale(50) }
@@ -195,16 +187,9 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
           <Tab.Screen
             name="AuthStackNavigator"
             options={() => ({
-              tabBarIcon: ({ focused }) => (
-                <Entypo
-                  style={{ width: Utils.moderateScale(50), height: "auto" }}
-                  name="home"
-                  size={Utils.moderateScale(25)}
-                  color={focused ? activeIcon : colorIcon}
-                />
-              ),
               headerShown: false,
               tabBarLabel: "",
+              tabBarButton: () => null,
             })}
           >
             {() => (
