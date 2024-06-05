@@ -14,7 +14,8 @@
     "ios": {
       "jsEngine": "jsc",
       "supportsTablet": true,
-      "bundleIdentifier": "com.hoggy.videotekclientexpo"
+      "bundleIdentifier": "com.hoggy.videotekclientexpo",
+      "usesAppleSignIn": true
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -34,7 +35,8 @@
           "mode": "production"
         }
       ],
-      "expo-localization"
+      ["expo-localization"],
+      ["expo-apple-authentication"]
     ]
   }
 }

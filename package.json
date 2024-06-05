@@ -20,6 +20,7 @@
     "prod": "expo start --no-dev --minify"
   },
   "dependencies": {
+    "@invertase/react-native-apple-authentication": "^2.3.0",
     "@mod/mobile-auth": "file:src/modules/mod-mobile-auth",
     "@mod/mobile-common": "file:src/modules/mod-mobile-common",
     "@mod/mobile-tmdb": "file:src/modules/mod-mobile-tmdb",
@@ -38,7 +39,7 @@
     "expo-image-picker": "~15.0.5",
     "expo-linear-gradient": "~13.0.2",
     "expo-localization": "~15.0.3",
-    "expo-notifications": "~0.28.4",
+    "expo-notifications": "~0.28.6",
     "expo-status-bar": "~1.12.1",
     "expo-updates": "~0.25.15",
     "fs": "^0.0.1-security",
@@ -69,7 +70,8 @@
     "redux-persist": "^6.0.0",
     "redux-persist-filesystem-storage": "^4.2.0",
     "reselect": "^4.1.8",
-    "twrnc": "^3.6.8"
+    "twrnc": "^3.6.8",
+    "expo-apple-authentication": "~6.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

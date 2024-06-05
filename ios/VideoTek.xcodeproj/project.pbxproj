@@ -28,6 +28,7 @@
 		30CA9A9606694C55F671F6D7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = VideoTek/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		3283E8999B8F468C80E2D256 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "VideoTek/noop-file.swift"; sourceTree = "<group>"; };
 		4967D2CEE2A4C3D46422B54F /* Pods-VideoTek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoTek.release.xcconfig"; path = "Target Support Files/Pods-VideoTek/Pods-VideoTek.release.xcconfig"; sourceTree = "<group>"; };
+		4C79335A2C10CF6800A73D16 /* VideoTekRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = VideoTekRelease.entitlements; path = VideoTek/VideoTekRelease.entitlements; sourceTree = "<group>"; };
 		7ED02ED90FD37E481D444D75 /* libPods-VideoTek.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VideoTek.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91703A2D902E25CB7EC8C346 /* Pods-VideoTek.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoTek.debug.xcconfig"; path = "Target Support Files/Pods-VideoTek/Pods-VideoTek.debug.xcconfig"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = VideoTek/SplashScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		13B07FAE1A68108700A75B9A /* VideoTek */ = {
 			isa = PBXGroup;
 			children = (
+				4C79335A2C10CF6800A73D16 /* VideoTekRelease.entitlements */,
 				BB2F792B24A3F905000567C9 /* Supporting */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
@@ -426,7 +428,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = VideoTek/VideoTek.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VideoTek/VideoTekRelease.entitlements;
 				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_TEAM = YDKQ2L77JU;
 				INFOPLIST_FILE = VideoTek/Info.plist;

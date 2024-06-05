@@ -30,6 +30,11 @@ const ConfirmEmail = async (userId, data) => {
   return response
 }
 
+const VerifyAppleToken = async (identityToken) => {
+  const response = await http.post(`/auth/verify-apple-token`, identityToken)
+  return response
+}
+
 const ForgetPasswordMobile = async (data) => {
   const response = await http.post(`/auth/forget-password-mobile`, data)
   return response
@@ -54,6 +59,7 @@ export {
   ResetPasswordReq,
   Logout,
   ConfirmEmail,
+  VerifyAppleToken,
   ForgetPasswordMobile,
   CheckForgetPasswordCodeMobile,
   ResetPasswordMobile,
