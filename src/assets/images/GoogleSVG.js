@@ -1,9 +1,10 @@
 import React from "react"
 import Svg, { G, Path, Defs, Rect, ClipPath } from "react-native-svg"
+import tw from "twrnc"
 
 const GoogleSVG = () => {
   return (
-    <Svg width={24} height={24} viewBox="0 0 48 48">
+    <Svg style={tw`mr-2`} width={24} height={24} viewBox="0 0 48 48">
       <G clipPath="url(#clip0_17_40)">
         <Path
           d="M47.532 24.5528C47.532 22.9214 47.3997 21.2811 47.1175 19.6761H24.48V28.9181H37.4434C36.9055 31.8988 35.177 34.5356 32.6461 36.2111V42.2078H40.3801C44.9217 38.0278 47.532 31.8547 47.532 24.5528Z"

@@ -183,7 +183,7 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="PrivacyPolicy"
         options={{
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={false} />
+            <Header isAuthenticated={isAuthenticated} backButton={true} />
           ),
         }}
       >

@@ -7,18 +7,19 @@ import tw from "twrnc"
 import { useNavigation } from "@react-navigation/native"
 import { useDynamicThemeStyles } from "@mod/mobile-common/styles/theme"
 import { useSelector } from "react-redux"
+import useResponsive from "@mod/mobile-common/lib/hooks/utils/useResponsive"
 
 const NowPlaying = ({ nowPlaying, t, arrow }) => {
   const navigation = useNavigation()
   const darkMode = useSelector((state) => state.theme.darkMode)
   const { background, text, colorIcon } = useDynamicThemeStyles(darkMode)
 
+  const { imagePosterHorizontal, headTitle } = useResponsive()
+
   return (
     <View style={tw`${background}`}>
       <View style={tw`justify-between items-baseline flex-row mr-4`}>
-        <Text style={tw`font-medium text-xl ml-4 mt-4 ${text}`}>
-          {t("utils.trending")}
-        </Text>
+        <Text style={headTitle(text)}>{t("utils.trending")}</Text>
         {arrow ? (
           <TouchableOpacity onPress={() => navigation.navigate("NowPlaying")}>
             <AntDesign
@@ -54,7 +55,7 @@ const NowPlaying = ({ nowPlaying, t, arrow }) => {
                 >
                   <Image
                     style={[
-                      tw`w-30 h-50 rounded-md mt-4 ml-4 mb-4`,
+                      imagePosterHorizontal(),
                       {
                         resizeMode: "cover",
                         marginRight:

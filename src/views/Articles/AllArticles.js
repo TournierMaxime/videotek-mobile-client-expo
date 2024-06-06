@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   Text,
   ActivityIndicator,
+  View,
 } from "react-native"
 import tw from "twrnc"
 import { useSelector, useDispatch } from "react-redux"
@@ -13,10 +14,13 @@ import { Entypo } from "react-native-vector-icons"
 import { useNavigation } from "@react-navigation/native"
 import { searchArticles } from "@mod/mobile-tmdb/redux/actions/articles"
 import { useTranslation } from "react-i18next"
+import useResponsive from "@mod/mobile-common/lib/hooks/utils/useResponsive"
 
 const AllArticles = () => {
   const navigation = useNavigation()
   const dispatch = useDispatch()
+
+  const { articleListTitle } = useResponsive()
 
   const { i18n } = useTranslation()
   const language = i18n.language
@@ -38,17 +42,23 @@ const AllArticles = () => {
           navigation.navigate("OneArticle", { articleId: item.articleId })
         }
       >
-        <Entypo name="news" size={Utils.moderateScale(25)} color={colorIcon} />
-        <Text
-          style={tw`${text} font-normal text-base text-justify w-70 ${borderColor}`}
-        >
-          {title}
-        </Text>
-        <Entypo
-          name="chevron-small-right"
-          size={Utils.moderateScale(25)}
-          color={colorIcon}
-        />
+        <View style={tw`w-1/12`}>
+          <Entypo
+            name="news"
+            size={Utils.moderateScale(25)}
+            color={colorIcon}
+          />
+        </View>
+        <View style={tw`w-8/12`}>
+          <Text style={articleListTitle(text, borderColor)}>{title}</Text>
+        </View>
+        <View style={tw`w-1/12`}>
+          <Entypo
+            name="chevron-small-right"
+            size={Utils.moderateScale(25)}
+            color={colorIcon}
+          />
+        </View>
       </TouchableOpacity>
     )
   }

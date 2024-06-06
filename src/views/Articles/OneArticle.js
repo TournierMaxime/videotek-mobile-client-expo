@@ -7,17 +7,20 @@ import moment from "moment"
 import WebView from "react-native-webview"
 import Utils from "@mod/mobile-common/lib/class/Utils"
 import { useDynamicThemeStyles } from "@mod/mobile-common/styles/theme"
+import useResponsive from "@mod/mobile-common/lib/hooks/utils/useResponsive"
 
 const OneArticle = ({ route }) => {
   const { articleId } = route.params
   const dispatch = useDispatch()
 
+  const { articleTitle, articleIntro, articleParagraph, articleUpdate } =
+    useResponsive()
+
   const oneArticle = useSelector((state) => state.oneArticle.data.article)
   const isLoading = useSelector((state) => state.oneArticle.loading)
 
   const darkMode = useSelector((state) => state.theme.darkMode)
-  const { background, text, borderColor, colorIcon } =
-    useDynamicThemeStyles(darkMode)
+  const { background, text } = useDynamicThemeStyles(darkMode)
 
   const paragraphs = oneArticle?.paragraphs
   const medias = oneArticle?.medias
@@ -89,20 +92,13 @@ const OneArticle = ({ route }) => {
       {isLoading ? (
         <ActivityIndicator />
       ) : (
-        <View style={tw`w-90 mr-auto ml-auto my-4`}>
-          <Text style={tw`${text} font-medium text-lg text-justify`}>
-            {oneArticle?.title}
-          </Text>
-          <Text style={tw`${text} font-normal text-lg mt-4 text-justify`}>
-            {oneArticle?.intro}
-          </Text>
+        <View style={tw`w-full px-8 py-4`}>
+          <Text style={articleTitle(text)}>{oneArticle?.title}</Text>
+          <Text style={articleIntro(text)}>{oneArticle?.intro}</Text>
           {introImage ? introImage && mediaType(introImage, 0) : null}
           {paragraphs?.map((paragraph) => {
             return (
-              <Text
-                key={paragraph.position}
-                style={tw`${text} font-normal text-lg mt-4 text-justify`}
-              >
+              <Text key={paragraph.position} style={articleParagraph(text)}>
                 {paragraph.text}
               </Text>
             )
@@ -113,7 +109,7 @@ const OneArticle = ({ route }) => {
             }
             return null
           })}
-          <Text style={tw`${text} font-normal text-lg mt-4`}>
+          <Text style={articleUpdate(text)}>
             {moment(oneArticle?.createdAt).format("YYYY-MM-DD - HH:mm")}
           </Text>
         </View>
