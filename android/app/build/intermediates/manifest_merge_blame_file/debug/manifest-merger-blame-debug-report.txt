@@ -1,8 +1,8 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="com.hoggy.videotekclientexpo"
-4    android:versionCode="30"
-5    android:versionName="1.5.0" >
+4    android:versionCode="34"
+5    android:versionName="1.5.2" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="23"
@@ -612,112 +612,112 @@
 314            android:permission="android.permission.BIND_JOB_SERVICE" />
 314-->[com.google.android.gms:play-services-measurement:21.6.1] /Users/maximetournier/.gradle/caches/transforms-4/aec5d67b1205432da12a79e657a6a205/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:43:13-69
 315
-316        <receiver
-316-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:29:9-40:20
-317            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-317-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:30:13-78
-318            android:exported="true"
-318-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:31:13-36
-319            android:permission="com.google.android.c2dm.permission.SEND" >
-319-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:32:13-73
-320            <intent-filter>
-320-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:33:13-35:29
-321                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-321-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:34:17-81
-321-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:34:25-78
-322            </intent-filter>
-323
-324            <meta-data
-324-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:37:13-39:40
-325                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
-325-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:38:17-92
-326                android:value="true" />
-326-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:39:17-37
-327        </receiver>
-328        <!--
-329             FirebaseMessagingService performs security checks at runtime,
-330             but set to not exported to explicitly avoid allowing another app to call it.
-331        -->
-332        <service
-332-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:46:9-53:19
-333            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-333-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:47:13-82
-334            android:directBootAware="true"
-334-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:48:13-43
-335            android:exported="false" >
-335-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:49:13-37
-336            <intent-filter android:priority="-500" >
-336-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-16:29
-336-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:28-49
-337                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-337-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-78
-337-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:25-75
-338            </intent-filter>
-339        </service>
-340
-341        <provider
-341-->[com.google.firebase:firebase-common:20.4.3] /Users/maximetournier/.gradle/caches/transforms-4/a260e4e10a6b79303d15fbd390afaf19/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:23:9-28:39
-342            android:name="com.google.firebase.provider.FirebaseInitProvider"
-342-->[com.google.firebase:firebase-common:20.4.3] /Users/maximetournier/.gradle/caches/transforms-4/a260e4e10a6b79303d15fbd390afaf19/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:24:13-77
-343            android:authorities="com.hoggy.videotekclientexpo.firebaseinitprovider"
-343-->[com.google.firebase:firebase-common:20.4.3] /Users/maximetournier/.gradle/caches/transforms-4/a260e4e10a6b79303d15fbd390afaf19/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:25:13-72
-344            android:directBootAware="true"
-344-->[com.google.firebase:firebase-common:20.4.3] /Users/maximetournier/.gradle/caches/transforms-4/a260e4e10a6b79303d15fbd390afaf19/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:26:13-43
-345            android:exported="false"
-345-->[com.google.firebase:firebase-common:20.4.3] /Users/maximetournier/.gradle/caches/transforms-4/a260e4e10a6b79303d15fbd390afaf19/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:27:13-37
-346            android:initOrder="100" />
-346-->[com.google.firebase:firebase-common:20.4.3] /Users/maximetournier/.gradle/caches/transforms-4/a260e4e10a6b79303d15fbd390afaf19/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:28:13-36
-347
-348        <activity
-348-->[com.google.android.gms:play-services-base:18.0.1] /Users/maximetournier/.gradle/caches/transforms-4/7e39488973552ab0475763d69b2e473a/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
-349            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-349-->[com.google.android.gms:play-services-base:18.0.1] /Users/maximetournier/.gradle/caches/transforms-4/7e39488973552ab0475763d69b2e473a/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
-350            android:exported="false"
-350-->[com.google.android.gms:play-services-base:18.0.1] /Users/maximetournier/.gradle/caches/transforms-4/7e39488973552ab0475763d69b2e473a/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
-351            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-351-->[com.google.android.gms:play-services-base:18.0.1] /Users/maximetournier/.gradle/caches/transforms-4/7e39488973552ab0475763d69b2e473a/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
-352
-353        <uses-library
-353-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/maximetournier/.gradle/caches/transforms-4/4a4d603d1ea5fbfd12557cc73868e511/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:23:9-25:40
-354            android:name="android.ext.adservices"
-354-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/maximetournier/.gradle/caches/transforms-4/4a4d603d1ea5fbfd12557cc73868e511/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:24:13-50
-355            android:required="false" />
-355-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/maximetournier/.gradle/caches/transforms-4/4a4d603d1ea5fbfd12557cc73868e511/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:25:13-37
+316        <uses-library
+316-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/maximetournier/.gradle/caches/transforms-4/4a4d603d1ea5fbfd12557cc73868e511/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:23:9-25:40
+317            android:name="android.ext.adservices"
+317-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/maximetournier/.gradle/caches/transforms-4/4a4d603d1ea5fbfd12557cc73868e511/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:24:13-50
+318            android:required="false" />
+318-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/maximetournier/.gradle/caches/transforms-4/4a4d603d1ea5fbfd12557cc73868e511/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:25:13-37
+319
+320        <receiver
+320-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:29:9-40:20
+321            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+321-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:30:13-78
+322            android:exported="true"
+322-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:31:13-36
+323            android:permission="com.google.android.c2dm.permission.SEND" >
+323-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:32:13-73
+324            <intent-filter>
+324-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:33:13-35:29
+325                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+325-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:34:17-81
+325-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:34:25-78
+326            </intent-filter>
+327
+328            <meta-data
+328-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:37:13-39:40
+329                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
+329-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:38:17-92
+330                android:value="true" />
+330-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:39:17-37
+331        </receiver>
+332        <!--
+333             FirebaseMessagingService performs security checks at runtime,
+334             but set to not exported to explicitly avoid allowing another app to call it.
+335        -->
+336        <service
+336-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:46:9-53:19
+337            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+337-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:47:13-82
+338            android:directBootAware="true"
+338-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:48:13-43
+339            android:exported="false" >
+339-->[com.google.firebase:firebase-messaging:23.4.1] /Users/maximetournier/.gradle/caches/transforms-4/8ad83f682c72a7fba32f2317dc7d0c94/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:49:13-37
+340            <intent-filter android:priority="-500" >
+340-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-16:29
+340-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:28-49
+341                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+341-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-78
+341-->[:expo-notifications] /Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo/node_modules/expo-notifications/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:25-75
+342            </intent-filter>
+343        </service>
+344
+345        <provider
+345-->[com.google.firebase:firebase-common:20.4.3] /Users/maximetournier/.gradle/caches/transforms-4/a260e4e10a6b79303d15fbd390afaf19/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:23:9-28:39
+346            android:name="com.google.firebase.provider.FirebaseInitProvider"
+346-->[com.google.firebase:firebase-common:20.4.3] /Users/maximetournier/.gradle/caches/transforms-4/a260e4e10a6b79303d15fbd390afaf19/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:24:13-77
+347            android:authorities="com.hoggy.videotekclientexpo.firebaseinitprovider"
+347-->[com.google.firebase:firebase-common:20.4.3] /Users/maximetournier/.gradle/caches/transforms-4/a260e4e10a6b79303d15fbd390afaf19/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:25:13-72
+348            android:directBootAware="true"
+348-->[com.google.firebase:firebase-common:20.4.3] /Users/maximetournier/.gradle/caches/transforms-4/a260e4e10a6b79303d15fbd390afaf19/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:26:13-43
+349            android:exported="false"
+349-->[com.google.firebase:firebase-common:20.4.3] /Users/maximetournier/.gradle/caches/transforms-4/a260e4e10a6b79303d15fbd390afaf19/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:27:13-37
+350            android:initOrder="100" />
+350-->[com.google.firebase:firebase-common:20.4.3] /Users/maximetournier/.gradle/caches/transforms-4/a260e4e10a6b79303d15fbd390afaf19/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:28:13-36
+351
+352        <activity
+352-->[com.google.android.gms:play-services-base:18.0.1] /Users/maximetournier/.gradle/caches/transforms-4/7e39488973552ab0475763d69b2e473a/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+353            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+353-->[com.google.android.gms:play-services-base:18.0.1] /Users/maximetournier/.gradle/caches/transforms-4/7e39488973552ab0475763d69b2e473a/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+354            android:exported="false"
+354-->[com.google.android.gms:play-services-base:18.0.1] /Users/maximetournier/.gradle/caches/transforms-4/7e39488973552ab0475763d69b2e473a/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+355            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+355-->[com.google.android.gms:play-services-base:18.0.1] /Users/maximetournier/.gradle/caches/transforms-4/7e39488973552ab0475763d69b2e473a/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
 356
-357        <provider
-357-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-4/380722797f698ccc1eeb564c3aa7ca08/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
-358            android:name="androidx.startup.InitializationProvider"
-358-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-4/380722797f698ccc1eeb564c3aa7ca08/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
-359            android:authorities="com.hoggy.videotekclientexpo.androidx-startup"
-359-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-4/380722797f698ccc1eeb564c3aa7ca08/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
-360            android:exported="false" >
-360-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-4/380722797f698ccc1eeb564c3aa7ca08/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
-361            <meta-data
-361-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-4/380722797f698ccc1eeb564c3aa7ca08/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
-362                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-362-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-4/380722797f698ccc1eeb564c3aa7ca08/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
-363                android:value="androidx.startup" />
-363-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-4/380722797f698ccc1eeb564c3aa7ca08/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
-364            <meta-data
-364-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/maximetournier/.gradle/caches/transforms-4/bf936d846948755714d74f5da1dfacbe/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:29:13-31:52
-365                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-365-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/maximetournier/.gradle/caches/transforms-4/bf936d846948755714d74f5da1dfacbe/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:30:17-78
-366                android:value="androidx.startup" />
-366-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/maximetournier/.gradle/caches/transforms-4/bf936d846948755714d74f5da1dfacbe/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:31:17-49
-367            <meta-data
-367-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-4/ea212fc182e5efac059e43ba4a160e19/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
-368                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-368-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-4/ea212fc182e5efac059e43ba4a160e19/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
-369                android:value="androidx.startup" />
-369-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-4/ea212fc182e5efac059e43ba4a160e19/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
-370        </provider>
-371
-372        <meta-data
-372-->[com.google.android.gms:play-services-basement:18.3.0] /Users/maximetournier/.gradle/caches/transforms-4/04216de6ddd93aa87ccd650f712886de/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:21:9-23:69
-373            android:name="com.google.android.gms.version"
-373-->[com.google.android.gms:play-services-basement:18.3.0] /Users/maximetournier/.gradle/caches/transforms-4/04216de6ddd93aa87ccd650f712886de/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:22:13-58
-374            android:value="@integer/google_play_services_version" />
-374-->[com.google.android.gms:play-services-basement:18.3.0] /Users/maximetournier/.gradle/caches/transforms-4/04216de6ddd93aa87ccd650f712886de/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:23:13-66
+357        <meta-data
+357-->[com.google.android.gms:play-services-basement:18.3.0] /Users/maximetournier/.gradle/caches/transforms-4/04216de6ddd93aa87ccd650f712886de/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:21:9-23:69
+358            android:name="com.google.android.gms.version"
+358-->[com.google.android.gms:play-services-basement:18.3.0] /Users/maximetournier/.gradle/caches/transforms-4/04216de6ddd93aa87ccd650f712886de/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:22:13-58
+359            android:value="@integer/google_play_services_version" />
+359-->[com.google.android.gms:play-services-basement:18.3.0] /Users/maximetournier/.gradle/caches/transforms-4/04216de6ddd93aa87ccd650f712886de/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:23:13-66
+360
+361        <provider
+361-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-4/380722797f698ccc1eeb564c3aa7ca08/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+362            android:name="androidx.startup.InitializationProvider"
+362-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-4/380722797f698ccc1eeb564c3aa7ca08/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+363            android:authorities="com.hoggy.videotekclientexpo.androidx-startup"
+363-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-4/380722797f698ccc1eeb564c3aa7ca08/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+364            android:exported="false" >
+364-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-4/380722797f698ccc1eeb564c3aa7ca08/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+365            <meta-data
+365-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-4/380722797f698ccc1eeb564c3aa7ca08/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+366                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+366-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-4/380722797f698ccc1eeb564c3aa7ca08/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+367                android:value="androidx.startup" />
+367-->[androidx.emoji2:emoji2:1.2.0] /Users/maximetournier/.gradle/caches/transforms-4/380722797f698ccc1eeb564c3aa7ca08/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+368            <meta-data
+368-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/maximetournier/.gradle/caches/transforms-4/bf936d846948755714d74f5da1dfacbe/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:29:13-31:52
+369                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+369-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/maximetournier/.gradle/caches/transforms-4/bf936d846948755714d74f5da1dfacbe/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:30:17-78
+370                android:value="androidx.startup" />
+370-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/maximetournier/.gradle/caches/transforms-4/bf936d846948755714d74f5da1dfacbe/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:31:17-49
+371            <meta-data
+371-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-4/ea212fc182e5efac059e43ba4a160e19/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+372                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+372-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-4/ea212fc182e5efac059e43ba4a160e19/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+373                android:value="androidx.startup" />
+373-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-4/ea212fc182e5efac059e43ba4a160e19/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+374        </provider>
 375
 376        <receiver
 376-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/maximetournier/.gradle/caches/transforms-4/ea212fc182e5efac059e43ba4a160e19/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20

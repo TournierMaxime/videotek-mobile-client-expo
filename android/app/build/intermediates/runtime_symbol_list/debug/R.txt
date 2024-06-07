@@ -4655,6 +4655,7 @@ int style Widget_MaterialComponents_Toolbar_Surface 0x7f11043c
 int style Widget_MaterialComponents_Tooltip 0x7f11043d
 int style Widget_Support_CoordinatorLayout 0x7f11043e
 int style redboxButton 0x7f11043f
+int style sign_in_with_apple_button_DialogTheme 0x7f110440
 int[] styleable ActionBar { 0x7f030044, 0x7f03004c, 0x7f03004d, 0x7f0300fe, 0x7f0300ff, 0x7f030100, 0x7f030101, 0x7f030102, 0x7f030103, 0x7f030151, 0x7f030161, 0x7f030162, 0x7f030181, 0x7f0301eb, 0x7f0301f2, 0x7f0301f8, 0x7f0301f9, 0x7f0301fd, 0x7f03020a, 0x7f030220, 0x7f030293, 0x7f0302f0, 0x7f030321, 0x7f03032c, 0x7f03032d, 0x7f030394, 0x7f030398, 0x7f030409, 0x7f030416 }
 int styleable ActionBar_background 0
 int styleable ActionBar_backgroundSplit 1
