@@ -1813,6 +1813,7 @@ com.hoggy.videotekclientexpo:id/leftBottomCrop = 0x7f080106
 com.hoggy.videotekclientexpo:dimen/mtrl_btn_padding_right = 0x7f06018a
 com.hoggy.videotekclientexpo:dimen/mtrl_btn_max_width = 0x7f060187
 com.hoggy.videotekclientexpo:dimen/subtitle_outline_width = 0x7f06023b
+com.hoggy.videotekclientexpo:style/sign_in_with_apple_button_DialogTheme = 0x7f110440
 com.hoggy.videotekclientexpo:dimen/mtrl_btn_hovered_z = 0x7f060182
 com.hoggy.videotekclientexpo:dimen/test_dimen = 0x7f06023e
 com.hoggy.videotekclientexpo:color/mtrl_filled_background_color = 0x7f050231

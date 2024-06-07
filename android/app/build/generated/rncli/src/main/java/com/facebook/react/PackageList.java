@@ -11,6 +11,8 @@ import com.facebook.react.shell.MainReactPackage;
 import java.util.Arrays;
 import java.util.ArrayList;
 
+// @invertase/react-native-apple-authentication
+import com.RNAppleAuthentication.AppleAuthenticationAndroidPackage;
 // @react-native-async-storage/async-storage
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 // @react-native-picker/picker
@@ -78,6 +80,7 @@ public class PackageList {
   public ArrayList<ReactPackage> getPackages() {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
       new MainReactPackage(mConfig),
+      new AppleAuthenticationAndroidPackage(),
       new AsyncStoragePackage(),
       new RNCPickerPackage(),
       new ExpoModulesPackage(),

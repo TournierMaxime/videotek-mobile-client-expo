@@ -8223,6 +8223,9 @@
     <item name="android:textColor">#dddddd</item>
     <item name="android:textSize">14sp</item>
   </style>
+    <style name="sign_in_with_apple_button_DialogTheme" parent="android:Theme.DeviceDefault.NoActionBar">
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
     <declare-styleable name="ActionBar">
         
         <attr name="navigationMode">
