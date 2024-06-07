@@ -1,13 +1,13 @@
 {
   "name": "videotek-client-expo",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "android": {
-    "build": "32",
+    "build": "33",
     "version": "1.5.2"
   },
   "ios": {
-    "build": "29",
-    "version": "1.5.1"
+    "build": "30",
+    "version": "1.5.2"
   },
   "scripts": {
     "start": "expo start --dev-client",
