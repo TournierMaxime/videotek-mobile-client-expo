@@ -1,9 +1,9 @@
 {
   "name": "videotek-client-expo",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "android": {
-    "build": "34",
-    "version": "1.5.2"
+    "build": "35",
+    "version": "1.5.3"
   },
   "ios": {
     "build": "32",
