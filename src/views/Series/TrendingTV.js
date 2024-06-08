@@ -1,7 +1,6 @@
 import React from "react"
 import { View, Text, FlatList, TouchableOpacity, Image } from "react-native"
-import { Ionicons } from "react-native-vector-icons"
-import { AntDesign } from "@expo/vector-icons"
+import { AntDesign, Ionicons } from "@expo/vector-icons"
 import Utils from "@mod/mobile-common/lib/class/Utils"
 import tw from "twrnc"
 import { useNavigation } from "@react-navigation/native"

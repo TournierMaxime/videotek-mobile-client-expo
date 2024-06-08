@@ -1,7 +1,7 @@
 import React from "react"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { useSelector } from "react-redux"
-import Header from "@mod/mobile-common/lib/components/layout/Header.js"
+import Header from "@mod/mobile-common/lib/components/layout/Header"
 import UserProfile from "@mod/mobile-user/views/Users/UserProfile"
 import Settings from "@mod/mobile-user/views/Settings/Index"
 import Theme from "@mod/mobile-user/views/Settings/Theme"

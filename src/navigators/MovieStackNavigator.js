@@ -1,6 +1,6 @@
 import React from "react"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import Header from "@mod/mobile-common/lib/components/layout/Header.js"
+import Header from "@mod/mobile-common/lib/components/layout/Header"
 import Movies from "../views/Movies"
 import NowPlaying from "@mod/mobile-tmdb/views/Movies/NowPlaying"
 import TopRated from "@mod/mobile-tmdb/views/Movies/TopRated"

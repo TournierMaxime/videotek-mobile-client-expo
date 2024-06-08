@@ -1,6 +1,6 @@
 import React from "react"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import Header from "@mod/mobile-common/lib/components/layout/Header.js"
+import Header from "@mod/mobile-common/lib/components/layout/Header"
 import Series from "../views/Series"
 import OnTheAir from "@mod/mobile-tmdb/views/Series/OnTheAir"
 import Popular from "@mod/mobile-tmdb/views/Series/Popular"

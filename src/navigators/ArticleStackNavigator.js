@@ -1,6 +1,6 @@
 import React from "react"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import Header from "@mod/mobile-common/lib/components/layout/Header.js"
+import Header from "@mod/mobile-common/lib/components/layout/Header"
 import OneArticle from "../views/Articles/OneArticle"
 import AllArticles from "../views/Articles/AllArticles"
 

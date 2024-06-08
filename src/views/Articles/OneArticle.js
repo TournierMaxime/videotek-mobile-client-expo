@@ -92,7 +92,7 @@ const OneArticle = ({ route }) => {
       {isLoading ? (
         <ActivityIndicator />
       ) : (
-        <View style={tw`w-full px-8 py-4`}>
+        <View style={tw`w-full p-4`}>
           <Text style={articleTitle(text)}>{oneArticle?.title}</Text>
           <Text style={articleIntro(text)}>{oneArticle?.intro}</Text>
           {introImage ? introImage && mediaType(introImage, 0) : null}
