@@ -128,7 +128,7 @@
     "yourAccountHasBeenSuccessfullyVerified": "Your account has been successfully verified",
     "yourVerificationCodeHasBeenValidated": "Your verification code has been validated",
     "successfullyConnected": "Successfully connected",
-    "yourAccountHasBeenCreated": "Your account has been created",
+    "yourAccountHasBeenCreated": "Your account has been created.\nCheck your mail box to validate your account.",
     "reviewSuccessfullyPublished": "Review successfully published",
     "profileUpdated": "Profile updated",
     "reviewSuccessfullyUpdated": "Review successfully updated",
@@ -142,7 +142,8 @@
     "anErrorOccurredWhileCreatingThePost": "An error occurred while creating the post",
     "permissionToAccessCameraRollIsRequired": "Permission to access camera roll is required",
     "contentCannotExceed300Characters": "Content cannot exceed 300 characters",
-    "anErrorHasOccurred": "An error has occurred"
+    "anErrorHasOccurred": "An error has occurred",
+    "emailPasswordMissingOrInvalid": "Email/Password missing or invalid"
   },
   "privacy": {
     "h1PrivacyPolicy": "Privacy Policy",

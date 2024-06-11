@@ -19,6 +19,7 @@ import { useSelector } from "react-redux"
 import MovieStackNavigator from "./src/navigators/MovieStackNavigator.js"
 import SerieStackNavigator from "./src/navigators/SerieStackNavigator.js"
 import ArticleStackNavigator from "./src/navigators/ArticleStackNavigator.js"
+import { RootSiblingParent } from "react-native-root-siblings"
 
 const queryClient = new QueryClient()
 
@@ -44,165 +45,169 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
   }, [lang])
 
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={{
-          tabBarItemStyle: {
-            marginTop: Utils.moderateScale(10),
-          },
-          tabBarStyle: {
-            marginLeft: Utils.moderateScale(0),
-            marginRight: "auto",
-            ...(Dimensions.get("window").width > 600
-              ? { height: Utils.moderateScale(50) }
-              : null),
-            justifyContent: "center",
-            display: "flex",
-            flexDirection: "row",
-            zIndex: 0,
-            backgroundColor: backgroundTabColor,
-          },
-        }}
-      >
-        {isAuthenticated === true ? (
-          <Fragment>
-            <Tab.Screen
-              name="MainStackNavigator"
-              options={() => ({
-                tabBarIcon: ({ focused }) => (
-                  <Ionicons
-                    style={{ width: Utils.moderateScale(50), height: "auto" }}
-                    name="flame-outline"
-                    size={Utils.moderateScale(25)}
-                    color={focused ? activeIcon : colorIcon}
+    <RootSiblingParent>
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={{
+            tabBarItemStyle: {
+              marginTop: Utils.moderateScale(10),
+            },
+            tabBarStyle: {
+              marginLeft: Utils.moderateScale(0),
+              marginRight: "auto",
+              ...(Dimensions.get("window").width > 600
+                ? { height: Utils.moderateScale(50) }
+                : null),
+              justifyContent: "center",
+              display: "flex",
+              flexDirection: "row",
+              zIndex: 0,
+              backgroundColor: backgroundTabColor,
+            },
+          }}
+        >
+          {isAuthenticated === true ? (
+            <Fragment>
+              <Tab.Screen
+                name="MainStackNavigator"
+                options={() => ({
+                  tabBarIcon: ({ focused }) => (
+                    <Ionicons
+                      style={{ width: Utils.moderateScale(50), height: "auto" }}
+                      name="flame-outline"
+                      size={Utils.moderateScale(25)}
+                      color={focused ? activeIcon : colorIcon}
+                    />
+                  ),
+                  headerShown: false,
+                  tabBarLabel: "",
+                })}
+              >
+                {() => (
+                  <MainStackNavigator
+                    i18n={i18n}
+                    t={t}
+                    isAuthenticated={isAuthenticated}
                   />
-                ),
-                headerShown: false,
-                tabBarLabel: "",
-              })}
-            >
-              {() => (
-                <MainStackNavigator
-                  i18n={i18n}
-                  t={t}
-                  isAuthenticated={isAuthenticated}
-                />
-              )}
-            </Tab.Screen>
+                )}
+              </Tab.Screen>
 
-            <Tab.Screen
-              name="ArticlesTab"
-              listeners={({ navigation }) => ({
-                tabPress: (e) => {
-                  e.preventDefault()
-                  navigation.navigate("ArticlesTab", { screen: "AllArticles" })
-                },
-              })}
-              options={() => ({
-                tabBarIcon: ({ focused }) => (
-                  <Ionicons
-                    style={{ width: Utils.moderateScale(50), height: "auto" }}
-                    name="newspaper-outline"
-                    size={Utils.moderateScale(25)}
-                    color={focused ? activeIcon : colorIcon}
+              <Tab.Screen
+                name="ArticlesTab"
+                listeners={({ navigation }) => ({
+                  tabPress: (e) => {
+                    e.preventDefault()
+                    navigation.navigate("ArticlesTab", {
+                      screen: "AllArticles",
+                    })
+                  },
+                })}
+                options={() => ({
+                  tabBarIcon: ({ focused }) => (
+                    <Ionicons
+                      style={{ width: Utils.moderateScale(50), height: "auto" }}
+                      name="newspaper-outline"
+                      size={Utils.moderateScale(25)}
+                      color={focused ? activeIcon : colorIcon}
+                    />
+                  ),
+                  headerShown: false,
+                  tabBarLabel: "",
+                  tabBarActiveTintColor: activeIcon,
+                })}
+              >
+                {() => (
+                  <ArticleStackNavigator
+                    i18n={i18n}
+                    t={t}
+                    isAuthenticated={isAuthenticated}
                   />
-                ),
-                headerShown: false,
-                tabBarLabel: "",
-                tabBarActiveTintColor: activeIcon,
-              })}
-            >
-              {() => (
-                <ArticleStackNavigator
-                  i18n={i18n}
-                  t={t}
-                  isAuthenticated={isAuthenticated}
-                />
-              )}
-            </Tab.Screen>
+                )}
+              </Tab.Screen>
 
-            <Tab.Screen
-              name="MoviesTab"
-              listeners={({ navigation }) => ({
-                tabPress: (e) => {
-                  e.preventDefault()
-                  navigation.navigate("MoviesTab", { screen: "Movies" })
-                },
-              })}
-              options={() => ({
-                tabBarIcon: ({ focused }) => (
-                  <MaterialCommunityIcons
-                    style={{ width: Utils.moderateScale(50), height: "auto" }}
-                    name="movie-open-outline"
-                    size={Utils.moderateScale(25)}
-                    color={focused ? activeIcon : colorIcon}
+              <Tab.Screen
+                name="MoviesTab"
+                listeners={({ navigation }) => ({
+                  tabPress: (e) => {
+                    e.preventDefault()
+                    navigation.navigate("MoviesTab", { screen: "Movies" })
+                  },
+                })}
+                options={() => ({
+                  tabBarIcon: ({ focused }) => (
+                    <MaterialCommunityIcons
+                      style={{ width: Utils.moderateScale(50), height: "auto" }}
+                      name="movie-open-outline"
+                      size={Utils.moderateScale(25)}
+                      color={focused ? activeIcon : colorIcon}
+                    />
+                  ),
+                  headerShown: false,
+                  tabBarLabel: "",
+                  tabBarActiveTintColor: activeIcon,
+                })}
+              >
+                {() => (
+                  <MovieStackNavigator
+                    i18n={i18n}
+                    t={t}
+                    isAuthenticated={isAuthenticated}
                   />
-                ),
-                headerShown: false,
-                tabBarLabel: "",
-                tabBarActiveTintColor: activeIcon,
-              })}
-            >
-              {() => (
-                <MovieStackNavigator
-                  i18n={i18n}
-                  t={t}
-                  isAuthenticated={isAuthenticated}
-                />
-              )}
-            </Tab.Screen>
+                )}
+              </Tab.Screen>
 
-            <Tab.Screen
-              name="SeriesTab"
-              listeners={({ navigation }) => ({
-                tabPress: (e) => {
-                  e.preventDefault()
-                  navigation.navigate("SeriesTab", { screen: "Series" })
-                },
-              })}
-              options={() => ({
-                tabBarIcon: ({ focused }) => (
-                  <Ionicons
-                    style={{ width: Utils.moderateScale(50), height: "auto" }}
-                    name="tv-outline"
-                    size={Utils.moderateScale(25)}
-                    color={focused ? activeIcon : colorIcon}
+              <Tab.Screen
+                name="SeriesTab"
+                listeners={({ navigation }) => ({
+                  tabPress: (e) => {
+                    e.preventDefault()
+                    navigation.navigate("SeriesTab", { screen: "Series" })
+                  },
+                })}
+                options={() => ({
+                  tabBarIcon: ({ focused }) => (
+                    <Ionicons
+                      style={{ width: Utils.moderateScale(50), height: "auto" }}
+                      name="tv-outline"
+                      size={Utils.moderateScale(25)}
+                      color={focused ? activeIcon : colorIcon}
+                    />
+                  ),
+                  headerShown: false,
+                  tabBarLabel: "",
+                  tabBarActiveTintColor: activeIcon,
+                })}
+              >
+                {() => (
+                  <SerieStackNavigator
+                    i18n={i18n}
+                    t={t}
+                    isAuthenticated={isAuthenticated}
                   />
-                ),
+                )}
+              </Tab.Screen>
+            </Fragment>
+          ) : (
+            <Tab.Screen
+              name="AuthStackNavigator"
+              options={() => ({
                 headerShown: false,
                 tabBarLabel: "",
-                tabBarActiveTintColor: activeIcon,
+                tabBarButton: () => null,
               })}
             >
               {() => (
-                <SerieStackNavigator
+                <AuthStackNavigator
                   i18n={i18n}
                   t={t}
                   isAuthenticated={isAuthenticated}
                 />
               )}
             </Tab.Screen>
-          </Fragment>
-        ) : (
-          <Tab.Screen
-            name="AuthStackNavigator"
-            options={() => ({
-              headerShown: false,
-              tabBarLabel: "",
-              tabBarButton: () => null,
-            })}
-          >
-            {() => (
-              <AuthStackNavigator
-                i18n={i18n}
-                t={t}
-                isAuthenticated={isAuthenticated}
-              />
-            )}
-          </Tab.Screen>
-        )}
-      </Tab.Navigator>
-    </NavigationContainer>
+          )}
+        </Tab.Navigator>
+      </NavigationContainer>
+    </RootSiblingParent>
   )
 }
 

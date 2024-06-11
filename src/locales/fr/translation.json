@@ -120,7 +120,7 @@
     "areYouSureYouWantToDeleteThisFavorite": "Etes vous sur de vouloir supprimer ce favori ?",
     "deleteAccountConfirmMsg": "Etes vous sur de vouloir supprimer votre compte ?",
     "areYouSureYouWantToDeleteThisReview": "Êtes vous sûr de vouloir supprimer cette critique ?",
-    "yourAccountHasBeenCreated": "Votre compte a bien été crée",
+    "yourAccountHasBeenCreated": "Votre compte a bien été crée.\nVérifiez vos emails pour activer votre compte",
     "reviewSuccessfullyPublished": "Votre critique a bien été publié",
     "addedToWatchList": "Ajouté à la liste de suivi",
     "removedFromWatchList": "Retiré de la liste de suivi",
@@ -143,7 +143,8 @@
     "permissionToAccessCameraRollIsRequired": "L'autorisation d'accéder à la caméra est requise",
     "contentCannotExceed300Characters": "Le contenu ne peut pas dépasser 300 caractères",
     "anErrorHasOccurred": "Une erreur s'est produite",
-    "youMustBeAuthenticatedToPostAMessage": "Vous devez être authentifié pour poster un message"
+    "youMustBeAuthenticatedToPostAMessage": "Vous devez être authentifié pour poster un message",
+    "emailPasswordMissingOrInvalid": "Email/Mot de passe invalide"
   },
   "privacy": {
     "h1PrivacyPolicy": "Politique de confidentialité",
