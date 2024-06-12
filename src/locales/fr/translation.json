@@ -1,5 +1,6 @@
 {
   "utils": {
+    "next": "Suivant",
     "languages": "Langues",
     "notifications": "Notifications",
     "privacyPolicy": "Politique de confidentialité",
@@ -9,6 +10,7 @@
     "popular": "Populaire",
     "onTheAir": "En cours de diffusion",
     "upcoming": "A venir",
+    "loginRegister": "Se connecter/S'inscrire",
     "signIn": "Se connecter",
     "signUp": "S'inscrire",
     "enterYourEmailAddress": "Entrez votre adresse email",
@@ -134,7 +136,10 @@
     "anEmailHasBeenSentToYouContainingA6DigitCode": "Un email vous a été envoyé contenant un code à 6 chiffres",
     "successfullyConnected": "Connexion réussie",
     "yourVerificationCodeHasBeenValidated": "Votre code de vérification a été validé",
-    "yourPasswordHasBeenSuccessfullyReset": "Votre mot de passe a été réinitialisé avec succès"
+    "yourPasswordHasBeenSuccessfullyReset": "Votre mot de passe a été réinitialisé avec succès",
+    "youAreNowLoggedWithYourGoogleAccount": "Vous êtes maintenant connecté avec votre compte Google",
+    "youAreNowLoggedWithYourAppleAccount": "Vous êtes maintenant connecté avec votre compte Apple",
+    "logoutSuccessful": "Déconnexion réussie"
   },
   "errors": {
     "allFieldsAreMandatory": "Tous les champs sont obligatoires",
