@@ -106,11 +106,10 @@ const SeasonDetails = (id, seasonNumber, language) => {
   })
 }
 
-const SeasonWatchProviders = (id, seasonNumber, language) => {
+const SeasonWatchProviders = (id, seasonNumber) => {
   return http.get(`/tv/${id}/season/${seasonNumber}/watch/providers`, {
     params: {
       api_key: EXPO_TMDB_API_KEY,
-      language,
     },
   })
 }

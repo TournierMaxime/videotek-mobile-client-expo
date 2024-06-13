@@ -13,8 +13,13 @@ const OneArticle = ({ route }) => {
   const { articleId } = route.params
   const dispatch = useDispatch()
 
-  const { articleTitle, articleIntro, articleParagraph, articleUpdate } =
-    useResponsive()
+  const {
+    articleTitle,
+    articleIntro,
+    articleParagraph,
+    articleUpdate,
+    imageArticle,
+  } = useResponsive()
 
   const oneArticle = useSelector((state) => state.oneArticle.data.article)
   const isLoading = useSelector((state) => state.oneArticle.loading)
@@ -47,10 +52,10 @@ const OneArticle = ({ route }) => {
         return (
           <Image
             key={index}
-            className="rounded-md object-cover"
+            className="rounded-md"
             alt={media.mediaId}
             source={{ uri: media.url }}
-            style={tw`w-90 h-50 mt-4`}
+            style={imageArticle()}
           />
         )
       case "video":
@@ -65,6 +70,9 @@ const OneArticle = ({ route }) => {
               height: Utils.moderateScale(256),
               marginTop: Utils.moderateScale(20),
             }}
+            startInLoadingState={true}
+            renderLoading={() => <ActivityIndicator size="large" />}
+            useWebKit={true}
           />
         )
       case "post":
@@ -73,6 +81,9 @@ const OneArticle = ({ route }) => {
             <WebView
               source={{ uri: `${tweetUrl}` }}
               style={{ width: "100%", height: Utils.moderateScale(1000) }}
+              startInLoadingState={true}
+              renderLoading={() => <ActivityIndicator size="large" />}
+              useWebKit={true}
             />
           </View>
         ) : null

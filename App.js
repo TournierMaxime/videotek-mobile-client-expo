@@ -66,7 +66,7 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
             },
           }}
         >
-          {isAuthenticated === true ? (
+          {isAuthenticated && onLoginSuccess ? (
             <Fragment>
               <Tab.Screen
                 name="MainStackNavigator"

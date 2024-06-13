@@ -14,6 +14,7 @@ module.exports = function (api) {
           allowUndefined: true,
         },
       ],
+      //...(api.env("production") ? ["transform-remove-console"] : []),
     ],
   }
 }
