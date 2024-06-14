@@ -66,7 +66,11 @@ const MovieStackNavigator = ({ isAuthenticated, i18n, t }) => {
         initialParams={{ id: "" }}
         options={() => ({
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+              type="movie"
+            />
           ),
         })}
       >
@@ -77,7 +81,11 @@ const MovieStackNavigator = ({ isAuthenticated, i18n, t }) => {
         initialParams={{ id: "" }}
         options={() => ({
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+              type="people"
+            />
           ),
         })}
       >
