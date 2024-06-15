@@ -1,5 +1,4 @@
-import { getOneArticle } from "@mod/mobile-tmdb/redux/actions/articles"
-import { useEffect, memo } from "react"
+import React, { useEffect, memo } from "react"
 import { ScrollView, View, Text, Image, ActivityIndicator } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import tw from "twrnc"
@@ -8,10 +7,22 @@ import WebView from "react-native-webview"
 import Utils from "@mod/mobile-common/lib/class/Utils"
 import { useDynamicThemeStyles } from "@mod/mobile-common/styles/theme"
 import useResponsive from "@mod/mobile-common/lib/hooks/utils/useResponsive"
+import { getOneArticle } from "@mod/mobile-tmdb/redux/actions/articles"
+import { RootState, AppDispatch } from "../../redux/store"
+import { NativeStackNavigationProp } from "@react-navigation/native-stack"
+import { RouteProp } from "@react-navigation/native"
+import { ArticleStackParamList } from "../../navigators/ArticleStackNavigator"
 
-const OneArticle = ({ route }) => {
+interface OneArticleProps {
+  i18n: any
+  t: any
+  navigation: NativeStackNavigationProp<ArticleStackParamList, "OneArticle">
+  route: RouteProp<ArticleStackParamList, "OneArticle">
+}
+
+const OneArticle: React.FC<OneArticleProps> = ({ route }) => {
   const { articleId } = route.params
-  const dispatch = useDispatch()
+  const dispatch: AppDispatch = useDispatch()
 
   const {
     articleTitle,
@@ -21,18 +32,20 @@ const OneArticle = ({ route }) => {
     imageArticle,
   } = useResponsive()
 
-  const oneArticle = useSelector((state) => state.oneArticle.data.article)
-  const isLoading = useSelector((state) => state.oneArticle.loading)
+  const oneArticle = useSelector(
+    (state: RootState) => state.oneArticle.data.article,
+  )
+  const isLoading = useSelector((state: RootState) => state.oneArticle.loading)
 
-  const darkMode = useSelector((state) => state.theme.darkMode)
+  const darkMode = useSelector((state: RootState) => state.theme.darkMode)
   const { background, text } = useDynamicThemeStyles(darkMode)
 
   const paragraphs = oneArticle?.paragraphs
   const medias = oneArticle?.medias
 
-  const mediaType = (media, index) => {
-    let tweetUrl
-    let youtubeUrl
+  const mediaType = (media: any, index: number) => {
+    let tweetUrl: string | undefined
+    let youtubeUrl: string | undefined
 
     if (media.type === "post") {
       tweetUrl = media.url
@@ -52,7 +65,6 @@ const OneArticle = ({ route }) => {
         return (
           <Image
             key={index}
-            className="rounded-md"
             alt={media.mediaId}
             source={{ uri: media.url }}
             style={imageArticle()}
@@ -92,7 +104,9 @@ const OneArticle = ({ route }) => {
     }
   }
 
-  const introImage = oneArticle?.medias?.find((media) => media.type === "image")
+  const introImage = oneArticle?.medias?.find(
+    (media: any) => media.type === "image",
+  )
 
   useEffect(() => {
     dispatch(getOneArticle(articleId))
@@ -107,14 +121,14 @@ const OneArticle = ({ route }) => {
           <Text style={articleTitle(text)}>{oneArticle?.title}</Text>
           <Text style={articleIntro(text)}>{oneArticle?.intro}</Text>
           {introImage ? introImage && mediaType(introImage, 0) : null}
-          {paragraphs?.map((paragraph) => {
+          {paragraphs?.map((paragraph: any) => {
             return (
               <Text key={paragraph.position} style={articleParagraph(text)}>
                 {paragraph.text}
               </Text>
             )
           })}
-          {medias?.map((media, index) => {
+          {medias?.map((media: any, index: number) => {
             if (media !== introImage) {
               return mediaType(media, index)
             }

@@ -15,11 +15,11 @@ import tw from "twrnc"
 import { useSelector } from "react-redux"
 import { useDynamicThemeStyles } from "@mod/mobile-common/styles/theme"
 
-const Home = () => {
+const Series: React.FC = () => {
   const { i18n, t } = useTranslation()
   const language = i18n.language
 
-  const darkMode = useSelector((state) => state.theme.darkMode)
+  const darkMode = useSelector((state: any) => state.theme.darkMode)
   const { background } = useDynamicThemeStyles(darkMode)
 
   const { data: popularData, isLoading } = useQuery(
@@ -52,4 +52,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Series

@@ -10,9 +10,26 @@ import DetailsPeople from "@mod/mobile-tmdb/views/People/DetailsPeople"
 import CrewMovie from "@mod/mobile-tmdb/views/Movies/CrewMovie"
 import CastMovie from "@mod/mobile-tmdb/views/Movies/CastMovie"
 
-const MovieStack = createNativeStackNavigator()
+export type MovieStackParamList = {
+  Movies: undefined
+  NowPlaying: undefined
+  TopRated: undefined
+  Upcoming: undefined
+  DetailsMovie: { id: number }
+  DetailsPeople: { id: number }
+  CastMovie: undefined
+  CrewMovie: undefined
+}
 
-const MovieStackNavigator = ({ isAuthenticated, i18n, t }) => {
+const MovieStack = createNativeStackNavigator<MovieStackParamList>()
+
+interface Props {
+  isAuthenticated: boolean
+  i18n: any
+  t: any
+}
+
+const MovieStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
   return (
     <MovieStack.Navigator
       screenOptions={{
@@ -25,7 +42,12 @@ const MovieStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="Movies"
         options={{
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={false} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={false}
+            />
           ),
         }}
       >
@@ -35,7 +57,12 @@ const MovieStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="NowPlaying"
         options={{
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         }}
       >
@@ -45,7 +72,12 @@ const MovieStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="TopRated"
         options={{
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         }}
       >
@@ -55,7 +87,12 @@ const MovieStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="Upcoming"
         options={{
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         }}
       >
@@ -63,13 +100,14 @@ const MovieStackNavigator = ({ isAuthenticated, i18n, t }) => {
       </MovieStack.Screen>
       <MovieStack.Screen
         name="DetailsMovie"
-        initialParams={{ id: "" }}
+        initialParams={{ id: undefined }}
         options={() => ({
           header: () => (
             <Header
               isAuthenticated={isAuthenticated}
               backButton={true}
               type="movie"
+              title={null}
             />
           ),
         })}
@@ -78,13 +116,14 @@ const MovieStackNavigator = ({ isAuthenticated, i18n, t }) => {
       </MovieStack.Screen>
       <MovieStack.Screen
         name="DetailsPeople"
-        initialParams={{ id: "" }}
+        initialParams={{ id: undefined }}
         options={() => ({
           header: () => (
             <Header
               isAuthenticated={isAuthenticated}
               backButton={true}
               type="people"
+              title={null}
             />
           ),
         })}
@@ -95,7 +134,12 @@ const MovieStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="CastMovie"
         options={() => ({
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         })}
       >
@@ -105,7 +149,12 @@ const MovieStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="CrewMovie"
         options={() => ({
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         })}
       >

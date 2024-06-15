@@ -17,11 +17,38 @@ import UpdateUserName from "@mod/mobile-user/views/Users/UpdateData/UpdateUserNa
 import UpdateEmail from "@mod/mobile-user/views/Users/UpdateData/UpdateEmail"
 import UpdateAvatar from "@mod/mobile-user/views/Users/UpdateData/UpdateAvatar"
 import PrivacyPolicy from "@mod/mobile-user/views/Users/PrivacyPolicy"
+import { RootState } from "redux/store"
 
-const MainStack = createNativeStackNavigator()
+export type MainStackParamList = {
+  Home: undefined
+  ComingSoon: undefined
+  Trending: undefined
+  UpdateData: { userId: string }
+  UpdateUserName: { userId: string }
+  UpdateEmail: { userId: string }
+  UpdateAvatar: { userId: string }
+  UserProfile: { userId: string }
+  Settings: { userId: string }
+  Languages: undefined
+  Theme: undefined
+  Notifications: { userId: string }
+  Favorites: { userId: string }
+  Recommendations: undefined
+  PrivacyPolicy: undefined
+}
 
-const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
-  const userId = useSelector((state) => state.auth.data?.user?.userId)
+const MainStack = createNativeStackNavigator<MainStackParamList>()
+
+interface Props {
+  isAuthenticated: boolean
+  i18n: any
+  t: any
+}
+
+const MainStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
+  const userId = useSelector(
+    (state: RootState) => state.auth.data?.user?.userId,
+  )
 
   return (
     <MainStack.Navigator
@@ -35,7 +62,12 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="Home"
         options={{
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={false} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={false}
+            />
           ),
         }}
       >
@@ -45,7 +77,12 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="ComingSoon"
         options={{
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={false} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={false}
+            />
           ),
         }}
       >
@@ -55,7 +92,12 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="Trending"
         options={{
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={false} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={false}
+            />
           ),
         }}
       >
@@ -66,7 +108,12 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         options={({ route }) => ({
           userId: route.params.userId,
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         })}
       >
@@ -77,7 +124,12 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         options={({ route }) => ({
           userId: route.params.userId,
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         })}
       >
@@ -88,7 +140,12 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         options={({ route }) => ({
           userId: route.params.userId,
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         })}
       >
@@ -99,7 +156,12 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         options={({ route }) => ({
           userId: route.params.userId,
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         })}
       >
@@ -110,7 +172,12 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         initialParams={{ userId }}
         options={() => ({
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         })}
       >
@@ -121,7 +188,12 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         options={({ route }) => ({
           userId: route.params.userId,
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         })}
       >
@@ -131,7 +203,12 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="Languages"
         options={() => ({
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         })}
       >
@@ -141,7 +218,12 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="Theme"
         options={() => ({
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         })}
       >
@@ -152,7 +234,12 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         options={({ route }) => ({
           userId: route.params.userId,
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         })}
       >
@@ -163,7 +250,12 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         options={({ route }) => ({
           userId: route.params.userId,
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         })}
       >
@@ -173,7 +265,12 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="Recommendations"
         options={{
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={false} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={false}
+            />
           ),
         }}
       >
@@ -183,7 +280,12 @@ const MainStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="PrivacyPolicy"
         options={{
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         }}
       >

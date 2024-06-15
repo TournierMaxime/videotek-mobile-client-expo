@@ -1,6 +1,6 @@
 import { videotekApi as http } from "./axios.js"
 
-const SearchUsers = (filters) => {
+const SearchUsers = (filters: any) => {
   return http.post(
     "/users/search",
     {},
@@ -10,11 +10,11 @@ const SearchUsers = (filters) => {
   )
 }
 
-const GetOneUser = (userId) => {
+const GetOneUser = (userId: string) => {
   return http.get(`/users/${userId}`, { withCredentials: true })
 }
 
-const UpdateUser = (data, userId) => {
+const UpdateUser = (data: any, userId: string) => {
   return http.put(`/users/${userId}`, data, {
     withCredentials: true,
     headers: {
@@ -23,7 +23,7 @@ const UpdateUser = (data, userId) => {
   })
 }
 
-const DeleteUser = (userId) => {
+const DeleteUser = (userId: string) => {
   return http.delete(`/users/${userId}`, { withCredentials: true })
 }
 

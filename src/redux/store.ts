@@ -1,4 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit"
+// src/redux/store.ts
+
+import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
 import thunkMiddleware from "redux-thunk"
 import {
   authCommonReducer,
@@ -26,7 +28,7 @@ const rootReducer = {
   ...articlesReducer,
 }
 
-const createBaseStore = (reducers) => {
+const createBaseStore = (reducers: typeof rootReducer) => {
   const store = configureStore({
     reducer: reducers,
     middleware: (getDefaultMiddleware) =>
@@ -40,5 +42,14 @@ const createBaseStore = (reducers) => {
 }
 
 const store = createBaseStore(rootReducer)
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>
 
 export default store

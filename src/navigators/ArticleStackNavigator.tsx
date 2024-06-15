@@ -4,9 +4,24 @@ import Header from "@mod/mobile-common/lib/components/layout/Header"
 import OneArticle from "../views/Articles/OneArticle"
 import AllArticles from "../views/Articles/AllArticles"
 
-const ArticleStack = createNativeStackNavigator()
+export type ArticleStackParamList = {
+  AllArticles: undefined
+  OneArticle: { articleId: string }
+}
 
-const ArticleStackNavigator = ({ isAuthenticated, i18n, t }) => {
+const ArticleStack = createNativeStackNavigator<ArticleStackParamList>()
+
+interface Props {
+  isAuthenticated: boolean
+  i18n: any
+  t: any
+}
+
+const ArticleStackNavigator: React.FC<Props> = ({
+  isAuthenticated,
+  i18n,
+  t,
+}) => {
   return (
     <ArticleStack.Navigator
       screenOptions={{
@@ -19,7 +34,12 @@ const ArticleStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="AllArticles"
         options={{
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={false} />
+            <Header
+              isAuthenticated={isAuthenticated}
+              backButton={false}
+              title={null}
+              type={null}
+            />
           ),
         }}
       >
@@ -29,7 +49,12 @@ const ArticleStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="OneArticle"
         options={{
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+              title={null}
+              type={null}
+            />
           ),
         }}
       >

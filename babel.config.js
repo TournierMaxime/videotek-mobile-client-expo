@@ -14,6 +14,22 @@ module.exports = function (api) {
           allowUndefined: true,
         },
       ],
+      [
+        "module-resolver",
+        {
+          root: ["./src"],
+          extensions: [".ios.js", ".android.js", ".js", ".ts", ".tsx", ".json"],
+          alias: {
+            tests: ["./tests/"],
+            "@modules": "./src/modules",
+            "@navigators": "./src/navigators",
+            "@redux": "./src/redux",
+            "@services": "./src/services",
+            "@views": "./src/views",
+            "@env": ["node_modules/react-native-dotenv"],
+          },
+        },
+      ],
     ],
   }
 }

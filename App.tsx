@@ -11,28 +11,33 @@ import "./polyfill"
 import { Dimensions } from "react-native"
 import Utils from "@mod/mobile-common/lib/class/Utils"
 import AuthStackNavigator from "@mod/mobile-auth/navigators/AuthStackNavigator"
-import MainStackNavigator from "./src/navigators/MainStackNavigator.js"
+import MainStackNavigator from "./src/navigators/MainStackNavigator"
 import useLocalStorage from "@mod/mobile-common/lib/hooks/utils/useLocalStorage"
 import { QueryClient, QueryClientProvider } from "react-query"
 import { useDynamicThemeStyles } from "@mod/mobile-common/styles/theme"
 import { useSelector } from "react-redux"
-import MovieStackNavigator from "./src/navigators/MovieStackNavigator.js"
-import SerieStackNavigator from "./src/navigators/SerieStackNavigator.js"
-import ArticleStackNavigator from "./src/navigators/ArticleStackNavigator.js"
+import MovieStackNavigator from "./src/navigators/MovieStackNavigator"
+import SerieStackNavigator from "./src/navigators/SerieStackNavigator"
+import ArticleStackNavigator from "./src/navigators/ArticleStackNavigator"
 import { RootSiblingParent } from "react-native-root-siblings"
 
 const queryClient = new QueryClient()
 
 const Tab = createBottomTabNavigator()
 
-const App = ({ isAuthenticated, onLoginSuccess }) => {
+interface Props {
+  isAuthenticated: boolean
+  onLoginSuccess: (userData: any) => void
+}
+
+const App: React.FC<Props> = ({ isAuthenticated, onLoginSuccess }) => {
   const { i18n, t } = useTranslation()
   const { getUserData, updateLanguage, favorites, loadTheme, lang } =
     useLocalStorage({
       onLoginSuccess,
     })
 
-  const darkMode = useSelector((state) => state.theme.darkMode)
+  const darkMode = useSelector((state: any) => state.theme.darkMode)
 
   const { colorIcon, backgroundTabColor, activeIcon } =
     useDynamicThemeStyles(darkMode)
@@ -66,7 +71,7 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
             },
           }}
         >
-          {isAuthenticated && onLoginSuccess ? (
+          {isAuthenticated ? (
             <Fragment>
               <Tab.Screen
                 name="MainStackNavigator"
@@ -211,19 +216,19 @@ const App = ({ isAuthenticated, onLoginSuccess }) => {
   )
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: any) => ({
   isAuthenticated: state.auth.isAuthenticated,
   data: state.auth.data,
 })
 
-const login = (dispatch) => ({
-  onLoginSuccess: (userData) =>
+const login = (dispatch: any) => ({
+  onLoginSuccess: (userData: any) =>
     dispatch({ type: "LOGIN_USER_SUCCESS", payload: userData }),
 })
 
 const ConnectedApp = connect(mapStateToProps, login)(App)
 
-const AppWithRedux = () => (
+const AppWithRedux: React.FC = () => (
   <Provider store={store}>
     <QueryClientProvider client={queryClient}>
       <I18nextProvider i18n={i18n}>

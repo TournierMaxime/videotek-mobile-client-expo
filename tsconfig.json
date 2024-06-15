@@ -1,0 +1,18 @@
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "types": ["react-native", "jest"],
+    "paths": {
+      "*": ["src/*"],
+      "tests": ["tests/*"],
+      "@modules/*": ["src/modules/*"],
+      "@navigators/*": ["src/navigators/*"],
+      "@redux/*": ["src/redux/*"],
+      "@services/*": ["src/services/*"],
+      "@views/*": ["src/views/*"]
+    }
+  },
+  "include": ["./src", "./src/types/.env.d.ts"],
+  "exclude": ["node_modules"]
+}

@@ -11,33 +11,47 @@ import { useSelector, useDispatch } from "react-redux"
 import { useDynamicThemeStyles } from "@mod/mobile-common/styles/theme"
 import Utils from "@mod/mobile-common/lib/class/Utils"
 import { Entypo } from "@expo/vector-icons"
-import { useNavigation } from "@react-navigation/native"
+import { NavigationProp } from "@react-navigation/native"
 import { searchArticles } from "@mod/mobile-tmdb/redux/actions/articles"
-import { useTranslation } from "react-i18next"
 import useResponsive from "@mod/mobile-common/lib/hooks/utils/useResponsive"
+import { RootState, AppDispatch } from "../../redux/store"
+import { ArticleStackParamList } from "../../navigators/ArticleStackNavigator"
 
-const AllArticles = () => {
-  const navigation = useNavigation()
-  const dispatch = useDispatch()
+interface Article {
+  articleId: string
+  title: string
+}
+
+interface AllArticlesProps {
+  i18n: any
+  t: any
+  navigation: NavigationProp<ArticleStackParamList, "AllArticles">
+}
+
+const AllArticles: React.FC<AllArticlesProps> = ({ i18n, t, navigation }) => {
+  const dispatch: AppDispatch = useDispatch()
 
   const { articleListTitle } = useResponsive()
 
-  const { i18n } = useTranslation()
   const language = i18n.language
 
-  const data = useSelector((state) => state.searchArticles.data?.articles)
-  const isLoading = useSelector((state) => state.searchArticles.loading)
+  const data = useSelector(
+    (state: RootState) => state.searchArticles.data?.articles,
+  )
+  const isLoading = useSelector(
+    (state: RootState) => state.searchArticles.loading,
+  )
 
-  const darkMode = useSelector((state) => state.theme.darkMode)
+  const darkMode = useSelector((state: RootState) => state.theme.darkMode)
   const { background, text, borderColor, colorIcon } =
     useDynamicThemeStyles(darkMode)
 
-  const renderItem = (item, idx) => {
+  const renderItem = ({ item, index }: { item: Article; index: number }) => {
     const { title } = item
     return (
       <TouchableOpacity
         style={tw`flex flex-row items-center justify-around border-b border-slate-200 w-full py-4`}
-        key={idx}
+        key={index}
         onPress={() =>
           navigation.navigate("OneArticle", { articleId: item.articleId })
         }
@@ -70,9 +84,9 @@ const AllArticles = () => {
   return (
     <FlatList
       style={tw`${background}`}
-      keyExtractor={(item, idx) => idx}
+      keyExtractor={(item, index) => index.toString()}
       data={data}
-      renderItem={({ item, idx }) => renderItem(item, idx)}
+      renderItem={renderItem}
       ListEmptyComponent={
         isLoading ? <ActivityIndicator size="large" color="#0000ff" /> : null
       }

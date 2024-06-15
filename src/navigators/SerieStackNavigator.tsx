@@ -10,9 +10,26 @@ import AllSeasons from "@mod/mobile-tmdb/views/Series/AllSeasons"
 import AllEpisodes from "@mod/mobile-tmdb/views/Series/AllEpisodes"
 import DetailsPeople from "@mod/mobile-tmdb/views/People/DetailsPeople"
 
-const SerieStack = createNativeStackNavigator()
+export type SerieStackParamList = {
+  Series: undefined
+  OnTheAir: undefined
+  Popular: undefined
+  TrendingTV: undefined
+  DetailsSerie: { id: number }
+  DetailsPeople: { id: number }
+  AllSeasons: { id: number }
+  AllEpisodes: undefined
+}
 
-const SerieStackNavigator = ({ isAuthenticated, i18n, t }) => {
+const SerieStack = createNativeStackNavigator<SerieStackParamList>()
+
+interface Props {
+  isAuthenticated: boolean
+  i18n: any
+  t: any
+}
+
+const SerieStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
   return (
     <SerieStack.Navigator
       screenOptions={{
@@ -25,7 +42,12 @@ const SerieStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="Series"
         options={{
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={false} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={false}
+            />
           ),
         }}
       >
@@ -35,7 +57,12 @@ const SerieStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="OnTheAir"
         options={{
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         }}
       >
@@ -45,7 +72,12 @@ const SerieStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="Popular"
         options={{
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         }}
       >
@@ -55,7 +87,12 @@ const SerieStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="TrendingTV"
         options={{
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         }}
       >
@@ -63,13 +100,14 @@ const SerieStackNavigator = ({ isAuthenticated, i18n, t }) => {
       </SerieStack.Screen>
       <SerieStack.Screen
         name="DetailsSerie"
-        initialParams={{ id: "" }}
+        initialParams={{ id: undefined }}
         options={() => ({
           header: () => (
             <Header
               isAuthenticated={isAuthenticated}
               backButton={true}
               type="tv"
+              title={null}
             />
           ),
         })}
@@ -80,7 +118,12 @@ const SerieStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="AllSeasons"
         options={() => ({
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         })}
       >
@@ -90,7 +133,12 @@ const SerieStackNavigator = ({ isAuthenticated, i18n, t }) => {
         name="AllEpisodes"
         options={() => ({
           header: () => (
-            <Header isAuthenticated={isAuthenticated} backButton={true} />
+            <Header
+              title={null}
+              type={null}
+              isAuthenticated={isAuthenticated}
+              backButton={true}
+            />
           ),
         })}
       >
@@ -98,13 +146,14 @@ const SerieStackNavigator = ({ isAuthenticated, i18n, t }) => {
       </SerieStack.Screen>
       <SerieStack.Screen
         name="DetailsPeople"
-        initialParams={{ id: "" }}
+        initialParams={{ id: undefined }}
         options={() => ({
           header: () => (
             <Header
               isAuthenticated={isAuthenticated}
               backButton={true}
               type="people"
+              title={null}
             />
           ),
         })}
