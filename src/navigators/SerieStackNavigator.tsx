@@ -6,7 +6,6 @@ import OnTheAir from "@mod/mobile-tmdb/views/Series/OnTheAir"
 import Popular from "@mod/mobile-tmdb/views/Series/Popular"
 import TrendingTV from "@mod/mobile-tmdb/views/Series/TrendingTV"
 import DetailsSerie from "@mod/mobile-tmdb/views/Series/DetailsSerie"
-import AllSeasons from "@mod/mobile-tmdb/views/Series/AllSeasons"
 import AllEpisodes from "@mod/mobile-tmdb/views/Series/AllEpisodes"
 import DetailsPeople from "@mod/mobile-tmdb/views/People/DetailsPeople"
 
@@ -17,8 +16,8 @@ export type SerieStackParamList = {
   TrendingTV: undefined
   DetailsSerie: { id: number }
   DetailsPeople: { id: number }
-  AllSeasons: { id: number }
-  AllEpisodes: undefined
+  AllEpisodes: { id: number; seasonNumber: number }
+  SeriesTab: { screen: string; params: { id: number } }
 }
 
 const SerieStack = createNativeStackNavigator<SerieStackParamList>()
@@ -43,8 +42,8 @@ const SerieStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
         options={{
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={false}
             />
@@ -58,8 +57,8 @@ const SerieStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
         options={{
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={true}
             />
@@ -73,8 +72,8 @@ const SerieStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
         options={{
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={true}
             />
@@ -88,8 +87,8 @@ const SerieStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
         options={{
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={true}
             />
@@ -107,7 +106,7 @@ const SerieStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
               isAuthenticated={isAuthenticated}
               backButton={true}
               type="tv"
-              title={null}
+              title={""}
             />
           ),
         })}
@@ -115,27 +114,12 @@ const SerieStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
         {(props) => <DetailsSerie {...props} i18n={i18n} t={t} />}
       </SerieStack.Screen>
       <SerieStack.Screen
-        name="AllSeasons"
-        options={() => ({
-          header: () => (
-            <Header
-              title={null}
-              type={null}
-              isAuthenticated={isAuthenticated}
-              backButton={true}
-            />
-          ),
-        })}
-      >
-        {(props) => <AllSeasons {...props} i18n={i18n} t={t} />}
-      </SerieStack.Screen>
-      <SerieStack.Screen
         name="AllEpisodes"
         options={() => ({
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={true}
             />
@@ -153,7 +137,7 @@ const SerieStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
               isAuthenticated={isAuthenticated}
               backButton={true}
               type="people"
-              title={null}
+              title={""}
             />
           ),
         })}

@@ -13,8 +13,17 @@ import { useQuery } from "react-query"
 import tw from "twrnc"
 import { useSelector } from "react-redux"
 import { useDynamicThemeStyles } from "@mod/mobile-common/styles/theme"
+import { NavigationProp } from "@react-navigation/native"
+import { MovieStackParamList } from "navigators/MovieStackNavigator"
 
-const Movies: React.FC = () => {
+interface MoviesProps {
+  i18n: any
+  t: any
+  navigation: NavigationProp<MovieStackParamList, "Movies">
+  route: any
+}
+
+const Movies: React.FC<MoviesProps> = () => {
   const { i18n, t } = useTranslation()
   const language = i18n.language
 

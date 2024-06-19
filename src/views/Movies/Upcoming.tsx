@@ -1,16 +1,33 @@
 import React from "react"
 import { View, Text, FlatList, TouchableOpacity, Image } from "react-native"
-import { AntDesign, Ionicons } from "@expo/vector-icons"
+import { Ionicons, AntDesign } from "@expo/vector-icons"
 import Utils from "@mod/mobile-common/lib/class/Utils"
 import tw from "twrnc"
-import { useNavigation } from "@react-navigation/native"
+import { useNavigation, NavigationProp } from "@react-navigation/native"
 import { useDynamicThemeStyles } from "@mod/mobile-common/styles/theme"
 import { useSelector } from "react-redux"
 import useResponsive from "@mod/mobile-common/lib/hooks/utils/useResponsive"
+import { RootState } from "../../store"
+import { MovieStackParamList } from "../../navigators/MovieStackNavigator"
 
-const TrendingTV = ({ arrow, trendingTV, t }) => {
-  const navigation = useNavigation()
-  const darkMode = useSelector((state) => state.theme.darkMode)
+interface UpcomingProps {
+  i18n?: any
+  t: any
+  navigation?: NavigationProp<MovieStackParamList, "Upcoming">
+  upcoming: {
+    results: [
+      {
+        id: number
+        poster_path: string
+      },
+    ]
+  }
+  arrow: boolean
+}
+
+const Upcoming: React.FC<UpcomingProps> = ({ upcoming, t, arrow }) => {
+  const navigation = useNavigation<NavigationProp<MovieStackParamList>>()
+  const darkMode = useSelector((state: RootState) => state.theme.darkMode)
   const { background, text, colorIcon } = useDynamicThemeStyles(darkMode)
 
   const { imagePosterHorizontal, headTitle } = useResponsive()
@@ -18,9 +35,9 @@ const TrendingTV = ({ arrow, trendingTV, t }) => {
   return (
     <View style={tw`${background}`}>
       <View style={tw`justify-between items-baseline flex-row mr-4`}>
-        <Text style={headTitle(text)}>{t("utils.series")}</Text>
+        <Text style={headTitle(text)}>{t("utils.upcoming")}</Text>
         {arrow ? (
-          <TouchableOpacity onPress={() => navigation.navigate("TrendingTV")}>
+          <TouchableOpacity onPress={() => navigation.navigate("Upcoming")}>
             <AntDesign
               name="arrowright"
               size={Utils.moderateScale(25)}
@@ -29,7 +46,7 @@ const TrendingTV = ({ arrow, trendingTV, t }) => {
           </TouchableOpacity>
         ) : (
           <Ionicons
-            name="tv-sharp"
+            name="time-outline"
             size={Utils.moderateScale(25)}
             color={colorIcon}
           />
@@ -37,8 +54,8 @@ const TrendingTV = ({ arrow, trendingTV, t }) => {
       </View>
       <View style={tw`items-center justify-between`}>
         <FlatList
-          data={trendingTV?.results?.slice(0, 8)}
-          keyExtractor={(item) => item.id}
+          data={upcoming?.results?.slice(0, 8)}
+          keyExtractor={(item) => item.id.toString()}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           renderItem={({ item, index }) => {
@@ -46,9 +63,8 @@ const TrendingTV = ({ arrow, trendingTV, t }) => {
               <View style={tw`flex-col justify-between`}>
                 <TouchableOpacity
                   onPress={() =>
-                    navigation.navigate("DetailsSerie", {
+                    navigation.navigate("DetailsMovie", {
                       id: item.id,
-                      title: item.name,
                     })
                   }
                 >
@@ -58,7 +74,7 @@ const TrendingTV = ({ arrow, trendingTV, t }) => {
                       {
                         resizeMode: "cover",
                         marginRight:
-                          index === trendingTV?.results?.slice(0, 8).length - 1
+                          index === upcoming?.results?.slice(0, 8).length - 1
                             ? 15
                             : 0,
                       },
@@ -77,4 +93,4 @@ const TrendingTV = ({ arrow, trendingTV, t }) => {
   )
 }
 
-export default TrendingTV
+export default Upcoming

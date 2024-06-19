@@ -1,16 +1,33 @@
 import React from "react"
 import { View, Text, FlatList, TouchableOpacity, Image } from "react-native"
-import { MaterialIcons, AntDesign } from "@expo/vector-icons"
+import { AntDesign, Ionicons } from "@expo/vector-icons"
 import Utils from "@mod/mobile-common/lib/class/Utils"
 import tw from "twrnc"
-import { useNavigation } from "@react-navigation/native"
+import { useNavigation, NavigationProp } from "@react-navigation/native"
 import { useDynamicThemeStyles } from "@mod/mobile-common/styles/theme"
 import { useSelector } from "react-redux"
 import useResponsive from "@mod/mobile-common/lib/hooks/utils/useResponsive"
+import { RootState } from "../../store"
+import { SerieStackParamList } from "../../navigators/SerieStackNavigator"
 
-const NowPlaying = ({ nowPlaying, t, arrow }) => {
-  const navigation = useNavigation()
-  const darkMode = useSelector((state) => state.theme.darkMode)
+interface PopularProps {
+  i18n?: any
+  t: any
+  navigation?: NavigationProp<SerieStackParamList, "TrendingTV">
+  popular: {
+    results: [
+      {
+        id: number
+        poster_path: string
+      },
+    ]
+  }
+  arrow: boolean
+}
+
+const Popular: React.FC<PopularProps> = ({ arrow, popular, t }) => {
+  const navigation = useNavigation<NavigationProp<SerieStackParamList>>()
+  const darkMode = useSelector((state: RootState) => state.theme.darkMode)
   const { background, text, colorIcon } = useDynamicThemeStyles(darkMode)
 
   const { imagePosterHorizontal, headTitle } = useResponsive()
@@ -18,9 +35,9 @@ const NowPlaying = ({ nowPlaying, t, arrow }) => {
   return (
     <View style={tw`${background}`}>
       <View style={tw`justify-between items-baseline flex-row mr-4`}>
-        <Text style={headTitle(text)}>{t("utils.trending")}</Text>
+        <Text style={headTitle(text)}>{t("utils.popular")}</Text>
         {arrow ? (
-          <TouchableOpacity onPress={() => navigation.navigate("NowPlaying")}>
+          <TouchableOpacity onPress={() => navigation.navigate("Popular")}>
             <AntDesign
               name="arrowright"
               size={Utils.moderateScale(25)}
@@ -28,8 +45,8 @@ const NowPlaying = ({ nowPlaying, t, arrow }) => {
             />
           </TouchableOpacity>
         ) : (
-          <MaterialIcons
-            name="movie"
+          <Ionicons
+            name="tv-sharp"
             size={Utils.moderateScale(25)}
             color={colorIcon}
           />
@@ -37,8 +54,8 @@ const NowPlaying = ({ nowPlaying, t, arrow }) => {
       </View>
       <View style={tw`items-center justify-between`}>
         <FlatList
-          data={nowPlaying?.results?.slice(0, 8)}
-          keyExtractor={(item) => item.id}
+          data={popular?.results?.slice(0, 8)}
+          keyExtractor={(item) => item.id.toString()}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           renderItem={({ item, index }) => {
@@ -46,9 +63,8 @@ const NowPlaying = ({ nowPlaying, t, arrow }) => {
               <View style={tw`flex-col justify-between`}>
                 <TouchableOpacity
                   onPress={() =>
-                    navigation.navigate("DetailsMovie", {
+                    navigation.navigate("DetailsSerie", {
                       id: item.id,
-                      title: item.title,
                     })
                   }
                 >
@@ -58,7 +74,7 @@ const NowPlaying = ({ nowPlaying, t, arrow }) => {
                       {
                         resizeMode: "cover",
                         marginRight:
-                          index === nowPlaying?.results?.slice(0, 8).length - 1
+                          index === popular?.results?.slice(0, 8).length - 1
                             ? 15
                             : 0,
                       },
@@ -77,4 +93,4 @@ const NowPlaying = ({ nowPlaying, t, arrow }) => {
   )
 }
 
-export default NowPlaying
+export default Popular

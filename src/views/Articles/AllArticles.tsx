@@ -14,7 +14,7 @@ import { Entypo } from "@expo/vector-icons"
 import { NavigationProp } from "@react-navigation/native"
 import { searchArticles } from "@mod/mobile-tmdb/redux/actions/articles"
 import useResponsive from "@mod/mobile-common/lib/hooks/utils/useResponsive"
-import { RootState, AppDispatch } from "../../redux/store"
+import { RootState, AppDispatch } from "../../store"
 import { ArticleStackParamList } from "../../navigators/ArticleStackNavigator"
 
 interface Article {

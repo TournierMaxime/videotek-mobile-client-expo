@@ -1,4 +1,4 @@
-import { videotekApi as http } from "./axios.js"
+import { videotekApi as http } from "./axios"
 
 const Register = async (data: any) => {
   const response = await http.post("/auth/register", data)

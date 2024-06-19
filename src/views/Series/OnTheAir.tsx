@@ -3,14 +3,31 @@ import { View, Text, FlatList, TouchableOpacity, Image } from "react-native"
 import { Ionicons, AntDesign } from "@expo/vector-icons"
 import Utils from "@mod/mobile-common/lib/class/Utils"
 import tw from "twrnc"
-import { useNavigation } from "@react-navigation/native"
+import { useNavigation, NavigationProp } from "@react-navigation/native"
 import { useDynamicThemeStyles } from "@mod/mobile-common/styles/theme"
 import { useSelector } from "react-redux"
 import useResponsive from "@mod/mobile-common/lib/hooks/utils/useResponsive"
+import { RootState } from "../../store"
+import { SerieStackParamList } from "../../navigators/SerieStackNavigator"
 
-const OnTheAir = ({ arrow, onTheAir, t }) => {
-  const navigation = useNavigation()
-  const darkMode = useSelector((state) => state.theme.darkMode)
+interface OnTheAirProps {
+  i18n?: any
+  t: any
+  navigation?: NavigationProp<SerieStackParamList, "OnTheAir">
+  onTheAir: {
+    results: [
+      {
+        id: number
+        poster_path: string
+      },
+    ]
+  }
+  arrow: boolean
+}
+
+const OnTheAir: React.FC<OnTheAirProps> = ({ arrow, onTheAir, t }) => {
+  const navigation = useNavigation<NavigationProp<SerieStackParamList>>()
+  const darkMode = useSelector((state: RootState) => state.theme.darkMode)
   const { background, text, colorIcon } = useDynamicThemeStyles(darkMode)
 
   const { imagePosterHorizontal, headTitle } = useResponsive()
@@ -38,7 +55,7 @@ const OnTheAir = ({ arrow, onTheAir, t }) => {
       <View style={tw`items-center justify-between`}>
         <FlatList
           data={onTheAir?.results?.slice(0, 8)}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id.toString()}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           renderItem={({ item, index }) => {
@@ -48,7 +65,6 @@ const OnTheAir = ({ arrow, onTheAir, t }) => {
                   onPress={() =>
                     navigation.navigate("DetailsSerie", {
                       id: item.id,
-                      title: item.name,
                     })
                   }
                 >

@@ -1,4 +1,4 @@
-import { videotekApi as http } from "./axios.js"
+import { videotekApi as http } from "./axios"
 
 const SearchUsers = (filters: any) => {
   return http.post(

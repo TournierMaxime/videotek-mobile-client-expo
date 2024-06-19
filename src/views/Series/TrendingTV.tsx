@@ -3,14 +3,31 @@ import { View, Text, FlatList, TouchableOpacity, Image } from "react-native"
 import { AntDesign, Ionicons } from "@expo/vector-icons"
 import Utils from "@mod/mobile-common/lib/class/Utils"
 import tw from "twrnc"
-import { useNavigation } from "@react-navigation/native"
+import { useNavigation, NavigationProp } from "@react-navigation/native"
 import { useDynamicThemeStyles } from "@mod/mobile-common/styles/theme"
 import { useSelector } from "react-redux"
 import useResponsive from "@mod/mobile-common/lib/hooks/utils/useResponsive"
+import { RootState } from "../../store"
+import { SerieStackParamList } from "../../navigators/SerieStackNavigator"
 
-const Popular = ({ arrow, popular, t }) => {
-  const navigation = useNavigation()
-  const darkMode = useSelector((state) => state.theme.darkMode)
+interface TrendingTVProps {
+  i18n?: any
+  t: any
+  navigation?: NavigationProp<SerieStackParamList, "TrendingTV">
+  trendingTV: {
+    results: [
+      {
+        id: number
+        poster_path: string
+      },
+    ]
+  }
+  arrow: boolean
+}
+
+const TrendingTV: React.FC<TrendingTVProps> = ({ arrow, trendingTV, t }) => {
+  const navigation = useNavigation<NavigationProp<SerieStackParamList>>()
+  const darkMode = useSelector((state: RootState) => state.theme.darkMode)
   const { background, text, colorIcon } = useDynamicThemeStyles(darkMode)
 
   const { imagePosterHorizontal, headTitle } = useResponsive()
@@ -18,9 +35,9 @@ const Popular = ({ arrow, popular, t }) => {
   return (
     <View style={tw`${background}`}>
       <View style={tw`justify-between items-baseline flex-row mr-4`}>
-        <Text style={headTitle(text)}>{t("utils.popular")}</Text>
+        <Text style={headTitle(text)}>{t("utils.series")}</Text>
         {arrow ? (
-          <TouchableOpacity onPress={() => navigation.navigate("Popular")}>
+          <TouchableOpacity onPress={() => navigation.navigate("TrendingTV")}>
             <AntDesign
               name="arrowright"
               size={Utils.moderateScale(25)}
@@ -37,8 +54,8 @@ const Popular = ({ arrow, popular, t }) => {
       </View>
       <View style={tw`items-center justify-between`}>
         <FlatList
-          data={popular?.results?.slice(0, 8)}
-          keyExtractor={(item) => item.id}
+          data={trendingTV?.results?.slice(0, 8)}
+          keyExtractor={(item) => item.id.toString()}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           renderItem={({ item, index }) => {
@@ -48,7 +65,6 @@ const Popular = ({ arrow, popular, t }) => {
                   onPress={() =>
                     navigation.navigate("DetailsSerie", {
                       id: item.id,
-                      title: item.name,
                     })
                   }
                 >
@@ -58,7 +74,7 @@ const Popular = ({ arrow, popular, t }) => {
                       {
                         resizeMode: "cover",
                         marginRight:
-                          index === popular?.results?.slice(0, 8).length - 1
+                          index === trendingTV?.results?.slice(0, 8).length - 1
                             ? 15
                             : 0,
                       },
@@ -77,4 +93,4 @@ const Popular = ({ arrow, popular, t }) => {
   )
 }
 
-export default Popular
+export default TrendingTV

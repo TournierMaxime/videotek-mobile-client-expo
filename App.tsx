@@ -1,7 +1,7 @@
 import { connect, Provider } from "react-redux"
 import React, { Fragment, useEffect } from "react"
 import { NavigationContainer } from "@react-navigation/native"
-import store from "./src/redux/store"
+import store from "./src/store"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons"
 import { useTranslation } from "react-i18next"

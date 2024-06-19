@@ -14,8 +14,17 @@ import { useQuery } from "react-query"
 import tw from "twrnc"
 import { useSelector } from "react-redux"
 import { useDynamicThemeStyles } from "@mod/mobile-common/styles/theme"
+import { NavigationProp } from "@react-navigation/native"
+import { SerieStackParamList } from "navigators/SerieStackNavigator"
 
-const Series: React.FC = () => {
+interface SerieProps {
+  i18n: any
+  t: any
+  navigation: NavigationProp<SerieStackParamList, "Series">
+  route: any
+}
+
+const Series: React.FC<SerieProps> = () => {
   const { i18n, t } = useTranslation()
   const language = i18n.language
 

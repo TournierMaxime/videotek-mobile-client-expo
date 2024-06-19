@@ -1,4 +1,4 @@
-import { videotekApi as http } from "./axios.js"
+import { videotekApi as http } from "./axios"
 
 const CreateRecommendation = (data: any) => {
   return http.post(`/recommendations`, data, { withCredentials: true })

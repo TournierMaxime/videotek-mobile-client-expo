@@ -3,14 +3,31 @@ import { View, Text, TouchableOpacity, FlatList, Image } from "react-native"
 import { Ionicons, AntDesign } from "@expo/vector-icons"
 import tw from "twrnc"
 import Utils from "@mod/mobile-common/lib/class/Utils"
-import { useNavigation } from "@react-navigation/native"
+import { useNavigation, NavigationProp } from "@react-navigation/native"
 import { useDynamicThemeStyles } from "@mod/mobile-common/styles/theme"
 import { useSelector } from "react-redux"
 import useResponsive from "@mod/mobile-common/lib/hooks/utils/useResponsive"
+import { RootState } from "../../store"
+import { MovieStackParamList } from "../../navigators/MovieStackNavigator"
 
-const TopRated = ({ topRated, t, arrow }) => {
-  const navigation = useNavigation()
-  const darkMode = useSelector((state) => state.theme.darkMode)
+interface TopRatedProps {
+  i18n?: any
+  t: any
+  navigation?: NavigationProp<MovieStackParamList, "TopRated">
+  topRated: {
+    results: [
+      {
+        id: number
+        poster_path: string
+      },
+    ]
+  }
+  arrow: boolean
+}
+
+const TopRated: React.FC<TopRatedProps> = ({ topRated, t, arrow }) => {
+  const navigation = useNavigation<NavigationProp<MovieStackParamList>>()
+  const darkMode = useSelector((state: RootState) => state.theme.darkMode)
   const { background, text, colorIcon } = useDynamicThemeStyles(darkMode)
 
   const { imagePosterHorizontal, headTitle } = useResponsive()
@@ -39,7 +56,7 @@ const TopRated = ({ topRated, t, arrow }) => {
         <FlatList
           style={tw`${background}`}
           data={topRated?.results?.slice(0, 8)}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id.toString()}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           renderItem={({ item, index }) => {
@@ -50,7 +67,6 @@ const TopRated = ({ topRated, t, arrow }) => {
                     onPress={() =>
                       navigation.navigate("DetailsMovie", {
                         id: item.id,
-                        title: item.title,
                       })
                     }
                   >

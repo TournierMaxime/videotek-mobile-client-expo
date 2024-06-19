@@ -37,8 +37,8 @@ const ArticleStackNavigator: React.FC<Props> = ({
             <Header
               isAuthenticated={isAuthenticated}
               backButton={false}
-              title={null}
-              type={null}
+              title={""}
+              type={""}
             />
           ),
         }}
@@ -52,8 +52,8 @@ const ArticleStackNavigator: React.FC<Props> = ({
             <Header
               isAuthenticated={isAuthenticated}
               backButton={true}
-              title={null}
-              type={null}
+              title={""}
+              type={""}
             />
           ),
         }}

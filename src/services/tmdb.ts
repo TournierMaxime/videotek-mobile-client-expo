@@ -1,4 +1,4 @@
-import { tmdbApi as http } from "./axios.js"
+import { tmdbApi as http } from "./axios"
 import { EXPO_TMDB_API_KEY } from "@env"
 
 const ReleaseDates = (id: number) => {

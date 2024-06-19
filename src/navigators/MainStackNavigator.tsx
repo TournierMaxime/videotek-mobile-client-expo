@@ -17,7 +17,7 @@ import UpdateUserName from "@mod/mobile-user/views/Users/UpdateData/UpdateUserNa
 import UpdateEmail from "@mod/mobile-user/views/Users/UpdateData/UpdateEmail"
 import UpdateAvatar from "@mod/mobile-user/views/Users/UpdateData/UpdateAvatar"
 import PrivacyPolicy from "@mod/mobile-user/views/Users/PrivacyPolicy"
-import { RootState } from "redux/store"
+import { RootState } from "store"
 
 export type MainStackParamList = {
   Home: undefined
@@ -43,6 +43,7 @@ interface Props {
   isAuthenticated: boolean
   i18n: any
   t: any
+  route: any
 }
 
 const MainStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
@@ -63,8 +64,8 @@ const MainStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
         options={{
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={false}
             />
@@ -78,8 +79,8 @@ const MainStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
         options={{
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={false}
             />
@@ -93,8 +94,8 @@ const MainStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
         options={{
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={false}
             />
@@ -109,8 +110,8 @@ const MainStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
           userId: route.params.userId,
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={true}
             />
@@ -125,8 +126,8 @@ const MainStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
           userId: route.params.userId,
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={true}
             />
@@ -141,8 +142,8 @@ const MainStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
           userId: route.params.userId,
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={true}
             />
@@ -157,8 +158,8 @@ const MainStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
           userId: route.params.userId,
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={true}
             />
@@ -173,8 +174,8 @@ const MainStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
         options={() => ({
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={true}
             />
@@ -189,8 +190,8 @@ const MainStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
           userId: route.params.userId,
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={true}
             />
@@ -204,8 +205,8 @@ const MainStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
         options={() => ({
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={true}
             />
@@ -219,8 +220,8 @@ const MainStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
         options={() => ({
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={true}
             />
@@ -235,8 +236,8 @@ const MainStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
           userId: route.params.userId,
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={true}
             />
@@ -251,8 +252,8 @@ const MainStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
           userId: route.params.userId,
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={true}
             />
@@ -266,8 +267,8 @@ const MainStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
         options={{
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={false}
             />
@@ -281,8 +282,8 @@ const MainStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
         options={{
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={true}
             />

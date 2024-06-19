@@ -8,11 +8,11 @@
       "tests": ["tests/*"],
       "@modules/*": ["src/modules/*"],
       "@navigators/*": ["src/navigators/*"],
-      "@redux/*": ["src/redux/*"],
+      "@redux/*": ["src/store/*"],
       "@services/*": ["src/services/*"],
       "@views/*": ["src/views/*"]
     }
   },
-  "include": ["./src", "./src/types/.env.d.ts"],
+  "include": ["./src", "./src/types/.env.d.ts", "src/store.ts"],
   "exclude": ["node_modules"]
 }

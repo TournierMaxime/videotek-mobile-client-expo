@@ -17,8 +17,7 @@ export type MovieStackParamList = {
   Upcoming: undefined
   DetailsMovie: { id: number }
   DetailsPeople: { id: number }
-  CastMovie: undefined
-  CrewMovie: undefined
+  MoviesTab: { screen: string; params: { id: number } }
 }
 
 const MovieStack = createNativeStackNavigator<MovieStackParamList>()
@@ -27,6 +26,7 @@ interface Props {
   isAuthenticated: boolean
   i18n: any
   t: any
+  route: any
 }
 
 const MovieStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
@@ -43,8 +43,8 @@ const MovieStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
         options={{
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={false}
             />
@@ -58,8 +58,8 @@ const MovieStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
         options={{
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={true}
             />
@@ -73,8 +73,8 @@ const MovieStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
         options={{
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={true}
             />
@@ -88,8 +88,8 @@ const MovieStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
         options={{
           header: () => (
             <Header
-              title={null}
-              type={null}
+              title={""}
+              type={""}
               isAuthenticated={isAuthenticated}
               backButton={true}
             />
@@ -107,7 +107,7 @@ const MovieStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
               isAuthenticated={isAuthenticated}
               backButton={true}
               type="movie"
-              title={null}
+              title={""}
             />
           ),
         })}
@@ -123,42 +123,12 @@ const MovieStackNavigator: React.FC<Props> = ({ isAuthenticated, i18n, t }) => {
               isAuthenticated={isAuthenticated}
               backButton={true}
               type="people"
-              title={null}
+              title={""}
             />
           ),
         })}
       >
         {(props) => <DetailsPeople {...props} i18n={i18n} t={t} />}
-      </MovieStack.Screen>
-      <MovieStack.Screen
-        name="CastMovie"
-        options={() => ({
-          header: () => (
-            <Header
-              title={null}
-              type={null}
-              isAuthenticated={isAuthenticated}
-              backButton={true}
-            />
-          ),
-        })}
-      >
-        {(props) => <CastMovie {...props} i18n={i18n} t={t} />}
-      </MovieStack.Screen>
-      <MovieStack.Screen
-        name="CrewMovie"
-        options={() => ({
-          header: () => (
-            <Header
-              title={null}
-              type={null}
-              isAuthenticated={isAuthenticated}
-              backButton={true}
-            />
-          ),
-        })}
-      >
-        {(props) => <CrewMovie {...props} i18n={i18n} t={t} />}
       </MovieStack.Screen>
     </MovieStack.Navigator>
   )

@@ -1,4 +1,4 @@
-import { videotekImportApi as http } from "./axios.js"
+import { videotekImportApi as http } from "./axios"
 
 const SearchArticles = (lang: string) => {
   return http.post(`/articles/search?lang=${lang}`)
