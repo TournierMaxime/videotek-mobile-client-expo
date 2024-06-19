@@ -20,8 +20,8 @@ const ConfirmEmail = async (userId: string, data: any) => {
   return response
 }
 
-const VerifyAppleToken = async (identityToken: string) => {
-  const response = await http.post(`/auth/verify-apple-token`, identityToken)
+const VerifyAppleToken = async (data: any) => {
+  const response = await http.post(`/auth/verify-apple-token`, data)
   return response
 }
 
