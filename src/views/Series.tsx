@@ -6,7 +6,6 @@ import {
   popular,
 } from "@mod/mobile-tmdb/react-query/series"
 import { useTranslation } from "react-i18next"
-import registerForPushNotificationsAsync from "@mod/mobile-common/lib/components/utils/Notifications"
 import Popular from "./Series/Popular"
 import OnTheAir from "./Series/OnTheAir"
 import TrendingTV from "./Series/TrendingTV"
@@ -41,10 +40,6 @@ const Series: React.FC<SerieProps> = () => {
   const { data: trendingTVData } = useQuery(["trendingTV", 1, language], () =>
     trendingTV(1, language),
   )
-
-  useEffect(() => {
-    registerForPushNotificationsAsync()
-  }, [language])
 
   return (
     <Fragment>
