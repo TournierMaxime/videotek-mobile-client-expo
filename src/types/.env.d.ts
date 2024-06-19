@@ -5,4 +5,5 @@ declare module '@env' {
   export const EXPO_TMDB_API_KEY: string;
   export const GOOGLE_AUTH_CLIENT_ID: string;
   export const GOOGLE_REDIRECT_URI: string;
+  export const NODE_ENV: string;
 }
