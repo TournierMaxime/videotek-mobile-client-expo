@@ -19,6 +19,8 @@ build/
 .idea
 .gradle
 local.properties
+*.apk
+*.aab
 
 # Metro
 .metro-health-check*
