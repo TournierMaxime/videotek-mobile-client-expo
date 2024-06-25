@@ -2,35 +2,39 @@
 
 ## Installation
 
-- Ajouter le fichier `.env` et compléter le à l'aide du fichier `.env.dist`
-- Lancer la commande `npm i` pour installer les packages
-- Lancer la commande `npm start`
+- Add `.env` file and complete it with the dist env file `.env.dist`
+- Launch the command `npm i` for installing packages
+- Then launch `npm start`
 
-## MAJ
+## Updates
 
-1. Android Maj
+1. Android update
     - /android/app/build.gradle dans android.defaultConfig incrémenter versionCode et versionName
 
-2. iOS Maj
+2. iOS update
     - /ios/VideoTek/Info.plist dans CFBundleShortVersionString et CFBundleVersion incrémenter les versions
 
-### Utils
+## Utils
 
-- Bleu : `#00CCCA`
-- Rose : `#FF0090`
+- Blue : `#00CCCA`
+- Pink : `#FF0090`
 
 watchman watch-del '/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo';
 watchman watch-project '/Users/maximetournier/Desktop/NAS/videotek/videotek-mobile-client-expo'
 
-## Création d'une clé keystore jks
+## How to create a keystore
 
-- Lancer la commande dans `/android/app` keytool -genkey -v -keystore keystore.jks -alias ladd-exatech-mms-client -keyalg RSA -keysize 2048 -validity 10000
+- Launch the command in `/android/app` keytool -genkey -v -keystore keystore.jks -alias ladd-exatech-mms-client -keyalg RSA -keysize 2048 -validity 10000
 
-### Lister ses empreintes
+## List keystore fingerprints
 
-- Lancer la commande suivante `keytool -list -v -keystore keystore.jks`
+- Launch the following command `keytool -list -v -keystore keystore.jks`
 
 ## Wireless Debug Issue
 
 adb pair IP:PORT
 adb connect IP:PORT
+
+## Gradlew
+
+- ./gradlew clean (clean project)
