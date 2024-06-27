@@ -8,13 +8,13 @@ import { useTranslation } from "react-i18next"
 import i18n from "./i18n"
 import { I18nextProvider } from "react-i18next"
 import "./polyfill"
-import { Dimensions } from "react-native"
-import Utils from "@mod/mobile-common/lib/class/Utils"
-import AuthStackNavigator from "@mod/mobile-auth/navigators/AuthStackNavigator"
+import { Dimensions, Platform } from "react-native"
+import Utils from "@mod/mobile-common/lib/class/Utils.tsx"
+import AuthStackNavigator from "@mod/mobile-auth/navigators/AuthStackNavigator.tsx"
 import MainStackNavigator from "./src/navigators/MainStackNavigator"
-import useLocalStorage from "@mod/mobile-common/lib/hooks/utils/useLocalStorage"
+import useLocalStorage from "@mod/mobile-common/lib/hooks/utils/useLocalStorage.ts"
 import { QueryClient, QueryClientProvider } from "react-query"
-import { useDynamicThemeStyles } from "@mod/mobile-common/styles/theme"
+import { useDynamicThemeStyles } from "@mod/mobile-common/styles/theme.ts"
 import { useSelector } from "react-redux"
 import MovieStackNavigator from "./src/navigators/MovieStackNavigator"
 import SerieStackNavigator from "./src/navigators/SerieStackNavigator"
@@ -55,7 +55,9 @@ const App: React.FC<Props> = ({ isAuthenticated, onLoginSuccess }) => {
         <Tab.Navigator
           screenOptions={{
             tabBarItemStyle: {
-              marginTop: Utils.moderateScale(10),
+              ...(Platform.OS === "ios"
+                ? { marginTop: Utils.moderateScale(5) }
+                : { marginTop: Utils.moderateScale(10) }),
             },
             tabBarStyle: {
               marginLeft: Utils.moderateScale(0),
@@ -93,6 +95,7 @@ const App: React.FC<Props> = ({ isAuthenticated, onLoginSuccess }) => {
                     i18n={i18n}
                     t={t}
                     isAuthenticated={isAuthenticated}
+                    route={undefined}
                   />
                 )}
               </Tab.Screen>
@@ -157,6 +160,7 @@ const App: React.FC<Props> = ({ isAuthenticated, onLoginSuccess }) => {
                     i18n={i18n}
                     t={t}
                     isAuthenticated={isAuthenticated}
+                    route={undefined}
                   />
                 )}
               </Tab.Screen>
