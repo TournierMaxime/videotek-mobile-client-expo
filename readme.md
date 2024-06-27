@@ -38,3 +38,8 @@ adb connect IP:PORT
 ## Gradlew
 
 - ./gradlew clean (clean project)
+- ./gradlew --stop (stop gradle deamon)
+
+## Open Android Studio with command
+
+- `open -a /Applications/Android\ Studio.app`
