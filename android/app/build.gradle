@@ -72,7 +72,7 @@ android {
         applicationId 'com.hoggy.videotekclientexpo'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 36
+        versionCode 37
         versionName "1.5.4"
     }
 

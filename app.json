@@ -20,7 +20,7 @@
     "android": {
       "googleServicesFile": "./google-services.json",
       "package": "com.hoggy.videotekclientexpo",
-      "versionCode": 36
+      "versionCode": 37
     },
     "extra": {
       "eas": {
